@@ -1,0 +1,14 @@
+{
+  "_说明": "复制本文件为 config.json 并填入真实 API Key。base_url 均用 OpenAI 兼容端点格式。",
+  "providers": [
+    {"name": "deepseek", "base_url": "https://api.deepseek.com/v1", "api_key": "sk-xxx", "model": "deepseek-chat"},
+    {"name": "qwen", "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1", "api_key": "sk-xxx", "model": "qwen-plus"},
+    {"name": "kimi", "base_url": "https://api.moonshot.cn/v1", "api_key": "sk-xxx", "model": "moonshot-v1-128k"},
+    {"name": "gemini", "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/", "api_key": "AIza-xxx", "model": "gemini-2.5-pro"},
+    {"name": "claude", "base_url": "https://api.anthropic.com/v1", "api_key": "sk-ant-xxx", "model": "claude-sonnet-5"},
+    {"name": "gpt", "base_url": "https://api.openai.com/v1", "api_key": "sk-xxx", "model": "gpt-5-mini"}
+  ],
+  "judge": {"name": "judge", "base_url": "https://api.deepseek.com/v1", "api_key": "sk-xxx", "model": "deepseek-chat"},
+  "temperature": 0.7,
+  "n_runs": 3
+}
