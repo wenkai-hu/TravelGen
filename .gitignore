@@ -1,5 +1,6 @@
 # ===== 密钥与配置（绝不提交！）=====
-experiments/config.json        # 各家 API Key
+# 注意：gitignore 不支持行内注释，末尾不能带 # 说明
+experiments/config.json
 .env
 *.key
 *.pem
