@@ -82,9 +82,12 @@ def main():
     ap.add_argument("--task", required=True, choices=list(TASKS))
     ap.add_argument("--knowledge", default="")
     ap.add_argument("--script", default="")
+    ap.add_argument("--only", default="", help="只跑指定 provider（按 name 过滤，失败重跑用）")
     args = ap.parse_args()
 
     cfg = load_config()
+    if args.only:
+        cfg["providers"] = [p for p in cfg["providers"] if p["name"] == args.only]
     out_dir_name, dims = TASKS[args.task]
     out_dir = os.path.join(RESULTS_DIR, out_dir_name)
     os.makedirs(out_dir, exist_ok=True)
@@ -94,9 +97,10 @@ def main():
 
     stamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     n = int(cfg.get("n_runs", 3))
-    temp = float(cfg.get("temperature", 0.7))
 
     for p in cfg["providers"]:
+        # 每模型可单独覆盖温度（如 Kimi 推理模型只接受 temperature=1）
+        temp = float(p.get("temperature", cfg.get("temperature", 0.7)))
         for i in range(1, n + 1):
             msg = build_messages(args.task, prompt_text, args.knowledge, args.script)
             content = call_openai_compatible(p, msg, temp)

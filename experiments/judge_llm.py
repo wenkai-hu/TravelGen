@@ -13,7 +13,8 @@
 import argparse, csv, json, os, re, sys
 from run_llm_benchmark import load_config, call_openai_compatible, PROMPTS_DIR
 
-DIMS = {"01_copywriting": ["传播感染力", "信息准确性", "风格符合度", "长度控制", "脚本可执行性"],
+# 维度对齐赛事评分标准（JBGS-2026-01 第2条"AIGC生成效果 30%"的文案部分）
+DIMS = {"01_copywriting": ["内容质量与主题契合", "传播感染力", "风格一致性", "信息真实性", "格式规范与可执行性"],
         "02_storyboard": ["镜头质量", "镜头逻辑", "画面一致性", "结构化程度", "可执行性"]}
 
 
@@ -37,7 +38,11 @@ def main():
     if not dims:
         sys.exit(f"[错误] 未知实验目录 {dir_name}，应为 {list(DIMS)}")
 
-    with open(os.path.join(PROMPTS_DIR, "judge.txt"), encoding="utf-8") as f:
+    # 优先用任务专属评审提示词（judge_<实验目录>.txt），否则用通用 judge.txt
+    prompt_file = os.path.join(PROMPTS_DIR, f"judge_{dir_name}.txt")
+    if not os.path.exists(prompt_file):
+        prompt_file = os.path.join(PROMPTS_DIR, "judge.txt")
+    with open(prompt_file, encoding="utf-8") as f:
         judge_prompt_tpl = f.read()
 
     files = sorted(os.listdir(args.results))
@@ -48,14 +53,16 @@ def main():
         path = os.path.join(args.results, fn)
         model = fn.rsplit("_", 1)[0]
         content = extract_content(path)
+        # 结构化程度=0 的兜底只对分镜任务（02_storyboard）有意义
         json_valid = True
-        try:
-            with open(path, encoding="utf-8") as f:
-                head = f.read(400)
-            json_valid = '"json_valid=True"' in head or "json_valid=True" in head
-        except Exception:
-            pass
-        if content.startswith("[ERROR"):
+        if dir_name == "02_storyboard":
+            try:
+                with open(path, encoding="utf-8") as f:
+                    head = f.read(400)
+                json_valid = '"json_valid=True"' in head or "json_valid=True" in head
+            except Exception:
+                pass
+        if content.strip().startswith("[ERROR"):
             print(f"[skip] {fn} 输出失败，跳过")
             continue
 
