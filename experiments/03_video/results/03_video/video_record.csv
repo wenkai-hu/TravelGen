@@ -1,0 +1,21 @@
+﻿channel,shot_id,prompt_md5,耗时秒,成本元,画质分,一致性分,中文适配分,样片链接,备注
+seedance,1,b22834d8,278,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\seedance_1_20260806_141551.mp4,doubao-seedance-2-0-260128 1080p 16:9 5s
+seedance,2,8a606a44,309,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\seedance_2_20260806_141551.mp4,doubao-seedance-2-0-260128 1080p 16:9 5s
+seedance,3,cc4e1c12,186,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\seedance_3_20260806_141551.mp4,doubao-seedance-2-0-260128 1080p 16:9 5s
+seedance,4,54d5ba83,186,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\seedance_4_20260806_141551.mp4,doubao-seedance-2-0-260128 1080p 16:9 5s
+seedance,5,40951aae,171,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\seedance_5_20260806_141551.mp4,doubao-seedance-2-0-260128 1080p 16:9 5s
+seedance,6,fc608d19,171,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\seedance_6_20260806_141551.mp4,doubao-seedance-2-0-260128 1080p 16:9 5s
+seedance,7,a81648dc,171,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\seedance_7_20260806_141551.mp4,doubao-seedance-2-0-260128 1080p 16:9 5s
+seedance,8,2549a8a2,248,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\seedance_8_20260806_141551.mp4,doubao-seedance-2-0-260128 1080p 16:9 5s
+hy-video-1.5,1,b22834d8,188,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\hy-video-1.5_1_20260806_150034.mp4,hy-video-1.5 1080p 时长/画幅模型自动 logo=off
+hy-video-1.5,2,8a606a44,192,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\hy-video-1.5_2_20260806_150034.mp4,hy-video-1.5 1080p 时长/画幅模型自动 logo=off
+hy-video-1.5,3,cc4e1c12,192,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\hy-video-1.5_3_20260806_150034.mp4,hy-video-1.5 1080p 时长/画幅模型自动 logo=off
+hy-video-1.5,4,54d5ba83,203,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\hy-video-1.5_4_20260806_150034.mp4,hy-video-1.5 1080p 时长/画幅模型自动 logo=off
+minimax,1,b22834d8,186,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\minimax_1_20260806_151228.mp4,MiniMax-H3 1080p 16:9 5s
+hy-video-1.5,5,40951aae,176,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\hy-video-1.5_5_20260806_150034.mp4,hy-video-1.5 1080p 时长/画幅模型自动 logo=off
+minimax,2,8a606a44,217,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\minimax_2_20260806_151228.mp4,MiniMax-H3 1080p 16:9 5s
+hy-video-1.5,6,fc608d19,187,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\hy-video-1.5_6_20260806_150034.mp4,hy-video-1.5 1080p 时长/画幅模型自动 logo=off
+minimax,3,cc4e1c12,186,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\minimax_3_20260806_151228.mp4,MiniMax-H3 1080p 16:9 5s
+hy-video-1.5,7,a81648dc,1,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\hy-video-1.5_7_20260806_152445.mp4,resume task 1476841210546954240
+minimax,4,54d5ba83,79,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\minimax_4_20260806_152449.mp4,resume task 427819278750082
+hy-video-1.5,8,2549a8a2,189,,,,,d:\code\TravelGen-main\experiments\03_video\results\03_video\hy-video-1.5_8_20260806_152455.mp4,hy-video-1.5 1080p 时长/画幅模型自动 logo=off

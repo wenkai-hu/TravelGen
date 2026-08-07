@@ -1,0 +1,36 @@
+# ===== 密钥与配置（绝不提交！）=====
+experiments/config.json     
+experiments/03_video/video_config.json 
+.env
+*.key
+*.pem
+
+# ===== Python =====
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ===== 大文件/素材（用网盘或 Git LFS，见 docs/COLLABORATION.md）=====
+*.mp4
+*.mp3
+*.mkv
+*.mov
+*.avi
+*.zip
+*.rar
+*.7z
+assets/videos/
+assets/images_raw/
+experiments/results/04_voice/*.wav
+
+# 注：experiments/results/ 下的 .md/.csv/.json 文本结果要提交（可复现），仅排除视频音频文件
+
+# ===== 系统文件 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== 临时 =====
+*.tmp
+*.log
