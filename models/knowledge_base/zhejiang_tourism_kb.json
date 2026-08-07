@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "updated": "2026-08-07",
-  "count": 13,
+  "count": 16,
   "entries": [
     {
       "id": "hz-xihu",
@@ -636,6 +636,166 @@
       ],
       "verified": true,
       "verified_note": "名录匹配 1 处，如: 浙江省金华市东阳市横店影视城"
+    },
+    {
+      "id": "shaoxing-lu-xun-former-residence",
+      "name": "绍兴鲁迅故里",
+      "city": "绍兴",
+      "category": "历史名胜",
+      "facts": [
+        "鲁迅故里位于浙江省绍兴市越城区鲁迅中路241号，是鲁迅出生并度过童年、少年时期的地方。",
+        "鲁迅故里景区包含鲁迅故居、鲁迅祖居、三味书屋、百草园、鲁迅纪念馆等核心景点，是绍兴市区保存最完整的历史街区之一。",
+        "鲁迅故居（周家新台门）是全国重点文物保护单位，鲁迅于1881年出生于此。",
+        "三味书屋是鲁迅少年时读书的私塾，书桌上刻有“早”字，相传为鲁迅当年因迟到而刻下以自勉。",
+        "百草园是鲁迅童年时代的乐园，鲁迅在散文《从百草园到三味书屋》中有生动描述。"
+      ],
+      "landmarks": [
+        "鲁迅故居",
+        "鲁迅祖居",
+        "三味书屋",
+        "百草园",
+        "鲁迅纪念馆"
+      ],
+      "search_tags": [
+        "绍兴鲁迅故里",
+        "鲁迅故居",
+        "三味书屋",
+        "百草园",
+        "鲁迅纪念馆",
+        "咸亨酒店"
+      ],
+      "images_search": [
+        "Shaoxing old town",
+        "Shaoxing China"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 名录交叉验证（待人工复核）",
+      "images": [
+        {
+          "path": "images\\shaoxing-lu-xun-former-residence_1.jpg",
+          "url": "https://unsplash.com/photos/a-row-of-buildings-with-a-mountain-in-the-background-pd-eJW80j8U",
+          "license": "Unsplash License",
+          "alt": "a row of buildings with a mountain in the background"
+        },
+        {
+          "path": "images\\shaoxing-lu-xun-former-residence_2.jpg",
+          "url": "https://unsplash.com/photos/a-view-of-a-city-with-mountains-in-the-background-bTY0XhM0AnM",
+          "license": "Unsplash License",
+          "alt": "a view of a city with mountains in the background"
+        },
+        {
+          "path": "images\\shaoxing-lu-xun-former-residence_3.jpg",
+          "url": "https://unsplash.com/photos/traditional-chinese-village-street-with-red-lanterns-wZdr1yy2a-A",
+          "license": "Unsplash License",
+          "alt": "Traditional chinese village street with red lanterns."
+        }
+      ],
+      "verified": true,
+      "verified_note": "名录匹配 1 处，如: 绍兴鲁迅故里·沈园景区"
+    },
+    {
+      "id": "wenzhou-yandangshan",
+      "name": "温州雁荡山",
+      "city": "温州",
+      "category": "景区",
+      "facts": [
+        "雁荡山位于浙江省温州市乐清市，是国家级风景名胜区、国家5A级旅游景区、世界地质公园。",
+        "雁荡山形成于一亿二千万年前的火山喷发，是典型的白垩纪复活型破火山，以流纹质火山岩地貌著称，被誉为“东南第一山”。",
+        "北宋科学家沈括在《梦溪笔谈》中记载了雁荡山的地貌成因，提出流水侵蚀作用，早于欧洲地质学家的相关认识数百年。",
+        "雁荡山主景区内有灵峰、灵岩、大龙湫等著名景点，其中大龙湫瀑布单级落差约197米，素有“天下第一瀑”之称。"
+      ],
+      "landmarks": [
+        "灵峰",
+        "灵岩",
+        "大龙湫",
+        "方洞",
+        "三折瀑",
+        "显胜门"
+      ],
+      "search_tags": [
+        "雁荡山",
+        "温州雁荡山",
+        "乐清雁荡山",
+        "灵峰",
+        "灵岩",
+        "大龙湫"
+      ],
+      "images_search": [
+        "Yandang Mountain Wenzhou",
+        "Yandangshan"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 名录交叉验证（待人工复核）",
+      "images": [
+        {
+          "path": "images\\wenzhou-yandangshan_1.jpg",
+          "url": "https://unsplash.com/photos/a-very-tall-mountain-with-a-very-low-hanging-cloud-9yGtdEH3O2U",
+          "license": "Unsplash License",
+          "alt": "a very tall mountain with a very low hanging cloud"
+        },
+        {
+          "path": "images\\wenzhou-yandangshan_2.jpg",
+          "url": "https://unsplash.com/photos/a-view-of-a-mountain-range-from-a-river-geR5LtbiGTI",
+          "license": "Unsplash License",
+          "alt": "a view of a mountain range from a river"
+        }
+      ],
+      "verified": false,
+      "verified_note": "名录未收录（子景点/历史名胜，需人工确认事实）"
+    },
+    {
+      "id": "ningbo-xikou",
+      "name": "宁波溪口",
+      "city": "宁波",
+      "category": "景区",
+      "facts": [
+        "溪口位于浙江省宁波市奉化区溪口镇，是国家级风景名胜区。",
+        "溪口是蒋介石的故乡，镇内保存有丰镐房、玉泰盐铺、小洋房等蒋氏遗迹。",
+        "溪口——雪窦山风景名胜区为国家AAAAA级旅游景区，以雪窦山和蒋氏故里为核心。",
+        "雪窦山是四明山支脉的最高峰，山顶雪窦寺被誉为中国佛教五大名山之一，是弥勒佛道场。",
+        "溪口镇历史悠久，早在宋代已形成市集，近代因蒋介石父子而闻名于世。"
+      ],
+      "landmarks": [
+        "蒋氏故居",
+        "雪窦山",
+        "雪窦寺",
+        "妙高台",
+        "千丈岩瀑布",
+        "三隐潭"
+      ],
+      "search_tags": [
+        "溪口",
+        "宁波溪口",
+        "蒋氏故居",
+        "雪窦山",
+        "奉化溪口",
+        "蒋介石故里"
+      ],
+      "images_search": [
+        "Xikou Zhejiang",
+        "Fenghua Xikou"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 名录交叉验证（待人工复核）",
+      "images": [
+        {
+          "path": "images\\ningbo-xikou_1.jpg",
+          "url": "https://unsplash.com/photos/a-man-riding-a-boat-down-a-river-next-to-tall-buildings-1x2sOfoHOF8",
+          "license": "Unsplash License",
+          "alt": "a man riding a boat down a river next to tall buildings"
+        },
+        {
+          "path": "images\\ningbo-xikou_2.jpg",
+          "url": "https://unsplash.com/photos/a-river-running-through-a-small-village-next-to-tall-buildings-AmCkEvtd0D4",
+          "license": "Unsplash License",
+          "alt": "a river running through a small village next to tall buildings"
+        },
+        {
+          "path": "images\\ningbo-xikou_3.jpg",
+          "url": "https://unsplash.com/photos/a-river-running-through-a-city-with-lots-of-buildings-CvhSo8rJv60",
+          "license": "Unsplash License",
+          "alt": "a river running through a city with lots of buildings"
+        }
+      ],
+      "verified": false,
+      "verified_note": "名录未收录（子景点/历史名胜，需人工确认事实）"
     }
   ]
 }
