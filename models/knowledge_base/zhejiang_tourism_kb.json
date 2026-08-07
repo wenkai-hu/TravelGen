@@ -1,0 +1,643 @@
+{
+  "schema_version": "0.1",
+  "updated": "2026-08-07",
+  "count": 13,
+  "entries": [
+    {
+      "id": "hz-xihu",
+      "name": "西湖",
+      "city": "杭州",
+      "category": "景区",
+      "facts": [
+        "位于杭州市西湖区，东临杭州市区，南、西、北三面环山，面积约6.38平方千米。",
+        "2011年6月24日，杭州西湖文化景观被列入《世界遗产名录》。",
+        "西湖十景包括苏堤春晓、断桥残雪、三潭印月等，是江南古典园林与自然景观结合的代表。",
+        "环湖分布有雷峰塔、岳王庙、灵隐寺等众多历史文化景点。",
+        "自2002年起，西湖环湖公园实行免费开放，是中国首批免费开放的5A级景区之一。"
+      ],
+      "landmarks": [
+        "三潭印月",
+        "断桥残雪",
+        "苏堤春晓",
+        "雷峰塔",
+        "岳王庙"
+      ],
+      "search_tags": [
+        "杭州西湖",
+        "西湖十景",
+        "西子湖",
+        "西湖文化景观",
+        "三潭印月",
+        "断桥残雪"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/hz-xihu_1.jpg",
+          "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+          "license": "Unsplash License",
+          "alt": "brown wooden gazebo near body of water during night time"
+        },
+        {
+          "path": "images/hz-xihu_2.jpg",
+          "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+          "license": "Unsplash License",
+          "alt": "A boat floating on top of a lake next to a tall building"
+        },
+        {
+          "path": "images/hz-xihu_3.jpg",
+          "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+          "license": "Unsplash License",
+          "alt": "gray pergula between green grass"
+        }
+      ],
+      "verified": true,
+      "verified_note": "名录匹配 7 处，如: 杭州西湖景区"
+    },
+    {
+      "id": "hz-lingyinsi",
+      "name": "灵隐寺",
+      "city": "杭州",
+      "category": "寺庙",
+      "facts": [
+        "位于杭州市西湖区，背靠北高峰，面朝飞来峰，始建于东晋咸和元年（326年）。",
+        "开山祖师为印度僧人慧理，寺名“灵隐”取其“仙灵所隐”之意。",
+        "飞来峰石刻造像是中国南方石窟艺术的重要代表，分布在灵隐寺前。",
+        "是江南地区重要的佛教寺院，历史上高僧辈出，香火绵延至今。"
+      ],
+      "landmarks": [
+        "飞来峰",
+        "天王殿",
+        "大雄宝殿",
+        "药师殿"
+      ],
+      "search_tags": [
+        "杭州灵隐寺",
+        "灵隐飞来峰",
+        "云林禅寺",
+        "慧理",
+        "佛教寺庙",
+        "西湖周边景点"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/hz-lingyinsi_1.jpg",
+          "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+          "license": "Unsplash License",
+          "alt": "a building with a tree in front of it"
+        },
+        {
+          "path": "images/hz-lingyinsi_2.jpg",
+          "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+          "license": "Unsplash License",
+          "alt": "a pagoda in the middle of a park surrounded by trees"
+        },
+        {
+          "path": "images/hz-lingyinsi_3.jpg",
+          "url": "https://unsplash.com/photos/brown-and-red-temple-kp3A2jurfP0",
+          "license": "Unsplash License",
+          "alt": "brown and red temple"
+        }
+      ],
+      "verified": false,
+      "verified_note": "名录未收录（子景点/历史名胜，需人工确认事实）"
+    },
+    {
+      "id": "hz-xixi-shidi",
+      "name": "西溪湿地",
+      "city": "杭州",
+      "category": "景区",
+      "facts": [
+        "位于杭州市西部，是中国第一个国家湿地公园，国家5A级旅游景区。",
+        "与西湖、西泠并称“杭州三西”，以“冷、野、淡、雅”著称。",
+        "园区内河流纵横，水域面积约占70%，是罕见的城中次生湿地。",
+        "历史上曾是文人墨客游赏之地，现存有秋雪庵、梅竹山庄等古迹。",
+        "电影《非诚勿扰》曾在此取景，使其知名度大增。"
+      ],
+      "landmarks": [
+        "秋雪庵",
+        "梅竹山庄",
+        "烟水渔庄",
+        "深潭口",
+        "河渚街"
+      ],
+      "search_tags": [
+        "西溪国家湿地公园",
+        "杭州三西",
+        "非诚勿扰取景地",
+        "湿地生态",
+        "秋雪庵",
+        "杭州旅游"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/hz-xixi-shidi_1.jpg",
+          "url": "https://unsplash.com/photos/a-body-of-water-with-trees-around-it-2w90XFCNxVo",
+          "license": "Unsplash License",
+          "alt": "a body of water with trees around it"
+        },
+        {
+          "path": "images/hz-xixi-shidi_2.jpg",
+          "url": "https://unsplash.com/photos/a-landscape-with-trees-and-buildings-in-the-distance-L-y3az_nrTg",
+          "license": "Unsplash License",
+          "alt": "a landscape with trees and buildings in the distance"
+        }
+      ],
+      "verified": true,
+      "verified_note": "名录匹配 1 处，如: 西溪湿地公园景区"
+    },
+    {
+      "id": "hz-leifengta",
+      "name": "雷峰塔",
+      "city": "杭州",
+      "category": "景区",
+      "facts": [
+        "位于杭州市西湖区南山路夕照山，是吴越国王钱俶为供奉佛螺髻发舍利而建，初建于北宋太平兴国二年（977年）。",
+        "原塔于1924年9月25日倒塌，现塔为2002年重建，保留了原塔遗址，并设电梯和观光层。",
+        "白蛇传传说中，白娘子被镇压于雷峰塔下，使其成为家喻户晓的爱情象征。",
+        "塔内供奉有释迦牟尼佛螺髻发舍利，是佛教圣物。",
+        "作为西湖文化景观的重要组成部分，雷峰塔是西湖十景之一“雷峰夕照”所在。"
+      ],
+      "landmarks": [],
+      "search_tags": [
+        "雷峰塔",
+        "雷峰夕照",
+        "白蛇传",
+        "西湖南线",
+        "净慈寺",
+        "吴越国"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/hz-leifengta_1.jpg",
+          "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+          "license": "Unsplash License",
+          "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+        },
+        {
+          "path": "images/hz-leifengta_2.jpg",
+          "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+          "license": "Unsplash License",
+          "alt": "A large body of water surrounded by mountains"
+        },
+        {
+          "path": "images/hz-leifengta_3.jpg",
+          "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+          "license": "Unsplash License",
+          "alt": "a tall tower sitting on top of a lush green hillside"
+        }
+      ],
+      "verified": true,
+      "verified_note": "名录匹配 1 处，如: 雷峰塔景区"
+    },
+    {
+      "id": "hz-santanyinyue",
+      "name": "三潭印月",
+      "city": "杭州",
+      "category": "景区",
+      "facts": [
+        "是西湖十景之一，位于西湖中部偏南的湖面上，是西湖中最大的岛屿，面积约7公顷。",
+        "岛上有三座石塔，塔身中空，球面体上排列着五个等距圆洞，每逢月夜，塔中点燃灯烛，洞口蒙上薄纸，灯光透出，与水中倒影相映成趣，形成“三潭印月”奇观。",
+        "石塔始建于北宋元祐四年（1089年），苏轼疏浚西湖时在湖心立三塔为界，后历代修复，现存石塔为明代重建。",
+        "岸上建筑有先贤祠、九曲桥、亭轩等，是典型的江南水上园林。",
+        "一元人民币背面图案即为三潭印月景观。"
+      ],
+      "landmarks": [
+        "三座石塔",
+        "九曲桥",
+        "先贤祠",
+        "开网亭"
+      ],
+      "search_tags": [
+        "三潭印月",
+        "西湖十景",
+        "一元人民币背景",
+        "石塔",
+        "湖心岛"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/hz-santanyinyue_1.jpg",
+          "url": "https://unsplash.com/photos/grayscale-photo-of-ocean-waves-KxykI3y16o0",
+          "license": "Unsplash License",
+          "alt": "grayscale photo of ocean waves"
+        },
+        {
+          "path": "images/hz-santanyinyue_2.jpg",
+          "url": "https://unsplash.com/photos/a-full-moon-rising-over-a-lake-with-mountains-in-the-background-jrHaA9zyGV0",
+          "license": "Unsplash License",
+          "alt": "a full moon rising over a lake with mountains in the background"
+        },
+        {
+          "path": "images/hz-santanyinyue_3.jpg",
+          "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+          "license": "Unsplash License",
+          "alt": "a tall tower sitting on top of a lush green hillside"
+        }
+      ],
+      "verified": false,
+      "verified_note": "名录未收录（子景点/历史名胜，需人工确认事实）"
+    },
+    {
+      "id": "hz-duanqiaocanxue",
+      "name": "断桥残雪",
+      "city": "杭州",
+      "category": "景区",
+      "facts": [
+        "是西湖十景之一，位于白堤东端，是白堤与北山街的连接处。",
+        "桥名“断桥”源于冬季雪后，桥阳面冰雪消融，阴面仍覆盖白雪，从高处远望桥似断非断，形成“断桥残雪”景观。",
+        "民间传说《白蛇传》中，许仙与白娘子在此相遇，使断桥成为爱情象征。",
+        "断桥是西湖中最出名的一座桥，也是游客到西湖必访之地。"
+      ],
+      "landmarks": [],
+      "search_tags": [
+        "断桥残雪",
+        "西湖十景",
+        "白堤",
+        "白蛇传",
+        "许仙白娘子"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/hz-duanqiaocanxue_1.jpg",
+          "url": "https://unsplash.com/photos/birds-on-dock-during-daytime-CbXqFmS1J0M",
+          "license": "Unsplash License",
+          "alt": "birds on dock during daytime"
+        },
+        {
+          "path": "images/hz-duanqiaocanxue_2.jpg",
+          "url": "https://unsplash.com/photos/a-man-standing-on-a-dock-in-the-middle-of-a-body-of-water-EsMBGaV4G2I",
+          "license": "Unsplash License",
+          "alt": "a man standing on a dock in the middle of a body of water"
+        },
+        {
+          "path": "images/hz-duanqiaocanxue_3.jpg",
+          "url": "https://unsplash.com/photos/a-man-sitting-on-a-wooden-dock-in-the-middle-of-a-lake-4cWWgwjKzmA",
+          "license": "Unsplash License",
+          "alt": "a man sitting on a wooden dock in the middle of a lake"
+        }
+      ],
+      "verified": false,
+      "verified_note": "名录未收录（子景点/历史名胜，需人工确认事实）"
+    },
+    {
+      "id": "hz-sudichunxiao",
+      "name": "苏堤春晓",
+      "city": "杭州",
+      "category": "景区",
+      "facts": [
+        "是西湖十景之首，位于西湖西侧，南起南屏山麓，北至栖霞岭下，全长约2.8公里。",
+        "堤由北宋文学家苏轼任杭州知州时疏浚西湖，利用淤泥葑草堆筑而成。",
+        "堤上建有六座单孔石拱桥，自南向北依次为映波、锁澜、望山、压堤、东浦、跨虹。",
+        "春季清晨，堤上柳绿花红，湖波如镜，被誉为“西湖十景”中的第一胜景。",
+        "苏堤是西湖上最长的堤，也是一条贯穿西湖南北的绿色长廊。"
+      ],
+      "landmarks": [
+        "映波桥",
+        "锁澜桥",
+        "望山桥",
+        "压堤桥",
+        "东浦桥",
+        "跨虹桥"
+      ],
+      "search_tags": [
+        "苏堤春晓",
+        "西湖十景",
+        "苏堤六桥",
+        "苏轼",
+        "西湖春景"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/hz-sudichunxiao_1.jpg",
+          "url": "https://unsplash.com/photos/a-large-body-of-water-with-trees-in-it-tc5xookVPiU",
+          "license": "Unsplash License",
+          "alt": "a large body of water with trees in it"
+        },
+        {
+          "path": "images/hz-sudichunxiao_2.jpg",
+          "url": "https://unsplash.com/photos/white-concrete-building-near-body-of-water-under-blue-sky-during-daytime-8llljOUfO4Q",
+          "license": "Unsplash License",
+          "alt": "white concrete building near body of water under blue sky during daytime"
+        },
+        {
+          "path": "images/hz-sudichunxiao_3.jpg",
+          "url": "https://unsplash.com/photos/a-lake-with-a-purple-sky-and-trees-in-the-background-wg0q5RpZli0",
+          "license": "Unsplash License",
+          "alt": "a lake with a purple sky and trees in the background"
+        }
+      ],
+      "verified": false,
+      "verified_note": "名录未收录（子景点/历史名胜，需人工确认事实）"
+    },
+    {
+      "id": "hz-yuewangmiao",
+      "name": "岳王庙",
+      "city": "杭州",
+      "category": "寺庙",
+      "facts": [
+        "位于杭州市西湖区北山路，是为纪念南宋抗金名将岳飞而建的祠庙。",
+        "始建于南宋嘉定十四年（1221年），现存建筑多为清代重建。",
+        "岳飞墓位于庙内右侧，墓前跪有秦桧、王氏等四个佞臣铁像。",
+        "庙内保存有历代名人题写的匾额、楹联，是杭州重要的历史文化遗存。",
+        "是全国重点文物保护单位，也是全国爱国主义教育示范基地。"
+      ],
+      "landmarks": [
+        "岳飞墓",
+        "忠烈祠",
+        "启忠祠",
+        "精忠柏亭"
+      ],
+      "search_tags": [
+        "岳王庙",
+        "岳飞墓",
+        "岳庙",
+        "西湖",
+        "秦桧",
+        "精忠报国"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/hz-yuewangmiao_1.jpg",
+          "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+          "license": "Unsplash License",
+          "alt": "a pagoda in the middle of a park surrounded by trees"
+        },
+        {
+          "path": "images/hz-yuewangmiao_2.jpg",
+          "url": "https://unsplash.com/photos/a-large-field-with-a-pagoda-in-the-middle-of-it--CLQlQDYuPM",
+          "license": "Unsplash License",
+          "alt": "A large field with a pagoda in the middle of it"
+        },
+        {
+          "path": "images/hz-yuewangmiao_3.jpg",
+          "url": "https://unsplash.com/photos/a-tall-building-behind-trees-with-leifeng-pagoda-in-the-background-AGjPYeN2Hlo",
+          "license": "Unsplash License",
+          "alt": "a tall building behind trees with Leifeng Pagoda in the background"
+        }
+      ],
+      "verified": false,
+      "verified_note": "名录未收录（子景点/历史名胜，需人工确认事实）"
+    },
+    {
+      "id": "jx-wuzhen",
+      "name": "乌镇",
+      "city": "嘉兴",
+      "category": "古镇",
+      "facts": [
+        "位于嘉兴桐乡市，是江南六大古镇之一，建镇历史逾1300年。",
+        "以河成街，街桥相连，完整保存了典型的水乡古镇格局和大量明清建筑。",
+        "西栅景区是乌镇旅游的精华，汇集了手工作坊、民俗展馆和现代休闲设施。",
+        "世界互联网大会（乌镇峰会）自2014年起永久会址设在乌镇。",
+        "乌镇戏剧节每年秋季举办，是国际知名戏剧节之一。"
+      ],
+      "landmarks": [
+        "东栅",
+        "西栅",
+        "昭明书院",
+        "宏源泰染坊",
+        "茅盾故居"
+      ],
+      "search_tags": [
+        "乌镇",
+        "桐乡乌镇",
+        "江南古镇",
+        "水乡",
+        "世界互联网大会",
+        "东栅西栅"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/jx-wuzhen_1.jpg",
+          "url": "https://unsplash.com/photos/black-boat-on-river-near-houses-during-daytime-D9S9x-RTixU",
+          "license": "Unsplash License",
+          "alt": "black boat on river near houses during daytime"
+        },
+        {
+          "path": "images/jx-wuzhen_2.jpg",
+          "url": "https://unsplash.com/photos/a-bridge-over-a-body-of-water-at-night-0UkWI-xxV9Y",
+          "license": "Unsplash License",
+          "alt": "a bridge over a body of water at night"
+        },
+        {
+          "path": "images/jx-wuzhen_3.jpg",
+          "url": "https://unsplash.com/photos/a-couple-of-boats-that-are-in-the-water-WV1eF0T5p8Q",
+          "license": "Unsplash License",
+          "alt": "a couple of boats that are in the water"
+        }
+      ],
+      "verified": true,
+      "verified_note": "名录匹配 1 处，如: 浙江省嘉兴市桐乡市乌镇景区"
+    },
+    {
+      "id": "zs-putuoshan",
+      "name": "普陀山",
+      "city": "舟山",
+      "category": "景区",
+      "facts": [
+        "位于舟山群岛东南部，是舟山群岛中的一个小岛，素有“海天佛国”“南海圣境”之称。",
+        "是中国四大佛教名山之一，为观音菩萨应化道场，佛教文化历史悠久。",
+        "全岛面积约12.5平方公里，岛上寺庙众多，以普济禅寺、法雨寺、慧济禅寺三大寺为核心。",
+        "普陀山风景名胜区是国家5A级旅游景区，是海岛风光与佛教文化相结合的旅游胜地。",
+        "南海观音立像高33米，是普陀山的标志性建筑之一。"
+      ],
+      "landmarks": [
+        "普济禅寺",
+        "法雨寺",
+        "慧济禅寺",
+        "南海观音立像",
+        "紫竹林",
+        "梵音洞"
+      ],
+      "search_tags": [
+        "普陀山",
+        "海天佛国",
+        "观音道场",
+        "舟山",
+        "普济寺",
+        "南海观音"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/zs-putuoshan_1.jpg",
+          "url": "https://unsplash.com/photos/a-red-door-and-two-trash-cans-on-a-sidewalk-ktIDsN6Ak20",
+          "license": "Unsplash License",
+          "alt": "a red door and two trash cans on a sidewalk"
+        },
+        {
+          "path": "images/zs-putuoshan_2.jpg",
+          "url": "https://unsplash.com/photos/a-house-sitting-on-top-of-a-lush-green-hillside-pofPh9SJ3yQ",
+          "license": "Unsplash License",
+          "alt": "a house sitting on top of a lush green hillside"
+        },
+        {
+          "path": "images/zs-putuoshan_3.jpg",
+          "url": "https://unsplash.com/photos/the-roof-of-a-building-with-a-sky-background-7aXMd-eaBiw",
+          "license": "Unsplash License",
+          "alt": "the roof of a building with a sky background"
+        }
+      ],
+      "verified": true,
+      "verified_note": "名录匹配 1 处，如: 浙江省舟山市普陀区普陀山风景旅游区"
+    },
+    {
+      "id": "jx-nanhu",
+      "name": "嘉兴南湖",
+      "city": "嘉兴",
+      "category": "景区",
+      "facts": [
+        "位于嘉兴市南湖区，是浙江三大名湖之一，与杭州西湖、绍兴东湖齐名。",
+        "是中国共产党第一次全国代表大会闭幕地，南湖红船是党的诞生地的重要标志。",
+        "湖中有湖心岛，岛上建有烟雨楼，为江南名楼。",
+        "南湖是典型的江南水乡湖泊，以湖光水色和革命纪念地闻名。",
+        "是全国爱国主义教育示范基地、国家5A级旅游景区。"
+      ],
+      "landmarks": [
+        "湖心岛",
+        "烟雨楼",
+        "南湖红船",
+        "南湖革命纪念馆"
+      ],
+      "search_tags": [
+        "嘉兴南湖",
+        "南湖红船",
+        "中共一大",
+        "烟雨楼",
+        "浙江名湖"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/jx-nanhu_1.jpg",
+          "url": "https://unsplash.com/photos/a-park-bench-sitting-next-to-a-lake-Zm1YRN5nAe8",
+          "license": "Unsplash License",
+          "alt": "A park bench sitting next to a lake"
+        },
+        {
+          "path": "images/jx-nanhu_2.jpg",
+          "url": "https://unsplash.com/photos/lush-green-trees-frame-a-serene-pond-y5-vubcffJc",
+          "license": "Unsplash License",
+          "alt": "Lush green trees frame a serene pond."
+        },
+        {
+          "path": "images/jx-nanhu_3.jpg",
+          "url": "https://unsplash.com/photos/trees-and-a-tent-reflected-in-the-water-t2ZJJUugMnY",
+          "license": "Unsplash License",
+          "alt": "Trees and a tent reflected in the water"
+        }
+      ],
+      "verified": false,
+      "verified_note": "名录未收录（子景点/历史名胜，需人工确认事实）"
+    },
+    {
+      "id": "hz-qiandaohu",
+      "name": "千岛湖",
+      "city": "杭州",
+      "category": "景区",
+      "facts": [
+        "位于杭州市淳安县，是为建设新安江水电站蓄水而成的人工湖。",
+        "湖中拥有1078个岛屿，故称“千岛湖”，是中国最大的人工湖之一。",
+        "水质优良，被誉为“天下第一秀水”，是农夫山泉的水源地之一。",
+        "是国家5A级旅游景区，以千岛、碧水、金腰带（岛屿与湖水相接处有一圈金色黄土带）景观闻名。",
+        "湖区岛屿星罗棋布，主要景点有梅峰岛、渔乐岛、龙山岛等。"
+      ],
+      "landmarks": [
+        "梅峰岛",
+        "渔乐岛",
+        "龙山岛",
+        "月光岛"
+      ],
+      "search_tags": [
+        "千岛湖",
+        "淳安",
+        "新安江水库",
+        "天下第一秀水",
+        "农夫山泉",
+        "梅峰岛"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/hz-qiandaohu_1.jpg",
+          "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-trees-zd6YYodOoc8",
+          "license": "Unsplash License",
+          "alt": "a large body of water surrounded by trees"
+        },
+        {
+          "path": "images/hz-qiandaohu_2.jpg",
+          "url": "https://unsplash.com/photos/a-bridge-over-a-body-of-water-5Q2T-dswI-k",
+          "license": "Unsplash License",
+          "alt": "a bridge over a body of water"
+        },
+        {
+          "path": "images/hz-qiandaohu_3.jpg",
+          "url": "https://unsplash.com/photos/a-bridge-over-a-river-OLMkBXnLEwE",
+          "license": "Unsplash License",
+          "alt": "a bridge over a river"
+        }
+      ],
+      "verified": true,
+      "verified_note": "名录匹配 8 处，如: 千岛湖乐水小镇.文渊狮城景区"
+    },
+    {
+      "id": "jh-hengdian",
+      "name": "横店影视城",
+      "city": "金华",
+      "category": "景区",
+      "facts": [
+        "位于金华市东阳市横店镇，是全球规模最大的影视拍摄基地，被誉为“东方好莱坞”。",
+        "始建于1996年，现已建成秦王宫、清明上河图、明清宫苑、广州街·香港街等多个影视拍摄景区。",
+        "集影视拍摄、旅游观光、度假休闲于一体，是国家5A级旅游景区。",
+        "每年有大量影视剧组在此取景，也产出了众多知名影视作品。",
+        "景区内还设有梦幻谷等夜间主题乐园，提供丰富的旅游体验。"
+      ],
+      "landmarks": [
+        "秦王宫",
+        "清明上河图",
+        "明清宫苑",
+        "广州街·香港街",
+        "梦幻谷"
+      ],
+      "search_tags": [
+        "横店影视城",
+        "东阳横店",
+        "东方好莱坞",
+        "影视拍摄基地",
+        "秦王宫",
+        "清明上河图"
+      ],
+      "source": "LLM生成(deepseek-v4-flash) + 官方名录交叉验证",
+      "images": [
+        {
+          "path": "images/jh-hengdian_1.jpg",
+          "url": "https://unsplash.com/photos/white-and-black-building-sketch-ntZfjoY3CVc",
+          "license": "Unsplash License",
+          "alt": "white and black building sketch"
+        },
+        {
+          "path": "images/jh-hengdian_2.jpg",
+          "url": "https://unsplash.com/photos/orange-helipad-with-white-h-symbol-F5nsI-P_24o",
+          "license": "Unsplash License",
+          "alt": "Orange helipad with white h symbol"
+        },
+        {
+          "path": "images/jh-hengdian_3.jpg",
+          "url": "https://unsplash.com/photos/a-phone-that-is-sitting-on-a-table-BOHeLl3wR5o",
+          "license": "Unsplash License",
+          "alt": "a phone that is sitting on a table"
+        }
+      ],
+      "verified": true,
+      "verified_note": "名录匹配 1 处，如: 浙江省金华市东阳市横店影视城"
+    }
+  ]
+}
