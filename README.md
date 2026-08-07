@@ -35,7 +35,7 @@
 | Phase 0 | 项目规划 | ✅ |
 | Phase 1 | 文献调研（RelatedWork.md / ReadingNotes.md / Product Benchmark） | ✅ 调研完成 |
 | Phase 2 | GitHub调研（GithubSurvey.xlsx） | ✅ |
-| Phase 3 | Benchmark（experiments/） | 🔄 进行中 |
+| Phase 3 | Benchmark（experiments/） | ✅ 完成（选型：文案/分镜 kimi-k2.6，视频 Seedance 2.0 Pro）|
 | Phase 4 | 系统设计 | ⏳ |
 | Phase 5-8 | 开发/平台/实验/材料 | ⏳ |
 
@@ -45,3 +45,4 @@
 - [文献调研报告](docs/RelatedWork.md) ｜ [阅读笔记](docs/ReadingNotes.md)
 - [GitHub调研表](survey/GithubSurvey.xlsx)
 - [Phase 3 交接与协作方案](docs/Phase3_Handoff_Plan.md) ｜ [Phase 3 实验操作指南](experiments/README.md)
+- [Phase 3 实验报告](docs/Experiment_Report_Phase3.md) ｜ [分镜 JSON Schema 契约 v1](docs/Storyboard_Schema_v1.md) ｜ [Benchmark 汇总](experiments/results/Benchmark_汇总.xlsx)
