@@ -59,10 +59,11 @@
 
 | 接口 | 方向 | 内容 | 状态 |
 |---|---|---|---|
+| 输入/输出全契约 | A↔B | `docs/API_Contract_MVP.md` + `docs/api/openapi.yaml`（Apifox 导入文件） | ✅ 2026-08-13 对齐 |
 | 分镜 JSON Schema | A→B | `docs/Storyboard_Schema_v1.md`（字段/枚举/约束） | ✅ 已定稿 |
 | 镜头 prompt 格式 | A→B | shot 级 prompt = `prompt字段 + video_suffix`，示例见 `results/03_video/shot_prompts.txt` | ✅ 已产出 |
-| 视频任务提交契约 | B→A | 任务 ID / 状态回调 / 结果 URL，建议：B 封装 `model_client` 统一暴露 `submit_shot(shot) -> task_id` | 📝 待 B 确认 |
-| 成片合成元数据 | A→B | 镜头顺序 + duration_s + 旁白文本（配音接口预留） | 📝 待 B 确认 |
+| 视频任务提交契约 | B→A | 已并入 API 契约：`POST /api/v1/generate` + `GET /api/v1/tasks/{id}`（B 前端轮询） | ✅ 2026-08-13 对齐 |
+| 成片合成元数据 | A→B | `final_video` / `video_clips` 字段：镜头顺序 + duration_s + 旁白文本（配音接口预留） | ✅ 2026-08-13 对齐 |
 
 **建议契约对齐会**：A 用 15 分钟讲 Schema v1 字段与硬约束，B 确认 Video Composer 能按 shot_list 拆解成 8 个视频任务并回拼，当场敲定第 3/4 行接口签名。
 
@@ -78,3 +79,4 @@
 | 版本 | 日期 | 变更 |
 |---|---|---|
 | v0.1 | 2026-08-07 | 评审稿（契约对齐会前） |
+| v0.2 | 2026-08-13 | 对齐 B 输入/输出契约，新增 API_Contract_MVP.md + openapi.yaml（Apifox） |
