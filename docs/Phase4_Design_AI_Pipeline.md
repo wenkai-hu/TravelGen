@@ -40,7 +40,7 @@
 | 环节 | 首选 | 备选 | 接入要点 |
 |---|---|---|---|
 | 文案/分镜 | **kimi-k2.6** | deepseek-v4-flash | base_url `https://api.moonshot.cn/v1`；OpenAI 兼容；**temperature=1**；免费额度 15 元（够 MVP） |
-| 视频 | **Seedance 2.0 Pro**（火山方舟） | Wan2.2-TI2V-5B 本地 | 见下方 Seedance 调用规范；本地兜底需 GPU ≥24G |
+| 视频 | **Seedance 2.0 Pro**（火山方舟） | Wan2.2-TI2V-5B 本地 | ✅ 已接入（backend/pipeline/ark_client.py）；单条 ≈1 元/3-4 分钟；本地兜底需 GPU ≥24G |
 | 配音 | 预留接口（暂不选型） | — | Phase 5 候选：CosyVoice2（本地）/ EdgeTTS（免费） |
 
 **Seedance 2.0 Pro 调用规范（来自 `experiments/results/03_video/03_video/README.md`，B 已跑通样片）**：
@@ -69,7 +69,7 @@
 
 ## 6. 待定项 / 风险
 
-1. **Seedance 2.0 Pro 模型 ID 与样片核对**：README 中为 `doubao-seedance-2-0-260128`，B 样片已出（hy-video-1.5/minimax），需确认 Seedance 官方模型名后锁定
+1. **Seedance 2.0 Pro 模型 ID 与样片核对**：✅ 已锁定 `doubao-seedance-2-0-260128`（2026-08-13 实测：提交/轮询/下载全链路跑通，8 镜头并发 ≈4-5 分钟）
 2. **多镜头一致性**：T2V 逐镜头独立生成，跨镜头地标一致性依赖 prompt 约束（Schema 已要求地标描述一致），成片拼接后可能需要 1-2 个过渡镜头兜底
 3. **成本**：单条视频 ≈1 元，MVP 演示按 3 城市 × 8 镜头估算 ≈ 24 元 + 重试余量，建议 B 侧设预算上限
 4. **kimi 免费额度**：15 元赠送仅够 MVP 开发期，上线前需评估 kimi 官方充值或换 deepseek-v4-flash（¥1/百万输入）

@@ -17,23 +17,33 @@ python app.py
   - `GET  /api/v1/tasks/{task_id}` 轮询状态与阶段输出（2s 间隔）
   - `GET  /api/v1/kb/search?q=西湖` 知识库检索
 
-## 两种模式
+## 两种模式（阶段独立降级）
 
-| 模式 | 触发条件 | 行为 |
+| 阶段 | REAL（有对应 key） | 降级（无 key） |
 |---|---|---|
-| **REAL** | 存在 `experiments/config.json`（含 kimi key） | 文案/分镜走 kimi-k2.6 真实生成（温度固定 1） |
-| **DEMO** | 无 config.json，或 `TRAVELGEN_MOCK=1` | 回放 Phase 3 真实成果（kimi 最优西湖文案/分镜），无需 key，全流程可演示 |
+| 文案/分镜 | kimi-k2.6 真实生成（温度固定 1） | 回放 Phase 3 真实成果（kimi 最优西湖文案/分镜） |
+| 视频 | Seedance 2.0 Pro 真实生成（火山方舟异步任务） | 模拟推进（clips 标记 `note: simulated`） |
 
-有 key 时配置（把模板复制为真配置再填 key，**config.json 已被 gitignore，不会误提交**）：
+`TRAVELGEN_MOCK=1` 强制全 demo。例如：只有 kimi key → 文案真实 + 视频模拟；都有 → 全真实。
+
+key 配置（把模板复制为真配置再填 key，**config.json 已被 gitignore，不会误提交**）：
 
 ```bash
 cp experiments/config.example.json experiments/config.json
-# 编辑 experiments/config.json，填入 api_key
+# 编辑 experiments/config.json，填入 kimi/seedance 的 api_key
 ```
+
+## 视频生成（Seedance 2.0 Pro，已实测 ✅）
+
+- 提交：`POST https://ark.cn-beijing.volces.com/api/v3/contents/generations/tasks`，Bearer 鉴权
+- 模型：`doubao-seedance-2-0-260128`，`duration=5`，`resolution=1080p`
+- 流程：并发提交全部镜头 → 5s 间隔轮询（状态机 queued→running→succeeded）→ **失败自动重试 1 次** → 成功即下载转存
+- ⚠️ `video_url` 仅 24h 有效，已转存到 `assets/videos/{task_id}_{shot_id}.mp4`（gitignore，不入库）
+- 成本：≈1 元/条 5s 视频；单条生成 ≈3-4 分钟，8 镜头并发总耗时 ≈4-5 分钟
+- `video_clips[]` 附带 `local_path`（本地转存路径），B 合成时直接读取
 
 ## 当前边界（Phase 5 待办）
 
-- **视频生成**：`video_clips` 为模拟推进（Seedance 2.0 Pro 火山方舟异步任务接入 Phase 5）
 - **成片合成**：`final_video` 由 B 的 Composer 合成后回填（本服务只产出合成所需元数据）
 - **配音/BGM**：`voice`/`music` 为占位字段（Phase 5 接入）
 - **任务存储**：内存实现，服务重启任务丢失（上线换 Redis/DB）

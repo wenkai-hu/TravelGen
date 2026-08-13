@@ -413,11 +413,17 @@ components:
         video_url:
           type: string
           description: 视频地址（24h 有效，服务端成功即转存）
+        local_path:
+          type: string
+          description: 本地转存路径（assets/videos/，B 合成直接读取）
         duration_s:
           type: integer
         cost_yuan:
           type: number
           description: 单镜头成本估算
+        error:
+          type: string
+          description: 失败原因（failed 时）
     Safety:
       type: object
       properties:

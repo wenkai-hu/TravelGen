@@ -65,8 +65,10 @@ copywriting: { "titles": ["...", "..."],
   "hashtags": ["#...", "#...", "#..."] }
 script:      { "lines": [{ "line_id": 1, "text": "...", "start_s": 0, "end_s": 12 }] }
 storyboard:  /* 分镜 Schema v1：theme + scenes[].shot_list[]（6-8 镜头）*/
-video_clips: [{ "shot_id": 1, "task_id": "cpt-xxx", "status": "succeeded",
-                "prompt": "...", "video_url": "https://...", "duration_s": 8, "cost_yuan": 1.0 }]
+video_clips: [{ "shot_id": 1, "task_id": "cgt-xxx", "status": "succeeded",
+                "prompt": "...", "video_url": "https://...",   // 24h 有效
+                "local_path": "assets/videos/t_xxx_1.mp4",     // 本地转存（B 合成直接读）
+                "duration_s": 5, "cost_yuan": 1.0 }]
 final_video: { "status": "ready", "url": "...", "preview_url": "...",
                "duration_s": 60, "resolution": "1080p", "aspect_ratio": "9:16" }
 ```

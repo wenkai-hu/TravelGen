@@ -137,5 +137,6 @@ async def search_kb(q: str, top_k: int = 5):
 
 if __name__ == "__main__":
     import uvicorn
-    print(f"TravelGen 管线服务 | 模式: {'DEMO（无需 key，回放 Phase3 成果）' if runner.is_demo else 'REAL（kimi-k2.6）'}")
+    print(f"TravelGen 管线服务 | 文案/分镜: {'kimi-k2.6' if runner.kimi else 'demo回放'} "
+          f"| 视频: {'Seedance 2.0 Pro' if runner.seedance else '模拟'}")
     uvicorn.run(app, host="0.0.0.0", port=8000)

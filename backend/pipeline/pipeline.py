@@ -5,12 +5,14 @@
 - demo 模式：无 config.json 时回放 Phase 3 真实成果（demo.py），全流程可演示
 - 视频阶段（Seedance 2.0 Pro）：当前两模式均模拟推进，真实接入 Phase 5（火山方舟异步任务）
 """
-import asyncio, re
+import asyncio, os, re
 
 from . import model_client, validate as v
 from . import demo as demo_mod
 from .demo import parse_script
 from .kb import knowledge_text, visual_assets
+
+REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 
 SYSTEM = "你是专业的浙江文旅内容创作助手。"
 
@@ -62,28 +64,36 @@ JSON结构（scene→shot两级，严格遵循）：
 }}
 
 约束：
-1. 景别枚举：大远景/全景/中景/近景/特写；运镜枚举：固定/推/拉/摇/移/跟/升降/环绕
-2. 镜头数量6-8个，各镜头 duration_s 之和≈60（视频时长 {duration_s} 秒则按比例缩放）
-3. 地标描述跨镜头保持一致（如雷峰塔样式、湖色色调不冲突）
-4. 每镜头 prompt 字段须可直接用于文生图/文生视频，含主体/环境/光线/质感
-5. 只输出JSON对象，禁止代码块标记和任何解释文字"""
+1. 时间字段 time 只能用枚举值之一：清晨/上午/午后/黄昏/入夜（禁止"暮色/傍晚/夜晚"等变体）
+2. 机位类型 camera.type 只能用：航拍/无人机/固定机位/地面机位/移动机位（禁止"地面/固定"等缩写）
+3. 角度 camera.angle 只能用：俯拍/平拍/仰拍/侧拍（禁止"侧俯"等组合词）
+4. 景别 shot_size 枚举：大远景/全景/中景/近景/特写；运镜 movement 枚举：固定/推/拉/摇/移/跟/升降/环绕
+5. 镜头数量6-8个，各镜头 duration_s 之和≈60（视频时长 {duration_s} 秒则按比例缩放）
+6. 地标描述跨镜头保持一致（如雷峰塔样式、湖色色调不冲突）
+7. 每镜头 prompt 字段须可直接用于文生图/文生视频，含主体/环境/光线/质感
+8. 只输出JSON对象，禁止代码块标记和任何解释文字"""
 
-RETRY_NOTE = "（上一次输出未通过校验，请严格按结构约束重新输出，只输出JSON）"
+RETRY_NOTE = "上一次输出未通过校验，严格按结构约束重新输出（只输出JSON）。具体错误：{errors}"
 
 
 class PipelineRunner:
-    """任务推进器：run(task) 异步执行，逐步写入 task 各阶段字段。"""
+    """任务推进器：run(task) 异步执行，逐步写入 task 各阶段字段。
+
+    阶段独立降级：文案/分镜有 kimi key 走 kimi-k2.6，否则回放 Phase 3 成果；
+    视频有 Seedance key 走真实生成，否则模拟推进（TRAVELGEN_MOCK=1 强制全 demo）。
+    """
 
     def __init__(self):
-        self.provider = model_client.load_config()
+        self.kimi = model_client.load_config()
+        self.seedance = model_client.load_seedance_config()
 
     @property
-    def is_demo(self):
-        return self.provider is None
+    def mock_all(self):
+        return os.environ.get("TRAVELGEN_MOCK") == "1" or (self.kimi is None and self.seedance is None)
 
     async def run(self, task):
         try:
-            if self.is_demo:
+            if self.mock_all:
                 await demo_mod.run_demo(task)
                 task.safety = {"passed": True, "checks": [
                     {"type": "content", "result": "pass", "note": "demo 回放官方素材"},
@@ -93,27 +103,20 @@ class PipelineRunner:
                 task.status, task.progress = "done", 100
                 return task
 
-            task.status, task.progress = "planning", 10
-            task.message = "生成内容大纲"
-            task.planning = await self._planning(task)
+            # ---- 文本阶段（kimi 或 demo 回放） ----
+            task.status, task.progress, task.message = "planning", 10, "生成内容大纲"
+            if self.kimi:
+                await self._text_real(task)
+            else:
+                await self._text_demo(task)
             await asyncio.sleep(0.2)
 
-            task.status, task.progress = "copywriting", 20
-            task.message = "生成宣传文案"
-            task.copywriting, task.script = await self._copywriting(task)
-            await asyncio.sleep(0.2)
-
-            task.status, task.progress = "storyboard", 40
-            task.message = "拆分分镜（JSON 硬校验）"
-            storyboard, errors = await self._storyboard(task)
-            if storyboard is None:
-                raise RuntimeError(f"分镜校验未通过: {'；'.join(errors[:4])}")
-            task.storyboard = storyboard
-
+            # ---- 视频阶段（Seedance 或模拟） ----
             task.status, task.progress = "generating", 60
             task.message = "逐镜头生成视频片段"
-            task.video_clips = await self._video(storyboard)
+            task.video_clips = await self._video(task.storyboard, task)
 
+            # ---- 收尾 ----
             task.status, task.progress = "composing", 90
             task.message = "合成编排（交 B 的 Composer）"
             await asyncio.sleep(0.3)
@@ -129,6 +132,29 @@ class PipelineRunner:
             task.status = "failed"
             task.message = f"stage:{task.status} 失败｜{type(e).__name__}: {e}"
         return task
+
+    async def _text_real(self, task):
+        """kimi 真实生成：planning → copywriting/script → storyboard（硬校验失败重试 1 次）。"""
+        task.planning = await self._planning(task)
+        task.status, task.progress, task.message = "copywriting", 20, "生成宣传文案"
+        task.copywriting, task.script = await self._copywriting(task)
+        task.status, task.progress, task.message = "storyboard", 40, "拆分分镜（JSON 硬校验）"
+        storyboard, errors = await self._storyboard(task)
+        if storyboard is None:
+            raise RuntimeError(f"分镜校验未通过: {'；'.join(errors[:4])}")
+        task.storyboard = storyboard
+
+    async def _text_demo(self, task):
+        """无 kimi key：回放 Phase 3 真实成果（kimi 最优西湖文案/分镜），视频仍可真实生成。"""
+        sb = demo_mod.load_storyboard()
+        cw = demo_mod.parse_copywriting()
+        task.planning = demo_mod.parse_planning(sb)
+        task.planning["plan_summary"] = task.request.get("theme", task.planning["plan_summary"])
+        task.copywriting = cw
+        task.copywriting["titles"][0] = task.request.get("theme", cw["titles"][0])
+        task.script = demo_mod.parse_script(cw)
+        task.storyboard = sb
+        task.storyboard["theme"] = f"{task.request.get('city', '')}{task.request.get('location', '')}宣传片"
 
     # ---- 文本阶段（kimi-k2.6, temperature=1） ----
 
@@ -163,31 +189,110 @@ class PipelineRunner:
             text = await self._ask(messages)
             if not text:
                 continue
-            ok, errors = v.validate(text)
+            ok, errors, data = v.validate_and_normalize(text)
             if ok:
-                return v.extract_json(text)[0], []
+                return data, []  # 返回归一化后的数据（枚举漂移已修正落库）
             last_errors = errors
             messages = messages + [{"role": "assistant", "content": text},
-                                   {"role": "user", "content": RETRY_NOTE}]
+                                   {"role": "user", "content": RETRY_NOTE.format(errors="；".join(errors[:4]))}]
         return None, last_errors
 
-    # ---- 视频阶段（Seedance 2.0 Pro 接入 Phase 5，当前模拟） ----
+    # ---- 视频阶段（Seedance 2.0 Pro 真实生成；无 key 时模拟） ----
 
-    async def _video(self, storyboard):
+    async def _video(self, storyboard, task):
+        """有 Seedance 配置走真实生成（并发提交+轮询+失败重试+下载），否则模拟。"""
+        if self.seedance is None:
+            return await self._video_simulated(storyboard)
+        return await self._video_real(storyboard, task)
+
+    async def _video_simulated(self, storyboard):
         clips = []
         for sc in storyboard["scenes"]:
             for sh in sc["shot_list"]:
                 clips.append({"shot_id": sh["shot_id"], "task_id": f"cpt-{sh['shot_id']:03d}",
-                              "status": "queued", "prompt": sh["prompt"],
-                              "duration_s": sh["duration_s"], "cost_yuan": 1.0})
-                await asyncio.sleep(0.5)
-                clips[-1]["status"] = "succeeded"
+                              "status": "succeeded", "prompt": sh["prompt"],
+                              "duration_s": sh["duration_s"], "cost_yuan": 0.0,
+                              "note": "simulated（无 Seedance key）"})
+                await asyncio.sleep(0.3)
         return clips
+
+    async def _video_real(self, storyboard, task):
+        """Seedance 真实生成：并发提交 → 5s 间隔轮询（最多 60 次）→ failed 自动重试 1 次 → 成功即下载转存。"""
+        from . import ark_client
+        duration = int(self.seedance.get("duration", 5))
+        resolution = self.seedance.get("resolution", "1080p")
+        shots = [sh for sc in storyboard["scenes"] for sh in sc["shot_list"]]
+
+        # 1) 并发提交全部镜头
+        clips = []
+        for sh in shots:
+            tid, err = await asyncio.to_thread(ark_client.submit, self.seedance, sh["prompt"], duration, resolution)
+            clips.append({"shot_id": sh["shot_id"], "task_id": tid,
+                          "status": "queued" if tid else "failed",
+                          "prompt": sh["prompt"], "duration_s": duration, "cost_yuan": 1.0})
+            if not tid:
+                clips[-1]["error"] = err
+        task.video_clips = clips
+
+        # 2) 轮询直至全部完成（5s 间隔；上限 180 次 = 15 分钟，含失败重试的重新计时）
+        total = len(clips)
+        polls = 0
+        while polls < 180:
+            running = [c for c in clips if c["status"] in ("queued", "running")]
+            retry = [c for c in clips if c["status"] == "failed" and not c.get("retried")]
+            if not running and not retry:
+                break
+            await asyncio.sleep(5)
+            polls += 1
+            # 2a) 查询进行中的任务
+            results = await asyncio.gather(*(
+                asyncio.to_thread(ark_client.get_task, self.seedance, c["task_id"]) for c in running))
+            for c, (status, url, err) in zip(running, results):
+                if status == "succeeded":
+                    c["status"] = "succeeded"
+                    c["video_url"] = url
+                    c["local_path"] = await self._download_video(task, c, url)
+                elif status in ("failed", "expired"):
+                    c["status"] = "failed"
+                    c["error"] = err
+                else:
+                    c["status"] = status
+            # 2b) 失败未重试的重新提交（1 次机会）
+            results = await asyncio.gather(*(
+                asyncio.to_thread(ark_client.submit, self.seedance, c["prompt"], duration, resolution)
+                for c in retry))
+            for c, (tid, err) in zip(retry, results):
+                c["retried"] = True
+                if tid:
+                    c["task_id"], c["status"] = tid, "queued"
+                    c.pop("error", None)  # 重试成功，清除旧错误
+                else:
+                    c["error"] = err
+            n_ok = sum(1 for c in clips if c["status"] == "succeeded")
+            task.progress = 60 + int(n_ok / total * 30)
+            task.message = f"视频生成中 {n_ok}/{total} 完成"
+        # 触顶兜底：未完成的镜头标记超时（不阻塞任务收尾）
+        for c in clips:
+            if c["status"] in ("queued", "running"):
+                c["status"] = "failed"
+                c["error"] = c.get("error") or "生成超时（>15 分钟）"
+        return clips
+
+    async def _download_video(self, task, clip, url):
+        """video_url 仅 24h 有效，成功即下载转存 assets/videos/{task_id}_{shot_id}.mp4。"""
+        try:
+            from . import ark_client
+            dest = os.path.join(REPO, "assets", "videos", f"{task.task_id}_{clip['shot_id']}.mp4")
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            size = await asyncio.to_thread(ark_client.download, url, dest)
+            return dest if size > 0 else None
+        except Exception:
+            return None  # 下载失败不影响状态（URL 仍 24h 有效）
 
     # ---- 底层调用 ----
 
     async def _ask(self, messages):
-        return await asyncio.to_thread(model_client.call_model, self.provider, messages)
+        return await asyncio.to_thread(model_client.call_model, self.kimi, messages)
 
     async def _ask_json(self, messages):
         text = await self._ask(messages)
@@ -208,6 +313,10 @@ def _parse_cw(text):
                            "duration_s": end - start})
     titles = re.findall(r"\d+\.\s*《(.+?)》", text)
     if not titles:
-        titles = re.findall(r"【(.*?)】", text)[:2]
+        titles = re.findall(r"《(.+?)》", text)  # 无编号的书名号标题
+    if not titles:
+        titles = re.findall(r"标题[：:]\s*([^\n《]+)", text)
+    if not titles:
+        titles = ["无标题"]  # 兜底：绝不抓段落时间戳当标题
     tags = re.findall(r"#\S+", text)
     return {"titles": titles[:2], "paragraphs": paragraphs, "hashtags": tags[:3]}

@@ -1,0 +1,71 @@
+# -*- coding: utf-8 -*-
+"""火山方舟 Seedance 2.0 Pro 视频生成客户端（Phase 3 实测规范：results/03_video 样片）。
+
+- 提交：POST /contents/generations/tasks（Bearer 鉴权，异步任务）
+- 轮询：GET /contents/generations/tasks/{id}，状态机 queued→running→succeeded/failed/expired
+- ⚠️ video_url 仅 24h 有效，成功即下载转存 assets/videos/（不入库，见 .gitignore）
+- 成本：约 1 元/条（5s 1080p）
+"""
+import json, os, urllib.request, urllib.error
+
+CONTENT_TYPES = {"video_url": "succeeded", "url": "succeeded"}
+
+
+def _post(provider, path, body):
+    url = provider["base_url"].rstrip("/") + path
+    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {provider['api_key']}"}
+    req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        return {"error": {"code": e.code, "message": e.read().decode("utf-8", "ignore")[:300]}}
+
+
+def _get(provider, path):
+    url = provider["base_url"].rstrip("/") + path
+    req = urllib.request.Request(url, headers={"Authorization": f"Bearer {provider['api_key']}"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        return {"error": {"code": e.code, "message": e.read().decode("utf-8", "ignore")[:300]}}
+
+
+def submit(provider, prompt, duration=5, resolution="1080p"):
+    """提交单镜头生成任务；返回 (task_id, error)。task_id 形如 cpt-xxx。"""
+    body = {"model": provider["model"],
+            "content": [{"type": "text", "text": prompt}],
+            "duration": duration,
+            "resolution": resolution}
+    data = _post(provider, "/contents/generations/tasks", body)
+    if data.get("error"):
+        return None, f"提交失败({data['error'].get('code')}): {data['error'].get('message', '')}"
+    tid = data.get("id")
+    if not tid:
+        return None, f"响应无任务ID: {str(data)[:200]}"
+    return tid, None
+
+
+def get_task(provider, task_id):
+    """查询任务；返回 (status, video_url, error)。"""
+    data = _get(provider, f"/contents/generations/tasks/{task_id}")
+    if data.get("error"):
+        return "failed", None, f"查询失败({data['error'].get('code')}): {data['error'].get('message', '')}"
+    status = data.get("status", "unknown")
+    url = None
+    if status == "succeeded":
+        content = data.get("content") or {}
+        url = content.get("video_url") or content.get("url")
+        if not url:
+            return "failed", None, f"succeeded 但无视频URL: {str(data)[:200]}"
+    return status, url, None
+
+
+def download(url, dest_path):
+    """下载视频到本地；返回文件字节数。"""
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=120) as resp:
+        with open(dest_path, "wb") as f:
+            f.write(resp.read())
+    return os.path.getsize(dest_path)

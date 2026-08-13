@@ -10,8 +10,8 @@ REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 CONFIG_PATH = os.path.join(REPO, "experiments", "config.json")
 
 
-def load_config():
-    """返回 kimi provider 配置（管线文案/分镜首选模型）；不可用返回 None。"""
+def _load_provider(name):
+    """从 experiments/config.json 取指定 provider；文件缺失或强制 mock 返回 None。"""
     if os.environ.get("TRAVELGEN_MOCK") == "1":
         return None
     if not os.path.exists(CONFIG_PATH):
@@ -19,9 +19,19 @@ def load_config():
     with open(CONFIG_PATH, encoding="utf-8") as f:
         cfg = json.load(f)
     for p in cfg.get("providers", []):
-        if p.get("name") == "kimi":
+        if p.get("name") == name:
             return p
     return None
+
+
+def load_config():
+    """返回 kimi provider 配置（管线文案/分镜首选模型）；不可用返回 None。"""
+    return _load_provider("kimi")
+
+
+def load_seedance_config():
+    """返回火山方舟 Seedance provider（视频生成）；不可用返回 None。"""
+    return _load_provider("seedance")
 
 
 def call_model(provider, messages, temperature=None):
