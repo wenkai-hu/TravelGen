@@ -11,7 +11,7 @@
   - 无 config.json 或 TRAVELGEN_MOCK=1 → demo 模式，无需任何 key
   - 交互文档：http://127.0.0.1:8000/docs（可导出 OpenAPI）
 """
-import asyncio, uuid
+import asyncio, json, os, uuid
 from datetime import datetime, timezone
 
 from fastapi import FastAPI, HTTPException
@@ -56,7 +56,7 @@ class Task:
 
     def __init__(self, task_id: str, req: GenerateRequest):
         self.task_id = task_id
-        self.request = req.dict()
+        self.request = req.model_dump()
         self.status = "planning"
         self.progress = 0
         self.message = ""
@@ -86,9 +86,25 @@ class Task:
                 "safety": self.safety, "final_video": self.final_video,
                 "created_at": self.created_at, "updated_at": self.updated_at}
 
+    def dump(self):
+        """任务产物落盘：experiments/results/05_pipeline/{task_id}.json（可复现，服务重启不丢）。"""
+        out_dir = os.path.join(REPO_ROOT, "experiments", "results", "05_pipeline")
+        os.makedirs(out_dir, exist_ok=True)
+        with open(os.path.join(out_dir, f"{self.task_id}.json"), "w", encoding="utf-8") as f:
+            json.dump(self.to_dict(), f, ensure_ascii=False, indent=2)
+
 
 TASKS: dict[str, Task] = {}
 runner = PipelineRunner()
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+
+
+async def _run_and_dump(task: Task):
+    """执行管线并落盘产物（done/failed 都写）。"""
+    try:
+        await runner.run(task)
+    finally:
+        task.dump()
 
 
 @app.post("/api/v1/generate", status_code=202)
@@ -109,7 +125,7 @@ async def create_generate_task(req: GenerateRequest):
     task_id = f"t_{datetime.now():%Y%m%d_%H%M%S}_{uuid.uuid4().hex[:6]}"
     task = Task(task_id, req)
     TASKS[task_id] = task
-    asyncio.create_task(runner.run(task))
+    asyncio.create_task(_run_and_dump(task))
     return {"task_id": task_id, "status": task.status}
 
 
