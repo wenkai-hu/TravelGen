@@ -129,7 +129,7 @@ GET /api/v1/tasks/t_20260813_a1b2c3        // 轮询③ 最终
 - **A**：实现管线服务（FastAPI），在 Apifox「运行」里填参调试真实接口（example 已预填）
 - 约定：接口变更改 openapi.yaml 重新导入（Apifox 增量更新）并口头知会；大改动升版本号 v0.1→v0.2
 
-**网络提醒**：B 访问 A 的 `http://127.0.0.1:8000` 需同局域网；不同网络时用内网穿透（cpolar/ngrok）或等部署环境，演示期可 Mock + 录屏兜底。
+**运行方式**：仓库推送到 GitHub 后，B 克隆到本地直接跑服务（`pip install -r backend/requirements.txt && python backend/app.py`）——无需访问 A 的机器；无 API key 时自动 demo 模式，有 key 时（`experiments/config.json`）走真实生成，详见 [backend/README.md](../backend/README.md)。
 
 **收尾**：Apifox 调试记录/用例可导出，答辩可截图「接口文档 + Mock + 联调」作为工程协作证据。
 
