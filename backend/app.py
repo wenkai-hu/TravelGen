@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""TravelGen 生成管线 MVP 服务（契约 v0.1，docs/API_Contract_MVP.md）。
+"""TravelGen 生成管线 MVP 服务（契约 v0.2，docs/API_Contract_MVP.md）。
 
 启动：
   pip install -r requirements.txt
@@ -7,6 +7,8 @@
   TRAVELGEN_MOCK=1 python app.py       # 强制 demo 模式（回放 Phase 3 成果）
 
 行为：
+  - 旧契约（/api/v1/*）：一键直出，POST generate + 轮询 tasks
+  - V1 分阶段（/api/*，TravelGen_v1.md）：创建项目 → 方案确认 → 分镜 → Shot 修改 → 批量生成（v1_router.py）
   - 有 experiments/config.json（kimi key）→ 真实模式（kimi-k2.6）
   - 无 config.json 或 TRAVELGEN_MOCK=1 → demo 模式，无需任何 key
   - 交互文档：http://127.0.0.1:8000/docs（可导出 OpenAPI）
@@ -16,39 +18,16 @@ from datetime import datetime, timezone
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
 
+from constants import SCENE_TYPES, ASPECT_RATIOS, RESOLUTIONS, VIDEO_MODELS
+from schemas import GenerateRequest
 from pipeline import kb
 from pipeline.pipeline import PipelineRunner
+from v1_router import router as v1_router
 
-app = FastAPI(title="TravelGen 生成管线 API", version="0.1.0")
+app = FastAPI(title="TravelGen 生成管线 API", version="0.2.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
-
-SCENE_TYPES = ["城市形象宣传", "景区推荐", "节庆活动推广", "非遗文化传播", "打卡视频", "其他"]
-ASPECT_RATIOS = ["9:16", "16:9", "1:1"]
-RESOLUTIONS = ["720p", "1080p"]
-VIDEO_MODELS = ["seedance-2.0", "seedance-2.0-pro"]
-
-
-class Asset(BaseModel):
-    type: str = "image"
-    url: str
-
-
-class GenerateRequest(BaseModel):
-    """输入契约（docs/API_Contract_MVP.md §2）。"""
-    city: str
-    location: str
-    scene_type: str
-    theme: str
-    audience: str = "18-35岁年轻游客"
-    style: str = "大气唯美"
-    duration_s: int = Field(60, ge=15, le=120)
-    aspect_ratio: str = "9:16"
-    resolution: str = "1080p"
-    video_model: str = "seedance-2.0-pro"
-    description: str = ""
-    assets: list[Asset] = []
+app.include_router(v1_router)
 
 
 class Task:

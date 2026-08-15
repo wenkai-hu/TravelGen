@@ -52,36 +52,47 @@ def load_storyboard(path=STORYBOARD_PATH):
         return json.load(f)
 
 
-def demo_clips(storyboard):
-    """模拟逐镜头视频任务推进（Seedance 接入 Phase 5）。"""
+def demo_plan(req):
+    """回放 Phase 3 成果的 planning/copywriting/script 三件套（标题用请求 theme 覆盖）。"""
+    storyboard = load_storyboard()
+    copywriting = parse_copywriting()
+    planning = parse_planning(storyboard)
+    planning["plan_summary"] = req.get("theme", planning["plan_summary"])
+    copywriting["titles"][0] = req.get("theme", copywriting["titles"][0])
+    return planning, copywriting, parse_script(copywriting)
+
+
+def demo_storyboard(req, storyboard=None):
+    """回放分镜（theme 覆盖为 城市+地点宣传片）。"""
+    sb = storyboard if storyboard is not None else load_storyboard()
+    sb["theme"] = f"{req.get('city', '')}{req.get('location', '')}宣传片"
+    return sb
+
+
+def demo_clips(storyboard, shot_ids=None):
+    """模拟逐镜头视频任务推进（shot_ids 为 None 表示全部镜头，V1 批量/单 shot 生成复用）。"""
     return [{"shot_id": sh["shot_id"], "task_id": f"demo-{sh['shot_id']:02d}",
              "status": "succeeded", "prompt": sh["prompt"],
              "duration_s": sh["duration_s"], "cost_yuan": 0.0}
-            for sc in storyboard["scenes"] for sh in sc["shot_list"]]
+            for sc in storyboard["scenes"] for sh in sc["shot_list"]
+            if shot_ids is None or sh["shot_id"] in shot_ids]
 
 
 async def run_demo(task):
     """demo 模式全流程：与 real 模式相同状态机，各阶段短延迟让前端可见进度。"""
     task.status, task.progress, task.message = "planning", 10, "生成内容大纲"
-    storyboard = load_storyboard()
-    copywriting = parse_copywriting()
-    task.planning = parse_planning(storyboard)
-    task.planning["plan_summary"] = task.request.get("theme", task.planning["plan_summary"])
+    task.planning, task.copywriting, task.script = demo_plan(task.request)
     await asyncio.sleep(0.6)
 
     task.status, task.progress, task.message = "copywriting", 20, "生成宣传文案"
-    task.copywriting = copywriting
-    task.copywriting["titles"][0] = task.request.get("theme", copywriting["titles"][0])
-    task.script = parse_script(copywriting)
     await asyncio.sleep(0.6)
 
     task.status, task.progress, task.message = "storyboard", 40, "拆分分镜（JSON 硬校验）"
-    task.storyboard = storyboard
-    task.storyboard["theme"] = f"{task.request.get('city', '')}{task.request.get('location', '')}宣传片"
+    task.storyboard = demo_storyboard(task.request)
     await asyncio.sleep(0.6)
 
     task.status, task.progress, task.message = "generating", 60, "逐镜头生成视频片段"
-    task.video_clips = demo_clips(storyboard)
+    task.video_clips = demo_clips(task.storyboard)
     for c in task.video_clips:
         await asyncio.sleep(0.4)
 

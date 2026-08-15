@@ -1,8 +1,10 @@
-# API 契约 MVP — v0.1（A↔B 联调基线）
+# API 契约 MVP — v0.2（A↔B 联调基线）
 
-**版本**：v0.1｜**日期**：2026-08-13｜**作者**：成员A
-**依据**：成员B 输入/输出契约（2026-08-13）+ [分镜 Schema v1](Storyboard_Schema_v1.md) + [Phase 4 管线设计](Phase4_Design_AI_Pipeline.md)
+**版本**：v0.2｜**日期**：2026-08-15｜**作者**：成员A
+**依据**：成员B 输入/输出契约（2026-08-13）+ [TravelGen_v1.md](../TravelGen_v1.md)（v1.0 分阶段接口设计）+ [分镜 Schema v1](Storyboard_Schema_v1.md) + [Phase 4 管线设计](Phase4_Design_AI_Pipeline.md)
 **Apifox 导入文件**：[docs/api/openapi.yaml](api/openapi.yaml)（OpenAPI 3.0）
+
+> 两套接口并存：**V1 分阶段（§7，推荐，对应 TravelGen_v1.md 9 接口）**与旧一键直出（§1-§6，保留兜底）。前端按 V1 开发。
 
 ---
 
@@ -119,7 +121,79 @@ GET /api/v1/tasks/t_20260813_a1b2c3        // 轮询③ 最终
 3. **`script` 与 `storyboard` 分工**：B 契约里两者并存易歧义。定义：`script` = 配音稿/字幕稿（文案→逐行文本+起止秒），`storyboard` = 分镜 JSON（Schema v1）。两者均由 A 产出，B 无需猜
 4. **`voice` / `music` / `assets[type=video|audio]`：MVP 预留**。字段始终存在但为空占位（避免前端 undefined）；参考音频/视频（即梦模式）成本与难度大，同意 B 的判断，Phase 5 再议
 
-## 7. Apifox 协作流程
+## 7. V1 分阶段接口（TravelGen_v1.md，推荐前端使用）
+
+对应 [TravelGen_v1.md](../TravelGen_v1.md) §七~§十八 的 9 接口 + §十五 单 Shot 重生成。用户流程：**创建项目 → 方案确认 → 分镜 → Shot 修改 → 批量生成 → （音频/合成占位）**，两次人工干预点（方案、Shot）。
+
+### 7.1 接口清单
+
+| # | 接口 | 说明 | 状态 |
+|---|---|---|---|
+| 1 | POST /api/projects | 创建项目 + 异步生成创作方案（planning + copywriting） | ✅ |
+| — | GET /api/projects/{id} | **补充端点**：查询项目全量（V1 文档未列但分阶段轮询必需，前端统一轮询它） | ✅ |
+| 2 | PUT /api/projects/{id}/plan | 提交用户编辑后的文案 → plan_confirmed + plan_id | ✅ |
+| 3 | POST /api/projects/{id}/storyboard | 基于已确认文案生成脚本+分镜（JSON 硬校验） | ✅ |
+| 4 | PUT /api/projects/{id}/shots/{shot_id} | 修改单个 Shot（部分字段，枚举自动归一化） | ✅ |
+| 5 | POST /api/projects/{id}/generate | 批量生成视频（`shots:[1,2,...]`）→ 返回 vt_ task_id | ✅ |
+| 6 | GET /api/tasks/{task_id} | 轮询 per-shot 生成状态（pending/generating/completed/failed） | ✅ |
+| — | POST /api/projects/{id}/shots/{shot_id}/regenerate | 单 Shot 重新生成（文档 §十五"必须保留"） | ✅ |
+| 7 | POST /api/projects/{id}/audio | 配音+音乐 | ⏸ reserved 占位 |
+| 8 | POST /api/projects/{id}/render | 最终合成 | ⏸ reserved 占位 |
+| 9 | GET /api/projects/{id}/render/status | 成片状态 | ⏸ reserved 占位 |
+| — | GET /api/kb/search | 知识库检索（V1 别名，同 /api/v1/kb/search） | ✅ |
+
+### 7.2 项目状态机
+
+```
+created → planning → waiting_confirm → plan_confirmed → storyboarding → waiting_storyboard_confirm
+                                                                        │ POST generate（即确认分镜）
+                                                                        ▼
+                                  generating ⇄（regenerate / 补批）→ completed
+                                                                  ↘ failed（任意阶段，终态）
+```
+
+**关键语义**：
+1. **POST generate 即视为"确认分镜"**（V1 文档无独立确认端点，前端"确认分镜"按钮直接调 generate）
+2. **轮询用 GET /api/projects/{id}**（V1 文档未列此端点，本服务补充——方案/分镜异步生成期间轮询它，waiting_confirm / waiting_storyboard_confirm 即对应两次人工确认点）
+3. 允许增量补批：generate 前置只要分镜已生成（waiting_storyboard_confirm/generating/completed/failed 均可）
+4. failed 为终态：文本阶段失败需重建项目；视频阶段失败可 regenerate 单 Shot
+
+### 7.3 字段约定（与 B 文档的差异处理）
+
+| 项 | 约定 |
+|---|---|
+| copywriting 双形态 | 接口 1/2 输入输出按 B 文档**字符串**（`【0-15s】…`）；GET project 同时给结构化 `copywriting` 与拼接 `copywriting_text`（展示用）。PUT plan 提交的字符串丢失时间戳标记时，后端兜底整段为一个段落（不拒绝） |
+| shot_id | 统一 **int**（文档示例 "shot_01" 是前端展示标签，即补零） |
+| generate_image | 接受参数但本版 **video-only**（无图像生成 API），`image_url` 恒 null |
+| video 产物 | 真实模式 `video_url` 为本地转存路径（assets/videos/，24h URL 已转存）；demo 模式恒 null |
+| scene_type | 支持中文枚举或英文别名（scenic→景区推荐 等），落库统一中文 |
+
+### 7.4 视频任务（VideoTask，GET /api/tasks/{id} 返回）
+
+```jsonc
+{ "task_id": "vt_xxx", "project_id": "p_xxx", "kind": "batch|single",
+  "status": "generating|completed|failed", "progress": 65,
+  "message": "视频生成中 3/5 完成",
+  "shots": [ { "shot_id": 1, "status": "completed", "image_url": null,
+               "video_url": "D:\\...\\vt_xxx_1.mp4", "local_path": "...", "error": null },
+             { "shot_id": 2, "status": "generating", ... },
+             { "shot_id": 3, "status": "pending", ... } ] }
+```
+
+### 7.5 错误码（V1 新增）
+
+| HTTP | code | 场景 |
+|---|---|---|
+| 409 | invalid_state | 状态机前置不满足（分镜未生成就 generate、非 waiting_confirm 就确认方案、plan_id 不匹配） |
+| 404 | project_not_found / shot_not_found | 项目 / 镜头不存在 |
+| 400 | invalid_param | shots 含不存在的镜头、generate_video=false、PUT plan 文案为空等 |
+
+### 7.6 持久化与 demo 模式
+
+- 项目与视频任务自动落盘 `experiments/results/05_pipeline/{projects,video_tasks}/`，服务重启后 GET 懒加载恢复
+- demo 模式（无 key / TRAVELGEN_MOCK=1）：各阶段回放 Phase 3 真实成果（西湖样例），视频为模拟成功——B 克隆仓库后无需任何 key 即可全流程联调
+
+## 8. Apifox 协作流程
 
 **准备（约 10 分钟，建议 B 操作）**：
 1. apifox.com 建团队项目 **TravelGen**，邀请对方进团队（免费版即可）
@@ -135,8 +209,9 @@ GET /api/v1/tasks/t_20260813_a1b2c3        // 轮询③ 最终
 
 **收尾**：Apifox 调试记录/用例可导出，答辩可截图「接口文档 + Mock + 联调」作为工程协作证据。
 
-## 8. 变更记录
+## 9. 变更记录
 
 | 版本 | 日期 | 变更 |
 |---|---|---|
 | v0.1 | 2026-08-13 | 基线（对齐 B 契约 2026-08-13） |
+| v0.2 | 2026-08-15 | 新增 V1 分阶段接口（TravelGen_v1.md 9 接口 + Shot 重生成 + 项目查询补充端点）；接口 7/8/9 占位 reserved；新旧接口共存 |

@@ -60,6 +60,67 @@ def extract_json(text):
         return None, f"JSON 解析失败: {e}"
 
 
+def normalize_shot(sh):
+    """单 shot 枚举归一化 + 必填字段校验（全量校验与 PUT shot 共用）。返回 (ok, errors, shot)，原地归一化。"""
+    sid = sh.get("shot_id")
+    errors = []
+    if not isinstance(sid, int):
+        errors.append("shot 非整数编号")
+    if not isinstance(sh.get("duration_s"), int) or not (1 <= sh["duration_s"] <= 15):
+        errors.append(f"shot {sid}: duration_s 需为 1-15 的整数")
+    cam = sh.setdefault("camera", {})
+    cam["type"], ok1 = _normalize(cam.get("type"), CAMERA_TYPE_ENUM, CAMERA_ALIASES)
+    cam["movement"], ok2 = _normalize(cam.get("movement"), MOVEMENT_ENUM, MOVEMENT_ALIASES)
+    cam["angle"], ok3 = _normalize(cam.get("angle"), ANGLE_ENUM, ANGLE_ALIASES)
+    if not ok1:
+        errors.append(f"shot {sid}: camera.type 无法归一化: {cam.get('type')}")
+    if not ok2:
+        errors.append(f"shot {sid}: camera.movement 无法归一化: {cam.get('movement')}")
+    if not ok3:
+        errors.append(f"shot {sid}: camera.angle 无法归一化: {cam.get('angle')}")
+    sh["shot_size"], ok4 = _normalize(sh.get("shot_size"), SHOT_SIZE_ENUM, SHOT_ALIASES)
+    if not ok4:
+        errors.append(f"shot {sid}: shot_size 无法归一化: {sh.get('shot_size')}")
+    for field in ("subject", "background", "prompt"):
+        if not isinstance(sh.get(field), str) or not sh[field].strip():
+            errors.append(f"shot {sid}: {field} 为空")
+    return not errors, errors, sh
+
+
+def validate_shot_patch(patch):
+    """PUT shot 部分字段校验：只检查出现的字段，camera 嵌套归一化。返回 (ok, errors, patch)。"""
+    errors = []
+    if "duration_s" in patch:
+        d = patch["duration_s"]
+        if not isinstance(d, int) or not (1 <= d <= 15):
+            errors.append("duration_s 需为 1-15 的整数")
+    cam = patch.get("camera")
+    if cam is not None:
+        if not isinstance(cam, dict):
+            errors.append("camera 需为对象")
+        else:
+            if "type" in cam:
+                cam["type"], ok = _normalize(cam["type"], CAMERA_TYPE_ENUM, CAMERA_ALIASES)
+                if not ok:
+                    errors.append(f"camera.type 无法归一化: {cam['type']}")
+            if "movement" in cam:
+                cam["movement"], ok = _normalize(cam["movement"], MOVEMENT_ENUM, MOVEMENT_ALIASES)
+                if not ok:
+                    errors.append(f"camera.movement 无法归一化: {cam['movement']}")
+            if "angle" in cam:
+                cam["angle"], ok = _normalize(cam["angle"], ANGLE_ENUM, ANGLE_ALIASES)
+                if not ok:
+                    errors.append(f"camera.angle 无法归一化: {cam['angle']}")
+    if "shot_size" in patch:
+        patch["shot_size"], ok = _normalize(patch["shot_size"], SHOT_SIZE_ENUM, SHOT_ALIASES)
+        if not ok:
+            errors.append(f"shot_size 无法归一化: {patch['shot_size']}")
+    for field in ("subject", "background", "prompt"):
+        if field in patch and (not isinstance(patch[field], str) or not patch[field].strip()):
+            errors.append(f"{field} 不能为空")
+    return not errors, errors, patch
+
+
 def validate_and_normalize(text):
     """完整校验 + 归一化；返回 (ok, errors, data)。ok 时 data 为归一化后的分镜数据。"""
     data, err = extract_json(text)
@@ -85,27 +146,8 @@ def validate_and_normalize(text):
             shots.append(sh)
 
     for sh in shots:
-        sid = sh.get("shot_id")
-        if not isinstance(sid, int):
-            errors.append("shot 非整数编号")
-        if not isinstance(sh.get("duration_s"), int) or not (1 <= sh["duration_s"] <= 15):
-            errors.append(f"shot {sid}: duration_s 需为 1-15 的整数")
-        cam = sh.setdefault("camera", {})
-        cam["type"], ok1 = _normalize(cam.get("type"), CAMERA_TYPE_ENUM, CAMERA_ALIASES)
-        cam["movement"], ok2 = _normalize(cam.get("movement"), MOVEMENT_ENUM, MOVEMENT_ALIASES)
-        cam["angle"], ok3 = _normalize(cam.get("angle"), ANGLE_ENUM, ANGLE_ALIASES)
-        if not ok1:
-            errors.append(f"shot {sid}: camera.type 无法归一化: {cam.get('type')}")
-        if not ok2:
-            errors.append(f"shot {sid}: camera.movement 无法归一化: {cam.get('movement')}")
-        if not ok3:
-            errors.append(f"shot {sid}: camera.angle 无法归一化: {cam.get('angle')}")
-        sh["shot_size"], ok4 = _normalize(sh.get("shot_size"), SHOT_SIZE_ENUM, SHOT_ALIASES)
-        if not ok4:
-            errors.append(f"shot {sid}: shot_size 无法归一化: {sh.get('shot_size')}")
-        for field in ("subject", "background", "prompt"):
-            if not isinstance(sh.get(field), str) or not sh[field].strip():
-                errors.append(f"shot {sid}: {field} 为空")
+        ok, errs, _ = normalize_shot(sh)
+        errors.extend(errs)
 
     if not 6 <= len(shots) <= 8:
         errors.append(f"镜头总数 {len(shots)} 超出 6-8")

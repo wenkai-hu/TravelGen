@@ -2,18 +2,24 @@ openapi: 3.0.3
 info:
   title: TravelGen 生成管线 API
   description: >
-    A侧（AI生成管线）对外契约 v0.1。成员A实现、成员B消费。
-    异步任务模型：POST /api/v1/generate 提交，GET /api/v1/tasks/{task_id} 轮询。
+    A侧（AI生成管线）对外契约 v0.2。成员A实现、成员B消费。
+    两套接口并存：
+    - V1 分阶段（/api/*，推荐，对应 TravelGen_v1.md）：创建项目 → 方案确认 → 分镜 → Shot 修改 → 批量生成 → 轮询 tasks。
+      关键语义：POST /api/projects/{id}/generate 即视为"确认分镜"；前端轮询 GET /api/projects/{id}。
+      接口 7/8/9（audio/render/成片）本版返回 reserved 占位。
+    - 旧契约（/api/v1/*）：一键直出，POST generate + 轮询 tasks（保留，答辩 demo 兜底）。
     storyboard 结构遵循 docs/Storyboard_Schema_v1.md；评审结论见 docs/API_Contract_MVP.md。
-  version: 0.1.0
+  version: 0.2.0
 servers:
   - url: http://127.0.0.1:8000
     description: 本地开发（成员A管线服务）
   - url: https://mock.apifox.com
     description: Apifox Mock（前端先行开发）
 tags:
+  - name: 项目分阶段
+    description: V1 project 化分阶段接口（TravelGen_v1.md）
   - name: 生成任务
-    description: 视频生成任务（A侧）
+    description: 视频生成任务（A侧，旧契约一键直出）
   - name: 知识库
     description: 知识检索（可选能力，供前端知识点预览）
 paths:
@@ -82,11 +88,432 @@ paths:
                 $ref: '#/components/schemas/GenerateTask'
         '404':
           $ref: '#/components/responses/NotFound'
+  /api/projects:
+    post:
+      tags: [项目分阶段]
+      operationId: createProject
+      summary: 创建项目并生成创作方案（接口1）
+      description: >
+        受理后异步生成 planning + copywriting（含 copywriting_text 展示格式）。
+        轮询 GET /api/projects/{project_id} 至 status=waiting_confirm 后前端可编辑/确认。
+        scene_type 支持中文枚举或英文别名（scenic→景区推荐 等，落库统一中文）。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateRequest'
+      responses:
+        '202':
+          description: 已受理（后台生成中）
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [project_id, status]
+                properties:
+                  project_id:
+                    type: string
+                    example: p_20260815_ab12cd
+                  status:
+                    $ref: '#/components/schemas/ProjectStatus'
+                  progress:
+                    type: integer
+                  message:
+                    type: string
+                  planning:
+                    type: object
+                  copywriting:
+                    $ref: '#/components/schemas/Copywriting'
+                  copywriting_text:
+                    type: string
+                    description: B 文档展示格式（【0-15s】…段落拼接）
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /api/projects/{project_id}:
+    get:
+      tags: [项目分阶段]
+      operationId: getProject
+      summary: 查询项目全量（分阶段轮询入口，补充端点）
+      description: 返回全部阶段产物 + video_clips（按 video_tasks 合并的最新结果）。V1 文档未列此端点，但分阶段流程轮询必需。
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 项目详情
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /api/projects/{project_id}/plan:
+    put:
+      tags: [项目分阶段]
+      operationId: confirmPlan
+      summary: 修改/确认创作方案（接口2）
+      description: 提交用户编辑后的旁白文案文本（可含【0-15s】标记；丢失标记时后端兜底整段为一个段落）。签发 plan_id，进入 plan_confirmed。
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmPlanRequest'
+      responses:
+        '200':
+          description: 方案已确认
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [project_id, status, plan_id]
+                properties:
+                  project_id:
+                    type: string
+                  status:
+                    type: string
+                    example: plan_confirmed
+                  plan_id:
+                    type: string
+                    example: plan_p_xxx_v1
+                  progress:
+                    type: integer
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+  /api/projects/{project_id}/storyboard:
+    post:
+      tags: [项目分阶段]
+      operationId: createStoryboard
+      summary: 生成视频脚本 + 分镜（接口3）
+      description: 基于已确认文案异步生成分镜（JSON 硬校验）。轮询 GET /api/projects/{project_id} 至 waiting_storyboard_confirm。
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoryboardRequest'
+      responses:
+        '202':
+          description: 已受理
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [project_id, status]
+                properties:
+                  project_id:
+                    type: string
+                  status:
+                    type: string
+                    example: storyboarding
+                  progress:
+                    type: integer
+                  message:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+  /api/projects/{project_id}/shots/{shot_id}:
+    put:
+      tags: [项目分阶段]
+      operationId: updateShot
+      summary: 修改单个 Shot（接口4）
+      description: 只更新出现的字段；camera/shot_size 等枚举自动归一化（如 鸟瞰→俯拍），非法枚举返回 400。
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shot_id
+          in: path
+          required: true
+          description: 镜头编号（int；前端展示标签"Shot 01"即此值补零）
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShotPatch'
+      responses:
+        '200':
+          description: 更新成功
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [project_id, shot_id, status]
+                properties:
+                  project_id:
+                    type: string
+                  shot_id:
+                    type: integer
+                  status:
+                    type: string
+                    example: updated
+                  shot:
+                    type: object
+                    description: 归一化后的完整 Shot
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+  /api/projects/{project_id}/generate:
+    post:
+      tags: [项目分阶段]
+      operationId: generateBatch
+      summary: 批量生成视频 Shot（接口5）
+      description: >
+        提交即视为"确认分镜"。创建 video task（kind=batch），轮询 GET /api/tasks/{task_id} 看 per-shot 状态。
+        generate_image 参数接受但本版 video-only（image_url 恒 null，需图像 API 后续接入）。
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateShotsRequest'
+      responses:
+        '202':
+          description: 已受理
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [task_id, project_id, status]
+                properties:
+                  task_id:
+                    type: string
+                    example: vt_20260815_ab12cd
+                  project_id:
+                    type: string
+                  status:
+                    type: string
+                    example: generating
+                  progress:
+                    type: integer
+                  shots:
+                    type: array
+                    description: per-shot 初始状态（pending）
+                    items:
+                      type: object
+                      properties:
+                        shot_id:
+                          type: integer
+                        status:
+                          type: string
+                          example: pending
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+  /api/tasks/{task_id}:
+    get:
+      tags: [项目分阶段]
+      operationId: getVideoTask
+      summary: 查询视频生成任务状态（接口6）
+      parameters:
+        - name: task_id
+          in: path
+          required: true
+          description: POST /generate 或 /regenerate 返回的任务 ID（vt_ 前缀）
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 任务详情（shots 数组含 per-shot 状态与产物地址）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoTask'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /api/projects/{project_id}/shots/{shot_id}/regenerate:
+    post:
+      tags: [项目分阶段]
+      operationId: regenerateShot
+      summary: 单 Shot 重新生成（TravelGen_v1.md §十五，系统必须保留）
+      description: 只重生成指定镜头；prompt 与现 Shot 不同时先写回分镜，完成后覆盖旧视频结果。
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: shot_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegenerateShotRequest'
+      responses:
+        '202':
+          description: 已受理
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [task_id, shot_id, status]
+                properties:
+                  task_id:
+                    type: string
+                  shot_id:
+                    type: integer
+                  status:
+                    type: string
+                    example: generating
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /api/projects/{project_id}/audio:
+    post:
+      tags: [项目分阶段]
+      operationId: createAudio
+      summary: 生成配音 + 音乐（接口7，本版占位 reserved）
+      responses:
+        '202':
+          description: 占位
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  task_id:
+                    type: string
+                  status:
+                    type: string
+                    example: reserved
+                  voice:
+                    type: object
+                  music:
+                    type: object
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /api/projects/{project_id}/render:
+    post:
+      tags: [项目分阶段]
+      operationId: createRender
+      summary: 合成最终视频（接口8，本版占位 reserved）
+      responses:
+        '202':
+          description: 占位
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  task_id:
+                    type: string
+                  status:
+                    type: string
+                    example: reserved
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /api/projects/{project_id}/render/status:
+    get:
+      tags: [项目分阶段]
+      operationId: getRenderStatus
+      summary: 查询最终成片状态（接口9，本版占位 reserved）
+      responses:
+        '200':
+          description: 占位
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  task_id:
+                    type: string
+                  status:
+                    type: string
+                    example: reserved
+                  progress:
+                    type: integer
+                  video:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        example: reserved
+                      url:
+                        type: string
+                      duration_s:
+                        type: integer
+                      resolution:
+                        type: string
+                      aspect_ratio:
+                        type: string
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /api/kb/search:
+    get:
+      tags: [知识库]
+      operationId: searchKnowledgeBaseV1
+      summary: 知识库检索（V1 体系别名，行为同 /api/v1/kb/search）
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: 检索词（如"西湖"）
+          schema:
+            type: string
+        - name: top_k
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 5
+      responses:
+        '200':
+          description: 检索结果
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/KbEntry'
   /api/v1/kb/search:
     get:
       tags: [知识库]
       operationId: searchKnowledgeBase
-      summary: 知识库检索（可选，供前端"知识点"预览）
+      summary: 知识库检索（旧契约，可选，供前端"知识点"预览）
       parameters:
         - name: q
           in: query
@@ -132,10 +559,240 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
+    Conflict:
+      description: 状态冲突（状态机前置不满足，如分镜未生成就 generate）
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
   schemas:
     Status:
       type: string
       enum: [planning, copywriting, storyboard, generating, audio, composing, done, failed]
+    ProjectStatus:
+      type: string
+      description: V1 项目状态机（POST generate 即确认分镜）
+      enum: [created, planning, waiting_confirm, plan_confirmed, storyboarding,
+             waiting_storyboard_confirm, generating, completed, failed]
+    Project:
+      type: object
+      required: [project_id, status, request]
+      properties:
+        project_id:
+          type: string
+        status:
+          $ref: '#/components/schemas/ProjectStatus'
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
+        message:
+          type: string
+        request:
+          type: object
+          description: 创建入参（scene_type 已归一化为中文枚举）
+        planning:
+          type: object
+        copywriting:
+          $ref: '#/components/schemas/Copywriting'
+        copywriting_text:
+          type: string
+          description: B 文档展示格式（【0-15s】…段落拼接）
+        plan_id:
+          type: string
+          nullable: true
+        script:
+          $ref: '#/components/schemas/Script'
+        storyboard:
+          $ref: '#/components/schemas/Storyboard'
+        visual_assets:
+          $ref: '#/components/schemas/VisualAssets'
+        voice:
+          $ref: '#/components/schemas/Voice'
+        music:
+          $ref: '#/components/schemas/Music'
+        video_tasks:
+          type: array
+          description: 视频任务 ID 列表（追加式，merge 时最新胜出）
+          items:
+            type: string
+        video_clips:
+          type: object
+          description: shot_id → 最新视频结果（由 video_tasks 合并重算）
+          additionalProperties:
+            type: object
+        render:
+          type: object
+        final_video:
+          $ref: '#/components/schemas/FinalVideo'
+        safety:
+          $ref: '#/components/schemas/Safety'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    VideoTask:
+      type: object
+      required: [task_id, project_id, kind, status, shots]
+      properties:
+        task_id:
+          type: string
+          example: vt_20260815_ab12cd
+        project_id:
+          type: string
+        kind:
+          type: string
+          enum: [batch, single]
+          description: batch=批量生成；single=单 Shot 重生成
+        status:
+          type: string
+          enum: [generating, completed, failed]
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
+        message:
+          type: string
+        request:
+          type: object
+          description: 任务请求快照（shot_ids/generate_image/generate_video/regenerate）
+        shots:
+          type: array
+          description: per-shot 生成状态（前端生成进度页直接渲染）
+          items:
+            type: object
+            required: [shot_id, status]
+            properties:
+              shot_id:
+                type: integer
+              status:
+                type: string
+                enum: [pending, generating, completed, failed]
+              image_url:
+                type: string
+                nullable: true
+                description: 分镜图地址（本版恒 null，video-only）
+              video_url:
+                type: string
+                nullable: true
+                description: 视频地址（真实模式为本地转存路径）
+              local_path:
+                type: string
+                nullable: true
+              error:
+                type: string
+                nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    ConfirmPlanRequest:
+      type: object
+      required: [copywriting]
+      properties:
+        copywriting:
+          type: string
+          description: 用户编辑后的旁白文案（可含【0-15s】标记；丢失标记时后端兜底）
+    StoryboardRequest:
+      type: object
+      properties:
+        plan_id:
+          type: string
+          nullable: true
+          description: 可选；与项目当前 plan_id 不匹配时返回 409
+    ShotPatch:
+      type: object
+      description: Shot 部分字段更新（只更新出现的字段）
+      properties:
+        prompt:
+          type: string
+        duration_s:
+          type: integer
+          minimum: 1
+          maximum: 15
+        subject:
+          type: string
+        background:
+          type: string
+        shot_size:
+          type: string
+          enum: [大远景, 全景, 中景, 近景, 特写]
+        camera:
+          type: object
+          properties:
+            type:
+              type: string
+              enum: [航拍, 无人机, 固定机位, 地面机位, 移动机位]
+            movement:
+              type: string
+              enum: [固定, 推, 拉, 摇, 移, 跟, 升降, 环绕]
+            angle:
+              type: string
+              enum: [俯拍, 平拍, 仰拍, 侧拍]
+    GenerateShotsRequest:
+      type: object
+      required: [shots]
+      properties:
+        shots:
+          type: array
+          minItems: 1
+          description: 要生成的镜头编号（int；可先全量再补批）
+          items:
+            type: integer
+        generate_image:
+          type: boolean
+          default: false
+          description: 分镜图（本版接受但 video-only，需图像 API 后续接入）
+        generate_video:
+          type: boolean
+          default: true
+    RegenerateShotRequest:
+      type: object
+      required: [reason]
+      properties:
+        reason:
+          type: string
+          description: 重生成原因（如"人物动作不自然"）
+        prompt:
+          type: string
+          nullable: true
+          description: 可选；与现 Shot 不同时写回分镜并用于新任务
+        keep_style:
+          type: boolean
+          default: true
+    AudioRequest:
+      type: object
+      properties:
+        voice:
+          type: string
+          default: ''
+        music:
+          type: string
+          default: ''
+    RenderRequest:
+      type: object
+      properties:
+        shot_ids:
+          type: array
+          items:
+            type: string
+        voice_url:
+          type: string
+        music_url:
+          type: string
+        subtitle:
+          type: boolean
+          default: true
+        resolution:
+          type: string
+          default: '1080p'
+        aspect_ratio:
+          type: string
+          default: '9:16'
     AssetType:
       type: string
       enum: [image, video, audio]

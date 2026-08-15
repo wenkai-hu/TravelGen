@@ -75,6 +75,13 @@ JSON结构（scene→shot两级，严格遵循）：
 
 RETRY_NOTE = "上一次输出未通过校验，严格按结构约束重新输出（只输出JSON）。具体错误：{errors}"
 
+# V1 场景模板（TravelGen_v1.md §五）：按 scene_type 注入 planner 的内容结构建议
+SCENE_STRUCTURES = {
+    "景区推荐": ["视觉吸引", "核心景观", "特色体验", "文化特色", "游客体验", "行动召唤"],
+    "城市形象宣传": ["城市航拍", "城市地标", "自然风光", "文化特色", "城市生活", "城市精神"],
+    "非遗文化传播": ["文化Hook", "历史背景", "制作/表演过程", "文化特色", "年轻化表达", "文化价值"],
+}
+
 
 class PipelineRunner:
     """任务推进器：run(task) 异步执行，逐步写入 task 各阶段字段。
@@ -133,6 +140,37 @@ class PipelineRunner:
             task.message = f"stage:{task.status} 失败｜{type(e).__name__}: {e}"
         return task
 
+    # ---- V1 分阶段入口（projects 流程用；demo 分流与旧链路一致） ----
+
+    async def generate_plan(self, project):
+        """V1 阶段①：生成创作方案（planning + copywriting/script）。kimi 真实，否则回放。"""
+        if self.kimi:
+            project.planning = await self._planning(project)
+            project.copywriting, project.script = await self._copywriting(project)
+        else:
+            project.planning, project.copywriting, project.script = demo_mod.demo_plan(project.request)
+        return project
+
+    async def generate_storyboard(self, project):
+        """V1 阶段②：基于已确认文案生成分镜（kimi 硬校验重试 1 次，失败 raise；否则回放）。"""
+        if self.kimi:
+            sb, errors = await self._storyboard(project)
+            if sb is None:
+                raise RuntimeError(f"分镜校验未通过: {'；'.join(errors[:4])}")
+            project.storyboard = sb
+        else:
+            project.storyboard = demo_mod.demo_storyboard(project.request)
+        return project
+
+    async def generate_videos(self, project, shot_ids, task=None, on_progress=None):
+        """V1 阶段③：按 shot_ids 子集批量生成视频（seedance 真实，否则模拟）。返回旧格式 clips。
+        task 提供 task_id 作下载文件名（VideoTask）；on_progress(clips, done, total) 同步 per-shot 进度。"""
+        shots = [sh for sc in project.storyboard["scenes"] for sh in sc["shot_list"]
+                 if sh["shot_id"] in shot_ids]
+        if self.seedance is None:
+            return await self._video_simulated(shots)
+        return await self._run_video_jobs(shots, task, on_progress=on_progress)
+
     async def _text_real(self, task):
         """kimi 真实生成：planning → copywriting/script → storyboard（硬校验失败重试 1 次）。"""
         task.planning = await self._planning(task)
@@ -160,6 +198,9 @@ class PipelineRunner:
 
     async def _planning(self, task):
         prompt = PLANNER_PROMPT.format(**task.request)
+        chain = SCENE_STRUCTURES.get(task.request.get("scene_type"))
+        if chain:
+            prompt += f"\n内容结构建议（按场景模板组织 3-5 段）：{' → '.join(chain)}"
         data, err = await self._ask_json([{"role": "system", "content": SYSTEM},
                                           {"role": "user", "content": prompt}])
         if data is None or not data.get("outline"):
@@ -200,28 +241,35 @@ class PipelineRunner:
     # ---- 视频阶段（Seedance 2.0 Pro 真实生成；无 key 时模拟） ----
 
     async def _video(self, storyboard, task):
-        """有 Seedance 配置走真实生成（并发提交+轮询+失败重试+下载），否则模拟。"""
+        """旧一键直出链路：有 Seedance 走真实生成，否则模拟（进度同步到 task 字段）。"""
+        shots = [sh for sc in storyboard["scenes"] for sh in sc["shot_list"]]
         if self.seedance is None:
-            return await self._video_simulated(storyboard)
-        return await self._video_real(storyboard, task)
+            return await self._video_simulated(shots)
 
-    async def _video_simulated(self, storyboard):
+        def sync(clips, done, total):
+            task.video_clips = clips
+            task.progress = 60 + int(done / total * 30)
+            task.message = f"视频生成中 {done}/{total} 完成"
+
+        return await self._run_video_jobs(shots, task, on_progress=sync)
+
+    async def _video_simulated(self, shots):
         clips = []
-        for sc in storyboard["scenes"]:
-            for sh in sc["shot_list"]:
-                clips.append({"shot_id": sh["shot_id"], "task_id": f"cpt-{sh['shot_id']:03d}",
-                              "status": "succeeded", "prompt": sh["prompt"],
-                              "duration_s": sh["duration_s"], "cost_yuan": 0.0,
-                              "note": "simulated（无 Seedance key）"})
-                await asyncio.sleep(0.3)
+        for sh in shots:
+            clips.append({"shot_id": sh["shot_id"], "task_id": f"cpt-{sh['shot_id']:03d}",
+                          "status": "succeeded", "prompt": sh["prompt"],
+                          "duration_s": sh["duration_s"], "cost_yuan": 0.0,
+                          "note": "simulated（无 Seedance key）"})
+            await asyncio.sleep(0.3)
         return clips
 
-    async def _video_real(self, storyboard, task):
-        """Seedance 真实生成：并发提交 → 5s 间隔轮询（最多 60 次）→ failed 自动重试 1 次 → 成功即下载转存。"""
+    async def _run_video_jobs(self, shots, task, on_progress=None):
+        """Seedance 真实生成：并发提交 → 5s 间隔轮询（上限 180 次）→ failed 自动重试 1 次 → 成功即下载转存。
+        task 提供 task_id（下载文件名）；on_progress(clips, done, total) 每轮轮询后回调，None 时跳过进度同步。
+        """
         from . import ark_client
         duration = int(self.seedance.get("duration", 5))
         resolution = self.seedance.get("resolution", "1080p")
-        shots = [sh for sc in storyboard["scenes"] for sh in sc["shot_list"]]
 
         # 1) 并发提交全部镜头
         clips = []
@@ -232,7 +280,8 @@ class PipelineRunner:
                           "prompt": sh["prompt"], "duration_s": duration, "cost_yuan": 1.0})
             if not tid:
                 clips[-1]["error"] = err
-        task.video_clips = clips
+        if on_progress:
+            on_progress(clips, 0, len(clips))
 
         # 2) 轮询直至全部完成（5s 间隔；上限 180 次 = 15 分钟，含失败重试的重新计时）
         total = len(clips)
@@ -269,8 +318,8 @@ class PipelineRunner:
                 else:
                     c["error"] = err
             n_ok = sum(1 for c in clips if c["status"] == "succeeded")
-            task.progress = 60 + int(n_ok / total * 30)
-            task.message = f"视频生成中 {n_ok}/{total} 完成"
+            if on_progress:
+                on_progress(clips, n_ok, total)
         # 触顶兜底：未完成的镜头标记超时（不阻塞任务收尾）
         for c in clips:
             if c["status"] in ("queued", "running"):
