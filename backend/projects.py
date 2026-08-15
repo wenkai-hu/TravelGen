@@ -196,7 +196,7 @@ def merge_video_results(project: Project) -> dict[int, dict]:
 
 
 def recompute_project_status(project: Project):
-    """有进行中的视频任务 → generating；全部终止且全成功 → completed；有失败 → failed；否则不变。"""
+    """有进行中的视频任务 → generating；全部终止且全成功 → completed（progress 顶到 100）；有失败 → failed；否则不变。"""
     active = any(load_video_task(tid) is not None and load_video_task(tid).status == "generating"
                  for tid in project.video_tasks)
     if active:
@@ -204,4 +204,7 @@ def recompute_project_status(project: Project):
         return
     results = merge_video_results(project)
     if results:
-        project.status = "failed" if any(r["status"] == "failed" for r in results.values()) else "completed"
+        if any(r["status"] == "failed" for r in results.values()):
+            project.status = "failed"
+        else:
+            project.status, project.progress, project.message = "completed", 100, "全部镜头生成完成"
