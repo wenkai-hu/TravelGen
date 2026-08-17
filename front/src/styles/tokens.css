@@ -1,0 +1,91 @@
+/* ============================================================
+   TravelGen 前端设计 token（方案：宋韵青绿浅色 + 深色科技预留）
+   浅色编辑页：青绿 + 宣纸米白 + 鎏金点缀（浙江宋韵）
+   深色过程页：墨蓝黑 + 青绿霓虹（生成进度/结果页，后续接入）
+   ============================================================ */
+
+:root {
+  /* —— 宋韵青绿主色 —— */
+  --color-primary: #0f766e;
+  --color-primary-deep: #115e59;
+  --color-primary-light: #e8f2ef;
+  --color-primary-fade: #f0f7f4;
+
+  /* —— 鎏金点缀（克制使用：强调、徽章、进度高亮） —— */
+  --color-gold: #c9a227;
+  --color-gold-light: #e8d9a0;
+
+  /* —— 底色与卡片 —— */
+  --color-bg: #f7f5f0;      /* 宣纸米白 */
+  --color-card: #ffffff;
+  --color-border: #e3ded3;
+
+  /* —— 文字 —— */
+  --color-ink: #1f2937;     /* 墨色正文 */
+  --color-ink-sub: #6b7280; /* 次要文字 */
+
+  /* —— 状态色 —— */
+  --color-success: #2f855a;
+  --color-error: #b03a2e;   /* 朱砂红 */
+
+  /* —— 深色科技区（生成页预留，与浅色区同一青绿血脉） —— */
+  --dark-bg: #0b1220;
+  --dark-card: #111a2e;
+  --dark-glow: #2dd4bf;
+  --dark-gold: #f0b429;
+
+  /* —— 字体 —— */
+  --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', serif;
+  --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+
+  /* —— 通用 —— */
+  --radius: 10px;
+  --shadow-card: 0 6px 24px rgba(15, 118, 110, 0.08);
+  --shadow-card-hover: 0 10px 32px rgba(15, 118, 110, 0.14);
+
+  /* —— 工作台（创意工坊） —— */
+  --slot-bg: #fdfcf8;        /* 槽位底色（暖白，略区别于面板） */
+  --slot-border: #ddd6c8;    /* 槽位描边（暖灰） */
+  --slot-empty: #b8ae9c;     /* 空槽提示文字 */
+  --grid-line: rgba(15, 118, 110, 0.04);  /* 工作台网格线（极淡） */
+}
+
+/* 渐变工具类：青绿主按钮 / 标题文字 */
+.gradient-text {
+  background: linear-gradient(120deg, #0f766e 10%, #17a398 55%, #c9a227 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-btn {
+  background: linear-gradient(120deg, #0f766e, #115e59);
+  color: #fff;
+  border: none;
+}
+.gradient-btn:hover {
+  background: linear-gradient(120deg, #138a80, #0f766e);
+  box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
+}
+
+/* 入场动画（演示节奏） */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fade-up 0.5s ease both; }
+.fade-up-1 { animation: fade-up 0.5s 0.08s ease both; }
+.fade-up-2 { animation: fade-up 0.5s 0.16s ease both; }
+.fade-up-3 { animation: fade-up 0.5s 0.24s ease both; }
+
+/* 成品槽"配方就绪"呼吸金边 */
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0); }
+  50%      { box-shadow: 0 0 22px 2px rgba(201, 162, 39, 0.35); }
+}
+
+/* 合成箭头跳动 */
+@keyframes arrow-nudge {
+  0%, 100% { transform: translateX(0); opacity: 0.85; }
+  50%      { transform: translateX(5px); opacity: 1; }
+}

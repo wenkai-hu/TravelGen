@@ -36,3 +36,8 @@ desktop.ini
 # ===== 临时 =====
 *.tmp
 *.log
+
+# ===== 前端 =====
+front/node_modules/
+front/dist/
+front/.npm-cache/

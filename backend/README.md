@@ -68,3 +68,4 @@ POST /shots/{id}/regenerate（单 Shot 局部重生成，系统必须保留功�
 - **配音/BGM**：`voice`/`music` 为占位字段（V1 接口 7 返回 reserved）
 - **任务存储**：文件落盘实现（轻量），大流量上线换 Redis/DB
 - **知识检索**：关键词子串评分（Phase 5 换向量检索）
+
