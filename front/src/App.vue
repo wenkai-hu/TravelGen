@@ -1,6 +1,5 @@
 <script setup>
 import { NConfigProvider, NMessageProvider, NDialogProvider, zhCN, dateZhCN } from 'naive-ui'
-import HomeView from './views/HomeView.vue'
 
 // Naive UI 主题定制：把组件库主色对齐「宋韵青绿」设计 token
 const themeOverrides = {
@@ -20,7 +19,7 @@ const themeOverrides = {
   <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme-overrides="themeOverrides">
     <NMessageProvider>
       <NDialogProvider>
-        <HomeView />
+        <router-view />
       </NDialogProvider>
     </NMessageProvider>
   </NConfigProvider>

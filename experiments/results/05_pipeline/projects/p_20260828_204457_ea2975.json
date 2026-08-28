@@ -1,0 +1,184 @@
+{
+  "project_id": "p_20260828_204457_ea2975",
+  "status": "plan_confirmed",
+  "progress": 15,
+  "message": "方案已确认",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "西湖游记",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "西湖湖面",
+        "title": "西湖与苏堤全貌",
+        "content": "电影级航拍大远景，清晨西湖全景与苏堤横贯湖面，轻薄晨雾中朝霞将天际与水面染成淡金…",
+        "duration_s": 16
+      },
+      {
+        "section": "湖心区域",
+        "title": "三潭印月石塔",
+        "content": "电影级固定中景，三潭印月三座石塔静静伫立碧绿湖水之中，上午天光云影徘徊于无风水面…",
+        "duration_s": 8
+      },
+      {
+        "section": "西湖南岸",
+        "title": "雷峰塔",
+        "content": "电影级固定仰拍全景，午后雷峰塔巍然矗立于夕照山，阳光照亮金色塔身与深色飞檐，铜铃…",
+        "duration_s": 8
+      },
+      {
+        "section": "断桥白堤",
+        "title": "断桥与白堤游人",
+        "content": "电影级摇镜头全景，午后从断桥桥头缓缓摇向白堤，游人漫步于湖光山色间，湖面泛着幽蓝…",
+        "duration_s": 7
+      },
+      {
+        "section": "曲院风荷",
+        "title": "荷花与雷峰塔",
+        "content": "电影级固定近景，黄昏前荷花娇艳欲滴，粉嫩花瓣与翠绿荷叶占据前景，浅景深中雷峰塔虚…",
+        "duration_s": 8
+      },
+      {
+        "section": "西湖上空",
+        "title": "雷峰夕照与西湖全景",
+        "content": "电影级航拍拉远大远景，雷峰夕照，夕阳将雷峰塔与整片西湖染成绚烂金红色，远山层叠湖…",
+        "duration_s": 7
+      },
+      {
+        "section": "西湖湖畔",
+        "title": "西湖夜景与灯火",
+        "content": "电影级环绕全景，夜幕初降的西湖，沿岸灯火与远处雷峰塔轮廓灯倒映于深蓝湖面，水天一…",
+        "duration_s": 6
+      }
+    ],
+    "plan_summary": "西湖游记"
+  },
+  "copywriting": {
+    "titles": [
+      "无标题"
+    ],
+    "hashtags": [],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "ã0-15sãä¸é¢äºå±±ä¸é¢åï¼6.38å¹³æ¹å¬éçæ¹é¢ï¼ççä¸åº§åææ¸©æçéå¿ã2011å¹´ï¼è¥¿æ¹æåæ¯è§åå¥ä¸çéäº§ââè¿éä¸æ¯å°å­çè¿å¾ï¼æ¯æµå¨ççåå¹´ç¾å­¦ã\nã15-30sãæ¥é£åç»¿èå ¤ï¼é£æ¯èè½¼ç¨ä¸è©çé¨ç­å°±çé¿å·ï¼ç½å ¤æ³è²å¦çï¼èçç½å±æçæ±åæ§æ¢¦ãèµ°è¿æ²é¢é£è·ï¼å¬è¿æ³æµªé»èºï¼è¥¿æ¹åæ¯æ¯æ¶ååç»å¹´è½»äººçåå°æä¹¦ã\nã30-45sãæ­æ¡¥è¾¹ï¼ç­ä¸åºåå¹´ç­ä¸åççé¨ï¼é·å³°å¡ä¸ï¼å¤ç§ä¸ºä¼ è¯´éä¸éè¾¹ãæ¹å¿å°çæ´²ï¼ä¸æ½­å°ææ¡ä½ä¸åäººæ°å¸èåçæè²ââè¿æ¯ä½ æ¶èå¤¹éï¼å¿è¾¾çæµªæ¼«åæ ã\nã45-60sãå±±ä¸å¨ï¼æ°´å¨å¨ï¼å¡ä¸è¯­ï¼é£å¨è¯­ãå½ä½ ç«å¨æ¹è¾¹ï¼6.38å¹³æ¹å¬éçæ³¢åä¼åè¯ä½ ï¼ææçå¥èµ´é½ä¸ºäºè¿ä¸å»çå¹³éãä¸éè¥¿æ¹ï¼å¿ä¸æ­å·ã",
+        "duration_s": 60
+      }
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "ã0-15sãä¸é¢äºå±±ä¸é¢åï¼6.38å¹³æ¹å¬éçæ¹é¢ï¼ççä¸åº§åææ¸©æçéå¿ã2011å¹´ï¼è¥¿æ¹æåæ¯è§åå¥ä¸çéäº§ââè¿éä¸æ¯å°å­çè¿å¾ï¼æ¯æµå¨ççåå¹´ç¾å­¦ã\nã15-30sãæ¥é£åç»¿èå ¤ï¼é£æ¯èè½¼ç¨ä¸è©çé¨ç­å°±çé¿å·ï¼ç½å ¤æ³è²å¦çï¼èçç½å±æçæ±åæ§æ¢¦ãèµ°è¿æ²é¢é£è·ï¼å¬è¿æ³æµªé»èºï¼è¥¿æ¹åæ¯æ¯æ¶ååç»å¹´è½»äººçåå°æä¹¦ã\nã30-45sãæ­æ¡¥è¾¹ï¼ç­ä¸åºåå¹´ç­ä¸åççé¨ï¼é·å³°å¡ä¸ï¼å¤ç§ä¸ºä¼ è¯´éä¸éè¾¹ãæ¹å¿å°çæ´²ï¼ä¸æ½­å°ææ¡ä½ä¸åäººæ°å¸èåçæè²ââè¿æ¯ä½ æ¶èå¤¹éï¼å¿è¾¾çæµªæ¼«åæ ã\nã45-60sãå±±ä¸å¨ï¼æ°´å¨å¨ï¼å¡ä¸è¯­ï¼é£å¨è¯­ãå½ä½ ç«å¨æ¹è¾¹ï¼6.38å¹³æ¹å¬éçæ³¢åä¼åè¯ä½ ï¼ææçå¥èµ´é½ä¸ºäºè¿ä¸å»çå¹³éãä¸éè¥¿æ¹ï¼å¿ä¸æ­å·ã",
+        "start_s": 0,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {},
+  "plan_id": "plan_p_20260828_204457_ea2975_v1",
+  "plan_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-28T12:44:57.253020+00:00",
+  "updated_at": "2026-08-28T12:45:15.552878+00:00",
+  "copywriting_text": "【0-60s】ã0-15sãä¸é¢äºå±±ä¸é¢åï¼6.38å¹³æ¹å¬éçæ¹é¢ï¼ççä¸åº§åææ¸©æçéå¿ã2011å¹´ï¼è¥¿æ¹æåæ¯è§åå¥ä¸çéäº§ââè¿éä¸æ¯å°å­çè¿å¾ï¼æ¯æµå¨ççåå¹´ç¾å­¦ã\nã15-30sãæ¥é£åç»¿èå ¤ï¼é£æ¯èè½¼ç¨ä¸è©çé¨ç­å°±çé¿å·ï¼ç½å ¤æ³è²å¦çï¼èçç½å±æçæ±åæ§æ¢¦ãèµ°è¿æ²é¢é£è·ï¼å¬è¿æ³æµªé»èºï¼è¥¿æ¹åæ¯æ¯æ¶ååç»å¹´è½»äººçåå°æä¹¦ã\nã30-45sãæ­æ¡¥è¾¹ï¼ç­ä¸åºåå¹´ç­ä¸åççé¨ï¼é·å³°å¡ä¸ï¼å¤ç§ä¸ºä¼ è¯´éä¸éè¾¹ãæ¹å¿å°çæ´²ï¼ä¸æ½­å°ææ¡ä½ä¸åäººæ°å¸èåçæè²ââè¿æ¯ä½ æ¶èå¤¹éï¼å¿è¾¾çæµªæ¼«åæ ã\nã45-60sãå±±ä¸å¨ï¼æ°´å¨å¨ï¼å¡ä¸è¯­ï¼é£å¨è¯­ãå½ä½ ç«å¨æ¹è¾¹ï¼6.38å¹³æ¹å¬éçæ³¢åä¼åè¯ä½ ï¼ææçå¥èµ´é½ä¸ºäºè¿ä¸å»çå¹³éãä¸éè¥¿æ¹ï¼å¿ä¸æ­å·ã",
+  "video_clips": {}
+}

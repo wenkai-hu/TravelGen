@@ -22,15 +22,19 @@ PLANNER_PROMPT = """你是浙江文旅视频策划。请为以下需求生成内
 补充要求：{description}
 只输出严格JSON：{{"outline":[{{"section":"段落标题","title":"小节名","content":"要点描述","duration_s":秒数}}]}}"""
 
-COPYWRITING_PROMPT = """你是一位浙江文旅宣传片资深编导。请为【{city}·{location}】撰写【{duration_s}秒】宣传视频的旁白文案。
+COPYWRITING_PROMPT = """你是一位浙江文旅宣传片资深编导。请依据【创作方案大纲】，为【{city}·{location}】撰写【{duration_s}秒】宣传视频的旁白文案。
+
+【创作方案大纲】
+{planning}
 
 要求：
-1. 开头3秒抓人，结尾有记忆点金句；全篇情绪有起伏（引入-展开-高潮-收尾）
-2. 必须融入真实文旅信息（可从下方知识库资料取材，禁止编造数据/典故）
-3. 风格：【{style}】；目标人群：【{audience}】；主题：【{theme}】
-4. 补充要求：{description}
-5. 输出格式：分4段，每段标注起止秒数（如【0-15s】），全文250-300字
-6. 同时输出：2个备选标题（用于封面）+ 3个传播话题标签
+1. 每段文案严格对应大纲的一个 section，段落顺序、起止秒数与大纲对齐（大纲每段秒数见上）
+2. 开头3秒抓人，结尾有记忆点金句；全篇情绪随大纲的引入-展开-高潮-收尾节奏起伏
+3. 必须融入真实文旅信息（可从下方知识库资料取材，禁止编造数据/典故）
+4. 风格：【{style}】；目标人群：【{audience}】；主题：【{theme}】
+5. 补充要求：{description}
+6. 输出格式：分 N 段（N=大纲 section 数），每段标注起止秒数（如【0-15s】），全文250-300字
+7. 同时输出：2个备选标题（用于封面）+ 3个传播话题标签
 
 【知识库资料】
 {knowledge}"""
@@ -210,7 +214,11 @@ class PipelineRunner:
     async def _copywriting(self, task):
         req = task.request
         knowledge = knowledge_text(req)
-        prompt = COPYWRITING_PROMPT.format(knowledge=knowledge, **req)
+        planning = "\n".join(
+            f"{i+1}. {o.get('section', '')}｜{o.get('title', '')}（{o.get('duration_s', '')}s）：{o.get('content', '')}"
+            for i, o in enumerate(task.planning.get("outline", []))) \
+            or "（未提供大纲，请按 引入-展开-高潮-收尾 自行组织 4 段）"
+        prompt = COPYWRITING_PROMPT.format(planning=planning, knowledge=knowledge, **req)
         text = await self._ask([{"role": "system", "content": SYSTEM},
                                 {"role": "user", "content": prompt}])
         if not text:
@@ -360,12 +368,20 @@ def _parse_cw(text):
         paragraphs.append({"idx": len(paragraphs) + 1,
                            "text": m.group(3).strip().replace("\n", ""),
                            "duration_s": end - start})
-    titles = re.findall(r"\d+\.\s*《(.+?)》", text)
+    titles = re.findall(r"\d+\.\s*《(.+?)》", text) + re.findall(r"《(.+?)》", text)
     if not titles:
-        titles = re.findall(r"《(.+?)》", text)  # 无编号的书名号标题
-    if not titles:
-        titles = re.findall(r"标题[：:]\s*([^\n《]+)", text)
-    if not titles:
-        titles = ["无标题"]  # 兜底：绝不抓段落时间戳当标题
+        # 兜底①：kimi 常输出「标题：\n**候选一**\n**候选二**」或「标题：候选一、候选二」
+        m = re.search(r"(?:标题|备选标题)[：:]\s*([\s\S]*?)(?=\n\s*#|\n\s*[-—=]{3,}|$)", text)
+        block = m.group(1) if m else ""
+        titles = [ln.strip() for ln in re.split(r"\n|、|,|，", block) if ln.strip()]
+    # 统一清洗：剥 markdown ** / 书名号 / 首尾空白，去空去重（防「**」脏标题）
+    cleaned = []
+    for t in titles:
+        s = re.search(r"《(.+?)》", t)
+        s = s.group(1) if s else t
+        s = s.replace("*", "").strip().strip("\"'“”「」")
+        if s and s not in cleaned:
+            cleaned.append(s)
+    titles = cleaned or ["无标题"]  # 兜底②：绝不抓段落时间戳当标题
     tags = re.findall(r"#\S+", text)
     return {"titles": titles[:2], "paragraphs": paragraphs, "hashtags": tags[:3]}

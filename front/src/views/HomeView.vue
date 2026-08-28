@@ -1,5 +1,6 @@
 <script setup>
 import { computed, reactive, ref } from "vue";
+import { useRouter } from "vue-router";
 import {
   NAlert,
   NButton,
@@ -22,6 +23,7 @@ import {
 } from "../constants";
 
 const message = useMessage();
+const router = useRouter();
 
 // ── 配方（表单）—— 与后端 schemas.py GenerateRequest 一一对应 ──
 const form = reactive({
@@ -155,6 +157,7 @@ async function onSubmit() {
     created.value = data;
     sessionStorage.setItem("travelgen_project_id", data.project_id);
     message.success("锻造开始！AI 正在生成创作方案…");
+    router.push(`/plan/${data.project_id}`);
   } catch (e) {
     submitError.value =
       e.code === "invalid_param"
@@ -466,8 +469,7 @@ async function onSubmit() {
             :bordered="false"
           >
             项目已创建：<b>{{ created.project_id }}</b
-            >（{{ created.status }}）。方案生成中，
-            下一步进入「方案确认页」（待开发）。
+            >（{{ created.status }}）。正在跳转方案确认页…
           </NAlert>
           <NAlert
             v-if="submitError"
@@ -1113,10 +1115,16 @@ async function onSubmit() {
 .craft-btn {
   font-size: 16px;
   letter-spacing: 3px;
-  background: linear-gradient(120deg, #0f766e, #115e59) !important;
+  background: #fff !important;
+  color: var(--color-primary) !important;
+  border: 1px solid var(--color-gold) !important;
+  transition: all 0.25s ease;
 }
 .craft-btn:hover {
-  box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
+  background: var(--color-gold) !important;
+  color: #fff !important;
+  border-color: var(--color-gold) !important;
+  box-shadow: 0 6px 18px rgba(201, 162, 39, 0.35); /* 金辉，呼应卡片 ready 金边 */
 }
 
 .result-alert {

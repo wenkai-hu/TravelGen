@@ -1,0 +1,203 @@
+{
+  "project_id": "p_20260829_004747_869a39",
+  "status": "waiting_confirm",
+  "progress": 10,
+  "message": "方案待确认",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "西湖边的古诗",
+    "audience": "小学生",
+    "style": "青春活力",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "确保小学生看的明白",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "古诗密码大发现",
+        "content": "用快节奏剪辑展示西湖四季美景（荷花、断桥、湖水），配合动感音乐抛出悬念：这里不只是网红景点，还是一座巨大的“古诗实景课堂”！屏幕弹出小学生课本里熟悉的诗句片段，吸引注意力。",
+        "duration_s": 8
+      },
+      {
+        "section": "展开",
+        "title": "古人朋友圈打卡地",
+        "content": "对应真实景观解读三首小学生必背古诗：夏天曲院风荷对应杨万里“接天莲叶无穷碧”；晴雨天湖面对应苏轼“淡妆浓抹总相宜”；春日白堤对应白居易“绿杨阴里白沙堤”。用动画字幕和童趣旁白解释：这些就是古人写的“朋友圈文案”。",
+        "duration_s": 22
+      },
+      {
+        "section": "高潮",
+        "title": "边逛边玩来集章",
+        "content": "展示小学生的沉浸式玩法：在西湖十景打卡点寻找古诗碑刻拍照，参与“诗词寻宝”互动游戏，骑单车经过苏堤时大声背诵对应的诗句。强调“现场背诗=解锁隐藏风景”，让文化体验变得像闯关一样酷。",
+        "duration_s": 20
+      },
+      {
+        "section": "收尾",
+        "title": "你的西湖诗作",
+        "content": "号召小朋友带上课本里的古诗来西湖找“同款风景”，拍摄自己的古诗打卡vlog。结尾用青春活力的口号收束：来西湖，让课本里的古诗“活”起来！",
+        "duration_s": 10
+      }
+    ],
+    "plan_summary": "西湖边的古诗"
+  },
+  "copywriting": {
+    "titles": [
+      "**"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "快闪：荷花、断桥、碧湖炸屏！嘿，你以为西湖只是拍照打卡地？课本诗句弹窗预警——错！这里可是小学生必背的“古诗实景课堂”！",
+        "duration_s": 8
+      },
+      {
+        "idx": 2,
+        "text": "夏天直冲曲院风荷，杨万里早就晒过图：接天莲叶无穷碧！晴天雨天环湖走，苏轼发过“朋友圈”：淡妆浓抹总相宜！春天漫步白堤，白居易文案超绝：绿杨阴里白沙堤！原来古人逛西湖，句句都是“爆款文案”！",
+        "duration_s": 22
+      },
+      {
+        "idx": 3,
+        "text": "现在换你当主角！在西湖十景寻古诗碑刻，拍照集章；玩转“诗词寻宝”，背对一句解锁隐藏机位！骑单车刷过苏堤，边骑边背超带感！这座6.38平方千米的5A级景区，环湖公园还免费开放——背好古诗，零元闯关世界遗产！",
+        "duration_s": 20
+      },
+      {
+        "idx": 4,
+        "text": "带上语文课本，来西湖拍你的“古诗同款”Vlog！记住我们的口号——来西湖，让课本里的古诗，活起来！",
+        "duration_s": 10
+      }
+    ],
+    "hashtags": [
+      "#西湖诗词寻宝记",
+      "#跟着课本游西湖",
+      "#小学生西湖打卡挑战"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "快闪：荷花、断桥、碧湖炸屏！嘿，你以为西湖只是拍照打卡地？课本诗句弹窗预警——错！这里可是小学生必背的“古诗实景课堂”！",
+        "start_s": 0,
+        "end_s": 8
+      },
+      {
+        "line_id": 2,
+        "text": "夏天直冲曲院风荷，杨万里早就晒过图：接天莲叶无穷碧！晴天雨天环湖走，苏轼发过“朋友圈”：淡妆浓抹总相宜！春天漫步白堤，白居易文案超绝：绿杨阴里白沙堤！原来古人逛西湖，句句都是“爆款文案”！",
+        "start_s": 8,
+        "end_s": 30
+      },
+      {
+        "line_id": 3,
+        "text": "现在换你当主角！在西湖十景寻古诗碑刻，拍照集章；玩转“诗词寻宝”，背对一句解锁隐藏机位！骑单车刷过苏堤，边骑边背超带感！这座6.38平方千米的5A级景区，环湖公园还免费开放——背好古诗，零元闯关世界遗产！",
+        "start_s": 30,
+        "end_s": 50
+      },
+      {
+        "line_id": 4,
+        "text": "带上语文课本，来西湖拍你的“古诗同款”Vlog！记住我们的口号——来西湖，让课本里的古诗，活起来！",
+        "start_s": 50,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-28T16:47:47.456008+00:00",
+  "updated_at": "2026-08-28T16:49:13.998509+00:00",
+  "copywriting_text": "【0-8s】快闪：荷花、断桥、碧湖炸屏！嘿，你以为西湖只是拍照打卡地？课本诗句弹窗预警——错！这里可是小学生必背的“古诗实景课堂”！\n【8-30s】夏天直冲曲院风荷，杨万里早就晒过图：接天莲叶无穷碧！晴天雨天环湖走，苏轼发过“朋友圈”：淡妆浓抹总相宜！春天漫步白堤，白居易文案超绝：绿杨阴里白沙堤！原来古人逛西湖，句句都是“爆款文案”！\n【30-50s】现在换你当主角！在西湖十景寻古诗碑刻，拍照集章；玩转“诗词寻宝”，背对一句解锁隐藏机位！骑单车刷过苏堤，边骑边背超带感！这座6.38平方千米的5A级景区，环湖公园还免费开放——背好古诗，零元闯关世界遗产！\n【50-60s】带上语文课本，来西湖拍你的“古诗同款”Vlog！记住我们的口号——来西湖，让课本里的古诗，活起来！",
+  "video_clips": {}
+}

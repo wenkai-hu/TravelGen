@@ -14,6 +14,8 @@
   /* —— 鎏金点缀（克制使用：强调、徽章、进度高亮） —— */
   --color-gold: #c9a227;
   --color-gold-light: #e8d9a0;
+  --color-gold-ink: #7a5d12;   /* 浅金底上的深金文字（标签/话题） */
+  --color-gold-fade: #fdf9ec;  /* 话题标签的奶油底 */
 
   /* —— 底色与卡片 —— */
   --color-bg: #f7f5f0;      /* 宣纸米白 */

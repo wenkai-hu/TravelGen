@@ -163,6 +163,11 @@ async def confirm_plan(pid: str, req: ConfirmPlanRequest):
         cw = {"titles": cw["titles"], "hashtags": cw["hashtags"],
               "paragraphs": [{"idx": 1, "text": req.copywriting.strip(),
                               "duration_s": project.request.get("duration_s", 60)}]}
+    # 发布素材保真：用户文本不含《》/# 时 _parse_cw 抓不到标题/标签，沿用确认前生成的（供成片发布展示）
+    if cw["titles"] == ["无标题"] and project.copywriting.get("titles"):
+        cw["titles"] = project.copywriting["titles"]
+    if not cw["hashtags"] and project.copywriting.get("hashtags"):
+        cw["hashtags"] = project.copywriting["hashtags"]
     project.copywriting = cw
     project.script = parse_script(cw)
     project.plan_version += 1
