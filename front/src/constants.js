@@ -11,6 +11,7 @@ export const SCENE_TYPES = [
 
 export const ASPECT_RATIOS = ['9:16', '16:9', '1:1']
 export const RESOLUTIONS = ['720p', '1080p']
+export const VIDEO_MODELS = ['seedance-2.0', 'seedance-2.0-pro']
 
 // 时长：与后端 schemas.py Field(60, ge=15, le=120) 对齐
 export const DURATION_RANGE = { min: 15, max: 120, default: 60 }
