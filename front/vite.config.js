@@ -12,6 +12,11 @@ export default defineConfig({
         target: 'http://127.0.0.1:8000',
         changeOrigin: true,
       },
+      // 视频转存 assets/videos/ 由后端静态挂载（backend/app.py），前端经 /assets 代理直接播放
+      '/assets': {
+        target: 'http://127.0.0.1:8000',
+        changeOrigin: true,
+      },
     },
   },
 })

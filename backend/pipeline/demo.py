@@ -87,7 +87,7 @@ async def run_demo(task):
     task.status, task.progress, task.message = "copywriting", 20, "生成宣传文案"
     await asyncio.sleep(0.6)
 
-    task.status, task.progress, task.message = "storyboard", 40, "拆分分镜（JSON 硬校验）"
+    task.status, task.progress, task.message = "storyboard", 40, "正在拆分分镜…"
     task.storyboard = demo_storyboard(task.request)
     await asyncio.sleep(0.6)
 

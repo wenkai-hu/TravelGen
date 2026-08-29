@@ -1,0 +1,358 @@
+{
+  "project_id": "p_20260830_000357_a65350",
+  "status": "completed",
+  "progress": 100,
+  "message": "全部镜头生成完成",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "西湖旅游",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "湖光启幕",
+        "content": "电影级航拍晨曦雾霭中的西湖全景，快速剪辑雷峰塔剪影、断桥轮廓、湖面碎金与远山如黛；配合大气磅礴的配乐节奏点，3秒内建立‘人间天堂’的唯美第一印象，抓住年轻观众视觉注意力。",
+        "duration_s": 8
+      },
+      {
+        "section": "展开",
+        "title": "画卷漫游",
+        "content": "以第一人称年轻游客视角展开：漫步苏堤春晓、泛舟三潭印月、倚坐平湖秋月长椅；穿插手摇船波纹、龙井茶歇、荷风送香与柳浪闻莺等四季意象，展现‘淡妆浓抹总相宜’的景观层次与治愈感体验。",
+        "duration_s": 20
+      },
+      {
+        "section": "高潮",
+        "title": "古今入梦",
+        "content": "从白堤日落转至宋韵风雅与西湖夜景：汉服游园、市集灯火、雨雾西湖等氛围场景交织；用慢镜头捕捉水波、倒影与人物情绪，强化‘每一帧都是壁纸’的视觉高潮，传递‘西湖是流动诗篇’的情感共鸣。",
+        "duration_s": 20
+      },
+      {
+        "section": "收尾",
+        "title": "心动启程",
+        "content": "以年轻化诗意金句‘你失约的西湖，我替你看了’或‘总要来杭州吹吹西湖的风’落版，配合日落金辉、飞鸟掠湖与品牌标识；引导搜索‘西湖打卡攻略’，发出行动召唤，余韵悠长。",
+        "duration_s": 12
+      }
+    ],
+    "plan_summary": "西湖旅游"
+  },
+  "copywriting": {
+    "titles": [
+      "你失约的西湖，我替你看了",
+      "总要来杭州吹吹西湖的风"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "若人间真有天堂，定是这6.38平方千米的波光万丈。雷峰塔剪破晨雾，断桥静卧——杭州西湖，2011年列入世界遗产的东方长卷。",
+        "duration_s": 8
+      },
+      {
+        "idx": 2,
+        "text": "我步入这幅画卷：漫步苏堤春晓，柳浪闻莺声声入耳；泛舟三潭印月，触摸1089年苏轼立下的石塔，一十八轮月圆印在水渊。一元纸币背面的风景，就在眼前。倚坐平湖秋月，品龙井、赏荷风——这座2002年起免票开放的5A级景区，用千年湖光治愈年轻的心事。",
+        "duration_s": 20
+      },
+      {
+        "idx": 3,
+        "text": "白堤日落，雷峰夕照铺满金色。吴越王钱俶建塔的北宋初年，白娘子传说写就千年爱情。我着汉服穿行宋韵灯火，雨雾西湖晕染成画——每一帧水波倒影，都是壁纸；每一眼，都是流动的诗篇。",
+        "duration_s": 20
+      },
+      {
+        "idx": 4,
+        "text": "你失约的西湖，我替你看了。但雷峰夕照与三潭印月的圆满，总要亲自来见。搜索西湖打卡攻略——世界遗产的6.38平方千米，等你入画。",
+        "duration_s": 12
+      }
+    ],
+    "hashtags": [
+      "#西湖打卡攻略",
+      "#你失约的西湖我替你看了",
+      "#杭州西湖"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "若人间真有天堂，定是这6.38平方千米的波光万丈。雷峰塔剪破晨雾，断桥静卧——杭州西湖，2011年列入世界遗产的东方长卷。",
+        "start_s": 0,
+        "end_s": 8
+      },
+      {
+        "line_id": 2,
+        "text": "我步入这幅画卷：漫步苏堤春晓，柳浪闻莺声声入耳；泛舟三潭印月，触摸1089年苏轼立下的石塔，一十八轮月圆印在水渊。一元纸币背面的风景，就在眼前。倚坐平湖秋月，品龙井、赏荷风——这座2002年起免票开放的5A级景区，用千年湖光治愈年轻的心事。",
+        "start_s": 8,
+        "end_s": 28
+      },
+      {
+        "line_id": 3,
+        "text": "白堤日落，雷峰夕照铺满金色。吴越王钱俶建塔的北宋初年，白娘子传说写就千年爱情。我着汉服穿行宋韵灯火，雨雾西湖晕染成画——每一帧水波倒影，都是壁纸；每一眼，都是流动的诗篇。",
+        "start_s": 28,
+        "end_s": 48
+      },
+      {
+        "line_id": 4,
+        "text": "你失约的西湖，我替你看了。但雷峰夕照与三潭印月的圆满，总要亲自来见。搜索西湖打卡攻略——世界遗产的6.38平方千米，等你入画。",
+        "start_s": 48,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "杭州西湖世界遗产宣传片",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "西湖上空",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 7,
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "西湖全景与雷峰塔",
+            "background": "朝霞晨雾",
+            "prompt": "电影级航拍大远景，清晨杭州西湖全景，6.38平方千米湖面波光万丈，金色朝霞穿透稀薄晨雾，雷峰塔塔尖剪破雾霭，湖面倒映暖色天光，超写实摄影质感，8k分辨率，东方美学长卷氛围"
+          },
+          {
+            "shot_id": 2,
+            "duration_s": 6,
+            "camera": {
+              "type": "无人机",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "断桥",
+            "background": "湖面与远山",
+            "prompt": "电影级无人机全景平拍，清晨薄雾中西湖断桥静卧湖面，石拱桥弧线优美，远山如黛隐约可见，湖面如镜倒映桥身与柳丝，柔和晨光，清新治愈色调，写实风格"
+          }
+        ]
+      },
+      {
+        "scene_id": 2,
+        "location": "苏堤及三潭印月",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 7,
+            "camera": {
+              "type": "地面机位",
+              "movement": "跟",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "游人漫步苏堤",
+            "background": "垂柳与桃林",
+            "prompt": "电影级地面机位中景跟拍，上午明媚阳光中游人漫步苏堤春晓，两侧垂柳新绿如烟，柳浪闻莺鸟语花香，春日生机盎然，自然光晕，浅景深，纪录片质感"
+          },
+          {
+            "shot_id": 4,
+            "duration_s": 9,
+            "camera": {
+              "type": "无人机",
+              "movement": "环绕",
+              "angle": "俯拍"
+            },
+            "shot_size": "全景",
+            "subject": "三潭印月石塔与游船",
+            "background": "碧绿湖水",
+            "prompt": "电影级无人机全景俯拍环绕，上午泛舟西湖三潭印月，三座北宋石塔矗立碧波，游船轻摇，塔身倒影与波光纹理清晰，湖水翠绿通透，一元纸币同款经典构图，超高清细节"
+          }
+        ]
+      },
+      {
+        "scene_id": 3,
+        "location": "平湖秋月",
+        "time": "午后",
+        "shot_list": [
+          {
+            "shot_id": 5,
+            "duration_s": 7,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "近景",
+            "subject": "女子倚坐品龙井",
+            "background": "荷塘与湖光",
+            "prompt": "电影级固定机位近景，午后平湖秋月亭台，女子倚坐石栏品龙井茶，近处荷叶田田随风轻摆，柔和侧光洒落茶汤与杯盏，温暖闲适氛围，浅景深虚化背景粼粼湖光"
+          }
+        ]
+      },
+      {
+        "scene_id": 4,
+        "location": "白堤",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 6,
+            "duration_s": 8,
+            "camera": {
+              "type": "地面机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "汉服女子穿行白堤",
+            "background": "雷峰夕照金色湖面",
+            "prompt": "电影级地面机位全景横移，黄昏白堤日落时分，雷峰夕照铺满金色湖面，汉服女子缓步穿行堤岸柳荫，夕阳勾勒人物与塔影轮廓，宋韵古风氛围，暖金光线，史诗感"
+          }
+        ]
+      },
+      {
+        "scene_id": 5,
+        "location": "雷峰塔及西湖水面",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 7,
+            "duration_s": 9,
+            "camera": {
+              "type": "航拍",
+              "movement": "拉",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "雨雾西湖水波倒影",
+            "background": "雷峰塔与远山",
+            "prompt": "电影级航拍大远景俯拍拉远，黄昏细雨雾霭中的西湖，湖面水波倒影如镜，雷峰塔浸染金色夕照，远处三潭石塔隐约浮现，水墨晕染与超写实结合，每一帧如壁纸，诗意流动"
+          },
+          {
+            "shot_id": 8,
+            "duration_s": 7,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "雷峰塔与三潭印月遥相呼应",
+            "background": "金色暮光湖面",
+            "prompt": "电影级固定机位全景平拍，黄昏日落时分西湖，雷峰夕照与三潭印月石塔遥相呼应于金色湖面，圆满光影倒映水中，暮光将天际与湖水染成暖金色，静谧神圣，世界遗产的东方长卷收尾，8k超高清"
+          }
+        ]
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260830_000357_a65350_v1",
+  "plan_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [
+    "vt_20260830_003542_9200b2"
+  ],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-29T16:03:57.660195+00:00",
+  "updated_at": "2026-08-29T17:27:41.712631+00:00",
+  "copywriting_text": "【0-8s】若人间真有天堂，定是这6.38平方千米的波光万丈。雷峰塔剪破晨雾，断桥静卧——杭州西湖，2011年列入世界遗产的东方长卷。\n【8-28s】我步入这幅画卷：漫步苏堤春晓，柳浪闻莺声声入耳；泛舟三潭印月，触摸1089年苏轼立下的石塔，一十八轮月圆印在水渊。一元纸币背面的风景，就在眼前。倚坐平湖秋月，品龙井、赏荷风——这座2002年起免票开放的5A级景区，用千年湖光治愈年轻的心事。\n【28-48s】白堤日落，雷峰夕照铺满金色。吴越王钱俶建塔的北宋初年，白娘子传说写就千年爱情。我着汉服穿行宋韵灯火，雨雾西湖晕染成画——每一帧水波倒影，都是壁纸；每一眼，都是流动的诗篇。\n【48-60s】你失约的西湖，我替你看了。但雷峰夕照与三潭印月的圆满，总要亲自来见。搜索西湖打卡攻略——世界遗产的6.38平方千米，等你入画。",
+  "video_clips": {
+    "1": {
+      "shot_id": 1,
+      "task_id": "vt_20260830_003542_9200b2",
+      "status": "completed",
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    }
+  }
+}

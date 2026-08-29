@@ -121,8 +121,12 @@ def validate_shot_patch(patch):
     return not errors, errors, patch
 
 
-def validate_and_normalize(text):
-    """完整校验 + 归一化；返回 (ok, errors, data)。ok 时 data 为归一化后的分镜数据。"""
+def validate_and_normalize(text, target_s=60):
+    """完整校验 + 归一化；返回 (ok, errors, data)。ok 时 data 为归一化后的分镜数据。
+
+    target_s 为成片目标时长（用户输入 duration_s），总时长容差取 max(5s, 目标10%)，
+    而非写死 60±5，否则非 60s 请求会被误拒。
+    """
     data, err = extract_json(text)
     if data is None:
         return False, [err], None
@@ -152,8 +156,9 @@ def validate_and_normalize(text):
     if not 6 <= len(shots) <= 8:
         errors.append(f"镜头总数 {len(shots)} 超出 6-8")
     total = sum(sh.get("duration_s", 0) for sh in shots if isinstance(sh.get("duration_s"), int))
-    if not 55 <= total <= 65:
-        errors.append(f"总时长 {total}s 超出 60±5")
+    tol = max(5, round(target_s * 0.1))
+    if not target_s - tol <= total <= target_s + tol:
+        errors.append(f"总时长 {total}s 超出目标 {target_s}s±{tol}")
 
     return not errors, errors, data
 

@@ -1,0 +1,204 @@
+{
+  "project_id": "p_20260829_093235_f396a2",
+  "status": "plan_confirmed",
+  "progress": 15,
+  "message": "方案已确认",
+  "request": {
+    "city": "嘉兴",
+    "location": "南湖",
+    "scene_type": "景区推荐",
+    "theme": "南湖红色故事",
+    "audience": "小学生",
+    "style": "文艺清新",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "一叶南湖",
+        "content": "晨光漫过柳梢，画舫剪开碧波。以小学生好奇视角发问：这片温柔的水，究竟藏着怎样的故事？用柳叶、水纹、远帆等清新意象建立视觉吸引，营造轻快的探索氛围。",
+        "duration_s": 12
+      },
+      {
+        "section": "展开",
+        "title": "寻踪红船",
+        "content": "跟随镜头漫步湖心岛，烟雨楼倒映水面，古榕垂下绿帘。重点呈现泊岸的红船——它不是普通的船，而是一艘‘载梦之舟’。用孩子能共鸣的语言，将建筑之美与红船标志温和关联。",
+        "duration_s": 15
+      },
+      {
+        "section": "高潮",
+        "title": "百年星火",
+        "content": "透过舱窗的光影，温柔回溯1921年的夏天。避开沉重术语，用故事化口吻讲述：一群年轻人围坐灯下，为了让以后的小朋友都能安心读书、快乐吃糖，在这里悄悄点亮了一盏灯。画面温暖明亮，突出‘希望’与‘守护’。",
+        "duration_s": 18
+      },
+      {
+        "section": "收尾",
+        "title": "童心向党",
+        "content": "切回现代南湖，红领巾们在岸边放纸船、追清风。画外音轻声邀请：来南湖听风看水，让小小红船载着你的梦想，从这里启航。以清新空镜配合景区信息，留下余韵。",
+        "duration_s": 15
+      }
+    ],
+    "plan_summary": "南湖红色故事"
+  },
+  "copywriting": {
+    "titles": [
+      "嘉兴南湖：等你上船，载梦启航",
+      "小朋友，南湖有艘会讲故事的船"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "引入｜一叶南湖嗨，小朋友，你见过会讲故事的湖水吗？那是江南三大名湖之一的南湖。晨光漫过柳梢，画舫剪开碧波，柳叶牵着风。这片温柔的水，藏着怎样的故事？",
+        "duration_s": 12
+      },
+      {
+        "idx": 2,
+        "text": "展开｜寻踪红船跟我踏上湖心岛，烟雨楼倒映在波光里，古榕垂下绿帘。那艘泊在楼前的红船，长16米，是单夹弄丝网船。它不只是一艘船，更是满载梦想的载梦之舟。",
+        "duration_s": 15
+      },
+      {
+        "idx": 3,
+        "text": "高潮｜百年星火透过舱窗的光影，温柔回溯1921年的夏天。一群年轻的大哥哥围坐灯下，商量一件大事——为了让小朋友都能安心读书、快乐吃糖，他们悄悄点亮了一盏灯。这盏灯穿越百年，是守护，也是希望。",
+        "duration_s": 18
+      },
+      {
+        "idx": 4,
+        "text": "收尾｜童心向党如今，红领巾们在岸边放纸船、追清风，笑声洒满湖面。来南湖听风看水吧，让小小红船载着你的梦想，从这里启航。嘉兴南湖，等你上船。",
+        "duration_s": 15
+      }
+    ],
+    "hashtags": [
+      "#嘉兴南湖红船梦#",
+      "#小学生游嘉兴#",
+      "#载梦之舟从南湖出发#"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "引入｜一叶南湖嗨，小朋友，你见过会讲故事的湖水吗？那是江南三大名湖之一的南湖。晨光漫过柳梢，画舫剪开碧波，柳叶牵着风。这片温柔的水，藏着怎样的故事？",
+        "start_s": 0,
+        "end_s": 12
+      },
+      {
+        "line_id": 2,
+        "text": "展开｜寻踪红船跟我踏上湖心岛，烟雨楼倒映在波光里，古榕垂下绿帘。那艘泊在楼前的红船，长16米，是单夹弄丝网船。它不只是一艘船，更是满载梦想的载梦之舟。",
+        "start_s": 12,
+        "end_s": 27
+      },
+      {
+        "line_id": 3,
+        "text": "高潮｜百年星火透过舱窗的光影，温柔回溯1921年的夏天。一群年轻的大哥哥围坐灯下，商量一件大事——为了让小朋友都能安心读书、快乐吃糖，他们悄悄点亮了一盏灯。这盏灯穿越百年，是守护，也是希望。",
+        "start_s": 27,
+        "end_s": 45
+      },
+      {
+        "line_id": 4,
+        "text": "收尾｜童心向党如今，红领巾们在岸边放纸船、追清风，笑声洒满湖面。来南湖听风看水吧，让小小红船载着你的梦想，从这里启航。嘉兴南湖，等你上船。",
+        "start_s": 45,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {},
+  "plan_id": "plan_p_20260829_093235_f396a2_v1",
+  "plan_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "嘉兴南湖",
+        "path": "images/jx-nanhu_1.jpg",
+        "url": "https://unsplash.com/photos/a-park-bench-sitting-next-to-a-lake-Zm1YRN5nAe8",
+        "license": "Unsplash License",
+        "alt": "A park bench sitting next to a lake"
+      },
+      {
+        "name": "嘉兴南湖",
+        "path": "images/jx-nanhu_2.jpg",
+        "url": "https://unsplash.com/photos/lush-green-trees-frame-a-serene-pond-y5-vubcffJc",
+        "license": "Unsplash License",
+        "alt": "Lush green trees frame a serene pond."
+      },
+      {
+        "name": "嘉兴南湖",
+        "path": "images/jx-nanhu_3.jpg",
+        "url": "https://unsplash.com/photos/trees-and-a-tent-reflected-in-the-water-t2ZJJUugMnY",
+        "license": "Unsplash License",
+        "alt": "Trees and a tent reflected in the water"
+      },
+      {
+        "name": "乌镇",
+        "path": "images/jx-wuzhen_1.jpg",
+        "url": "https://unsplash.com/photos/black-boat-on-river-near-houses-during-daytime-D9S9x-RTixU",
+        "license": "Unsplash License",
+        "alt": "black boat on river near houses during daytime"
+      },
+      {
+        "name": "乌镇",
+        "path": "images/jx-wuzhen_2.jpg",
+        "url": "https://unsplash.com/photos/a-bridge-over-a-body-of-water-at-night-0UkWI-xxV9Y",
+        "license": "Unsplash License",
+        "alt": "a bridge over a body of water at night"
+      },
+      {
+        "name": "乌镇",
+        "path": "images/jx-wuzhen_3.jpg",
+        "url": "https://unsplash.com/photos/a-couple-of-boats-that-are-in-the-water-WV1eF0T5p8Q",
+        "license": "Unsplash License",
+        "alt": "a couple of boats that are in the water"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-29T01:32:35.726005+00:00",
+  "updated_at": "2026-08-29T01:36:29.271587+00:00",
+  "copywriting_text": "【0-12s】引入｜一叶南湖嗨，小朋友，你见过会讲故事的湖水吗？那是江南三大名湖之一的南湖。晨光漫过柳梢，画舫剪开碧波，柳叶牵着风。这片温柔的水，藏着怎样的故事？\n【12-27s】展开｜寻踪红船跟我踏上湖心岛，烟雨楼倒映在波光里，古榕垂下绿帘。那艘泊在楼前的红船，长16米，是单夹弄丝网船。它不只是一艘船，更是满载梦想的载梦之舟。\n【27-45s】高潮｜百年星火透过舱窗的光影，温柔回溯1921年的夏天。一群年轻的大哥哥围坐灯下，商量一件大事——为了让小朋友都能安心读书、快乐吃糖，他们悄悄点亮了一盏灯。这盏灯穿越百年，是守护，也是希望。\n【45-60s】收尾｜童心向党如今，红领巾们在岸边放纸船、追清风，笑声洒满湖面。来南湖听风看水吧，让小小红船载着你的梦想，从这里启航。嘉兴南湖，等你上船。",
+  "video_clips": {}
+}

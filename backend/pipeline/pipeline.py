@@ -34,7 +34,12 @@ COPYWRITING_PROMPT = """你是一位浙江文旅宣传片资深编导。请依�
 4. 风格：【{style}】；目标人群：【{audience}】；主题：【{theme}】
 5. 补充要求：{description}
 6. 输出格式：分 N 段（N=大纲 section 数），每段标注起止秒数（如【0-15s】），全文250-300字
-7. 同时输出：2个备选标题（用于封面）+ 3个传播话题标签
+7. 同时输出（末尾附加，严格用此格式，禁止其他写法）：
+   **备选标题：**
+   1.《标题一》
+   2.《标题二》
+   **传播话题标签：**
+   #话题一 #话题二 #话题三
 
 【知识库资料】
 {knowledge}"""
@@ -72,7 +77,7 @@ JSON结构（scene→shot两级，严格遵循）：
 2. 机位类型 camera.type 只能用：航拍/无人机/固定机位/地面机位/移动机位（禁止"地面/固定"等缩写）
 3. 角度 camera.angle 只能用：俯拍/平拍/仰拍/侧拍（禁止"侧俯"等组合词）
 4. 景别 shot_size 枚举：大远景/全景/中景/近景/特写；运镜 movement 枚举：固定/推/拉/摇/移/跟/升降/环绕
-5. 镜头数量6-8个，各镜头 duration_s 之和≈60（视频时长 {duration_s} 秒则按比例缩放）
+5. 镜头数量6-8个，各镜头 duration_s 之和≈{duration_s}（容差±5%，勿写死 60）
 6. 地标描述跨镜头保持一致（如雷峰塔样式、湖色色调不冲突）
 7. 每镜头 prompt 字段须可直接用于文生图/文生视频，含主体/环境/光线/质感
 8. 只输出JSON对象，禁止代码块标记和任何解释文字"""
@@ -173,14 +178,16 @@ class PipelineRunner:
                  if sh["shot_id"] in shot_ids]
         if self.seedance is None:
             return await self._video_simulated(shots)
-        return await self._run_video_jobs(shots, task, on_progress=on_progress)
+        return await self._run_video_jobs(shots, task, on_progress=on_progress,
+                                          ratio=project.request.get("aspect_ratio"),
+                                          resolution=project.request.get("resolution"))
 
     async def _text_real(self, task):
         """kimi 真实生成：planning → copywriting/script → storyboard（硬校验失败重试 1 次）。"""
         task.planning = await self._planning(task)
         task.status, task.progress, task.message = "copywriting", 20, "生成宣传文案"
         task.copywriting, task.script = await self._copywriting(task)
-        task.status, task.progress, task.message = "storyboard", 40, "拆分分镜（JSON 硬校验）"
+        task.status, task.progress, task.message = "storyboard", 40, "正在拆分分镜…"
         storyboard, errors = await self._storyboard(task)
         if storyboard is None:
             raise RuntimeError(f"分镜校验未通过: {'；'.join(errors[:4])}")
@@ -238,7 +245,7 @@ class PipelineRunner:
             text = await self._ask(messages)
             if not text:
                 continue
-            ok, errors, data = v.validate_and_normalize(text)
+            ok, errors, data = v.validate_and_normalize(text, target_s=task.request["duration_s"])
             if ok:
                 return data, []  # 返回归一化后的数据（枚举漂移已修正落库）
             last_errors = errors
@@ -259,7 +266,9 @@ class PipelineRunner:
             task.progress = 60 + int(done / total * 30)
             task.message = f"视频生成中 {done}/{total} 完成"
 
-        return await self._run_video_jobs(shots, task, on_progress=sync)
+        return await self._run_video_jobs(shots, task, on_progress=sync,
+                                          ratio=task.request.get("aspect_ratio"),
+                                          resolution=task.request.get("resolution"))
 
     async def _video_simulated(self, shots):
         clips = []
@@ -271,18 +280,23 @@ class PipelineRunner:
             await asyncio.sleep(0.3)
         return clips
 
-    async def _run_video_jobs(self, shots, task, on_progress=None):
+    async def _run_video_jobs(self, shots, task, on_progress=None, ratio="adaptive", resolution=None):
         """Seedance 真实生成：并发提交 → 5s 间隔轮询（上限 180 次）→ failed 自动重试 1 次 → 成功即下载转存。
         task 提供 task_id（下载文件名）；on_progress(clips, done, total) 每轮轮询后回调，None 时跳过进度同步。
+        ratio 传请求的 aspect_ratio（如 9:16），否则 adaptive；resolution 传请求的 resolution，否则用配置。
+        每镜时长取 shot.duration_s（分镜按总时长切分；模型支持 4-15s，越界钳制），替代固定配置值。
         """
         from . import ark_client
-        duration = int(self.seedance.get("duration", 5))
-        resolution = self.seedance.get("resolution", "1080p")
+        resolution = resolution or self.seedance.get("resolution", "1080p")
+
+        def _shot_duration(sh):
+            return max(4, min(15, int(sh.get("duration_s") or self.seedance.get("duration", 5))))
 
         # 1) 并发提交全部镜头
         clips = []
         for sh in shots:
-            tid, err = await asyncio.to_thread(ark_client.submit, self.seedance, sh["prompt"], duration, resolution)
+            duration = _shot_duration(sh)
+            tid, err = await asyncio.to_thread(ark_client.submit, self.seedance, sh["prompt"], duration, resolution, ratio)
             clips.append({"shot_id": sh["shot_id"], "task_id": tid,
                           "status": "queued" if tid else "failed",
                           "prompt": sh["prompt"], "duration_s": duration, "cost_yuan": 1.0})
@@ -316,7 +330,7 @@ class PipelineRunner:
                     c["status"] = status
             # 2b) 失败未重试的重新提交（1 次机会）
             results = await asyncio.gather(*(
-                asyncio.to_thread(ark_client.submit, self.seedance, c["prompt"], duration, resolution)
+                asyncio.to_thread(ark_client.submit, self.seedance, c["prompt"], c["duration_s"], resolution, ratio)
                 for c in retry))
             for c, (tid, err) in zip(retry, results):
                 c["retried"] = True
@@ -359,21 +373,50 @@ class PipelineRunner:
         return data, err
 
 
+def _extract_titles(text):
+    """抽取备选标题。置信度从高到低：书名号 → 标题小节行。返回原始条目（未清洗）。
+
+    实测漂移格式（旧正则只认 N.《》/裸《》/「标题：」块，以下全漏 → 兜底"无标题"）：
+    kimi「**备选标题：**\n1.《x》\n2.《y》」、gpt「**封面标题备选：**\n1. **x**\n2. **y**」、
+    「## 备选标题」「标题候选：x、y」「标题1：x」。标签的 #\S+ 宽容所以标签常有标题却没有。
+    """
+    hits = re.findall(r"《([^》\n]{1,40})》", text)
+    if hits:
+        return hits
+    # 标题小节行：允许 #/加粗/数字前缀与「封面/备选/候选/推荐」前缀词，冒号或独占一行皆可；
+    # 到话题标签小节 / 分隔线 / 文末为止
+    m = re.search(
+        r"(?:^|\n)\s*(?:\d+[.、)．]\s*)?(?:#{1,6}\s*|\*\*)?"
+        r"(?:封面|备选|候选|推荐)?标题[0-9０-９]*(?:备选|候选|推荐)?"
+        r"(?:[：:]\s*|\s*\n)"
+        r"([\s\S]*?)"
+        r"(?=\n\s*[#*>【《\s]*(?:传播)?(?:话题|标签)|\n\s*[-—=]{3,}|$)",
+        text,
+    )
+    block = m.group(1) if m else ""
+    items = []
+    # 只按换行/顿号切：顿号是列表分隔，逗号是标题内部成分（实测「一眼西湖，千年入梦」）
+    for ln in re.split(r"\n|、", block):
+        s = re.sub(r"^\s*[0-9０-９]+[.、)．]?\s*", "", ln).strip()
+        s = re.sub(r"^(?:封面|备选|候选|推荐)?标题[0-9０-９]*[：:]\s*", "", s)
+        s = s.strip("*#> ").strip("\"'“”「」《》")
+        if s and s not in items:
+            items.append(s)
+    return items
+
+
 def _parse_cw(text):
     """解析文案输出（【0-15s】段落 + 标题 + 标签）→ 契约结构。"""
     import re
     paragraphs = []
-    for m in re.finditer(r"【(\d+)-(\d+)s】\s*(.+?)(?=\n【|\n---|\Z)", text, re.S):
+    # 段落止于下一段 / 分隔线 / 标题标签小节（即使小节粘在段尾同一行，如「…C位出道。**备选标题：**…」）
+    para_re = re.compile(r"【(\d+)-(\d+)s】\s*(.+?)(?=\n【|\n---|备选标题|候选标题|封面标题|标题候选|传播话题标签|话题标签|\Z)", re.S)
+    for m in para_re.finditer(text):
         start, end = int(m.group(1)), int(m.group(2))
         paragraphs.append({"idx": len(paragraphs) + 1,
-                           "text": m.group(3).strip().replace("\n", ""),
+                           "text": m.group(3).strip().strip("*# ").replace("\n", ""),
                            "duration_s": end - start})
-    titles = re.findall(r"\d+\.\s*《(.+?)》", text) + re.findall(r"《(.+?)》", text)
-    if not titles:
-        # 兜底①：kimi 常输出「标题：\n**候选一**\n**候选二**」或「标题：候选一、候选二」
-        m = re.search(r"(?:标题|备选标题)[：:]\s*([\s\S]*?)(?=\n\s*#|\n\s*[-—=]{3,}|$)", text)
-        block = m.group(1) if m else ""
-        titles = [ln.strip() for ln in re.split(r"\n|、|,|，", block) if ln.strip()]
+    titles = _extract_titles(text)
     # 统一清洗：剥 markdown ** / 书名号 / 首尾空白，去空去重（防「**」脏标题）
     cleaned = []
     for t in titles:

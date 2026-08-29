@@ -1,0 +1,204 @@
+{
+  "project_id": "p_20260829_180408_5dee3a",
+  "status": "waiting_confirm",
+  "progress": 10,
+  "message": "方案待确认",
+  "request": {
+    "city": "嘉兴",
+    "location": "南湖",
+    "scene_type": "景区推荐",
+    "theme": "南湖红船",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "烟波入画",
+        "content": "航拍南湖晨曦全景，薄雾如纱笼罩湖面，晨光穿透云层洒向水面，镜头由远及近缓缓推进，红船轮廓在波光中逐渐清晰，配合大气空灵的配乐，营造诗画江南的第一视觉印象。",
+        "duration_s": 12
+      },
+      {
+        "section": "展开",
+        "title": "红船风华",
+        "content": "红船细节光影特写与湖心岛烟雨楼古建筑群交相辉映，通过延时摄影展现流云与光影流转，旁白以诗意语言讲述'一艘小船诞生一个大党'的历史传奇，融合江南园林美学与红色文化底蕴。",
+        "duration_s": 16
+      },
+      {
+        "section": "高潮",
+        "title": "青春赴约",
+        "content": "年轻游客泛舟湖上、登岛打卡、在沉浸式数字展厅互动体验等场景，采用第一人称视角与电影级运镜，呈现Z世代与红色文化的双向奔赴，突出现代文旅的参与感与共鸣力。",
+        "duration_s": 20
+      },
+      {
+        "section": "收尾",
+        "title": "灯火领航",
+        "content": "夜幕下的南湖灯光秀，红船在璀璨灯火与激光投影中定格成金，配合'在嘉兴，遇见红船，遇见初心'等年轻化情感号召，以强记忆点画面收束，激发实地探访与社交传播欲望。",
+        "duration_s": 12
+      }
+    ],
+    "plan_summary": "南湖红船"
+  },
+  "copywriting": {
+    "titles": [
+      "在嘉兴，遇见红船，遇见初心",
+      "一船星河，青春赴约"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "当晨雾轻笼九十八公顷碧波，嘉兴南湖在流光中缓缓苏醒。与杭州西湖、南京玄武湖并称江南三大名湖的她，烟波入画——而比晨曦更早醒来的，是一艘静静停泊的红船。",
+        "duration_s": 12
+      },
+      {
+        "idx": 2,
+        "text": "嘉靖二十七年，淤泥堆就湖心岛，烟雨楼头风云入画；一九二一年八月，一艘单夹弄丝网船穿云破雾。十六米船舱里，纲领诞生，一个大党从此启航。红船静泊楼前，流云与光影流转，园林深处，是江南美学与红色信仰的和鸣。",
+        "duration_s": 16
+      },
+      {
+        "idx": 3,
+        "text": "此刻，我泛舟湖上，登岛打卡六百年的烟雨楼，再走进国家一级博物馆的数字展厅，在光影互动里与百年风雷隔空击掌。这不是一次普通的旅行，是Z世代与初心的双向奔赴——原来红色青春，真的可以这么酷。",
+        "duration_s": 20
+      },
+      {
+        "idx": 4,
+        "text": "当激光划破夜幕，红船在璀璨灯影中定格成金。在嘉兴，遇见红船，遇见初心——这一程，值得你在朋友圈C位出道。**备选标题：**1.《在嘉兴，遇见红船，遇见初心》2.《一船星河，青春赴约》**传播话题标签：**#嘉兴南湖 #红船精神 #Z世代的红色打卡",
+        "duration_s": 12
+      }
+    ],
+    "hashtags": [
+      "#嘉兴南湖",
+      "#红船精神",
+      "#Z世代的红色打卡"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "当晨雾轻笼九十八公顷碧波，嘉兴南湖在流光中缓缓苏醒。与杭州西湖、南京玄武湖并称江南三大名湖的她，烟波入画——而比晨曦更早醒来的，是一艘静静停泊的红船。",
+        "start_s": 0,
+        "end_s": 12
+      },
+      {
+        "line_id": 2,
+        "text": "嘉靖二十七年，淤泥堆就湖心岛，烟雨楼头风云入画；一九二一年八月，一艘单夹弄丝网船穿云破雾。十六米船舱里，纲领诞生，一个大党从此启航。红船静泊楼前，流云与光影流转，园林深处，是江南美学与红色信仰的和鸣。",
+        "start_s": 12,
+        "end_s": 28
+      },
+      {
+        "line_id": 3,
+        "text": "此刻，我泛舟湖上，登岛打卡六百年的烟雨楼，再走进国家一级博物馆的数字展厅，在光影互动里与百年风雷隔空击掌。这不是一次普通的旅行，是Z世代与初心的双向奔赴——原来红色青春，真的可以这么酷。",
+        "start_s": 28,
+        "end_s": 48
+      },
+      {
+        "line_id": 4,
+        "text": "当激光划破夜幕，红船在璀璨灯影中定格成金。在嘉兴，遇见红船，遇见初心——这一程，值得你在朋友圈C位出道。**备选标题：**1.《在嘉兴，遇见红船，遇见初心》2.《一船星河，青春赴约》**传播话题标签：**#嘉兴南湖 #红船精神 #Z世代的红色打卡",
+        "start_s": 48,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "嘉兴南湖",
+        "path": "images/jx-nanhu_1.jpg",
+        "url": "https://unsplash.com/photos/a-park-bench-sitting-next-to-a-lake-Zm1YRN5nAe8",
+        "license": "Unsplash License",
+        "alt": "A park bench sitting next to a lake"
+      },
+      {
+        "name": "嘉兴南湖",
+        "path": "images/jx-nanhu_2.jpg",
+        "url": "https://unsplash.com/photos/lush-green-trees-frame-a-serene-pond-y5-vubcffJc",
+        "license": "Unsplash License",
+        "alt": "Lush green trees frame a serene pond."
+      },
+      {
+        "name": "嘉兴南湖",
+        "path": "images/jx-nanhu_3.jpg",
+        "url": "https://unsplash.com/photos/trees-and-a-tent-reflected-in-the-water-t2ZJJUugMnY",
+        "license": "Unsplash License",
+        "alt": "Trees and a tent reflected in the water"
+      },
+      {
+        "name": "乌镇",
+        "path": "images/jx-wuzhen_1.jpg",
+        "url": "https://unsplash.com/photos/black-boat-on-river-near-houses-during-daytime-D9S9x-RTixU",
+        "license": "Unsplash License",
+        "alt": "black boat on river near houses during daytime"
+      },
+      {
+        "name": "乌镇",
+        "path": "images/jx-wuzhen_2.jpg",
+        "url": "https://unsplash.com/photos/a-bridge-over-a-body-of-water-at-night-0UkWI-xxV9Y",
+        "license": "Unsplash License",
+        "alt": "a bridge over a body of water at night"
+      },
+      {
+        "name": "乌镇",
+        "path": "images/jx-wuzhen_3.jpg",
+        "url": "https://unsplash.com/photos/a-couple-of-boats-that-are-in-the-water-WV1eF0T5p8Q",
+        "license": "Unsplash License",
+        "alt": "a couple of boats that are in the water"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-29T10:04:08.598914+00:00",
+  "updated_at": "2026-08-29T10:06:05.921150+00:00",
+  "copywriting_text": "【0-12s】当晨雾轻笼九十八公顷碧波，嘉兴南湖在流光中缓缓苏醒。与杭州西湖、南京玄武湖并称江南三大名湖的她，烟波入画——而比晨曦更早醒来的，是一艘静静停泊的红船。\n【12-28s】嘉靖二十七年，淤泥堆就湖心岛，烟雨楼头风云入画；一九二一年八月，一艘单夹弄丝网船穿云破雾。十六米船舱里，纲领诞生，一个大党从此启航。红船静泊楼前，流云与光影流转，园林深处，是江南美学与红色信仰的和鸣。\n【28-48s】此刻，我泛舟湖上，登岛打卡六百年的烟雨楼，再走进国家一级博物馆的数字展厅，在光影互动里与百年风雷隔空击掌。这不是一次普通的旅行，是Z世代与初心的双向奔赴——原来红色青春，真的可以这么酷。\n【48-60s】当激光划破夜幕，红船在璀璨灯影中定格成金。在嘉兴，遇见红船，遇见初心——这一程，值得你在朋友圈C位出道。**备选标题：**1.《在嘉兴，遇见红船，遇见初心》2.《一船星河，青春赴约》**传播话题标签：**#嘉兴南湖 #红船精神 #Z世代的红色打卡",
+  "video_clips": {}
+}

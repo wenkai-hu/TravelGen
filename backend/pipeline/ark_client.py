@@ -32,12 +32,15 @@ def _get(provider, path):
         return {"error": {"code": e.code, "message": e.read().decode("utf-8", "ignore")[:300]}}
 
 
-def submit(provider, prompt, duration=5, resolution="1080p"):
-    """提交单镜头生成任务；返回 (task_id, error)。task_id 形如 cpt-xxx。"""
+def submit(provider, prompt, duration=5, resolution="1080p", ratio="adaptive"):
+    """提交单镜头生成任务；返回 (task_id, error)。task_id 形如 cpt-xxx。
+    ratio 对应请求里的 aspect_ratio（官方字段名 ratio，9:16 竖屏短视频必须显式传，
+    否则默认 adaptive 自适应比例）。"""
     body = {"model": provider["model"],
             "content": [{"type": "text", "text": prompt}],
             "duration": duration,
-            "resolution": resolution}
+            "resolution": resolution,
+            "ratio": ratio}
     data = _post(provider, "/contents/generations/tasks", body)
     if data.get("error"):
         return None, f"提交失败({data['error'].get('code')}): {data['error'].get('message', '')}"

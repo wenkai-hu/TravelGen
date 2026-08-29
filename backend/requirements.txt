@@ -1,3 +1,4 @@
 fastapi>=0.110
 uvicorn>=0.27
+watchfiles>=0.21  # uvicorn reload 依赖（否则退化为轮询，Win 上慢）
 pydantic>=2.0

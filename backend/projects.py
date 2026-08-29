@@ -93,6 +93,14 @@ class Project:
         return p
 
 
+def _web_url(local_path):
+    """本地转存绝对路径 → 浏览器可访问 URL（/assets/videos/xxx.mp4，app.py 已挂载 /assets）。"""
+    if not local_path:
+        return None
+    name = local_path.replace("\\", "/").rsplit("/", 1)[-1]
+    return f"/assets/videos/{name}"
+
+
 class VideoTask:
     """一次视频生成子任务（kind=batch 批量 | single 单 shot 重生成）。"""
 
@@ -123,8 +131,9 @@ class VideoTask:
                 row["status"] = "generating"
             elif c["status"] == "succeeded":
                 row["status"] = "completed"
-                row["video_url"] = c.get("local_path") or c.get("video_url")
                 row["local_path"] = c.get("local_path")
+                # 前端播放用可访问 URL：本地转存 → /assets/videos/{文件名}（app.py 已挂载 /assets）
+                row["video_url"] = _web_url(c.get("local_path")) or c.get("video_url")
             else:
                 row["status"] = "failed"
                 row["error"] = c.get("error")

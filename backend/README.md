@@ -11,6 +11,8 @@ cd backend
 python app.py
 ```
 
+> 默认 `reload=True`：改后端任意 `.py` 即自动重启，无需手动重启服务（依赖 watchfiles）。
+
 - 交互文档：http://127.0.0.1:8000/docs（Swagger UI，可直接调试/导出）
 - 接口清单（两套并存）：
   - **V1 分阶段（/api/*，推荐，对应 TravelGen_v1.md）**：

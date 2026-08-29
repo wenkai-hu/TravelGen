@@ -1,0 +1,32 @@
+{
+  "task_id": "vt_20260829_114646_730da6",
+  "project_id": "p_20260829_093820_b6147f",
+  "kind": "single",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 1/1 成功",
+  "request": {
+    "shot_ids": [
+      1
+    ],
+    "generate_image": false,
+    "generate_video": true,
+    "regenerate": {
+      "reason": "不符合我的预期",
+      "prompt": "展示西湖全景和三潭映月",
+      "keep_style": true
+    }
+  },
+  "shots": [
+    {
+      "shot_id": 1,
+      "status": "completed",
+      "image_url": null,
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    }
+  ],
+  "created_at": "2026-08-29T03:46:46.887127+00:00",
+  "updated_at": "2026-08-29T03:46:47.235046+00:00"
+}

@@ -1,0 +1,203 @@
+{
+  "project_id": "p_20260829_165437_89c839",
+  "status": "waiting_confirm",
+  "progress": 10,
+  "message": "方案待确认",
+  "request": {
+    "city": "嘉兴",
+    "location": "南湖",
+    "scene_type": "景区推荐",
+    "theme": "南湖红色故事",
+    "audience": "小学生",
+    "style": "青春活力",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "让小学生看懂红色故事",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "视觉吸引",
+        "title": "嘿！南湖藏着一艘超酷的红船",
+        "content": "快节奏剪辑嘉兴南湖美景（碧波、绿柳、烟雨楼），配合活力BGM和动态贴纸。小学生博主风格入镜奔跑/挥手：‘这里不只有美景，还藏着一艘改变中国的小红船！’画面定格湖心岛红船，制造悬念。",
+        "duration_s": 10
+      },
+      {
+        "section": "核心景观",
+        "title": "船上的‘秘密班会’",
+        "content": "用卡通动画+实景穿插，童声解说红色故事：1921年，一群勇敢的大哥哥大姐姐在上海开一场超重要的会议（就像成立新班级的第一次班会），突然有坏人捣乱！他们机智地转移到嘉兴南湖这艘不起眼的小红船上，在荷花摇曳中完成了开天辟地的大事——中国共产党的诞生。镜头拉回现代红船，配文：‘小船诞生了大党！’",
+        "duration_s": 20
+      },
+      {
+        "section": "特色体验",
+        "title": "小小船长来报到",
+        "content": "展示小学生研学第一视角：登湖心岛触摸红船、在南湖革命纪念馆玩互动展项（触摸大屏答题、VR体验‘开船’）、在‘红船少年’打卡点比耶拍照。同龄人画外音：‘原来红色故事不是枯燥的历史，而是超燃的冒险！这艘船比我想象的更小，却比想象的更有力量！’",
+        "duration_s": 20
+      },
+      {
+        "section": "行动召唤",
+        "title": "争做红船小传人",
+        "content": "一群小学生在南湖畔列队，手持小红旗或纸船，齐声喊出青春口号：‘来嘉兴南湖，听红船故事，做勇敢的小小红船传人！’画面飞入片尾字幕：南湖景区研学预约信息+金句‘从这里，读懂中国红’，BGM推向高潮收尾。",
+        "duration_s": 10
+      }
+    ],
+    "plan_summary": "南湖红色故事"
+  },
+  "copywriting": {
+    "titles": [
+      "无标题"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "嘿！嘉兴南湖，国家AAAAA级景区，江南三大名湖之一！98公顷碧波上，绿柳如烟，烟雨楼超美！但这里不只有美景——湖心岛前，藏着一艘改变中国的小红船！",
+        "duration_s": 10
+      },
+      {
+        "idx": 2,
+        "text": "1921年，勇敢的大哥哥大姐姐在上海开一场超重要的“班级班会”，坏人突然来捣乱！他们机智转移到嘉兴南湖这艘16米长的单夹弄丝网画舫上，在烟雨楼前的荷花丛里，通过了党纲，宣告中国共产党诞生！小船诞生了大党！",
+        "duration_s": 20
+      },
+      {
+        "idx": 3,
+        "text": "登湖心岛，触摸1959年仿制红船；走进国家一级博物馆南湖革命纪念馆，玩转触摸大屏、VR开船！在“红船少年”打卡点比个耶！原来红色故事不是枯燥历史，而是超燃冒险！这艘船比想象更小，却比想象更有力量！",
+        "duration_s": 20
+      },
+      {
+        "idx": 4,
+        "text": "来嘉兴南湖，听红船故事，做勇敢的小小红船传人！从这里，读懂中国红！",
+        "duration_s": 10
+      }
+    ],
+    "hashtags": [
+      "#红船少年",
+      "#嘉兴南湖研学",
+      "#从这里读懂中国红"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "嘿！嘉兴南湖，国家AAAAA级景区，江南三大名湖之一！98公顷碧波上，绿柳如烟，烟雨楼超美！但这里不只有美景——湖心岛前，藏着一艘改变中国的小红船！",
+        "start_s": 0,
+        "end_s": 10
+      },
+      {
+        "line_id": 2,
+        "text": "1921年，勇敢的大哥哥大姐姐在上海开一场超重要的“班级班会”，坏人突然来捣乱！他们机智转移到嘉兴南湖这艘16米长的单夹弄丝网画舫上，在烟雨楼前的荷花丛里，通过了党纲，宣告中国共产党诞生！小船诞生了大党！",
+        "start_s": 10,
+        "end_s": 30
+      },
+      {
+        "line_id": 3,
+        "text": "登湖心岛，触摸1959年仿制红船；走进国家一级博物馆南湖革命纪念馆，玩转触摸大屏、VR开船！在“红船少年”打卡点比个耶！原来红色故事不是枯燥历史，而是超燃冒险！这艘船比想象更小，却比想象更有力量！",
+        "start_s": 30,
+        "end_s": 50
+      },
+      {
+        "line_id": 4,
+        "text": "来嘉兴南湖，听红船故事，做勇敢的小小红船传人！从这里，读懂中国红！",
+        "start_s": 50,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "嘉兴南湖",
+        "path": "images/jx-nanhu_1.jpg",
+        "url": "https://unsplash.com/photos/a-park-bench-sitting-next-to-a-lake-Zm1YRN5nAe8",
+        "license": "Unsplash License",
+        "alt": "A park bench sitting next to a lake"
+      },
+      {
+        "name": "嘉兴南湖",
+        "path": "images/jx-nanhu_2.jpg",
+        "url": "https://unsplash.com/photos/lush-green-trees-frame-a-serene-pond-y5-vubcffJc",
+        "license": "Unsplash License",
+        "alt": "Lush green trees frame a serene pond."
+      },
+      {
+        "name": "嘉兴南湖",
+        "path": "images/jx-nanhu_3.jpg",
+        "url": "https://unsplash.com/photos/trees-and-a-tent-reflected-in-the-water-t2ZJJUugMnY",
+        "license": "Unsplash License",
+        "alt": "Trees and a tent reflected in the water"
+      },
+      {
+        "name": "乌镇",
+        "path": "images/jx-wuzhen_1.jpg",
+        "url": "https://unsplash.com/photos/black-boat-on-river-near-houses-during-daytime-D9S9x-RTixU",
+        "license": "Unsplash License",
+        "alt": "black boat on river near houses during daytime"
+      },
+      {
+        "name": "乌镇",
+        "path": "images/jx-wuzhen_2.jpg",
+        "url": "https://unsplash.com/photos/a-bridge-over-a-body-of-water-at-night-0UkWI-xxV9Y",
+        "license": "Unsplash License",
+        "alt": "a bridge over a body of water at night"
+      },
+      {
+        "name": "乌镇",
+        "path": "images/jx-wuzhen_3.jpg",
+        "url": "https://unsplash.com/photos/a-couple-of-boats-that-are-in-the-water-WV1eF0T5p8Q",
+        "license": "Unsplash License",
+        "alt": "a couple of boats that are in the water"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-29T08:54:37.664335+00:00",
+  "updated_at": "2026-08-29T08:58:57.878868+00:00",
+  "copywriting_text": "【0-10s】嘿！嘉兴南湖，国家AAAAA级景区，江南三大名湖之一！98公顷碧波上，绿柳如烟，烟雨楼超美！但这里不只有美景——湖心岛前，藏着一艘改变中国的小红船！\n【10-30s】1921年，勇敢的大哥哥大姐姐在上海开一场超重要的“班级班会”，坏人突然来捣乱！他们机智转移到嘉兴南湖这艘16米长的单夹弄丝网画舫上，在烟雨楼前的荷花丛里，通过了党纲，宣告中国共产党诞生！小船诞生了大党！\n【30-50s】登湖心岛，触摸1959年仿制红船；走进国家一级博物馆南湖革命纪念馆，玩转触摸大屏、VR开船！在“红船少年”打卡点比个耶！原来红色故事不是枯燥历史，而是超燃冒险！这艘船比想象更小，却比想象更有力量！\n【50-60s】来嘉兴南湖，听红船故事，做勇敢的小小红船传人！从这里，读懂中国红！",
+  "video_clips": {}
+}

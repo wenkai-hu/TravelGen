@@ -188,10 +188,10 @@ async def create_storyboard(pid: str, req: StoryboardRequest):
     _state_guard(project, {"plan_confirmed"}, "生成分镜")
     if req.plan_id and req.plan_id != project.plan_id:
         _err(409, "invalid_state", f"plan_id 不匹配（当前 {project.plan_id}）")
-    project.status, project.progress, project.message = "storyboarding", 20, "拆分分镜（JSON 硬校验）"
+    project.status, project.progress, project.message = "storyboarding", 20, "正在拆分分镜…"
     project.dump()
     asyncio.create_task(_run_storyboard(project))
-    return {"project_id": pid, "status": "storyboarding", "progress": 20, "message": "拆分分镜"}
+    return {"project_id": pid, "status": "storyboarding", "progress": 20, "message": "正在拆分分镜…"}
 
 
 # ---- 接口4：修改单个 Shot ----

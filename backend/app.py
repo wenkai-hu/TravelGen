@@ -3,7 +3,7 @@
 
 启动：
   pip install -r requirements.txt
-  python app.py                        # http://127.0.0.1:8000
+  cd backend && python app.py          # http://127.0.0.1:8000（reload 自动重载：改后端代码即生效）
   TRAVELGEN_MOCK=1 python app.py       # 强制 demo 模式（回放 Phase 3 成果）
 
 行为：
@@ -18,6 +18,7 @@ from datetime import datetime, timezone
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from constants import SCENE_TYPES, ASPECT_RATIOS, RESOLUTIONS, VIDEO_MODELS
 from schemas import GenerateRequest
@@ -76,6 +77,10 @@ class Task:
 TASKS: dict[str, Task] = {}
 runner = PipelineRunner()
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+# 视频转存 assets/videos/ 静态挂载：真实模式 local_path 可直接被浏览器访问（/assets/videos/xxx.mp4）
+_assets_dir = os.path.join(REPO_ROOT, "assets")
+os.makedirs(_assets_dir, exist_ok=True)
+app.mount("/assets", StaticFiles(directory=_assets_dir, check_dir=False), name="assets")
 
 
 async def _run_and_dump(task: Task):
@@ -134,4 +139,5 @@ if __name__ == "__main__":
     import uvicorn
     print(f"TravelGen 管线服务 | 文案/分镜: {'kimi-k2.6' if runner.kimi else 'demo回放'} "
           f"| 视频: {'Seedance 2.0 Pro' if runner.seedance else '模拟'}")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # reload 需传导入字符串（不能传 app 对象）；改后端 .py 自动重启，需在 backend/ 目录下运行
+    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)

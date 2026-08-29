@@ -49,6 +49,11 @@ async function tick() {
       copywritingText.value = p.copywriting_text;
     }
     if (p.status !== "planning") stopPolling();
+    if (p.status === "plan_confirmed") {
+      // 方案已确认：进入分镜编辑页
+      router.replace(`/plan/${pid.value}/storyboard`);
+      return;
+    }
   } catch (e) {
     if (e.status === 404) {
       // 项目不存在：回工作台，避免卡在 loading 死胡同
@@ -264,16 +269,14 @@ function fmtDur(s) {
         <h2 class="done-title">方案已确认</h2>
         <p class="done-line" v-if="planId">计划 ID：{{ planId }}</p>
         <p class="done-line">进度 {{ progress }}% — {{ msg }}</p>
-        <p class="done-tip">
-          下一步：AI 拆分镜（分镜编辑页开发中，先回到工作台）
-        </p>
+        <p class="done-tip">下一步：AI 拆分镜，正在进入分镜编辑页…</p>
         <NButton
           class="confirm-btn"
           size="large"
           type="primary"
-          @click="router.push('/')"
+          @click="router.replace(`/plan/${pid}/storyboard`)"
         >
-          回到工作台
+          进入分镜编辑
         </NButton>
       </div>
 

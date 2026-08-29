@@ -1,0 +1,27 @@
+{
+  "task_id": "vt_20260830_003542_9200b2",
+  "project_id": "p_20260830_000357_a65350",
+  "kind": "batch",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 1/1 成功",
+  "request": {
+    "shots": [
+      1
+    ],
+    "generate_image": false,
+    "generate_video": true
+  },
+  "shots": [
+    {
+      "shot_id": 1,
+      "status": "completed",
+      "image_url": null,
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    }
+  ],
+  "created_at": "2026-08-29T16:35:42.230942+00:00",
+  "updated_at": "2026-08-29T16:35:42.552848+00:00"
+}
