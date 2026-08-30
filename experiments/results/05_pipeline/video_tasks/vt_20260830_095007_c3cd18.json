@@ -1,0 +1,90 @@
+{
+  "task_id": "vt_20260830_095007_c3cd18",
+  "project_id": "p_20260830_093635_b7fbfd",
+  "kind": "batch",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 8/8 成功",
+  "request": {
+    "shots": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "generate_image": false,
+    "generate_video": true
+  },
+  "shots": [
+    {
+      "shot_id": 1,
+      "status": "completed",
+      "image_url": null,
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    },
+    {
+      "shot_id": 2,
+      "status": "completed",
+      "image_url": null,
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    },
+    {
+      "shot_id": 3,
+      "status": "completed",
+      "image_url": null,
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    },
+    {
+      "shot_id": 4,
+      "status": "completed",
+      "image_url": null,
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    },
+    {
+      "shot_id": 5,
+      "status": "completed",
+      "image_url": null,
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    },
+    {
+      "shot_id": 6,
+      "status": "completed",
+      "image_url": null,
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    },
+    {
+      "shot_id": 7,
+      "status": "completed",
+      "image_url": null,
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    },
+    {
+      "shot_id": 8,
+      "status": "completed",
+      "image_url": null,
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    }
+  ],
+  "created_at": "2026-08-30T01:50:07.125761+00:00",
+  "updated_at": "2026-08-30T01:50:09.628406+00:00"
+}
