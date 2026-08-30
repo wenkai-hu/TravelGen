@@ -52,8 +52,9 @@ class GenerateShotsRequest(BaseModel):
 
 
 class RegenerateShotRequest(BaseModel):
-    """接口（§十五）：单 Shot 重新生成。"""
-    reason: str
+    """接口（§十五）：单 Shot 重新生成。
+    reason/keep_style 仅作审计落库，不影响生成（每次调用隔离，只认 prompt）。"""
+    reason: str = ""
     prompt: str | None = None
     keep_style: bool = True
 

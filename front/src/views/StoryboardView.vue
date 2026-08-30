@@ -10,7 +10,7 @@ import {
   watch,
 } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { NButton, NInput, NModal, NSelect, useMessage } from "naive-ui";
+import { NButton, NInput, NModal, useMessage } from "naive-ui";
 import logoUrl from "../images/logo.png";
 import {
   createStoryboard,
@@ -34,6 +34,7 @@ let projectTimer = null;
 
 // ── 镜头生成结果（task 轮询 + project.video_clips 合并），驱动卡片状态 ──
 const shotResults = reactive({}); // shot_id -> { status, video_url, error }
+const videoErrors = reactive({}); // shot_id -> true（浏览器解码失败，Seedance 输出 4:2:2 编码）
 const taskTimers = new Map();
 
 // 批量生成任务状态
@@ -46,16 +47,8 @@ const batchMessage = ref("");
 const editingShotId = ref(null);
 const editPrompt = ref("");
 const regenShotId = ref(null); // 重新生成对话框目标 shot
-const regenReason = ref("");
 const regenPrompt = ref("");
-
-const REGEN_REASONS = [
-  "画面主体不自然",
-  "光线/色调不佳",
-  "运镜不符合预期",
-  "需要换一种构图",
-];
-const REGEN_REASON_OPTS = REGEN_REASONS.map((r) => ({ label: r, value: r }));
+const regenSubmitting = ref(false); // 提交中：开始生成按钮转圈，防重复提交
 
 let storyboardTriggered = false; // 每段会话内只自动触发一次分镜生成
 
@@ -85,6 +78,9 @@ function shotState(shot) {
 }
 function isGen(sid) {
   return shotResults[sid]?.status === "generating";
+}
+function onVideoError(sh) {
+  videoErrors[sh.shot_id] = true; // 浏览器解码失败 → 显示下载兜底
 }
 function isPlayable(url) {
   // 可播：远程 http(s) URL，或后端静态挂载的本地转存相对路径（/assets/videos/...）
@@ -276,7 +272,6 @@ async function saveEdit(shot) {
 // ── 单 Shot 重新生成（局部可控生成） ──
 function openRegen(shot) {
   regenShotId.value = shot.shot_id;
-  regenReason.value = REGEN_REASONS[0];
   regenPrompt.value = shot.prompt;
 }
 function cancelRegen() {
@@ -284,9 +279,9 @@ function cancelRegen() {
 }
 async function submitRegen() {
   const sid = regenShotId.value;
+  regenSubmitting.value = true;
   try {
     const t = await regenerateShot(pid.value, sid, {
-      reason: regenReason.value,
       prompt: regenPrompt.value.trim(),
     });
     cancelRegen();
@@ -295,6 +290,21 @@ async function submitRegen() {
     startTaskPoll(t.task_id);
   } catch (e) {
     message.error(e.message || "重新生成失败");
+  } finally {
+    regenSubmitting.value = false;
+  }
+}
+
+// ── 单镜头试生成（低成本测试：只生成选中的一个镜头看质量） ──
+async function onTestShot(sh) {
+  const sid = sh.shot_id;
+  try {
+    const t = await generateShots(pid.value, [sid]);
+    shotResults[sid] = { status: "generating" };
+    message.info(`Shot ${sid} 单镜试生成中…`);
+    startTaskPoll(t.task_id);
+  } catch (e) {
+    message.error(e.message || "单镜生成失败");
   }
 }
 
@@ -311,11 +321,16 @@ async function onConfirmStoryboard() {
     message.warning("分镜尚未生成");
     return;
   }
+  // 跳过已生成完成的镜头（单镜测试过的不重复扣费）
+  const pending = allShots.value
+    .filter((s) => shotState(s).status !== "completed")
+    .map((s) => s.shot_id);
+  if (!pending.length) {
+    message.info("所有镜头均已生成完成");
+    return;
+  }
   try {
-    const t = await generateShots(
-      pid.value,
-      allShots.value.map((s) => s.shot_id),
-    );
+    const t = await generateShots(pid.value, pending);
     batchTaskId.value = t.task_id;
     batchState.value = "running";
     batchProgress.value = 0;
@@ -412,7 +427,7 @@ function statusLabel(s) {
           <!-- 完成 / 失败：结果摘要 -->
           <template v-else-if="banner === 'done'">
             <p class="done-line">🎉 全部 {{ totalShots }} 个镜头已生成完成</p>
-            <p class="gen-tip">单镜头仍可点击卡片「重生成视频」局部重做</p>
+            <p class="gen-tip">单镜头仍可点击卡片「重新生成」局部重做</p>
           </template>
           <template v-else-if="banner === 'failed'">
             <p class="fail-line">⚠️ {{ batchMessage || "部分镜头生成失败" }}</p>
@@ -438,13 +453,15 @@ function statusLabel(s) {
           <span class="guide-icon">💡</span>
           <div class="guide-body">
             <b>分镜确认</b>
-            <p>① 每张卡片是一个镜头（约 6-8 个）</p>
+            <p>① 每张卡片是一个镜头</p>
             <p>
               ② 卡片左侧主体/背景/机位是AI提炼的画面要点
               （只读展示），视频生成实际只用右侧可编辑的 Prompt
             </p>
-            <p>③ 可点「编辑」改 Prompt， 或「重生成视频」局部重做</p>
-            <p>④满意后点「确认分镜并生成视频」</p>
+            <p>
+              ③ 可点「单镜试生成」先测一个镜头看质量，或「编辑」改 Prompt 后重做
+            </p>
+            <p>④满意后点「确认分镜并生成视频」（已生成过的镜头自动跳过）</p>
           </div>
         </div>
 
@@ -524,8 +541,22 @@ function statusLabel(s) {
                           :class="shotState(sh).status"
                           v-if="shotState(sh).status"
                         >
+                          <span
+                            v-if="shotState(sh).status === 'generating'"
+                            class="chip-spinner"
+                          ></span>
                           {{ statusLabel(shotState(sh).status) }}
                         </span>
+                        <NButton
+                          v-if="banner === 'edit'"
+                          size="small"
+                          type="primary"
+                          quaternary
+                          :disabled="isGen(sh.shot_id)"
+                          @click="onTestShot(sh)"
+                        >
+                          单镜试生成
+                        </NButton>
                         <NButton size="small" quaternary @click="startEdit(sh)"
                           >编辑</NButton
                         >
@@ -538,28 +569,47 @@ function statusLabel(s) {
                           "
                           @click="openRegen(sh)"
                         >
-                          重生成视频
+                          重新生成
                         </NButton>
                       </div>
                     </template>
                   </div>
                 </div>
 
-                <!-- 生成结果：可播放视频 / 失败提示（整卡通栏） -->
+                <!-- 生成结果：可播放视频 / 解码失败兜底 / 下载（整卡通栏） -->
                 <div
                   v-if="shotState(sh).status === 'completed'"
                   class="shot-result"
                 >
-                  <video
-                    v-if="isPlayable(shotState(sh).video_url)"
-                    :src="shotState(sh).video_url"
-                    controls
-                    preload="none"
-                    class="shot-video"
-                  ></video>
+                  <template
+                    v-if="
+                      isPlayable(shotState(sh).video_url) &&
+                      !videoErrors[sh.shot_id]
+                    "
+                  >
+                    <video
+                      :src="shotState(sh).video_url"
+                      controls
+                      preload="metadata"
+                      class="shot-video"
+                      @error="onVideoError(sh)"
+                    ></video>
+                  </template>
+                  <p
+                    v-else-if="isPlayable(shotState(sh).video_url)"
+                    class="res-error"
+                  >
+                    ⚠️ 浏览器无法解码此视频（Seedance 输出 4:2:2
+                    编码），请点下方按钮下载后用播放器观看
+                  </p>
                   <p v-else class="res-empty">
                     已生成 · 当前无在线预览（模拟/本地）
                   </p>
+                  <div v-if="shotState(sh).video_url" class="shot-dl">
+                    <a :href="shotState(sh).video_url" download class="dl-btn">
+                      ⬇ 下载视频
+                    </a>
+                  </div>
                 </div>
                 <p
                   v-else-if="shotState(sh).status === 'failed'"
@@ -588,30 +638,50 @@ function statusLabel(s) {
       </template>
     </main>
 
-    <!-- 重新生成对话框 -->
+    <!-- 重新生成对话框
+         不用 preset="dialog"：naive-ui 会把 @positive-click/@negative-click/@close
+         与内部 handler 合并成数组传给 Dialog，调用时抛 TypeError → 按钮全部"点不动"。
+         改为普通 NModal + 自建按钮（纯 @click），点遮罩/Esc 由 @update:show 关闭。 -->
     <NModal
       :show="regenShotId !== null"
-      preset="dialog"
-      title="重生成视频"
-      positive-text="开始生成"
-      negative-text="取消"
-      @positive-click="submitRegen"
-      @negative-click="cancelRegen"
+      :mask-closable="true"
+      @update:show="
+        (v) => {
+          if (!v) cancelRegen();
+        }
+      "
     >
-      <p class="modal-tip">
-        选择不满意的原因（会写入生成任务），可按需微调画面 Prompt：
-      </p>
-      <NSelect
-        v-model:value="regenReason"
-        :options="REGEN_REASON_OPTS"
-        class="modal-field"
-      />
-      <NInput
-        v-model:value="regenPrompt"
-        type="textarea"
-        :autosize="{ minRows: 3, maxRows: 6 }"
-        class="modal-field"
-      />
+      <div class="regen-modal">
+        <div class="regen-modal__head">
+          <span class="regen-modal__title">重新生成</span>
+          <NButton
+            class="regen-modal__close"
+            quaternary
+            circle
+            size="small"
+            @click="cancelRegen"
+          >
+            ✕
+          </NButton>
+        </div>
+        <p class="modal-tip">调整prompt 重新生成视频</p>
+        <NInput
+          v-model:value="regenPrompt"
+          type="textarea"
+          :autosize="{ minRows: 3, maxRows: 6 }"
+          class="modal-field"
+        />
+        <div class="regen-modal__actions">
+          <NButton @click="cancelRegen">取消</NButton>
+          <NButton
+            type="primary"
+            :loading="regenSubmitting"
+            @click="submitRegen"
+          >
+            开始生成
+          </NButton>
+        </div>
+      </div>
     </NModal>
 
     <footer class="footer">
@@ -1015,6 +1085,22 @@ function statusLabel(s) {
   padding: 2px 10px;
   border-radius: 999px;
   margin-right: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.chip-spinner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--color-gold-light);
+  border-top-color: var(--color-gold);
+  animation: chip-spin 0.8s linear infinite;
+}
+@keyframes chip-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 .res-chip.completed {
   background: var(--color-primary-fade);
@@ -1030,6 +1116,23 @@ function statusLabel(s) {
   background: var(--color-gold-fade);
   color: var(--color-gold-ink);
   border: 1px solid var(--color-gold-light);
+}
+.shot-dl {
+  margin-top: 8px;
+}
+.dl-btn {
+  display: inline-block;
+  font-size: 12.5px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-light);
+  background: var(--color-primary-fade);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.dl-btn:hover {
+  background: var(--color-primary-light);
 }
 .res-chip.pending {
   background: var(--color-card);
@@ -1086,6 +1189,36 @@ function statusLabel(s) {
 }
 .modal-field {
   margin-bottom: 12px;
+}
+/* 自建重新生成弹窗（不用 preset="dialog"） */
+.regen-modal {
+  width: 520px;
+  max-width: 90vw;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+.regen-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.regen-modal__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.regen-modal__close {
+  color: var(--color-ink-sub);
+}
+.regen-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
 }
 
 /* ---------- 页脚 ---------- */

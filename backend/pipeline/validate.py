@@ -2,7 +2,7 @@
 """分镜 JSON 硬校验（Storyboard Schema v1，docs/Storyboard_Schema_v1.md）+ 枚举归一化。
 
 策略（三层防线）：
-1. 校验：枚举逐项检查 + 镜头数 6-8 + 总时长 60±5
+1. 校验：枚举逐项检查 + 镜头数按总时长推导 + 每镜 4-15s + 总时长 target±10%
 2. 归一化：LLM 常见枚举漂移（如 "暮色"→"黄昏"、"侧俯"→"侧拍"、"地面"→"地面机位"）自动修正后落库
 3. 无法归一化的字段仍判失败 → 上游带错误重试
 """
@@ -13,6 +13,16 @@ CAMERA_TYPE_ENUM = ["航拍", "无人机", "固定机位", "地面机位", "移�
 MOVEMENT_ENUM = ["固定", "推", "拉", "摇", "移", "跟", "升降", "环绕"]
 ANGLE_ENUM = ["俯拍", "平拍", "仰拍", "侧拍"]
 SHOT_SIZE_ENUM = ["大远景", "全景", "中景", "近景", "特写"]
+
+# Seedance 2.0 单镜时长硬区间：低于4s被钳制、高于15s拒收，故分镜时长直接约束在此区间
+SHOT_MIN, SHOT_MAX = 4, 15
+
+
+def shot_count_range(target_s):
+    """目标时长 → 合法镜头数量区间（每镜 SHOT_MIN-SHOT_MAX 秒）。与 STORYBOARD_PROMPT 同一推导，保证提示词和校验一致。"""
+    min_shots = max(1, -(-target_s // SHOT_MAX))  # ceil(target_s/15)：每镜顶格15s 所需最少镜数
+    max_shots = max(min_shots, target_s // SHOT_MIN)  # floor(target_s/4)：每镜保底4s 允许的最多镜数
+    return min_shots, max_shots
 
 # 常见变体 → 标准枚举（LLM 漂移实测：暮色/侧俯/地面/推进 等）
 TIME_ALIASES = {"暮色": "黄昏", "夕照": "黄昏", "傍晚": "黄昏", "夜晚": "入夜", "深夜": "入夜",
@@ -66,8 +76,8 @@ def normalize_shot(sh):
     errors = []
     if not isinstance(sid, int):
         errors.append("shot 非整数编号")
-    if not isinstance(sh.get("duration_s"), int) or not (1 <= sh["duration_s"] <= 15):
-        errors.append(f"shot {sid}: duration_s 需为 1-15 的整数")
+    if not isinstance(sh.get("duration_s"), int) or not (SHOT_MIN <= sh["duration_s"] <= SHOT_MAX):
+        errors.append(f"shot {sid}: duration_s 需为 {SHOT_MIN}-{SHOT_MAX} 的整数")
     cam = sh.setdefault("camera", {})
     cam["type"], ok1 = _normalize(cam.get("type"), CAMERA_TYPE_ENUM, CAMERA_ALIASES)
     cam["movement"], ok2 = _normalize(cam.get("movement"), MOVEMENT_ENUM, MOVEMENT_ALIASES)
@@ -92,8 +102,8 @@ def validate_shot_patch(patch):
     errors = []
     if "duration_s" in patch:
         d = patch["duration_s"]
-        if not isinstance(d, int) or not (1 <= d <= 15):
-            errors.append("duration_s 需为 1-15 的整数")
+        if not isinstance(d, int) or not (SHOT_MIN <= d <= SHOT_MAX):
+            errors.append(f"duration_s 需为 {SHOT_MIN}-{SHOT_MAX} 的整数")
     cam = patch.get("camera")
     if cam is not None:
         if not isinstance(cam, dict):
@@ -149,12 +159,21 @@ def validate_and_normalize(text, target_s=60):
         for sh in sc.get("shot_list", []):
             shots.append(sh)
 
+    # shot_id 须全片唯一（LLM 常按 scene 重新从 1 编号 → 撞车，导致生成过滤/文件命名/结果合并串卡）。
+    # 重复或非法则按场景顺序重排为 1..N，与枚举归一化同哲学：自动纠正落库，不浪费 LLM 重试。
+    ids = [sh.get("shot_id") for sh in shots]
+    if any(not isinstance(i, int) or i < 1 for i in ids) or \
+            len(set(i for i in ids if isinstance(i, int))) != len(ids):
+        for new_id, sh in enumerate(shots, 1):
+            sh["shot_id"] = new_id
+
     for sh in shots:
         ok, errs, _ = normalize_shot(sh)
         errors.extend(errs)
 
-    if not 6 <= len(shots) <= 8:
-        errors.append(f"镜头总数 {len(shots)} 超出 6-8")
+    min_shots, max_shots = shot_count_range(target_s)
+    if not min_shots <= len(shots) <= max_shots:
+        errors.append(f"镜头总数 {len(shots)} 需在 {min_shots}-{max_shots}（时长{target_s}s ÷ 每镜{SHOT_MIN}-{SHOT_MAX}s）")
     total = sum(sh.get("duration_s", 0) for sh in shots if isinstance(sh.get("duration_s"), int))
     tol = max(5, round(target_s * 0.1))
     if not target_s - tol <= total <= target_s + tol:

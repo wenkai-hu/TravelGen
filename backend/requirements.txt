@@ -2,3 +2,6 @@ fastapi>=0.110
 uvicorn>=0.27
 watchfiles>=0.21  # uvicorn reload 依赖（否则退化为轮询，Win 上慢）
 pydantic>=2.0
+imageio-ffmpeg>=0.6  # Seedance 视频转码（保证浏览器可播：yuv420p + faststart）
+sqlalchemy>=2.0  # 数据库 ORM（backend/db/，MySQL）
+aiomysql>=0.2  # MySQL 异步驱动（async engine）

@@ -205,15 +205,20 @@ def merge_video_results(project: Project) -> dict[int, dict]:
 
 
 def recompute_project_status(project: Project):
-    """有进行中的视频任务 → generating；全部终止且全成功 → completed（progress 顶到 100）；有失败 → failed；否则不变。"""
+    """有进行中的视频任务 → generating；全部镜头有结果 → completed/failed；部分有结果（单镜测试/部分失败）→ 回分镜编辑态。"""
     active = any(load_video_task(tid) is not None and load_video_task(tid).status == "generating"
                  for tid in project.video_tasks)
     if active:
         project.status = "generating"
         return
     results = merge_video_results(project)
-    if results:
+    total = sum(len(sc.get("shot_list", [])) for sc in project.storyboard.get("scenes", []))
+    done = len(results)
+    if total and done >= total:
         if any(r["status"] == "failed" for r in results.values()):
             project.status = "failed"
         else:
             project.status, project.progress, project.message = "completed", 100, "全部镜头生成完成"
+    elif done:
+        # 部分镜头已生成（单镜测试/部分失败）：回到分镜编辑态，允许继续生成剩余镜头
+        project.status, project.progress, project.message = "waiting_storyboard_confirm", 40, "分镜待确认（部分镜头已生成）"

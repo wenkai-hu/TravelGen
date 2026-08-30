@@ -12,6 +12,7 @@ import {
 import CraftSlot from "../components/CraftSlot.vue";
 import logoUrl from "../images/logo.png";
 import { createProject } from "../api";
+import { getUsername, isLoggedIn, logout as clearSession } from "../auth";
 import {
   ASPECT_RATIOS,
   DEFAULT_AUDIENCE,
@@ -24,6 +25,16 @@ import {
 
 const message = useMessage();
 const router = useRouter();
+
+// ── 登录态（localStorage；退出仅清前端会话） ──
+const loggedIn = ref(isLoggedIn());
+const username = ref(getUsername() || "");
+function onLogout() {
+  clearSession();
+  loggedIn.value = false;
+  username.value = "";
+  message.success("已退出登录");
+}
 
 // ── 配方（表单）—— 与后端 schemas.py GenerateRequest 一一对应 ──
 const form = reactive({
@@ -181,6 +192,13 @@ async function onSubmit() {
         <nav class="nav-links">
           <a href="#bench">工作台</a>
           <a href="#compliance">版权合规</a>
+          <template v-if="loggedIn">
+            <span class="nav-user" title="已登录">👤 {{ username }}</span>
+            <a href="#" class="nav-auth" @click.prevent="onLogout">退出</a>
+          </template>
+          <router-link v-else to="/login" class="nav-auth"
+            >登录 / 注册</router-link
+          >
         </nav>
       </div>
     </header>
@@ -419,7 +437,6 @@ async function onSubmit() {
               </CraftSlot>
             </div>
           </div>
-
         </div>
 
         <!-- 合成箭头 -->
@@ -625,6 +642,7 @@ async function onSubmit() {
 }
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 32px;
 }
 .nav-links a {
@@ -635,6 +653,24 @@ async function onSubmit() {
 }
 .nav-links a:hover {
   color: var(--color-primary);
+}
+.nav-user {
+  font-size: 14px;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+.nav-auth {
+  padding: 5px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-primary);
+  font-size: 13.5px;
+  color: var(--color-primary) !important;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.nav-auth:hover {
+  background: var(--color-primary);
+  color: #fff !important;
 }
 
 /* ---------- 主区 ---------- */

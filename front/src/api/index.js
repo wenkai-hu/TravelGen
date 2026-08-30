@@ -4,10 +4,22 @@
 const API_BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '')
 
 async function request(path, options = {}) {
-  const res = await fetch(`${API_BASE}${path}`, {
-    headers: { 'Content-Type': 'application/json' },
-    ...options,
-  })
+  let res
+  try {
+    // 20s 超时兜底：后端请求挂起时不能永久阻塞调用方（转圈按钮 / 轮询调用方会被挂死）
+    res = await fetch(`${API_BASE}${path}`, {
+      headers: { 'Content-Type': 'application/json' },
+      ...options,
+      signal: options.signal ?? AbortSignal.timeout(20000),
+    })
+  } catch (e) {
+    if (e?.name === 'AbortError') {
+      const err = new Error('请求超时（20s），请检查后端服务是否运行')
+      err.status = 0
+      throw err
+    }
+    throw e
+  }
   let data = null
   try {
     data = await res.json()
@@ -82,4 +94,12 @@ export function regenerateShot(pid, shotId, payload) {
 // 知识库检索（GET /api/kb/search?q=&top_k=），供知识点预览
 export function searchKb(q, topK = 5) {
   return request(`/api/kb/search?q=${encodeURIComponent(q)}&top_k=${topK}`)
+}
+
+// 登录注册（/api/auth/*，后端 backend/db/auth.py）
+export function register(payload) {
+  return request('/api/auth/register', { method: 'POST', body: JSON.stringify(payload) })
+}
+export function login(payload) {
+  return request('/api/auth/login', { method: 'POST', body: JSON.stringify(payload) })
 }

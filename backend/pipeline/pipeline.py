@@ -77,10 +77,11 @@ JSON结构（scene→shot两级，严格遵循）：
 2. 机位类型 camera.type 只能用：航拍/无人机/固定机位/地面机位/移动机位（禁止"地面/固定"等缩写）
 3. 角度 camera.angle 只能用：俯拍/平拍/仰拍/侧拍（禁止"侧俯"等组合词）
 4. 景别 shot_size 枚举：大远景/全景/中景/近景/特写；运镜 movement 枚举：固定/推/拉/摇/移/跟/升降/环绕
-5. 镜头数量6-8个，各镜头 duration_s 之和≈{duration_s}（容差±5%，勿写死 60）
-6. 地标描述跨镜头保持一致（如雷峰塔样式、湖色色调不冲突）
-7. 每镜头 prompt 字段须可直接用于文生图/文生视频，含主体/环境/光线/质感
-8. 只输出JSON对象，禁止代码块标记和任何解释文字"""
+5. 镜头数量 {min_shots}-{max_shots}个（由总时长÷每镜4-15s推导，禁止写死）；每个镜头 duration_s 取4-15的整数，各镜头之和≈{duration_s}（容差±5%）
+6. shot_id 全片唯一递增（1..N），禁止每个 scene 各自从 1 编号
+7. 地标描述跨镜头保持一致（如雷峰塔样式、湖色色调不冲突）
+8. 每镜头 prompt 字段须可直接用于文生图/文生视频，含主体/环境/光线/质感
+9. 只输出JSON对象，禁止代码块标记和任何解释文字"""
 
 RETRY_NOTE = "上一次输出未通过校验，严格按结构约束重新输出（只输出JSON）。具体错误：{errors}"
 
@@ -237,7 +238,9 @@ class PipelineRunner:
 
     async def _storyboard(self, task):
         cw_text = "".join(f"【{p['idx']}】{p['text']}\n" for p in task.copywriting["paragraphs"])
-        prompt = STORYBOARD_PROMPT.format(script=cw_text, duration_s=task.request["duration_s"])
+        min_shots, max_shots = v.shot_count_range(task.request["duration_s"])
+        prompt = STORYBOARD_PROMPT.format(script=cw_text, duration_s=task.request["duration_s"],
+                                          min_shots=min_shots, max_shots=max_shots)
         messages = [{"role": "system", "content": SYSTEM},
                     {"role": "user", "content": prompt}]
         last_errors = ["模型无响应"]
@@ -350,13 +353,21 @@ class PipelineRunner:
         return clips
 
     async def _download_video(self, task, clip, url):
-        """video_url 仅 24h 有效，成功即下载转存 assets/videos/{task_id}_{shot_id}.mp4。"""
+        """video_url 仅 24h 有效，成功即下载转存 assets/videos/{task_id}_{shot_id}.mp4。
+        下载后转码成浏览器可播格式（Seedance 输出 H.264 4:2:2，Chrome 只认 4:2:0）。"""
         try:
             from . import ark_client
             dest = os.path.join(REPO, "assets", "videos", f"{task.task_id}_{clip['shot_id']}.mp4")
             os.makedirs(os.path.dirname(dest), exist_ok=True)
-            size = await asyncio.to_thread(ark_client.download, url, dest)
-            return dest if size > 0 else None
+            raw = dest + ".raw.mp4"
+            size = await asyncio.to_thread(ark_client.download, url, raw)
+            if size <= 0:
+                return None
+            if await asyncio.to_thread(ark_client.transcode_web, raw, dest):
+                os.remove(raw)
+                return dest
+            os.replace(raw, dest)  # 转码失败（如未装 imageio-ffmpeg）退回原始文件：浏览器可能仍黑屏，但下载兜底可用
+            return dest
         except Exception:
             return None  # 下载失败不影响状态（URL 仍 24h 有效）
 

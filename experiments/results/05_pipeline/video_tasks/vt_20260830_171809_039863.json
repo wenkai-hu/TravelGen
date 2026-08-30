@@ -1,0 +1,32 @@
+{
+  "task_id": "vt_20260830_171809_039863",
+  "project_id": "p_20260830_161907_9ba95b",
+  "kind": "single",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 1/1 成功",
+  "request": {
+    "shot_ids": [
+      2
+    ],
+    "generate_image": false,
+    "generate_video": true,
+    "regenerate": {
+      "reason": "画面主体不自然",
+      "prompt": "电影级地面机位平拍全景，模范人向前行走推进镜头，杭州北山路最美转角，暖黄路灯透过高大梧桐叶隙微微亮起，深邃蓝调铺满西湖湖面，写实质感",
+      "keep_style": true
+    }
+  },
+  "shots": [
+    {
+      "shot_id": 2,
+      "status": "completed",
+      "image_url": null,
+      "video_url": "/assets/videos/vt_20260830_171809_039863_2.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\videos\\vt_20260830_171809_039863_2.mp4",
+      "error": null
+    }
+  ],
+  "created_at": "2026-08-30T09:18:09.065840+00:00",
+  "updated_at": "2026-08-30T09:20:55.236630+00:00"
+}

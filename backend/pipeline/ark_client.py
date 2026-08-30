@@ -6,7 +6,7 @@
 - ⚠️ video_url 仅 24h 有效，成功即下载转存 assets/videos/（不入库，见 .gitignore）
 - 成本：约 1 元/条（5s 1080p）
 """
-import json, os, urllib.request, urllib.error
+import json, os, subprocess, urllib.request, urllib.error
 
 CONTENT_TYPES = {"video_url": "succeeded", "url": "succeeded"}
 
@@ -72,3 +72,29 @@ def download(url, dest_path):
         with open(dest_path, "wb") as f:
             f.write(resp.read())
     return os.path.getsize(dest_path)
+
+
+def transcode_web(src, dest):
+    """Seedance 输出 H.264（非 faststart）+ 自动附 BGM 音轨 → 转码成浏览器可播格式（yuv420p + faststart）。
+
+    同时 -an 去除音轨：Seedance 每镜自动配的 BGM 各不相同，拼接前统一配乐，否则后期剪辑音轨打架。
+    返回是否成功。失败时调用方保留原始文件（下载兜底仍可用）。imageio-ffmpeg 未装则直接返回 False。
+    """
+    try:
+        from imageio_ffmpeg import get_ffmpeg_exe
+        exe = get_ffmpeg_exe()
+    except ImportError:
+        return False
+    tmp = dest + ".web.mp4"
+    cmd = [exe, "-y", "-i", src, "-an", "-c:v", "libx264", "-preset", "veryfast",
+           "-crf", "18", "-pix_fmt", "yuv420p", "-movflags", "+faststart", tmp]
+    try:
+        r = subprocess.run(cmd, capture_output=True, timeout=180)
+        if r.returncode != 0:
+            return False
+        os.replace(tmp, dest)
+        return True
+    except Exception:
+        if os.path.exists(tmp):
+            os.remove(tmp)
+        return False

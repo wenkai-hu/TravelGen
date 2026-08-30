@@ -1,0 +1,204 @@
+{
+  "project_id": "p_20260830_151729_7906e6",
+  "status": "waiting_confirm",
+  "progress": 10,
+  "message": "方案待确认",
+  "request": {
+    "city": "杭州",
+    "location": "西湖北山街道",
+    "scene_type": "景区推荐",
+    "theme": "北山街的蓝调时刻",
+    "audience": "大学生",
+    "style": "宁静轻松",
+    "duration_s": 15,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "西湖最近蓝调很热门 不少年轻人喜欢在北山路最美转角那里享受蓝调时刻",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "热门话题勾连",
+        "content": "以'最近刷爆社交平台的西湖蓝调'为切入点，用快速剪辑或悬念文字勾起大学生好奇，3秒内建立'最治愈的杭州时刻'的观看期待。",
+        "duration_s": 3
+      },
+      {
+        "section": "核心景观",
+        "title": "最美转角蓝调",
+        "content": "镜头定格北山街最美转角的Blue Hour，深蓝天空与西湖湖面交融，梧桐剪影与初亮的暖黄路灯形成冷暖对比，呈现电影级静谧光影。",
+        "duration_s": 5
+      },
+      {
+        "section": "特色体验",
+        "title": "青年治愈时刻",
+        "content": "聚焦大学生或坐或站在长椅、转角台阶上，发呆、听歌、静候晚风的松弛状态，传递'允许自己放空'的宁静共鸣与氛围感。",
+        "duration_s": 5
+      },
+      {
+        "section": "收尾",
+        "title": "温柔行动召唤",
+        "content": "以轻柔画外音或文字卡发出邀约：'今晚下课，来北山街等一场蓝调'，将浪漫画面转化为具体打卡冲动，干净收束。",
+        "duration_s": 2
+      }
+    ],
+    "plan_summary": "北山街的蓝调时刻"
+  },
+  "copywriting": {
+    "titles": [
+      "北山街蓝调：西湖最治愈的时刻",
+      "今晚下课，去北山街等一场蓝调"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "（画面：手机切屏，社交平台热搜词条\"西湖蓝调\"\"北山街\"快闪叠化，渐隐至北山街路牌）旁白：最近刷爆社交平台的西湖蓝调，到底藏着多治愈的杭州时刻？",
+        "duration_s": 3
+      },
+      {
+        "idx": 2,
+        "text": "（画面：固定机位，北山街最美转角。世界遗产西湖的6.38平方千米湖面在Blue Hour中与深蓝天空温柔交融，梧桐剪影如画框，初亮暖黄路灯洒下第一缕光，冷暖对比如电影）旁白：在北山街最美转角，世界遗产的6.38平方千米湖面正呼吸着深蓝。梧桐剪影框住初亮的暖黄路灯，冷暖交界处，是杭州最静谧的电影感。",
+        "duration_s": 5
+      },
+      {
+        "idx": 3,
+        "text": "（画面：慢镜头，大学生或坐或站在长椅、转角台阶，有人戴耳机闭目，有人托腮发呆，晚风轻拂发梢，松弛感特写）旁白：长椅上发呆，台阶上听歌，把自己交给晚风。在这片免费开放的世界遗产湖畔，放空不是浪费时间，是允许自己慢慢来。",
+        "duration_s": 5
+      },
+      {
+        "idx": 4,
+        "text": "（画面：字幕卡叠于虚化的蓝调湖面，路灯暖光如星）文字卡：今晚下课，来北山街等一场蓝调。",
+        "duration_s": 2
+      }
+    ],
+    "hashtags": [
+      "#西湖蓝调",
+      "#北山街最美转角",
+      "#杭州治愈时刻"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "（画面：手机切屏，社交平台热搜词条\"西湖蓝调\"\"北山街\"快闪叠化，渐隐至北山街路牌）旁白：最近刷爆社交平台的西湖蓝调，到底藏着多治愈的杭州时刻？",
+        "start_s": 0,
+        "end_s": 3
+      },
+      {
+        "line_id": 2,
+        "text": "（画面：固定机位，北山街最美转角。世界遗产西湖的6.38平方千米湖面在Blue Hour中与深蓝天空温柔交融，梧桐剪影如画框，初亮暖黄路灯洒下第一缕光，冷暖对比如电影）旁白：在北山街最美转角，世界遗产的6.38平方千米湖面正呼吸着深蓝。梧桐剪影框住初亮的暖黄路灯，冷暖交界处，是杭州最静谧的电影感。",
+        "start_s": 3,
+        "end_s": 8
+      },
+      {
+        "line_id": 3,
+        "text": "（画面：慢镜头，大学生或坐或站在长椅、转角台阶，有人戴耳机闭目，有人托腮发呆，晚风轻拂发梢，松弛感特写）旁白：长椅上发呆，台阶上听歌，把自己交给晚风。在这片免费开放的世界遗产湖畔，放空不是浪费时间，是允许自己慢慢来。",
+        "start_s": 8,
+        "end_s": 13
+      },
+      {
+        "line_id": 4,
+        "text": "（画面：字幕卡叠于虚化的蓝调湖面，路灯暖光如星）文字卡：今晚下课，来北山街等一场蓝调。",
+        "start_s": 13,
+        "end_s": 15
+      }
+    ]
+  },
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_1.jpg",
+        "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+        "license": "Unsplash License",
+        "alt": "a building with a tree in front of it"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_2.jpg",
+        "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+        "license": "Unsplash License",
+        "alt": "a pagoda in the middle of a park surrounded by trees"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_3.jpg",
+        "url": "https://unsplash.com/photos/brown-and-red-temple-kp3A2jurfP0",
+        "license": "Unsplash License",
+        "alt": "brown and red temple"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-30T07:17:29.761333+00:00",
+  "updated_at": "2026-08-30T07:21:59.028796+00:00",
+  "copywriting_text": "【0-3s】（画面：手机切屏，社交平台热搜词条\"西湖蓝调\"\"北山街\"快闪叠化，渐隐至北山街路牌）旁白：最近刷爆社交平台的西湖蓝调，到底藏着多治愈的杭州时刻？\n【3-8s】（画面：固定机位，北山街最美转角。世界遗产西湖的6.38平方千米湖面在Blue Hour中与深蓝天空温柔交融，梧桐剪影如画框，初亮暖黄路灯洒下第一缕光，冷暖对比如电影）旁白：在北山街最美转角，世界遗产的6.38平方千米湖面正呼吸着深蓝。梧桐剪影框住初亮的暖黄路灯，冷暖交界处，是杭州最静谧的电影感。\n【8-13s】（画面：慢镜头，大学生或坐或站在长椅、转角台阶，有人戴耳机闭目，有人托腮发呆，晚风轻拂发梢，松弛感特写）旁白：长椅上发呆，台阶上听歌，把自己交给晚风。在这片免费开放的世界遗产湖畔，放空不是浪费时间，是允许自己慢慢来。\n【13-15s】（画面：字幕卡叠于虚化的蓝调湖面，路灯暖光如星）文字卡：今晚下课，来北山街等一场蓝调。",
+  "video_clips": {}
+}

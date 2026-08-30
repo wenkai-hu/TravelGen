@@ -1,0 +1,274 @@
+{
+  "project_id": "p_20260830_152439_3b1791",
+  "status": "waiting_storyboard_confirm",
+  "progress": 40,
+  "message": "分镜待确认（部分镜头已生成）",
+  "request": {
+    "city": "杭州",
+    "location": "西湖北山街",
+    "scene_type": "景区推荐",
+    "theme": "北山街的蓝调时刻",
+    "audience": "大学生",
+    "style": "宁静轻松",
+    "duration_s": 15,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "最近西湖的蓝调时刻很出名 不少年轻人喜欢在清晨日出前和日落后片刻去享受 尤其是在北山路最美转角附近",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "蓝调时刻",
+        "content": "以快切镜头点出北山街蓝调时刻正成为杭州大学生的新晋治愈场景，天色将暗未暗或黎明将至的幽蓝光线瞬间抓住眼球",
+        "duration_s": 3
+      },
+      {
+        "section": "核心景观",
+        "title": "最美转角",
+        "content": "聚焦北山路最美转角，湖面泛着宝石蓝微光，路灯与保俶塔轮廓刚刚亮起，年轻人三三两两停在弯道处打卡的剪影",
+        "duration_s": 5
+      },
+      {
+        "section": "特色体验",
+        "title": "静谧一刻",
+        "content": "跟随镜头骑行或漫步北山街，耳机、微风、几乎无人的西湖，呈现大学生在日出前或日落后独享西湖的chill氛围",
+        "duration_s": 4
+      },
+      {
+        "section": "行动召唤",
+        "title": "明天见",
+        "content": "黑屏字幕或画外音轻诉：无需门票，带上一杯咖啡，来北山街收获属于你的蓝调十五分钟",
+        "duration_s": 3
+      }
+    ],
+    "plan_summary": "北山街的蓝调时刻"
+  },
+  "copywriting": {
+    "titles": [
+      "北山街蓝调十五分钟",
+      "西湖免费治愈线：北山街蓝调时刻"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "天光将暗未暗，黎明将至未至。北山街的蓝调时刻，正悄悄成为杭州大学生的新晋治愈场景。幽蓝光线洒落湖面，像一块正在融化的宝石，瞬间抓住所有疲惫的心脏。",
+        "duration_s": 3
+      },
+      {
+        "idx": 2,
+        "text": "镜头推向最美转角。西湖水面泛着宝石蓝微光，环湖的路灯与保俶塔轮廓刚刚亮起。年轻人三三两两停在弯道处，剪影与湖光重叠，把这一刻站成了零成本的浪漫。",
+        "duration_s": 5
+      },
+      {
+        "idx": 3,
+        "text": "戴上耳机，跟随微风骑行或漫步。这片自2002年起免费开放的环湖岸线，在日出前或日落后归还了几乎无人的静谧。世界遗产的晚风里，只有你和车铃的chill节拍。",
+        "duration_s": 4
+      },
+      {
+        "idx": 4,
+        "text": "无需门票，甚至不必等到明天。带上一杯咖啡，来北山街，收获属于你的蓝调十五分钟。",
+        "duration_s": 3
+      }
+    ],
+    "hashtags": [
+      "#北山街蓝调时刻",
+      "#西湖治愈系",
+      "#北山街最美转角"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "天光将暗未暗，黎明将至未至。北山街的蓝调时刻，正悄悄成为杭州大学生的新晋治愈场景。幽蓝光线洒落湖面，像一块正在融化的宝石，瞬间抓住所有疲惫的心脏。",
+        "start_s": 0,
+        "end_s": 3
+      },
+      {
+        "line_id": 2,
+        "text": "镜头推向最美转角。西湖水面泛着宝石蓝微光，环湖的路灯与保俶塔轮廓刚刚亮起。年轻人三三两两停在弯道处，剪影与湖光重叠，把这一刻站成了零成本的浪漫。",
+        "start_s": 3,
+        "end_s": 8
+      },
+      {
+        "line_id": 3,
+        "text": "戴上耳机，跟随微风骑行或漫步。这片自2002年起免费开放的环湖岸线，在日出前或日落后归还了几乎无人的静谧。世界遗产的晚风里，只有你和车铃的chill节拍。",
+        "start_s": 8,
+        "end_s": 12
+      },
+      {
+        "line_id": 4,
+        "text": "无需门票，甚至不必等到明天。带上一杯咖啡，来北山街，收获属于你的蓝调十五分钟。",
+        "start_s": 12,
+        "end_s": 15
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "北山街蓝调十五分钟",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "北山街与西湖湖面",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 6,
+            "camera": {
+              "type": "航拍",
+              "movement": "移",
+              "angle": "俯拍"
+            },
+            "shot_size": "全景",
+            "subject": "北山街蓝调全景与最美转角",
+            "background": "宝石蓝西湖与保俶塔灯光",
+            "prompt": "电影级航拍俯拍移镜全景，杭州北山街入夜蓝调时刻，天光将暗未暗，西湖湖面呈现深邃宝石蓝色如融化宝石，环湖路灯与保俶塔轮廓刚刚亮起暖光，最美转角弯道隐约可见，治愈静谧氛围，8k分辨率，写实质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 2,
+        "location": "环湖岸线",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 2,
+            "duration_s": 5,
+            "camera": {
+              "type": "移动机位",
+              "movement": "跟",
+              "angle": "侧拍"
+            },
+            "shot_size": "中景",
+            "subject": "骑行年轻人的剪影",
+            "background": "宝石蓝西湖湖面与空旷岸线",
+            "prompt": "电影级移动机位侧跟中景，年轻人戴耳机在入夜西湖环湖岸线骑行，剪影与宝石蓝湖光重叠，背景保俶塔灯光与环湖路灯微光，世界遗产静谧氛围，chill治愈感，8k分辨率，写实质感"
+          },
+          {
+            "shot_id": 3,
+            "duration_s": 4,
+            "camera": {
+              "type": "地面机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "近景",
+            "subject": "手持咖啡的年轻人",
+            "background": "北山街蓝调街景与湖面",
+            "prompt": "电影级地面机位平拍固定近景，年轻人手持一杯咖啡站在北山街，入夜蓝调幽蓝光线洒落面部，背景西湖宝石蓝湖面微光，零成本浪漫治愈氛围，8k分辨率，写实质感"
+          }
+        ]
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260830_152439_3b1791_v1",
+  "plan_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_1.jpg",
+        "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+        "license": "Unsplash License",
+        "alt": "a building with a tree in front of it"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_2.jpg",
+        "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+        "license": "Unsplash License",
+        "alt": "a pagoda in the middle of a park surrounded by trees"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_3.jpg",
+        "url": "https://unsplash.com/photos/brown-and-red-temple-kp3A2jurfP0",
+        "license": "Unsplash License",
+        "alt": "brown and red temple"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [
+    "vt_20260830_153647_1164f6",
+    "vt_20260830_155040_964933",
+    "vt_20260830_161108_79b439"
+  ],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-30T07:24:39.305989+00:00",
+  "updated_at": "2026-08-30T08:17:29.817122+00:00",
+  "copywriting_text": "【0-3s】天光将暗未暗，黎明将至未至。北山街的蓝调时刻，正悄悄成为杭州大学生的新晋治愈场景。幽蓝光线洒落湖面，像一块正在融化的宝石，瞬间抓住所有疲惫的心脏。\n【3-8s】镜头推向最美转角。西湖水面泛着宝石蓝微光，环湖的路灯与保俶塔轮廓刚刚亮起。年轻人三三两两停在弯道处，剪影与湖光重叠，把这一刻站成了零成本的浪漫。\n【8-12s】戴上耳机，跟随微风骑行或漫步。这片自2002年起免费开放的环湖岸线，在日出前或日落后归还了几乎无人的静谧。世界遗产的晚风里，只有你和车铃的chill节拍。\n【12-15s】无需门票，甚至不必等到明天。带上一杯咖啡，来北山街，收获属于你的蓝调十五分钟。",
+  "video_clips": {
+    "1": {
+      "shot_id": 1,
+      "task_id": "vt_20260830_161108_79b439",
+      "status": "completed",
+      "video_url": "/assets/videos/vt_20260830_161108_79b439_1.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\videos\\vt_20260830_161108_79b439_1.mp4",
+      "error": null
+    }
+  }
+}

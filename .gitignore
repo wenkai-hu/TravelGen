@@ -1,7 +1,7 @@
 # ===== 密钥与配置（绝不提交！）=====
 # 注意：gitignore 不支持行内注释，末尾不能带 # 说明
 experiments/config.json
-experiments\config_text.json
+experiments/config_text.json
 experiments/03_video/video_config.json
 .env
 *.key

@@ -1,0 +1,298 @@
+{
+  "project_id": "p_20260830_161907_9ba95b",
+  "status": "completed",
+  "progress": 100,
+  "message": "全部镜头生成完成",
+  "request": {
+    "city": "杭州",
+    "location": "西湖北山路",
+    "scene_type": "景区推荐",
+    "theme": "北山路蓝调时刻",
+    "audience": "大学生",
+    "style": "宁静轻松",
+    "duration_s": 15,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "西湖的蓝调时刻最近很火 吸引了不少游客 尤其是北山街的最美转角",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "蓝调诱惑",
+        "content": "当西湖告别落日，北山路便坠入一天中最温柔的20分钟，全网爆火的蓝调时刻，从这里开始。",
+        "duration_s": 3
+      },
+      {
+        "section": "核心景观",
+        "title": "最美转角",
+        "content": "镜头推向北山街网红转角，梧桐叶隙间路灯微亮，湖面倒映深邃蓝调，车轨划过如电影长帧。",
+        "duration_s": 5
+      },
+      {
+        "section": "特色体验",
+        "title": "漫步时光",
+        "content": "适合大学生的零成本浪漫：沿湖慢慢走，吹晚风、听水声，让期末周的疲惫被夜色温柔稀释。",
+        "duration_s": 4
+      },
+      {
+        "section": "行动召唤",
+        "title": "今夜出发",
+        "content": "日落后的黄金半小时，带上好友来北山路，把西湖的蓝调时刻装进你的青春vlog。",
+        "duration_s": 3
+      }
+    ],
+    "plan_summary": "北山路蓝调时刻"
+  },
+  "copywriting": {
+    "titles": [
+      "北山路蓝调：西湖最温柔的二十分钟",
+      "日落之后，北山街转角见"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "当西湖告别落日，北山路便坠入一天中最温柔的二十分钟。全网爆火的蓝调时刻，从这片6.38平方千米的世界遗产之湖，缓缓拉开序幕。",
+        "duration_s": 3
+      },
+      {
+        "idx": 2,
+        "text": "镜头推向北山街网红转角，梧桐叶隙间路灯微亮，深邃的蓝调正铺满湖面。车轨划过湖岸如电影长帧，这里藏着西湖最惊艳的夜色切片。",
+        "duration_s": 5
+      },
+      {
+        "idx": 3,
+        "text": "自2002年起，西湖环湖公园免费开放，作为中国首批免费开放的5A级景区，浪漫零成本。大学生沿湖慢慢走，吹晚风、听水声，让期末周的疲惫被夜色温柔稀释。",
+        "duration_s": 4
+      },
+      {
+        "idx": 4,
+        "text": "日落后的黄金半小时，带上好友来北山路，把这抹世界遗产的蓝调装进青春vlog。今夜，让北山路的晚风，成为你心底最柔软的记忆锚点。",
+        "duration_s": 3
+      }
+    ],
+    "hashtags": [
+      "#北山路蓝调时刻",
+      "#西湖零成本浪漫",
+      "#大学生夜游西湖"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "当西湖告别落日，北山路便坠入一天中最温柔的二十分钟。全网爆火的蓝调时刻，从这片6.38平方千米的世界遗产之湖，缓缓拉开序幕。",
+        "start_s": 0,
+        "end_s": 3
+      },
+      {
+        "line_id": 2,
+        "text": "镜头推向北山街网红转角，梧桐叶隙间路灯微亮，深邃的蓝调正铺满湖面。车轨划过湖岸如电影长帧，这里藏着西湖最惊艳的夜色切片。",
+        "start_s": 3,
+        "end_s": 8
+      },
+      {
+        "line_id": 3,
+        "text": "自2002年起，西湖环湖公园免费开放，作为中国首批免费开放的5A级景区，浪漫零成本。大学生沿湖慢慢走，吹晚风、听水声，让期末周的疲惫被夜色温柔稀释。",
+        "start_s": 8,
+        "end_s": 12
+      },
+      {
+        "line_id": 4,
+        "text": "日落后的黄金半小时，带上好友来北山路，把这抹世界遗产的蓝调装进青春vlog。今夜，让北山路的晚风，成为你心底最柔软的记忆锚点。",
+        "start_s": 12,
+        "end_s": 15
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "西湖蓝调时刻",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "西湖湖面",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 5,
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "西湖全景与北山路湖岸线",
+            "background": "落日余晖与蓝调天空",
+            "prompt": "电影级航拍大远景，杭州西湖全景与北山路湖岸线，落日刚沉入地平线，天空呈现全网爆火的深邃蓝调时刻，湖面如镜反射幽蓝与淡紫渐变，世界遗产级的静谧氛围，细腻写实质感，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 2,
+        "location": "北山街网红转角",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 2,
+            "duration_s": 5,
+            "camera": {
+              "type": "地面机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "北山路梧桐道与车轨光流",
+            "background": "路灯微亮的湖畔蓝调夜色",
+            "prompt": "电影级地面机位平拍全景，模范人向前行走推进镜头，杭州北山路最美转角，暖黄路灯透过高大梧桐叶隙微微亮起，深邃蓝调铺满西湖湖面，写实质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 3,
+        "location": "北山路湖畔",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 5,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "侧拍"
+            },
+            "shot_size": "中景",
+            "subject": "大学生好友沿湖漫步",
+            "background": "西湖蓝调夜色与微光水岸",
+            "prompt": "电影级固定机位侧拍中景，几位大学生好友并肩慢走在北山路湖畔步道，晚风轻拂衣角与发丝，背景是西湖深邃蓝调夜色与远处微光水岸，青春vlog氛围，浪漫零成本，写实质感，8k分辨率"
+          }
+        ]
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260830_161907_9ba95b_v1",
+  "plan_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_1.jpg",
+        "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+        "license": "Unsplash License",
+        "alt": "a building with a tree in front of it"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_2.jpg",
+        "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+        "license": "Unsplash License",
+        "alt": "a pagoda in the middle of a park surrounded by trees"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_3.jpg",
+        "url": "https://unsplash.com/photos/brown-and-red-temple-kp3A2jurfP0",
+        "license": "Unsplash License",
+        "alt": "brown and red temple"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [
+    "vt_20260830_163024_cfe679",
+    "vt_20260830_163028_2dfb59",
+    "vt_20260830_163029_c4795e",
+    "vt_20260830_171809_039863"
+  ],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-30T08:19:07.628054+00:00",
+  "updated_at": "2026-08-30T09:46:01.422469+00:00",
+  "copywriting_text": "【0-3s】当西湖告别落日，北山路便坠入一天中最温柔的二十分钟。全网爆火的蓝调时刻，从这片6.38平方千米的世界遗产之湖，缓缓拉开序幕。\n【3-8s】镜头推向北山街网红转角，梧桐叶隙间路灯微亮，深邃的蓝调正铺满湖面。车轨划过湖岸如电影长帧，这里藏着西湖最惊艳的夜色切片。\n【8-12s】自2002年起，西湖环湖公园免费开放，作为中国首批免费开放的5A级景区，浪漫零成本。大学生沿湖慢慢走，吹晚风、听水声，让期末周的疲惫被夜色温柔稀释。\n【12-15s】日落后的黄金半小时，带上好友来北山路，把这抹世界遗产的蓝调装进青春vlog。今夜，让北山路的晚风，成为你心底最柔软的记忆锚点。",
+  "video_clips": {
+    "1": {
+      "shot_id": 1,
+      "task_id": "vt_20260830_163024_cfe679",
+      "status": "completed",
+      "video_url": "/assets/videos/vt_20260830_163024_cfe679_1.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\videos\\vt_20260830_163024_cfe679_1.mp4",
+      "error": null
+    },
+    "2": {
+      "shot_id": 2,
+      "task_id": "vt_20260830_171809_039863",
+      "status": "completed",
+      "video_url": "/assets/videos/vt_20260830_171809_039863_2.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\videos\\vt_20260830_171809_039863_2.mp4",
+      "error": null
+    },
+    "3": {
+      "shot_id": 3,
+      "task_id": "vt_20260830_163029_c4795e",
+      "status": "completed",
+      "video_url": "/assets/videos/vt_20260830_163029_c4795e_3.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\videos\\vt_20260830_163029_c4795e_3.mp4",
+      "error": null
+    }
+  }
+}

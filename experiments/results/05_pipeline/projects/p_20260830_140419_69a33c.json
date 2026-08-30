@@ -1,0 +1,348 @@
+{
+  "project_id": "p_20260830_140419_69a33c",
+  "status": "waiting_storyboard_confirm",
+  "progress": 40,
+  "message": "分镜待确认（部分镜头已生成）",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "西湖旅游推广",
+    "audience": "学生党",
+    "style": "唯美清新",
+    "duration_s": 15,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "突出西湖的魅力  视频开头吸引游客",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "一眼心动",
+        "content": "以晨曦或 golden hour 下波光粼粼的湖面空镜快速切入，搭配轻快卡点音乐与字幕'这一站，杭州西湖'，0-3秒内用唯美清新的氛围感抓住学生党眼球。",
+        "duration_s": 3
+      },
+      {
+        "section": "展开",
+        "title": "湖光画卷",
+        "content": "快速混剪苏堤春晓、三潭印月、断桥夕阳等核心景观，配合柔光滤镜与慢动作，展现西湖四季皆景的绝美画卷，强化视觉记忆。",
+        "duration_s": 5
+      },
+      {
+        "section": "高潮",
+        "title": "青春体验",
+        "content": "聚焦学生党友好场景：环湖骑行、湖畔长椅放空、等待'橘子海'日落、免费出片打卡，突出'0元畅游'与'氛围感绝杀'的年轻玩法。",
+        "duration_s": 4
+      },
+      {
+        "section": "收尾",
+        "title": "即刻出发",
+        "content": "以主人公在湖边张开双臂或回眸一笑的画面定格，搭配文案'青春没有售价，西湖就在脚下'，引导点赞收藏并立刻行动。",
+        "duration_s": 3
+      }
+    ],
+    "plan_summary": "西湖旅游推广"
+  },
+  "copywriting": {
+    "titles": [
+      "0元绝杀！在世界遗产西湖追一场橘子海",
+      "这一站，西湖：青春无售价，湖光免费看"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "引入｜一眼心动画面：Golden Hour晨曦穿透薄雾，6.38平方千米湖面波光如碎金跳跃，轻快卡点音乐精准切入。居中字幕淡入：\"这一站，杭州西湖\"。旁白：\"你看，西湖的晨光，为世界遗产醒了。\"",
+        "duration_s": 3
+      },
+      {
+        "idx": 2,
+        "text": "展开｜湖光画卷画面：柔光滤镜快剪——苏堤春晓柳浪闻莺、三潭印月石塔伫立碧波（第五套人民币一元纸币背面同款）、断桥诗意朦胧、雷峰夕照镀金。慢动作升格，帧帧入画。旁白：\"苏堤春晓，三潭印月。列入世界遗产的西湖，四季皆画。\"",
+        "duration_s": 5
+      },
+      {
+        "idx": 3,
+        "text": "高潮｜青春体验画面：学生党沿湖骑行掠过梧桐道，湖畔长椅放空听歌，举起手机等待\"橘子海\"日落，在三潭印月前自由打卡。自2002年起环湖公园免费开放，年轻身影撞进千年湖光。旁白：\"骑一辆车，追橘子海日落。免费5A，氛围感绝杀。\"",
+        "duration_s": 4
+      },
+      {
+        "idx": 4,
+        "text": "收尾｜即刻出发画面：主人公奔向白堤，在湖边张开双臂迎风，蓦然回首灿烂一笑，画面幸福定格。大字幕炸出：\"青春没有售价，西湖就在脚下\"。旁白：\"青春没有售价，西湖就在脚下。\"",
+        "duration_s": 3
+      }
+    ],
+    "hashtags": [
+      "#西湖免费游",
+      "#青春没有售价",
+      "#西湖橘子海"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "引入｜一眼心动画面：Golden Hour晨曦穿透薄雾，6.38平方千米湖面波光如碎金跳跃，轻快卡点音乐精准切入。居中字幕淡入：\"这一站，杭州西湖\"。旁白：\"你看，西湖的晨光，为世界遗产醒了。\"",
+        "start_s": 0,
+        "end_s": 3
+      },
+      {
+        "line_id": 2,
+        "text": "展开｜湖光画卷画面：柔光滤镜快剪——苏堤春晓柳浪闻莺、三潭印月石塔伫立碧波（第五套人民币一元纸币背面同款）、断桥诗意朦胧、雷峰夕照镀金。慢动作升格，帧帧入画。旁白：\"苏堤春晓，三潭印月。列入世界遗产的西湖，四季皆画。\"",
+        "start_s": 3,
+        "end_s": 8
+      },
+      {
+        "line_id": 3,
+        "text": "高潮｜青春体验画面：学生党沿湖骑行掠过梧桐道，湖畔长椅放空听歌，举起手机等待\"橘子海\"日落，在三潭印月前自由打卡。自2002年起环湖公园免费开放，年轻身影撞进千年湖光。旁白：\"骑一辆车，追橘子海日落。免费5A，氛围感绝杀。\"",
+        "start_s": 8,
+        "end_s": 12
+      },
+      {
+        "line_id": 4,
+        "text": "收尾｜即刻出发画面：主人公奔向白堤，在湖边张开双臂迎风，蓦然回首灿烂一笑，画面幸福定格。大字幕炸出：\"青春没有售价，西湖就在脚下\"。旁白：\"青春没有售价，西湖就在脚下。\"",
+        "start_s": 12,
+        "end_s": 15
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "杭州西湖青春文旅宣传片",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "西湖湖面",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 2,
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "西湖全景湖面",
+            "background": "晨曦薄雾",
+            "prompt": "电影级航拍大远景，清晨Golden Hour西湖全景，6.38平方千米湖面，晨曦穿透薄雾，波光如碎金跳跃，晨雾缭绕湖岸，写实摄影质感，8k分辨率"
+          },
+          {
+            "shot_id": 2,
+            "duration_s": 2,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "西湖湖岸与远山",
+            "background": "朝霞天际",
+            "prompt": "电影级固定机位全景，清晨西湖湖岸线与远山，朝霞染红天际，湖面泛着金色晨光，字幕淡入居中显示这一站杭州西湖，温暖色调，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 2,
+        "location": "西湖十景",
+        "time": "午后",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 2,
+            "camera": {
+              "type": "无人机",
+              "movement": "移",
+              "angle": "俯拍"
+            },
+            "shot_size": "全景",
+            "subject": "苏堤春晓",
+            "background": "柳浪闻莺",
+            "prompt": "电影级无人机俯拍全景，午后柔光滤镜慢动作升格，柳浪闻莺绿意盎然，湖面碧波如镜，轻快剪辑节奏，梦幻质感，8k分辨率"
+          },
+          {
+            "shot_id": 4,
+            "duration_s": 2,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "近景",
+            "subject": "三潭印月石塔",
+            "background": "碧波湖面",
+            "prompt": "电影级固定机位近景，午后柔和日光，三潭印月石塔伫立碧波之中，第五套人民币一元纸币同款构图，水面涟漪微微，古典园林意境，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 3,
+        "location": "环湖步道",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 5,
+            "duration_s": 2,
+            "camera": {
+              "type": "移动机位",
+              "movement": "跟",
+              "angle": "侧拍"
+            },
+            "shot_size": "中景",
+            "subject": "骑行学生",
+            "background": "湖畔梧桐道",
+            "prompt": "电影级移动机位侧跟中景，黄昏Golden Hour，年轻学生沿西湖骑行掠过梧桐道，夕阳逆光勾勒轮廓，梧桐叶呈现金黄色，青春动感，8k分辨率"
+          },
+          {
+            "shot_id": 6,
+            "duration_s": 2,
+            "camera": {
+              "type": "地面机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "近景",
+            "subject": "手机与日落",
+            "background": "橘子海湖面",
+            "prompt": "电影级地面机位平拍近景，黄昏橘子海日落时分，年轻人举起手机拍摄西湖日落，天空橙红渐变倒映湖面，氛围感剪影，湖畔长椅隐约可见，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 4,
+        "location": "白堤",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 7,
+            "duration_s": 3,
+            "camera": {
+              "type": "移动机位",
+              "movement": "跟",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "主人公",
+            "background": "白堤湖面",
+            "prompt": "电影级移动机位平拍中景，黄昏白堤湖畔，主人公奔向湖边张开双臂迎风，蓦然回首灿烂一笑，发丝与衣角随风飞扬，大字幕青春没有售价西湖就在脚下炸出，幸福定格瞬间，暖金逆光，8k分辨率"
+          }
+        ]
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260830_140419_69a33c_v1",
+  "plan_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [
+    "vt_20260830_142057_b6ae64",
+    "vt_20260830_142448_faba7b",
+    "vt_20260830_142846_54c559"
+  ],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-30T06:04:19.708994+00:00",
+  "updated_at": "2026-08-30T06:33:14.551774+00:00",
+  "copywriting_text": "【0-3s】引入｜一眼心动画面：Golden Hour晨曦穿透薄雾，6.38平方千米湖面波光如碎金跳跃，轻快卡点音乐精准切入。居中字幕淡入：\"这一站，杭州西湖\"。旁白：\"你看，西湖的晨光，为世界遗产醒了。\"\n【3-8s】展开｜湖光画卷画面：柔光滤镜快剪——苏堤春晓柳浪闻莺、三潭印月石塔伫立碧波（第五套人民币一元纸币背面同款）、断桥诗意朦胧、雷峰夕照镀金。慢动作升格，帧帧入画。旁白：\"苏堤春晓，三潭印月。列入世界遗产的西湖，四季皆画。\"\n【8-12s】高潮｜青春体验画面：学生党沿湖骑行掠过梧桐道，湖畔长椅放空听歌，举起手机等待\"橘子海\"日落，在三潭印月前自由打卡。自2002年起环湖公园免费开放，年轻身影撞进千年湖光。旁白：\"骑一辆车，追橘子海日落。免费5A，氛围感绝杀。\"\n【12-15s】收尾｜即刻出发画面：主人公奔向白堤，在湖边张开双臂迎风，蓦然回首灿烂一笑，画面幸福定格。大字幕炸出：\"青春没有售价，西湖就在脚下\"。旁白：\"青春没有售价，西湖就在脚下。\"",
+  "video_clips": {
+    "1": {
+      "shot_id": 1,
+      "task_id": "vt_20260830_142846_54c559",
+      "status": "completed",
+      "video_url": "/assets/videos/vt_20260830_142846_54c559_1.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\videos\\vt_20260830_142846_54c559_1.mp4",
+      "error": null
+    },
+    "3": {
+      "shot_id": 3,
+      "task_id": "vt_20260830_142448_faba7b",
+      "status": "completed",
+      "video_url": "/assets/videos/vt_20260830_142448_faba7b_3.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\videos\\vt_20260830_142448_faba7b_3.mp4",
+      "error": null
+    }
+  }
+}

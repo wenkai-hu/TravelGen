@@ -14,6 +14,7 @@
   - 交互文档：http://127.0.0.1:8000/docs（可导出 OpenAPI）
 """
 import asyncio, json, os, uuid
+from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 
 from fastapi import FastAPI, HTTPException
@@ -25,10 +26,20 @@ from schemas import GenerateRequest
 from pipeline import kb
 from pipeline.pipeline import PipelineRunner
 from v1_router import router as v1_router
+from db.auth import router as auth_router
+from db.database import init_db
 
-app = FastAPI(title="TravelGen 生成管线 API", version="0.2.0")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await init_db()   # 启动建表（users 等），表已存在则跳过
+    yield
+
+
+app = FastAPI(title="TravelGen 生成管线 API", version="0.2.0", lifespan=lifespan)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 app.include_router(v1_router)
+app.include_router(auth_router)
 
 
 class Task:
