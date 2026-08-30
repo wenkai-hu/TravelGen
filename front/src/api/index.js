@@ -1,14 +1,23 @@
 // 后端 API 封装 —— V1 分阶段契约（/api/*），与 backend/v1_router.py 一一对应
 // 开发时走 vite 代理（vite.config.js → http://127.0.0.1:8000）；
 // 独立部署时在 .env 里填 VITE_API_BASE。
+import { getToken } from "../auth";
+
 const API_BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '')
 
 async function request(path, options = {}) {
   let res
+  // 登录态自动带 Authorization；未登录（如 /api/auth/login）则不发
+  const token = getToken()
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    ...options.headers,
+  }
   try {
     // 20s 超时兜底：后端请求挂起时不能永久阻塞调用方（转圈按钮 / 轮询调用方会被挂死）
     res = await fetch(`${API_BASE}${path}`, {
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       ...options,
       signal: options.signal ?? AbortSignal.timeout(20000),
     })
@@ -102,4 +111,9 @@ export function register(payload) {
 }
 export function login(payload) {
   return request('/api/auth/login', { method: 'POST', body: JSON.stringify(payload) })
+}
+
+// 历史记录：我的项目列表（GET /api/projects，仅返回当前用户的项目）
+export function listProjects() {
+  return request('/api/projects')
 }

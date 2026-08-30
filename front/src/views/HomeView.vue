@@ -193,6 +193,7 @@ async function onSubmit() {
           <a href="#bench">工作台</a>
           <a href="#compliance">版权合规</a>
           <template v-if="loggedIn">
+            <router-link to="/history">我的创作</router-link>
             <span class="nav-user" title="已登录">👤 {{ username }}</span>
             <a href="#" class="nav-auth" @click.prevent="onLogout">退出</a>
           </template>

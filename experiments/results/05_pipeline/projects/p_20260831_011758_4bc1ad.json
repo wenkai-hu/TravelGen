@@ -1,0 +1,205 @@
+{
+  "project_id": "p_20260831_011758_4bc1ad",
+  "username": "sherlock",
+  "status": "waiting_confirm",
+  "progress": 10,
+  "message": "方案待确认",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "西湖旅游",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "湖光开篇",
+        "content": "晨曦航拍西湖全景，薄雾漫过湖面，远山如黛。电影级快速剪辑配合大气BGM，从鸟瞰切换湖面微距，以水墨入画的壮阔视觉冲击，3秒内抓住年轻受众眼球，奠定唯美基调。",
+        "duration_s": 10
+      },
+      {
+        "section": "展开",
+        "title": "山水画卷",
+        "content": "聚焦断桥、三潭印月、雷峰夕照等核心景观，运用无人机穿云、水面倒影等电影级运镜。穿插手划船第一视角、苏堤骑行、湖畔松弛感野餐，展现一步一景的出片圣地与多元玩法，强化视觉记忆。",
+        "duration_s": 18
+      },
+      {
+        "section": "高潮",
+        "title": "古今同框",
+        "content": "从宋韵茶舍品茗、西泠印社寻墨，过渡到湖滨落日集市与夜游灯影。突出年轻人的沉浸式文化体验与社交氛围，以人在画中游的情绪峰值，呈现传统美学与当代潮流的碰撞，拉升共情。",
+        "duration_s": 22
+      },
+      {
+        "section": "收尾",
+        "title": "赴约西湖",
+        "content": "金色调夕阳下，年轻人漫步湖岸的剪影与自由笑容。以总要来一趟西湖吧的共情文案收束，配合音乐渐弱，完成从云端种草到实地打卡的行动召唤，余韵悠长。",
+        "duration_s": 10
+      }
+    ],
+    "plan_summary": "西湖旅游"
+  },
+  "copywriting": {
+    "titles": [
+      "总要来一趟西湖吧",
+      "来西湖，做画里的主角"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "6.38平方公里，是一幅晕染了千年的水墨。晨雾漫过湖面，远山如黛，杭州西湖——这幅活着的世界遗产画卷，在破晓中缓缓醒来。",
+        "duration_s": 10
+      },
+      {
+        "idx": 2,
+        "text": "摇橹穿过断桥烟雨，触摸三潭印月——那枚印在一元纸币背面的千年月光，是苏轼在1089年埋下的浪漫。骑行苏堤，看雷峰夕照熔金，湖畔闲坐，一步一景皆是出片圣地。",
+        "duration_s": 18
+      },
+      {
+        "idx": 3,
+        "text": "西泠印社里，一方金石墨韵穿越千年；宋韵茶舍中，半盏龙井听风入松。待暮色四合，湖滨集市的霓虹灯影与晚风撞个满怀，古与今滚烫碰撞，每一帧都是人在画中游。",
+        "duration_s": 22
+      },
+      {
+        "idx": 4,
+        "text": "夕阳漫过免费开放的世界名湖，年轻的剪影踏碎波光。总要来一趟西湖吧——来这帧千年的画里，做自己的主角。",
+        "duration_s": 10
+      }
+    ],
+    "hashtags": [
+      "#总要来一趟西湖吧",
+      "#西湖十景",
+      "#杭州西湖"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "6.38平方公里，是一幅晕染了千年的水墨。晨雾漫过湖面，远山如黛，杭州西湖——这幅活着的世界遗产画卷，在破晓中缓缓醒来。",
+        "start_s": 0,
+        "end_s": 10
+      },
+      {
+        "line_id": 2,
+        "text": "摇橹穿过断桥烟雨，触摸三潭印月——那枚印在一元纸币背面的千年月光，是苏轼在1089年埋下的浪漫。骑行苏堤，看雷峰夕照熔金，湖畔闲坐，一步一景皆是出片圣地。",
+        "start_s": 10,
+        "end_s": 28
+      },
+      {
+        "line_id": 3,
+        "text": "西泠印社里，一方金石墨韵穿越千年；宋韵茶舍中，半盏龙井听风入松。待暮色四合，湖滨集市的霓虹灯影与晚风撞个满怀，古与今滚烫碰撞，每一帧都是人在画中游。",
+        "start_s": 28,
+        "end_s": 50
+      },
+      {
+        "line_id": 4,
+        "text": "夕阳漫过免费开放的世界名湖，年轻的剪影踏碎波光。总要来一趟西湖吧——来这帧千年的画里，做自己的主角。",
+        "start_s": 50,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-30T17:17:58.348785+00:00",
+  "updated_at": "2026-08-30T17:21:20.430462+00:00",
+  "copywriting_text": "【0-10s】6.38平方公里，是一幅晕染了千年的水墨。晨雾漫过湖面，远山如黛，杭州西湖——这幅活着的世界遗产画卷，在破晓中缓缓醒来。\n【10-28s】摇橹穿过断桥烟雨，触摸三潭印月——那枚印在一元纸币背面的千年月光，是苏轼在1089年埋下的浪漫。骑行苏堤，看雷峰夕照熔金，湖畔闲坐，一步一景皆是出片圣地。\n【28-50s】西泠印社里，一方金石墨韵穿越千年；宋韵茶舍中，半盏龙井听风入松。待暮色四合，湖滨集市的霓虹灯影与晚风撞个满怀，古与今滚烫碰撞，每一帧都是人在画中游。\n【50-60s】夕阳漫过免费开放的世界名湖，年轻的剪影踏碎波光。总要来一趟西湖吧——来这帧千年的画里，做自己的主角。",
+  "video_clips": {}
+}

@@ -1,8 +1,8 @@
 {
   "project_id": "p_20260830_201051_3c0fe0",
-  "status": "planning",
-  "progress": 5,
-  "message": "生成内容大纲",
+  "status": "waiting_storyboard_confirm",
+  "progress": 40,
+  "message": "分镜待确认（可修改 Shot）",
   "request": {
     "city": "杭州",
     "location": "西湖雷峰塔",
@@ -17,13 +17,210 @@
     "description": "",
     "assets": []
   },
-  "planning": {},
-  "copywriting": {},
-  "script": {},
-  "storyboard": {},
-  "plan_id": null,
-  "plan_version": 0,
-  "visual_assets": {},
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "墨染塔影",
+        "content": "一滴水墨晕染开西湖，雷峰塔轮廓从淡墨山水间浮出，湖面倒影摇曳，奠定水墨诗意基调",
+        "duration_s": 3
+      },
+      {
+        "section": "核心景观",
+        "title": "夕照鎏金",
+        "content": "落日熔金，塔身被夕阳镀上暖黄光泽，湖面碎金万点，无人机环绕航拍展现雷峰夕照经典视角",
+        "duration_s": 5
+      },
+      {
+        "section": "特色体验",
+        "title": "古今同框",
+        "content": "年轻游客凭栏剪影入画，手机记录夕阳时刻，水墨风字幕'落日熔金，暮云合璧'叠化浮现",
+        "duration_s": 4
+      },
+      {
+        "section": "行动召唤",
+        "title": "共赴西子",
+        "content": "塔影渐隐为水墨丹青，slogan'来杭州，追一场雷峰夕照'与景区定位信息轻显收尾",
+        "duration_s": 3
+      }
+    ],
+    "plan_summary": "雷锋夕照"
+  },
+  "copywriting": {
+    "titles": [
+      "来杭州，追一场雷峰夕照",
+      "墨染雷峰，为你夕照鎏金"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "一滴墨，落进面积约六平方千米的西湖。世界遗产的山水长卷缓缓晕开，雷峰塔影自淡墨中浮出，湖面摇曳着千年未散的江南诗眼。",
+        "duration_s": 3
+      },
+      {
+        "idx": 2,
+        "text": "落日熔金，为塔身披上暖黄。湖面碎金万点，雷峰夕照铺展成流动的盛宴。这座自2002年起首批免费开放的5A级景区，将千年光阴，化作你眼前的鎏金诗行。",
+        "duration_s": 5
+      },
+      {
+        "idx": 3,
+        "text": "你凭栏的剪影，正入画。手机定格的刹那，千年塔影与你的黄昏同框。“落日熔金，暮云合璧”——水墨浮光里，你与西湖十景，共享此刻温柔。",
+        "duration_s": 4
+      },
+      {
+        "idx": 4,
+        "text": "塔影渐隐为一幅水墨丹青。来杭州，追一场雷峰夕照。",
+        "duration_s": 3
+      }
+    ],
+    "hashtags": [
+      "#雷峰夕照",
+      "#西湖十景",
+      "#杭州旅行"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "一滴墨，落进面积约六平方千米的西湖。世界遗产的山水长卷缓缓晕开，雷峰塔影自淡墨中浮出，湖面摇曳着千年未散的江南诗眼。",
+        "start_s": 0,
+        "end_s": 3
+      },
+      {
+        "line_id": 2,
+        "text": "落日熔金，为塔身披上暖黄。湖面碎金万点，雷峰夕照铺展成流动的盛宴。这座自2002年起首批免费开放的5A级景区，将千年光阴，化作你眼前的鎏金诗行。",
+        "start_s": 3,
+        "end_s": 8
+      },
+      {
+        "line_id": 3,
+        "text": "你凭栏的剪影，正入画。手机定格的刹那，千年塔影与你的黄昏同框。“落日熔金，暮云合璧”——水墨浮光里，你与西湖十景，共享此刻温柔。",
+        "start_s": 8,
+        "end_s": 12
+      },
+      {
+        "line_id": 4,
+        "text": "塔影渐隐为一幅水墨丹青。来杭州，追一场雷峰夕照。",
+        "start_s": 12,
+        "end_s": 15
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "雷峰夕照·水墨西湖",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "西湖湖面",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 5,
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "墨滴西湖与雷峰塔影",
+            "background": "晨雾远山",
+            "prompt": "电影级航拍大远景俯拍，清晨六平方千米西湖全景，一滴浓墨坠入湖面晕开成淡墨山水长卷，雷峰塔影自晨雾中缓缓浮出，青灰水墨色调，湖面微光摇曳千年江南诗眼，细腻写实质感，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 2,
+        "location": "雷峰塔景区",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 2,
+            "duration_s": 5,
+            "camera": {
+              "type": "航拍",
+              "movement": "移",
+              "angle": "俯拍"
+            },
+            "shot_size": "全景",
+            "subject": "雷峰夕照与湖面碎金",
+            "background": "落日熔金暮云",
+            "prompt": "电影级航拍全景俯拍横移，黄昏落日熔金，雷峰塔身披暖黄夕照矗立西湖南岸，湖面碎金万点波光粼粼，暮云合璧天空，鎏金流动盛宴光影，首批免费开放5A景区实景，史诗质感，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 3,
+        "location": "西湖畔观景台",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 5,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "游客剪影与水墨雷峰塔",
+            "background": "黄昏湖面与暮云",
+            "prompt": "电影级固定机位全景平拍，黄昏暖逆光中游客凭栏剪影正入画，手持手机定格刹那，千年塔影与你的黄昏同框，画面渐隐为一幅水墨丹青，黑白写意宣纸留白，温柔诗意，来杭州追一场雷峰夕照，8k分辨率"
+          }
+        ]
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260830_201051_3c0fe0_v1",
+  "plan_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_1.jpg",
+        "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+        "license": "Unsplash License",
+        "alt": "a building with a tree in front of it"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_2.jpg",
+        "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+        "license": "Unsplash License",
+        "alt": "a pagoda in the middle of a park surrounded by trees"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_3.jpg",
+        "url": "https://unsplash.com/photos/brown-and-red-temple-kp3A2jurfP0",
+        "license": "Unsplash License",
+        "alt": "brown and red temple"
+      }
+    ],
+    "ref_images": []
+  },
   "voice": {
     "status": "reserved",
     "engine": null
@@ -44,9 +241,28 @@
     "resolution": "1080p",
     "aspect_ratio": "9:16"
   },
-  "safety": {},
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
   "created_at": "2026-08-30T12:10:51.847619+00:00",
-  "updated_at": "2026-08-30T12:10:51.879536+00:00",
-  "copywriting_text": "",
+  "updated_at": "2026-08-30T12:18:32.751102+00:00",
+  "copywriting_text": "【0-3s】一滴墨，落进面积约六平方千米的西湖。世界遗产的山水长卷缓缓晕开，雷峰塔影自淡墨中浮出，湖面摇曳着千年未散的江南诗眼。\n【3-8s】落日熔金，为塔身披上暖黄。湖面碎金万点，雷峰夕照铺展成流动的盛宴。这座自2002年起首批免费开放的5A级景区，将千年光阴，化作你眼前的鎏金诗行。\n【8-12s】你凭栏的剪影，正入画。手机定格的刹那，千年塔影与你的黄昏同框。“落日熔金，暮云合璧”——水墨浮光里，你与西湖十景，共享此刻温柔。\n【12-15s】塔影渐隐为一幅水墨丹青。来杭州，追一场雷峰夕照。",
   "video_clips": {}
 }

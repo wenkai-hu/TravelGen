@@ -4,6 +4,7 @@ import { useRoute, useRouter } from "vue-router";
 import { NButton, NInput, useMessage } from "naive-ui";
 import logoUrl from "../images/logo.png";
 import { getProject, confirmPlan } from "../api";
+import { isLoggedIn } from "../auth";
 
 const message = useMessage();
 const route = useRoute();
@@ -131,6 +132,7 @@ function fmtDur(s) {
         </div>
         <nav class="nav-links">
           <a href="#" @click.prevent="router.push('/')">工作台</a>
+          <router-link v-if="isLoggedIn()" to="/history">我的创作</router-link>
         </nav>
       </div>
     </header>

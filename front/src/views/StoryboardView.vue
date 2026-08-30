@@ -20,6 +20,7 @@ import {
   regenerateShot,
   updateShot,
 } from "../api";
+import { isLoggedIn } from "../auth";
 
 const message = useMessage();
 const route = useRoute();
@@ -370,6 +371,7 @@ function statusLabel(s) {
         </div>
         <nav class="nav-links">
           <a href="#" @click.prevent="router.push('/')">工作台</a>
+          <router-link v-if="isLoggedIn()" to="/history">我的创作</router-link>
         </nav>
       </div>
     </header>

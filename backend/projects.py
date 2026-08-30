@@ -27,9 +27,10 @@ def _now():
 class Project:
     """一次创作任务。status 状态机见 docs/API_Contract_MVP.md V1 章节。"""
 
-    def __init__(self, project_id: str, request: dict):
+    def __init__(self, project_id: str, request: dict, username: str = ""):
         self.project_id = project_id
         self.request = request          # 创建入参（scene_type 已归一化为中文枚举）
+        self.username = username        # 归属用户（创建时从登录 token 解析；旧数据为 "" 即视为不可见垃圾数据）
         self.status = "created"
         self.progress = 0
         self.message = ""
@@ -68,7 +69,7 @@ class Project:
     def to_dict(self) -> dict:
         self.touch()
         d = {k: getattr(self, k) for k in (
-            "project_id", "status", "progress", "message", "request", "planning",
+            "project_id", "username", "status", "progress", "message", "request", "planning",
             "copywriting", "script", "storyboard", "plan_id", "plan_version",
             "visual_assets", "voice", "music", "video_tasks", "render",
             "final_video", "safety", "created_at", "updated_at")}
@@ -84,7 +85,7 @@ class Project:
     @classmethod
     def from_dict(cls, d) -> "Project":
         p = cls(d["project_id"], d["request"])
-        for k in ("status", "progress", "message", "planning", "copywriting", "script",
+        for k in ("username", "status", "progress", "message", "planning", "copywriting", "script",
                   "storyboard", "plan_id", "plan_version", "visual_assets", "voice",
                   "music", "video_tasks", "render", "final_video", "safety",
                   "created_at", "updated_at"):
@@ -187,6 +188,24 @@ def load_video_task(task_id: str) -> VideoTask | None:
         t = VideoTask.from_dict(json.load(f))
     VIDEO_TASKS[task_id] = t
     return t
+
+
+def list_projects() -> list[Project]:
+    """磁盘扫描全部项目（懒加载），按文件名倒序（p_时间戳_hex，天然时间倒序）。
+    跳过非 p_ 前缀 / 损坏的 json：一个坏文件不应拖垮整个列表接口。"""
+    if not os.path.isdir(PROJECTS_DIR):
+        return []
+    names = sorted((f[:-5] for f in os.listdir(PROJECTS_DIR)
+                    if f.endswith(".json") and f.startswith("p_")), reverse=True)
+    projects = []
+    for n in names:
+        try:
+            p = load_project(n)
+        except Exception:
+            continue  # 损坏/半写的项目文件跳过（dump 非原子，服务中断可能留下）
+        if p is not None:
+            projects.append(p)
+    return projects
 
 
 def merge_video_results(project: Project) -> dict[int, dict]:

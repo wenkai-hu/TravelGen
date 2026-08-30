@@ -7,7 +7,7 @@
 """
 import hashlib, hmac, secrets
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -67,6 +67,27 @@ async def login(req: LoginRequest, db: AsyncSession = Depends(get_session)):
     token = secrets.token_urlsafe(32)
     SESSIONS[token] = user.id
     return {"token": token, "username": user.username}
+
+
+async def get_current_user(
+    authorization: str | None = Header(default=None),
+    db: AsyncSession = Depends(get_session),
+) -> str:
+    """鉴权依赖：解析 Authorization: Bearer <token> → 当前用户名。缺失/无效 → 401。
+
+    供 /api/projects/* 等需登录接口使用（Depends(get_current_user)）。
+    SESSIONS 为内存表，服务重启后所有 token 失效，前端需重新登录。
+    """
+    if not authorization or not authorization.startswith("Bearer "):
+        raise HTTPException(401, detail={"code": "not_authenticated", "message": "请先登录", "detail": ""})
+    token = authorization.removeprefix("Bearer ").strip()
+    user_id = SESSIONS.get(token)
+    if user_id is None:
+        raise HTTPException(401, detail={"code": "invalid_token", "message": "登录已失效，请重新登录", "detail": ""})
+    user = await db.scalar(select(User).where(User.id == user_id))
+    if user is None:
+        raise HTTPException(401, detail={"code": "invalid_token", "message": "登录已失效，请重新登录", "detail": ""})
+    return user.username
 
 
 if __name__ == "__main__":

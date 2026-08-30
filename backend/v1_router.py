@@ -9,7 +9,7 @@
 import asyncio, uuid
 from datetime import datetime
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 
 from pipeline import kb
 from pipeline import validate as v
@@ -18,6 +18,7 @@ from pipeline.pipeline import PipelineRunner, _parse_cw
 from schemas import (AudioRequest, ConfirmPlanRequest, GenerateRequest, GenerateShotsRequest,
                      RegenerateShotRequest, RenderRequest, ShotPatch, StoryboardRequest)
 from constants import SCENE_TYPE_ALIASES, SCENE_TYPES, ASPECT_RATIOS, RESOLUTIONS, VIDEO_MODELS
+from db.auth import get_current_user
 import projects as P
 
 router = APIRouter(prefix="/api", tags=["项目分阶段"])
@@ -37,6 +38,14 @@ def _err(status: int, code: str, message: str):
 def _get_project(pid: str) -> P.Project:
     project = P.load_project(pid)
     if project is None:
+        _err(404, "project_not_found", f"项目 {pid} 不存在")
+    return project
+
+
+def _owned_project(pid: str, username: str) -> P.Project:
+    """归属校验：非本人项目一律 404（不暴露存在性）。旧数据 username 为空 → 视为垃圾，对所有人不可见。"""
+    project = _get_project(pid)
+    if project.username != username:
         _err(404, "project_not_found", f"项目 {pid} 不存在")
     return project
 
@@ -127,7 +136,7 @@ async def _run_video_task(project: P.Project, vt: P.VideoTask, shot_ids: list[in
 # ---- 接口1：创建项目 / 生成创作方案 ----
 
 @router.post("/projects", status_code=202)
-async def create_project(req: GenerateRequest):
+async def create_project(req: GenerateRequest, user: str = Depends(get_current_user)):
     errs = []
     if req.scene_type not in SCENE_TYPES and req.scene_type not in SCENE_TYPE_ALIASES:
         errs.append(f"scene_type 需为 {SCENE_TYPES} 或英文别名 {list(SCENE_TYPE_ALIASES)}")
@@ -143,7 +152,7 @@ async def create_project(req: GenerateRequest):
     request = req.model_dump()
     request["scene_type"] = SCENE_TYPE_ALIASES.get(req.scene_type, req.scene_type)  # 落库中文枚举
     pid = _new_id("p")
-    project = P.Project(pid, request)
+    project = P.Project(pid, request, username=user)
     P.PROJECTS[pid] = project
     project.dump()
     asyncio.create_task(_run_plan(project))
@@ -154,8 +163,8 @@ async def create_project(req: GenerateRequest):
 # ---- 接口2：修改/确认创作方案 ----
 
 @router.put("/projects/{pid}/plan")
-async def confirm_plan(pid: str, req: ConfirmPlanRequest):
-    project = _get_project(pid)
+async def confirm_plan(pid: str, req: ConfirmPlanRequest, user: str = Depends(get_current_user)):
+    project = _owned_project(pid, user)
     _state_guard(project, {"waiting_confirm"}, "确认方案")
     cw = _parse_cw(req.copywriting)
     if not cw["paragraphs"]:
@@ -183,8 +192,8 @@ async def confirm_plan(pid: str, req: ConfirmPlanRequest):
 # ---- 接口3：生成视频脚本 + 分镜 ----
 
 @router.post("/projects/{pid}/storyboard", status_code=202)
-async def create_storyboard(pid: str, req: StoryboardRequest):
-    project = _get_project(pid)
+async def create_storyboard(pid: str, req: StoryboardRequest, user: str = Depends(get_current_user)):
+    project = _owned_project(pid, user)
     _state_guard(project, {"plan_confirmed"}, "生成分镜")
     if req.plan_id and req.plan_id != project.plan_id:
         _err(409, "invalid_state", f"plan_id 不匹配（当前 {project.plan_id}）")
@@ -197,8 +206,8 @@ async def create_storyboard(pid: str, req: StoryboardRequest):
 # ---- 接口4：修改单个 Shot ----
 
 @router.put("/projects/{pid}/shots/{shot_id}")
-async def update_shot(pid: str, shot_id: int, patch: ShotPatch):
-    project = _get_project(pid)
+async def update_shot(pid: str, shot_id: int, patch: ShotPatch, user: str = Depends(get_current_user)):
+    project = _owned_project(pid, user)
     _require_storyboard(project)
     shot = _find_shot(project, shot_id)
     upd = patch.model_dump(exclude_none=True)
@@ -213,8 +222,8 @@ async def update_shot(pid: str, shot_id: int, patch: ShotPatch):
 # ---- 接口5：批量生成视频 Shot ----
 
 @router.post("/projects/{pid}/generate", status_code=202)
-async def generate_batch(pid: str, req: GenerateShotsRequest):
-    project = _get_project(pid)
+async def generate_batch(pid: str, req: GenerateShotsRequest, user: str = Depends(get_current_user)):
+    project = _owned_project(pid, user)
     _require_storyboard(project)
     if not req.generate_video:
         _err(400, "invalid_param", "generate_image 单独生成本版未实现（video-only）；请设 generate_video=true")
@@ -236,15 +245,17 @@ async def generate_batch(pid: str, req: GenerateShotsRequest):
 # ---- 接口6：查询生成任务 ----
 
 @router.get("/tasks/{task_id}")
-async def get_video_task(task_id: str):
-    return _get_video_task(task_id).to_dict()
+async def get_video_task(task_id: str, user: str = Depends(get_current_user)):
+    vt = _get_video_task(task_id)
+    _owned_project(vt.project_id, user)   # 任务归属项目，沿用项目归属校验
+    return vt.to_dict()
 
 
 # ---- §十五：Shot 级重新生成 ----
 
 @router.post("/projects/{pid}/shots/{shot_id}/regenerate", status_code=202)
-async def regenerate_shot(pid: str, shot_id: int, req: RegenerateShotRequest):
-    project = _get_project(pid)
+async def regenerate_shot(pid: str, shot_id: int, req: RegenerateShotRequest, user: str = Depends(get_current_user)):
+    project = _owned_project(pid, user)
     _require_storyboard(project)
     shot = _find_shot(project, shot_id)
     if req.prompt and req.prompt.strip() and req.prompt.strip() != shot.get("prompt"):
@@ -266,33 +277,62 @@ async def regenerate_shot(pid: str, shot_id: int, req: RegenerateShotRequest):
 # ---- 接口7/8/9：音频、合成、成片查询（本版占位 reserved） ----
 
 @router.post("/projects/{pid}/audio", status_code=202)
-async def create_audio(pid: str, req: AudioRequest = None):
-    project = _get_project(pid)
+async def create_audio(pid: str, user: str = Depends(get_current_user), req: AudioRequest = None):
+    project = _owned_project(pid, user)
     return {"task_id": f"audio_{project.project_id}_reserved", "project_id": pid,
             "status": "reserved", "voice": {"status": "reserved"}, "music": {"status": "reserved"}}
 
 
 @router.post("/projects/{pid}/render", status_code=202)
-async def create_render(pid: str, req: RenderRequest = None):
-    project = _get_project(pid)
+async def create_render(pid: str, user: str = Depends(get_current_user), req: RenderRequest = None):
+    project = _owned_project(pid, user)
     return {"task_id": f"render_{project.project_id}_reserved", "project_id": pid,
             "status": "reserved"}
 
 
 @router.get("/projects/{pid}/render/status")
-async def render_status(pid: str):
-    project = _get_project(pid)
+async def render_status(pid: str, user: str = Depends(get_current_user)):
+    project = _owned_project(pid, user)
     return {"task_id": f"render_{project.project_id}_reserved", "status": "reserved", "progress": 0,
             "video": {"status": "reserved", "url": "", "duration_s": 0,
                       "resolution": project.request.get("resolution", "1080p"),
                       "aspect_ratio": project.request.get("aspect_ratio", "9:16")}}
 
 
+# ---- 补充端点：项目列表（历史记录 / 我的创作，仅返回当前用户的） ----
+
+@router.get("/projects")
+async def list_projects(user: str = Depends(get_current_user)):
+    items = []
+    for p in P.list_projects():
+        if p.username != user:
+            continue
+        clips = P.merge_video_results(p)
+        cover = next((c["video_url"] for c in clips.values()
+                      if c.get("status") == "completed" and c.get("video_url")), None)
+        if not cover:
+            assets = (p.visual_assets or {}).get("kb_images") or []
+            cover = assets[0].get("url") if assets else None
+        items.append({
+            "project_id": p.project_id,
+            "theme": p.request.get("theme", ""),
+            "scene_type": p.request.get("scene_type", ""),
+            "status": p.status,
+            "progress": p.progress,
+            "duration_s": p.request.get("duration_s", 0),
+            "shot_count": len(clips),
+            "cover_url": cover,
+            "created_at": p.created_at,
+            "updated_at": p.updated_at,
+        })
+    return {"projects": items}
+
+
 # ---- 补充端点：查询项目全量（分阶段轮询入口，V1 文档未列但流程必需） ----
 
 @router.get("/projects/{pid}")
-async def get_project(pid: str):
-    project = _get_project(pid)
+async def get_project(pid: str, user: str = Depends(get_current_user)):
+    project = _owned_project(pid, user)
     P.recompute_project_status(project)   # 视频任务终止/进行状态 → 项目状态
     return project.to_dict()
 
