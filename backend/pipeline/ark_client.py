@@ -32,12 +32,18 @@ def _get(provider, path):
         return {"error": {"code": e.code, "message": e.read().decode("utf-8", "ignore")[:300]}}
 
 
-def submit(provider, prompt, duration=5, resolution="1080p", ratio="adaptive"):
+def submit(provider, prompt, duration=5, resolution="1080p", ratio="adaptive", images=None):
     """提交单镜头生成任务；返回 (task_id, error)。task_id 形如 cpt-xxx。
     ratio 对应请求里的 aspect_ratio（官方字段名 ratio，9:16 竖屏短视频必须显式传，
-    否则默认 adaptive 自适应比例）。"""
+    否则默认 adaptive 自适应比例）。
+    images: 可选的参考图 URL/data-URI 列表（Seedance 2.0 多模态参考，role=reference_image，
+    顺序即提示词中"图片1/图片2"的编号）；None 时纯文本，与原行为一致。"""
+    content = [{"type": "text", "text": prompt}]
+    if images:
+        content += [{"type": "image_url", "image_url": {"url": u}, "role": "reference_image"}
+                    for u in images[:9]]  # 官方上限 9 张
     body = {"model": provider["model"],
-            "content": [{"type": "text", "text": prompt}],
+            "content": content,
             "duration": duration,
             "resolution": resolution,
             "ratio": ratio}

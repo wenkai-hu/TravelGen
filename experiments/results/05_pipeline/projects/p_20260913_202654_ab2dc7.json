@@ -1,0 +1,400 @@
+{
+  "project_id": "p_20260913_202654_ab2dc7",
+  "username": "sherlock",
+  "status": "waiting_storyboard_confirm",
+  "progress": 40,
+  "message": "分镜待确认（可修改 Shot）",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "西湖旅游",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "初见·湖光破晓",
+        "content": "以电影级航拍与延时摄影开场：晨曦穿透薄雾，雷峰塔剪影与断桥轮廓渐次清晰，湖面倒映漫天霞光。配合大气磅礴的BGM，在3秒内抛出视觉钩子，建立'一眼入江南'的情绪基调，精准狙击年轻受众的审美爽点。",
+        "duration_s": 10
+      },
+      {
+        "section": "展开",
+        "title": "寻迹·四时风物",
+        "content": "切换第一人称年轻化视角：手划船穿过苏堤桥洞、骑行白堤感受湖风、曲院风荷的夏日绿意、北山街梧桐秋影。穿插湖边精品咖啡、落日飞车等新潮玩法，展现西湖既是千年名湖也是生活方式目的地，时长控制在快节奏剪辑中。",
+        "duration_s": 18
+      },
+      {
+        "section": "高潮",
+        "title": "入画·宋韵今风",
+        "content": "进入情绪高潮与氛围感营造：雨西湖的朦胧意境、汉服少年少女在孤山路打卡、三潭印月与明月同框的夜游场景、'印象西湖'演出的光影水幕。强调出片率与沉浸式体验，用慢镜头与特写放大唯美细节，触发年轻人的文化认同与分享欲望。",
+        "duration_s": 20
+      },
+      {
+        "section": "收尾",
+        "title": "留白·此心归处",
+        "content": "画面归于宁静湖面与远山的极简构图，配以治愈系文案：'西湖从不只是风景，是你我故事的开始。' 落版'杭州西湖，等你入画'与交通/话题标签，完成从情绪共鸣到行动召唤的转化，预留3秒黑屏或Logo定格。",
+        "duration_s": 12
+      }
+    ],
+    "plan_summary": "西湖旅游"
+  },
+  "copywriting": {
+    "titles": [
+      "西湖入画，一眼江南",
+      "此间西湖，你的故事起点"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "晨光刺破6.38平方千米的薄雾，雷峰塔剪影与断桥轮廓次第清晰。霞光坠入湖面，这座2011年列入世界遗产名录的千年名湖，以一眼入江南的磅礴，等你醒来。",
+        "duration_s": 10
+      },
+      {
+        "idx": 2,
+        "text": "手划船穿过苏堤桥洞，我把四季骑进白堤湖风。春晓苏堤，夏日曲院风荷，秋染北山街梧桐——这片2002年起免费开放的5A级景区，不只有千年风月，更有咖啡香气和落日飞车的心跳。",
+        "duration_s": 18
+      },
+      {
+        "idx": 3,
+        "text": "雨落时，这里是苏轼笔下的水墨长卷。汉服衣袂拂过孤山路，三潭印月三座石塔在月色里亮起——这印在一元纸币背面的奇景，与“印象西湖”光影水幕交辉。一帧一幕，皆是大片。",
+        "duration_s": 20
+      },
+      {
+        "idx": 4,
+        "text": "湖水归于远山。从白娘子传说到免费开放的人间烟火，从北宋苏轼走到今夜月明——西湖从不只是风景，是你我故事的开始。杭州西湖，等你入画。",
+        "duration_s": 12
+      }
+    ],
+    "hashtags": [
+      "#杭州西湖",
+      "#西湖十景",
+      "#一眼入江南"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "晨光刺破6.38平方千米的薄雾，雷峰塔剪影与断桥轮廓次第清晰。霞光坠入湖面，这座2011年列入世界遗产名录的千年名湖，以一眼入江南的磅礴，等你醒来。",
+        "start_s": 0,
+        "end_s": 10
+      },
+      {
+        "line_id": 2,
+        "text": "手划船穿过苏堤桥洞，我把四季骑进白堤湖风。春晓苏堤，夏日曲院风荷，秋染北山街梧桐——这片2002年起免费开放的5A级景区，不只有千年风月，更有咖啡香气和落日飞车的心跳。",
+        "start_s": 10,
+        "end_s": 28
+      },
+      {
+        "line_id": 3,
+        "text": "雨落时，这里是苏轼笔下的水墨长卷。汉服衣袂拂过孤山路，三潭印月三座石塔在月色里亮起——这印在一元纸币背面的奇景，与“印象西湖”光影水幕交辉。一帧一幕，皆是大片。",
+        "start_s": 28,
+        "end_s": 48
+      },
+      {
+        "line_id": 4,
+        "text": "湖水归于远山。从白娘子传说到免费开放的人间烟火，从北宋苏轼走到今夜月明——西湖从不只是风景，是你我故事的开始。杭州西湖，等你入画。",
+        "start_s": 48,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "杭州西湖世界遗产宣传片：等你入画",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "西湖湖面·雷峰塔·断桥",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 6,
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "西湖全景与雷峰塔、断桥剪影",
+            "background": "朝霞晨雾",
+            "prompt": "电影级航拍大远景俯拍推镜，清晨6.38平方千米西湖全景，薄雾笼罩湖面，雷峰塔与断桥剪影在霞光中隐约浮现，朝霞刺破云层，金红色霞光坠入湖面，水面波光粼粼，磅礴大气，写实质感，8k分辨率"
+          },
+          {
+            "shot_id": 2,
+            "duration_s": 5,
+            "camera": {
+              "type": "地面机位",
+              "movement": "移",
+              "angle": "仰拍"
+            },
+            "shot_size": "全景",
+            "subject": "雷峰塔与断桥轮廓",
+            "background": "晨光",
+            "prompt": "电影级地面机位仰拍全景移镜，晨光中雷峰塔剪影与断桥轮廓次第清晰，古塔飞檐与桥拱线条在朝阳下形成深色剪影，背景金粉色朝霞，西湖晨雾流动，写实质感，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 2,
+        "location": "苏堤·白堤·曲院风荷·北山街",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 5,
+            "camera": {
+              "type": "移动机位",
+              "movement": "跟",
+              "angle": "侧拍"
+            },
+            "shot_size": "中景",
+            "subject": "手划船穿过苏堤桥洞",
+            "background": "湖面",
+            "prompt": "电影级移动机位侧跟中景，传统手划船缓缓穿过苏堤石拱桥洞，上午柔和天光洒在船篷与湖面，船桨划破碧绿湖水，桥洞石拱 framing，水波荡漾，写实质感，8k分辨率"
+          },
+          {
+            "shot_id": 4,
+            "duration_s": 5,
+            "camera": {
+              "type": "移动机位",
+              "movement": "移",
+              "angle": "侧拍"
+            },
+            "shot_size": "中景",
+            "subject": "骑行白堤",
+            "background": "湖风垂柳",
+            "prompt": "电影级移动机位侧移中景，骑行者沿白堤穿行，两侧垂柳拂面，上午明亮日光下湖水湛蓝，湖风扬起衣角，路面光影斑驳，青春动感，写实质感，8k分辨率"
+          },
+          {
+            "shot_id": 5,
+            "duration_s": 5,
+            "camera": {
+              "type": "地面机位",
+              "movement": "摇",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "曲院风荷与北山街梧桐",
+            "background": "荷塘与梧桐道",
+            "prompt": "电影级地面机位平拍全景摇镜，从夏日曲院风荷的接天莲叶、映日荷花，摇至秋日北山街两侧金黄梧桐大道，上午温暖侧光，5A级景区自然与人文交融，写实质感，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 3,
+        "location": "湖畔咖啡馆",
+        "time": "午后",
+        "shot_list": [
+          {
+            "shot_id": 6,
+            "duration_s": 4,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "特写",
+            "subject": "咖啡杯与升腾热气",
+            "background": "湖畔露天座位",
+            "prompt": "电影级固定机位平拍特写，午后阳光斜照湖畔露天咖啡馆，木质桌面上拿铁咖啡升起袅袅热气，背景虚化的西湖湖面泛着金色波光，暖调惬意，写实质感，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 4,
+        "location": "环湖路·西湖远山",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 7,
+            "duration_s": 5,
+            "camera": {
+              "type": "移动机位",
+              "movement": "跟",
+              "angle": "侧拍"
+            },
+            "shot_size": "中景",
+            "subject": "落日飞车",
+            "background": "黄昏湖岸公路",
+            "prompt": "电影级移动机位侧跟中景，黄昏时分飞车沿湖岸公路驶过，金色落日逆光形成速度感剪影，车窗外西湖晚霞绚烂，心跳加速的动感瞬间，暖调光影，写实质感，8k分辨率"
+          },
+          {
+            "shot_id": 8,
+            "duration_s": 5,
+            "camera": {
+              "type": "航拍",
+              "movement": "拉",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "湖水归于远山",
+            "background": "黄昏天际",
+            "prompt": "电影级航拍俯拍大远景拉镜，黄昏西湖水面归于黛色远山，湖面倒映橙红暮光，从近景波光缓缓拉出至山水全景，天际线渐变暖紫，大气磅礴，写实质感，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 5,
+        "location": "孤山路·三潭印月·西湖全景",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 9,
+            "duration_s": 5,
+            "camera": {
+              "type": "地面机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "雨落西湖",
+            "background": "水墨夜色",
+            "prompt": "电影级地面机位平拍全景移镜，入夜细雨飘洒西湖，湖面泛起水墨般的涟漪波纹，远山如黛隐于薄雾，苏堤垂柳朦胧，苏轼笔下江南水墨意境，青冷调光影，写实质感，8k分辨率"
+          },
+          {
+            "shot_id": 10,
+            "duration_s": 4,
+            "camera": {
+              "type": "地面机位",
+              "movement": "跟",
+              "angle": "侧拍"
+            },
+            "shot_size": "近景",
+            "subject": "汉服衣袂",
+            "background": "孤山路",
+            "prompt": "电影级地面机位侧跟近景，入夜孤山路青石板上，身着宋制汉服的女子缓行，衣袖与裙摆拂过路面，细雨微湿衣袂，背景隐约可见西湖夜色与灯光，古典婉约，写实质感，8k分辨率"
+          },
+          {
+            "shot_id": 11,
+            "duration_s": 5,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "三潭印月石塔与印象西湖光影",
+            "background": "月色湖面",
+            "prompt": "电影级固定机位平拍全景，入夜三潭印月三座石塔在月色中逐一点亮暖黄色灯光，湖面如镜倒映塔影，远处印象西湖光影水幕的彩色光晕在夜空交织，一元纸币经典奇景与光影大片交辉，静谧空灵，写实质感，8k分辨率"
+          },
+          {
+            "shot_id": 12,
+            "duration_s": 5,
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "今夜月明西湖全景",
+            "background": "人间灯火",
+            "prompt": "电影级航拍俯拍大远景推镜，入夜明月高悬西湖上空，湖面倒映皎洁月光，远山如墨，环湖灯火璀璨如星河，白娘子传说意境与免费开放的人间烟火交融，杭州西湖等你入画，写实质感，8k分辨率"
+          }
+        ]
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260913_202654_ab2dc7_v1",
+  "plan_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-09-13T12:26:54.889212+00:00",
+  "updated_at": "2026-09-13T14:40:49.543254+00:00",
+  "copywriting_text": "【0-10s】晨光刺破6.38平方千米的薄雾，雷峰塔剪影与断桥轮廓次第清晰。霞光坠入湖面，这座2011年列入世界遗产名录的千年名湖，以一眼入江南的磅礴，等你醒来。\n【10-28s】手划船穿过苏堤桥洞，我把四季骑进白堤湖风。春晓苏堤，夏日曲院风荷，秋染北山街梧桐——这片2002年起免费开放的5A级景区，不只有千年风月，更有咖啡香气和落日飞车的心跳。\n【28-48s】雨落时，这里是苏轼笔下的水墨长卷。汉服衣袂拂过孤山路，三潭印月三座石塔在月色里亮起——这印在一元纸币背面的奇景，与“印象西湖”光影水幕交辉。一帧一幕，皆是大片。\n【48-60s】湖水归于远山。从白娘子传说到免费开放的人间烟火，从北宋苏轼走到今夜月明——西湖从不只是风景，是你我故事的开始。杭州西湖，等你入画。",
+  "video_clips": {}
+}

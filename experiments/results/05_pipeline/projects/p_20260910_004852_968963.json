@@ -1,0 +1,205 @@
+{
+  "project_id": "p_20260910_004852_968963",
+  "username": "sherlock",
+  "status": "waiting_confirm",
+  "progress": 10,
+  "message": "方案待确认",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "西湖美景",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 15,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入/视觉吸引",
+        "title": "水墨湖光",
+        "content": "航拍晨曦中的西湖全景，薄雾轻笼湖面，远山如黛，晨光穿透云层洒向水面，3秒内快速建立大气唯美的视觉基调，抓住年轻观众注意力。",
+        "duration_s": 3
+      },
+      {
+        "section": "核心景观",
+        "title": "诗画地标",
+        "content": "精选断桥、雷峰塔、三潭印月、苏堤等标志性景观的光影快切，配合四季色彩流转，展现西湖作为世界遗产的经典美学与出片魅力。",
+        "duration_s": 4
+      },
+      {
+        "section": "高潮/特色体验",
+        "title": "泛舟入画",
+        "content": "年轻游客乘坐手划船漫游湖面、湖岸骑行、夕阳金光洒满湖水等沉浸式场景，突出浪漫氛围与治愈体验，引发18-35岁人群的情感共鸣。",
+        "duration_s": 5
+      },
+      {
+        "section": "收尾/行动召唤",
+        "title": "相约西子",
+        "content": "西湖夜景或月色湖面空镜，搭配简洁有力的文案引导，如“杭州西湖，等你入画”，以诗意画面收束并激发即时出行欲望。",
+        "duration_s": 3
+      }
+    ],
+    "plan_summary": "西湖美景"
+  },
+  "copywriting": {
+    "titles": [
+      "西湖：一秒入画，千年等你",
+      "杭州把最贵的风景，免了门票"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "薄雾初醒，远山如黛。六点三八平方千米的湖面，是天地遗落人间的明镜。二〇一一年，杭州西湖文化景观列入世界遗产名录，此刻晨光穿透云层，一幅水墨长卷正为你铺展。",
+        "duration_s": 3
+      },
+      {
+        "idx": 2,
+        "text": "断桥残雪晕染千年风华，苏堤春晓裁出十里烟霞。雷峰塔下，“雷峰夕照”浸染吴越余晖；三潭印月，北宋元祐四年苏轼所立石塔，仍在一元人民币背面守望着湖天。四季十景，帧帧皆诗。",
+        "duration_s": 4
+      },
+      {
+        "idx": 3,
+        "text": "撑一柄手划船，摇碎满湖金箔；沿湖岸骑行，与晚风撞个满怀。自二〇〇二年起，西湖环湖公园免费开放——这座不售票的5A级景区，把千年浪漫无偿赠予年轻的脚步。夕阳熔金时，你就是画中人。",
+        "duration_s": 5
+      },
+      {
+        "idx": 4,
+        "text": "月色淌过三潭，西子入梦。杭州西湖，等你入画。",
+        "duration_s": 3
+      }
+    ],
+    "hashtags": [
+      "#杭州西湖",
+      "#世界遗产",
+      "#治愈系风景"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "薄雾初醒，远山如黛。六点三八平方千米的湖面，是天地遗落人间的明镜。二〇一一年，杭州西湖文化景观列入世界遗产名录，此刻晨光穿透云层，一幅水墨长卷正为你铺展。",
+        "start_s": 0,
+        "end_s": 3
+      },
+      {
+        "line_id": 2,
+        "text": "断桥残雪晕染千年风华，苏堤春晓裁出十里烟霞。雷峰塔下，“雷峰夕照”浸染吴越余晖；三潭印月，北宋元祐四年苏轼所立石塔，仍在一元人民币背面守望着湖天。四季十景，帧帧皆诗。",
+        "start_s": 3,
+        "end_s": 7
+      },
+      {
+        "line_id": 3,
+        "text": "撑一柄手划船，摇碎满湖金箔；沿湖岸骑行，与晚风撞个满怀。自二〇〇二年起，西湖环湖公园免费开放——这座不售票的5A级景区，把千年浪漫无偿赠予年轻的脚步。夕阳熔金时，你就是画中人。",
+        "start_s": 7,
+        "end_s": 12
+      },
+      {
+        "line_id": 4,
+        "text": "月色淌过三潭，西子入梦。杭州西湖，等你入画。",
+        "start_s": 12,
+        "end_s": 15
+      }
+    ]
+  },
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-09-09T16:48:52.139433+00:00",
+  "updated_at": "2026-09-09T16:51:40.959684+00:00",
+  "copywriting_text": "【0-3s】薄雾初醒，远山如黛。六点三八平方千米的湖面，是天地遗落人间的明镜。二〇一一年，杭州西湖文化景观列入世界遗产名录，此刻晨光穿透云层，一幅水墨长卷正为你铺展。\n【3-7s】断桥残雪晕染千年风华，苏堤春晓裁出十里烟霞。雷峰塔下，“雷峰夕照”浸染吴越余晖；三潭印月，北宋元祐四年苏轼所立石塔，仍在一元人民币背面守望着湖天。四季十景，帧帧皆诗。\n【7-12s】撑一柄手划船，摇碎满湖金箔；沿湖岸骑行，与晚风撞个满怀。自二〇〇二年起，西湖环湖公园免费开放——这座不售票的5A级景区，把千年浪漫无偿赠予年轻的脚步。夕阳熔金时，你就是画中人。\n【12-15s】月色淌过三潭，西子入梦。杭州西湖，等你入画。",
+  "video_clips": {}
+}

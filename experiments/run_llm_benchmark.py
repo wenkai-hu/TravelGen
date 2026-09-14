@@ -88,6 +88,10 @@ def main():
     cfg = load_config()
     if args.only:
         cfg["providers"] = [p for p in cfg["providers"] if p["name"] == args.only]
+    else:
+        # 跳过非 chat 模型（doubao-embedding 等只做向量化，误当 chat 跑必失败）
+        cfg["providers"] = [p for p in cfg["providers"]
+                            if not str(p.get("model", "")).startswith("doubao-embedding")]
     out_dir_name, dims = TASKS[args.task]
     out_dir = os.path.join(RESULTS_DIR, out_dir_name)
     os.makedirs(out_dir, exist_ok=True)

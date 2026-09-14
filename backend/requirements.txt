@@ -5,3 +5,4 @@ pydantic>=2.0
 imageio-ffmpeg>=0.6  # Seedance 视频转码（保证浏览器可播：yuv420p + faststart）
 sqlalchemy>=2.0  # 数据库 ORM（backend/db/，MySQL）
 aiomysql>=0.2  # MySQL 异步驱动（async engine）
+Pillow>=10.0  # RAG_Test 景点候选图解码、清晰度检查、感知去重与联系表

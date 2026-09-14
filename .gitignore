@@ -37,7 +37,8 @@ desktop.ini
 # ===== 临时 =====
 *.tmp
 *.log
-
+RAG_Test
+get_picture
 # ===== 前端 =====
 front/node_modules/
 front/dist/
