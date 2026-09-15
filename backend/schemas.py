@@ -29,6 +29,11 @@ class ConfirmPlanRequest(BaseModel):
     copywriting: str
 
 
+class ConfirmReferencesRequest(BaseModel):
+    """用户从服务端搜索候选中确认真实景点图片；确认后才启动 VLM 与 Plan。"""
+    reference_ids: list[str] = Field(..., min_length=1, max_length=8)
+
+
 class StoryboardRequest(BaseModel):
     """接口3：生成脚本+分镜（plan_id 可选，用于并发安全校验）。"""
     plan_id: str | None = None
@@ -42,6 +47,7 @@ class ShotPatch(BaseModel):
     background: str | None = None
     shot_size: str | None = None
     camera: dict | None = None
+    reference_asset_ids: list[str] | None = None
 
 
 class GenerateShotsRequest(BaseModel):

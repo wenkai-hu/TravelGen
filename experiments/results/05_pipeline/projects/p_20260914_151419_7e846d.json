@@ -1,0 +1,1383 @@
+{
+  "project_id": "p_20260914_151419_7e846d",
+  "username": "sherlock",
+  "status": "completed",
+  "progress": 100,
+  "message": "全部镜头生成完成",
+  "request": {
+    "city": "杭州",
+    "location": "径山寺",
+    "scene_type": "景区推荐",
+    "theme": "寺庙禅意",
+    "audience": "18-35岁年轻游客",
+    "style": "平静古香",
+    "duration_s": 15,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "云深见寺",
+        "content": "以航拍全景揭开径山寺格局，层叠黑瓦飞檐隐于苍翠林海，远处山峦如屏、白色石塔点缀其间，三秒内建立‘依山而建、抱林而居’的平静古香第一印象。",
+        "duration_s": 3,
+        "place_id": "place_0fc6e85e13b21c3e",
+        "visual_targets": [
+          "多层中式传统建筑",
+          "茂密绿色山林",
+          "远处山峦",
+          "白色石塔"
+        ],
+        "evidence_asset_ids": [
+          "ref_3ec1f4eda7d00a0d"
+        ]
+      },
+      {
+        "section": "展开",
+        "title": "照壁寻幽",
+        "content": "切入地面视角，中式照壁在轻雾中若隐若现，金色文字与古朴壁面相映，背景山林层叠、远山顶建筑隐约可见，强化‘静’与‘幽’的禅意氛围。",
+        "duration_s": 4,
+        "place_id": "place_0fc6e85e13b21c3e",
+        "visual_targets": [
+          "中式照壁",
+          "金色文字",
+          "云雾效果",
+          "中式屋顶",
+          "山林远景",
+          "山顶建筑"
+        ],
+        "evidence_asset_ids": [
+          "ref_da256cf3cf77728c"
+        ]
+      },
+      {
+        "section": "高潮",
+        "title": "阶前观叶",
+        "content": "聚焦建筑入口中景，银杏黄叶与造型松映衬白墙黑瓦，门前石阶引导视线向上，书法匾额与对联凸显人文底蕴，呈现年轻游客可驻足感受的沉浸式古意场景。",
+        "duration_s": 4,
+        "place_id": "place_0fc6e85e13b21c3e",
+        "visual_targets": [
+          "中式建筑入口",
+          "银杏黄叶",
+          "造型松树",
+          "书法匾额",
+          "书法对联",
+          "门前石阶"
+        ],
+        "evidence_asset_ids": [
+          "ref_32d50b05ba88eaa7"
+        ]
+      },
+      {
+        "section": "收尾",
+        "title": "仰止巍峨",
+        "content": "以仰视角度收束，多层重檐楼阁矗立于石砌高台之上，浮雕与栏杆细节在光影中静默，蓝天为背景烘托古建庄严，轻唤观众来此寻一方清净。",
+        "duration_s": 4,
+        "place_id": "place_0fc6e85e13b21c3e",
+        "visual_targets": [
+          "多层中式楼阁",
+          "石砌高台",
+          "浮雕",
+          "牌匾文字",
+          "石质栏杆雕刻",
+          "蓝天"
+        ],
+        "evidence_asset_ids": [
+          "ref_05685a18c43482e6"
+        ]
+      }
+    ],
+    "plan_summary": "寺庙禅意"
+  },
+  "copywriting": {
+    "titles": [
+      "径山之上，自有清凉",
+      "云深不知处，古刹正当时"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "引入｜云深见寺云深山麓，古刹忽现。层叠黑瓦飞檐隐入苍翠林海，白色石塔静立其间，远山如屏——径山寺，依山而建，抱林而居，一眼便是千年平静。",
+        "duration_s": 3
+      },
+      {
+        "idx": 2,
+        "text": "展开｜照壁寻幽轻雾缭绕，中式照壁若隐若现，金色文字于古朴壁面上微光轻漾。山林层叠如浪，远山顶上建筑隐约可见。一步一静，一寸一幽，半日禅意，悄然入心。",
+        "duration_s": 4
+      },
+      {
+        "idx": 3,
+        "text": "高潮｜阶前观叶拾级而上，银杏黄叶与造型古松共映白墙黑瓦。书法匾额高悬，对联墨香犹在，石阶引你步入画中。年轻的脚步，不妨在此停一停，听风，观叶，沉浸古意。",
+        "duration_s": 4
+      },
+      {
+        "idx": 4,
+        "text": "收尾｜仰止巍峨仰望多层重檐楼阁矗立于石砌高台，浮雕静默，石栏刻满岁月痕迹。蓝天为幕，古建庄严，光影不语。世界喧嚣，此间清净——来径山，做一回自己的山。",
+        "duration_s": 4
+      }
+    ],
+    "hashtags": [
+      "#径山寺",
+      "#杭州禅意游",
+      "#年轻人为何爱逛寺庙"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "引入｜云深见寺云深山麓，古刹忽现。层叠黑瓦飞檐隐入苍翠林海，白色石塔静立其间，远山如屏——径山寺，依山而建，抱林而居，一眼便是千年平静。",
+        "start_s": 0,
+        "end_s": 3
+      },
+      {
+        "line_id": 2,
+        "text": "展开｜照壁寻幽轻雾缭绕，中式照壁若隐若现，金色文字于古朴壁面上微光轻漾。山林层叠如浪，远山顶上建筑隐约可见。一步一静，一寸一幽，半日禅意，悄然入心。",
+        "start_s": 3,
+        "end_s": 7
+      },
+      {
+        "line_id": 3,
+        "text": "高潮｜阶前观叶拾级而上，银杏黄叶与造型古松共映白墙黑瓦。书法匾额高悬，对联墨香犹在，石阶引你步入画中。年轻的脚步，不妨在此停一停，听风，观叶，沉浸古意。",
+        "start_s": 7,
+        "end_s": 11
+      },
+      {
+        "line_id": 4,
+        "text": "收尾｜仰止巍峨仰望多层重檐楼阁矗立于石砌高台，浮雕静默，石栏刻满岁月痕迹。蓝天为幕，古建庄严，光影不语。世界喧嚣，此间清净——来径山，做一回自己的山。",
+        "start_s": 11,
+        "end_s": 15
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "径山寺禅意",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "径山寺",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 4,
+            "camera": {
+              "type": "无人机",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "全景",
+            "subject": "多层中式传统建筑、白色石塔",
+            "background": "茂密绿色山林、远处山峦、建筑前的空地",
+            "place_id": "place_0fc6e85e13b21c3e",
+            "reference_asset_ids": [
+              "ref_3ec1f4eda7d00a0d"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "中式传统建筑的布局与风格（飞檐、黑瓦、木质结构等），依山傍林的空间关系，建筑的色彩搭配（黑瓦、白墙、木色、金色装饰）"
+            ],
+            "allowed_changes": [
+              "人物的数量与活动（如增加或减少人物、人物不同动作），天空的云朵细节，局部植被的细微变化（如树叶的光影）"
+            ],
+            "prompt": "写实无人机俯拍全景，径山寺多层中式传统建筑群沿山坡层叠分布，黑瓦飞檐隐于苍翠林海之中，白色石塔静立其间，远山如屏，清晨柔和自然光，薄雾轻绕山间，镜头缓慢前推，画面静谧悠远",
+            "reference_roles": [
+              {
+                "asset_id": "ref_3ec1f4eda7d00a0d",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "近距离特写建筑内部（因视角限制无法清晰呈现），从建筑内部向外拍摄（无此视角线索），极端仰角或俯角（可能破坏整体布局呈现）"
+            ]
+          }
+        ],
+        "place_id": "place_0fc6e85e13b21c3e"
+      },
+      {
+        "scene_id": 2,
+        "location": "径山寺",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 2,
+            "duration_s": 6,
+            "camera": {
+              "type": "地面机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "中式照壁、建筑入口、银杏黄叶、造型松树、书法匾额与对联",
+            "background": "山林层叠、云雾效果、山顶建筑、石质栏杆",
+            "place_id": "place_0fc6e85e13b21c3e",
+            "reference_asset_ids": [
+              "ref_da256cf3cf77728c",
+              "ref_32d50b05ba88eaa7"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "照壁的文字与建筑结构、中式屋顶、山林景观、山顶建筑的位置关系",
+              "中式建筑风格、银杏黄叶、建筑入口的书法匾额和对联、门前石阶、造型松树"
+            ],
+            "allowed_changes": [
+              "云雾的浓淡、盆景的摆放角度、树木的局部枝叶形态",
+              "人群的数量和动作、树叶的细微摆动"
+            ],
+            "prompt": "写实地面平拍中景，轻雾缭绕中中式照壁若隐若现，金色文字于古朴壁面上微光轻漾，山林层叠如浪；镜头缓缓前推过渡至建筑入口，银杏黄叶与造型古松共映白墙黑瓦，书法匾额与对联高悬，门前石阶延伸入画，清晨柔和散射光，禅意静谧，质感细腻",
+            "reference_roles": [
+              {
+                "asset_id": "ref_da256cf3cf77728c",
+                "role": "identity_and_composition"
+              },
+              {
+                "asset_id": "ref_32d50b05ba88eaa7",
+                "role": "detail"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "俯视或仰视的大角度镜头、建筑内部的深景镜头（因入口较暗且视角受限）",
+              "从照壁后方仰拍（照壁后方结构不明）、近距离俯拍山林（下半部分为远景拼接，近景细节不足）"
+            ]
+          }
+        ],
+        "place_id": "place_0fc6e85e13b21c3e"
+      },
+      {
+        "scene_id": 3,
+        "location": "径山寺",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 5,
+            "camera": {
+              "type": "地面机位",
+              "movement": "固定",
+              "angle": "仰拍"
+            },
+            "shot_size": "中景",
+            "subject": "多层中式楼阁、石砌高台、浮雕、牌匾文字",
+            "background": "蓝天、树木、石质栏杆雕刻",
+            "place_id": "place_0fc6e85e13b21c3e",
+            "reference_asset_ids": [
+              "ref_05685a18c43482e6"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "多层中式楼阁的结构、石砌高台及浮雕、牌匾文字、石质栏杆雕刻"
+            ],
+            "allowed_changes": [
+              "人物动作、光线强弱、树木枝叶细节"
+            ],
+            "prompt": "写实地面仰拍中景，多层重檐中式楼阁矗立于石砌高台之上，浮雕与石质栏杆雕刻在晨光中静默，牌匾文字高悬，蓝天为幕，古建庄严，清晨柔和侧光，光影不语，画面恢弘而清净",
+            "reference_roles": [
+              {
+                "asset_id": "ref_05685a18c43482e6",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "俯视楼阁全景、楼阁内部细节、远距离远景"
+            ]
+          }
+        ],
+        "place_id": "place_0fc6e85e13b21c3e"
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260914_151419_7e846d_v1",
+  "plan_version": 1,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_18244213eb744a70",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275b6E5bGx5a%2B657Sg5paL5Zyo5ZOq6YeMXzE3MzMzODYxMDAuNDc5OTUzOA%3D%3D%27/0.png",
+      "title": "杭州径山寺探秘:吃素斋,寻禅意,访茶道",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3969191077010399259",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_36c2c91f242ac581",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=3691820001,2079320133&fm=3074&app=3074&f=JPEG",
+      "title": "杭州径山寺:千年古刹的静谧之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3793954435293476635",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_bffba0579bd15880",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=3811903143,3333967301&fm=3074&app=3074&f=JPEG",
+      "title": "杭州遛娃好去处:径山寺",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4348330118075427070",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d964c5b81d08c126",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM1NTkwNzkxLjU5NTUyMQ%3D%3D%27/0.png",
+      "title": "探访杭州余杭径山寺:茶道起源地",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4834864434484254481",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_afbfd9099d4b2860",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275Y%2Bk6ZuF6Iy25Y%2B2XzE3MzIyMTUyMjYuNjgzNjkwMw%3D%3D%27/0.png",
+      "title": "杭州径山寺:千年禅韵的心灵归宿",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4603682124291142193",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b23401bda506777d",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMwNjE5ODIzLjk2NzEyMDQ%3D%27/0.png",
+      "title": "杭州径山寺避暑攻略:清凉一夏,心旷神怡",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5256346858059609018",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1ebe1da8a2a8d0cd",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275b6E5bGxXzE3MzIyMzA1MzcuMTg5MzU5Mg%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-21T23%3A08%3A58Z%2F-1%2F%2F16e2765538463b8ba228d10f7ac457c216819c23e8bea2f747b5744978b6d936",
+      "title": "径山寺:求事业灵,秋日赏景 🙏 径山寺以其求事业灵验而闻名,是杭州",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5189797933427474777",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a6d47952c7256bc2",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyNDA0NzU2LjAwNjk5OA%3D%3D%27/0.png",
+      "title": "杭州径山寺银杏叶黄了,门票仅30元!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4914910426907683154",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_069a9b89a3f8a6d3",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%2756eL5aSp5o%2BP5YaZ5b6E5bGx5a%2B655qE5pmv6ImyXzE3MzU2Nzg2NTQuMDkwMzk5%27/0.png",
+      "title": "径山寺的秋天:茶香,古刹与美景 杭州的径山寺,秋天的美景真是让人陶醉",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4632715888421131637",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_01a27b5e4e637128",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips0.baidu.com/it/u=3335127779,756084955&fm=3074&app=3074&f=JPEG?w=1080&h=1410&type=normal&func=",
+      "title": "杭州径山寺:禅意满满的静谧之地",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4404545282898174490",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_bc4b1b80a6608b03",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275b6E5bGx5a%2B6XzE3MzMwOTE4MDUuODA1MjQ4%27/0.png",
+      "title": "杭州径山寺:千年古刹的宁静与历史",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3848314517774033670",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0b50940bd7487bc9",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM1NDQzNTkxLjkxOTc0OTc%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-29T03%3A39%3A52Z%2F-1%2F%2F39bf728e0fbb8fde122df0617959d77d551730030e7c9a8ffae91991138abc85",
+      "title": "杭州径山寺:一场穿越千年的禅院之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5560524808497852864",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_dc79395fffacc193",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=2657298642,505014422&fm=3074&app=3074&f=JPEG",
+      "title": "杭州径山寺:事业成功的秘密基地",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4225697411283592162",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_22b1975d0fe28b25",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2MjAzMTM2LjQ4NjcxOQ%3D%3D%27/0.png",
+      "title": "杭州径山寺探秘:1200年禅院的美与静",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4364755971451702885",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7b13df2303a6b12f",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM0NDg2MjUzLjEzMDYwOTU%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-18T01%3A44%3A14Z%2F-1%2F%2F31dbc3cafc8b964473610cac05e26e391fb945f976f44c80b1aab0b1680c15bd",
+      "title": "杭州径山古道:千年古刹与秋色美景",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4446313964488017416",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e6a2477a39b56d80",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyNDI1MDY3LjI2MDk%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-24T05%3A11%3A08Z%2F-1%2F%2F8473cf92425e2c76c3e342622760f9fb4f7749ff218130741531249144ecc576",
+      "title": "径山寺一日游:求事业与赏美景",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5187949658261313642",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0d246561194520b7",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=1752360814,3489238492&fm=3074&app=3074&f=JPEG",
+      "title": "杭州径山寺:求事业灵验的千年古刹",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_2913867811776656443",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ac58e2ae34d0dd75",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=1561682947,856949925&fm=3074&app=3074&f=JPEG?w=1080&h=1410&type=normal&func=",
+      "title": "杭州径山寺:秋日登高与美食体验",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4803893356378353085",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0eaa2b185fcae22d",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=1412371872,1999088989&fm=3074&app=3074&f=JPEG?w=1080&h=1590&type=normal&func=",
+      "title": "杭州径山寺:求事业超灵的秘境",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4123606055931103517",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1b6eb887d3a95e8c",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=645238415,2665029129&fm=3074&app=3074&f=JPEG?w=1080&h=1618&type=normal&func=",
+      "title": "杭州径山寺游玩攻略:求事业必去!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3613925688422565746",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_314e95d89d8955ed",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzODgyMDYxLjM0NzA2Mw%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-11T01%3A54%3A22Z%2F-1%2F%2F82acb38eb3d0d15c2d0138abe0432a3d71264374d318de70ad4830341ed81e42",
+      "title": "径山寺:古老与现代的交融 🌿",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4574132796613710255",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f5dddd290c91379c",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=2565042617,1200131291&fm=3074&app=3074&f=JPEG",
+      "title": "杭州径山寺:千年古刹的探索之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5239320087253953874",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3e786641feb07d5c",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM0MDM3NjIyLjY0ODA5NTE%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-12T21%3A07%3A03Z%2F-1%2F%2F196607c45779c27ced3929bb36c9ec3545a38d7ae0fd72ca0932fe3555acb0bd",
+      "title": "杭州径山寺:千年古刹的禅意与茶香",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4870830159682640377",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b9e76755548220bb",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=2414604117,2161426137&fm=3074&app=3074&f=JPEG?w=1708&h=2530&type=normal&func=",
+      "title": "杭州余杭径山寺:人少景美的小众秘境",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4283795567043634561",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1cfa312bfe2ab50d",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips0.baidu.com/it/u=2769586387,3372148976&fm=3074&app=3074&f=JPEG",
+      "title": "杭州余杭径山寺:千年古刹的宁静之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5134779462374624664",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_86db84f8441a69af",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=772659651,4029065952&fm=3074&app=3074&f=JPEG?w=3011&h=3906&type=normal&func=T",
+      "title": "杭州径山寺抄经,素面与静心时刻🌿",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5180488870687418527",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_61f07f61b3738693",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=95000357,1363069442&fm=3074&app=3074&f=JPEG?w=1920&h=2530&type=normal&func=",
+      "title": "杭州径山寺:爬山,参拜,美食全攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4924847928962406322",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d755d45e8ef6684a",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyNzkxMjU2LjI0OTEzOTM%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-28T10%3A54%3A17Z%2F-1%2F%2F603b1e93afddcb3841f2468680b1d554baf19f6b282c18ed4c347ea6c20f390a",
+      "title": "径山寺:1200年古刹的宁静与力量",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5182501054245868233",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b963205ac7e1da8b",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=3273515740,141791975&fm=3074&app=3074&f=JPEG",
+      "title": "杭州径山寺秋游攻略:银杏叶下的素面时光",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3996820214872513127",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9a98fe88a913c268",
+      "query": "杭州 径山寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzOTU2NTA2LjQ1MTU5MjI%3D%27/0.png",
+      "title": "秋日里的宁静之地:杭州径山寺",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5003630213436200053",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_3ec1f4eda7d00a0d",
+      "candidate_id": "ref_18244213eb744a70",
+      "place_id": "place_0fc6e85e13b21c3e",
+      "place_name": "径山寺",
+      "city": "杭州",
+      "original_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275b6E5bGx5a%2B657Sg5paL5Zyo5ZOq6YeMXzE3MzMzODYxMDAuNDc5OTUzOA%3D%3D%27/0.png",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3969191077010399259",
+      "title": "杭州径山寺探秘:吃素斋,寻禅意,访茶道",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260914_151419_7e846d/ref_3ec1f4eda7d00a0d.png",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260914_151419_7e846d\\ref_3ec1f4eda7d00a0d.png",
+      "sha256": "3ec1f4eda7d00a0dc2ff7b06a7736cecc054d11566285694cf06783e2a84dedb",
+      "width": 1440,
+      "height": 2130,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 27.705,
+        "usage": {
+          "completion_tokens": 650,
+          "prompt_tokens": 4316,
+          "total_tokens": 4966,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面呈现一处依山而建的中式建筑群，周围被茂密山林环绕，建筑风格古朴典雅，展现出传统寺庙或古建群落的风貌，上方有文字标注‘余杭·径山寺’。",
+          "visible_elements": [
+            "多层中式传统建筑（屋顶为黑色瓦片、飞檐翘角，部分建筑有木质结构、金色装饰、红色匾额），茂密的绿色山林（包含不同种类树木，有高大乔木、低矮灌木），远处的山峦，白色石塔，建筑前的空地，少量人物"
+          ],
+          "spatial_layout": [
+            "建筑群沿山坡地势分布，从前景到背景建筑依次升高；山林位于建筑群的后方和两侧，形成环抱之势；远处山峦在更靠后的位置，与近景山林层次分明"
+          ],
+          "architecture_and_materials": [
+            "建筑为传统中式风格，屋顶是黑色瓦片（部分呈现蓝灰色调），墙体有白色、木质棕色，部分建筑立柱为金色，门窗等为木质结构，材质包含木材、砖瓦、石材（石塔）"
+          ],
+          "viewpoint": {
+            "camera_position": "高位（疑似航拍或高处俯拍）",
+            "angle": "俯视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "建筑沿山坡向上延伸，山林在建筑后方，推测镜头朝向建筑群主体，背景山峦在更远处"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天（光线明亮，天空有少量云）",
+            "weather": "晴天（天空较亮，无明显降水迹象，植被色彩鲜亮）",
+            "season": "春季或夏季（植被茂密且多为绿色，部分树木有嫩绿色新叶，整体绿意盎然）"
+          },
+          "must_keep_candidates": [
+            "中式传统建筑的布局与风格（飞檐、黑瓦、木质结构等），依山傍林的空间关系，建筑的色彩搭配（黑瓦、白墙、木色、金色装饰）"
+          ],
+          "allowed_changes": [
+            "人物的数量与活动（如增加或减少人物、人物不同动作），天空的云朵细节，局部植被的细微变化（如树叶的光影）"
+          ],
+          "suitable_shots": [
+            "全景航拍展现建筑群与山林的整体风貌，中景拍摄建筑细节（如飞檐、匾额），仰拍建筑的高大感，俯拍建筑群落的布局"
+          ],
+          "unsupported_or_risky_shots": [
+            "近距离特写建筑内部（因视角限制无法清晰呈现），从建筑内部向外拍摄（无此视角线索），极端仰角或俯角（可能破坏整体布局呈现）"
+          ],
+          "visible_text": [
+            "余杭·径山寺",
+            "PHOTOGRAPHY BY SHELLYSANG",
+            "正法眼藏",
+            "大雄宝殿"
+          ],
+          "uncertain": [
+            "建筑的具体名称（除标注外的建筑功能），人物的具体身份与活动，山林中具体树木种类，远处山峦的具体名称"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_ae4b4115c6a1943f",
+      "candidate_id": "ref_dc79395fffacc193",
+      "place_id": "place_0fc6e85e13b21c3e",
+      "place_name": "径山寺",
+      "city": "杭州",
+      "original_url": "http://gips2.baidu.com/it/u=2657298642,505014422&fm=3074&app=3074&f=JPEG",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4225697411283592162",
+      "title": "杭州径山寺:事业成功的秘密基地",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260914_151419_7e846d/ref_ae4b4115c6a1943f.jpg",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260914_151419_7e846d\\ref_ae4b4115c6a1943f.jpg",
+      "sha256": "ae4b4115c6a1943f890198ab03daa501ba5ad94359b80f9ee7c77b9b19474a9c",
+      "width": 1440,
+      "height": 1050,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 12.236,
+        "usage": {
+          "completion_tokens": 407,
+          "prompt_tokens": 2332,
+          "total_tokens": 2739,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示一座传统中式建筑，两层飞檐翘角，门前有台阶，人群活动，周围有树木、山石和蓝天。",
+          "visible_elements": [
+            "传统中式建筑、人群、台阶、树木、山石、蓝天、云朵、石栏杆、匾额、楹联"
+          ],
+          "spatial_layout": [
+            "建筑位于画面中央，台阶从前景延伸至建筑入口，树木和山石在建筑两侧及前景，人群分布在台阶和前景区域，蓝天在建筑上方"
+          ],
+          "architecture_and_materials": [
+            "两层中式建筑，飞檐翘角，黑色瓦片，木质结构，白色墙面，石材台阶和栏杆，匾额为黄色底黑色字，楹联为黄色底黑色字"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "建筑正面朝向镜头，台阶延伸方向暗示镜头正对建筑入口"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天",
+            "weather": "晴天",
+            "season": "夏季（推测，因树木茂盛、人们衣着轻薄）"
+          },
+          "must_keep_candidates": [
+            "建筑的中式风格和结构、匾额楹联、台阶布局、两侧的树木山石"
+          ],
+          "allowed_changes": [
+            "人群的具体活动和衣着、树木的细节形态、云朵的位置"
+          ],
+          "suitable_shots": [
+            "建筑正面中景、前景人群活动特写、建筑细节特写（如飞檐、匾额）"
+          ],
+          "unsupported_or_risky_shots": [
+            "建筑背面视角、高空俯视全景、建筑内部特写（画面未显示）"
+          ],
+          "visible_text": [
+            "度一切苦厄"
+          ],
+          "uncertain": [
+            "建筑具体名称、精确地理位置、树木具体种类"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_32d50b05ba88eaa7",
+      "candidate_id": "ref_86db84f8441a69af",
+      "place_id": "place_0fc6e85e13b21c3e",
+      "place_name": "径山寺",
+      "city": "杭州",
+      "original_url": "http://gips2.baidu.com/it/u=772659651,4029065952&fm=3074&app=3074&f=JPEG?w=3011&h=3906&type=normal&func=T",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5180488870687418527",
+      "title": "杭州径山寺抄经,素面与静心时刻🌿",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260914_151419_7e846d/ref_32d50b05ba88eaa7.jpg",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260914_151419_7e846d\\ref_32d50b05ba88eaa7.jpg",
+      "sha256": "32d50b05ba88eaa703048ff2664c833fe658ed73d03f0f4e361f40803b1b9557",
+      "width": 3011,
+      "height": 3906,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 16.796,
+        "usage": {
+          "completion_tokens": 483,
+          "prompt_tokens": 5524,
+          "total_tokens": 6007,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示了一座中式传统建筑的入口，门前有石阶，人们在门口活动，周围有黄叶的银杏树和造型松树，建筑上有书法匾额和对联。",
+          "visible_elements": [
+            "中式建筑、石阶、人群、银杏树（黄叶）、造型松树、石质栏杆、石质立柱、书法匾额、书法对联"
+          ],
+          "spatial_layout": [
+            "银杏树位于画面上方和右侧，遮挡部分建筑；建筑入口在画面中间，门前石阶连接地面；人群在建筑入口处；造型松树在建筑右侧、石阶旁；石质栏杆在建筑右侧、松树后方；石质立柱在画面左侧前景"
+          ],
+          "architecture_and_materials": [
+            "建筑为中式风格，屋顶有传统飞檐，墙面白色，木色门窗和梁柱，匾额为黄底黑字书法，对联为黄底黑字书法，石阶为石质，栏杆为石质"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "建筑入口朝向镜头，银杏树在镜头前方右侧，石质立柱在镜头左侧前景"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断",
+            "weather": "阴天（天空灰白）",
+            "season": "秋季（银杏叶变黄）"
+          },
+          "must_keep_candidates": [
+            "中式建筑风格、银杏黄叶、建筑入口的书法匾额和对联、门前石阶、造型松树"
+          ],
+          "allowed_changes": [
+            "人群的数量和动作、树叶的细微摆动"
+          ],
+          "suitable_shots": [
+            "中景拍摄建筑入口及周围景观、近景拍摄匾额或对联、特写拍摄银杏叶"
+          ],
+          "unsupported_or_risky_shots": [
+            "俯视或仰视的大角度镜头、建筑内部的深景镜头（因入口较暗且视角受限）"
+          ],
+          "visible_text": [
+            "度一切苦厄",
+            "西方 聽慧日光昭萬姓 在鈞天"
+          ],
+          "uncertain": [
+            "建筑的具体名称和地点、人群的具体身份、树木的具体品种（除银杏外）"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_05685a18c43482e6",
+      "candidate_id": "ref_61f07f61b3738693",
+      "place_id": "place_0fc6e85e13b21c3e",
+      "place_name": "径山寺",
+      "city": "杭州",
+      "original_url": "http://gips3.baidu.com/it/u=95000357,1363069442&fm=3074&app=3074&f=JPEG?w=1920&h=2530&type=normal&func=",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4924847928962406322",
+      "title": "杭州径山寺:爬山,参拜,美食全攻略",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260914_151419_7e846d/ref_05685a18c43482e6.jpg",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260914_151419_7e846d\\ref_05685a18c43482e6.jpg",
+      "sha256": "05685a18c43482e6e75f2710eeeb1efb00caef25d1a338193b67b45670750b69",
+      "width": 1920,
+      "height": 2530,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 14.217,
+        "usage": {
+          "completion_tokens": 423,
+          "prompt_tokens": 5524,
+          "total_tokens": 5947,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示一座多层中式传统楼阁，前方有石砌高台、浮雕及台阶，天空湛蓝，有树木和人物。",
+          "visible_elements": [
+            "多层中式楼阁、石砌高台、浮雕、台阶、树木、人物、蓝天、牌匾、栏杆、石柱"
+          ],
+          "spatial_layout": [
+            "石砌高台位于楼阁前方，浮雕嵌于高台墙面，台阶在高台前两侧，树木在楼阁左右后方，人物在右侧台阶旁，牌匾悬挂于楼阁各层檐下"
+          ],
+          "architecture_and_materials": [
+            "楼阁为木质结构，飞檐翘角，多层重檐，有木质斗拱和栏杆；高台为石砌，墙面有浮雕和文字，栏杆为石质带雕刻；浮雕为石质，描绘山水建筑"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "仰视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "画面中楼阁高大，从下往上拍摄，显示仰视角度"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天",
+            "weather": "晴天",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [
+            "多层中式楼阁的结构、石砌高台及浮雕、牌匾文字、石质栏杆雕刻"
+          ],
+          "allowed_changes": [
+            "人物动作、光线强弱、树木枝叶细节"
+          ],
+          "suitable_shots": [
+            "仰拍楼阁全景、高台浮雕特写、台阶人物中景、楼阁牌匾近景"
+          ],
+          "unsupported_or_risky_shots": [
+            "俯视楼阁全景、楼阁内部细节、远距离远景"
+          ],
+          "visible_text": [
+            "凌霄",
+            "慈目宏昇",
+            "大悲頭力",
+            "南宋徑山圖",
+            "上行",
+            "順行"
+          ],
+          "uncertain": [
+            "具体地点、楼阁建造年代、浮雕详细背景故事"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_da256cf3cf77728c",
+      "candidate_id": "ref_b23401bda506777d",
+      "place_id": "place_0fc6e85e13b21c3e",
+      "place_name": "径山寺",
+      "city": "杭州",
+      "original_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMwNjE5ODIzLjk2NzEyMDQ%3D%27/0.png",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5256346858059609018",
+      "title": "杭州径山寺避暑攻略:清凉一夏,心旷神怡",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260914_151419_7e846d/ref_da256cf3cf77728c.png",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260914_151419_7e846d\\ref_da256cf3cf77728c.png",
+      "sha256": "da256cf3cf77728c7bf14c0df295bc1542efbacc53ccdf261a7bc2b86b8891d4",
+      "width": 1171,
+      "height": 1511,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 19.384,
+        "usage": {
+          "completion_tokens": 630,
+          "prompt_tokens": 2660,
+          "total_tokens": 3290,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面分为上下两部分，上半部分展示带有‘天下往山’（从右至左读为‘天下往山’）金色文字的中式照壁及周边景观，下半部分呈现山林与远处山峦、建筑的风景。",
+          "visible_elements": [
+            "中式照壁（带金色文字）、中式屋顶、树木（包括松树、阔叶树）、盆景（松树造型）、石制栏杆、石阶、云雾（地面效果）、山林、远山、山顶建筑（白色带尖顶）"
+          ],
+          "spatial_layout": [
+            "照壁位于画面上半部分中央，屋顶在照壁上方；盆景置于照壁前的台座上；栏杆在照壁两侧；树木分布在照壁左右及背景；下半部分山林在前景，远山在中景，山顶建筑在左侧山林上方。"
+          ],
+          "architecture_and_materials": [
+            "照壁：白色石材基座（带雕刻）、灰色菱形纹理墙面（金色文字）、白色石材边框；屋顶：黑色瓦片、红色木质斗拱结构；栏杆：石制，带镂空花纹；山顶建筑：白色墙体，尖顶（材质不明）；地面：疑似云雾效果（或特殊铺装）。"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视（上半部分照壁）、俯视（下半部分山林，整体为拼接视角）",
+            "shot_size": "中景（照壁及周边）、远景（山林远山）",
+            "orientation_clues": [
+              "照壁文字从右至左排列，可能暗示拍摄者面朝文字方向，背景山林延伸方向无明显朝向线索"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断（天空多云，光线柔和）",
+            "weather": "多云（天空有云），地面有云雾效果（或人造景观）",
+            "season": "夏季（植被茂密，树叶翠绿）"
+          },
+          "must_keep_candidates": [
+            "照壁的文字与建筑结构、中式屋顶、山林景观、山顶建筑的位置关系"
+          ],
+          "allowed_changes": [
+            "云雾的浓淡、盆景的摆放角度、树木的局部枝叶形态"
+          ],
+          "suitable_shots": [
+            "照壁的特写（文字、建筑细节）、山林的远景（展示地貌）、照壁与山林的拼接式全景"
+          ],
+          "unsupported_or_risky_shots": [
+            "从照壁后方仰拍（照壁后方结构不明）、近距离俯拍山林（下半部分为远景拼接，近景细节不足）"
+          ],
+          "visible_text": [
+            "天下往山（从右至左认读）"
+          ],
+          "uncertain": [
+            "照壁文字的正确断句（‘天下往山’或其他组合）、山顶建筑的具体功能、云雾效果的真实属性（自然或人造）"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_0fc6e85e13b21c3e",
+    "place_name": "径山寺",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_3ec1f4eda7d00a0d",
+      "ref_ae4b4115c6a1943f",
+      "ref_32d50b05ba88eaa7",
+      "ref_05685a18c43482e6",
+      "ref_da256cf3cf77728c"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "多层中式传统建筑（屋顶为黑色瓦片、飞檐翘角，部分建筑有木质结构、金色装饰、红色匾额），茂密的绿色山林（包含不同种类树木，有高大乔木、低矮灌木），远处的山峦，白色石塔，建筑前的空地，少量人物",
+      "传统中式建筑、人群、台阶、树木、山石、蓝天、云朵、石栏杆、匾额、楹联",
+      "中式建筑、石阶、人群、银杏树（黄叶）、造型松树、石质栏杆、石质立柱、书法匾额、书法对联",
+      "多层中式楼阁、石砌高台、浮雕、台阶、树木、人物、蓝天、牌匾、栏杆、石柱",
+      "中式照壁（带金色文字）、中式屋顶、树木（包括松树、阔叶树）、盆景（松树造型）、石制栏杆、石阶、云雾（地面效果）、山林、远山、山顶建筑（白色带尖顶）"
+    ],
+    "stable_features": [
+      {
+        "text": "中式传统建筑的布局与风格（飞檐、黑瓦、木质结构等），依山傍林的空间关系，建筑的色彩搭配（黑瓦、白墙、木色、金色装饰）",
+        "evidence_asset_ids": [
+          "ref_3ec1f4eda7d00a0d"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "建筑的中式风格和结构、匾额楹联、台阶布局、两侧的树木山石",
+        "evidence_asset_ids": [
+          "ref_ae4b4115c6a1943f"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "中式建筑风格、银杏黄叶、建筑入口的书法匾额和对联、门前石阶、造型松树",
+        "evidence_asset_ids": [
+          "ref_32d50b05ba88eaa7"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "多层中式楼阁的结构、石砌高台及浮雕、牌匾文字、石质栏杆雕刻",
+        "evidence_asset_ids": [
+          "ref_05685a18c43482e6"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "照壁的文字与建筑结构、中式屋顶、山林景观、山顶建筑的位置关系",
+        "evidence_asset_ids": [
+          "ref_da256cf3cf77728c"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "中式传统建筑的布局与风格（飞檐、黑瓦、木质结构等），依山傍林的空间关系，建筑的色彩搭配（黑瓦、白墙、木色、金色装饰）",
+      "建筑的中式风格和结构、匾额楹联、台阶布局、两侧的树木山石",
+      "中式建筑风格、银杏黄叶、建筑入口的书法匾额和对联、门前石阶、造型松树",
+      "多层中式楼阁的结构、石砌高台及浮雕、牌匾文字、石质栏杆雕刻",
+      "照壁的文字与建筑结构、中式屋顶、山林景观、山顶建筑的位置关系"
+    ],
+    "allowed_changes": [
+      "人物的数量与活动（如增加或减少人物、人物不同动作），天空的云朵细节，局部植被的细微变化（如树叶的光影）",
+      "人群的具体活动和衣着、树木的细节形态、云朵的位置",
+      "人群的数量和动作、树叶的细微摆动",
+      "人物动作、光线强弱、树木枝叶细节",
+      "云雾的浓淡、盆景的摆放角度、树木的局部枝叶形态"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "建筑的具体名称（除标注外的建筑功能），人物的具体身份与活动，山林中具体树木种类，远处山峦的具体名称",
+      "建筑具体名称、精确地理位置、树木具体种类",
+      "建筑的具体名称和地点、人群的具体身份、树木的具体品种（除银杏外）",
+      "具体地点、楼阁建造年代、浮雕详细背景故事",
+      "照壁文字的正确断句（‘天下往山’或其他组合）、山顶建筑的具体功能、云雾效果的真实属性（自然或人造）"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_3ec1f4eda7d00a0d",
+        "summary": "画面呈现一处依山而建的中式建筑群，周围被茂密山林环绕，建筑风格古朴典雅，展现出传统寺庙或古建群落的风貌，上方有文字标注‘余杭·径山寺’。",
+        "visible_elements": [
+          "多层中式传统建筑（屋顶为黑色瓦片、飞檐翘角，部分建筑有木质结构、金色装饰、红色匾额），茂密的绿色山林（包含不同种类树木，有高大乔木、低矮灌木），远处的山峦，白色石塔，建筑前的空地，少量人物"
+        ],
+        "spatial_layout": [
+          "建筑群沿山坡地势分布，从前景到背景建筑依次升高；山林位于建筑群的后方和两侧，形成环抱之势；远处山峦在更靠后的位置，与近景山林层次分明"
+        ],
+        "architecture_and_materials": [
+          "建筑为传统中式风格，屋顶是黑色瓦片（部分呈现蓝灰色调），墙体有白色、木质棕色，部分建筑立柱为金色，门窗等为木质结构，材质包含木材、砖瓦、石材（石塔）"
+        ],
+        "viewpoint": {
+          "camera_position": "高位（疑似航拍或高处俯拍）",
+          "angle": "俯视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "建筑沿山坡向上延伸，山林在建筑后方，推测镜头朝向建筑群主体，背景山峦在更远处"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天（光线明亮，天空有少量云）",
+          "weather": "晴天（天空较亮，无明显降水迹象，植被色彩鲜亮）",
+          "season": "春季或夏季（植被茂密且多为绿色，部分树木有嫩绿色新叶，整体绿意盎然）"
+        },
+        "must_keep_candidates": [
+          "中式传统建筑的布局与风格（飞檐、黑瓦、木质结构等），依山傍林的空间关系，建筑的色彩搭配（黑瓦、白墙、木色、金色装饰）"
+        ],
+        "allowed_changes": [
+          "人物的数量与活动（如增加或减少人物、人物不同动作），天空的云朵细节，局部植被的细微变化（如树叶的光影）"
+        ],
+        "suitable_shots": [
+          "全景航拍展现建筑群与山林的整体风貌，中景拍摄建筑细节（如飞檐、匾额），仰拍建筑的高大感，俯拍建筑群落的布局"
+        ],
+        "unsupported_or_risky_shots": [
+          "近距离特写建筑内部（因视角限制无法清晰呈现），从建筑内部向外拍摄（无此视角线索），极端仰角或俯角（可能破坏整体布局呈现）"
+        ]
+      },
+      {
+        "asset_id": "ref_ae4b4115c6a1943f",
+        "summary": "画面展示一座传统中式建筑，两层飞檐翘角，门前有台阶，人群活动，周围有树木、山石和蓝天。",
+        "visible_elements": [
+          "传统中式建筑、人群、台阶、树木、山石、蓝天、云朵、石栏杆、匾额、楹联"
+        ],
+        "spatial_layout": [
+          "建筑位于画面中央，台阶从前景延伸至建筑入口，树木和山石在建筑两侧及前景，人群分布在台阶和前景区域，蓝天在建筑上方"
+        ],
+        "architecture_and_materials": [
+          "两层中式建筑，飞檐翘角，黑色瓦片，木质结构，白色墙面，石材台阶和栏杆，匾额为黄色底黑色字，楹联为黄色底黑色字"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "建筑正面朝向镜头，台阶延伸方向暗示镜头正对建筑入口"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天",
+          "weather": "晴天",
+          "season": "夏季（推测，因树木茂盛、人们衣着轻薄）"
+        },
+        "must_keep_candidates": [
+          "建筑的中式风格和结构、匾额楹联、台阶布局、两侧的树木山石"
+        ],
+        "allowed_changes": [
+          "人群的具体活动和衣着、树木的细节形态、云朵的位置"
+        ],
+        "suitable_shots": [
+          "建筑正面中景、前景人群活动特写、建筑细节特写（如飞檐、匾额）"
+        ],
+        "unsupported_or_risky_shots": [
+          "建筑背面视角、高空俯视全景、建筑内部特写（画面未显示）"
+        ]
+      },
+      {
+        "asset_id": "ref_32d50b05ba88eaa7",
+        "summary": "画面展示了一座中式传统建筑的入口，门前有石阶，人们在门口活动，周围有黄叶的银杏树和造型松树，建筑上有书法匾额和对联。",
+        "visible_elements": [
+          "中式建筑、石阶、人群、银杏树（黄叶）、造型松树、石质栏杆、石质立柱、书法匾额、书法对联"
+        ],
+        "spatial_layout": [
+          "银杏树位于画面上方和右侧，遮挡部分建筑；建筑入口在画面中间，门前石阶连接地面；人群在建筑入口处；造型松树在建筑右侧、石阶旁；石质栏杆在建筑右侧、松树后方；石质立柱在画面左侧前景"
+        ],
+        "architecture_and_materials": [
+          "建筑为中式风格，屋顶有传统飞檐，墙面白色，木色门窗和梁柱，匾额为黄底黑字书法，对联为黄底黑字书法，石阶为石质，栏杆为石质"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "建筑入口朝向镜头，银杏树在镜头前方右侧，石质立柱在镜头左侧前景"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断",
+          "weather": "阴天（天空灰白）",
+          "season": "秋季（银杏叶变黄）"
+        },
+        "must_keep_candidates": [
+          "中式建筑风格、银杏黄叶、建筑入口的书法匾额和对联、门前石阶、造型松树"
+        ],
+        "allowed_changes": [
+          "人群的数量和动作、树叶的细微摆动"
+        ],
+        "suitable_shots": [
+          "中景拍摄建筑入口及周围景观、近景拍摄匾额或对联、特写拍摄银杏叶"
+        ],
+        "unsupported_or_risky_shots": [
+          "俯视或仰视的大角度镜头、建筑内部的深景镜头（因入口较暗且视角受限）"
+        ]
+      },
+      {
+        "asset_id": "ref_05685a18c43482e6",
+        "summary": "画面展示一座多层中式传统楼阁，前方有石砌高台、浮雕及台阶，天空湛蓝，有树木和人物。",
+        "visible_elements": [
+          "多层中式楼阁、石砌高台、浮雕、台阶、树木、人物、蓝天、牌匾、栏杆、石柱"
+        ],
+        "spatial_layout": [
+          "石砌高台位于楼阁前方，浮雕嵌于高台墙面，台阶在高台前两侧，树木在楼阁左右后方，人物在右侧台阶旁，牌匾悬挂于楼阁各层檐下"
+        ],
+        "architecture_and_materials": [
+          "楼阁为木质结构，飞檐翘角，多层重檐，有木质斗拱和栏杆；高台为石砌，墙面有浮雕和文字，栏杆为石质带雕刻；浮雕为石质，描绘山水建筑"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "仰视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "画面中楼阁高大，从下往上拍摄，显示仰视角度"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天",
+          "weather": "晴天",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [
+          "多层中式楼阁的结构、石砌高台及浮雕、牌匾文字、石质栏杆雕刻"
+        ],
+        "allowed_changes": [
+          "人物动作、光线强弱、树木枝叶细节"
+        ],
+        "suitable_shots": [
+          "仰拍楼阁全景、高台浮雕特写、台阶人物中景、楼阁牌匾近景"
+        ],
+        "unsupported_or_risky_shots": [
+          "俯视楼阁全景、楼阁内部细节、远距离远景"
+        ]
+      },
+      {
+        "asset_id": "ref_da256cf3cf77728c",
+        "summary": "画面分为上下两部分，上半部分展示带有‘天下往山’（从右至左读为‘天下往山’）金色文字的中式照壁及周边景观，下半部分呈现山林与远处山峦、建筑的风景。",
+        "visible_elements": [
+          "中式照壁（带金色文字）、中式屋顶、树木（包括松树、阔叶树）、盆景（松树造型）、石制栏杆、石阶、云雾（地面效果）、山林、远山、山顶建筑（白色带尖顶）"
+        ],
+        "spatial_layout": [
+          "照壁位于画面上半部分中央，屋顶在照壁上方；盆景置于照壁前的台座上；栏杆在照壁两侧；树木分布在照壁左右及背景；下半部分山林在前景，远山在中景，山顶建筑在左侧山林上方。"
+        ],
+        "architecture_and_materials": [
+          "照壁：白色石材基座（带雕刻）、灰色菱形纹理墙面（金色文字）、白色石材边框；屋顶：黑色瓦片、红色木质斗拱结构；栏杆：石制，带镂空花纹；山顶建筑：白色墙体，尖顶（材质不明）；地面：疑似云雾效果（或特殊铺装）。"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视（上半部分照壁）、俯视（下半部分山林，整体为拼接视角）",
+          "shot_size": "中景（照壁及周边）、远景（山林远山）",
+          "orientation_clues": [
+            "照壁文字从右至左排列，可能暗示拍摄者面朝文字方向，背景山林延伸方向无明显朝向线索"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断（天空多云，光线柔和）",
+          "weather": "多云（天空有云），地面有云雾效果（或人造景观）",
+          "season": "夏季（植被茂密，树叶翠绿）"
+        },
+        "must_keep_candidates": [
+          "照壁的文字与建筑结构、中式屋顶、山林景观、山顶建筑的位置关系"
+        ],
+        "allowed_changes": [
+          "云雾的浓淡、盆景的摆放角度、树木的局部枝叶形态"
+        ],
+        "suitable_shots": [
+          "照壁的特写（文字、建筑细节）、山林的远景（展示地貌）、照壁与山林的拼接式全景"
+        ],
+        "unsupported_or_risky_shots": [
+          "从照壁后方仰拍（照壁后方结构不明）、近距离俯拍山林（下半部分为远景拼接，近景细节不足）"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_1.jpg",
+        "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+        "license": "Unsplash License",
+        "alt": "a building with a tree in front of it"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_2.jpg",
+        "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+        "license": "Unsplash License",
+        "alt": "a pagoda in the middle of a park surrounded by trees"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_3.jpg",
+        "url": "https://unsplash.com/photos/brown-and-red-temple-kp3A2jurfP0",
+        "license": "Unsplash License",
+        "alt": "brown and red temple"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_3ec1f4eda7d00a0d",
+        "name": "径山寺",
+        "url": "/assets/references/p_20260914_151419_7e846d/ref_3ec1f4eda7d00a0d.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3969191077010399259",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_ae4b4115c6a1943f",
+        "name": "径山寺",
+        "url": "/assets/references/p_20260914_151419_7e846d/ref_ae4b4115c6a1943f.jpg",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4225697411283592162",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_32d50b05ba88eaa7",
+        "name": "径山寺",
+        "url": "/assets/references/p_20260914_151419_7e846d/ref_32d50b05ba88eaa7.jpg",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5180488870687418527",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_05685a18c43482e6",
+        "name": "径山寺",
+        "url": "/assets/references/p_20260914_151419_7e846d/ref_05685a18c43482e6.jpg",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4924847928962406322",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_da256cf3cf77728c",
+        "name": "径山寺",
+        "url": "/assets/references/p_20260914_151419_7e846d/ref_da256cf3cf77728c.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5256346858059609018",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [
+    "vt_20260914_153542_4dd2b0",
+    "vt_20260914_154156_913ab4",
+    "vt_20260914_155624_2cd27f"
+  ],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-14T07:14:19.620035+00:00",
+  "updated_at": "2026-09-14T08:00:17.996261+00:00",
+  "copywriting_text": "【0-3s】引入｜云深见寺云深山麓，古刹忽现。层叠黑瓦飞檐隐入苍翠林海，白色石塔静立其间，远山如屏——径山寺，依山而建，抱林而居，一眼便是千年平静。\n【3-7s】展开｜照壁寻幽轻雾缭绕，中式照壁若隐若现，金色文字于古朴壁面上微光轻漾。山林层叠如浪，远山顶上建筑隐约可见。一步一静，一寸一幽，半日禅意，悄然入心。\n【7-11s】高潮｜阶前观叶拾级而上，银杏黄叶与造型古松共映白墙黑瓦。书法匾额高悬，对联墨香犹在，石阶引你步入画中。年轻的脚步，不妨在此停一停，听风，观叶，沉浸古意。\n【11-15s】收尾｜仰止巍峨仰望多层重檐楼阁矗立于石砌高台，浮雕静默，石栏刻满岁月痕迹。蓝天为幕，古建庄严，光影不语。世界喧嚣，此间清净——来径山，做一回自己的山。",
+  "video_clips": {
+    "1": {
+      "shot_id": 1,
+      "task_id": "vt_20260914_153542_4dd2b0",
+      "status": "completed",
+      "video_url": "/assets/videos/vt_20260914_153542_4dd2b0_1.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\videos\\vt_20260914_153542_4dd2b0_1.mp4",
+      "reference_asset_ids": [
+        "ref_3ec1f4eda7d00a0d"
+      ],
+      "error": null
+    },
+    "2": {
+      "shot_id": 2,
+      "task_id": "vt_20260914_154156_913ab4",
+      "status": "completed",
+      "video_url": "/assets/videos/vt_20260914_154156_913ab4_2.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\videos\\vt_20260914_154156_913ab4_2.mp4",
+      "reference_asset_ids": [
+        "ref_da256cf3cf77728c",
+        "ref_32d50b05ba88eaa7"
+      ],
+      "error": null
+    },
+    "3": {
+      "shot_id": 3,
+      "task_id": "vt_20260914_155624_2cd27f",
+      "status": "completed",
+      "video_url": "/assets/videos/vt_20260914_155624_2cd27f_3.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\videos\\vt_20260914_155624_2cd27f_3.mp4",
+      "reference_asset_ids": [
+        "ref_05685a18c43482e6"
+      ],
+      "error": null
+    }
+  }
+}

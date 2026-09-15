@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 5228395 */
-  src: url('iconfont.woff2?t=1788090642205') format('woff2'),
-       url('iconfont.woff?t=1788090642205') format('woff'),
-       url('iconfont.ttf?t=1788090642205') format('truetype');
+  src: url('iconfont.woff2?t=1789375483329') format('woff2'),
+       url('iconfont.woff?t=1789375483329') format('woff'),
+       url('iconfont.ttf?t=1789375483329') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-huabansikao:before {
+  content: "\e6de";
 }
 
 .icon-fanhui:before {

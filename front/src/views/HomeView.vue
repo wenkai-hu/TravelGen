@@ -167,8 +167,8 @@ async function onSubmit() {
     const data = await createProject(payload);
     created.value = data;
     sessionStorage.setItem("travelgen_project_id", data.project_id);
-    message.success("锻造开始！AI 正在生成创作方案…");
-    router.push(`/plan/${data.project_id}`);
+    message.success("项目已创建，正在搜索景点实景图片…");
+    router.push(`/project/${data.project_id}/references`);
   } catch (e) {
     submitError.value =
       e.code === "invalid_param"
@@ -487,7 +487,7 @@ async function onSubmit() {
             :bordered="false"
           >
             项目已创建：<b>{{ created.project_id }}</b
-            >（{{ created.status }}）。正在跳转方案确认页…
+            >（{{ created.status }}）。正在跳转实景选图页…
           </NAlert>
           <NAlert
             v-if="submitError"

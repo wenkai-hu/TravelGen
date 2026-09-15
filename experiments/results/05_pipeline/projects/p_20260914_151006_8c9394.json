@@ -1,0 +1,242 @@
+{
+  "project_id": "p_20260914_151006_8c9394",
+  "username": "sherlock",
+  "status": "waiting_reference_confirm",
+  "progress": 5,
+  "message": "找到 23 张候选图片，请确认真实景点图片",
+  "request": {
+    "city": "杭州",
+    "location": "西湖北山街最美转角",
+    "scene_type": "景区推荐",
+    "theme": "展示风景",
+    "audience": "大学生",
+    "style": "青春活力",
+    "duration_s": 15,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {},
+  "copywriting": {},
+  "script": {},
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_157697709eef7cfe",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p2t5bee5YyX5bGx6KGX56eL5pmvXzE3MzM5Mzk1NjMuNzI5MzYwNg%3D%3D%27/0.png",
+      "title": "11月27日杭州西湖北山街秋景实拍",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_2722900509221459157",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f3a37b4a1914fc1b",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMwNTIwMDY2LjUwMTE2Ng%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-02T04%3A01%3A07Z%2F-1%2F%2Fcf8187b4a2ac4cdc8d7834c4e5d8ae0a6eb59ffb236570b5e13ffca21b2f456f",
+      "title": "杭州北山街:秋日里的宝藏打卡地",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4719330187642995715",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_98ee9273aba0da41",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p2t5bee56eL5pmv5pyA5L2z6KeC6LWP5pe26Ze0XzE3MjkwMzE2OTAuODk2NjI2Mg%3D%3D%27/0.png",
+      "title": "杭州北山街秋色citywalk全攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4125952293479718747",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_864a77b1577105b4",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://i1.hdslb.com/bfs/archive/02b5262ddf611899e8de281cd8af4f32b7902b31.jpg",
+      "title": "杭州的秋天 北山街夕阳弯道",
+      "source_page_url": "https://www.bilibili.com/video/BV1GDfnYiEYZ",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_720af9abe1c87dd6",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=1915245685,2307395153&fm=3074&app=3074&f=JPEG?w=1410&h=1890&type=normal&func=",
+      "title": "杭州西湖必游:北山街的美景与体验🌸🚣♂️",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4754966991486200149",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_df25b29312763656",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://gips0.baidu.com/it/u=513014522,847579572&fm=3074&app=3074&f=JPEG?w=1552&h=2140&type=normal&func=T",
+      "title": "杭州西湖的秋日浪漫:北山街的时光",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4846470243319389635",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d54f5fcd001c183c",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=950506373,837385808&fm=3074&app=3074&f=JPEG",
+      "title": "中秋杭州西湖北山街拍照指南",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4664639392751078101",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9d422047ce945f9b",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://n.sinaimg.cn/sinakd20100/178/w2048h1330/20250419/58aa-54eb99031a53078667a480a06f4d562d.jpg",
+      "title": "西湖北山街美的简直不像话!每一帧都像动漫",
+      "source_page_url": "http://k.sina.com.cn/article_2393857144_p8eaf5c78027012ym0.html#p=1",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a104f3e756a9237e",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM2ODEyODkwLjkzMTQ4OA%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2025-01-14T00%3A01%3A32Z%2F-1%2F%2F1e27eb14a4851f3a7c11d62c3d7ae1da26133e130a006450256f770af8f43be4",
+      "title": "北山街深秋美景 杭州北山街的梧桐树叶渐渐变黄,整个街道被金黄覆盖",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3820244454270128955",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_49c37251ff0813bd",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3f16f54cee/251121/fb04bb067ee721e0dae987a0a1677811.png",
+      "title": "打卡金秋中国# 杭州北山街\"金色浪漫\"上演,可以这样逛!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4152162997323196173",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ec8274ed0883ea3d",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://qcloud.dpfile.com/pc/6ohlobX1xNvtmm-Mlzo9AKEfM26WdPqveN16-0-GpBt4NdJMja_-2iwACqWuXMbu.jpg",
+      "title": "杭州西湖",
+      "source_page_url": "http://m.dianping.com/ugcdetail/303701689?sceneType=0&bizType=29&msource=baiduappugc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_527bd0b295701331",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM1NDM5NTkwLjAwNjMwNTc%3D%27/0.png",
+      "title": "杭州北山街:西湖边的艺术与历史之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4060118802779368829",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1e7856c161fb5873",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://safe-img.xhscdn.com/bw1/6ec4715d-c1e8-4a53-9da5-8ad51d9f21b8?imageView2/2/w/1080/format/jpg",
+      "title": "杭州最美拐角北山街",
+      "source_page_url": "http://www.xiaohongshu.com/discovery/item/61a241e90000000021036e8c",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_715961a2577d9cdb",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzMzg5NDYwLjc1MzE3Nw%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-05T09%3A04%3A21Z%2F-1%2F%2F0eec7aa14ac123228593240c860198997f7e27c63f5823e29b6337f4d194ffbe",
+      "title": "杭州北山街梧桐大道:深秋的浪漫转角",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4729901321926618795",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f9eb1d714ba46a77",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://qcloud.dpfile.com/pc/zK6xIFuo_fi2TUxfUWmo4i8z1RGG9YBe4xneqId7AqvGrJw0LHxnoC2W1HJHsNeU.jpg",
+      "title": "n每个地方都是一处风景,杭州把所有的浪漫都给了北山街",
+      "source_page_url": "http://m.dianping.com/ugcdetail/306230621?sceneType=0&bizType=29&msource=baiduappugc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3b1f78943349673d",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://img.500px.me/photo/7f0d8d8064100876dd2e3fe7929003457/8a3cf2f86f5044fdbf7634c3b052de7c.jpg!p5",
+      "title": "杭州西湖北山街夏天荷花盛开美丽非凡",
+      "source_page_url": "http://500px.com.cn/community/photo-details/8a3cf2f86f5044fdbf7634c3b052de7c",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ac04275e86993005",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://q1.itc.cn/q_70/images03/20240909/db886e8c245b4a699aca3bd97a48bfda.jpeg",
+      "title": "杭州,漫步北山街,西湖citywalk经典游玩路线!",
+      "source_page_url": "http://www.sohu.com/a/807466129_121948408",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_61f049a171713c44",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://ossimg.e0575.cn/attachment/Day_241129/4ff1dd286c8f0e97e6acf4503f22c891.jpg?376",
+      "title": "今天的西湖北山街",
+      "source_page_url": "http://www.e0575.cn/read.php?tid=11784933",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7ccdfdfb4cafe91a",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyMzAxNzA4LjMyNjY2OTJfMTczMjMwMTcwOS4xMDQ2OTE1%27/1.png",
+      "title": "杭州的北山街,被誉为\"一步一风景,一景一传说\",是杭州最具文化气息",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4061511815409783987",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_8888b7a1a100e2a3",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://i1.hdslb.com/bfs/archive/9317e7a54a408c40429e75139cf16f118846b27b.jpg",
+      "title": "杭州西湖平湖秋月 白堤 北山街秋色",
+      "source_page_url": "https://www.bilibili.com/video/BV1deNHeoEgQ",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c242d83aa3e9a297",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=243363062,3662998123&fm=3074&app=3074&f=JPEG?w=800&h=1067&type=normal&func=S",
+      "title": "📸西湖北山街打卡记🌳",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4152250807789860335",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f4502fc52e72ac81",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://n.sinaimg.cn/sinakd20111/384/w2048h1536/20230824/c555-a6dbb40a5afcc7f6159c1a71b575dd7e.jpg",
+      "title": "杭州西湖北山街 用照片记录生活",
+      "source_page_url": "http://k.sina.com.cn/article_5268273137_p13a0377f10270131pv.html#p=1",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1120624b4fbcde86",
+      "query": "杭州 西湖北山街最美转角 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/events/be8d542f5f61df3d6f5358a9427353654660.jpeg",
+      "title": "北山街位于杭州西湖北岸,紧贴着宝石山下,自古以来是一处风景秀丽",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4760653064187388227",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [],
+  "visual_profile": {},
+  "reference_version": 0,
+  "visual_assets": {},
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {},
+  "created_at": "2026-09-14T07:10:06.365240+00:00",
+  "updated_at": "2026-09-14T07:10:07.349018+00:00",
+  "copywriting_text": "",
+  "video_clips": {}
+}

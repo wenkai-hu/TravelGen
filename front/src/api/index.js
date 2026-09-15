@@ -55,6 +55,19 @@ export function getProject(pid) {
   return request(`/api/projects/${pid}`)
 }
 
+// 接口1.1：查询联网搜图 / VLM 分析阶段状态与候选图片
+export function getProjectReferences(pid) {
+  return request(`/api/projects/${pid}/references`)
+}
+
+// 接口1.2：用户确认真实景点参考图，后端随后下载并调用 VLM
+export function confirmProjectReferences(pid, referenceIds) {
+  return request(`/api/projects/${pid}/references/confirm`, {
+    method: 'POST',
+    body: JSON.stringify({ reference_ids: referenceIds }),
+  })
+}
+
 // 接口2：确认/修改方案（PUT /api/projects/{pid}/plan）→ 返回 { plan_id, ... }
 export function confirmPlan(pid, copywriting) {
   return request(`/api/projects/${pid}/plan`, {

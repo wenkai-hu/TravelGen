@@ -5,9 +5,10 @@
 - demo 模式：无 config.json 时回放 Phase 3 真实成果（demo.py），全流程可演示
 - 视频阶段（Seedance 2.0 Pro）：当前两模式均模拟推进，真实接入 Phase 5（火山方舟异步任务）
 """
-import asyncio, os, re
+import asyncio, json, os, re
 
 from . import model_client, validate as v
+from . import visual_rag
 from . import demo as demo_mod
 from .demo import parse_script
 from .kb import knowledge_text, visual_assets
@@ -20,7 +21,13 @@ PLANNER_PROMPT = """你是浙江文旅视频策划。请为以下需求生成内
 城市：{city}｜地点：{location}｜场景类型：{scene_type}｜主题：{theme}
 目标人群：{audience}｜风格：{style}｜时长：{duration_s}秒
 补充要求：{description}
-只输出严格JSON：{{"outline":[{{"section":"段落标题","title":"小节名","content":"要点描述","duration_s":秒数}}]}}"""
+
+【用户确认的实景视觉档案】
+{visual_grounding}
+
+视觉约束：策划内容只能使用视觉档案能够支持的地点、主体和机位；不得把 uncertain 当作事实，
+不得规划 unsupported_shots 中的画面。每段写明 place_id、visual_targets 和 evidence_asset_ids。
+只输出严格JSON：{{"outline":[{{"section":"段落标题","title":"小节名","content":"要点描述","duration_s":秒数,"place_id":"地点ID","visual_targets":["画面主体"],"evidence_asset_ids":["ref_xxx"]}}]}}"""
 
 COPYWRITING_PROMPT = """你是一位浙江文旅宣传片资深编导。请依据【创作方案大纲】，为【{city}·{location}】撰写【{duration_s}秒】宣传视频的旁白文案。
 
@@ -42,12 +49,24 @@ COPYWRITING_PROMPT = """你是一位浙江文旅宣传片资深编导。请依�
    #话题一 #话题二 #话题三
 
 【知识库资料】
-{knowledge}"""
+{knowledge}
+
+【用户确认的实景视觉能力】
+{visual_grounding}
+
+视觉档案只证明画面中可见的内容，不能作为历史、年份、典故的事实来源。文案尽量围绕实际可表现的
+visible_elements/must_keep 展开，不得把 uncertain 当成事实，不得描写 unsupported_shots。"""
 
 STORYBOARD_PROMPT = """你是一位电影分镜师。请将以下宣传片文案拆分为分镜表，输出严格JSON（不要任何其他文字）：
 
+【已确认创作方案】
+{planning}
+
 【文案】
 {script}
+
+【用户确认的实景视觉档案与图片目录】
+{visual_grounding}
 
 JSON结构（scene→shot两级，严格遵循）：
 {{
@@ -55,17 +74,22 @@ JSON结构（scene→shot两级，严格遵循）：
   "scenes": [
     {{
       "scene_id": 1,
-      "location": "西湖湖面",
+      "location": "用户确认的景点",
       "time": "清晨",
       "shot_list": [
         {{
           "shot_id": 1,
           "duration_s": 8,
-          "camera": {{"type": "航拍", "movement": "推", "angle": "俯拍"}},
-          "shot_size": "大远景",
-          "subject": "西湖+苏堤全貌",
-          "background": "朝霞晨雾",
-          "prompt": "电影级航拍大远景，清晨西湖全景与苏堤，晨雾中朝霞染红天际与水面，写实质感，8k分辨率"
+          "camera": {{"type": "地面机位", "movement": "推", "angle": "平拍"}},
+          "shot_size": "全景",
+          "subject": "参考图中可确认的真实主体",
+          "background": "参考图中可确认的周边环境",
+          "place_id": "地点ID",
+          "reference_asset_ids": ["ref_xxx"],
+          "grounding_strength": "strong",
+          "must_keep": ["参考图中必须保持的真实结构"],
+          "allowed_changes": ["光线和少量动态元素"],
+          "prompt": "写实地面平视全景，严格保持参考图中的主体结构和空间关系，清晨柔和自然光，镜头缓慢前移"
         }}
       ]
     }}
@@ -81,7 +105,9 @@ JSON结构（scene→shot两级，严格遵循）：
 6. shot_id 全片唯一递增（1..N），禁止每个 scene 各自从 1 编号
 7. 地标描述跨镜头保持一致（如雷峰塔样式、湖色色调不冲突）
 8. 每镜头 prompt 字段须可直接用于文生图/文生视频，含主体/环境/光线/质感
-9. 只输出JSON对象，禁止代码块标记和任何解释文字"""
+9. 每个镜头从 view_catalog 选择1-3个真实存在且适配主体/机位的 reference_asset_ids；没有适配图时留空并设 grounding_strength="none"，禁止编造ID
+10. 镜头机位不得超出视觉档案支持范围；must_keep 保留地标结构，allowed_changes 仅写可变化的氛围与动态元素
+11. 只输出JSON对象，禁止代码块标记和任何解释文字"""
 
 RETRY_NOTE = "上一次输出未通过校验，严格按结构约束重新输出（只输出JSON）。具体错误：{errors}"
 
@@ -178,8 +204,8 @@ class PipelineRunner:
         shots = [sh for sc in project.storyboard["scenes"] for sh in sc["shot_list"]
                  if sh["shot_id"] in shot_ids]
         if self.seedance is None:
-            return await self._video_simulated(shots)
-        return await self._run_video_jobs(shots, task, on_progress=on_progress,
+            return await self._video_simulated(shots, project=project)
+        return await self._run_video_jobs(shots, task, on_progress=on_progress, project=project,
                                           ratio=project.request.get("aspect_ratio"),
                                           resolution=project.request.get("resolution"))
 
@@ -209,7 +235,9 @@ class PipelineRunner:
     # ---- 文本阶段（kimi-k2.6, temperature=1） ----
 
     async def _planning(self, task):
-        prompt = PLANNER_PROMPT.format(**task.request)
+        grounding = visual_rag.grounding_for_prompt(getattr(task, "visual_profile", {}),
+                                                     include_catalog=True)
+        prompt = PLANNER_PROMPT.format(visual_grounding=grounding, **task.request)
         chain = SCENE_STRUCTURES.get(task.request.get("scene_type"))
         if chain:
             prompt += f"\n内容结构建议（按场景模板组织 3-5 段）：{' → '.join(chain)}"
@@ -223,10 +251,14 @@ class PipelineRunner:
         req = task.request
         knowledge = knowledge_text(req)
         planning = "\n".join(
-            f"{i+1}. {o.get('section', '')}｜{o.get('title', '')}（{o.get('duration_s', '')}s）：{o.get('content', '')}"
+            f"{i+1}. {o.get('section', '')}｜{o.get('title', '')}（{o.get('duration_s', '')}s）："
+            f"{o.get('content', '')}｜地点ID：{o.get('place_id', '')}｜"
+            f"视觉目标：{o.get('visual_targets', [])}｜证据图片：{o.get('evidence_asset_ids', [])}"
             for i, o in enumerate(task.planning.get("outline", []))) \
             or "（未提供大纲，请按 引入-展开-高潮-收尾 自行组织 4 段）"
-        prompt = COPYWRITING_PROMPT.format(planning=planning, knowledge=knowledge, **req)
+        grounding = visual_rag.grounding_for_prompt(getattr(task, "visual_profile", {}))
+        prompt = COPYWRITING_PROMPT.format(planning=planning, knowledge=knowledge,
+                                           visual_grounding=grounding, **req)
         text = await self._ask([{"role": "system", "content": SYSTEM},
                                 {"role": "user", "content": prompt}])
         if not text:
@@ -239,7 +271,12 @@ class PipelineRunner:
     async def _storyboard(self, task):
         cw_text = "".join(f"【{p['idx']}】{p['text']}\n" for p in task.copywriting["paragraphs"])
         min_shots, max_shots = v.shot_count_range(task.request["duration_s"])
-        prompt = STORYBOARD_PROMPT.format(script=cw_text, duration_s=task.request["duration_s"],
+        grounding = visual_rag.grounding_for_prompt(getattr(task, "visual_profile", {}),
+                                                     include_catalog=True)
+        planning = json.dumps(task.planning, ensure_ascii=False, indent=2)
+        prompt = STORYBOARD_PROMPT.format(planning=planning, script=cw_text,
+                                          visual_grounding=grounding,
+                                          duration_s=task.request["duration_s"],
                                           min_shots=min_shots, max_shots=max_shots)
         messages = [{"role": "system", "content": SYSTEM},
                     {"role": "user", "content": prompt}]
@@ -250,6 +287,8 @@ class PipelineRunner:
                 continue
             ok, errors, data = v.validate_and_normalize(text, target_s=task.request["duration_s"])
             if ok:
+                if getattr(task, "visual_profile", {}).get("reference_asset_ids"):
+                    data = visual_rag.bind_storyboard_references(data, task.visual_profile)
                 return data, []  # 返回归一化后的数据（枚举漂移已修正落库）
             last_errors = errors
             messages = messages + [{"role": "assistant", "content": text},
@@ -262,28 +301,32 @@ class PipelineRunner:
         """旧一键直出链路：有 Seedance 走真实生成，否则模拟（进度同步到 task 字段）。"""
         shots = [sh for sc in storyboard["scenes"] for sh in sc["shot_list"]]
         if self.seedance is None:
-            return await self._video_simulated(shots)
+            return await self._video_simulated(shots, project=task)
 
         def sync(clips, done, total):
             task.video_clips = clips
             task.progress = 60 + int(done / total * 30)
             task.message = f"视频生成中 {done}/{total} 完成"
 
-        return await self._run_video_jobs(shots, task, on_progress=sync,
+        return await self._run_video_jobs(shots, task, on_progress=sync, project=task,
                                           ratio=task.request.get("aspect_ratio"),
                                           resolution=task.request.get("resolution"))
 
-    async def _video_simulated(self, shots):
+    async def _video_simulated(self, shots, project=None):
         clips = []
         for sh in shots:
+            prompt, images = visual_rag.compile_shot_input(project, sh) if project else (sh["prompt"], [])
             clips.append({"shot_id": sh["shot_id"], "task_id": f"cpt-{sh['shot_id']:03d}",
-                          "status": "succeeded", "prompt": sh["prompt"],
+                          "status": "succeeded", "prompt": prompt,
+                          "reference_asset_ids": list(sh.get("reference_asset_ids", [])),
+                          "reference_image_count": len(images),
                           "duration_s": sh["duration_s"], "cost_yuan": 0.0,
                           "note": "simulated（无 Seedance key）"})
             await asyncio.sleep(0.3)
         return clips
 
-    async def _run_video_jobs(self, shots, task, on_progress=None, ratio="adaptive", resolution=None):
+    async def _run_video_jobs(self, shots, task, on_progress=None, ratio="adaptive", resolution=None,
+                              project=None):
         """Seedance 真实生成：并发提交 → 5s 间隔轮询（上限 180 次）→ failed 自动重试 1 次 → 成功即下载转存。
         task 提供 task_id（下载文件名）；on_progress(clips, done, total) 每轮轮询后回调，None 时跳过进度同步。
         ratio 传请求的 aspect_ratio（如 9:16），否则 adaptive；resolution 传请求的 resolution，否则用配置。
@@ -295,14 +338,24 @@ class PipelineRunner:
         def _shot_duration(sh):
             return max(4, min(15, int(sh.get("duration_s") or self.seedance.get("duration", 5))))
 
-        # 1) 并发提交全部镜头
+        # 1) 编译每镜头 Prompt + 原始参考图，再并发提交全部镜头。
+        # prepared 只驻留内存，避免把体积很大的 data URI 写入任务 JSON；失败重试复用相同输入。
+        prepared = {}
+        for sh in shots:
+            prepared[sh["shot_id"]] = visual_rag.compile_shot_input(project or task, sh)
+
         clips = []
         for sh in shots:
             duration = _shot_duration(sh)
-            tid, err = await asyncio.to_thread(ark_client.submit, self.seedance, sh["prompt"], duration, resolution, ratio)
+            compiled_prompt, images = prepared[sh["shot_id"]]
+            tid, err = await asyncio.to_thread(
+                ark_client.submit, self.seedance, compiled_prompt, duration, resolution, ratio,
+                images=images or None)
             clips.append({"shot_id": sh["shot_id"], "task_id": tid,
                           "status": "queued" if tid else "failed",
-                          "prompt": sh["prompt"], "duration_s": duration, "cost_yuan": 1.0})
+                          "prompt": compiled_prompt,
+                          "reference_asset_ids": list(sh.get("reference_asset_ids", [])),
+                          "duration_s": duration, "cost_yuan": 1.0})
             if not tid:
                 clips[-1]["error"] = err
         if on_progress:
@@ -333,7 +386,9 @@ class PipelineRunner:
                     c["status"] = status
             # 2b) 失败未重试的重新提交（1 次机会）
             results = await asyncio.gather(*(
-                asyncio.to_thread(ark_client.submit, self.seedance, c["prompt"], c["duration_s"], resolution, ratio)
+                asyncio.to_thread(
+                    ark_client.submit, self.seedance, c["prompt"], c["duration_s"], resolution, ratio,
+                    images=prepared[c["shot_id"]][1] or None)
                 for c in retry))
             for c, (tid, err) in zip(retry, results):
                 c["retried"] = True
@@ -389,7 +444,7 @@ def _extract_titles(text):
 
     实测漂移格式（旧正则只认 N.《》/裸《》/「标题：」块，以下全漏 → 兜底"无标题"）：
     kimi「**备选标题：**\n1.《x》\n2.《y》」、gpt「**封面标题备选：**\n1. **x**\n2. **y**」、
-    「## 备选标题」「标题候选：x、y」「标题1：x」。标签的 #\S+ 宽容所以标签常有标题却没有。
+    「## 备选标题」「标题候选：x、y」「标题1：x」。标签的 #\\S+ 宽容所以标签常有标题却没有。
     """
     hits = re.findall(r"《([^》\n]{1,40})》", text)
     if hits:

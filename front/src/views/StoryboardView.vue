@@ -58,6 +58,17 @@ const req = computed(() => project.value?.request || {});
 const scenes = computed(() => project.value?.storyboard?.scenes || []);
 const allShots = computed(() => scenes.value.flatMap((s) => s.shot_list || []));
 const totalShots = computed(() => allShots.value.length);
+const activeShotCount = computed(
+  () => allShots.value.filter((shot) => isGen(shot.shot_id)).length,
+);
+const referenceById = computed(() =>
+  Object.fromEntries(
+    (project.value?.visual_assets?.ref_images || []).map((item) => [
+      item.asset_id,
+      item,
+    ]),
+  ),
+);
 
 // 顶部横幅：加载 / 分镜生成中 / 编辑 / 生成中 / 完成 / 部分失败 / 失败 / 其他
 const banner = computed(() => {
@@ -69,6 +80,7 @@ const banner = computed(() => {
   if (batchState.value === "done") return "done";
   if (batchState.value === "partial_failed") return "failed";
   if (p.status === "waiting_storyboard_confirm") return "edit";
+  if (p.status === "generating") return "concurrent";
   if (p.status === "completed") return "done";
   if (p.status === "failed") return "failed";
   return "other";
@@ -79,6 +91,19 @@ function shotState(shot) {
 }
 function isGen(sid) {
   return shotResults[sid]?.status === "generating";
+}
+function shotReferences(shot) {
+  return (shot.reference_asset_ids || [])
+    .map((assetId) => referenceById.value[assetId])
+    .filter(Boolean);
+}
+function groundingLabel(strength) {
+  return {
+    strong: "强约束",
+    medium: "中约束",
+    weak: "弱约束",
+    none: "未绑定",
+  }[strength] || "已绑定";
 }
 function onVideoError(sh) {
   videoErrors[sh.shot_id] = true; // 浏览器解码失败 → 显示下载兜底
@@ -119,9 +144,8 @@ function startTaskPoll(taskId, onDone) {
         clearInterval(iv);
         taskTimers.delete(taskId);
         if (onDone) onDone(t);
-        // 单镜重生成的 task 完成后不刷新项目：recompute_project_status 会把
-        // waiting_storyboard_confirm 顶成 completed，导致编辑页横幅误报"全部完成"
-        if (batchTaskId.value === taskId) await refreshProject();
+        // 每个任务独立完成；仍有其他任务时后端会继续保持 generating。
+        await refreshProject();
       }
     } catch {
       /* 瞬时网络错误：下个 tick 自愈 */
@@ -153,6 +177,34 @@ async function refreshProject() {
     mergeTerminal(p);
   } catch {
     /* 读取失败忽略 */
+  }
+}
+
+// 刷新页面后恢复所有进行中的任务，而不是只接管最后一次调用。
+async function restoreTaskPolls(p) {
+  const taskIds = p.video_tasks || [];
+  const tasks = await Promise.all(
+    taskIds.map(async (taskId) => {
+      try {
+        return await getVideoTask(taskId);
+      } catch {
+        return null;
+      }
+    }),
+  );
+  let latestMultiTask = null;
+  for (const task of tasks.filter(Boolean)) {
+    applyTask(task);
+    if (task.status !== "generating") continue;
+    const isMultiTask = (task.shots || []).length > 1;
+    if (isMultiTask) latestMultiTask = task;
+    startTaskPoll(task.task_id, isMultiTask ? onBatchDone : undefined);
+  }
+  if (latestMultiTask) {
+    batchTaskId.value = latestMultiTask.task_id;
+    batchState.value = "running";
+    batchProgress.value = latestMultiTask.progress ?? 0;
+    batchMessage.value = latestMultiTask.message || "视频批量生成中…";
   }
 }
 
@@ -213,14 +265,8 @@ async function start() {
     } else if (p.status === "storyboarding") {
       startProjectPoll();
     } else if (p.status === "generating") {
-      // 刷新/回到本页时已在生成视频：接管最近一次任务
-      const list = p.video_tasks || [];
-      const tid = list[list.length - 1];
-      if (tid) {
-        batchTaskId.value = tid;
-        batchState.value = "running";
-        startTaskPoll(tid, onBatchDone);
-      }
+      // 可能有多个 Shot 并发生成：逐个恢复状态和轮询。
+      await restoreTaskPolls(p);
     }
   } catch (e) {
     if (e.status === 404) {
@@ -287,6 +333,7 @@ async function submitRegen() {
     });
     cancelRegen();
     shotResults[sid] = { status: "generating" };
+    project.value.status = "generating";
     message.info(`Shot ${sid} 重新生成中…`);
     startTaskPoll(t.task_id);
   } catch (e) {
@@ -302,6 +349,7 @@ async function onTestShot(sh) {
   try {
     const t = await generateShots(pid.value, [sid]);
     shotResults[sid] = { status: "generating" };
+    project.value.status = "generating";
     message.info(`Shot ${sid} 单镜试生成中…`);
     startTaskPoll(t.task_id);
   } catch (e) {
@@ -324,10 +372,12 @@ async function onConfirmStoryboard() {
   }
   // 跳过已生成完成的镜头（单镜测试过的不重复扣费）
   const pending = allShots.value
-    .filter((s) => shotState(s).status !== "completed")
+    .filter(
+      (s) => !["completed", "generating"].includes(shotState(s).status),
+    )
     .map((s) => s.shot_id);
   if (!pending.length) {
-    message.info("所有镜头均已生成完成");
+    message.info("其余镜头均已生成完成或正在生成");
     return;
   }
   try {
@@ -336,6 +386,10 @@ async function onConfirmStoryboard() {
     batchState.value = "running";
     batchProgress.value = 0;
     batchMessage.value = "开始生成视频…";
+    for (const shotId of pending) {
+      shotResults[shotId] = { status: "generating" };
+    }
+    project.value.status = "generating";
     startTaskPoll(t.task_id, onBatchDone);
   } catch (e) {
     message.error(e.message || "开始生成失败");
@@ -426,6 +480,12 @@ function statusLabel(s) {
             </div>
           </template>
 
+          <template v-else-if="banner === 'concurrent'">
+            <p class="gen-msg concurrent-msg">
+              {{ activeShotCount }} 个镜头正在生成；其他镜头仍可继续编辑或提交生成
+            </p>
+          </template>
+
           <!-- 完成 / 失败：结果摘要 -->
           <template v-else-if="banner === 'done'">
             <p class="done-line">🎉 全部 {{ totalShots }} 个镜头已生成完成</p>
@@ -437,7 +497,10 @@ function statusLabel(s) {
           </template>
 
           <!-- 编辑态：确认操作条 -->
-          <div v-if="banner === 'edit'" class="op-bar">
+          <div
+            v-if="['edit', 'concurrent'].includes(banner)"
+            class="op-bar"
+          >
             <NButton size="large" @click="backToPlan">← 返回方案</NButton>
             <NButton
               class="confirm-btn"
@@ -509,6 +572,32 @@ function statusLabel(s) {
                         <dd>{{ sh.background }}</dd>
                       </div>
                     </dl>
+                    <div
+                      v-if="shotReferences(sh).length"
+                      class="shot-references"
+                    >
+                      <div class="shot-reference-head">
+                        <span>📍 实景图片约束</span>
+                        <i :class="sh.grounding_strength">
+                          {{ groundingLabel(sh.grounding_strength) }}
+                        </i>
+                      </div>
+                      <div class="shot-reference-list">
+                        <a
+                          v-for="reference in shotReferences(sh)"
+                          :key="reference.asset_id"
+                          :href="reference.source_page_url || reference.url"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          :title="`${reference.name || '实景参考'} · 查看来源`"
+                        >
+                          <img
+                            :src="reference.url"
+                            :alt="reference.name || '镜头实景参考'"
+                          />
+                        </a>
+                      </div>
+                    </div>
                   </div>
 
                   <!-- 右：Prompt 模块（可编辑） -->
@@ -550,7 +639,7 @@ function statusLabel(s) {
                           {{ statusLabel(shotState(sh).status) }}
                         </span>
                         <NButton
-                          v-if="banner === 'edit'"
+                          v-if="['edit', 'concurrent', 'generating'].includes(banner)"
                           size="small"
                           type="primary"
                           quaternary
@@ -559,16 +648,18 @@ function statusLabel(s) {
                         >
                           单镜试生成
                         </NButton>
-                        <NButton size="small" quaternary @click="startEdit(sh)"
+                        <NButton
+                          size="small"
+                          quaternary
+                          :disabled="isGen(sh.shot_id)"
+                          @click="startEdit(sh)"
                           >编辑</NButton
                         >
                         <NButton
                           v-if="shotState(sh).status"
                           size="small"
                           quaternary
-                          :disabled="
-                            isGen(sh.shot_id) || banner === 'generating'
-                          "
+                          :disabled="isGen(sh.shot_id)"
                           @click="openRegen(sh)"
                         >
                           重新生成
@@ -913,6 +1004,13 @@ function statusLabel(s) {
 .summary .gen-tip {
   text-align: left;
 }
+.concurrent-msg {
+  width: fit-content;
+  margin-bottom: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--color-primary-fade);
+}
 
 /* ---------- 操作条 ---------- */
 .op-bar {
@@ -1060,6 +1158,48 @@ function statusLabel(s) {
 .shot-meta dd {
   margin: 0;
   color: var(--color-ink);
+}
+.shot-references {
+  margin-top: 12px;
+  padding: 10px;
+  border: 1px solid var(--color-primary-light);
+  border-radius: 8px;
+  background: var(--color-primary-fade);
+}
+.shot-reference-head {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-primary-deep);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.shot-reference-head i {
+  padding: 2px 7px;
+  color: var(--color-ink-sub);
+  border-radius: 99px;
+  background: white;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+}
+.shot-reference-head i.strong { color: var(--color-success); }
+.shot-reference-head i.medium { color: var(--color-gold-ink); }
+.shot-reference-list { display: flex; gap: 7px; }
+.shot-reference-list a {
+  width: 62px;
+  height: 45px;
+  overflow: hidden;
+  border: 1px solid white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.12);
+}
+.shot-reference-list img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 .prompt-label {
   font-size: 12.5px;

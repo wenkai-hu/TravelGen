@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "8309578",
+      "name": "思考",
+      "font_class": "huabansikao",
+      "unicode": "e6de",
+      "unicode_decimal": 59102
+    },
+    {
       "icon_id": "7193674",
       "name": "返回",
       "font_class": "fanhui",

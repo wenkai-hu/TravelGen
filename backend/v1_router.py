@@ -2,7 +2,7 @@
 """V1 project 化分阶段接口（TravelGen_v1.md §七~§十八）。
 
 - 新旧共存：本 router 提供 /api/ 前缀的 V1 接口，旧 /api/v1/* 在 app.py 原样保留
-- 分阶段：创建项目 → 方案确认（PUT plan）→ 分镜 → Shot 修改 → 批量生成 → 轮询 tasks
+- 分阶段：创建项目 → 搜图/选图/VLM → 方案确认 → 分镜 → Shot 修改 → 批量生成
 - 占位：audio / render / render-status 返回 reserved（本版不做，见契约文档标注）
 - 关键语义：POST generate 即视为"确认分镜"；前端轮询用 GET /api/projects/{id}
 """
@@ -11,11 +11,12 @@ from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException
 
-from pipeline import kb
+from pipeline import kb, model_client, reference_search, visual_rag, vlm_client
 from pipeline import validate as v
 from pipeline.demo import parse_script
 from pipeline.pipeline import PipelineRunner, _parse_cw
-from schemas import (AudioRequest, ConfirmPlanRequest, GenerateRequest, GenerateShotsRequest,
+from schemas import (AudioRequest, ConfirmPlanRequest, ConfirmReferencesRequest,
+                     GenerateRequest, GenerateShotsRequest,
                      RegenerateShotRequest, RenderRequest, ShotPatch, StoryboardRequest)
 from constants import SCENE_TYPE_ALIASES, SCENE_TYPES, ASPECT_RATIOS, RESOLUTIONS, VIDEO_MODELS
 from db.auth import get_current_user
@@ -76,18 +77,25 @@ def _require_storyboard(project: P.Project):
         _err(409, "invalid_state", "分镜尚未生成，请先 POST /storyboard")
 
 
+def _guard_shots_available(project: P.Project, shot_ids: list[int]):
+    """项目允许并行任务，但同一 Shot 同一时刻只允许一个 Seedance 任务。"""
+    busy = sorted(set(shot_ids) & P.active_video_shot_ids(project))
+    if busy:
+        _err(409, "shot_generating", f"Shot {busy} 正在生成，请勿重复提交")
+
+
 # ---- 后台协程（try/finally 落盘，重启不丢） ----
 
 async def _run_plan(project: P.Project):
     try:
-        project.status, project.progress, project.message = "planning", 5, "生成内容大纲"
+        project.status, project.progress, project.message = "planning", 8, "生成内容大纲"
         project.dump()
         await runner.generate_plan(project)
-        project.visual_assets = kb.visual_assets(project.request)
-        project.safety = {"passed": True, "checks": [
+        project.visual_assets = visual_rag.public_visual_assets(project, kb.visual_assets(project.request))
+        project.safety = {"passed": False, "checks": [
             {"type": "content", "result": "pass", "note": "知识库事实来源"},
-            {"type": "copyright", "result": "pass", "note": "素材来源可追溯"},
-            {"type": "license", "result": "pass", "note": "Unsplash License 免费商用"}]}
+            {"type": "copyright", "result": "review", "note": "已保留搜索来源页，发布前需人工复核"},
+            {"type": "license", "result": "unknown", "note": "搜索结果不自动授予商用许可"}]}
         project.status, project.progress, project.message = "waiting_confirm", 10, "方案待确认"
     except Exception as e:
         project.status, project.message = "failed", f"生成方案失败｜{type(e).__name__}: {e}"
@@ -98,12 +106,106 @@ async def _run_plan(project: P.Project):
 async def _run_storyboard(project: P.Project):
     try:
         await runner.generate_storyboard(project)
-        project.visual_assets = kb.visual_assets(project.request)
+        project.visual_assets = visual_rag.public_visual_assets(project, kb.visual_assets(project.request))
         project.status, project.progress, project.message = "waiting_storyboard_confirm", 40, "分镜待确认（可修改 Shot）"
     except Exception as e:
         project.status, project.message = "failed", f"分镜失败｜{type(e).__name__}: {e}"
     finally:
         project.dump()
+
+
+async def _run_reference_search(project: P.Project):
+    """创建项目后的第一阶段：联网搜图，等待用户确认，不提前生成 Plan。"""
+    try:
+        provider = model_client.load_image_search_config()
+        project.status, project.progress, project.message = "searching_references", 2, "正在搜索景点实景图片"
+        project.dump()
+        candidates = []
+        if provider:
+            candidates = await asyncio.to_thread(
+                reference_search.search_images,
+                provider,
+                project.request.get("city", ""),
+                project.request.get("location", ""),
+            )
+        # 保留创建请求中用户主动附带的图片；同 URL 去重。
+        candidates += [
+            visual_rag.candidate_from_user_asset(
+                asset, project.request.get("city", ""), project.request.get("location", ""))
+            for asset in project.request.get("assets", []) if asset.get("url")
+        ]
+        unique, seen = [], set()
+        for candidate in candidates:
+            if candidate.get("image_url") and candidate["image_url"] not in seen:
+                seen.add(candidate["image_url"])
+                unique.append(candidate)
+        if not unique:
+            raise RuntimeError("没有搜索到图片候选，请检查百度千帆配置或换一个更具体的景点名称")
+        project.reference_candidates = unique
+        project.status, project.progress = "waiting_reference_confirm", 5
+        project.message = f"找到 {len(unique)} 张候选图片，请确认真实景点图片"
+    except Exception as e:
+        project.status = "failed"
+        project.message = f"搜索景点图片失败｜{type(e).__name__}: {e}"
+    finally:
+        project.dump()
+
+
+async def _run_reference_analysis(project: P.Project, selected: list[dict]):
+    """缓存用户确认图片 → 逐图 VLM → PlaceVisualProfile → 启动原 Plan 流程。"""
+    provider = model_client.load_vlm_config()
+    try:
+        if not provider:
+            raise RuntimeError("VLM provider 未配置")
+        project.status, project.progress, project.message = "analyzing_references", 7, "正在理解实景参考图"
+        project.dump()
+
+        semaphore = asyncio.Semaphore(3)
+
+        async def analyze_one(candidate):
+            async with semaphore:
+                try:
+                    asset = await asyncio.to_thread(
+                        visual_rag.cache_candidate,
+                        project.project_id,
+                        candidate,
+                        project.request.get("city", ""),
+                        project.request.get("location", ""),
+                    )
+                    asset["observation"] = await asyncio.to_thread(
+                        vlm_client.analyze_image, provider, asset["local_path"])
+                    asset["analysis_status"] = "completed"
+                    return asset, None
+                except Exception as exc:
+                    return None, f"{type(exc).__name__}: {exc}"
+
+        results = await asyncio.gather(*(analyze_one(candidate) for candidate in selected))
+        assets, failures = [], []
+        seen_assets = set()
+        for candidate, (asset, error) in zip(selected, results):
+            if asset and asset["asset_id"] not in seen_assets:
+                seen_assets.add(asset["asset_id"])
+                assets.append(asset)
+            else:
+                failures.append({"candidate_id": candidate.get("candidate_id"), "error": error})
+        if not assets:
+            raise RuntimeError("所有参考图均下载或分析失败")
+
+        project.reference_assets = assets
+        project.reference_version += 1
+        project.visual_profile = visual_rag.build_visual_profile(
+            project.request.get("city", ""), project.request.get("location", ""), assets)
+        project.visual_profile["analysis_failures"] = failures
+        project.visual_assets = visual_rag.public_visual_assets(project, kb.visual_assets(project.request))
+        project.message = f"完成 {len(assets)}/{len(selected)} 张参考图分析，开始生成方案"
+        project.dump()
+    except Exception as e:
+        project.status, project.progress = "waiting_reference_confirm", 5
+        project.message = f"参考图分析失败，请重新选择｜{type(e).__name__}: {e}"
+        project.dump()
+        return
+
+    await _run_plan(project)
 
 
 async def _run_video_task(project: P.Project, vt: P.VideoTask, shot_ids: list[int]):
@@ -133,7 +235,7 @@ async def _run_video_task(project: P.Project, vt: P.VideoTask, shot_ids: list[in
         project.dump()
 
 
-# ---- 接口1：创建项目 / 生成创作方案 ----
+# ---- 接口1：创建项目 / 搜索参考图 ----
 
 @router.post("/projects", status_code=202)
 async def create_project(req: GenerateRequest, user: str = Depends(get_current_user)):
@@ -154,10 +256,51 @@ async def create_project(req: GenerateRequest, user: str = Depends(get_current_u
     pid = _new_id("p")
     project = P.Project(pid, request, username=user)
     P.PROJECTS[pid] = project
+    project.status, project.progress, project.message = "searching_references", 2, "正在搜索景点实景图片"
     project.dump()
-    asyncio.create_task(_run_plan(project))
-    return {"project_id": pid, "status": "planning", "progress": 5, "message": "生成创作方案",
-            "planning": {}, "copywriting": {}, "copywriting_text": ""}
+    asyncio.create_task(_run_reference_search(project))
+    return {"project_id": pid, "status": "searching_references", "progress": 2,
+            "message": "正在搜索景点实景图片", "reference_candidates": []}
+
+
+# ---- 接口1.1/1.2：查询候选 / 确认参考图 ----
+
+@router.get("/projects/{pid}/references")
+async def get_references(pid: str, user: str = Depends(get_current_user)):
+    project = _owned_project(pid, user)
+    return {
+        "project_id": pid,
+        "status": project.status,
+        "progress": project.progress,
+        "message": project.message,
+        "request": project.request,
+        "candidates": project.reference_candidates,
+        "selected_assets": project.reference_assets,
+        "visual_profile": project.visual_profile,
+        "reference_version": project.reference_version,
+    }
+
+
+@router.post("/projects/{pid}/references/confirm", status_code=202)
+async def confirm_references(pid: str, req: ConfirmReferencesRequest,
+                             user: str = Depends(get_current_user)):
+    project = _owned_project(pid, user)
+    _state_guard(project, {"waiting_reference_confirm"}, "确认参考图")
+    by_id = {candidate.get("candidate_id"): candidate for candidate in project.reference_candidates}
+    ids = list(dict.fromkeys(req.reference_ids))
+    unknown = [reference_id for reference_id in ids if reference_id not in by_id]
+    if unknown:
+        _err(400, "invalid_param", f"参考图不存在: {unknown}")
+    selected = [by_id[reference_id] for reference_id in ids]
+    project.status, project.progress, project.message = "analyzing_references", 7, "正在理解实景参考图"
+    project.dump()
+    asyncio.create_task(_run_reference_analysis(project, selected))
+    return {
+        "project_id": pid,
+        "status": "analyzing_references",
+        "progress": 7,
+        "selected_reference_ids": ids,
+    }
 
 
 # ---- 接口2：修改/确认创作方案 ----
@@ -209,12 +352,31 @@ async def create_storyboard(pid: str, req: StoryboardRequest, user: str = Depend
 async def update_shot(pid: str, shot_id: int, patch: ShotPatch, user: str = Depends(get_current_user)):
     project = _owned_project(pid, user)
     _require_storyboard(project)
+    _state_guard(project, {"waiting_storyboard_confirm", "generating"}, "修改分镜")
     shot = _find_shot(project, shot_id)
+    _guard_shots_available(project, [shot_id])
     upd = patch.model_dump(exclude_none=True)
+    if "reference_asset_ids" in upd:
+        ids = list(dict.fromkeys(upd["reference_asset_ids"]))
+        if len(ids) > visual_rag.MAX_REFERENCES_PER_SHOT:
+            _err(400, "invalid_param",
+                 f"单个 Shot 最多绑定 {visual_rag.MAX_REFERENCES_PER_SHOT} 张参考图")
+        valid_ids = {asset.get("asset_id") for asset in project.reference_assets
+                     if asset.get("analysis_status") == "completed"}
+        unknown = [asset_id for asset_id in ids if asset_id not in valid_ids]
+        if unknown:
+            _err(400, "invalid_param", f"参考图不存在或分析未完成: {unknown}")
+        upd["reference_asset_ids"] = ids
     ok, errs, norm = v.validate_shot_patch(upd)
     if not ok:
         _err(400, "invalid_param", "；".join(errs[:4]))
     shot.update(norm)
+    if "reference_asset_ids" in norm:
+        shot["reference_roles"] = [
+            {"asset_id": aid, "role": "identity_and_composition" if i == 0 else "detail"}
+            for i, aid in enumerate(norm["reference_asset_ids"])
+        ]
+        shot["grounding_strength"] = "strong" if norm["reference_asset_ids"] else "none"
     project.dump()
     return {"project_id": pid, "shot_id": shot_id, "status": "updated", "shot": shot}
 
@@ -225,17 +387,26 @@ async def update_shot(pid: str, shot_id: int, patch: ShotPatch, user: str = Depe
 async def generate_batch(pid: str, req: GenerateShotsRequest, user: str = Depends(get_current_user)):
     project = _owned_project(pid, user)
     _require_storyboard(project)
+    _state_guard(project, {"waiting_storyboard_confirm", "generating"}, "生成视频")
     if not req.generate_video:
         _err(400, "invalid_param", "generate_image 单独生成本版未实现（video-only）；请设 generate_video=true")
     valid_ids = {sh["shot_id"] for sc in project.storyboard["scenes"] for sh in sc["shot_list"]}
     unknown = [s for s in req.shots if s not in valid_ids]
     if unknown:
         _err(400, "invalid_param", f"shots 不存在: {unknown}，可用镜头 {sorted(valid_ids)}")
+    _guard_shots_available(project, list(req.shots))
+    ungrounded = [shot_id for shot_id in req.shots
+                  if not _find_shot(project, shot_id).get("reference_asset_ids")]
+    if project.visual_profile.get("reference_asset_ids") and ungrounded:
+        _err(409, "invalid_state", f"以下 Shot 尚未绑定实景参考图: {ungrounded}")
 
     tid = _new_id("vt")
-    vt = P.VideoTask(tid, pid, "batch", req.model_dump())
+    snapshot = req.model_dump()
+    snapshot["reference_version"] = project.reference_version
+    vt = P.VideoTask(tid, pid, "batch", snapshot)
     P.VIDEO_TASKS[tid] = vt
     project.video_tasks.append(tid)
+    project.status, project.progress, project.message = "generating", 40, "视频生成中"
     project.dump()
     asyncio.create_task(_run_video_task(project, vt, list(req.shots)))
     return {"task_id": tid, "project_id": pid, "status": "generating", "progress": 0,
@@ -258,12 +429,13 @@ async def regenerate_shot(pid: str, shot_id: int, req: RegenerateShotRequest, us
     project = _owned_project(pid, user)
     _require_storyboard(project)
     shot = _find_shot(project, shot_id)
+    _guard_shots_available(project, [shot_id])
     if req.prompt and req.prompt.strip() and req.prompt.strip() != shot.get("prompt"):
         shot["prompt"] = req.prompt.strip()   # prompt 变化先写回分镜，新任务自然覆盖旧结果
         project.dump()
     tid = _new_id("vt")
     snapshot = {"shot_ids": [shot_id], "generate_image": False, "generate_video": True,
-                "regenerate": req.model_dump()}
+                "regenerate": req.model_dump(), "reference_version": project.reference_version}
     vt = P.VideoTask(tid, pid, "single", snapshot)
     P.VIDEO_TASKS[tid] = vt
     project.video_tasks.append(tid)
@@ -311,7 +483,8 @@ async def list_projects(user: str = Depends(get_current_user)):
         cover = next((c["video_url"] for c in clips.values()
                       if c.get("status") == "completed" and c.get("video_url")), None)
         if not cover:
-            assets = (p.visual_assets or {}).get("kb_images") or []
+            assets = ((p.visual_assets or {}).get("ref_images") or
+                      (p.visual_assets or {}).get("kb_images") or [])
             cover = assets[0].get("url") if assets else None
         items.append({
             "project_id": p.project_id,

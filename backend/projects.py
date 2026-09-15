@@ -40,6 +40,10 @@ class Project:
         self.storyboard = {}
         self.plan_id = None
         self.plan_version = 0
+        self.reference_candidates: list[dict] = []
+        self.reference_assets: list[dict] = []
+        self.visual_profile = {}
+        self.reference_version = 0
         self.visual_assets = {}
         self.voice = {"status": "reserved", "engine": None}
         self.music = {"suggestions": [], "status": "reserved"}
@@ -71,6 +75,7 @@ class Project:
         d = {k: getattr(self, k) for k in (
             "project_id", "username", "status", "progress", "message", "request", "planning",
             "copywriting", "script", "storyboard", "plan_id", "plan_version",
+            "reference_candidates", "reference_assets", "visual_profile", "reference_version",
             "visual_assets", "voice", "music", "video_tasks", "render",
             "final_video", "safety", "created_at", "updated_at")}
         d["copywriting_text"] = self.copywriting_text
@@ -86,7 +91,8 @@ class Project:
     def from_dict(cls, d) -> "Project":
         p = cls(d["project_id"], d["request"])
         for k in ("username", "status", "progress", "message", "planning", "copywriting", "script",
-                  "storyboard", "plan_id", "plan_version", "visual_assets", "voice",
+                  "storyboard", "plan_id", "plan_version", "reference_candidates",
+                  "reference_assets", "visual_profile", "reference_version", "visual_assets", "voice",
                   "music", "video_tasks", "render", "final_video", "safety",
                   "created_at", "updated_at"):
             if k in d:
@@ -119,7 +125,8 @@ class VideoTask:
 
     def init_shots(self, shot_ids: list[int]):
         self.shots = [{"shot_id": sid, "status": "pending", "image_url": None,
-                       "video_url": None, "local_path": None, "error": None}
+                       "video_url": None, "local_path": None, "error": None,
+                       "reference_asset_ids": []}
                       for sid in shot_ids]
 
     def sync_from_clips(self, clips: list[dict]):
@@ -128,6 +135,7 @@ class VideoTask:
             row = next((s for s in self.shots if s["shot_id"] == c["shot_id"]), None)
             if row is None:
                 continue
+            row["reference_asset_ids"] = list(c.get("reference_asset_ids", []))
             if c["status"] in ("queued", "running"):
                 row["status"] = "generating"
             elif c["status"] == "succeeded":
@@ -190,6 +198,25 @@ def load_video_task(task_id: str) -> VideoTask | None:
     return t
 
 
+def active_video_shot_ids(project: Project) -> set[int]:
+    """返回仍在生成的 Shot ID；不同 Shot 可并发，同一 Shot 避免重复扣费。"""
+    active: set[int] = set()
+    for tid in project.video_tasks:
+        task = load_video_task(tid)
+        if task is None or task.status != "generating":
+            continue
+        if task.shots:
+            active.update(
+                row["shot_id"] for row in task.shots
+                if row.get("status") in ("pending", "generating")
+            )
+            continue
+        # create_task 尚未获得调度时 task.shots 还是空的，从请求快照兜住竞态窗口。
+        requested = task.request.get("shots") or task.request.get("shot_ids") or []
+        active.update(int(shot_id) for shot_id in requested)
+    return active
+
+
 def list_projects() -> list[Project]:
     """磁盘扫描全部项目（懒加载），按文件名倒序（p_时间戳_hex，天然时间倒序）。
     跳过非 p_ 前缀 / 损坏的 json：一个坏文件不应拖垮整个列表接口。"""
@@ -219,7 +246,9 @@ def merge_video_results(project: Project) -> dict[int, dict]:
             if s["status"] in ("completed", "failed"):
                 merged[s["shot_id"]] = {"shot_id": s["shot_id"], "task_id": vt.task_id,
                                         "status": s["status"], "video_url": s.get("video_url"),
-                                        "local_path": s.get("local_path"), "error": s.get("error")}
+                                        "local_path": s.get("local_path"),
+                                        "reference_asset_ids": s.get("reference_asset_ids", []),
+                                        "error": s.get("error")}
     return merged
 
 

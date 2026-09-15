@@ -46,6 +46,17 @@ async function tick() {
   try {
     const p = await getProject(pid.value);
     project.value = p;
+    if (
+      [
+        "searching_references",
+        "waiting_reference_confirm",
+        "analyzing_references",
+      ].includes(p.status)
+    ) {
+      stopPolling();
+      router.replace(`/project/${pid.value}/references`);
+      return;
+    }
     if (!copywritingText.value && p.copywriting_text) {
       copywritingText.value = p.copywriting_text;
     }
@@ -115,6 +126,9 @@ const planId = computed(() => project.value?.plan_id || "");
 const outline = computed(() => project.value?.planning?.outline || []);
 const titles = computed(() => project.value?.copywriting?.titles || []);
 const hashtags = computed(() => project.value?.copywriting?.hashtags || []);
+const visualReferences = computed(
+  () => project.value?.visual_assets?.ref_images || [],
+);
 
 function fmtDur(s) {
   return s ? `${s}s` : "";
@@ -213,6 +227,35 @@ function fmtDur(s) {
 
           <!-- 右：文案 + 素材 -->
           <div class="side">
+            <section
+              v-if="visualReferences.length"
+              class="card references fade-up-2"
+            >
+              <div class="reference-head">
+                <div>
+                  <h3 class="block-title">📍 已采用的实景参考</h3>
+                  <p class="card-sub">
+                    下列图片已完成视觉理解，将继续约束分镜和视频生成
+                  </p>
+                </div>
+                <span>{{ visualReferences.length }} 张</span>
+              </div>
+              <div class="reference-grid">
+                <a
+                  v-for="reference in visualReferences"
+                  :key="reference.asset_id"
+                  :href="reference.source_page_url || reference.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :title="`${reference.name || '实景参考'} · 查看来源`"
+                >
+                  <img :src="reference.url" :alt="reference.name || '实景参考'" />
+                  <i>✓</i>
+                </a>
+              </div>
+              <p class="rights-tip">图片用于视觉校准；正式发布前仍需复核来源授权。</p>
+            </section>
+
             <section class="card cw fade-up-2">
               <h3 class="block-title">📝 旁白文案（可编辑）</h3>
               <p class="card-sub">
@@ -607,6 +650,61 @@ function fmtDur(s) {
   display: flex;
   flex-direction: column;
   gap: 18px;
+}
+.reference-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.reference-head .block-title { flex: 1; }
+.reference-head > span {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  color: var(--color-primary);
+  border-radius: 99px;
+  background: var(--color-primary-fade);
+  font-size: 11px;
+}
+.reference-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+.reference-grid a {
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-primary-light);
+  border-radius: 7px;
+  background: var(--color-primary-fade);
+}
+.reference-grid img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+.reference-grid a:hover img { transform: scale(1.05); }
+.reference-grid i {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  display: grid;
+  place-items: center;
+  color: white;
+  border-radius: 50%;
+  background: var(--color-primary);
+  font-size: 10px;
+  font-style: normal;
+}
+.rights-tip {
+  margin: 9px 0 0;
+  color: var(--color-ink-sub);
+  font-size: 10.5px;
 }
 .cw-note {
   font-size: 11px;

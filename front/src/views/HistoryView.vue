@@ -14,6 +14,9 @@ const error = ref("");
 // 状态 → 徽标文案/配色（与后端 project.status 状态机对齐）
 const STATUS = {
   created: { label: "已创建", cls: "info" },
+  searching_references: { label: "实景搜索中", cls: "info" },
+  waiting_reference_confirm: { label: "实景待选择", cls: "warn" },
+  analyzing_references: { label: "图片理解中", cls: "info" },
   planning: { label: "方案生成中", cls: "info" },
   waiting_confirm: { label: "方案待确认", cls: "warn" },
   plan_confirmed: { label: "方案已确认", cls: "warn" },
@@ -24,6 +27,27 @@ const STATUS = {
   failed: { label: "失败", cls: "bad" },
 };
 const statusOf = (s) => STATUS[s] || { label: s, cls: "info" };
+
+function projectRoute(project) {
+  if (
+    [
+      "searching_references",
+      "waiting_reference_confirm",
+      "analyzing_references",
+    ].includes(project.status) ||
+    (project.status === "failed" && project.progress < 8)
+  ) {
+    return `/project/${project.project_id}/references`;
+  }
+  if (
+    ["plan_confirmed", "storyboarding", "waiting_storyboard_confirm", "generating", "completed"].includes(
+      project.status,
+    )
+  ) {
+    return `/plan/${project.project_id}/storyboard`;
+  }
+  return `/plan/${project.project_id}`;
+}
 
 function fmtTime(iso) {
   if (!iso) return "";
@@ -110,7 +134,7 @@ onMounted(() => {
           v-for="p in projects"
           :key="p.project_id"
           class="card project-card"
-          @click="router.push(`/plan/${p.project_id}`)"
+          @click="router.push(projectRoute(p))"
         >
           <div class="cover">
             <img v-if="p.cover_url" :src="p.cover_url" :alt="p.theme" />

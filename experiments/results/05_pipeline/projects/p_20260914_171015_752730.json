@@ -1,0 +1,786 @@
+{
+  "project_id": "p_20260914_171015_752730",
+  "username": "sherlock",
+  "status": "failed",
+  "progress": 20,
+  "message": "分镜失败｜RuntimeError: 分镜校验未通过: 模型无响应",
+  "request": {
+    "city": "杭州",
+    "location": "西湖柳浪闻莺",
+    "scene_type": "景区推荐",
+    "theme": "景点宣传",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "暮色初临·湖畔印象",
+        "content": "以黄昏蓝橙渐变的天空为幕，垂柳轻拂，地灯初上，远景勾勒湖山轮廓。通过固定中景/远景镜头，建立大气唯美的第一印象，用色彩与光影抓住年轻观众目光。",
+        "duration_s": 15,
+        "place_id": "place_996d969ef7c78c84",
+        "visual_targets": [
+          "柳树",
+          "天空色彩渐变",
+          "湖水",
+          "远山",
+          "地灯"
+        ],
+        "evidence_asset_ids": [
+          "ref_ea1d6f6cf0e91145"
+        ]
+      },
+      {
+        "section": "展开",
+        "title": "古桥映翠·静谧水韵",
+        "content": "呈现被茂密绿色植被环绕的静谧水域，石拱桥横跨水面，以中景固定镜头结合水面倒影近景，展现拱桥古朴质感与清新静谧的自然核心景观。",
+        "duration_s": 15,
+        "place_id": "place_996d969ef7c78c84",
+        "visual_targets": [
+          "石拱桥",
+          "茂密绿色树木",
+          "平静水域",
+          "水面倒影",
+          "岸边植被与石块"
+        ],
+        "evidence_asset_ids": [
+          "ref_dfe1d83c03476d82"
+        ]
+      },
+      {
+        "section": "高潮",
+        "title": "长椅听风·湖光入怀",
+        "content": "回到黄昏湖岸，年轻游客背影静坐长椅，眺望湖水、船只与层叠远山。通过近景柳枝与地灯、中景人物构图结合，传递属于Z世代的治愈系旅行体验与情绪共鸣。",
+        "duration_s": 20,
+        "place_id": "place_996d969ef7c78c84",
+        "visual_targets": [
+          "柳树",
+          "湖岸长椅",
+          "人物背影",
+          "湖水",
+          "船只",
+          "远山",
+          "天空"
+        ],
+        "evidence_asset_ids": [
+          "ref_ea1d6f6cf0e91145"
+        ]
+      },
+      {
+        "section": "收尾",
+        "title": "倒影成诗·待君来赏",
+        "content": "收束于水面倒影，古桥与绿树在碧波中交融，以极致静谧的画面留白，搭配软性号召，邀请年轻游客来柳浪闻莺感受杭州的诗意日常。",
+        "duration_s": 10,
+        "place_id": "place_996d969ef7c78c84",
+        "visual_targets": [
+          "平静水域",
+          "水面倒影",
+          "石拱桥",
+          "茂密绿色树木"
+        ],
+        "evidence_asset_ids": [
+          "ref_dfe1d83c03476d82"
+        ]
+      }
+    ],
+    "plan_summary": "景点宣传"
+  },
+  "copywriting": {
+    "titles": [
+      "世界遗产名录"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "暮光吻过6.38平方千米的湖面，世界遗产的封面在蓝橙天幕下翻开。垂柳轻拂，地灯初上，远山含黛，为这座2011年列入《世界遗产名录》的西湖，描下温柔轮廓。",
+        "duration_s": 15
+      },
+      {
+        "idx": 2,
+        "text": "绿意深处，石拱桥静卧碧波。茂密枝叶垂拱，岸石苍苔低语，古朴质感拓进水面倒影。这方自2002年起免费敞开的5A级景区，正把最静谧的江南，还给你。",
+        "duration_s": 15
+      },
+      {
+        "idx": 3,
+        "text": "湖岸长椅，年轻背影与湖光对坐。柳丝拂过肩头，舟行远山，天空酝酿蓝调。这片被世界看见的水域从不设门槛——风从湖面来，只收藏你的心跳。旅行不是奔赴，而是与自己和解。",
+        "duration_s": 20
+      },
+      {
+        "idx": 4,
+        "text": "古桥卧波，绿树凝翠。当世界遗产的倒影成为诗行，杭州，只等你来框住下一帧日常。",
+        "duration_s": 10
+      }
+    ],
+    "hashtags": [
+      "#西湖柳浪闻莺",
+      "#杭州治愈系旅行",
+      "#世界遗产零距离"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "暮光吻过6.38平方千米的湖面，世界遗产的封面在蓝橙天幕下翻开。垂柳轻拂，地灯初上，远山含黛，为这座2011年列入《世界遗产名录》的西湖，描下温柔轮廓。",
+        "start_s": 0,
+        "end_s": 15
+      },
+      {
+        "line_id": 2,
+        "text": "绿意深处，石拱桥静卧碧波。茂密枝叶垂拱，岸石苍苔低语，古朴质感拓进水面倒影。这方自2002年起免费敞开的5A级景区，正把最静谧的江南，还给你。",
+        "start_s": 15,
+        "end_s": 30
+      },
+      {
+        "line_id": 3,
+        "text": "湖岸长椅，年轻背影与湖光对坐。柳丝拂过肩头，舟行远山，天空酝酿蓝调。这片被世界看见的水域从不设门槛——风从湖面来，只收藏你的心跳。旅行不是奔赴，而是与自己和解。",
+        "start_s": 30,
+        "end_s": 50
+      },
+      {
+        "line_id": 4,
+        "text": "古桥卧波，绿树凝翠。当世界遗产的倒影成为诗行，杭州，只等你来框住下一帧日常。",
+        "start_s": 50,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {},
+  "plan_id": "plan_p_20260914_171015_752730_v1",
+  "plan_version": 1,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_134dc811b60a6a52",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=2180218558,214416856&fm=3074&app=3074&f=JPEG",
+      "title": "柳浪闻莺绿野仙踪打卡攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5096116918414777378",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ab1d40e13a95fed6",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzMTkxMDk2Ljc4NjkyNjU%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-03T01%3A58%3A17Z%2F-1%2F%2F100f932eae0cc941683b48b2f914fc790ccd0370b441ebbe91c7b3cb9b089574",
+      "title": "杭州西湖柳浪闻莺公园:免费游玩的皇家园林",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3589572519703018067",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e6921b39ca44506f",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/edit/08a645b7b5fe39a55e2d1a9f49f26b1a31c1c272.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "柳浪闻莺为西湖十景之五,位于东南岸清波门,含友谊,闻莺,聚景,南园四",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3175836030748660477",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7a55aa46ef753e66",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275p%2Bz5rWq6Ze76I665pmv6Imy5o%2BP5YaZXzE3MjQ5MDA4MTUuMjU0NTky%27/0.png",
+      "title": "🌸柳浪闻莺,美景尽收眼底🌸 🌿在杭州十景中,柳浪闻莺是我心中",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3696921834152387839",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1b24aa4a67ebfdcc",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://q6.itc.cn/q_70/images01/20240522/4b1b47e6f2b945a8bcfabb92cfb9b049.jpeg",
+      "title": "柳浪闻莺,一处充满诗意与浪漫的胜地",
+      "source_page_url": "http://news.sohu.com/a/780667033_120473832",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_df7997ebb2a91ff5",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3f1169379219/250328/b7c6780ec44c5754835a6c8762cc2529.jpeg",
+      "title": "宝子们,杭州私藏的 \"绿野仙踪\"",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3496462872989961821",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_aa982984e6279fac",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/m8qOgeYYfSdHV5WVCMXxkgf6768feda65d989ef396e61f5c5c522c.jpg",
+      "title": "旅行# 杭州西湖美景之:柳浪闻莺",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4891309985232464618",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_87eab1678cdf698d",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p%2Bz5rWq6Ze76I665pmv54K55LuL57uNXzE3MzQ1NDQ2MjYuODQ0MjI4Mw%3D%3D%27/0.png",
+      "title": "杭州绿野仙踪:柳浪闻莺公园探秘",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4555463278054084652",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a6f39b4c0ad6ebf6",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=3780180094,68610161&fm=3074&app=3074&f=JPEG",
+      "title": "🌸西湖美景:柳浪闻莺🌳",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5867602888639775859",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b939807c53fd6483",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/e7kVLPOQfGasxffP2SkiuAd321949817da44fd046524c8ed4d5650.jpg",
+      "title": "柳浪闻莺,是杭州西湖的浪漫,也是春天的邀请",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4906007028493442851",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_910cc0694dee4a6f",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://pics2.baidu.com/feed/5366d0160924ab181dda6f982c3067dd79890baf.jpeg@f_auto?token=914d46314ce214215ae5a636a9c7f6d3",
+      "title": "西湖柳浪闻莺,杭州春日的鸟语花香!",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1844004703840590781&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0e52a3e153637c8e",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://b0.bdstatic.com/877b72bbc6cb4e7306078a673a86654a.jpeg",
+      "title": "分享一张你拍的杭州西湖 柳浪闻莺景区",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5525161744553076408",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5cdde35eaa781747",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/JxnV-K7yF8Xqj6EpR9tX0g5e98d5f4c72095818db177aac1ecc5f0.jpg",
+      "title": "西湖的柳浪闻莺,嫩芽初绽,风吹绿丝如碧波",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5112545069384855575",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f7b3a17e3ead93e8",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzMTIyNTcyLjk0NDI4NjM%3D%27/0.png",
+      "title": "西湖春色:柳浪闻莺的秘密机位🌿",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5042288578480775027",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_84a071127bb04e60",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/lJrHGRPUyidmhdJMXJurQg3bd78c59389594d96eb68464963c7059.jpg",
+      "title": "前几天偶然路过柳浪闻莺,本来就想随手拍拍\"万条垂下绿丝绦\"的西湖",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5084965340614453452",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d4aedfc548630156",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://vd3.bdstatic.com/mda-rfb58p0hu5ppihnd/1749699762/mda-rfb58p0hu5ppihnd00000000.jpg?for=bg",
+      "title": "夏日旅游,杭州西湖十景之一柳浪闻莺,柳浪闻莺是南宋时期的御花",
+      "source_page_url": "https://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=4847528055075003872",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c80915c61fbf50e8",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/uLrZhZ0SqcAOxN3g1TWr1wbd473e481bb77777184d73bbb2e73f5e.jpg",
+      "title": "春游浙江西湖柳浪闻莺有感 春日的西湖,如梦似幻,柳浪闻莺处,心潮如涌",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4060720085605921832",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c6f7ca715b8ea801",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/news/47292475d246c49231719a1af7a0fdcb.png",
+      "title": "柳浪闻莺:西湖诗意绿洲的历史与魅力",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1832710002737504564&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_de8dd023bdfe88ef",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://q3.itc.cn/q_70/images01/20240522/bc8ff30fdaa04611b9aa63e30ad56a22.jpeg",
+      "title": "柳浪闻莺,一处充满诗意与浪漫的胜地",
+      "source_page_url": "http://www.sohu.com/a/780667033_120473832",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e2a2b7f01b622d11",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/0824ab18972bd40735fadbd0f0c089510fb30f24a3cf",
+      "title": "a\">柳浪闻莺公园(orioles singing in the park),地处西湖东南隅湖岸",
+      "source_page_url": "http://baike.baidu.com/item/%E6%9F%B3%E6%B5%AA%E9%97%BB%E8%8E%BA%E5%85%AC%E5%9B%AD/7326753",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_708752a522f8a392",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275p%2Bz5rWq6Ze76I665pmv54K55LuL57uNXzE3MjUwNjM3MzYuMDc0ODM0Mw%3D%3D%27/0.png",
+      "title": "🌳柳浪闻莺:西湖的隐秘绿洲🌳",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4827396100351461950",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c5ea72a2ee67cb7b",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzMTkxMDk2Ljc4NjkyNjVfMTczMzE5MTA5Ny45ODU2ODUzXzE3MzMxOTEwOTguNzQ4NDAxMg%3D%3D%27/2.png",
+      "title": "杭州西湖柳浪闻莺公园:免费游玩的皇家园林",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3589572519703018067",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e1f72658461bb87a",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/down/399S8jF50URCjr04mJr8gw0105e42187e694657206f24435bf046e.jpg",
+      "title": "柳浪闻莺,可能是最被低估的一个西湖十景",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=4360745764592861689",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_8fefa5b311a7b781",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://youimg1.c-ctrip.com/target/100s14000000xarlu259B.jpg",
+      "title": "2026柳浪闻莺游玩攻略,晨昏都美,从末离雷峰塔这么",
+      "source_page_url": "http://touch.travel.qunar.com/comment/10159009357",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f5c81e0837f28c6c",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://redimage.xhscdn.com/1000g00828g390c0fu0205o0a49qgble014ese10?imageView2/1/w/1280/h/1706/format/webp",
+      "title": "翻翻上周好天气#笔记灵感#杭州#西湖#雷峰塔#摄影#柳浪闻莺#如何培养",
+      "source_page_url": "http://www.xiaohongshu.com/discovery/item/64211cbb000000001203db4f",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0c26f338259f79b8",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=1323810365,335375567&fm=3074&app=3074&f=JPEG",
+      "title": "西湖柳浪闻莺网红机位实测!雷峰塔也在附近",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4495975511397605380",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_8484f17d1a0eb9b2",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/80c2b7dda424663773cd9e185d628220.JPG@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "杭州西湖因秀丽的湖光山色和众多的名胜古迹闻名中外,是中国著名的",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5493991547553513640",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3793c35f37bc4318",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://youimg1.c-ctrip.com/target/tg/606/343/280/fd1a2597d8454dcc8b9f8a005507ad05.jpg",
+      "title": "2026柳浪闻莺游玩攻略,柳浪闻莺顾名思义,以柳为主",
+      "source_page_url": "http://touch.travel.qunar.com/comment/10004627595",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_28e2303b73ac6f3a",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/f31fbe096b63f624576f0ed38e44ebf81a4ca32b",
+      "title": "a\">柳浪闻莺公园(orioles singing in the park),地处西湖东南隅湖岸",
+      "source_page_url": "http://baike.baidu.com/item/%E6%9F%B3%E6%B5%AA%E9%97%BB%E8%8E%BA%E5%85%AC%E5%9B%AD/7326753",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ddf222f13c3873cc",
+      "query": "杭州 西湖柳浪闻莺 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/news/a2c5bd42c7d0bf7518b5a5fb625dfb9e.png",
+      "title": "杭州柳浪闻莺:亲水游玩与摄影指南",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1836636471226869022&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_dfe1d83c03476d82",
+      "candidate_id": "ref_f7b3a17e3ead93e8",
+      "place_id": "place_996d969ef7c78c84",
+      "place_name": "西湖柳浪闻莺",
+      "city": "杭州",
+      "original_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzMTIyNTcyLjk0NDI4NjM%3D%27/0.png",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5042288578480775027",
+      "title": "西湖春色:柳浪闻莺的秘密机位🌿",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260914_171015_752730/ref_dfe1d83c03476d82.png",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260914_171015_752730\\ref_dfe1d83c03476d82.png",
+      "sha256": "dfe1d83c03476d826356f29d8b97092b880f0369f8e15f23efbffdb55fbe0c7c",
+      "width": 1080,
+      "height": 1411,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 21.652,
+        "usage": {
+          "completion_tokens": 660,
+          "prompt_tokens": 2347,
+          "total_tokens": 3007,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面呈现一处被茂密绿色植被环绕的水域，水面倒映着周围的树木和一座石拱桥，营造出静谧清新的自然景观氛围。",
+          "visible_elements": [
+            "茂密的绿色树木（枝叶繁茂）、石拱桥（拱形结构，表面有自然生长的植物）、水域（水面平静，倒映着树木和桥）、岸边的植被（低矮的绿色植物、石块）"
+          ],
+          "spatial_layout": [
+            "树木的枝叶在画面上方和两侧，形成遮蔽的效果；石拱桥横跨在水域上方，连接两岸；水域位于画面中下部，岸边植被和石块分布在水域边缘；水面倒映着上方的树木和拱桥"
+          ],
+          "architecture_and_materials": [
+            "石拱桥，拱形设计，材质为石材，表面有自然生长的绿色植物覆盖，整体呈现古朴的质感，色彩为石材的自然色调（偏灰褐），与周围绿色植被形成对比"
+          ],
+          "viewpoint": {
+            "camera_position": "地面（靠近水域岸边的位置）",
+            "angle": "平视（略微仰视树木枝叶，平视拱桥和水面）",
+            "shot_size": "中景（包含树木、拱桥、水域和岸边植被，展现整体景观的一部分）",
+            "orientation_clues": [
+              "树木枝叶从上方和两侧延伸，拱桥在中间横跨水面，水面倒映的方向与实物一致，推测相机朝向拱桥方向，大致为水平向前拍摄"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断（光线柔和，可能是白天，但无明显的阳光直射或阴影方向特征）",
+            "weather": "无法判断（画面中无明显的天气现象，如降雨、降雪、云雾等，整体氛围清新，可能是晴天或阴天）",
+            "season": "夏季（树木枝叶茂密且颜色鲜绿，植被生长旺盛，符合夏季的植被特征）"
+          },
+          "must_keep_candidates": [
+            "石拱桥的拱形结构和古朴质感；茂密的绿色树木及枝叶的遮蔽效果；平静的水域及水面倒影；岸边的植被和石块布局；整体清新静谧的自然景观氛围"
+          ],
+          "allowed_changes": [
+            "水面的微小波纹变化；树木枝叶的轻微晃动（风动效果）；岸边植被的细节变化（如个别植物的姿态）"
+          ],
+          "suitable_shots": [
+            "中景固定镜头（展现整体景观结构）；近景拍摄水面倒影（突出静谧感）；仰拍树木枝叶（展现遮蔽效果）；从拱桥另一侧拍摄（展现水域和两岸植被）"
+          ],
+          "unsupported_or_risky_shots": [
+            "航拍（画面视角较低，航拍可能无法展现当前的遮蔽和近景细节）；特写拍摄拱桥的局部纹理（画面中拱桥细节不够清晰，特写可能失真）；快速移动镜头（会破坏画面的静谧氛围）"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "石拱桥的具体建造年代；水域的具体名称或位置；树木的具体种类"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_ea1d6f6cf0e91145",
+      "candidate_id": "ref_84a071127bb04e60",
+      "place_id": "place_996d969ef7c78c84",
+      "place_name": "西湖柳浪闻莺",
+      "city": "杭州",
+      "original_url": "http://b0.bdstatic.com/ugc/lJrHGRPUyidmhdJMXJurQg3bd78c59389594d96eb68464963c7059.jpg",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5084965340614453452",
+      "title": "前几天偶然路过柳浪闻莺,本来就想随手拍拍\"万条垂下绿丝绦\"的西湖",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260914_171015_752730/ref_ea1d6f6cf0e91145.jpg",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260914_171015_752730\\ref_ea1d6f6cf0e91145.jpg",
+      "sha256": "ea1d6f6cf0e91145119da9cd300bb54486abe39859107fb94fa68e29820a86b4",
+      "width": 1242,
+      "height": 1449,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 15.038,
+        "usage": {
+          "completion_tokens": 470,
+          "prompt_tokens": 2699,
+          "total_tokens": 3169,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展现黄昏或夜晚初临时的湖岸景观，前景有柳树、长椅和人物，中景是湖水、船只与远山，天空呈现蓝橙渐变色彩。",
+          "visible_elements": [
+            "柳树（枝叶垂落、树干有灯光照射）、长椅、人物（背影）、湖水、船只、远山、天空、地灯、栏杆"
+          ],
+          "spatial_layout": [
+            "柳树位于画面左侧靠前位置，长椅和人物在柳树右侧、湖岸边缘；湖水在中景，远山在湖的远处；地灯分布在柳树及长椅附近的地面；天空覆盖上方区域"
+          ],
+          "architecture_and_materials": [
+            "长椅为木质结构，栏杆似金属或木质；地灯为小型照明设施，发出暖光"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "朝向湖面和远山，天空色彩渐变显示黄昏或夜晚方向"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "黄昏或夜晚（天空蓝橙渐变、地灯开启）",
+            "weather": "晴朗（天空无明显云层，能见度高）",
+            "season": "春季或夏季（柳树枝叶繁茂且嫩绿，可能为生长季）"
+          },
+          "must_keep_candidates": [
+            "柳树的形态与位置、湖岸长椅人物的构图、天空色彩渐变、湖水远山的层次结构"
+          ],
+          "allowed_changes": [
+            "船只的位置和数量、人物的姿态、地灯的亮度微调"
+          ],
+          "suitable_shots": [
+            "中景固定镜头展现湖岸人物与山水；近景拍摄柳树枝叶与地灯；远景拍摄湖山天空全景"
+          ],
+          "unsupported_or_risky_shots": [
+            "仰视柳树的极端角度（可能破坏湖景构图）；水下视角（无相关元素支撑）；快速移动的动态镜头（画面以静态景观为主）"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体湖泊名称、远山的具体位置、船只的类型"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_996d969ef7c78c84",
+    "place_name": "西湖柳浪闻莺",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_dfe1d83c03476d82",
+      "ref_ea1d6f6cf0e91145"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "茂密的绿色树木（枝叶繁茂）、石拱桥（拱形结构，表面有自然生长的植物）、水域（水面平静，倒映着树木和桥）、岸边的植被（低矮的绿色植物、石块）",
+      "柳树（枝叶垂落、树干有灯光照射）、长椅、人物（背影）、湖水、船只、远山、天空、地灯、栏杆"
+    ],
+    "stable_features": [
+      {
+        "text": "石拱桥的拱形结构和古朴质感；茂密的绿色树木及枝叶的遮蔽效果；平静的水域及水面倒影；岸边的植被和石块布局；整体清新静谧的自然景观氛围",
+        "evidence_asset_ids": [
+          "ref_dfe1d83c03476d82"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "柳树的形态与位置、湖岸长椅人物的构图、天空色彩渐变、湖水远山的层次结构",
+        "evidence_asset_ids": [
+          "ref_ea1d6f6cf0e91145"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "石拱桥的拱形结构和古朴质感；茂密的绿色树木及枝叶的遮蔽效果；平静的水域及水面倒影；岸边的植被和石块布局；整体清新静谧的自然景观氛围",
+      "柳树的形态与位置、湖岸长椅人物的构图、天空色彩渐变、湖水远山的层次结构"
+    ],
+    "allowed_changes": [
+      "水面的微小波纹变化；树木枝叶的轻微晃动（风动效果）；岸边植被的细节变化（如个别植物的姿态）",
+      "船只的位置和数量、人物的姿态、地灯的亮度微调"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "石拱桥的具体建造年代；水域的具体名称或位置；树木的具体种类",
+      "具体湖泊名称、远山的具体位置、船只的类型"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_dfe1d83c03476d82",
+        "summary": "画面呈现一处被茂密绿色植被环绕的水域，水面倒映着周围的树木和一座石拱桥，营造出静谧清新的自然景观氛围。",
+        "visible_elements": [
+          "茂密的绿色树木（枝叶繁茂）、石拱桥（拱形结构，表面有自然生长的植物）、水域（水面平静，倒映着树木和桥）、岸边的植被（低矮的绿色植物、石块）"
+        ],
+        "spatial_layout": [
+          "树木的枝叶在画面上方和两侧，形成遮蔽的效果；石拱桥横跨在水域上方，连接两岸；水域位于画面中下部，岸边植被和石块分布在水域边缘；水面倒映着上方的树木和拱桥"
+        ],
+        "architecture_and_materials": [
+          "石拱桥，拱形设计，材质为石材，表面有自然生长的绿色植物覆盖，整体呈现古朴的质感，色彩为石材的自然色调（偏灰褐），与周围绿色植被形成对比"
+        ],
+        "viewpoint": {
+          "camera_position": "地面（靠近水域岸边的位置）",
+          "angle": "平视（略微仰视树木枝叶，平视拱桥和水面）",
+          "shot_size": "中景（包含树木、拱桥、水域和岸边植被，展现整体景观的一部分）",
+          "orientation_clues": [
+            "树木枝叶从上方和两侧延伸，拱桥在中间横跨水面，水面倒映的方向与实物一致，推测相机朝向拱桥方向，大致为水平向前拍摄"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断（光线柔和，可能是白天，但无明显的阳光直射或阴影方向特征）",
+          "weather": "无法判断（画面中无明显的天气现象，如降雨、降雪、云雾等，整体氛围清新，可能是晴天或阴天）",
+          "season": "夏季（树木枝叶茂密且颜色鲜绿，植被生长旺盛，符合夏季的植被特征）"
+        },
+        "must_keep_candidates": [
+          "石拱桥的拱形结构和古朴质感；茂密的绿色树木及枝叶的遮蔽效果；平静的水域及水面倒影；岸边的植被和石块布局；整体清新静谧的自然景观氛围"
+        ],
+        "allowed_changes": [
+          "水面的微小波纹变化；树木枝叶的轻微晃动（风动效果）；岸边植被的细节变化（如个别植物的姿态）"
+        ],
+        "suitable_shots": [
+          "中景固定镜头（展现整体景观结构）；近景拍摄水面倒影（突出静谧感）；仰拍树木枝叶（展现遮蔽效果）；从拱桥另一侧拍摄（展现水域和两岸植被）"
+        ],
+        "unsupported_or_risky_shots": [
+          "航拍（画面视角较低，航拍可能无法展现当前的遮蔽和近景细节）；特写拍摄拱桥的局部纹理（画面中拱桥细节不够清晰，特写可能失真）；快速移动镜头（会破坏画面的静谧氛围）"
+        ]
+      },
+      {
+        "asset_id": "ref_ea1d6f6cf0e91145",
+        "summary": "画面展现黄昏或夜晚初临时的湖岸景观，前景有柳树、长椅和人物，中景是湖水、船只与远山，天空呈现蓝橙渐变色彩。",
+        "visible_elements": [
+          "柳树（枝叶垂落、树干有灯光照射）、长椅、人物（背影）、湖水、船只、远山、天空、地灯、栏杆"
+        ],
+        "spatial_layout": [
+          "柳树位于画面左侧靠前位置，长椅和人物在柳树右侧、湖岸边缘；湖水在中景，远山在湖的远处；地灯分布在柳树及长椅附近的地面；天空覆盖上方区域"
+        ],
+        "architecture_and_materials": [
+          "长椅为木质结构，栏杆似金属或木质；地灯为小型照明设施，发出暖光"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "朝向湖面和远山，天空色彩渐变显示黄昏或夜晚方向"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "黄昏或夜晚（天空蓝橙渐变、地灯开启）",
+          "weather": "晴朗（天空无明显云层，能见度高）",
+          "season": "春季或夏季（柳树枝叶繁茂且嫩绿，可能为生长季）"
+        },
+        "must_keep_candidates": [
+          "柳树的形态与位置、湖岸长椅人物的构图、天空色彩渐变、湖水远山的层次结构"
+        ],
+        "allowed_changes": [
+          "船只的位置和数量、人物的姿态、地灯的亮度微调"
+        ],
+        "suitable_shots": [
+          "中景固定镜头展现湖岸人物与山水；近景拍摄柳树枝叶与地灯；远景拍摄湖山天空全景"
+        ],
+        "unsupported_or_risky_shots": [
+          "仰视柳树的极端角度（可能破坏湖景构图）；水下视角（无相关元素支撑）；快速移动的动态镜头（画面以静态景观为主）"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_1.jpg",
+        "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+        "license": "Unsplash License",
+        "alt": "a building with a tree in front of it"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_2.jpg",
+        "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+        "license": "Unsplash License",
+        "alt": "a pagoda in the middle of a park surrounded by trees"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_3.jpg",
+        "url": "https://unsplash.com/photos/brown-and-red-temple-kp3A2jurfP0",
+        "license": "Unsplash License",
+        "alt": "brown and red temple"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_dfe1d83c03476d82",
+        "name": "西湖柳浪闻莺",
+        "url": "/assets/references/p_20260914_171015_752730/ref_dfe1d83c03476d82.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5042288578480775027",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_ea1d6f6cf0e91145",
+        "name": "西湖柳浪闻莺",
+        "url": "/assets/references/p_20260914_171015_752730/ref_ea1d6f6cf0e91145.jpg",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5084965340614453452",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-14T09:10:15.275192+00:00",
+  "updated_at": "2026-09-14T14:28:17.530082+00:00",
+  "copywriting_text": "【0-15s】暮光吻过6.38平方千米的湖面，世界遗产的封面在蓝橙天幕下翻开。垂柳轻拂，地灯初上，远山含黛，为这座2011年列入《世界遗产名录》的西湖，描下温柔轮廓。\n【15-30s】绿意深处，石拱桥静卧碧波。茂密枝叶垂拱，岸石苍苔低语，古朴质感拓进水面倒影。这方自2002年起免费敞开的5A级景区，正把最静谧的江南，还给你。\n【30-50s】湖岸长椅，年轻背影与湖光对坐。柳丝拂过肩头，舟行远山，天空酝酿蓝调。这片被世界看见的水域从不设门槛——风从湖面来，只收藏你的心跳。旅行不是奔赴，而是与自己和解。\n【50-60s】古桥卧波，绿树凝翠。当世界遗产的倒影成为诗行，杭州，只等你来框住下一帧日常。",
+  "video_clips": {}
+}

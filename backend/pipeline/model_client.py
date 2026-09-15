@@ -10,8 +10,48 @@ REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 CONFIG_PATH = os.path.join(REPO, "experiments", "config.json")
 
 
-def _load_provider(name):
-    """从 experiments/config.json 取指定 provider；文件缺失或强制 mock 返回 None。"""
+def _read_env_value(relative_path, key):
+    """从仓库内 .env 读取单个值；只用于本地开发配置，不修改进程环境。"""
+    if not relative_path or not key:
+        return ""
+    path = relative_path if os.path.isabs(relative_path) else os.path.join(REPO, relative_path)
+    if not os.path.exists(path):
+        return ""
+    with open(path, encoding="utf-8-sig") as f:
+        for raw in f:
+            line = raw.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            name, value = line.split("=", 1)
+            if name.strip() == key:
+                return value.strip().strip('"').strip("'")
+    return ""
+
+
+def _resolve_provider(config, provider, seen=None):
+    """解析 credential_provider / api_key_env，返回不会修改原配置的 provider 副本。"""
+    resolved = dict(provider)
+    seen = set(seen or ())
+    name = resolved.get("name", "")
+    if name in seen:
+        raise ValueError(f"provider 凭证引用成环: {name}")
+    seen.add(name)
+
+    source_name = resolved.get("credential_provider")
+    if source_name and not resolved.get("api_key"):
+        source = next((p for p in config.get("providers", []) if p.get("name") == source_name), None)
+        if source:
+            resolved["api_key"] = _resolve_provider(config, source, seen).get("api_key", "")
+
+    env_name = resolved.get("api_key_env")
+    if env_name and not resolved.get("api_key"):
+        resolved["api_key"] = os.environ.get(env_name, "") or _read_env_value(
+            resolved.get("env_file"), env_name)
+    return resolved
+
+
+def load_provider(name):
+    """从统一配置取 provider，并解析共享凭证与环境变量；不可用返回 None。"""
     if os.environ.get("TRAVELGEN_MOCK") == "1":
         return None
     if not os.path.exists(CONFIG_PATH):
@@ -20,18 +60,28 @@ def _load_provider(name):
         cfg = json.load(f)
     for p in cfg.get("providers", []):
         if p.get("name") == name:
-            return p
+            return _resolve_provider(cfg, p)
     return None
 
 
 def load_config():
     """返回 kimi provider 配置（管线文案/分镜首选模型）；不可用返回 None。"""
-    return _load_provider("kimi")
+    return load_provider("kimi")
 
 
 def load_seedance_config():
     """返回火山方舟 Seedance provider（视频生成）；不可用返回 None。"""
-    return _load_provider("seedance")
+    return load_provider("seedance")
+
+
+def load_vlm_config():
+    """返回景点参考图视觉理解 provider；不可用返回 None。"""
+    return load_provider("vlm")
+
+
+def load_image_search_config():
+    """返回百度千帆图片搜索 provider；不可用返回 None。"""
+    return load_provider("qianfan_image_search")
 
 
 def call_model(provider, messages, temperature=None):

@@ -1,0 +1,31 @@
+{
+  "task_id": "vt_20260914_164333_8545c0",
+  "project_id": "p_20260914_160148_23f31a",
+  "kind": "batch",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 1/1 成功",
+  "request": {
+    "shots": [
+      3
+    ],
+    "generate_image": false,
+    "generate_video": true,
+    "reference_version": 1
+  },
+  "shots": [
+    {
+      "shot_id": 3,
+      "status": "completed",
+      "image_url": null,
+      "video_url": "/assets/videos/vt_20260914_164333_8545c0_3.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\videos\\vt_20260914_164333_8545c0_3.mp4",
+      "error": null,
+      "reference_asset_ids": [
+        "ref_1c20ed364682900f"
+      ]
+    }
+  ],
+  "created_at": "2026-09-14T08:43:33.725948+00:00",
+  "updated_at": "2026-09-14T08:50:24.104329+00:00"
+}
