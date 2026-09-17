@@ -20,9 +20,13 @@ const STATUS = {
   planning: { label: "方案生成中", cls: "info" },
   waiting_confirm: { label: "方案待确认", cls: "warn" },
   plan_confirmed: { label: "方案已确认", cls: "warn" },
+  audio_generating: { label: "音轨生成中", cls: "info" },
+  audio_ready: { label: "音轨已就绪", cls: "warn" },
   storyboarding: { label: "分镜生成中", cls: "info" },
   waiting_storyboard_confirm: { label: "分镜待确认", cls: "warn" },
   generating: { label: "视频生成中", cls: "info" },
+  video_ready: { label: "画面已就绪", cls: "warn" },
+  composing: { label: "成片合成中", cls: "info" },
   completed: { label: "已完成", cls: "ok" },
   failed: { label: "失败", cls: "bad" },
 };
@@ -40,9 +44,10 @@ function projectRoute(project) {
     return `/project/${project.project_id}/references`;
   }
   if (
-    ["plan_confirmed", "storyboarding", "waiting_storyboard_confirm", "generating", "completed"].includes(
+    ["plan_confirmed", "audio_generating", "audio_ready", "storyboarding",
+      "waiting_storyboard_confirm", "generating", "video_ready", "composing", "completed"].includes(
       project.status,
-    )
+    ) || (project.status === "failed" && project.progress >= 15)
   ) {
     return `/plan/${project.project_id}/storyboard`;
   }
@@ -149,6 +154,7 @@ onMounted(() => {
               <span v-if="p.scene_type">🧩 {{ p.scene_type }}</span>
               <span v-if="p.duration_s">⏱ {{ p.duration_s }}s</span>
               <span v-if="p.shot_count">🎞 {{ p.shot_count }} 镜头</span>
+              <span v-if="p.segment_count">▣ {{ p.segment_count }} 段</span>
             </p>
             <p class="p-time">更新于 {{ fmtTime(p.updated_at) }}</p>
           </div>

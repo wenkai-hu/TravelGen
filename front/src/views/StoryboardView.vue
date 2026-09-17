@@ -1,423 +1,290 @@
 <script setup>
-// 分镜编辑页（文档页面3「脚本与分镜」+ 页面4「生成进度」一体）
-// 状态流：方案确认后进入 → 自动触发分镜生成 → 待确认(编辑 Shot/重新生成) → 确认并批量生成视频 → 轮询任务看进度
-import {
-  computed,
-  onBeforeUnmount,
-  onMounted,
-  reactive,
-  ref,
-  watch,
-} from "vue";
+import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { NButton, NInput, NModal, useMessage } from "naive-ui";
+import { NButton, NInput, useMessage } from "naive-ui";
 import logoUrl from "../images/logo.png";
 import {
+  createAudio,
+  createRender,
   createStoryboard,
-  generateShots,
+  generateSegments,
   getProject,
-  getVideoTask,
-  regenerateShot,
+  regenerateSegment,
+  updateSegment,
   updateShot,
 } from "../api";
 import { isLoggedIn } from "../auth";
 
+const POLL_MS = 2000;
 const message = useMessage();
 const route = useRoute();
 const router = useRouter();
-
-const POLL_MS = 2000;
 const pid = computed(() => route.params.pid);
 
-// ── 项目数据 ──
 const project = ref(null);
-let projectTimer = null;
-
-// ── 镜头生成结果（task 轮询 + project.video_clips 合并），驱动卡片状态 ──
-const shotResults = reactive({}); // shot_id -> { status, video_url, error }
-const videoErrors = reactive({}); // shot_id -> true（浏览器解码失败，Seedance 输出 4:2:2 编码）
-const taskTimers = new Map();
-
-// 批量生成任务状态
-const batchTaskId = ref(null);
-const batchState = ref("idle"); // idle | running | done | partial_failed
-const batchProgress = ref(0);
-const batchMessage = ref("");
-
-// ── 分镜编辑态 ──
+const loading = ref(true);
 const editingShotId = ref(null);
 const editPrompt = ref("");
-const regenShotId = ref(null); // 重新生成对话框目标 shot
-const regenPrompt = ref("");
-const regenSubmitting = ref(false); // 提交中：开始生成按钮转圈，防重复提交
+const savingShot = ref(false);
+const segmentNotes = reactive({});
+const localActive = reactive({});
+const actionBusy = ref(false);
+let timer = null;
+let refreshing = false;
+let audioTriggered = false;
+let storyboardTriggered = false;
 
-let storyboardTriggered = false; // 每段会话内只自动触发一次分镜生成
-
-// ── 派生数据 ──
 const req = computed(() => project.value?.request || {});
 const scenes = computed(() => project.value?.storyboard?.scenes || []);
-const allShots = computed(() => scenes.value.flatMap((s) => s.shot_list || []));
-const totalShots = computed(() => allShots.value.length);
-const activeShotCount = computed(
-  () => allShots.value.filter((shot) => isGen(shot.shot_id)).length,
-);
+const segments = computed(() => project.value?.storyboard?.segments || []);
+const audio = computed(() => project.value?.audio || {});
+const segmentResults = computed(() => project.value?.segment_results || {});
+const finalVideo = computed(() => project.value?.final_video || {});
+const shotById = computed(() => {
+  const rows = {};
+  for (const scene of scenes.value) {
+    for (const shot of scene.shot_list || []) {
+      rows[shot.shot_id] = { ...shot, scene_title: scene.title };
+    }
+  }
+  return rows;
+});
 const referenceById = computed(() =>
   Object.fromEntries(
-    (project.value?.visual_assets?.ref_images || []).map((item) => [
-      item.asset_id,
-      item,
-    ]),
+    (project.value?.visual_assets?.ref_images || []).map((item) => [item.asset_id, item]),
   ),
 );
 
-// 顶部横幅：加载 / 分镜生成中 / 编辑 / 生成中 / 完成 / 部分失败 / 失败 / 其他
-const banner = computed(() => {
-  const p = project.value;
-  if (!p) return "loading";
-  if (p.status === "plan_confirmed" || p.status === "storyboarding")
-    return "storyboarding";
-  if (batchState.value === "running") return "generating";
-  if (batchState.value === "done") return "done";
-  if (batchState.value === "partial_failed") return "failed";
-  if (p.status === "waiting_storyboard_confirm") return "edit";
-  if (p.status === "generating") return "concurrent";
-  if (p.status === "completed") return "done";
-  if (p.status === "failed") return "failed";
+const phase = computed(() => {
+  const status = project.value?.status;
+  if (!project.value || loading.value) return "loading";
+  if (["plan_confirmed", "audio_generating", "audio_ready", "storyboarding"].includes(status)) return "preparing";
+  if (status === "waiting_storyboard_confirm") return "editing";
+  if (status === "generating") return "generating";
+  if (status === "video_ready") return "video_ready";
+  if (status === "composing") return "composing";
+  if (status === "completed") return "completed";
+  if (status === "failed") return "failed";
   return "other";
 });
 
-function shotState(shot) {
-  return shotResults[shot.shot_id] || {};
-}
-function isGen(sid) {
-  return shotResults[sid]?.status === "generating";
-}
-function shotReferences(shot) {
-  return (shot.reference_asset_ids || [])
-    .map((assetId) => referenceById.value[assetId])
-    .filter(Boolean);
-}
-function groundingLabel(strength) {
-  return {
-    strong: "强约束",
-    medium: "中约束",
-    weak: "弱约束",
-    none: "未绑定",
-  }[strength] || "已绑定";
-}
-function onVideoError(sh) {
-  videoErrors[sh.shot_id] = true; // 浏览器解码失败 → 显示下载兜底
-}
-function isPlayable(url) {
-  // 可播：远程 http(s) URL，或后端静态挂载的本地转存相对路径（/assets/videos/...）
-  return (
-    typeof url === "string" &&
-    (/^https?:\/\//i.test(url) || url.startsWith("/assets/"))
-  );
+const activeIds = computed(() => new Set(project.value?.active_segment_ids || []));
+
+function shotsFor(segment) {
+  return (segment.shot_ids || []).map((id) => shotById.value[id]).filter(Boolean);
 }
 
-// ── 工具：任务轮询（batch / 单镜重生成统一入口） ──
-function applyTask(t) {
-  for (const s of t.shots || []) {
-    shotResults[s.shot_id] = {
-      status: s.status === "pending" ? "pending" : s.status,
-      video_url: s.video_url || s.local_path || null,
-      error: s.error || null,
-    };
+function refsFor(shot) {
+  return (shot.reference_asset_ids || []).map((id) => referenceById.value[id]).filter(Boolean);
+}
+
+function stateFor(segment) {
+  if (activeIds.value.has(segment.segment_id) || localActive[segment.segment_id]) {
+    return { status: "generating" };
   }
-  if (batchTaskId.value === t.task_id) {
-    batchProgress.value = t.progress ?? 0;
-    batchMessage.value = t.message || "";
+  return segmentResults.value[segment.segment_id] || { status: segment.status || "pending" };
+}
+
+function statusLabel(status) {
+  return ({
+    pending: "待生成",
+    stale: "需重新生成",
+    generating: "生成中",
+    completed: "已生成",
+    failed: "生成失败",
+    ready: "已生成",
+  })[status] || status;
+}
+
+function fmtMs(ms) {
+  return `${(Number(ms || 0) / 1000).toFixed(1)}s`;
+}
+
+function syncProject(p) {
+  project.value = p;
+  for (const segment of p.storyboard?.segments || []) {
+    if (!(segment.segment_id in segmentNotes)) {
+      segmentNotes[segment.segment_id] = segment.transition_note || "";
+    }
+    const result = p.segment_results?.[segment.segment_id];
+    if (!(p.active_segment_ids || []).includes(segment.segment_id) && result?.status !== "generating") {
+      delete localActive[segment.segment_id];
+    }
   }
 }
 
-function startTaskPoll(taskId, onDone) {
-  if (taskTimers.has(taskId)) return;
-  let guard = false;
-  const iv = setInterval(async () => {
-    if (guard) return;
-    guard = true;
+async function advancePipeline(p) {
+  if (p.status === "plan_confirmed" && !audioTriggered) {
+    audioTriggered = true;
     try {
-      const t = await getVideoTask(taskId);
-      applyTask(t);
-      if (t.status === "completed" || t.status === "failed") {
-        clearInterval(iv);
-        taskTimers.delete(taskId);
-        if (onDone) onDone(t);
-        // 每个任务独立完成；仍有其他任务时后端会继续保持 generating。
-        await refreshProject();
-      }
-    } catch {
-      /* 瞬时网络错误：下个 tick 自愈 */
-    } finally {
-      guard = false;
+      await createAudio(pid.value, {
+        voice: "zh-CN-XiaoxiaoNeural",
+        music: "ambient",
+      });
+      message.info("正在生成完整旁白与背景音乐…");
+    } catch (e) {
+      if (e.status !== 409) message.error(e.message || "音频生成启动失败");
     }
-  }, POLL_MS);
-  taskTimers.set(taskId, iv);
-}
-
-// ── 工具：项目全量刷新 + 合并终态镜头结果 ──
-function mergeTerminal(p) {
-  for (const [sid, r] of Object.entries(p.video_clips || {})) {
-    const cur = shotResults[sid];
-    if (!cur || cur.status !== "generating") {
-      shotResults[sid] = {
-        status: r.status,
-        video_url: r.video_url || r.local_path || null,
-        error: r.error || null,
-      };
-    }
-  }
-}
-
-async function refreshProject() {
-  try {
-    const p = await getProject(pid.value);
-    project.value = p;
-    mergeTerminal(p);
-  } catch {
-    /* 读取失败忽略 */
-  }
-}
-
-// 刷新页面后恢复所有进行中的任务，而不是只接管最后一次调用。
-async function restoreTaskPolls(p) {
-  const taskIds = p.video_tasks || [];
-  const tasks = await Promise.all(
-    taskIds.map(async (taskId) => {
-      try {
-        return await getVideoTask(taskId);
-      } catch {
-        return null;
-      }
-    }),
-  );
-  let latestMultiTask = null;
-  for (const task of tasks.filter(Boolean)) {
-    applyTask(task);
-    if (task.status !== "generating") continue;
-    const isMultiTask = (task.shots || []).length > 1;
-    if (isMultiTask) latestMultiTask = task;
-    startTaskPoll(task.task_id, isMultiTask ? onBatchDone : undefined);
-  }
-  if (latestMultiTask) {
-    batchTaskId.value = latestMultiTask.task_id;
-    batchState.value = "running";
-    batchProgress.value = latestMultiTask.progress ?? 0;
-    batchMessage.value = latestMultiTask.message || "视频批量生成中…";
-  }
-}
-
-// ── 分镜生成阶段的项目轮询（plan_confirmed → waiting_storyboard_confirm） ──
-function startProjectPoll() {
-  stopProjectPoll();
-  let guard = false;
-  projectTimer = setInterval(async () => {
-    if (guard) return;
-    guard = true;
-    try {
-      const p = await getProject(pid.value);
-      project.value = p;
-      if (p.status === "plan_confirmed") {
-        // 首查竞态：还没触发过则补触发
-        if (!storyboardTriggered) {
-          storyboardTriggered = true;
-          await createStoryboard(pid.value, p.plan_id);
-          message.info("正在生成分镜…");
-        }
-        return;
-      }
-      mergeTerminal(p);
-      if (p.status === "waiting_storyboard_confirm") stopProjectPoll();
-    } catch {
-      /* 自愈 */
-    } finally {
-      guard = false;
-    }
-  }, POLL_MS);
-}
-
-function stopProjectPoll() {
-  if (projectTimer) {
-    clearInterval(projectTimer);
-    projectTimer = null;
-  }
-}
-
-function stopTaskPolls() {
-  for (const iv of taskTimers.values()) clearInterval(iv);
-  taskTimers.clear();
-}
-
-// ── 进入页面：按项目状态分流 ──
-async function start() {
-  stopProjectPoll();
-  stopTaskPolls();
-  try {
-    const p = await getProject(pid.value);
-    project.value = p;
-    mergeTerminal(p);
-    if (p.status === "plan_confirmed") {
-      storyboardTriggered = true;
-      await createStoryboard(pid.value, p.plan_id);
-      message.info("正在生成分镜…");
-      startProjectPoll();
-    } else if (p.status === "storyboarding") {
-      startProjectPoll();
-    } else if (p.status === "generating") {
-      // 可能有多个 Shot 并发生成：逐个恢复状态和轮询。
-      await restoreTaskPolls(p);
-    }
-  } catch (e) {
-    if (e.status === 404) {
-      router.replace("/");
-      return;
-    }
-    message.error(e.message || "读取项目失败");
-  }
-}
-
-onMounted(() => {
-  if (!pid.value) {
-    router.replace("/");
     return;
   }
-  start();
-});
-onBeforeUnmount(() => {
-  stopProjectPoll();
-  stopTaskPolls();
-});
-watch(pid, (np, op) => {
-  if (np && np !== op) start();
+  if (p.status === "audio_ready" && !(p.storyboard?.scenes || []).length && !storyboardTriggered) {
+    storyboardTriggered = true;
+    try {
+      await createStoryboard(pid.value, p.plan_id);
+      message.info("正在按音频时间轴规划 Segment…");
+    } catch (e) {
+      if (e.status !== 409) message.error(e.message || "分镜生成启动失败");
+    }
+  }
+}
+
+async function refresh() {
+  if (refreshing) return;
+  refreshing = true;
+  try {
+    const p = await getProject(pid.value);
+    syncProject(p);
+    await advancePipeline(p);
+  } catch (e) {
+    if (e.status === 404) router.replace("/");
+  } finally {
+    loading.value = false;
+    refreshing = false;
+  }
+}
+
+function startPolling() {
+  stopPolling();
+  loading.value = true;
+  audioTriggered = false;
+  storyboardTriggered = false;
+  refresh();
+  timer = setInterval(refresh, POLL_MS);
+}
+
+function stopPolling() {
+  if (timer) clearInterval(timer);
+  timer = null;
+}
+
+onMounted(startPolling);
+onBeforeUnmount(stopPolling);
+watch(pid, (next, previous) => {
+  if (next && next !== previous) startPolling();
 });
 
-// ── 编辑 Shot 的 Prompt（只读字段不入编辑接口，契约 §十一） ──
 function startEdit(shot) {
   editingShotId.value = shot.shot_id;
-  editPrompt.value = shot.prompt;
+  editPrompt.value = shot.prompt || "";
 }
+
 function cancelEdit() {
   editingShotId.value = null;
+  editPrompt.value = "";
 }
-async function saveEdit(shot) {
-  const text = editPrompt.value.trim();
-  if (!text) {
-    message.warning("Prompt 不能为空");
-    return;
-  }
+
+async function saveShot(shot) {
+  const prompt = editPrompt.value.trim();
+  if (!prompt) return message.warning("Prompt 不能为空");
+  savingShot.value = true;
   try {
-    await updateShot(pid.value, shot.shot_id, { prompt: text });
-    shot.prompt = text;
-    editingShotId.value = null;
-    message.success(`Shot ${shot.shot_id} 已保存`);
+    const response = await updateShot(pid.value, shot.shot_id, { prompt });
+    cancelEdit();
+    message.success(`${response.invalidated_segment_id || "所属 Segment"} 已标记为需重新生成`);
+    await refresh();
+  } catch (e) {
+    message.error(e.message || "Shot 保存失败");
+  } finally {
+    savingShot.value = false;
+  }
+}
+
+async function saveSegmentNote(segment) {
+  actionBusy.value = true;
+  try {
+    await updateSegment(pid.value, segment.segment_id, {
+      transition_note: segmentNotes[segment.segment_id] || "",
+    });
+    message.success(`${segment.segment_id} 的转场要求已保存`);
+    await refresh();
   } catch (e) {
     message.error(e.message || "保存失败");
-  }
-}
-
-// ── 单 Shot 重新生成（局部可控生成） ──
-function openRegen(shot) {
-  regenShotId.value = shot.shot_id;
-  regenPrompt.value = shot.prompt;
-}
-function cancelRegen() {
-  regenShotId.value = null;
-}
-async function submitRegen() {
-  const sid = regenShotId.value;
-  regenSubmitting.value = true;
-  try {
-    const t = await regenerateShot(pid.value, sid, {
-      prompt: regenPrompt.value.trim(),
-    });
-    cancelRegen();
-    shotResults[sid] = { status: "generating" };
-    project.value.status = "generating";
-    message.info(`Shot ${sid} 重新生成中…`);
-    startTaskPoll(t.task_id);
-  } catch (e) {
-    message.error(e.message || "重新生成失败");
   } finally {
-    regenSubmitting.value = false;
+    actionBusy.value = false;
   }
 }
 
-// ── 单镜头试生成（低成本测试：只生成选中的一个镜头看质量） ──
-async function onTestShot(sh) {
-  const sid = sh.shot_id;
+async function startSegments(ids, regenerate = false) {
+  if (!ids.length) return;
+  actionBusy.value = true;
+  ids.forEach((id) => { localActive[id] = true; });
   try {
-    const t = await generateShots(pid.value, [sid]);
-    shotResults[sid] = { status: "generating" };
-    project.value.status = "generating";
-    message.info(`Shot ${sid} 单镜试生成中…`);
-    startTaskPoll(t.task_id);
-  } catch (e) {
-    message.error(e.message || "单镜生成失败");
-  }
-}
-
-// ── 确认分镜并批量生成视频（后端语义：POST generate 即视为确认分镜） ──
-function onBatchDone(t) {
-  const rows = t.shots || [];
-  const ok = rows.filter((s) => s.status === "completed").length;
-  batchState.value = ok === rows.length ? "done" : "partial_failed";
-  batchMessage.value = t.message || `完成 ${ok}/${rows.length} 个镜头`;
-}
-
-async function onConfirmStoryboard() {
-  if (!totalShots.value) {
-    message.warning("分镜尚未生成");
-    return;
-  }
-  // 跳过已生成完成的镜头（单镜测试过的不重复扣费）
-  const pending = allShots.value
-    .filter(
-      (s) => !["completed", "generating"].includes(shotState(s).status),
-    )
-    .map((s) => s.shot_id);
-  if (!pending.length) {
-    message.info("其余镜头均已生成完成或正在生成");
-    return;
-  }
-  try {
-    const t = await generateShots(pid.value, pending);
-    batchTaskId.value = t.task_id;
-    batchState.value = "running";
-    batchProgress.value = 0;
-    batchMessage.value = "开始生成视频…";
-    for (const shotId of pending) {
-      shotResults[shotId] = { status: "generating" };
+    if (regenerate && ids.length === 1) {
+      await regenerateSegment(pid.value, ids[0], {
+        reason: "用户从 Segment 卡片重新生成",
+        transition_note: segmentNotes[ids[0]] || "",
+      });
+    } else {
+      await generateSegments(pid.value, ids);
     }
-    project.value.status = "generating";
-    startTaskPoll(t.task_id, onBatchDone);
+    message.info(`${ids.length} 个 Segment 已进入生成队列`);
+    await refresh();
   } catch (e) {
-    message.error(e.message || "开始生成失败");
+    ids.forEach((id) => { delete localActive[id]; });
+    message.error(e.message || "Segment 生成启动失败");
+  } finally {
+    actionBusy.value = false;
   }
 }
 
-function backToPlan() {
-  router.push(`/plan/${pid.value}`);
+function generateRemaining() {
+  const ids = segments.value
+    .filter((segment) => !["completed", "generating"].includes(stateFor(segment).status))
+    .map((segment) => segment.segment_id);
+  if (!ids.length) return message.info("所有 Segment 均已生成");
+  startSegments(ids);
 }
-function fmtDur(s) {
-  return s ? `${s}s` : "";
+
+async function renderFinal() {
+  actionBusy.value = true;
+  try {
+    await createRender(pid.value, { segment_ids: segments.value.map((s) => s.segment_id) });
+    message.info("正在拼接画面并回铺完整 Master Audio…");
+    await refresh();
+  } catch (e) {
+    message.error(e.message || "成片合成启动失败");
+  } finally {
+    actionBusy.value = false;
+  }
 }
-function statusLabel(s) {
-  return (
-    {
-      pending: "待生成",
-      generating: "生成中",
-      completed: "已完成",
-      failed: "失败",
-    }[s] || s
-  );
+
+async function retryFailedStage() {
+  actionBusy.value = true;
+  try {
+    if (audio.value.status === "failed") {
+      await createAudio(pid.value, {
+        voice: audio.value.voice_profile?.voice || "zh-CN-XiaoxiaoNeural",
+        music: "ambient",
+      });
+      message.info("正在重新生成完整音轨…");
+    } else if (audio.value.status === "ready" && !segments.value.length) {
+      await createStoryboard(pid.value, project.value?.plan_id);
+      message.info("正在重新规划 Segment…");
+    } else {
+      return router.push(`/plan/${pid.value}`);
+    }
+    await refresh();
+  } catch (e) {
+    message.error(e.message || "重试失败");
+  } finally {
+    actionBusy.value = false;
+  }
 }
 </script>
 
 <template>
   <div class="page">
-    <!-- 顶部导航 -->
-    <header class="nav fade-up">
+    <header class="nav">
       <div class="nav-inner">
         <div class="logo" @click="router.push('/')">
           <img :src="logoUrl" class="logo-mark" alt="TravelGen" />
@@ -431,956 +298,225 @@ function statusLabel(s) {
     </header>
 
     <main class="stage">
-      <!-- ① 首查加载 -->
-      <div v-if="banner === 'loading'" class="card center">
+      <section v-if="phase === 'loading'" class="card center">
         <div class="spin-ring"></div>
-        <p class="center-text">正在读取项目…</p>
-      </div>
+        <p>正在读取项目…</p>
+      </section>
 
-      <!-- ② 分镜生成中 -->
-      <div v-else-if="banner === 'storyboarding'" class="card gen">
-        <div class="gen-badge">✦ AI 拆分分镜中</div>
-        <h2 class="gen-title">{{ req.theme }}</h2>
-        <p class="gen-sub">📍 {{ req.city }} · {{ req.location }}</p>
-        <div class="bar-track">
-          <div class="bar-fill"></div>
+      <section v-else-if="phase === 'preparing'" class="card preparing">
+        <span class="eyebrow">音频优先工作流</span>
+        <h1>{{ req.theme || "准备视频时间轴" }}</h1>
+        <p>{{ project?.message }}</p>
+        <div class="bar"><i :style="{ width: `${project?.progress || 12}%` }"></i></div>
+        <ol class="steps">
+          <li :class="{ done: ['audio_ready', 'storyboarding'].includes(project?.status) }">1. Edge-TTS 生成完整旁白并混合 BGM</li>
+          <li :class="{ done: project?.status === 'storyboarding' }">2. 按句尾与场景边界规划 4–15 秒 Segment</li>
+          <li>3. 在每个 Segment 内安排多个 Shot 与图片参考</li>
+        </ol>
+      </section>
+
+      <template v-else-if="segments.length">
+        <section class="card summary">
+          <div>
+            <span class="eyebrow">Master Audio + Segment</span>
+            <h1>{{ req.theme }}</h1>
+            <p>📍 {{ req.city }} · {{ req.location }}　⏱ {{ req.duration_s }}s　{{ req.aspect_ratio }}</p>
+          </div>
+          <div class="summary-status">
+            <b>{{ project?.progress || 0 }}%</b>
+            <span>{{ project?.message }}</span>
+          </div>
+        </section>
+
+        <section class="card audio-card">
+          <div>
+            <h2>完整音轨</h2>
+            <p>所有 Segment 都用对应的母带切片驱动画面；最终只回铺这一条原始母带。</p>
+          </div>
+          <audio v-if="audio.master_url" :src="audio.master_url" controls preload="metadata"></audio>
+          <span class="audio-meta">v{{ audio.version }} · {{ fmtMs(audio.duration_ms) }}</span>
+        </section>
+
+        <div class="guide">
+          <b>生成单位已经改为 Segment</b>
+          <span>每段包含多个 Shot。Shot prompt 仍可编辑，但保存后需要重新生成所属的整段，以维持段内连续性。</span>
         </div>
-        <p class="gen-msg">{{ project?.message || "按旁白文案拆分镜头" }}</p>
-        <p class="gen-tip">通常约 10~60 秒，页面会自动刷新，请勿关闭</p>
-      </div>
 
-      <template v-else>
-        <!-- 顶部横幅：编辑 / 生成中 / 完成 / 失败 -->
-        <section class="card summary fade-up">
-          <div class="summary-head">
-            <h2 class="s-title">{{ req.theme }}</h2>
-            <span class="s-tag">{{ req.scene_type }}</span>
-          </div>
-          <div class="summary-meta">
-            <span>📍 {{ req.city }} · {{ req.location }}</span>
-            <span>🎨 {{ req.style }}</span>
-            <span>👥 {{ req.audience }}</span>
-            <span
-              >⏱ {{ req.duration_s }}s｜{{ req.aspect_ratio }}｜{{
-                req.resolution
-              }}</span
-            >
-          </div>
-
-          <!-- 生成中：进度条 -->
-          <template v-if="banner === 'generating'">
-            <div class="gen-inline">
-              <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  :style="{ width: batchProgress + '%' }"
-                ></div>
+        <section v-for="segment in segments" :key="segment.segment_id" class="segment-card">
+          <header class="segment-head">
+            <div>
+              <div class="segment-title">
+                <h2>{{ segment.segment_id }}</h2>
+                <span class="status" :class="stateFor(segment).status">{{ statusLabel(stateFor(segment).status) }}</span>
               </div>
-              <p class="gen-msg">{{ batchMessage }}</p>
+              <p>{{ fmtMs(segment.timeline_start_ms) }} – {{ fmtMs(segment.timeline_end_ms) }} · {{ shotsFor(segment).length }} 个 Shot · {{ segment.reference_asset_ids?.length || 0 }} 张参考图</p>
             </div>
-          </template>
-
-          <template v-else-if="banner === 'concurrent'">
-            <p class="gen-msg concurrent-msg">
-              {{ activeShotCount }} 个镜头正在生成；其他镜头仍可继续编辑或提交生成
-            </p>
-          </template>
-
-          <!-- 完成 / 失败：结果摘要 -->
-          <template v-else-if="banner === 'done'">
-            <p class="done-line">🎉 全部 {{ totalShots }} 个镜头已生成完成</p>
-            <p class="gen-tip">单镜头仍可点击卡片「重新生成」局部重做</p>
-          </template>
-          <template v-else-if="banner === 'failed'">
-            <p class="fail-line">⚠️ {{ batchMessage || "部分镜头生成失败" }}</p>
-            <p class="gen-tip">失败镜头可在卡片上点击「重生成视频」重做</p>
-          </template>
-
-          <!-- 编辑态：确认操作条 -->
-          <div
-            v-if="['edit', 'concurrent'].includes(banner)"
-            class="op-bar"
-          >
-            <NButton size="large" @click="backToPlan">← 返回方案</NButton>
             <NButton
-              class="confirm-btn"
-              size="large"
               type="primary"
-              @click="onConfirmStoryboard"
+              :loading="stateFor(segment).status === 'generating'"
+              :disabled="actionBusy || stateFor(segment).status === 'generating'"
+              @click="startSegments([segment.segment_id], stateFor(segment).status !== 'pending')"
             >
-              🎬 确认分镜并生成视频
+              {{ stateFor(segment).status === 'completed' ? '重新生成此段' : '生成此段' }}
             </NButton>
+          </header>
+
+          <div class="transition-row">
+            <NInput v-model:value="segmentNotes[segment.segment_id]" placeholder="描述段内镜头如何自然衔接" />
+            <NButton :disabled="actionBusy" @click="saveSegmentNote(segment)">保存转场要求</NButton>
           </div>
-        </section>
 
-        <!-- 使用引导 -->
-        <div class="guide fade-up-1">
-          <span class="guide-icon">💡</span>
-          <div class="guide-body">
-            <b>分镜确认</b>
-            <p>① 每张卡片是一个镜头</p>
-            <p>
-              ② 卡片左侧主体/背景/机位是AI提炼的画面要点
-              （只读展示），视频生成实际只用右侧可编辑的 Prompt
-            </p>
-            <p>
-              ③ 可点「单镜试生成」先测一个镜头看质量，或「编辑」改 Prompt 后重做
-            </p>
-            <p>④满意后点「确认分镜并生成视频」（已生成过的镜头自动跳过）</p>
-          </div>
-        </div>
-
-        <!-- 分镜卡片 -->
-        <section v-if="scenes.length" class="scenes fade-up-2">
-          <div v-for="sc in scenes" :key="sc.scene_id" class="scene-card">
-            <div class="scene-head">
-              <span class="scene-tag">场景 {{ sc.scene_id }}</span>
-              <b>{{ sc.location }}</b>
-              <span class="scene-time">{{ sc.time }}</span>
-            </div>
-            <div class="shot-grid">
-              <div
-                v-for="sh in sc.shot_list"
-                :key="sh.shot_id"
-                class="shot-card"
-              >
-                <div class="shot-main">
-                  <!-- 左：识别信息（只读展示） -->
-                  <div class="shot-left">
-                    <div class="shot-head">
-                      <!-- <span class="shot-idx">#{{ String(sh.shot_id).padStart(2, "0") }}</span> -->
-                      <div class="prompt-label">📋 prompt要点·只读</div>
-                      <div>
-                        <span class="shot-chip">{{
-                          fmtDur(sh.duration_s)
-                        }}</span>
-                        <span class="shot-chip">{{ sh.shot_size }}</span>
-                        <span class="shot-chip"
-                          >{{ sh.camera?.type }}·{{ sh.camera?.movement }}·{{
-                            sh.camera?.angle
-                          }}</span
-                        >
-                      </div>
-                    </div>
-                    <dl class="shot-meta">
-                      <div>
-                        <dt>主体</dt>
-                        <dd>{{ sh.subject }}</dd>
-                      </div>
-                      <div>
-                        <dt>背景</dt>
-                        <dd>{{ sh.background }}</dd>
-                      </div>
-                    </dl>
-                    <div
-                      v-if="shotReferences(sh).length"
-                      class="shot-references"
-                    >
-                      <div class="shot-reference-head">
-                        <span>📍 实景图片约束</span>
-                        <i :class="sh.grounding_strength">
-                          {{ groundingLabel(sh.grounding_strength) }}
-                        </i>
-                      </div>
-                      <div class="shot-reference-list">
-                        <a
-                          v-for="reference in shotReferences(sh)"
-                          :key="reference.asset_id"
-                          :href="reference.source_page_url || reference.url"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          :title="`${reference.name || '实景参考'} · 查看来源`"
-                        >
-                          <img
-                            :src="reference.url"
-                            :alt="reference.name || '镜头实景参考'"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 右：Prompt 模块（可编辑） -->
-                  <div class="shot-right">
-                    <template v-if="editingShotId === sh.shot_id">
-                      <NInput
-                        v-model:value="editPrompt"
-                        type="textarea"
-                        :autosize="{ minRows: 3, maxRows: 6 }"
-                        placeholder="修改画面提示词…"
-                      />
-                      <div class="shot-actions">
-                        <NButton size="small" quaternary @click="cancelEdit"
-                          >取消</NButton
-                        >
-                        <NButton
-                          size="small"
-                          type="primary"
-                          @click="saveEdit(sh)"
-                          >✓ 保存</NButton
-                        >
-                      </div>
-                    </template>
-                    <template v-else>
-                      <span class="prompt-label"
-                        >🎞 视频 Prompt · 可自行编辑</span
-                      >
-                      <p class="shot-prompt">{{ sh.prompt }}</p>
-                      <div class="shot-actions">
-                        <span
-                          class="res-chip"
-                          :class="shotState(sh).status"
-                          v-if="shotState(sh).status"
-                        >
-                          <span
-                            v-if="shotState(sh).status === 'generating'"
-                            class="chip-spinner"
-                          ></span>
-                          {{ statusLabel(shotState(sh).status) }}
-                        </span>
-                        <NButton
-                          v-if="['edit', 'concurrent', 'generating'].includes(banner)"
-                          size="small"
-                          type="primary"
-                          quaternary
-                          :disabled="isGen(sh.shot_id)"
-                          @click="onTestShot(sh)"
-                        >
-                          单镜试生成
-                        </NButton>
-                        <NButton
-                          size="small"
-                          quaternary
-                          :disabled="isGen(sh.shot_id)"
-                          @click="startEdit(sh)"
-                          >编辑</NButton
-                        >
-                        <NButton
-                          v-if="shotState(sh).status"
-                          size="small"
-                          quaternary
-                          :disabled="isGen(sh.shot_id)"
-                          @click="openRegen(sh)"
-                        >
-                          重新生成
-                        </NButton>
-                      </div>
-                    </template>
-                  </div>
-                </div>
-
-                <!-- 生成结果：可播放视频 / 解码失败兜底 / 下载（整卡通栏） -->
-                <div
-                  v-if="shotState(sh).status === 'completed'"
-                  class="shot-result"
-                >
-                  <template
-                    v-if="
-                      isPlayable(shotState(sh).video_url) &&
-                      !videoErrors[sh.shot_id]
-                    "
-                  >
-                    <video
-                      :src="shotState(sh).video_url"
-                      controls
-                      preload="metadata"
-                      class="shot-video"
-                      @error="onVideoError(sh)"
-                    ></video>
-                  </template>
-                  <p
-                    v-else-if="isPlayable(shotState(sh).video_url)"
-                    class="res-error"
-                  >
-                    ⚠️ 浏览器无法解码此视频（Seedance 输出 4:2:2
-                    编码），请点下方按钮下载后用播放器观看
-                  </p>
-                  <p v-else class="res-empty">
-                    已生成 · 当前无在线预览（模拟/本地）
-                  </p>
-                  <div v-if="shotState(sh).video_url" class="shot-dl">
-                    <a :href="shotState(sh).video_url" download class="dl-btn">
-                      ⬇ 下载视频
-                    </a>
-                  </div>
-                </div>
-                <p
-                  v-else-if="shotState(sh).status === 'failed'"
-                  class="res-error"
-                >
-                  {{ shotState(sh).error || "生成失败，可重新生成" }}
-                </p>
+          <div class="shot-list">
+            <article v-for="shot in shotsFor(segment)" :key="shot.shot_id" class="shot-card">
+              <div class="shot-meta">
+                <b>Shot {{ shot.shot_id }}</b>
+                <span>{{ fmtMs(shot.timeline_start_ms - segment.timeline_start_ms) }} – {{ fmtMs(shot.timeline_end_ms - segment.timeline_start_ms) }}</span>
+                <span>{{ shot.scene_title }}</span>
               </div>
-            </div>
+              <div class="shot-body">
+                <template v-if="editingShotId === shot.shot_id">
+                  <NInput v-model:value="editPrompt" type="textarea" :autosize="{ minRows: 3, maxRows: 7 }" />
+                  <div class="inline-actions edit-actions">
+                    <NButton @click="cancelEdit">取消</NButton>
+                    <NButton type="primary" :loading="savingShot" @click="saveShot(shot)">保存并使整段失效</NButton>
+                  </div>
+                </template>
+                <template v-else>
+                  <p class="prompt">{{ shot.prompt }}</p>
+                  <div class="inline-actions">
+                    <span>{{ shot.shot_size }} · {{ shot.subject }}</span>
+                    <NButton size="small" quaternary :disabled="stateFor(segment).status === 'generating'" @click="startEdit(shot)">编辑 Shot</NButton>
+                  </div>
+                </template>
+              </div>
+              <div v-if="refsFor(shot).length" class="refs">
+                <a v-for="refImage in refsFor(shot)" :key="refImage.asset_id" :href="refImage.source_page_url || refImage.url" target="_blank">
+                  <img :src="refImage.url" :alt="refImage.name || '实景参考'" />
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <div v-if="stateFor(segment).status === 'completed'" class="segment-preview">
+            <video v-if="stateFor(segment).video_url" :src="stateFor(segment).video_url" controls preload="metadata"></video>
+            <a v-if="stateFor(segment).video_url" :href="stateFor(segment).video_url" download>下载该段 Master Audio 预览版</a>
+          </div>
+          <p v-else-if="stateFor(segment).status === 'failed'" class="error-text">{{ stateFor(segment).error || '生成失败，请重新生成此 Segment' }}</p>
+        </section>
+
+        <section class="card final-actions">
+          <div>
+            <h2>{{ phase === 'completed' ? '成片已完成' : '完成所有 Segment 后合成' }}</h2>
+            <p>画面按时间轴硬切拼接，并一次性回铺完整 Master Audio，避免跨段音色和 BGM 跳变。</p>
+          </div>
+          <div class="button-row">
+            <NButton v-if="!['video_ready', 'composing', 'completed'].includes(phase)" type="primary" :disabled="actionBusy" @click="generateRemaining">生成所有待完成 Segment</NButton>
+            <NButton v-if="phase === 'video_ready'" type="primary" :loading="actionBusy" @click="renderFinal">合成最终视频</NButton>
+            <NButton v-if="phase === 'composing'" type="primary" loading>正在回铺 Master Audio</NButton>
           </div>
         </section>
 
-        <!-- 分镜生成失败兜底 -->
-        <div v-else-if="banner === 'failed'" class="card center">
-          <div class="err-icon">⚠️</div>
-          <h2 class="err-title">分镜生成失败</h2>
-          <p class="err-msg">{{ project?.message || "未知错误" }}</p>
-          <p class="err-tip">可回到方案页重新确认后再次生成</p>
-          <div class="op-bar">
-            <NButton size="large" @click="router.push('/')">回到工作台</NButton>
-            <NButton size="large" type="primary" @click="start"
-              >刷新状态</NButton
-            >
-          </div>
-        </div>
+        <section v-if="phase === 'completed' && finalVideo.url" class="card final-video">
+          <video :src="finalVideo.url" controls preload="metadata"></video>
+          <a :href="finalVideo.url" download>下载最终成片</a>
+        </section>
       </template>
+
+      <section v-else-if="phase === 'failed'" class="card center error-box">
+        <h2>流程执行失败</h2>
+        <p>{{ project?.message }}</p>
+        <div class="button-row">
+          <NButton v-if="audio.status === 'failed'" @click="router.push(`/plan/${pid}`)">缩短或修改旁白</NButton>
+          <NButton type="primary" :loading="actionBusy" @click="retryFailedStage">重试当前阶段</NButton>
+        </div>
+      </section>
+
+      <section v-else class="card center">
+        <h2>项目状态：{{ project?.status }}</h2>
+        <p>{{ project?.message }}</p>
+        <NButton @click="refresh">刷新</NButton>
+      </section>
     </main>
 
-    <!-- 重新生成对话框
-         不用 preset="dialog"：naive-ui 会把 @positive-click/@negative-click/@close
-         与内部 handler 合并成数组传给 Dialog，调用时抛 TypeError → 按钮全部"点不动"。
-         改为普通 NModal + 自建按钮（纯 @click），点遮罩/Esc 由 @update:show 关闭。 -->
-    <NModal
-      :show="regenShotId !== null"
-      :mask-closable="true"
-      @update:show="
-        (v) => {
-          if (!v) cancelRegen();
-        }
-      "
-    >
-      <div class="regen-modal">
-        <div class="regen-modal__head">
-          <span class="regen-modal__title">重新生成</span>
-          <NButton
-            class="regen-modal__close"
-            quaternary
-            circle
-            size="small"
-            @click="cancelRegen"
-          >
-            ✕
-          </NButton>
-        </div>
-        <p class="modal-tip">调整prompt 重新生成视频</p>
-        <NInput
-          v-model:value="regenPrompt"
-          type="textarea"
-          :autosize="{ minRows: 3, maxRows: 6 }"
-          class="modal-field"
-        />
-        <div class="regen-modal__actions">
-          <NButton @click="cancelRegen">取消</NButton>
-          <NButton
-            type="primary"
-            :loading="regenSubmitting"
-            @click="submitRegen"
-          >
-            开始生成
-          </NButton>
-        </div>
-      </div>
-    </NModal>
-
-    <footer class="footer">
-      TravelGen · 面向浙江文旅的 AIGC 短视频生成系统
-    </footer>
+    <footer class="footer">TravelGen · 面向浙江文旅的 AIGC 短视频生成系统</footer>
   </div>
 </template>
 
 <style scoped>
-.page {
-  min-height: 100vh;
-  background: var(--color-bg);
-  font-family: var(--font-sans);
-  color: var(--color-ink);
-}
-
-/* ---------- 导航 ---------- */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: #fcf8f1;
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 2px 12px rgba(31, 41, 55, 0.05);
-}
-.nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  cursor: pointer;
-}
-.logo-mark {
-  width: 76px;
-  height: 76px;
-  border-radius: 12px;
-  object-fit: cover;
-  display: block;
-}
-.logo-text {
-  font-family: var(--font-serif);
-  font-size: 25px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-.nav-links a {
-  color: var(--color-ink-sub);
-  text-decoration: none;
-  font-size: 16px;
-  transition: color 0.15s;
-}
-.nav-links a:hover {
-  color: var(--color-primary);
-}
-
-/* ---------- 主区 ---------- */
-.stage {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 24px 60px;
-}
-.card {
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 14px;
-  box-shadow: var(--shadow-card);
-  padding: 22px;
-}
-.card.center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 260px;
-}
-.center-text {
-  margin-top: 14px;
-  color: var(--color-ink-sub);
-  font-size: 13px;
-}
-.spin-ring {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 3px solid var(--color-primary-light);
-  border-top-color: var(--color-primary);
-  animation: spin 0.9s linear infinite;
-}
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* ---------- 分镜生成中 ---------- */
-.gen {
-  text-align: center;
-  padding: 56px 32px;
-}
-.gen-badge {
-  display: inline-block;
-  font-size: 13px;
-  padding: 6px 16px;
-  border-radius: 999px;
-  background: var(--color-primary-fade);
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary-light);
-  margin-bottom: 20px;
-}
-.gen-title {
-  font-family: var(--font-serif);
-  font-size: 30px;
-  margin: 0 0 8px;
-  color: var(--color-ink);
-}
-.gen-sub {
-  color: var(--color-ink-sub);
-  font-size: 14px;
-  margin: 0 0 28px;
-}
-.bar-track {
-  max-width: 480px;
-  height: 10px;
-  margin: 0 auto;
-  border-radius: 999px;
-  background: var(--color-border);
-  overflow: hidden;
-}
-.bar-fill {
-  width: 45%;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #0f766e, #17a398);
-  animation: indeterminate 1.4s ease-in-out infinite;
-}
-.bar-fill[style] {
-  animation: none;
-}
-@keyframes indeterminate {
-  0% {
-    margin-left: -45%;
-  }
-  50% {
-    margin-left: 100%;
-  }
-  100% {
-    margin-left: -45%;
-  }
-}
-.gen-msg {
-  margin-top: 18px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color-primary);
-  text-align: center;
-}
-.gen-tip {
-  margin-top: 8px;
-  font-size: 12px;
-  color: var(--color-ink-sub);
-  text-align: center;
-}
-
-/* ---------- 顶部横幅 ---------- */
-.summary {
-  padding: 18px 22px;
-  margin-bottom: 18px;
-}
-.summary-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.s-title {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  margin: 0;
-  color: var(--color-primary-deep);
-}
-.s-tag {
-  font-size: 12px;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: var(--color-gold-light);
-  color: var(--color-gold-ink);
-  border: 1px solid var(--color-gold);
-  white-space: nowrap;
-}
-.summary-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 10px;
-  font-size: 12.5px;
-  color: var(--color-ink-sub);
-}
-.gen-inline {
-  margin-top: 16px;
-}
-.gen-inline .bar-track {
-  max-width: none;
-  margin: 0;
-}
-.gen-inline .gen-msg {
-  text-align: left;
-  margin-top: 10px;
-}
-.done-line {
-  margin: 12px 0 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color-success);
-}
-.fail-line {
-  margin: 12px 0 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color-error);
-}
-.summary .gen-tip {
-  text-align: left;
-}
-.concurrent-msg {
-  width: fit-content;
-  margin-bottom: 0;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: var(--color-primary-fade);
-}
-
-/* ---------- 操作条 ---------- */
-.op-bar {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 18px;
-}
-.confirm-btn {
-  background: linear-gradient(120deg, #0f766e, #115e59) !important;
-}
-
-/* ---------- 使用引导 ---------- */
-.guide {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  background: var(--color-primary-fade);
-  border: 1px solid var(--color-primary-light);
-  border-radius: 12px;
-  padding: 12px 16px;
-  margin-bottom: 18px;
-}
-.guide-icon {
-  font-size: 16px;
-  line-height: 1.4;
-}
-.guide-body b {
-  font-size: 13.5px;
-  color: var(--color-primary-deep);
-}
-.guide-body p {
-  margin: 3px 0 0;
-  font-size: 12.5px;
-  line-height: 1.7;
-  color: var(--color-ink-sub);
-}
-
-/* ---------- 场景与镜头 ---------- */
-.scene-card {
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 14px;
-  box-shadow: var(--shadow-card);
-  padding: 18px;
-  margin-bottom: 18px;
-}
-.scene-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 12px;
-  border-bottom: 1px dashed var(--color-border);
-  margin-bottom: 14px;
-}
-.scene-tag {
-  font-size: 12px;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: var(--color-primary-fade);
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary-light);
-}
-.scene-head b {
-  font-size: 15px;
-  color: var(--color-ink);
-}
-.scene-time {
-  font-size: 12px;
-  color: var(--color-gold);
-  font-weight: 600;
-}
-.shot-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-.shot-card {
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  padding: 16px;
-  background: var(--color-card);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: box-shadow 0.15s;
-}
-.shot-card:hover {
-  box-shadow: var(--shadow-card-hover);
-}
-.shot-main {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-}
-.shot-left {
-  flex-shrink: 0;
-  width: 235px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.shot-right {
-  flex: 1;
-  min-width: 0; /* 长 prompt 不撑爆 flex */
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.shot-head {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.shot-idx {
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--color-primary-deep);
-}
-.shot-chip {
-  font-size: 12px;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: var(--color-primary-fade);
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary-light);
-}
-.shot-meta {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  font-size: 13.5px;
-}
-.shot-meta div {
-  display: flex;
-  gap: 8px;
-}
-.shot-meta dt {
-  color: var(--color-ink-sub);
-  flex-shrink: 0;
-  width: 2.5em;
-}
-.shot-meta dd {
-  margin: 0;
-  color: var(--color-ink);
-}
-.shot-references {
-  margin-top: 12px;
-  padding: 10px;
-  border: 1px solid var(--color-primary-light);
-  border-radius: 8px;
-  background: var(--color-primary-fade);
-}
-.shot-reference-head {
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--color-primary-deep);
-  font-size: 11.5px;
-  font-weight: 700;
-}
-.shot-reference-head i {
-  padding: 2px 7px;
-  color: var(--color-ink-sub);
-  border-radius: 99px;
-  background: white;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 500;
-}
-.shot-reference-head i.strong { color: var(--color-success); }
-.shot-reference-head i.medium { color: var(--color-gold-ink); }
-.shot-reference-list { display: flex; gap: 7px; }
-.shot-reference-list a {
-  width: 62px;
-  height: 45px;
-  overflow: hidden;
-  border: 1px solid white;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.12);
-}
-.shot-reference-list img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-.prompt-label {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 4px;
-}
-.shot-prompt {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--color-ink-sub);
-  background: var(--color-primary-fade);
-  border-radius: 8px;
-  padding: 10px 12px;
-}
-.shot-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: auto;
-}
-.res-chip {
-  font-size: 12px;
-  padding: 2px 10px;
-  border-radius: 999px;
-  margin-right: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.chip-spinner {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid var(--color-gold-light);
-  border-top-color: var(--color-gold);
-  animation: chip-spin 0.8s linear infinite;
-}
-@keyframes chip-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-.res-chip.completed {
-  background: var(--color-primary-fade);
-  color: var(--color-success);
-  border: 1px solid var(--color-primary-light);
-}
-.res-chip.failed {
-  background: #fdf1ef;
-  color: var(--color-error);
-  border: 1px solid #ecd0cb;
-}
-.res-chip.generating {
-  background: var(--color-gold-fade);
-  color: var(--color-gold-ink);
-  border: 1px solid var(--color-gold-light);
-}
-.shot-dl {
-  margin-top: 8px;
-}
-.dl-btn {
-  display: inline-block;
-  font-size: 12.5px;
-  padding: 6px 14px;
-  border-radius: 8px;
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary-light);
-  background: var(--color-primary-fade);
-  text-decoration: none;
-  transition: background 0.15s;
-}
-.dl-btn:hover {
-  background: var(--color-primary-light);
-}
-.res-chip.pending {
-  background: var(--color-card);
-  color: var(--color-ink-sub);
-  border: 1px solid var(--color-border);
-}
-.shot-result {
-  margin-top: 2px;
-}
-.shot-video {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  background: #000;
-  max-height: 260px;
-}
-.res-empty {
-  margin: 0;
-  font-size: 11.5px;
-  color: var(--color-ink-sub);
-}
-.res-error {
-  margin: 0;
-  font-size: 12px;
-  color: var(--color-error);
-}
-
-/* ---------- 失败兜底 ---------- */
-.err-icon {
-  font-size: 42px;
-}
-.err-title {
-  font-family: var(--font-serif);
-  font-size: 26px;
-  margin: 14px 0 8px;
-  color: var(--color-error);
-}
-.err-msg {
-  font-size: 13.5px;
-  color: var(--color-ink-sub);
-  margin: 6px 0;
-}
-.err-tip {
-  font-size: 12px;
-  color: var(--color-ink-sub);
-  margin: 0 0 20px;
-}
-
-/* ---------- 对话框 ---------- */
-.modal-tip {
-  font-size: 12.5px;
-  color: var(--color-ink-sub);
-  margin: 0 0 12px;
-}
-.modal-field {
-  margin-bottom: 12px;
-}
-/* 自建重新生成弹窗（不用 preset="dialog"） */
-.regen-modal {
-  width: 520px;
-  max-width: 90vw;
-  padding: 20px;
-  border-radius: 12px;
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-}
-.regen-modal__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-}
-.regen-modal__title {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-ink);
-}
-.regen-modal__close {
-  color: var(--color-ink-sub);
-}
-.regen-modal__actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-/* ---------- 页脚 ---------- */
-.footer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 22px 24px 30px;
-  border-top: 1px solid var(--color-border);
-  font-size: 12.5px;
-  color: var(--color-ink-sub);
-  text-align: center;
-}
-
-/* ---------- 响应式 ---------- */
-@media (max-width: 900px) {
-  .shot-main {
-    flex-direction: column;
-  }
-  .shot-left {
-    width: auto;
-  }
+.page { min-height: 100vh; background: var(--color-bg); color: var(--color-ink); font-family: var(--font-sans); }
+.nav { position: sticky; top: 0; z-index: 20; background: #fcf8f1; border-bottom: 1px solid var(--color-border); box-shadow: 0 2px 12px rgba(31, 41, 55, .05); }
+.nav-inner { max-width: 1180px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; gap: 13px; cursor: pointer; }
+.logo-mark { width: 68px; height: 68px; border-radius: 12px; object-fit: cover; }
+.logo-text { font-family: var(--font-serif); font-size: 24px; font-weight: 700; }
+.nav-links { display: flex; gap: 20px; }
+.nav-links a { color: var(--color-ink-sub); text-decoration: none; }
+.stage { max-width: 1180px; margin: 0 auto; padding: 34px 24px 64px; }
+.card, .segment-card { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 14px; box-shadow: var(--shadow-card); }
+.card { padding: 22px; }
+.center { min-height: 260px; display: grid; place-items: center; align-content: center; gap: 14px; text-align: center; }
+.spin-ring { width: 34px; height: 34px; border: 3px solid var(--color-primary-light); border-top-color: var(--color-primary); border-radius: 50%; animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.eyebrow { color: var(--color-primary); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+h1, h2, p { margin-top: 0; }
+h1 { margin: 7px 0 8px; font-family: var(--font-serif); }
+.preparing { padding: 42px; }
+.preparing > p { color: var(--color-ink-sub); }
+.bar { height: 9px; margin: 24px 0; overflow: hidden; border-radius: 99px; background: var(--color-border); }
+.bar i { display: block; min-width: 8%; height: 100%; background: linear-gradient(90deg, #0f766e, #18a397); transition: width .3s; }
+.steps { display: grid; gap: 10px; padding-left: 22px; color: var(--color-ink-sub); }
+.steps li.done { color: var(--color-success); }
+.summary { display: flex; justify-content: space-between; gap: 24px; align-items: center; margin-bottom: 16px; }
+.summary p { margin-bottom: 0; color: var(--color-ink-sub); }
+.summary-status { min-width: 210px; text-align: right; display: grid; gap: 3px; }
+.summary-status b { font-size: 24px; color: var(--color-primary); }
+.summary-status span { color: var(--color-ink-sub); font-size: 12px; }
+.audio-card { margin-bottom: 16px; display: grid; grid-template-columns: 1fr minmax(260px, 420px) auto; gap: 18px; align-items: center; }
+.audio-card h2 { margin-bottom: 6px; font-size: 18px; }
+.audio-card p { margin-bottom: 0; color: var(--color-ink-sub); font-size: 13px; }
+.audio-card audio { width: 100%; }
+.audio-meta { color: var(--color-primary); font-size: 12px; white-space: nowrap; }
+.guide { margin-bottom: 18px; padding: 13px 16px; display: flex; gap: 10px; border: 1px solid var(--color-primary-light); border-radius: 10px; background: var(--color-primary-fade); color: var(--color-ink-sub); font-size: 13px; }
+.guide b { color: var(--color-primary-deep); white-space: nowrap; }
+.segment-card { margin-bottom: 18px; padding: 20px; }
+.segment-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-bottom: 15px; border-bottom: 1px dashed var(--color-border); }
+.segment-title { display: flex; align-items: center; gap: 10px; }
+.segment-title h2 { margin: 0; font-size: 19px; color: var(--color-primary-deep); }
+.segment-head p { margin: 5px 0 0; color: var(--color-ink-sub); font-size: 12px; }
+.status { padding: 3px 9px; border-radius: 99px; font-size: 11px; background: #f2f2ef; color: var(--color-ink-sub); }
+.status.completed, .status.ready { background: var(--color-primary-fade); color: var(--color-success); }
+.status.generating { background: var(--color-gold-fade); color: var(--color-gold-ink); }
+.status.failed, .status.stale { background: #fdf0ee; color: var(--color-error); }
+.transition-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin: 15px 0; }
+.shot-list { display: grid; gap: 10px; }
+.shot-card { display: grid; grid-template-columns: 210px 1fr auto; gap: 16px; padding: 14px; border: 1px solid var(--color-border); border-radius: 10px; background: #fffdfa; }
+.shot-meta { display: flex; flex-direction: column; gap: 5px; color: var(--color-ink-sub); font-size: 12px; }
+.shot-meta b { color: var(--color-primary-deep); font-size: 14px; }
+.shot-body { min-width: 0; }
+.prompt { margin-bottom: 10px; color: var(--color-ink); font-size: 13px; line-height: 1.7; }
+.inline-actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; color: var(--color-ink-sub); font-size: 11px; }
+.inline-actions span { margin-right: auto; }
+.edit-actions { margin-top: 8px; }
+.refs { display: flex; gap: 6px; align-items: flex-start; max-width: 180px; flex-wrap: wrap; }
+.refs a { width: 54px; height: 42px; border-radius: 6px; overflow: hidden; border: 1px solid var(--color-primary-light); }
+.refs img { width: 100%; height: 100%; object-fit: cover; }
+.segment-preview { margin-top: 15px; display: grid; gap: 8px; }
+.segment-preview video, .final-video video { width: 100%; max-height: 520px; border-radius: 10px; background: #000; }
+.segment-preview a, .final-video a { width: fit-content; color: var(--color-primary); text-decoration: none; font-size: 13px; }
+.error-text { color: var(--color-error); font-size: 13px; }
+.final-actions { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 22px; }
+.final-actions h2 { margin-bottom: 6px; font-size: 18px; }
+.final-actions p { margin-bottom: 0; color: var(--color-ink-sub); font-size: 13px; }
+.button-row { flex-shrink: 0; }
+.final-video { margin-top: 16px; display: grid; gap: 12px; }
+.error-box h2 { color: var(--color-error); }
+.footer { max-width: 1180px; margin: 0 auto; padding: 22px 24px 30px; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-ink-sub); font-size: 12px; }
+@media (max-width: 820px) {
+  .summary, .final-actions, .guide { align-items: stretch; flex-direction: column; }
+  .summary-status { text-align: left; }
+  .audio-card { grid-template-columns: 1fr; }
+  .shot-card { grid-template-columns: 1fr; }
+  .refs { max-width: none; }
+  .transition-row { grid-template-columns: 1fr; }
 }
 </style>

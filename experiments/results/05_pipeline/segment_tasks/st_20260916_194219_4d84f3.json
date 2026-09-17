@@ -1,0 +1,46 @@
+{
+  "task_id": "st_20260916_194219_4d84f3",
+  "project_id": "p_20260916_193246_932244",
+  "kind": "batch",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 1/1 个 Segment",
+  "request": {
+    "segments": [
+      "seg_01"
+    ],
+    "shots": [],
+    "generate_image": false,
+    "generate_video": true,
+    "plan_version": 1,
+    "storyboard_version": 2,
+    "audio_version": 1,
+    "master_audio_sha256": "dec351663f90b3e048b82636754d1764169fa54e52f9d2cc3cee26eb65c2a4e5",
+    "reference_version": 1
+  },
+  "segments": [
+    {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260916_193246_932244/seg_01/st_20260916_194219_4d84f3_preview.mp4",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260916_193246_932244\\seg_01\\st_20260916_194219_4d84f3_raw.mp4",
+      "visual_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260916_193246_932244\\seg_01\\st_20260916_194219_4d84f3_visual.mp4",
+      "preview_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260916_193246_932244\\seg_01\\st_20260916_194219_4d84f3_preview.mp4",
+      "error": null,
+      "audio_slice_sha256": "dec351663f90b3e048b82636754d1764169fa54e52f9d2cc3cee26eb65c2a4e5",
+      "reference_asset_ids": [
+        "ref_f4138e6202be895a",
+        "ref_3edb4a4be503e6ef"
+      ]
+    }
+  ],
+  "error": null,
+  "created_at": "2026-09-16T11:42:19.274163+00:00",
+  "updated_at": "2026-09-16T11:48:23.807341+00:00"
+}

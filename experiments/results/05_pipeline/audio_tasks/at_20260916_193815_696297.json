@@ -1,0 +1,62 @@
+{
+  "task_id": "at_20260916_193815_696297",
+  "project_id": "p_20260916_193246_932244",
+  "kind": "audio",
+  "status": "completed",
+  "progress": 100,
+  "message": "Master audio 已生成",
+  "request": {
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "music": "ambient"
+  },
+  "result": {
+    "status": "ready",
+    "version": 1,
+    "voice_profile": {
+      "engine": "edge-tts",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "requested_rate": "-10%"
+    },
+    "narration_units": [
+      {
+        "unit_id": "n_01",
+        "segment_id": "seg_01",
+        "text": "太子湾郁金香画展，春日暴击！沿湖步道漫行，西湖的春天不收门票。花田涌向浅黄城堡，画展浪漫值直接拉满。杭州春天，太子湾见，共赴画展！",
+        "start_ms": 0,
+        "end_ms": 15000,
+        "speech_start_ms": 300,
+        "speech_end_ms": 13884,
+        "tts_duration_ms": 13584,
+        "rate": "+15%"
+      }
+    ],
+    "music_cues": [
+      {
+        "cue_id": "m_01",
+        "preset": "ambient",
+        "start_ms": 0,
+        "end_ms": 15000,
+        "gain_db": -22
+      }
+    ],
+    "voice_track_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260916_193246_932244\\v1\\voice_track.wav",
+    "voice_track_url": "/assets/audio/p_20260916_193246_932244/v1/voice_track.wav",
+    "bgm_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260916_193246_932244\\v1\\bgm_bed.wav",
+    "master_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260916_193246_932244\\v1\\master_audio.wav",
+    "master_url": "/assets/audio/p_20260916_193246_932244/v1/master_audio.wav",
+    "master_sha256": "dec351663f90b3e048b82636754d1764169fa54e52f9d2cc3cee26eb65c2a4e5",
+    "duration_ms": 15000,
+    "slices": [
+      {
+        "segment_id": "seg_01",
+        "local_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260916_193246_932244\\v1\\audio_seg_01.wav",
+        "url": "/assets/audio/p_20260916_193246_932244/v1/audio_seg_01.wav",
+        "sha256": "dec351663f90b3e048b82636754d1764169fa54e52f9d2cc3cee26eb65c2a4e5",
+        "duration_ms": 15000
+      }
+    ]
+  },
+  "error": null,
+  "created_at": "2026-09-16T11:38:15.004461+00:00",
+  "updated_at": "2026-09-16T11:38:21.160547+00:00"
+}

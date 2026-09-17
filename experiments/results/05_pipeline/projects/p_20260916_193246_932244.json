@@ -1,0 +1,1067 @@
+{
+  "schema_version": 2,
+  "project_id": "p_20260916_193246_932244",
+  "username": "sherlock",
+  "status": "completed",
+  "progress": 100,
+  "message": "最终视频已生成",
+  "request": {
+    "city": "杭州",
+    "location": "太子湾",
+    "scene_type": "景区推荐",
+    "theme": "太子湾郁金香画展",
+    "audience": "大学生",
+    "style": "青春活力",
+    "duration_s": 15,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "春色暴击",
+        "content": "以快节奏卡点开启，用郁金香花田的近景特写制造第一视觉锤。黄、红、白、粉多色花海铺满画面，配合青春感BGM，瞬间抓住大学生眼球，建立“春日必冲”的情绪期待。",
+        "duration_s": 3,
+        "place_id": "place_dae65cab6b70bf5f",
+        "visual_targets": [
+          "郁金香（黄色、红色、白色、粉色）",
+          "草地",
+          "天空",
+          "云朵"
+        ],
+        "evidence_asset_ids": [
+          "ref_f4138e6202be895a"
+        ]
+      },
+      {
+        "section": "展开",
+        "title": "湖畔漫步",
+        "content": "切换至湖光山色全景，展现太子湾的自然底色。步道上行人的中景画面（青春穿搭、结伴而行）传递轻松氛围，湖水倒影与远处山林勾勒出油画般的公园质感，为花海预热。",
+        "duration_s": 4,
+        "place_id": "place_dae65cab6b70bf5f",
+        "visual_targets": [
+          "湖水",
+          "红叶树",
+          "绿叶树",
+          "草地",
+          "行人",
+          "远处山林",
+          "树木倒影"
+        ],
+        "evidence_asset_ids": [
+          "ref_3edb4a4be503e6ef"
+        ]
+      },
+      {
+        "section": "高潮",
+        "title": "花海与城堡",
+        "content": "核心景观呈现。以平稳的推镜头从花田向浅黄色欧式建筑推进，前景是斑斓郁金香，中景是草地与树木，背景是欧式建筑与天空，营造出“在逃公主/王子”的浪漫打卡场景，突出画展氛围感。",
+        "duration_s": 5,
+        "place_id": "place_dae65cab6b70bf5f",
+        "visual_targets": [
+          "郁金香（黄色、红色、白色、粉色）",
+          "浅黄色欧式建筑",
+          "草地",
+          "树木",
+          "天空"
+        ],
+        "evidence_asset_ids": [
+          "ref_f4138e6202be895a"
+        ]
+      },
+      {
+        "section": "收尾",
+        "title": "太子湾见",
+        "content": "以建筑与花田的大全景收束，画面明亮开阔。配合行动号召字幕——“杭州春天，太子湾见”，强化大学生组团赏花的社交属性，完成从心动到行动的转化。",
+        "duration_s": 3,
+        "place_id": "place_dae65cab6b70bf5f",
+        "visual_targets": [
+          "郁金香（黄色、红色、白色、粉色）",
+          "浅黄色欧式建筑",
+          "草地",
+          "树木",
+          "天空",
+          "云朵"
+        ],
+        "evidence_asset_ids": [
+          "ref_f4138e6202be895a"
+        ]
+      }
+    ],
+    "plan_summary": "太子湾郁金香画展"
+  },
+  "copywriting": {
+    "titles": [
+      "太子湾：杭州春天的限时色卡",
+      "西湖边免费看展！太子湾春日暴击"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "太子湾郁金香画展，春日暴击！",
+        "duration_s": 3
+      },
+      {
+        "idx": 2,
+        "text": "沿湖步道漫行，西湖的春天不收门票。",
+        "duration_s": 4
+      },
+      {
+        "idx": 3,
+        "text": "花田涌向浅黄城堡，画展浪漫值直接拉满。",
+        "duration_s": 5
+      },
+      {
+        "idx": 4,
+        "text": "杭州春天，太子湾见，共赴画展！",
+        "duration_s": 3
+      }
+    ],
+    "hashtags": [
+      "#太子湾郁金香画展",
+      "#杭州春天太子湾见",
+      "#大学生春游攻略"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "太子湾郁金香画展，春日暴击！",
+        "start_s": 0,
+        "end_s": 3
+      },
+      {
+        "line_id": 2,
+        "text": "沿湖步道漫行，西湖的春天不收门票。",
+        "start_s": 3,
+        "end_s": 7
+      },
+      {
+        "line_id": 3,
+        "text": "花田涌向浅黄城堡，画展浪漫值直接拉满。",
+        "start_s": 7,
+        "end_s": 12
+      },
+      {
+        "line_id": 4,
+        "text": "杭州春天，太子湾见，共赴画展！",
+        "start_s": 12,
+        "end_s": 15
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "太子湾郁金香画展",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "太子湾",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "segment_id": "seg_01",
+            "narration_unit_ids": [
+              "n_01"
+            ],
+            "duration_s": 3.0,
+            "camera": {
+              "type": "地面机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "特写",
+            "subject": "郁金香花田（黄色、红色、白色、粉色）",
+            "background": "草地、天空、云朵",
+            "place_id": "place_dae65cab6b70bf5f",
+            "reference_asset_ids": [
+              "ref_f4138e6202be895a"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "郁金香花田的色彩搭配和布局",
+              "草地",
+              "天空与云朵的空间关系",
+              "郁金香花田的色彩搭配和布局、浅黄色欧式建筑的形态和色彩、建筑与花田草地树木的空间关系"
+            ],
+            "allowed_changes": [
+              "光线角度",
+              "云朵的形状和位置",
+              "花田中个别花朵的姿态",
+              "云朵的形状和位置、花田中个别花朵的姿态、树木的细微枝叶变化"
+            ],
+            "prompt": "写实地面平视特写，严格保持参考图中的郁金香花田色彩搭配和布局，黄红白粉多色郁金香铺满前景，背景是草地与晴朗天空，上午明亮自然光，色彩饱和度高，春日清新质感",
+            "reference_roles": [
+              {
+                "asset_id": "ref_f4138e6202be895a",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "从建筑内部向外的镜头、从树木上方俯视的镜头、快速移动的动态镜头（可能破坏画面的静谧感）"
+            ],
+            "timeline_start_ms": 0,
+            "timeline_end_ms": 3000
+          },
+          {
+            "shot_id": 2,
+            "segment_id": "seg_01",
+            "narration_unit_ids": [
+              "n_01"
+            ],
+            "duration_s": 4.0,
+            "camera": {
+              "type": "地面机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "湖水、步道行人、红叶树与绿叶树",
+            "background": "远处山林、树木倒影、草地",
+            "place_id": "place_dae65cab6b70bf5f",
+            "reference_asset_ids": [
+              "ref_3edb4a4be503e6ef"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "湖水及倒影",
+              "红叶树与绿叶树的搭配",
+              "草地",
+              "步道行人",
+              "山林背景",
+              "湖水及倒影、红叶树与绿叶树的搭配、草地、步道行人、山林背景"
+            ],
+            "allowed_changes": [
+              "行人的具体动作和穿着",
+              "光线强弱",
+              "水面波纹动态",
+              "行人的具体动作和穿着、树木的细微形态"
+            ],
+            "prompt": "写实地面平视全景，严格保持参考图中的湖水及倒影、红叶树与绿叶树搭配、草地与山林背景，步道上有行人漫步，上午柔和自然光，镜头缓慢横移，清新静谧的油画质感",
+            "reference_roles": [
+              {
+                "asset_id": "ref_3edb4a4be503e6ef",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "仰视山林、俯视草地细节（因视角限制）"
+            ],
+            "timeline_start_ms": 3000,
+            "timeline_end_ms": 7000
+          },
+          {
+            "shot_id": 3,
+            "segment_id": "seg_01",
+            "narration_unit_ids": [
+              "n_01"
+            ],
+            "duration_s": 5.0,
+            "camera": {
+              "type": "地面机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "郁金香花田、浅黄色欧式建筑",
+            "background": "草地、树木、天空",
+            "place_id": "place_dae65cab6b70bf5f",
+            "reference_asset_ids": [
+              "ref_f4138e6202be895a"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "郁金香花田的色彩搭配和布局",
+              "浅黄色欧式建筑的形态和色彩",
+              "建筑与花田草地树木的空间关系",
+              "郁金香花田的色彩搭配和布局、浅黄色欧式建筑的形态和色彩、建筑与花田草地树木的空间关系"
+            ],
+            "allowed_changes": [
+              "云朵的形状和位置",
+              "光线角度",
+              "树木枝叶微动",
+              "云朵的形状和位置、花田中个别花朵的姿态、树木的细微枝叶变化"
+            ],
+            "prompt": "写实地面平视全景，严格保持参考图中的郁金香花田与浅黄色欧式建筑空间关系，前景斑斓郁金香，中景草地与树木，背景浅黄色欧式建筑与晴朗天空，上午明亮自然光，镜头平稳向前推进，春日花园浪漫氛围感",
+            "reference_roles": [
+              {
+                "asset_id": "ref_f4138e6202be895a",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "从建筑内部向外的镜头、从树木上方俯视的镜头、快速移动的动态镜头（可能破坏画面的静谧感）"
+            ],
+            "timeline_start_ms": 7000,
+            "timeline_end_ms": 12000
+          },
+          {
+            "shot_id": 4,
+            "segment_id": "seg_01",
+            "narration_unit_ids": [
+              "n_01"
+            ],
+            "duration_s": 3.0,
+            "camera": {
+              "type": "地面机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "大远景",
+            "subject": "郁金香花田、浅黄色欧式建筑",
+            "background": "草地、树木、天空、云朵",
+            "place_id": "place_dae65cab6b70bf5f",
+            "reference_asset_ids": [
+              "ref_f4138e6202be895a"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "郁金香花田的色彩搭配和布局",
+              "浅黄色欧式建筑的形态和色彩",
+              "建筑与花田草地树木的空间关系",
+              "郁金香花田的色彩搭配和布局、浅黄色欧式建筑的形态和色彩、建筑与花田草地树木的空间关系"
+            ],
+            "allowed_changes": [
+              "云朵的形状和位置",
+              "光线亮度",
+              "画面色调微调",
+              "云朵的形状和位置、花田中个别花朵的姿态、树木的细微枝叶变化"
+            ],
+            "prompt": "写实地面平视大远景，严格保持参考图中的郁金香花田、浅黄色欧式建筑及周围树木草地空间关系，画面明亮开阔，上午晴朗自然光，云朵点缀天空，春日画展活力质感",
+            "reference_roles": [
+              {
+                "asset_id": "ref_f4138e6202be895a",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "从建筑内部向外的镜头、从树木上方俯视的镜头、快速移动的动态镜头（可能破坏画面的静谧感）"
+            ],
+            "timeline_start_ms": 12000,
+            "timeline_end_ms": 15000
+          }
+        ],
+        "place_id": "place_dae65cab6b70bf5f"
+      }
+    ],
+    "storyboard_version": 2,
+    "segments": [
+      {
+        "segment_id": "seg_01",
+        "timeline_start_ms": 0,
+        "timeline_end_ms": 15000,
+        "duration_ms": 15000,
+        "shot_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "narration_unit_ids": [
+          "n_01"
+        ],
+        "reference_asset_ids": [
+          "ref_f4138e6202be895a",
+          "ref_3edb4a4be503e6ef"
+        ],
+        "transition_note": "保持段内地点、光线和色调连贯，镜头沿运动方向或相似构图自然转场",
+        "audio_slice_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260916_193246_932244\\v1\\audio_seg_01.wav",
+        "audio_slice_url": "/assets/audio/p_20260916_193246_932244/v1/audio_seg_01.wav",
+        "audio_slice_sha256": "dec351663f90b3e048b82636754d1764169fa54e52f9d2cc3cee26eb65c2a4e5",
+        "status": "ready"
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260916_193246_932244_v1",
+  "plan_version": 1,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_8bce287eae7b36fb",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzMDYxMDg5LjY3NjI3MjI%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-01T13%3A51%3A30Z%2F-1%2F%2Fda193e4ad9446efbdc3299f33b6d50522e5a145ecd254b6fef7daf36f399fe12",
+      "title": "杭州太子湾公园:赏枫叶的绝佳去处 🍁",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4796354176867606607",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7e8c617ef96da8d3",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyOTA1NzIwLjg4NTc4ODI%3D%27/0.png",
+      "title": "太子湾公园:四季法式风情拍照指南 太子湾公园就像是杭州人的私人法式",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3768023183514677778",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6ff91c02d4b453bc",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276KW/5rmW6L655pyA576O55qE5YWs5ZutXzE3Mjk0NTgwMjYuNzg0OTAz%27/0.png",
+      "title": "太子湾公园:杭州的秘密花园",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4540246642772008838",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_04ea741166ddf73b",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=1789454182,2275557612&fm=3074&app=3074&f=JPEG?w=1080&h=1890&type=normal&func=",
+      "title": "杭州太子湾公园:初秋的绝美去处!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4581071071567382953",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ac02e2a7112708f4",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM1MDA0NDEzLjk5ODczNTc%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-24T01%3A40%3A14Z%2F-1%2F%2F2f502c3cc8d0d25241c9ad148ebc07ebe454c362a5ba54b3232d0c00f1556bf0",
+      "title": "杭州太子湾花海盛开,赏花攻略快来领取!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5302180498474050591",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_cdc573cb48148fd4",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3f13a53e829/251112/68b4feb4a9edb5bc086d0c03fffaabf2.jpeg",
+      "title": "秋天去哪儿玩# 杭州秋色集萃",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4915701241932395900",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_746a14e6a9964bcd",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=1870749924,2380195513&fm=3074&app=3074&f=JPEG",
+      "title": "🍁杭州太子湾的秋日胜景🍂",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5739891048043520571",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_957bf784ffe7b0ef",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxODMxNjU0LjM4MTYyNDU%3D%27/0.png",
+      "title": "如果你只能来杭州一个地方,我一定会推荐太子湾公园,而不是西湖",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4460561792554118236",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_814a8c3923df56d4",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/73d6c8817a258bd351343e112a54025c.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "务必提前在\"杭州西湖风景名胜区\"公众号预约",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5200748257248285728",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0a534330e9aae46e",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=3966694456,630367149&fm=3074&app=3074&f=JPEG?w=1080&h=1410&type=normal&func=",
+      "title": "杭州太子湾公园:城市中的自然天堂",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3202871703030300233",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_287119bb39564c84",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM1NDM3NTY1LjU5NzYzMzQ%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-29T01%3A59%3A26Z%2F-1%2F%2F3e54fd4148fd943e782dd6e6bb2023660a345b78187ed4db6a3fe424680908e5",
+      "title": "太子湾秘境,秋览西湖全景!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3909256616404127822",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a19a545c1394de24",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=1131346745,3035163463&fm=3074&app=3074&f=JPEG",
+      "title": "太子湾公园:西湖新十景中的静谧之地",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4751173114009571874",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6883167a41a300d6",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://ss-mpvolc.meipian.me/users/546324/0b2971137d74ddeb7ace13081432415bmpand__jpg.heic~tplv-s1ctq42ewb-wm-s2-cC-q:watermark/1/image/dG9zLWNuLWktczFjdHE0MmV3Yi9hcnRpY2xlL2NvbnRlbnRfaW1nX2xvZ28ucG5n/dissolve/80/gravity/SouthEast/dx/16/dy/120/ws/0.09/wst/2%7Cwatermark/2/text/QOWxseiwt-eahOmjjg/dissolve/80/gravity/SouthEast/dx/16/dy/64/font/UWluaXUgRm9udA/fontsize/640/fill/I2ZmZmZmZg%7Cwatermark/2/text/576O56-H5Y-3OjU0NjMyNA/dissolve/80/gravity/SouthEast/dx/16/dy/16/font/UWluaXUgRm9udA/fontsize/640/fill/I2ZmZmZmZg:750:0:0:0:q80.webp",
+      "title": "杭州太子湾公园",
+      "source_page_url": "http://www.meipian.cn/5cmu56ik",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_653f7cd2188458ab",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/bc1b7cb69e/251121/df27d5b18b77f53839097abfb4f5ac68.png",
+      "title": "水墨江南行# 太子湾的秋,是藏在杭州城里的调色盘,谁说它只有春天的",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4048788245202399037",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3a96b434e83d010d",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p2t5bee5aSq5a2Q5rm%2B5pyA5L2z6KeC6LWP5pe26Ze0XzE3MjkzNjg3NTYuMjUzMDI0%27/0.png",
+      "title": "🌸杭州太子湾公园游玩攻略🌸",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5829505777006977474",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_216dfc1fe6b2b791",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p2t5bee5aSq5a2Q5rm%2B5YWs5Zut5pmv54K55LuL57uNXzE3MzIxMzE1NjIuODc0MTI5OA%3D%3D%27/0.png",
+      "title": "太子湾公园登九曜山,半小时俯瞰西湖全景",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3873513104165026029",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_981487d5a2299068",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=3589675090,2074873991&fm=3074&app=3074&f=JPEG?w=1440&h=1890&type=normal&func=",
+      "title": "杭州太子湾公园:初夏的绝美拍照地!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4646413866381456422",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7649336ede35b713",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275ZCN5LiN6Jma5Lyg5aS45aS45p%2BQ5aSE6aOO5pmvXzE3Mjk4ODE0NjEuMzMzNTM%3D%27/0.png",
+      "title": "太子湾公园:五月杭州的绿野仙踪 🌿",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4882851279103251167",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a3e0bd3cbabd4413",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2NjQ0MDExLjY3NzI0Mg%3D%3D%27/0.png",
+      "title": "太子湾公园:秋日里的绝美风景",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4485656362836960463",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_11e1851f22bbd4a7",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://b0.bdstatic.com/644b6765208ba655139042b2606d04ba.jpg",
+      "title": "杭州12.4太子湾现状!已红!速来!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5962472363775308022",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0af3c3c6be41352f",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM0NDgyODc1LjgyODc0Mw%3D%3D%27/0.png",
+      "title": "太子湾公园:西湖旁的静谧之地 这次杭州之行,朋友们推荐了一个非常",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4013207224544543401",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3d2155ec633107f2",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275aSq5a2Q5rm%2B55qE5ri4546p6Lev57q/5pS755WlXzE3Mjk4MjIzNzAuMjY5NjUzNg%3D%3D%27/0.png",
+      "title": "杭州太子湾公园夏日避暑全攻略🌳🌞",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5447839375368303985",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9d431357a307ed98",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/news/730a89aad4e20f92c6bb7ab835667314.png",
+      "title": "太子湾公园:探秘自然野趣与浪漫诗意的完美交融",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1824884575610865044&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_60bee743e2636721",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://img.500px.me/photo/af4852b06454cbef20e564f00cd962034/9a3bdd9355524c369418a5094287719a.jpg!p5",
+      "title": "杭州太子湾公园小桥之风景桥",
+      "source_page_url": "http://pic.500px.me/community/photo-details/9a3bdd9355524c369418a5094287719a",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3f123b70e1a8e7dc",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM2MTk2Nzc5LjU4NzYzODRfMTczNjE5Njc4MS40ODIzNzY4XzE3MzYxOTY3ODMuMzgwNDM3%27/2.png",
+      "title": "🌳太子湾公园:杭州的春日秘境🌸",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4913803914352396089",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e3e098cf0302d139",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/down/dH5HpWb5-n3LyynKJUww8w9d5b137232175703f46515c443a87c3a.jpg",
+      "title": "杭州太子湾公园的夏天,治愈39度高温下的心情",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=4269981741120339699",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_3edb4a4be503e6ef",
+      "candidate_id": "ref_746a14e6a9964bcd",
+      "place_id": "place_dae65cab6b70bf5f",
+      "place_name": "太子湾",
+      "city": "杭州",
+      "original_url": "http://gips2.baidu.com/it/u=1870749924,2380195513&fm=3074&app=3074&f=JPEG",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5739891048043520571",
+      "title": "🍁杭州太子湾的秋日胜景🍂",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260916_193246_932244/ref_3edb4a4be503e6ef.jpg",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260916_193246_932244\\ref_3edb4a4be503e6ef.jpg",
+      "sha256": "3edb4a4be503e6ef1c812042f57c76d5a0b9e516cadebfb3fc8488c8dd63da07",
+      "width": 1080,
+      "height": 1303,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 9.255,
+        "usage": {
+          "completion_tokens": 345,
+          "prompt_tokens": 2198,
+          "total_tokens": 2543,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展现了一处自然景观，有平静的湖水、湖边树木、草地、行人及远处的山林，整体氛围清新静谧，色彩丰富。",
+          "visible_elements": [
+            "湖水、红叶树、绿叶树、草地、行人（3人行走、1人坐于长椅）、长椅、路灯、远处山林、树木倒影"
+          ],
+          "spatial_layout": [
+            "湖水位于画面中下部，湖边树木分布于左右两侧，草地在湖的对岸，行人在草地前的步道上，远处山林在草地后方"
+          ],
+          "architecture_and_materials": [],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "全景",
+            "orientation_clues": []
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天",
+            "weather": "晴朗",
+            "season": "秋季（树木有红叶）"
+          },
+          "must_keep_candidates": [
+            "湖水及倒影、红叶树与绿叶树的搭配、草地、步道行人、山林背景"
+          ],
+          "allowed_changes": [
+            "行人的具体动作和穿着、树木的细微形态"
+          ],
+          "suitable_shots": [
+            "全景展现整体景观、中景拍摄行人与步道、近景拍摄树叶或湖水倒影"
+          ],
+          "unsupported_or_risky_shots": [
+            "仰视山林、俯视草地细节（因视角限制）"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体地点、山林中树木的种类"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_f4138e6202be895a",
+      "candidate_id": "ref_7e8c617ef96da8d3",
+      "place_id": "place_dae65cab6b70bf5f",
+      "place_name": "太子湾",
+      "city": "杭州",
+      "original_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyOTA1NzIwLjg4NTc4ODI%3D%27/0.png",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3768023183514677778",
+      "title": "太子湾公园:四季法式风情拍照指南 太子湾公园就像是杭州人的私人法式",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260916_193246_932244/ref_f4138e6202be895a.png",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260916_193246_932244\\ref_f4138e6202be895a.png",
+      "sha256": "f4138e6202be895a37c445188d1b35bec374a812235b6bd3b5a3ef68c084cd50",
+      "width": 1080,
+      "height": 1410,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 14.594,
+        "usage": {
+          "completion_tokens": 469,
+          "prompt_tokens": 2346,
+          "total_tokens": 2815,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示了一片色彩斑斓的郁金香花田，花田后方有一座浅黄色的欧式风格建筑，周围环绕着树木和草地，天空中有云朵，整体呈现出春日花园的美好景象。",
+          "visible_elements": [
+            "郁金香（黄色、红色、白色、粉色）、浅黄色欧式建筑、草地、树木（有绿叶树和落叶树）、天空、云朵"
+          ],
+          "spatial_layout": [
+            "郁金香花田位于画面前景和中景，草地在花田后方，浅黄色建筑在草地后方，树木分布在建筑周围及背景中，天空在画面上方"
+          ],
+          "architecture_and_materials": [
+            "建筑为浅黄色，具有欧式风格，有拱形门、窗户、阳台栏杆和烟囱，材质看起来像是砖石或涂料，色彩明快"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "画面中建筑正面朝向镜头，花田在镜头前方，树木在建筑后方，可推测镜头朝向建筑方向"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断",
+            "weather": "晴天（有云朵）",
+            "season": "春季（郁金香盛开、树木有新叶）"
+          },
+          "must_keep_candidates": [
+            "郁金香花田的色彩搭配和布局、浅黄色欧式建筑的形态和色彩、建筑与花田草地树木的空间关系"
+          ],
+          "allowed_changes": [
+            "云朵的形状和位置、花田中个别花朵的姿态、树木的细微枝叶变化"
+          ],
+          "suitable_shots": [
+            "花田的近景特写、建筑与花田的中景、从花田向建筑的推镜头、建筑周围环境的全景"
+          ],
+          "unsupported_or_risky_shots": [
+            "从建筑内部向外的镜头、从树木上方俯视的镜头、快速移动的动态镜头（可能破坏画面的静谧感）"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "建筑的具体名称和用途、树木的具体种类、郁金香的具体品种"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_dae65cab6b70bf5f",
+    "place_name": "太子湾",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_3edb4a4be503e6ef",
+      "ref_f4138e6202be895a"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "湖水、红叶树、绿叶树、草地、行人（3人行走、1人坐于长椅）、长椅、路灯、远处山林、树木倒影",
+      "郁金香（黄色、红色、白色、粉色）、浅黄色欧式建筑、草地、树木（有绿叶树和落叶树）、天空、云朵"
+    ],
+    "stable_features": [
+      {
+        "text": "湖水及倒影、红叶树与绿叶树的搭配、草地、步道行人、山林背景",
+        "evidence_asset_ids": [
+          "ref_3edb4a4be503e6ef"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "郁金香花田的色彩搭配和布局、浅黄色欧式建筑的形态和色彩、建筑与花田草地树木的空间关系",
+        "evidence_asset_ids": [
+          "ref_f4138e6202be895a"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "湖水及倒影、红叶树与绿叶树的搭配、草地、步道行人、山林背景",
+      "郁金香花田的色彩搭配和布局、浅黄色欧式建筑的形态和色彩、建筑与花田草地树木的空间关系"
+    ],
+    "allowed_changes": [
+      "行人的具体动作和穿着、树木的细微形态",
+      "云朵的形状和位置、花田中个别花朵的姿态、树木的细微枝叶变化"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "具体地点、山林中树木的种类",
+      "建筑的具体名称和用途、树木的具体种类、郁金香的具体品种"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_3edb4a4be503e6ef",
+        "summary": "画面展现了一处自然景观，有平静的湖水、湖边树木、草地、行人及远处的山林，整体氛围清新静谧，色彩丰富。",
+        "visible_elements": [
+          "湖水、红叶树、绿叶树、草地、行人（3人行走、1人坐于长椅）、长椅、路灯、远处山林、树木倒影"
+        ],
+        "spatial_layout": [
+          "湖水位于画面中下部，湖边树木分布于左右两侧，草地在湖的对岸，行人在草地前的步道上，远处山林在草地后方"
+        ],
+        "architecture_and_materials": [],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "全景",
+          "orientation_clues": []
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天",
+          "weather": "晴朗",
+          "season": "秋季（树木有红叶）"
+        },
+        "must_keep_candidates": [
+          "湖水及倒影、红叶树与绿叶树的搭配、草地、步道行人、山林背景"
+        ],
+        "allowed_changes": [
+          "行人的具体动作和穿着、树木的细微形态"
+        ],
+        "suitable_shots": [
+          "全景展现整体景观、中景拍摄行人与步道、近景拍摄树叶或湖水倒影"
+        ],
+        "unsupported_or_risky_shots": [
+          "仰视山林、俯视草地细节（因视角限制）"
+        ]
+      },
+      {
+        "asset_id": "ref_f4138e6202be895a",
+        "summary": "画面展示了一片色彩斑斓的郁金香花田，花田后方有一座浅黄色的欧式风格建筑，周围环绕着树木和草地，天空中有云朵，整体呈现出春日花园的美好景象。",
+        "visible_elements": [
+          "郁金香（黄色、红色、白色、粉色）、浅黄色欧式建筑、草地、树木（有绿叶树和落叶树）、天空、云朵"
+        ],
+        "spatial_layout": [
+          "郁金香花田位于画面前景和中景，草地在花田后方，浅黄色建筑在草地后方，树木分布在建筑周围及背景中，天空在画面上方"
+        ],
+        "architecture_and_materials": [
+          "建筑为浅黄色，具有欧式风格，有拱形门、窗户、阳台栏杆和烟囱，材质看起来像是砖石或涂料，色彩明快"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "画面中建筑正面朝向镜头，花田在镜头前方，树木在建筑后方，可推测镜头朝向建筑方向"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断",
+          "weather": "晴天（有云朵）",
+          "season": "春季（郁金香盛开、树木有新叶）"
+        },
+        "must_keep_candidates": [
+          "郁金香花田的色彩搭配和布局、浅黄色欧式建筑的形态和色彩、建筑与花田草地树木的空间关系"
+        ],
+        "allowed_changes": [
+          "云朵的形状和位置、花田中个别花朵的姿态、树木的细微枝叶变化"
+        ],
+        "suitable_shots": [
+          "花田的近景特写、建筑与花田的中景、从花田向建筑的推镜头、建筑周围环境的全景"
+        ],
+        "unsupported_or_risky_shots": [
+          "从建筑内部向外的镜头、从树木上方俯视的镜头、快速移动的动态镜头（可能破坏画面的静谧感）"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_1.jpg",
+        "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+        "license": "Unsplash License",
+        "alt": "a building with a tree in front of it"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_2.jpg",
+        "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+        "license": "Unsplash License",
+        "alt": "a pagoda in the middle of a park surrounded by trees"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_3.jpg",
+        "url": "https://unsplash.com/photos/brown-and-red-temple-kp3A2jurfP0",
+        "license": "Unsplash License",
+        "alt": "brown and red temple"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_3edb4a4be503e6ef",
+        "name": "太子湾",
+        "url": "/assets/references/p_20260916_193246_932244/ref_3edb4a4be503e6ef.jpg",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5739891048043520571",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_f4138e6202be895a",
+        "name": "太子湾",
+        "url": "/assets/references/p_20260916_193246_932244/ref_f4138e6202be895a.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3768023183514677778",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "ready",
+    "engine": "edge-tts",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "requested_rate": "-10%",
+    "url": "/assets/audio/p_20260916_193246_932244/v1/voice_track.wav"
+  },
+  "music": {
+    "status": "ready",
+    "cues": [
+      {
+        "cue_id": "m_01",
+        "preset": "ambient",
+        "start_ms": 0,
+        "end_ms": 15000,
+        "gain_db": -22
+      }
+    ],
+    "url": "/assets/audio/p_20260916_193246_932244/v1/master_audio.wav"
+  },
+  "audio": {
+    "status": "ready",
+    "version": 1,
+    "voice_profile": {
+      "engine": "edge-tts",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "requested_rate": "-10%"
+    },
+    "narration_units": [
+      {
+        "unit_id": "n_01",
+        "segment_id": "seg_01",
+        "text": "太子湾郁金香画展，春日暴击！沿湖步道漫行，西湖的春天不收门票。花田涌向浅黄城堡，画展浪漫值直接拉满。杭州春天，太子湾见，共赴画展！",
+        "start_ms": 0,
+        "end_ms": 15000,
+        "speech_start_ms": 300,
+        "speech_end_ms": 13884,
+        "tts_duration_ms": 13584,
+        "rate": "+15%"
+      }
+    ],
+    "music_cues": [
+      {
+        "cue_id": "m_01",
+        "preset": "ambient",
+        "start_ms": 0,
+        "end_ms": 15000,
+        "gain_db": -22
+      }
+    ],
+    "voice_track_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260916_193246_932244\\v1\\voice_track.wav",
+    "voice_track_url": "/assets/audio/p_20260916_193246_932244/v1/voice_track.wav",
+    "bgm_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260916_193246_932244\\v1\\bgm_bed.wav",
+    "master_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260916_193246_932244\\v1\\master_audio.wav",
+    "master_url": "/assets/audio/p_20260916_193246_932244/v1/master_audio.wav",
+    "master_sha256": "dec351663f90b3e048b82636754d1764169fa54e52f9d2cc3cee26eb65c2a4e5",
+    "duration_ms": 15000,
+    "slices": [
+      {
+        "segment_id": "seg_01",
+        "local_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260916_193246_932244\\v1\\audio_seg_01.wav",
+        "url": "/assets/audio/p_20260916_193246_932244/v1/audio_seg_01.wav",
+        "sha256": "dec351663f90b3e048b82636754d1764169fa54e52f9d2cc3cee26eb65c2a4e5",
+        "duration_ms": 15000
+      }
+    ]
+  },
+  "audio_tasks": [
+    "at_20260916_193815_696297"
+  ],
+  "video_tasks": [],
+  "segment_tasks": [
+    "st_20260916_194219_4d84f3"
+  ],
+  "render_tasks": [
+    "rt_20260916_201001_0e25f5"
+  ],
+  "render": {
+    "status": "completed",
+    "version": 1,
+    "task_id": "rt_20260916_201001_0e25f5"
+  },
+  "final_video": {
+    "status": "completed",
+    "url": "/assets/renders/p_20260916_193246_932244/v1/final.mp4",
+    "preview_url": "/assets/renders/p_20260916_193246_932244/v1/final.mp4",
+    "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260916_193246_932244\\v1\\final.mp4",
+    "visual_track_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260916_193246_932244\\v1\\visual_track.mp4",
+    "duration_s": 15.0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16",
+    "version": 1
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-16T11:32:46.707588+00:00",
+  "updated_at": "2026-09-16T12:10:06.449409+00:00",
+  "copywriting_text": "【0-3s】太子湾郁金香画展，春日暴击！\n【3-7s】沿湖步道漫行，西湖的春天不收门票。\n【7-12s】花田涌向浅黄城堡，画展浪漫值直接拉满。\n【12-15s】杭州春天，太子湾见，共赴画展！",
+  "video_clips": {},
+  "segment_results": {
+    "seg_01": {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260916_193246_932244/seg_01/st_20260916_194219_4d84f3_preview.mp4",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260916_193246_932244\\seg_01\\st_20260916_194219_4d84f3_raw.mp4",
+      "visual_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260916_193246_932244\\seg_01\\st_20260916_194219_4d84f3_visual.mp4",
+      "preview_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260916_193246_932244\\seg_01\\st_20260916_194219_4d84f3_preview.mp4",
+      "error": null,
+      "audio_slice_sha256": "dec351663f90b3e048b82636754d1764169fa54e52f9d2cc3cee26eb65c2a4e5",
+      "reference_asset_ids": [
+        "ref_f4138e6202be895a",
+        "ref_3edb4a4be503e6ef"
+      ],
+      "task_id": "st_20260916_194219_4d84f3"
+    }
+  },
+  "active_segment_ids": []
+}

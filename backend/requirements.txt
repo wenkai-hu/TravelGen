@@ -1,8 +1,9 @@
 fastapi>=0.110
 uvicorn>=0.27
-watchfiles>=0.21  # uvicorn reload 依赖（否则退化为轮询，Win 上慢）
+watchfiles>=0.21  # Faster uvicorn reload on Windows
 pydantic>=2.0
-imageio-ffmpeg>=0.6  # Seedance 视频转码（保证浏览器可播：yuv420p + faststart）
-sqlalchemy>=2.0  # 数据库 ORM（backend/db/，MySQL）
-aiomysql>=0.2  # MySQL 异步驱动（async engine）
-Pillow>=10.0  # RAG_Test 景点候选图解码、清晰度检查、感知去重与联系表
+imageio-ffmpeg>=0.6  # Browser-compatible Seedance transcoding
+edge-tts==7.2.7  # Narration master audio with a stable voice
+sqlalchemy>=2.0  # Database ORM (backend/db, MySQL)
+aiomysql>=0.2  # Async MySQL driver
+Pillow>=10.0  # Reference image decoding and perceptual deduplication

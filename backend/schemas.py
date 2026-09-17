@@ -51,8 +51,9 @@ class ShotPatch(BaseModel):
 
 
 class GenerateShotsRequest(BaseModel):
-    """接口5：批量生成视频（shots 为 shot_id 列表；generate_image 本版预留 video-only）。"""
-    shots: list[int] = Field(..., min_length=1)
+    """接口5：新项目按 Segment 生成；shots 仅保留给旧 Storyboard 兼容。"""
+    segments: list[str] = Field(default_factory=list)
+    shots: list[int] = Field(default_factory=list)
     generate_image: bool = False
     generate_video: bool = True
 
@@ -66,16 +67,26 @@ class RegenerateShotRequest(BaseModel):
 
 
 class AudioRequest(BaseModel):
-    """接口7：配音+音乐（本版占位）。"""
-    voice: str = ""
-    music: str = ""
+    """接口7：先生成完整旁白与 BGM 母带。"""
+    voice: str = "zh-CN-XiaoxiaoNeural"
+    music: str = "ambient"
 
 
 class RenderRequest(BaseModel):
-    """接口8：最终合成（本版占位，字段对齐 TravelGen_v1.md §十七）。"""
-    shot_ids: list[str] = []
+    """接口8：拼接 Segment 静音画面并回铺项目 master audio。"""
+    segment_ids: list[str] = Field(default_factory=list)
+    shot_ids: list[str] = Field(default_factory=list)  # 旧客户端兼容，服务端不再作为权威输入
     voice_url: str = ""
     music_url: str = ""
     subtitle: bool = True
     resolution: str = "1080p"
     aspect_ratio: str = "9:16"
+
+
+class SegmentPatch(BaseModel):
+    transition_note: str | None = None
+
+
+class RegenerateSegmentRequest(BaseModel):
+    reason: str = ""
+    transition_note: str | None = None

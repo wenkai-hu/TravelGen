@@ -1,0 +1,309 @@
+{
+  "schema_version": 2,
+  "project_id": "p_20260916_192933_59aa02",
+  "username": "sherlock",
+  "status": "waiting_reference_confirm",
+  "progress": 5,
+  "message": "找到 30 张候选图片，请确认真实景点图片",
+  "request": {
+    "city": "杭州",
+    "location": "苏堤",
+    "scene_type": "景区推荐",
+    "theme": "景点宣传",
+    "audience": "大学生",
+    "style": "青春活力",
+    "duration_s": 15,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {},
+  "copywriting": {},
+  "script": {},
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_250221cd72bf6aba",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://se-feed-bucket.bj.bcebos.com/produce-record73183021_0/first_1758385336",
+      "title": "藏着杭州最温柔的春天～",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5524772422770643311",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5dbeac558a5e481a",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pics4.baidu.com/feed/d4628535e5dde71129c208c2942ed10b9c1661c7.jpeg@f_auto?token=869b2f11699552603ef67cb072d81b78",
+      "title": "苏堤:西湖的核心风景线及其深远影响",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1837106111991008890&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5dc1ddafa9112ae1",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://q9.itc.cn/q_70/images01/20240605/f12fbc17ca2b48d9b7d05e03b10d899c.jpeg",
+      "title": "西湖苏堤 杨柳满长堤 花明路不迷",
+      "source_page_url": "http://www.sohu.com/a/775888824_121247239",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b23fe85eb7485d02",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=2190204032,700252480&fm=3074&app=3074&f=JPEG",
+      "title": "杭州苏堤漫步攻略:绿树成荫的悠闲时光",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4595872860393928751",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1db1b169861c7b03",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://n.sinaimg.cn/default/1_img/upload/df9b9e61/383/w2048h1535/20250328/b354-96706256ae8a3bb240dd2d5a7a0ecd46.jpg",
+      "title": "成人影院午夜无码",
+      "source_page_url": "http://www.blog.efkmr.cn/Article/details/5436182.sHtML",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f7d0b9d5e8cdd7b9",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/14c990a5ec0bd7d216137bcc8015daca.jpg",
+      "title": "暮春 望望碧湖处处愁, 欲携美酒登高楼",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5207019016888119579",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b08c21b829c21c87",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3fa195024a84/250416/b2487cbb10a38b99f09b82e43eb783e0.png?for=bg",
+      "title": "苏堤位于杭州市西湖景区",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=4535047911186679663",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_45e1f9df11df7b3b",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pics2.baidu.com/feed/9f2f070828381f307f5f8aaa9ac053186f06f044.jpeg@f_auto?token=2504561b7ea46399622a943506a11162",
+      "title": "苏堤:西湖的核心风景线及其深远影响",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1837106111991008890&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3bfcffd01e375ae0",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pics1.baidu.com/feed/aa18972bd40735faf216346d86d368bc0d240894.jpeg@f_auto?token=1fc583341b212a0f61d27a430ab17baa",
+      "title": "西湖美景探秘:苏堤春晓的多样风情与丰富文化",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1824140920796914634&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_856689f674efc7e8",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=3485445425,235426175&fm=3074&app=3074&f=JPEG",
+      "title": "🌉 杭州苏堤:三公里的风景长廊",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4344843639399112061",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_48f7be856dca2ce6",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=1824708386,1827492408&fm=3074&app=3074&f=JPEG?w=800&h=1486&type=normal&func=",
+      "title": "杭州花港观鱼枫叶盛宴,周末必打卡!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5647088109187691936",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3de888e9631fe91a",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pics1.baidu.com/feed/b999a9014c086e06ace0115736c964e40bd1cbb7.jpeg@f_auto?token=64a3e7c112a557cf9db829acdde55703",
+      "title": "苏堤:西湖的核心风景线及其深远影响",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1837106111991008890&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f7011ae98ad1193b",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pics5.baidu.com/feed/0823dd54564e92585bf47a43ae43ce48cebf4ea8.jpeg@f_auto?token=42d16999ee5621766243add23b04379d",
+      "title": "苏堤:西湖的核心风景线及其深远影响",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1837106111991008890&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9daac4ecd390fc1b",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2MjEyODY1LjQxMDg2NjM%3D%27/0.png",
+      "title": "4公里的堤道,串联起了曲院风荷,金沙港,杭州花圃,茅家埠,乌龟潭,浴鹄",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4285853058230326167",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_05ef995184b78af7",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3fa195024a84/250415/d465cd87cdc22591eb75161e0bba3869.png?for=bg",
+      "title": "冬日的苏堤依然美丽动人",
+      "source_page_url": "https://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=4001816966806302770",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_dd692ffe3fefb911",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3f1c37dffb/251219/cebf4cac2f1f91edf1cfe2f3fe938b31.jpeg",
+      "title": "这里的跨年活动充 苏堤图片杭州西湖断桥照片夜景夜晚波光粼粼的",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5174749712062069530",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3a88596468e3fa8e",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://i1.hdslb.com/bfs/archive/8a89c3334c6596d2fd89ec385f9f9d03c2676e7e.jpg",
+      "title": "走马观花游西湖苏堤",
+      "source_page_url": "http://www.bilibili.com/video/BV12ghwzGErE",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c6a4880f5ecd7cd1",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/43447dd557853669ed1cd4f68ce18e77.jpg@h_1280",
+      "title": "ai亚来杭州# 苏堤是我最喜欢的景点之一,这条古老的堤岸连接了断呛屯",
+      "source_page_url": "https://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5102641613400603855",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e2c1a7b2e2d7b295",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://q8.itc.cn/q_70/images01/20240605/eefeb205a98945c5baf8b5e66bf93997.jpeg",
+      "title": "西湖苏堤 杨柳满长堤 花明路不迷",
+      "source_page_url": "http://www.sohu.com/a/775888824_121247239",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9df9343261b15364",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pics6.baidu.com/feed/a5c27d1ed21b0ef4ab077c82e9054eca83cb3e54.jpeg@f_auto?token=4d86c25e7d18035eb3bbda2b654817cc",
+      "title": "苏堤:西湖的核心风景线及其深远影响",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1837106111991008890&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c7fafa497d89da16",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://q2.itc.cn/q_70/images03/20250927/74b85b11ac2245d1b81e3b14b9fc4ab8.jpeg",
+      "title": "杭州苏堤和白堤有什么区别呢?它们的历史背景不同吧!",
+      "source_page_url": "http://news.sohu.com/a/939191556_121677947",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_10cddd63a153fe50",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pics3.baidu.com/feed/838ba61ea8d3fd1f125dc6da16dbcc1094ca5f1a.jpeg@f_auto?token=516c26cf9263797847fa51f45dd31f08",
+      "title": "西湖一日游全攻略:白堤苏堤深度探秘与避坑指南",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1833294014079968184&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d2ae61f1ecd9a737",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjhai/401f336dff262e1edb70b7d70ec1149a.jpg",
+      "title": "杭州旅游如何规划,才能不错过每一个精彩瞬间?",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5298510852694664545",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_dc71699696cd202d",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/ec1b8514d27538c390ba2f130c17aa83.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "西湖的苏堤如一条翡翠丝带,悠然横亘于碧波荡漾之间,它不仅承载着杭州",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1789259322485203486&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_312a77826f4a06ce",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://ss-mpvolc.meipian.me/users/34242085/origin27729299f188e850fde9b6991a651178mpand__jpg.heic~tplv-s1ctq42ewb-wm-s2-cC-q:watermark/1/image/dG9zLWNuLWktczFjdHE0MmV3Yi9hcnRpY2xlL2NvbnRlbnRfaW1nX2xvZ28ucG5n/dissolve/80/gravity/SouthEast/dx/21/dy/160/ws/0.09/wst/2%7Cwatermark/2/text/QOS6puW6hOS5i-m5sA/dissolve/80/gravity/SouthEast/dx/21/dy/85/font/UWluaXUgRm9udA/fontsize/860/fill/I2ZmZmZmZg%7Cwatermark/2/text/576O56-H5Y-3OjM0MjQyMDg1/dissolve/80/gravity/SouthEast/dx/21/dy/21/font/UWluaXUgRm9udA/fontsize/860/fill/I2ZmZmZmZg:750:0:0:0:q80.webp",
+      "title": "雨中漫步在杭州西湖\"苏堤\"",
+      "source_page_url": "http://www.meipian.cn/588y8zon",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1a933750232508de",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://img3.youxiake.com/bbs/travel/202505/13/yxktravel_article_1ir4ij67s1vbipij11shea3g.jpg?imageView2/2/w/1880|imageMogr2/strip/quality/90",
+      "title": "苏堤春晓旅游攻略",
+      "source_page_url": "http://bbs.youxiake.com/index.php/y/1076512.html",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_cd5cd83d752459cd",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p2t5bee6IuP5aCk566A5LuLXzE3MzMxNzcyNTQuMDUzOTQ1NQ%3D%3D%27/0.png",
+      "title": "杭州西湖:苏堤春晓与断桥残雪",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5621719356527422221",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_64e2a817fdabe1bf",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/cms/250629/3be0d07cbf2b9a1d01c60328713fba14_1751209556.3713_478.jpeg",
+      "title": "杭州:苏堤赏湖美景",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1836276364888156419&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_bba5750e84619e9e",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=2488801793,3859191425&fm=3074&app=3074&f=JPEG?w=2416&h=1050&type=normal&func=",
+      "title": "苏堤春晓:西湖美景的灵魂",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4248159205651231009",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_810095da6727e321",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/240807/dump/c65485567dc60181a62d35045146c4d2.jpeg",
+      "title": "出游随拍,西湖泛舟从湖心看苏堤的美景",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1806701054586299288&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [],
+  "visual_profile": {},
+  "reference_version": 0,
+  "visual_assets": {},
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "audio": {
+    "status": "none",
+    "version": 0
+  },
+  "audio_tasks": [],
+  "video_tasks": [],
+  "segment_tasks": [],
+  "render_tasks": [],
+  "render": {
+    "status": "none",
+    "version": 0
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {},
+  "created_at": "2026-09-16T11:29:33.308166+00:00",
+  "updated_at": "2026-09-16T11:29:34.189232+00:00",
+  "copywriting_text": "",
+  "video_clips": {},
+  "segment_results": {},
+  "active_segment_ids": []
+}

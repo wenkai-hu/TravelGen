@@ -1,23 +1,24 @@
 # -*- coding: utf-8 -*-
-"""V1 project 化分阶段接口（TravelGen_v1.md §七~§十八）。
+"""Project 化分阶段接口：Master Audio → Storyboard → Segment → Render。
 
 - 新旧共存：本 router 提供 /api/ 前缀的 V1 接口，旧 /api/v1/* 在 app.py 原样保留
-- 分阶段：创建项目 → 搜图/选图/VLM → 方案确认 → 分镜 → Shot 修改 → 批量生成
-- 占位：audio / render / render-status 返回 reserved（本版不做，见契约文档标注）
-- 关键语义：POST generate 即视为"确认分镜"；前端轮询用 GET /api/projects/{id}
+- 分阶段：创建项目 → 搜图 → 方案确认 → 母带 → 分镜 → Segment 生成 → 回铺母带
+- Shot 是 Segment 内可编辑的画面指令；实际生成和重生成的最小单位始终是 Segment
 """
 import asyncio, uuid
 from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException
 
-from pipeline import kb, model_client, reference_search, visual_rag, vlm_client
+from pipeline import (audio_pipeline, composer, kb, model_client, reference_search,
+                      segment_planner, visual_rag, vlm_client)
 from pipeline import validate as v
 from pipeline.demo import parse_script
 from pipeline.pipeline import PipelineRunner, _parse_cw
 from schemas import (AudioRequest, ConfirmPlanRequest, ConfirmReferencesRequest,
-                     GenerateRequest, GenerateShotsRequest,
-                     RegenerateShotRequest, RenderRequest, ShotPatch, StoryboardRequest)
+                     GenerateRequest, GenerateShotsRequest, RegenerateSegmentRequest,
+                     RegenerateShotRequest, RenderRequest, SegmentPatch, ShotPatch,
+                     StoryboardRequest)
 from constants import SCENE_TYPE_ALIASES, SCENE_TYPES, ASPECT_RATIOS, RESOLUTIONS, VIDEO_MODELS
 from db.auth import get_current_user
 import projects as P
@@ -51,11 +52,11 @@ def _owned_project(pid: str, username: str) -> P.Project:
     return project
 
 
-def _get_video_task(tid: str) -> P.VideoTask:
-    vt = P.load_video_task(tid)
-    if vt is None:
+def _get_task(tid: str):
+    task = P.load_any_task(tid)
+    if task is None:
         _err(404, "task_not_found", f"任务 {tid} 不存在")
-    return vt
+    return task
 
 
 def _state_guard(project: P.Project, allowed: set, op: str):
@@ -77,11 +78,32 @@ def _require_storyboard(project: P.Project):
         _err(409, "invalid_state", "分镜尚未生成，请先 POST /storyboard")
 
 
+def _find_segment(project: P.Project, segment_id: str) -> dict:
+    segment = segment_planner.find_segment(project.storyboard, segment_id)
+    if segment is None:
+        _err(404, "segment_not_found", f"Segment {segment_id} 不在当前 Storyboard 中")
+    return segment
+
+
 def _guard_shots_available(project: P.Project, shot_ids: list[int]):
     """项目允许并行任务，但同一 Shot 同一时刻只允许一个 Seedance 任务。"""
     busy = sorted(set(shot_ids) & P.active_video_shot_ids(project))
     if busy:
         _err(409, "shot_generating", f"Shot {busy} 正在生成，请勿重复提交")
+
+
+def _guard_segments_available(project: P.Project, segment_ids: list[str]):
+    busy = sorted(set(segment_ids) & P.active_segment_ids(project))
+    if busy:
+        _err(409, "segment_generating", f"Segment {busy} 正在生成，请勿重复提交")
+
+
+def _invalidate_render(project: P.Project):
+    """任何会改变当前画面结果的操作，都必须让旧成片退出权威状态。"""
+    project.render = {"status": "none", "version": (project.render or {}).get("version", 0)}
+    project.final_video = {"status": "none", "url": "", "preview_url": "", "duration_s": 0,
+                           "resolution": project.request.get("resolution", "1080p"),
+                           "aspect_ratio": project.request.get("aspect_ratio", "9:16")}
 
 
 # ---- 后台协程（try/finally 落盘，重启不丢） ----
@@ -103,15 +125,101 @@ async def _run_plan(project: P.Project):
         project.dump()
 
 
+async def _run_audio_task(project: P.Project, task: P.AudioTask):
+    try:
+        project.status, project.progress, project.message = "audio_generating", 15, "正在生成完整旁白与背景音乐"
+        task.progress, task.message = 10, "Edge-TTS 旁白测时"
+        task.dump(), project.dump()
+        result = await audio_pipeline.build_master_audio(
+            project,
+            voice=task.request.get("voice") or "zh-CN-XiaoxiaoNeural",
+            music=task.request.get("music") or "ambient",
+            mock=runner.mock_all,
+        )
+        task.result = result
+        task.status, task.progress, task.message = "completed", 100, "Master audio 已生成"
+        project.audio = result
+        project.voice = {"status": "ready", **result.get("voice_profile", {}),
+                         "url": result.get("voice_track_url", "")}
+        project.music = {"status": "ready", "cues": result.get("music_cues", []),
+                         "url": result.get("master_url", "")}
+        project.status, project.progress, project.message = "audio_ready", 20, "完整音轨已生成，准备拆分画面"
+    except Exception as exc:
+        task.status, task.error = "failed", f"{type(exc).__name__}: {exc}"
+        task.message = "音频生成失败"
+        project.status, project.message = "failed", f"音频生成失败｜{task.error}"
+        project.audio = {**(project.audio or {}), "status": "failed", "error": task.error}
+    finally:
+        task.dump(), project.dump()
+
+
 async def _run_storyboard(project: P.Project):
     try:
         await runner.generate_storyboard(project)
+        errors = segment_planner.validate_segment_plan(
+            project.storyboard, int(project.audio.get("duration_ms", 0)))
+        if errors:
+            raise ValueError("Segment 规划校验失败：" + "；".join(errors[:6]))
         project.visual_assets = visual_rag.public_visual_assets(project, kb.visual_assets(project.request))
         project.status, project.progress, project.message = "waiting_storyboard_confirm", 40, "分镜待确认（可修改 Shot）"
     except Exception as e:
         project.status, project.message = "failed", f"分镜失败｜{type(e).__name__}: {e}"
     finally:
         project.dump()
+
+
+async def _run_segment_task(project: P.Project, task: P.SegmentTask, segment_ids: list[str]):
+    try:
+        segments = [_find_segment(project, segment_id) for segment_id in segment_ids]
+        task.init_segments(segments)
+        project.status, project.progress, project.message = "generating", 45, "Segment 视频生成中"
+        task.dump(), project.dump()
+
+        def sync(clips, done, total):
+            task.sync_from_clips(clips)
+            project.progress = 45 + int(done / total * 35)
+            project.message = f"Segment 视频生成中 {done}/{total} 完成"
+            task.dump(), project.dump()
+
+        clips = await runner.generate_segments(project, segment_ids, task=task, on_progress=sync)
+        sync(clips, sum(1 for clip in clips if clip["status"] == "succeeded"), len(clips))
+        ok = sum(1 for clip in clips if clip["status"] == "succeeded")
+        task.status = "completed" if ok == len(clips) else "failed"
+        task.progress = 100
+        task.message = f"完成 {ok}/{len(clips)} 个 Segment"
+        completed_ids = {clip["segment_id"] for clip in clips if clip["status"] == "succeeded"}
+        for segment in project.storyboard.get("segments", []):
+            if segment["segment_id"] in completed_ids:
+                segment["status"] = "ready"
+    except Exception as exc:
+        task.status, task.error = "failed", f"{type(exc).__name__}: {exc}"
+        task.message = f"Segment 生成失败｜{task.error}"
+    finally:
+        task.dump()
+        P.recompute_project_status(project)
+        project.dump()
+
+
+async def _run_render_task(project: P.Project, task: P.RenderTask):
+    try:
+        project.status, project.progress, project.message = "composing", 90, "正在拼接画面并回铺 Master Audio"
+        task.progress, task.message = 15, "校验 Segment 与音频版本"
+        task.dump(), project.dump()
+        version = int((project.render or {}).get("version", 0)) + 1
+        result = await asyncio.to_thread(
+            composer.compose_project, project, P.merge_segment_results(project), version)
+        task.result = result
+        task.status, task.progress, task.message = "completed", 100, "最终视频已生成"
+        project.render = {"status": "completed", "version": version, "task_id": task.task_id}
+        project.final_video = result
+        project.status, project.progress, project.message = "completed", 100, "最终视频已生成"
+    except Exception as exc:
+        task.status, task.error = "failed", f"{type(exc).__name__}: {exc}"
+        task.message = "最终合成失败"
+        project.render = {**(project.render or {}), "status": "failed", "error": task.error}
+        project.status, project.message = "video_ready", f"合成失败，可重试｜{task.error}"
+    finally:
+        task.dump(), project.dump()
 
 
 async def _run_reference_search(project: P.Project):
@@ -308,7 +416,10 @@ async def confirm_references(pid: str, req: ConfirmReferencesRequest,
 @router.put("/projects/{pid}/plan")
 async def confirm_plan(pid: str, req: ConfirmPlanRequest, user: str = Depends(get_current_user)):
     project = _owned_project(pid, user)
-    _state_guard(project, {"waiting_confirm"}, "确认方案")
+    recoverable_audio_failure = (project.status == "failed" and
+                                 (project.audio or {}).get("status") == "failed")
+    if project.status != "waiting_confirm" and not recoverable_audio_failure:
+        _state_guard(project, {"waiting_confirm"}, "确认方案")
     cw = _parse_cw(req.copywriting)
     if not cw["paragraphs"]:
         # 兜底：用户编辑可能丢了【0-15s】时间戳标记，整段当一个段落（前端体验优先，不拒绝）
@@ -326,6 +437,15 @@ async def confirm_plan(pid: str, req: ConfirmPlanRequest, user: str = Depends(ge
     project.plan_id = f"plan_{project.project_id}_v{project.plan_version}"
     project.storyboard = {}            # 文案变了，旧分镜失效
     project.video_tasks = []           # 旧视频结果作废
+    project.audio = {"status": "none", "version": (project.audio or {}).get("version", 0)}
+    project.audio_tasks = []
+    project.segment_tasks = []
+    project.render_tasks = []
+    project.render = {"status": "none", "version": (project.render or {}).get("version", 0)}
+    project.final_video = {"status": "none", "url": "", "preview_url": "",
+                           "duration_s": 0,
+                           "resolution": project.request.get("resolution", "1080p"),
+                           "aspect_ratio": project.request.get("aspect_ratio", "9:16")}
     project.status, project.progress, project.message = "plan_confirmed", 15, "方案已确认"
     project.dump()
     return {"project_id": pid, "status": "plan_confirmed",
@@ -337,7 +457,10 @@ async def confirm_plan(pid: str, req: ConfirmPlanRequest, user: str = Depends(ge
 @router.post("/projects/{pid}/storyboard", status_code=202)
 async def create_storyboard(pid: str, req: StoryboardRequest, user: str = Depends(get_current_user)):
     project = _owned_project(pid, user)
-    _state_guard(project, {"plan_confirmed"}, "生成分镜")
+    recoverable_storyboard_failure = (project.status == "failed" and
+                                      (project.audio or {}).get("status") == "ready")
+    if project.status != "audio_ready" and not recoverable_storyboard_failure:
+        _state_guard(project, {"audio_ready"}, "生成分镜")
     if req.plan_id and req.plan_id != project.plan_id:
         _err(409, "invalid_state", f"plan_id 不匹配（当前 {project.plan_id}）")
     project.status, project.progress, project.message = "storyboarding", 20, "正在拆分分镜…"
@@ -346,15 +469,19 @@ async def create_storyboard(pid: str, req: StoryboardRequest, user: str = Depend
     return {"project_id": pid, "status": "storyboarding", "progress": 20, "message": "正在拆分分镜…"}
 
 
-# ---- 接口4：修改单个 Shot ----
+# ---- 接口4：修改 Shot / Segment（修改后整个 Segment 失效） ----
 
 @router.put("/projects/{pid}/shots/{shot_id}")
 async def update_shot(pid: str, shot_id: int, patch: ShotPatch, user: str = Depends(get_current_user)):
     project = _owned_project(pid, user)
     _require_storyboard(project)
-    _state_guard(project, {"waiting_storyboard_confirm", "generating"}, "修改分镜")
+    _state_guard(project, {"waiting_storyboard_confirm", "generating", "video_ready", "completed"}, "修改分镜")
     shot = _find_shot(project, shot_id)
-    _guard_shots_available(project, [shot_id])
+    segment = segment_planner.segment_for_shot(project.storyboard, shot_id)
+    if segment:
+        _guard_segments_available(project, [segment["segment_id"]])
+    else:
+        _guard_shots_available(project, [shot_id])
     upd = patch.model_dump(exclude_none=True)
     if "reference_asset_ids" in upd:
         ids = list(dict.fromkeys(upd["reference_asset_ids"]))
@@ -370,6 +497,17 @@ async def update_shot(pid: str, shot_id: int, patch: ShotPatch, user: str = Depe
     ok, errs, norm = v.validate_shot_patch(upd)
     if not ok:
         _err(400, "invalid_param", "；".join(errs[:4]))
+    # 先校验修改后的 Segment 图片总数，避免 update 后才发现超限留下半成品。
+    if segment and "reference_asset_ids" in norm:
+        segment_refs = []
+        for member_id in segment.get("shot_ids", []):
+            refs = norm["reference_asset_ids"] if member_id == shot_id else _find_shot(project, member_id).get("reference_asset_ids", [])
+            for asset_id in refs:
+                if asset_id not in segment_refs:
+                    segment_refs.append(asset_id)
+        if len(segment_refs) > visual_rag.MAX_REFERENCES_PER_SEGMENT:
+            _err(400, "invalid_param",
+                 f"修改后 {segment['segment_id']} 共 {len(segment_refs)} 张参考图，超过 Segment 上限 {visual_rag.MAX_REFERENCES_PER_SEGMENT}")
     shot.update(norm)
     if "reference_asset_ids" in norm:
         shot["reference_roles"] = [
@@ -377,19 +515,91 @@ async def update_shot(pid: str, shot_id: int, patch: ShotPatch, user: str = Depe
             for i, aid in enumerate(norm["reference_asset_ids"])
         ]
         shot["grounding_strength"] = "strong" if norm["reference_asset_ids"] else "none"
+    if segment:
+        segment = segment_planner.refresh_segment(project.storyboard, segment["segment_id"])
+        segment["status"] = "stale"
+        _invalidate_render(project)
+        project.status, project.progress = "waiting_storyboard_confirm", 40
+        project.message = f"{segment['segment_id']} 已修改，需要重新生成"
     project.dump()
-    return {"project_id": pid, "shot_id": shot_id, "status": "updated", "shot": shot}
+    return {"project_id": pid, "shot_id": shot_id, "status": "updated", "shot": shot,
+            "invalidated_segment_id": segment.get("segment_id") if segment else None}
 
 
-# ---- 接口5：批量生成视频 Shot ----
+@router.put("/projects/{pid}/segments/{segment_id}")
+async def update_segment(pid: str, segment_id: str, patch: SegmentPatch,
+                         user: str = Depends(get_current_user)):
+    project = _owned_project(pid, user)
+    _require_storyboard(project)
+    _state_guard(project, {"waiting_storyboard_confirm", "generating", "video_ready", "completed"}, "修改 Segment")
+    segment = _find_segment(project, segment_id)
+    _guard_segments_available(project, [segment_id])
+    update = patch.model_dump(exclude_none=True)
+    if "transition_note" in update:
+        note = update["transition_note"].strip()
+        if len(note) > 500:
+            _err(400, "invalid_param", "transition_note 最多 500 字")
+        segment["transition_note"] = note
+    segment["status"] = "stale"
+    _invalidate_render(project)
+    project.status, project.progress = "waiting_storyboard_confirm", 40
+    project.message = f"{segment_id} 已修改，需要重新生成"
+    project.dump()
+    return {"project_id": pid, "segment_id": segment_id, "status": "updated", "segment": segment}
+
+
+# ---- 接口5：批量生成 Segment（旧 Storyboard 回退到 Shot） ----
 
 @router.post("/projects/{pid}/generate", status_code=202)
 async def generate_batch(pid: str, req: GenerateShotsRequest, user: str = Depends(get_current_user)):
     project = _owned_project(pid, user)
     _require_storyboard(project)
-    _state_guard(project, {"waiting_storyboard_confirm", "generating"}, "生成视频")
+    _state_guard(project, {"waiting_storyboard_confirm", "generating", "video_ready"}, "生成视频")
     if not req.generate_video:
         _err(400, "invalid_param", "generate_image 单独生成本版未实现（video-only）；请设 generate_video=true")
+    segments = project.storyboard.get("segments", [])
+    if segments:
+        valid_segment_ids = {segment["segment_id"] for segment in segments}
+        selected = list(dict.fromkeys(req.segments))
+        if not selected and req.shots:
+            # 兼容旧前端：选择 Shot 等价于选择其所属的完整 Segment。
+            selected = list(dict.fromkeys(
+                segment_planner.segment_for_shot(project.storyboard, shot_id)["segment_id"]
+                for shot_id in req.shots
+                if segment_planner.segment_for_shot(project.storyboard, shot_id)
+            ))
+        if not selected:
+            selected = [segment["segment_id"] for segment in segments]
+        unknown = [segment_id for segment_id in selected if segment_id not in valid_segment_ids]
+        if unknown:
+            _err(400, "invalid_param", f"segments 不存在: {unknown}，可用 {sorted(valid_segment_ids)}")
+        _guard_segments_available(project, selected)
+        ungrounded = [shot_id for segment_id in selected
+                      for shot_id in _find_segment(project, segment_id).get("shot_ids", [])
+                      if not _find_shot(project, shot_id).get("reference_asset_ids")]
+        if project.visual_profile.get("reference_asset_ids") and ungrounded:
+            _err(409, "invalid_state", f"以下 Shot 尚未绑定实景参考图: {sorted(set(ungrounded))}")
+
+        tid = _new_id("st")
+        snapshot = req.model_dump()
+        snapshot.update({
+            "segments": selected,
+            "plan_version": project.plan_version,
+            "storyboard_version": project.storyboard.get("storyboard_version", 2),
+            "audio_version": project.audio.get("version"),
+            "master_audio_sha256": project.audio.get("master_sha256"),
+            "reference_version": project.reference_version,
+        })
+        task = P.SegmentTask(tid, pid, "batch", snapshot)
+        task.init_segments([_find_segment(project, segment_id) for segment_id in selected])
+        P.SEGMENT_TASKS[tid] = task
+        project.segment_tasks.append(tid)
+        project.status, project.progress, project.message = "generating", 45, "Segment 视频生成中"
+        task.dump(), project.dump()
+        asyncio.create_task(_run_segment_task(project, task, selected))
+        return {"task_id": tid, "project_id": pid, "status": "generating", "progress": 0,
+                "segments": task.segments}
+
     valid_ids = {sh["shot_id"] for sc in project.storyboard["scenes"] for sh in sc["shot_list"]}
     unknown = [s for s in req.shots if s not in valid_ids]
     if unknown:
@@ -417,9 +627,9 @@ async def generate_batch(pid: str, req: GenerateShotsRequest, user: str = Depend
 
 @router.get("/tasks/{task_id}")
 async def get_video_task(task_id: str, user: str = Depends(get_current_user)):
-    vt = _get_video_task(task_id)
-    _owned_project(vt.project_id, user)   # 任务归属项目，沿用项目归属校验
-    return vt.to_dict()
+    task = _get_task(task_id)
+    _owned_project(task.project_id, user)   # 任务归属项目，沿用项目归属校验
+    return task.to_dict()
 
 
 # ---- §十五：Shot 级重新生成 ----
@@ -428,11 +638,37 @@ async def get_video_task(task_id: str, user: str = Depends(get_current_user)):
 async def regenerate_shot(pid: str, shot_id: int, req: RegenerateShotRequest, user: str = Depends(get_current_user)):
     project = _owned_project(pid, user)
     _require_storyboard(project)
+    _state_guard(project, {"waiting_storyboard_confirm", "generating", "video_ready", "completed"}, "重新生成")
     shot = _find_shot(project, shot_id)
-    _guard_shots_available(project, [shot_id])
+    segment = segment_planner.segment_for_shot(project.storyboard, shot_id)
+    if segment:
+        _guard_segments_available(project, [segment["segment_id"]])
+    else:
+        _guard_shots_available(project, [shot_id])
     if req.prompt and req.prompt.strip() and req.prompt.strip() != shot.get("prompt"):
         shot["prompt"] = req.prompt.strip()   # prompt 变化先写回分镜，新任务自然覆盖旧结果
+        if segment:
+            segment["status"] = "stale"
         project.dump()
+    if segment:
+        segment_id = segment["segment_id"]
+        segment["status"] = "stale"
+        _invalidate_render(project)
+        tid = _new_id("st")
+        snapshot = {"segments": [segment_id], "regenerate": req.model_dump(),
+                    "audio_version": project.audio.get("version"),
+                    "master_audio_sha256": project.audio.get("master_sha256"),
+                    "reference_version": project.reference_version}
+        task = P.SegmentTask(tid, pid, "single", snapshot)
+        task.init_segments([segment])
+        P.SEGMENT_TASKS[tid] = task
+        project.segment_tasks.append(tid)
+        project.status, project.progress = "generating", 45
+        project.message = f"重新生成 {segment_id}（包含 Shot {segment.get('shot_ids', [])}）"
+        task.dump(), project.dump()
+        asyncio.create_task(_run_segment_task(project, task, [segment_id]))
+        return {"task_id": tid, "shot_id": shot_id, "segment_id": segment_id,
+                "status": "generating", "regeneration_unit": "segment"}
     tid = _new_id("vt")
     snapshot = {"shot_ids": [shot_id], "generate_image": False, "generate_video": True,
                 "regenerate": req.model_dump(), "reference_version": project.reference_version}
@@ -446,29 +682,107 @@ async def regenerate_shot(pid: str, shot_id: int, req: RegenerateShotRequest, us
     return {"task_id": tid, "shot_id": shot_id, "status": "generating"}
 
 
-# ---- 接口7/8/9：音频、合成、成片查询（本版占位 reserved） ----
+@router.post("/projects/{pid}/segments/{segment_id}/regenerate", status_code=202)
+async def regenerate_segment(pid: str, segment_id: str, req: RegenerateSegmentRequest,
+                             user: str = Depends(get_current_user)):
+    project = _owned_project(pid, user)
+    _require_storyboard(project)
+    _state_guard(project, {"waiting_storyboard_confirm", "generating", "video_ready", "completed"}, "重新生成")
+    segment = _find_segment(project, segment_id)
+    _guard_segments_available(project, [segment_id])
+    if req.transition_note is not None:
+        note = req.transition_note.strip()
+        if len(note) > 500:
+            _err(400, "invalid_param", "transition_note 最多 500 字")
+        segment["transition_note"] = note
+    segment["status"] = "stale"
+    _invalidate_render(project)
+    tid = _new_id("st")
+    snapshot = {"segments": [segment_id], "regenerate": req.model_dump(),
+                "audio_version": project.audio.get("version"),
+                "master_audio_sha256": project.audio.get("master_sha256"),
+                "reference_version": project.reference_version}
+    task = P.SegmentTask(tid, pid, "single", snapshot)
+    task.init_segments([segment])
+    P.SEGMENT_TASKS[tid] = task
+    project.segment_tasks.append(tid)
+    project.status, project.progress, project.message = "generating", 45, f"重新生成 {segment_id}"
+    task.dump(), project.dump()
+    asyncio.create_task(_run_segment_task(project, task, [segment_id]))
+    return {"task_id": tid, "project_id": pid, "segment_id": segment_id, "status": "generating"}
+
+
+# ---- 接口7/8/9：母带、最终合成、成片查询 ----
 
 @router.post("/projects/{pid}/audio", status_code=202)
-async def create_audio(pid: str, user: str = Depends(get_current_user), req: AudioRequest = None):
+async def create_audio(pid: str, req: AudioRequest | None = None,
+                       user: str = Depends(get_current_user)):
     project = _owned_project(pid, user)
-    return {"task_id": f"audio_{project.project_id}_reserved", "project_id": pid,
-            "status": "reserved", "voice": {"status": "reserved"}, "music": {"status": "reserved"}}
+    _state_guard(project, {"plan_confirmed", "audio_ready", "failed"}, "生成 Master Audio")
+    if any((task := P.load_audio_task(task_id)) is not None and task.status == "generating"
+           for task_id in project.audio_tasks):
+        _err(409, "audio_generating", "Master Audio 正在生成，请勿重复提交")
+    request = (req or AudioRequest()).model_dump()
+    tid = _new_id("at")
+    task = P.AudioTask(tid, pid, request)
+    P.AUDIO_TASKS[tid] = task
+    project.audio_tasks.append(tid)
+    # 母带改变后所有时间轴与视频都要重建。
+    project.storyboard = {}
+    project.segment_tasks = []
+    project.render_tasks = []
+    project.render = {"status": "none", "version": (project.render or {}).get("version", 0)}
+    project.final_video = {"status": "none", "url": "", "preview_url": "", "duration_s": 0,
+                           "resolution": project.request.get("resolution", "1080p"),
+                           "aspect_ratio": project.request.get("aspect_ratio", "9:16")}
+    project.status, project.progress, project.message = "audio_generating", 15, "正在生成完整旁白与背景音乐"
+    task.dump(), project.dump()
+    asyncio.create_task(_run_audio_task(project, task))
+    return {"task_id": tid, "project_id": pid, "status": "generating", "progress": 0}
 
 
 @router.post("/projects/{pid}/render", status_code=202)
-async def create_render(pid: str, user: str = Depends(get_current_user), req: RenderRequest = None):
+async def create_render(pid: str, req: RenderRequest | None = None,
+                        user: str = Depends(get_current_user)):
     project = _owned_project(pid, user)
-    return {"task_id": f"render_{project.project_id}_reserved", "project_id": pid,
-            "status": "reserved"}
+    _state_guard(project, {"video_ready", "completed"}, "合成最终视频")
+    if any((task := P.load_render_task(task_id)) is not None and task.status == "rendering"
+           for task_id in project.render_tasks):
+        _err(409, "rendering", "最终视频正在合成，请勿重复提交")
+    all_ids = [segment["segment_id"] for segment in project.storyboard.get("segments", [])]
+    requested = list(dict.fromkeys((req or RenderRequest()).segment_ids))
+    if requested and requested != all_ids:
+        _err(400, "invalid_param", "最终成片必须按时间轴包含全部 Segment")
+    results = P.merge_segment_results(project)
+    missing = [segment_id for segment_id in all_ids
+               if results.get(segment_id, {}).get("status") != "completed"]
+    if missing:
+        _err(409, "invalid_state", f"以下 Segment 尚未生成或已失效: {missing}")
+    request = (req or RenderRequest()).model_dump()
+    request["segment_ids"] = all_ids
+    request["audio_version"] = project.audio.get("version")
+    request["master_audio_sha256"] = project.audio.get("master_sha256")
+    tid = _new_id("rt")
+    task = P.RenderTask(tid, pid, request)
+    P.RENDER_TASKS[tid] = task
+    project.render_tasks.append(tid)
+    project.render = {"status": "rendering", "version": (project.render or {}).get("version", 0),
+                      "task_id": tid}
+    project.status, project.progress, project.message = "composing", 90, "正在拼接画面并回铺 Master Audio"
+    task.dump(), project.dump()
+    asyncio.create_task(_run_render_task(project, task))
+    return {"task_id": tid, "project_id": pid, "status": "rendering", "progress": 0}
 
 
 @router.get("/projects/{pid}/render/status")
 async def render_status(pid: str, user: str = Depends(get_current_user)):
     project = _owned_project(pid, user)
-    return {"task_id": f"render_{project.project_id}_reserved", "status": "reserved", "progress": 0,
-            "video": {"status": "reserved", "url": "", "duration_s": 0,
-                      "resolution": project.request.get("resolution", "1080p"),
-                      "aspect_ratio": project.request.get("aspect_ratio", "9:16")}}
+    task = P.load_render_task(project.render_tasks[-1]) if project.render_tasks else None
+    return {"task_id": task.task_id if task else None,
+            "status": task.status if task else project.render.get("status", "none"),
+            "progress": task.progress if task else 0,
+            "message": task.message if task else "",
+            "video": project.final_video}
 
 
 # ---- 补充端点：项目列表（历史记录 / 我的创作，仅返回当前用户的） ----
@@ -479,9 +793,13 @@ async def list_projects(user: str = Depends(get_current_user)):
     for p in P.list_projects():
         if p.username != user:
             continue
+        segment_clips = P.merge_segment_results(p)
         clips = P.merge_video_results(p)
-        cover = next((c["video_url"] for c in clips.values()
+        cover = next((c["video_url"] for c in segment_clips.values()
                       if c.get("status") == "completed" and c.get("video_url")), None)
+        if not cover:
+            cover = next((c["video_url"] for c in clips.values()
+                          if c.get("status") == "completed" and c.get("video_url")), None)
         if not cover:
             assets = ((p.visual_assets or {}).get("ref_images") or
                       (p.visual_assets or {}).get("kb_images") or [])
@@ -493,7 +811,9 @@ async def list_projects(user: str = Depends(get_current_user)):
             "status": p.status,
             "progress": p.progress,
             "duration_s": p.request.get("duration_s", 0),
-            "shot_count": len(clips),
+            "shot_count": sum(len(segment.get("shot_ids", []))
+                              for segment in p.storyboard.get("segments", [])) or len(clips),
+            "segment_count": len(p.storyboard.get("segments", [])),
             "cover_url": cover,
             "created_at": p.created_at,
             "updated_at": p.updated_at,

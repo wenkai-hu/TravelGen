@@ -17,6 +17,7 @@ REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 REFERENCE_ROOT = os.path.join(REPO, "assets", "references")
 MAX_IMAGE_BYTES = 12 * 1024 * 1024
 MAX_REFERENCES_PER_SHOT = 3
+MAX_REFERENCES_PER_SEGMENT = 9
 
 
 def place_id(city: str, location: str) -> str:
@@ -273,6 +274,63 @@ def compile_shot_input(project, shot: dict) -> tuple[str, list[str]]:
     if unsupported:
         suffix += f"参考图不支持的内容：{unsupported}；不要生成这些视角或结构。"
     return shot["prompt"].rstrip() + suffix, images
+
+
+def compile_segment_input(project, segment: dict) -> tuple[str, list[str]]:
+    """把段内多个 Shot、图片绑定和音频语义编译为一次 Seedance 输入。"""
+    shots_by_id = {
+        shot.get("shot_id"): shot
+        for scene in getattr(project, "storyboard", {}).get("scenes", [])
+        for shot in scene.get("shot_list", [])
+    }
+    shots = [shots_by_id[shot_id] for shot_id in segment.get("shot_ids", [])
+             if shot_id in shots_by_id]
+    if not shots:
+        raise ValueError(f"{segment.get('segment_id')} 没有可编译的 Shot")
+    assets = {asset.get("asset_id"): asset for asset in getattr(project, "reference_assets", [])}
+    ordered_ids = []
+    for shot in shots:
+        for asset_id in shot.get("reference_asset_ids", []):
+            if asset_id in assets and assets[asset_id].get("local_path") and asset_id not in ordered_ids:
+                ordered_ids.append(asset_id)
+    if len(ordered_ids) > MAX_REFERENCES_PER_SEGMENT:
+        raise ValueError(
+            f"{segment.get('segment_id')} 去重后有 {len(ordered_ids)} 张参考图，超过 {MAX_REFERENCES_PER_SEGMENT} 张"
+        )
+    images = [_local_data_uri(assets[asset_id]["local_path"]) for asset_id in ordered_ids]
+    label = {asset_id: f"图片{index}" for index, asset_id in enumerate(ordered_ids, 1)}
+    start_ms = int(segment.get("timeline_start_ms", 0))
+    duration_s = int(segment.get("duration_ms", 0)) / 1000
+    lines = [
+        f"生成一条完整的{duration_s:g}秒写实电影感文旅短片。",
+        "@音频1是最终旁白与背景音乐母带切片；严格跟随其语义、时间和节奏安排画面切换，"
+        "不改写旁白，不增加新对白，不生成文字、字幕、标志或水印。",
+    ]
+    for asset_id in ordered_ids:
+        used_by = [str(shot["shot_id"]) for shot in shots
+                   if asset_id in shot.get("reference_asset_ids", [])]
+        lines.append(f"{label[asset_id]}：作为 Shot {'/'.join(used_by)} 的真实地点依据。")
+    for order, shot in enumerate(shots, 1):
+        local_start = (int(shot.get("timeline_start_ms", start_ms)) - start_ms) / 1000
+        local_end = (int(shot.get("timeline_end_ms", start_ms)) - start_ms) / 1000
+        refs = "、".join(label[asset_id] for asset_id in shot.get("reference_asset_ids", [])
+                        if asset_id in label) or "本 Shot 无单独参考图"
+        must_keep = "；".join(_strings(shot.get("must_keep"))) or "真实地点的主体结构和空间关系"
+        allowed = "；".join(_strings(shot.get("allowed_changes"))) or "自然光线和少量动态元素"
+        lines.append(
+            f"Shot {order}（{local_start:g}–{local_end:g}秒，使用{refs}）："
+            f"{shot.get('prompt', '')}。必须保持：{must_keep}。允许改变：{allowed}。"
+        )
+    lines.append(
+        f"段内统一要求：{segment.get('transition_note') or '保持地点、光线和色调连贯，镜头自然转场'}。"
+        "不得增加参考图中不存在的标志性建筑，不得改变主要道路、建筑、山水的相对位置。"
+    )
+    units = {unit.get("unit_id"): unit for unit in getattr(project, "audio", {}).get("narration_units", [])}
+    narration = "".join(units[unit_id].get("text", "")
+                         for unit_id in segment.get("narration_unit_ids", []) if unit_id in units)
+    if narration:
+        lines.append(f"旁白原文仅用于校验语义：{narration}")
+    return "\n".join(lines), images
 
 
 def public_visual_assets(project, kb_assets: dict | None = None) -> dict:

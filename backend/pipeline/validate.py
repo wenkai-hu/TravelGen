@@ -14,14 +14,15 @@ MOVEMENT_ENUM = ["固定", "推", "拉", "摇", "移", "跟", "升降", "环绕"
 ANGLE_ENUM = ["俯拍", "平拍", "仰拍", "侧拍"]
 SHOT_SIZE_ENUM = ["大远景", "全景", "中景", "近景", "特写"]
 
-# Seedance 2.0 单镜时长硬区间：低于4s被钳制、高于15s拒收，故分镜时长直接约束在此区间
-SHOT_MIN, SHOT_MAX = 4, 15
+# Shot 是 Segment 内的编辑单位，可以短于 Seedance 最小生成时长；4–15s 限制属于 Segment。
+SHOT_MIN, SHOT_MAX = 1, 15
+SEGMENT_MIN, SEGMENT_MAX = 4, 15
 
 
 def shot_count_range(target_s):
-    """目标时长 → 合法镜头数量区间（每镜 SHOT_MIN-SHOT_MAX 秒）。与 STORYBOARD_PROMPT 同一推导，保证提示词和校验一致。"""
+    """目标时长 → 合理 Shot 数区间；生成时长合法性由 Segment 校验负责。"""
     min_shots = max(1, -(-target_s // SHOT_MAX))  # ceil(target_s/15)：每镜顶格15s 所需最少镜数
-    max_shots = max(min_shots, target_s // SHOT_MIN)  # floor(target_s/4)：每镜保底4s 允许的最多镜数
+    max_shots = max(min_shots, target_s // 2)  # 避免生成大量无法观看的 1 秒碎镜头
     return min_shots, max_shots
 
 # 常见变体 → 标准枚举（LLM 漂移实测：暮色/侧俯/地面/推进 等）

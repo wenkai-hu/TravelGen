@@ -32,7 +32,8 @@ def _get(provider, path):
         return {"error": {"code": e.code, "message": e.read().decode("utf-8", "ignore")[:300]}}
 
 
-def submit(provider, prompt, duration=5, resolution="1080p", ratio="adaptive", images=None):
+def submit(provider, prompt, duration=5, resolution="1080p", ratio="adaptive", images=None,
+           audio=None, generate_audio=False):
     """提交单镜头生成任务；返回 (task_id, error)。task_id 形如 cpt-xxx。
     ratio 对应请求里的 aspect_ratio（官方字段名 ratio，9:16 竖屏短视频必须显式传，
     否则默认 adaptive 自适应比例）。
@@ -42,11 +43,16 @@ def submit(provider, prompt, duration=5, resolution="1080p", ratio="adaptive", i
     if images:
         content += [{"type": "image_url", "image_url": {"url": u}, "role": "reference_image"}
                     for u in images[:9]]  # 官方上限 9 张
+    if audio:
+        content.append({"type": "audio_url", "audio_url": {"url": audio},
+                        "role": "reference_audio"})
     body = {"model": provider["model"],
             "content": content,
             "duration": duration,
             "resolution": resolution,
             "ratio": ratio}
+    if generate_audio:
+        body["generate_audio"] = True
     data = _post(provider, "/contents/generations/tasks", body)
     if data.get("error"):
         return None, f"提交失败({data['error'].get('code')}): {data['error'].get('message', '')}"
@@ -91,16 +97,88 @@ def transcode_web(src, dest):
         exe = get_ffmpeg_exe()
     except ImportError:
         return False
-    tmp = dest + ".web.mp4"
-    cmd = [exe, "-y", "-i", src, "-an", "-c:v", "libx264", "-preset", "veryfast",
-           "-crf", "18", "-pix_fmt", "yuv420p", "-movflags", "+faststart", tmp]
+    tmp = dest + ".tmp.mp4"
+    cmd = [exe, "-hide_banner", "-loglevel", "error", "-y", "-i", src, "-an",
+           "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
+           "-pix_fmt", "yuv420p", "-movflags", "+faststart", tmp]
     try:
-        r = subprocess.run(cmd, capture_output=True, timeout=180)
-        if r.returncode != 0:
+        result = subprocess.run(cmd, capture_output=True, timeout=300)
+        if result.returncode != 0:
             return False
         os.replace(tmp, dest)
         return True
     except Exception:
         if os.path.exists(tmp):
             os.remove(tmp)
+        return False
+
+
+def normalize_visual_only(src, dest):
+    """保留 Seedance 原始文件，另存浏览器可播的无声画面轨。"""
+    try:
+        from imageio_ffmpeg import get_ffmpeg_exe
+        exe = get_ffmpeg_exe()
+    except ImportError:
+        return False
+    tmp = dest + ".tmp.mp4"
+    cmd = [exe, "-hide_banner", "-loglevel", "error", "-y", "-i", src, "-an",
+           "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
+           "-pix_fmt", "yuv420p", "-movflags", "+faststart", tmp]
+    try:
+        result = subprocess.run(cmd, capture_output=True, timeout=300)
+        if result.returncode != 0:
+            return False
+        os.replace(tmp, dest)
+        return True
+    except Exception:
+        if os.path.exists(tmp):
+            os.remove(tmp)
+        return False
+
+
+def mux_audio(visual_path, audio_path, dest):
+    """把原始 master audio 切片回铺到单个 Segment 预览。"""
+    try:
+        from imageio_ffmpeg import get_ffmpeg_exe
+        exe = get_ffmpeg_exe()
+    except ImportError:
+        return False
+    tmp = dest + ".tmp.mp4"
+    cmd = [exe, "-hide_banner", "-loglevel", "error", "-y",
+           "-i", visual_path, "-i", audio_path,
+           "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy",
+           "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", tmp]
+    try:
+        result = subprocess.run(cmd, capture_output=True, timeout=300)
+        if result.returncode != 0:
+            return False
+        os.replace(tmp, dest)
+        return True
+    except Exception:
+        if os.path.exists(tmp):
+            os.remove(tmp)
+        return False
+
+
+def create_placeholder_video(dest, duration, resolution="720p", ratio="9:16"):
+    """demo 模式生成真实可拼接的静音占位视频。"""
+    try:
+        from imageio_ffmpeg import get_ffmpeg_exe
+        exe = get_ffmpeg_exe()
+    except ImportError:
+        return False
+    short = 1080 if resolution == "1080p" else 720
+    if ratio == "16:9":
+        width, height = round(short * 16 / 9 / 2) * 2, short
+    elif ratio == "1:1":
+        width = height = short
+    else:
+        width, height = short, round(short * 16 / 9 / 2) * 2
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    cmd = [exe, "-hide_banner", "-loglevel", "error", "-y",
+           "-f", "lavfi", "-i", f"color=c=0x173b3f:s={width}x{height}:r=30:d={duration}",
+           "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-movflags", "+faststart", dest]
+    try:
+        return subprocess.run(cmd, capture_output=True, timeout=300).returncode == 0
+    except Exception:
         return False

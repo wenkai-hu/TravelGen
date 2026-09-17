@@ -84,6 +84,14 @@ export function createStoryboard(pid, planId) {
   })
 }
 
+// 先生成整条旁白+BGM 母带；Storyboard 将基于真实音频时间轴规划 Segment。
+export function createAudio(pid, payload = {}) {
+  return request(`/api/projects/${pid}/audio`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  })
+}
+
 // 接口4：修改单个镜头（PUT /api/projects/{pid}/shots/{shot_id}），只传要改的字段
 export function updateShot(pid, shotId, patch) {
   return request(`/api/projects/${pid}/shots/${shotId}`, {
@@ -98,6 +106,39 @@ export function generateShots(pid, shotIds) {
     method: 'POST',
     body: JSON.stringify({ shots: shotIds, generate_video: true, generate_image: false }),
   })
+}
+
+// 新管线：一个 Segment 可包含多个 Shot，一次 Seedance 请求生成整段。
+export function generateSegments(pid, segmentIds) {
+  return request(`/api/projects/${pid}/generate`, {
+    method: 'POST',
+    body: JSON.stringify({ segments: segmentIds, generate_video: true, generate_image: false }),
+  })
+}
+
+export function updateSegment(pid, segmentId, patch) {
+  return request(`/api/projects/${pid}/segments/${segmentId}`, {
+    method: 'PUT',
+    body: JSON.stringify(patch),
+  })
+}
+
+export function regenerateSegment(pid, segmentId, payload = {}) {
+  return request(`/api/projects/${pid}/segments/${segmentId}/regenerate`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  })
+}
+
+export function createRender(pid, payload = {}) {
+  return request(`/api/projects/${pid}/render`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  })
+}
+
+export function getRenderStatus(pid) {
+  return request(`/api/projects/${pid}/render/status`)
 }
 
 // 接口6：视频任务状态（GET /api/tasks/{task_id}），单镜头状态看 shots[]
