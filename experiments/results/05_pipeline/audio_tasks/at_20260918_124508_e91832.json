@@ -1,0 +1,62 @@
+{
+  "task_id": "at_20260918_124508_e91832",
+  "project_id": "p_20260918_124112_11597e",
+  "kind": "audio",
+  "status": "completed",
+  "progress": 100,
+  "message": "Master audio 已生成",
+  "request": {
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "music": "ambient"
+  },
+  "result": {
+    "status": "ready",
+    "version": 1,
+    "voice_profile": {
+      "engine": "edge-tts",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "requested_rate": "-10%"
+    },
+    "narration_units": [
+      {
+        "unit_id": "n_01",
+        "segment_id": "seg_01",
+        "text": "太子湾春日顶流，郁金香炸场回归！浅色建筑前花海层叠，一脚踩进莫奈花园。湖边草地遛弯放空，春日松弛感直接拉满。白花黄蕊风里摇，太子湾春日，缺你不可！",
+        "start_ms": 0,
+        "end_ms": 15000,
+        "speech_start_ms": 300,
+        "speech_end_ms": 14196,
+        "tts_duration_ms": 13896,
+        "rate": "+25%"
+      }
+    ],
+    "music_cues": [
+      {
+        "cue_id": "m_01",
+        "preset": "ambient",
+        "start_ms": 0,
+        "end_ms": 15000,
+        "gain_db": -22
+      }
+    ],
+    "voice_track_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260918_124112_11597e\\v1\\voice_track.wav",
+    "voice_track_url": "/assets/audio/p_20260918_124112_11597e/v1/voice_track.wav",
+    "bgm_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260918_124112_11597e\\v1\\bgm_bed.wav",
+    "master_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260918_124112_11597e\\v1\\master_audio.wav",
+    "master_url": "/assets/audio/p_20260918_124112_11597e/v1/master_audio.wav",
+    "master_sha256": "7527fddb03cba315244ee0bc60b992fabc4261914113b449457a1a89ac38177e",
+    "duration_ms": 15000,
+    "slices": [
+      {
+        "segment_id": "seg_01",
+        "local_path": "D:\\code\\TravelGen-main\\assets\\audio\\p_20260918_124112_11597e\\v1\\audio_seg_01.wav",
+        "url": "/assets/audio/p_20260918_124112_11597e/v1/audio_seg_01.wav",
+        "sha256": "7527fddb03cba315244ee0bc60b992fabc4261914113b449457a1a89ac38177e",
+        "duration_ms": 15000
+      }
+    ]
+  },
+  "error": null,
+  "created_at": "2026-09-18T04:45:08.002173+00:00",
+  "updated_at": "2026-09-18T04:45:22.618258+00:00"
+}

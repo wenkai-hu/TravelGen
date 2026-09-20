@@ -26,6 +26,7 @@ assets/images_raw/
 experiments/results/03_video/*.mp4
 experiments/results/04_voice/*.wav
 experiments/results/04_voice/*.mp3
+assets
 
 # 注：experiments/results/ 下的 .md/.csv/.json 文本结果要提交（可复现），仅排除视频音频文件
 
