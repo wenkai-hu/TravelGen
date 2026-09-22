@@ -1,0 +1,37 @@
+{
+  "task_id": "voice_20260920_215547_5af2ad",
+  "project_id": "p_20260920_211436_a96ea5",
+  "kind": "voice_candidate",
+  "status": "completed",
+  "progress": 100,
+  "message": "自定义音色候选已生成，请试听确认",
+  "request": {
+    "description": "稚嫩幼儿女童的声音 可爱风格"
+  },
+  "result": {
+    "status": "candidate_ready",
+    "voice_id": "custom_voice_20260920_215547_5af2ad",
+    "name": "自定义音色",
+    "description": "由用户描述生成，确认后作为所有 Segment 的统一声音身份参考",
+    "source": "custom",
+    "reference_path": "D:\\code\\TravelGen-main\\assets\\media\\voices\\custom\\p_20260920_211436_a96ea5\\voice_20260920_215547_5af2ad\\reference_voice.wav",
+    "preview_url": "/assets/media/voices/custom/p_20260920_211436_a96ea5/voice_20260920_215547_5af2ad/reference_voice.wav",
+    "reference_sha256": "9c39b244656aae2d11497a9adcc69a1f24a0545237236816944b4676d19ef472",
+    "raw_video_path": "D:\\code\\TravelGen-main\\assets\\media\\voices\\custom\\p_20260920_211436_a96ea5\\voice_20260920_215547_5af2ad\\seedance_raw.mp4",
+    "analysis": {
+      "status": "passed",
+      "has_audio": true,
+      "duration_seconds": 5.088,
+      "expected_duration_seconds": 5,
+      "duration_ok": true,
+      "tail_silence_seconds": 0.208,
+      "tail_activity_warning": false,
+      "speech_level_p90_dbfs": -17.71,
+      "music_detection": "not_available",
+      "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+    }
+  },
+  "error": null,
+  "created_at": "2026-09-20T13:55:47.647934+00:00",
+  "updated_at": "2026-09-20T13:59:04.175190+00:00"
+}

@@ -75,6 +75,101 @@ const stylePop = ref(false);
 const customAudience = ref("");
 const customStyle = ref("");
 
+// ── 九宫格键盘导航：↑↓←→ 跨格，光标/组内贴边才出格 ──
+const benchRef = ref(null);
+const NAV = {
+  ArrowUp: [-1, 0],
+  ArrowDown: [1, 0],
+  ArrowLeft: [0, -1],
+  ArrowRight: [0, 1],
+};
+const FOCUSABLE = "input, textarea, button, [tabindex]:not([tabindex='-1'])";
+
+// 按实测位置分行分列：响应式塌成单列时也自动成立。
+// 用 rect 而非 offsetTop —— 补充槽与九宫格不在同一 offsetParent 下。
+function slotMatrix() {
+  const boxes = [...benchRef.value.querySelectorAll(".craft-slot")].map((slot) => {
+    const rect = slot.getBoundingClientRect();
+    return { slot, top: rect.top, left: rect.left };
+  });
+  const rows = [];
+  for (const box of boxes) {
+    const row = rows.find((r) => Math.abs(r.top - box.top) < 8);
+    if (row) row.boxes.push(box);
+    else rows.push({ top: box.top, boxes: [box] });
+  }
+  return rows.map((r) =>
+    r.boxes.sort((a, b) => a.left - b.left).map((b) => b.slot),
+  );
+}
+
+function locate(matrix, el) {
+  for (let r = 0; r < matrix.length; r++) {
+    const c = matrix[r].findIndex((slot) => slot.contains(el));
+    if (c !== -1) return { r, c };
+  }
+  return null;
+}
+
+// 光标是否已贴到该方向的外缘
+function atEdge(el, key) {
+  const v = el.value;
+  if (el.tagName === "TEXTAREA") {
+    if (key === "ArrowUp") return !v.slice(0, el.selectionStart).includes("\n");
+    if (key === "ArrowDown") return !v.slice(el.selectionEnd).includes("\n");
+  }
+  if (key === "ArrowLeft") return (el.selectionStart ?? 0) === 0;
+  if (key === "ArrowRight") return (el.selectionEnd ?? v.length) === v.length;
+  return true; // 单行输入没有"行"，↑↓ 直接出格
+}
+
+// 分段按钮组（画幅/分辨率/模型）内左右走，已到组边缘则交给跨格
+function segMove(el, key) {
+  if (key !== "ArrowLeft" && key !== "ArrowRight") return false;
+  const seg = el.closest(".mini-seg");
+  if (!seg) return false;
+  const btns = [...seg.querySelectorAll("button")];
+  const j = btns.indexOf(el) + (key === "ArrowLeft" ? -1 : 1);
+  if (j < 0 || j >= btns.length) return false;
+  btns[j].focus();
+  return true;
+}
+
+function onGridKey(e) {
+  const dir = NAV[e.key];
+  if (!dir || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  const el = e.target;
+  if (!el) return;
+  if (el.closest(".n-slider")) {
+    if (dir[0] === 0) return; // 滑块的 ←→ 是调值键；↑↓ 与调值重复，放行跳格
+  } else if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+    if (!atEdge(el, e.key)) return; // 光标没贴边，先让给它
+  } else if (segMove(el, e.key)) {
+    e.preventDefault();
+    return;
+  }
+
+  const matrix = slotMatrix();
+  const at = locate(matrix, el);
+  if (!at) return;
+  const row = matrix[at.r + dir[0]];
+  if (!row) return;
+  const cell = row[Math.min(at.c + dir[1], row.length - 1)]; // 末行只有一格，落回第 0 列
+  const next = cell?.querySelector(FOCUSABLE);
+  if (!next) return;
+
+  e.preventDefault();
+  scenePop.value = audiencePop.value = stylePop.value = false;
+  next.focus();
+  if (next.setSelectionRange) {
+    try {
+      next.setSelectionRange(next.value.length, next.value.length); // 落到末尾，方便继续贴边出格
+    } catch {
+      /* number/date 等类型不支持选区，忽略 */
+    }
+  }
+}
+
 // ── 补充选项：补充说明 / 模型选择 / 参考图片 循环切换（点右侧箭头） ──
 const EXTRA_PANES = [
   { key: "description", label: "补充说明（可选）", icon: "📝" },
@@ -229,7 +324,12 @@ async function onSubmit() {
       </section>
 
       <!-- 工作台 -->
-      <div id="bench" class="bench-area fade-up-2">
+      <div
+        id="bench"
+        ref="benchRef"
+        class="bench-area fade-up-2"
+        @keydown="onGridKey"
+      >
         <div class="bench-left">
           <div class="craft-panel" :class="{ ready: requiredOk }">
             <!-- ① 内容素材 -->
@@ -281,12 +381,16 @@ async function onSubmit() {
                   style="width: 100%"
                 >
                   <template #trigger>
-                    <div class="pick-box" :class="{ empty: !form.scene_type }">
+                    <button
+                      type="button"
+                      class="pick-box"
+                      :class="{ empty: !form.scene_type }"
+                    >
                       <template v-if="sceneLabel"
                         >{{ sceneLabel.emoji }} {{ sceneLabel.value }}</template
                       >
                       <template v-else>点击放入「场景块」</template>
-                    </div>
+                    </button>
                   </template>
                   <div class="scene-picker">
                     <button
@@ -322,7 +426,9 @@ async function onSubmit() {
                   style="width: 100%"
                 >
                   <template #trigger>
-                    <div class="pick-box">{{ form.audience }}</div>
+                    <button type="button" class="pick-box">
+                      {{ form.audience }}
+                    </button>
                   </template>
                   <div class="chip-picker">
                     <button
@@ -366,7 +472,9 @@ async function onSubmit() {
                   style="width: 100%"
                 >
                   <template #trigger>
-                    <div class="pick-box">{{ form.style }}</div>
+                    <button type="button" class="pick-box">
+                      {{ form.style }}
+                    </button>
                   </template>
                   <div class="chip-picker">
                     <button
@@ -811,12 +919,15 @@ async function onSubmit() {
   user-select: none;
 }
 
-/* 选择类槽位 */
+/* 选择类槽位（真实 button：Tab 可达 + Enter/Space 开弹层） */
 .pick-box {
+  width: 100%;
   border: 1.5px dashed var(--slot-border);
   border-radius: 6px;
   padding: 8px 10px;
   font-size: 13px;
+  font-family: var(--font-sans);
+  text-align: left;
   color: var(--color-ink);
   background: rgba(255, 255, 255, 0.65);
   cursor: pointer;
@@ -830,6 +941,17 @@ async function onSubmit() {
 }
 .pick-box.empty {
   color: var(--slot-empty);
+}
+
+/* 键盘焦点环：九宫格里 Tab / 方向键走到哪一眼看得见 */
+.pick-box:focus-visible,
+.chip:focus-visible,
+.scene-opt:focus-visible,
+.mini-seg button:focus-visible,
+.extra-arrow:focus-visible,
+.asset-del:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .slot-note {

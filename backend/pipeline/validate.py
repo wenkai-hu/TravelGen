@@ -2,7 +2,7 @@
 """分镜 JSON 硬校验（Storyboard Schema v1，docs/Storyboard_Schema_v1.md）+ 枚举归一化。
 
 策略（三层防线）：
-1. 校验：枚举逐项检查 + 镜头数按总时长推导 + 每镜 4-15s + 总时长 target±10%
+1. 校验：枚举逐项检查 + 镜头数按总时长推导 + 每镜 1-15s + 总时长严格等于目标
 2. 归一化：LLM 常见枚举漂移（如 "暮色"→"黄昏"、"侧俯"→"侧拍"、"地面"→"地面机位"）自动修正后落库
 3. 无法归一化的字段仍判失败 → 上游带错误重试
 """
@@ -95,6 +95,10 @@ def normalize_shot(sh):
     for field in ("subject", "background", "prompt"):
         if not isinstance(sh.get(field), str) or not sh[field].strip():
             errors.append(f"shot {sid}: {field} 为空")
+    narration = sh.get("narration", "")
+    if narration is not None and not isinstance(narration, str):
+        errors.append(f"shot {sid}: narration 需为字符串")
+    sh["narration"] = str(narration or "").strip()
     return not errors, errors, sh
 
 
@@ -129,14 +133,16 @@ def validate_shot_patch(patch):
     for field in ("subject", "background", "prompt"):
         if field in patch and (not isinstance(patch[field], str) or not patch[field].strip()):
             errors.append(f"{field} 不能为空")
+    if "narration" in patch and not isinstance(patch["narration"], str):
+        errors.append("narration 需为字符串")
     return not errors, errors, patch
 
 
 def validate_and_normalize(text, target_s=60):
     """完整校验 + 归一化；返回 (ok, errors, data)。ok 时 data 为归一化后的分镜数据。
 
-    target_s 为成片目标时长（用户输入 duration_s），总时长容差取 max(5s, 目标10%)，
-    而非写死 60±5，否则非 60s 请求会被误拒。
+    target_s 为成片目标时长（用户输入 duration_s）。Segment 时长直接来自 Shot 合计，
+    因而必须严格等于目标，不能通过补静帧掩盖规划误差。
     """
     data, err = extract_json(text)
     if data is None:
@@ -176,9 +182,8 @@ def validate_and_normalize(text, target_s=60):
     if not min_shots <= len(shots) <= max_shots:
         errors.append(f"镜头总数 {len(shots)} 需在 {min_shots}-{max_shots}（时长{target_s}s ÷ 每镜{SHOT_MIN}-{SHOT_MAX}s）")
     total = sum(sh.get("duration_s", 0) for sh in shots if isinstance(sh.get("duration_s"), int))
-    tol = max(5, round(target_s * 0.1))
-    if not target_s - tol <= total <= target_s + tol:
-        errors.append(f"总时长 {total}s 超出目标 {target_s}s±{tol}")
+    if total != target_s:
+        errors.append(f"所有 Shot 总时长必须严格等于 {target_s}s，实际 {total}s")
 
     return not errors, errors, data
 

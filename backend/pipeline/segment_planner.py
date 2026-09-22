@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""把可编辑 Shot 归入 Seedance Segment，并写入精确时间窗。"""
+"""把连续 Shot 动态装入最长 15 秒的 Seedance Segment，不拆 Shot、不补时长。"""
 from __future__ import annotations
 
 from functools import lru_cache
@@ -26,57 +26,52 @@ def segment_for_shot(storyboard: dict, shot_id: int) -> dict | None:
     return find_segment(storyboard, shot.get("segment_id")) if shot else None
 
 
-def _partition_shots(shots: list[dict], target_ms: list[int]) -> list[list[dict]]:
-    """按顺序把 N 个 Shot 分给 K 个 Segment，最小化各组原始时长与目标时长差。"""
-    n, k = len(shots), len(target_ms)
-    if n < k:
-        raise ValueError(f"Shot 数量 {n} 少于 Segment 数量 {k}，无法保证每段至少一个 Shot")
-    weights = [max(1, int(round(float(shot.get("duration_s", 1)) * 1000))) for shot in shots]
-    prefix = [0]
-    for value in weights:
-        prefix.append(prefix[-1] + value)
+def _shot_ms(shot: dict) -> int:
+    value = shot.get("duration_s")
+    if not isinstance(value, (int, float)) or value <= 0:
+        raise ValueError(f"Shot {shot.get('shot_id')} 的 duration_s 非法")
+    duration = int(round(float(value) * 1000))
+    if duration > SEGMENT_MAX_MS:
+        raise ValueError(f"Shot {shot.get('shot_id')} 为 {duration / 1000:g}s，超过 Seedance 15 秒上限")
+    return duration
+
+
+def partition_shots(shots: list[dict]) -> list[list[dict]]:
+    """连续分组 DP：最少调用次数；同调用数时优先让前段更满，但绝不拆 Shot。"""
+    durations = [_shot_ms(shot) for shot in shots]
+    n = len(shots)
 
     @lru_cache(maxsize=None)
-    def solve(start: int, group: int):
-        if group == k:
-            return (0, ()) if start == n else (float("inf"), ())
-        remaining_groups = k - group
-        best_cost, best_cuts = float("inf"), ()
-        max_end = n - (remaining_groups - 1)
-        for end in range(start + 1, max_end + 1):
-            group_sum = prefix[end] - prefix[start]
-            tail_cost, tail_cuts = solve(end, group + 1)
-            cost = (group_sum - target_ms[group]) ** 2 + tail_cost
-            if cost < best_cost:
-                best_cost, best_cuts = cost, (end,) + tail_cuts
-        return best_cost, best_cuts
+    def solve(start: int):
+        if start == n:
+            return (0, (), ())
+        total = 0
+        candidates = []
+        for end in range(start + 1, n + 1):
+            total += durations[end - 1]
+            if total > SEGMENT_MAX_MS:
+                break
+            if total < SEGMENT_MIN_MS:
+                continue
+            tail = solve(end)
+            if tail is None:
+                continue
+            candidates.append((1 + tail[0], (end,) + tail[1], (total,) + tail[2]))
+        if not candidates:
+            return None
+        return min(candidates, key=lambda item: (item[0], tuple(-duration for duration in item[2])))
 
-    _, cuts = solve(0, 0)
-    groups, start = [], 0
-    for end in cuts:
-        groups.append(shots[start:end])
-        start = end
+    solution = solve(0)
+    if solution is None:
+        detail = "+".join(f"{value / 1000:g}" for value in durations)
+        raise ValueError(
+            f"Shot 时长序列 {detail}s 无法在不拆 Shot 的条件下组成 4–15 秒 Segment；请重新规划 Shot 时长"
+        )
+    groups, cursor = [], 0
+    for end in solution[1]:
+        groups.append(shots[cursor:end])
+        cursor = end
     return groups
-
-
-def _allocate_ranges(shots: list[dict], start_ms: int, end_ms: int) -> None:
-    total_ms = end_ms - start_ms
-    weights = [max(1, int(round(float(shot.get("duration_s", 1)) * 1000))) for shot in shots]
-    weight_sum = sum(weights)
-    cursor = start_ms
-    remaining = total_ms
-    for index, (shot, weight) in enumerate(zip(shots, weights)):
-        if index == len(shots) - 1:
-            duration = remaining
-        else:
-            duration = max(500, int(round(total_ms * weight / weight_sum)))
-            minimum_for_rest = 500 * (len(shots) - index - 1)
-            duration = min(duration, remaining - minimum_for_rest)
-        shot["timeline_start_ms"] = cursor
-        shot["timeline_end_ms"] = cursor + duration
-        shot["duration_s"] = round(duration / 1000, 3)
-        cursor += duration
-        remaining -= duration
 
 
 def _unique(values, limit=None):
@@ -89,16 +84,84 @@ def _unique(values, limit=None):
     return result
 
 
+def _assign_missing_narration(shots: list[dict], copywriting: dict | None) -> None:
+    """按 Shot 时长切分已确认原文，确保模型不会增删或改写正式旁白。"""
+    text = "".join(item.get("text", "").strip() for item in (copywriting or {}).get("paragraphs", []))
+    if not text:
+        for shot in shots:
+            shot["narration"] = str(shot.get("narration", "")).strip()
+        return
+    # KIMI 若已经把确认原文完整、无改写地分配给 Shot，保留它的语义边界。
+    existing = "".join(str(shot.get("narration", "")).strip() for shot in shots)
+    if existing == text:
+        return
+    total_weight = sum(_shot_ms(shot) for shot in shots)
+    cursor = 0
+    consumed = 0
+    for index, shot in enumerate(shots):
+        if index == len(shots) - 1:
+            end = len(text)
+        else:
+            consumed += _shot_ms(shot)
+            target = round(len(text) * consumed / total_weight)
+            candidates = [pos + 1 for pos in range(max(cursor + 1, target - 4), min(len(text), target + 8))
+                          if text[pos] in "。！？；!?;"]
+            end = min(candidates, key=lambda pos: abs(pos - target)) if candidates else target
+        shot["narration"] = text[cursor:end].strip()
+        cursor = end
+
+
+def attach_segment_plan(storyboard: dict, copywriting: dict | None = None) -> dict:
+    """由已规划的 Shot 时长动态组成 Segment；Segment 时长就是成员 Shot 时长之和。"""
+    shots = flatten_shots(storyboard)
+    if not shots:
+        raise ValueError("Storyboard 没有 Shot")
+    _assign_missing_narration(shots, copywriting)
+    groups = partition_shots(shots)
+    segments = []
+    global_cursor = 0
+    for index, group in enumerate(groups, 1):
+        segment_id = f"seg_{index:02d}"
+        local_cursor = 0
+        for shot in group:
+            duration = _shot_ms(shot)
+            shot["segment_id"] = segment_id
+            shot["segment_local_start_ms"] = local_cursor
+            shot["segment_local_end_ms"] = local_cursor + duration
+            shot["timeline_start_ms"] = global_cursor + local_cursor
+            shot["timeline_end_ms"] = global_cursor + local_cursor + duration
+            local_cursor += duration
+        references = _unique(
+            (asset_id for shot in group for asset_id in shot.get("reference_asset_ids", [])),
+            MAX_REFERENCES_PER_SEGMENT + 1,
+        )
+        if len(references) > MAX_REFERENCES_PER_SEGMENT:
+            raise ValueError(f"{segment_id} 去重后有 {len(references)} 张参考图，超过 9 张上限")
+        segments.append({
+            "segment_id": segment_id,
+            "timeline_start_ms": global_cursor,
+            "timeline_end_ms": global_cursor + local_cursor,
+            "duration_ms": local_cursor,
+            "shot_ids": [shot["shot_id"] for shot in group],
+            "narration_text": "".join(shot.get("narration", "").strip() for shot in group),
+            "reference_asset_ids": references,
+            "transition_note": "保持段内地点、光线和色调连贯，镜头沿运动方向或相似构图自然转场",
+            "status": "pending",
+        })
+        global_cursor += local_cursor
+    storyboard["storyboard_version"] = 3
+    storyboard["duration_ms"] = global_cursor
+    storyboard["segments"] = segments
+    return storyboard
+
+
 def refresh_segment(storyboard: dict, segment_id: str) -> dict:
-    """Shot 被编辑后重算该 Segment 的段内时间与参考图集合。"""
+    """刷新不改变 Shot 时长/顺序的字段；时长变化必须重新运行全局装箱。"""
     segment = find_segment(storyboard, segment_id)
     if segment is None:
         raise ValueError(f"Segment {segment_id} 不存在")
     by_id = {shot.get("shot_id"): shot for shot in flatten_shots(storyboard)}
     shots = [by_id[shot_id] for shot_id in segment.get("shot_ids", []) if shot_id in by_id]
-    if not shots:
-        raise ValueError(f"Segment {segment_id} 没有 Shot")
-    _allocate_ranges(shots, int(segment["timeline_start_ms"]), int(segment["timeline_end_ms"]))
     references = _unique(
         (asset_id for shot in shots for asset_id in shot.get("reference_asset_ids", [])),
         MAX_REFERENCES_PER_SEGMENT + 1,
@@ -106,64 +169,18 @@ def refresh_segment(storyboard: dict, segment_id: str) -> dict:
     if len(references) > MAX_REFERENCES_PER_SEGMENT:
         raise ValueError(f"{segment_id} 去重后有 {len(references)} 张参考图，超过 9 张上限")
     segment["reference_asset_ids"] = references
+    segment["narration_text"] = "".join(shot.get("narration", "").strip() for shot in shots)
     return segment
 
 
-def attach_segment_plan(storyboard: dict, audio: dict) -> dict:
-    """以音频自然窗口为 Segment，按顺序分配 Shot，并补全图片池和本地时间。"""
-    shots = flatten_shots(storyboard)
-    units = list(audio.get("narration_units", []))
-    if not shots:
-        raise ValueError("Storyboard 没有 Shot")
-    if not units:
-        raise ValueError("音频没有 narration_units，不能规划 Segment")
-    targets = [int(unit["end_ms"]) - int(unit["start_ms"]) for unit in units]
-    for index, duration in enumerate(targets, 1):
-        if not SEGMENT_MIN_MS <= duration <= SEGMENT_MAX_MS:
-            raise ValueError(f"音频窗口 {index} 为 {duration}ms，Segment 必须为 4–15 秒")
-
-    groups = _partition_shots(shots, targets)
-    slices = {item.get("segment_id"): item for item in audio.get("slices", [])}
-    segments = []
-    for index, (unit, group) in enumerate(zip(units, groups), 1):
-        segment_id = unit.get("segment_id") or f"seg_{index:02d}"
-        start_ms, end_ms = int(unit["start_ms"]), int(unit["end_ms"])
-        _allocate_ranges(group, start_ms, end_ms)
-        for shot in group:
-            shot["segment_id"] = segment_id
-            shot["narration_unit_ids"] = [unit["unit_id"]]
-        references = _unique(
-            (asset_id for shot in group for asset_id in shot.get("reference_asset_ids", [])),
-            MAX_REFERENCES_PER_SEGMENT + 1,
-        )
-        if len(references) > MAX_REFERENCES_PER_SEGMENT:
-            raise ValueError(f"{segment_id} 去重后有 {len(references)} 张参考图，超过 9 张上限")
-        audio_slice = slices.get(segment_id, {})
-        segments.append({
-            "segment_id": segment_id,
-            "timeline_start_ms": start_ms,
-            "timeline_end_ms": end_ms,
-            "duration_ms": end_ms - start_ms,
-            "shot_ids": [shot["shot_id"] for shot in group],
-            "narration_unit_ids": [unit["unit_id"]],
-            "reference_asset_ids": references,
-            "transition_note": "保持段内地点、光线和色调连贯，镜头沿运动方向或相似构图自然转场",
-            "audio_slice_path": audio_slice.get("local_path", ""),
-            "audio_slice_url": audio_slice.get("url", ""),
-            "audio_slice_sha256": audio_slice.get("sha256", ""),
-            "status": "pending",
-        })
-    storyboard["storyboard_version"] = 2
-    storyboard["segments"] = segments
-    return storyboard
-
-
-def validate_segment_plan(storyboard: dict, master_duration_ms: int) -> list[str]:
+def validate_segment_plan(storyboard: dict, expected_duration_ms: int | None = None) -> list[str]:
     errors = []
-    shots = {shot.get("shot_id"): shot for shot in flatten_shots(storyboard)}
+    shots_list = flatten_shots(storyboard)
+    shots = {shot.get("shot_id"): shot for shot in shots_list}
     segments = storyboard.get("segments", [])
     cursor = 0
     assigned = []
+    expected_order = [shot.get("shot_id") for shot in shots_list]
     for segment in segments:
         sid = segment.get("segment_id")
         start, end = segment.get("timeline_start_ms"), segment.get("timeline_end_ms")
@@ -176,20 +193,24 @@ def validate_segment_plan(storyboard: dict, master_duration_ms: int) -> list[str
         if not SEGMENT_MIN_MS <= duration <= SEGMENT_MAX_MS:
             errors.append(f"{sid}: 时长 {duration}ms 不在 4–15 秒")
         shot_ids = segment.get("shot_ids", [])
-        if not shot_ids:
-            errors.append(f"{sid}: 没有 Shot")
+        member_duration = 0
         for shot_id in shot_ids:
             shot = shots.get(shot_id)
             if not shot:
                 errors.append(f"{sid}: Shot {shot_id} 不存在")
-            elif shot.get("segment_id") != sid:
+                continue
+            member_duration += _shot_ms(shot)
+            if shot.get("segment_id") != sid:
                 errors.append(f"Shot {shot_id}: segment_id 与 {sid} 不一致")
+        if member_duration != duration:
+            errors.append(f"{sid}: Segment 时长 {duration}ms 不等于 Shot 合计 {member_duration}ms")
         assigned.extend(shot_ids)
         if len(segment.get("reference_asset_ids", [])) > MAX_REFERENCES_PER_SEGMENT:
             errors.append(f"{sid}: 参考图超过 {MAX_REFERENCES_PER_SEGMENT} 张")
         cursor = end
-    if cursor != master_duration_ms:
-        errors.append(f"Segment 总时长 {cursor}ms 与母带 {master_duration_ms}ms 不一致")
-    if sorted(assigned) != sorted(shots):
-        errors.append("存在未分配或重复分配的 Shot")
+    if assigned != expected_order:
+        errors.append("Shot 必须按原顺序连续且仅分配一次")
+    target = expected_duration_ms if expected_duration_ms is not None else storyboard.get("duration_ms")
+    if target is not None and cursor != int(target):
+        errors.append(f"Segment 总时长 {cursor}ms 与目标 {target}ms 不一致")
     return errors

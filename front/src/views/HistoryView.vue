@@ -20,8 +20,6 @@ const STATUS = {
   planning: { label: "方案生成中", cls: "info" },
   waiting_confirm: { label: "方案待确认", cls: "warn" },
   plan_confirmed: { label: "方案已确认", cls: "warn" },
-  audio_generating: { label: "音轨生成中", cls: "info" },
-  audio_ready: { label: "音轨已就绪", cls: "warn" },
   storyboarding: { label: "分镜生成中", cls: "info" },
   waiting_storyboard_confirm: { label: "分镜待确认", cls: "warn" },
   generating: { label: "视频生成中", cls: "info" },
@@ -44,7 +42,7 @@ function projectRoute(project) {
     return `/project/${project.project_id}/references`;
   }
   if (
-    ["plan_confirmed", "audio_generating", "audio_ready", "storyboarding",
+    ["plan_confirmed", "storyboarding",
       "waiting_storyboard_confirm", "generating", "video_ready", "composing", "completed"].includes(
       project.status,
     ) || (project.status === "failed" && project.progress >= 15)

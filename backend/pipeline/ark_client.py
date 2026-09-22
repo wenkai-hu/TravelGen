@@ -113,17 +113,22 @@ def transcode_web(src, dest):
         return False
 
 
-def normalize_visual_only(src, dest):
-    """保留 Seedance 原始文件，另存浏览器可播的无声画面轨。"""
+def normalize_av(src, dest, duration):
+    """保留 Seedance 原生旁白/环境声，统一为可拼接的 H.264 + AAC 音视频。"""
     try:
         from imageio_ffmpeg import get_ffmpeg_exe
         exe = get_ffmpeg_exe()
     except ImportError:
         return False
     tmp = dest + ".tmp.mp4"
-    cmd = [exe, "-hide_banner", "-loglevel", "error", "-y", "-i", src, "-an",
-           "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
-           "-pix_fmt", "yuv420p", "-movflags", "+faststart", tmp]
+    video_filter = f"fps=30,setsar=1,tpad=stop_mode=clone:stop_duration=1,trim=duration={duration},setpts=PTS-STARTPTS"
+    audio_filter = f"aresample=48000,apad=pad_dur=1,atrim=duration={duration},asetpts=PTS-STARTPTS"
+    cmd = [exe, "-hide_banner", "-loglevel", "error", "-y", "-i", src,
+           "-filter_complex", f"[0:v]{video_filter}[v];[0:a]{audio_filter}[a]",
+           "-map", "[v]", "-map", "[a]",
+           "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p",
+           "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2",
+           "-movflags", "+faststart", tmp]
     try:
         result = subprocess.run(cmd, capture_output=True, timeout=300)
         if result.returncode != 0:
@@ -136,18 +141,16 @@ def normalize_visual_only(src, dest):
         return False
 
 
-def mux_audio(visual_path, audio_path, dest):
-    """把原始 master audio 切片回铺到单个 Segment 预览。"""
+def extract_audio(src, dest):
+    """提取 Seedance 原生音轨供试听与 QA，统一为 32kHz 双声道 PCM16。"""
     try:
         from imageio_ffmpeg import get_ffmpeg_exe
         exe = get_ffmpeg_exe()
     except ImportError:
         return False
-    tmp = dest + ".tmp.mp4"
-    cmd = [exe, "-hide_banner", "-loglevel", "error", "-y",
-           "-i", visual_path, "-i", audio_path,
-           "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy",
-           "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", tmp]
+    tmp = dest + ".tmp.wav"
+    cmd = [exe, "-hide_banner", "-loglevel", "error", "-y", "-i", src, "-vn",
+           "-ac", "2", "-ar", "32000", "-c:a", "pcm_s16le", tmp]
     try:
         result = subprocess.run(cmd, capture_output=True, timeout=300)
         if result.returncode != 0:
@@ -160,8 +163,8 @@ def mux_audio(visual_path, audio_path, dest):
         return False
 
 
-def create_placeholder_video(dest, duration, resolution="720p", ratio="9:16"):
-    """demo 模式生成真实可拼接的静音占位视频。"""
+def create_placeholder_av(dest, duration, resolution="720p", ratio="9:16"):
+    """demo 模式生成带静音音轨的真实占位 Segment，走与正式成片相同的 AV 拼接。"""
     try:
         from imageio_ffmpeg import get_ffmpeg_exe
         exe = get_ffmpeg_exe()
@@ -177,7 +180,9 @@ def create_placeholder_video(dest, duration, resolution="720p", ratio="9:16"):
     os.makedirs(os.path.dirname(dest), exist_ok=True)
     cmd = [exe, "-hide_banner", "-loglevel", "error", "-y",
            "-f", "lavfi", "-i", f"color=c=0x173b3f:s={width}x{height}:r=30:d={duration}",
-           "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-movflags", "+faststart", dest]
+           "-f", "lavfi", "-i", f"anullsrc=r=48000:cl=stereo:d={duration}",
+           "-map", "0:v:0", "-map", "1:a:0", "-c:v", "libx264", "-pix_fmt", "yuv420p",
+           "-c:a", "aac", "-b:a", "128k", "-shortest", "-movflags", "+faststart", dest]
     try:
         return subprocess.run(cmd, capture_output=True, timeout=300).returncode == 0
     except Exception:

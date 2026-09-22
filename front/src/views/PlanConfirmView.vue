@@ -25,7 +25,6 @@ const stage = computed(() => {
   if (!p) return "loading";
   if (p.status === "planning") return "generating";
   if (p.status === "waiting_confirm") return "confirm";
-  if (p.status === "failed" && p.audio?.status === "failed") return "confirm";
   if (p.status === "plan_confirmed") return "confirmed";
   if (p.status === "failed") return "failed";
   return "other"; // storyboarding 等后续阶段（正常流程不会停留在本页）
@@ -65,8 +64,6 @@ async function tick() {
     if (
       [
         "plan_confirmed",
-        "audio_generating",
-        "audio_ready",
         "storyboarding",
         "waiting_storyboard_confirm",
         "generating",
@@ -122,7 +119,7 @@ async function onConfirm() {
   confirming.value = true;
   try {
     await confirmPlan(pid.value, copywritingText.value);
-    message.success("方案已确认，下一步先生成完整音轨");
+    message.success("方案已确认，下一步生成分镜并选择参考音色");
     await tick(); // 拉取确认后的状态（plan_confirmed）
   } catch (e) {
     message.error(e.message || "确认失败");
@@ -141,9 +138,6 @@ const titles = computed(() => project.value?.copywriting?.titles || []);
 const hashtags = computed(() => project.value?.copywriting?.hashtags || []);
 const visualReferences = computed(
   () => project.value?.visual_assets?.ref_images || [],
-);
-const audioRetry = computed(
-  () => project.value?.status === "failed" && project.value?.audio?.status === "failed",
 );
 
 function fmtDur(s) {
@@ -188,9 +182,6 @@ function fmtDur(s) {
 
       <!-- ② 方案待确认 -->
       <div v-else-if="stage === 'confirm'" class="confirm">
-        <div v-if="audioRetry" class="audio-retry-alert">
-          上次口播测时未通过：{{ project?.audio?.error || project?.message }}。请缩短旁白后重新确认。
-        </div>
         <!-- 项目概要 -->
         <section class="card summary fade-up">
           <div class="summary-head">
@@ -217,7 +208,7 @@ function fmtDur(s) {
             <p>
               ① 先看左侧创作方案，是 AI 生成的内容大纲 · ②
               右侧旁白文案可按需修改 · ③ 点「确认方案」，AI
-              将先按此文案生成完整旁白与 BGM，再依据真实音频时间轴拆分画面
+              将按此文案生成 Shot，并把连续完整 Shot 动态组合成最长 15 秒的 Segment
             </p>
           </div>
         </div>
@@ -333,7 +324,7 @@ function fmtDur(s) {
         <h2 class="done-title">方案已确认</h2>
         <p class="done-line" v-if="planId">计划 ID：{{ planId }}</p>
         <p class="done-line">进度 {{ progress }}% — {{ msg }}</p>
-        <p class="done-tip">下一步：生成 Master Audio，再按音频时间轴规划 Segment…</p>
+        <p class="done-tip">下一步：生成分镜，选择统一参考音色与后期 BGM…</p>
         <NButton
           class="confirm-btn"
           size="large"
@@ -442,15 +433,6 @@ function fmtDur(s) {
   border-radius: 14px;
   box-shadow: var(--shadow-card);
   padding: 22px;
-}
-.audio-retry-alert {
-  margin-bottom: 16px;
-  padding: 12px 16px;
-  border: 1px solid #ecd0cb;
-  border-radius: 10px;
-  background: #fdf1ef;
-  color: var(--color-error);
-  font-size: 13px;
 }
 .card.center {
   display: flex;

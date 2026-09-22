@@ -1,0 +1,60 @@
+{
+  "task_id": "st_20260921_214307_bc5379",
+  "project_id": "p_20260921_212431_c04a27",
+  "kind": "batch",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 1/1 个 Segment",
+  "request": {
+    "segments": [
+      "seg_01"
+    ],
+    "generate_video": true,
+    "plan_version": 1,
+    "storyboard_version": 3,
+    "voice_version": 1,
+    "voice_reference_sha256": "31052a06d83162dd4c599b89adcc6fea4f2c07e155ef992365700da0ffe90d7d",
+    "reference_version": 1
+  },
+  "segments": [
+    {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260921_212431_c04a27/seg_01/st_20260921_214307_bc5379_normalized_av.mp4",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260921_212431_c04a27\\seg_01\\st_20260921_214307_bc5379_raw.mp4",
+      "normalized_av_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260921_212431_c04a27\\seg_01\\st_20260921_214307_bc5379_normalized_av.mp4",
+      "native_audio_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260921_212431_c04a27\\seg_01\\st_20260921_214307_bc5379_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 13.0728,
+        "expected_duration_seconds": 13.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.133,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -9.45,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "31052a06d83162dd4c599b89adcc6fea4f2c07e155ef992365700da0ffe90d7d",
+      "voice_version": 1,
+      "narration_hash": "0136c13b8d2834f9cc0f7c42a8b102559015829f8bd3b72de163834bcab04269",
+      "prompt_hash": "27b79788145c7bbcf589ec8e8867d91fb5c1066d07b11f602667a7fb5a8ff48f",
+      "reference_asset_ids": [
+        "ref_a968a60a014ebfc4",
+        "ref_494a65661de40055",
+        "ref_ede841e5a92b75ce"
+      ]
+    }
+  ],
+  "error": null,
+  "created_at": "2026-09-21T13:43:07.354370+00:00",
+  "updated_at": "2026-09-21T13:51:44.614242+00:00"
+}

@@ -1,0 +1,59 @@
+{
+  "task_id": "st_20260921_010400_11a3b0",
+  "project_id": "p_20260920_211436_a96ea5",
+  "kind": "batch",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 1/1 个 Segment",
+  "request": {
+    "segments": [
+      "seg_01"
+    ],
+    "generate_video": true,
+    "plan_version": 1,
+    "storyboard_version": 3,
+    "voice_version": 1,
+    "voice_reference_sha256": "8f5f2ceb7f5cbb2005b51d7e9f5ddd6b6a3b0ab7b26fcce6fe9ea93b4c2ab89b",
+    "reference_version": 1
+  },
+  "segments": [
+    {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260920_211436_a96ea5/seg_01/st_20260921_010400_11a3b0_normalized_av.mp4",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260920_211436_a96ea5\\seg_01\\st_20260921_010400_11a3b0_raw.mp4",
+      "normalized_av_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260920_211436_a96ea5\\seg_01\\st_20260921_010400_11a3b0_normalized_av.mp4",
+      "native_audio_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260920_211436_a96ea5\\seg_01\\st_20260921_010400_11a3b0_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 15.0698,
+        "expected_duration_seconds": 15.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.01,
+        "tail_activity_warning": true,
+        "speech_level_p90_dbfs": -8.41,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "8f5f2ceb7f5cbb2005b51d7e9f5ddd6b6a3b0ab7b26fcce6fe9ea93b4c2ab89b",
+      "voice_version": 1,
+      "narration_hash": "392f7828500495aeab38fefefb4d907fd5c03427ab009b3fbc0b1d604e63871a",
+      "prompt_hash": "6182ef2fecea6792f99426c637e7e6190fc0d60b955429b7a1d7c758da17bf3c",
+      "reference_asset_ids": [
+        "ref_f4138e6202be895a",
+        "ref_877845d80fc39b9b"
+      ]
+    }
+  ],
+  "error": null,
+  "created_at": "2026-09-20T17:04:00.681935+00:00",
+  "updated_at": "2026-09-20T17:09:31.937014+00:00"
+}

@@ -1,9 +1,10 @@
-# TravelGen 生成管线服务（MVP，成员A）
+# TravelGen 生成管线服务
 
-AI 生成管线：输入城市/地点/主题 → 知识检索 → 文案 → Master Audio → Segment 视频 → 母带回铺成片。
-实现说明：[Master Audio + Segment Pipeline](../docs/Master_Audio_Segment_Pipeline_Implementation.md) ｜ 运行时 OpenAPI：http://127.0.0.1:8000/openapi.json
+当前主管线：输入城市/地点/主题 → 实景检索与 VLM → 文案确认 → Shot 分镜 → 动态 Segment → 选择统一参考音色与后期 BGM → Seedance 原生音视频 → 双版本成片。
 
-## 启动（B 侧：克隆仓库后）
+详细设计：[Seedance 原生音视频管线](../docs/Seedance_Native_Audio_Pipeline.md)
+
+## 启动
 
 ```bash
 pip install -r backend/requirements.txt
@@ -11,74 +12,66 @@ cd backend
 python app.py
 ```
 
-> 默认 `reload=True`：改后端任意 `.py` 即自动重启，无需手动重启服务（依赖 watchfiles）。
+- Swagger：http://127.0.0.1:8000/docs
+- 默认开发模式自动 reload。
+- `TRAVELGEN_MOCK=1` 可强制使用本地演示模式。
 
-- 交互文档：http://127.0.0.1:8000/docs（Swagger UI，可直接调试/导出）
-- 接口清单（两套并存）：
-  - **V1 分阶段（/api/*，推荐，对应 TravelGen_v1.md）**：
-    `POST /api/projects` 创建并搜索图片 → `GET /api/projects/{id}/references` 查询候选 →
-    `POST /api/projects/{id}/references/confirm` 确认实景图并启动 VLM/Plan → `PUT /api/projects/{id}/plan` 确认方案 →
-    `POST /api/projects/{id}/audio` 生成完整旁白/BGM → `POST /api/projects/{id}/storyboard` 按音频时间轴生成分镜 →
-    `PUT /api/projects/{id}/shots/{shot_id}` 修改 Shot → `POST /api/projects/{id}/generate` 批量生成 Segment →
-    `GET /api/tasks/{task_id}` 轮询 → `POST /api/projects/{id}/render` 拼接静音画面并回铺 Master Audio
-  - 旧契约（/api/v1/*，保留兜底）：`POST /api/v1/generate` + `GET /api/v1/tasks/{task_id}`（一键直出）
-  - `GET /api/kb/search`（及 `/api/v1/kb/search`）知识库检索
+## 主流程接口
 
-## 两种模式（阶段独立降级）
+1. `POST /api/projects` 创建项目并搜索实景参考图。
+2. `POST /api/projects/{id}/references/confirm` 确认参考图，启动 VLM 与文案方案。
+3. `PUT /api/projects/{id}/plan` 确认或修改旁白文案。
+4. `POST /api/projects/{id}/storyboard` 生成 Shot，并动态组成 Segment。
+5. `GET /api/voice-presets` 获取 8 条预设参考音色；或 `POST /api/projects/{id}/voice-candidates` 生成自定义试听音色。
+6. `PUT /api/projects/{id}/voice` 确认一个统一参考音色。
+7. `GET /api/bgm` 获取按场景类型匹配的曲库；用户需要其他选曲方向时可调用 `POST /api/projects/{id}/bgm/recommendations`，KIMI 基于方案、旁白和分镜给出独立于曲库的类型及节奏建议；`PUT /api/projects/{id}/bgm` 确认 BGM 或明确选择无 BGM。
+8. `POST /api/projects/{id}/generate` 按 Segment 调用 Seedance。
+9. `GET /api/tasks/{task_id}` 轮询音色、Segment 或渲染任务。
+10. `POST /api/projects/{id}/render` 拼接原生音视频并生成最终版本。
 
-| 阶段 | REAL（有对应 key） | 降级（无 key） |
+旧 `/api/v1/*` 一键接口仅为兼容已有调用方，不参与新的 Project 工作流。
+
+## Segment 规则
+
+- Segment 是 Seedance 最长 15 秒限制下的调用容器，不是新的内容单元。
+- 只组合时间线上连续的完整 Shot，绝不为了填满 15 秒拆分 Shot，也不补齐到 15 秒。
+- 后端使用全局动态规划，在每段 4–15 秒可行的前提下优先减少调用次数。
+- 例如 `3 + 4 + 5 + 6` 秒会组成 `12` 秒和 `6` 秒两个 Segment。
+- 修改 Shot 时长后会重新计算全部 Segment；修改画面、旁白或转场要求只使所属 Segment 失效。
+
+## 声音与合成
+
+- 每个 Segment 都注入同一条用户确认的参考音色。参考音频只定义说话人身份，不提供本段正式旁白。
+- 本段旁白、Shot 时间窗、环境声要求和固定的“禁止任何 BGM”约束通过动态 Prompt 交给 Seedance。
+- Seedance 返回的旁白、自然环境声和真实拟音均被保留；不会剥离原生音轨，也不会再回铺 TTS 母带。
+- 最终先拼接所有 Segment 的原生音视频生成 `clean.mp4`，再在完整时间线上循环、裁剪、淡入淡出并归一化所选 BGM，生成独立声轨和 `with_bgm.mp4`。成片后可试听调整视频原声与 BGM 音量，`POST /api/projects/{id}/render/mix` 只重新混音。
+- 如果用户明确选择无 BGM，只产出 clean 版本。
+
+## 模式与落盘
+
+| 阶段 | REAL | 无对应模型时 |
 |---|---|---|
-| 图片搜索 | 百度千帆搜索返回候选，用户确认后才进入管线 | 无候选时停止并返回明确错误 |
-| 视觉 RAG | 豆包视觉模型逐图分析，形成 PlaceVisualProfile | VLM 不可用时停止在选图阶段 |
-| 文案/分镜 | kimi-k2.6 + 用户确认的视觉档案 | 回放 Phase 3 真实成果（kimi 最优西湖文案/分镜） |
-| 音频 | Edge-TTS 固定音色 + 连续环境 BGM | 离线提示音 + 同一 BGM，仍生成真实 WAV |
-| 视频 | Seedance 2.0 Pro：音频切片 + 多 Shot prompt + 最多 9 张参考图 | 生成可合成的真实占位 MP4 |
-| 合成 | FFmpeg 静音画面归一化、拼接、一次性回铺母带 | 与 REAL 相同 |
+| 图片搜索与视觉理解 | 百度千帆 + 豆包 VLM | 搜图/VLM 缺失时停止并说明错误 |
+| 文案与分镜 | KIMI | 回放内置演示素材并按目标时长调整 |
+| 自定义音色 | Seedance 生成视频后 FFmpeg 抽取 WAV | 复制一条真实预设 WAV 作为可试听候选 |
+| Segment | Seedance：统一音色参考 + 多 Shot + 原生音轨 | 生成带静音音轨的可合成占位视频 |
+| 合成 | FFmpeg 原生音视频拼接与可选 BGM 混音 | 相同 |
 
-`TRAVELGEN_MOCK=1` 强制全 demo。例如：只有 kimi key → 文案真实 + 视频模拟；都有 → 全真实。
+- 项目和任务：`experiments/results/05_pipeline/{projects,voice_tasks,segment_tasks,render_tasks}/`
+- 预设音色：`assets/media/voices/`
+- BGM：`assets/media/bgm/`
+- Seedance Segment：`assets/videos/{project_id}/{segment_id}/`
+- 最终成片：`assets/renders/{project_id}/v{version}/`
 
-key 配置（把模板复制为真配置再填 key，**config.json 已被 gitignore，不会误提交**）：
+模型 Key 配置：
 
 ```bash
 cp experiments/config.example.json experiments/config.json
-# 编辑 experiments/config.json，配置 kimi/seedance/vlm/qianfan_image_search
+# 编辑 experiments/config.json：kimi / seedance / vlm / qianfan_image_search
 ```
 
-## 视频生成（Seedance 2.0 Pro，已实测 ✅）
+## 已知边界
 
-- 提交：`POST https://ark.cn-beijing.volces.com/api/v3/contents/generations/tasks`，Bearer 鉴权
-- 模型：`doubao-seedance-2-0-260128`，每个 Segment `duration=4..15`，显式传项目画幅
-- 流程：按完整旁白的自然句尾规划最少数量的 Segment；一个请求携带该段所有 Shot 指令、图片映射和母带切片
-- Seedance 原始音视频保留为审计产物；另存无声音轨和回铺母带切片的预览版
-- ⚠️ 远程 `video_url` 仅 24h 有效，成功后立即转存到 `assets/videos/{project_id}/{segment_id}/`
-- 失败自动重试 1 次；Shot 编辑只让所属 Segment 失效，重新生成单位仍是完整 Segment
-
-## V1 分阶段流程（关键语义）
-
-```
-POST /api/projects ──► searching_references ──► waiting_reference_confirm
-POST /references/confirm ──► analyzing_references ──► planning ──► waiting_confirm
-PUT /plan（可编辑文案）──► plan_confirmed
-POST /audio ──► audio_generating ──► audio_ready
-POST /storyboard ──► waiting_storyboard_confirm（生成 Segment + 嵌套 Shot）
-PUT /shots/{id}（修改画面指令，所属 Segment 变 stale）
-POST /generate（segments:[...]）──► generating ──► video_ready
-POST /segments/{id}/regenerate（整段重生成）
-POST /render ──► composing ──► completed
-```
-
-- 项目与任务自动落盘 `experiments/results/05_pipeline/{projects,audio_tasks,segment_tasks,render_tasks}/`，**服务重启不丢**（GET 懒加载恢复）
-- 选中图片缓存到 `assets/references/{project_id}/`；每个 Shot 保存 `reference_asset_ids`，生成和重试都发送同一组原图
-- `vlm` provider 通过 `credential_provider=seedance` 复用方舟 Key；百度 Key 优先读取 `QIANFAN_API_KEY`
-- `GET /api/projects/{id}` 返回 `audio`、`storyboard.segments`、`segment_results`、`final_video`
-- 补充端点 `GET /api/projects/{id}` 是分阶段轮询入口（TravelGen_v1.md 未列但流程必需）
-
-## 当前边界（Phase 5 待办）
-
-- **分镜图生成**：`generate_image` 参数接受但 video-only（无图像生成 API，`image_url` 恒 null）
-- **转场策略**：当前最终拼接使用精确时长硬切，避免交叉淡化改变总时长；段内转场交给 Seedance 一次生成
-- **BGM 来源**：当前内置连续环境音乐床，接口已保留 music preset；后续可换成版权明确的音乐服务
-- **任务存储**：文件落盘实现（轻量），大流量上线换 Redis/DB
-- **文字知识检索**：仍是关键词子串评分；本次新增的是独立视觉 RAG，图片不能替代历史事实来源
-- **图片版权**：搜索结果只保留来源并标记 `rights_status=unknown`，正式发布前仍需人工确认授权
-
+- “不得生成 BGM”依靠固定高优先级 Prompt，并保留原生音轨供人工试听；当前没有可靠的自动音乐分类器，`audio_qa.music_detection` 会明确返回 `not_available`。
+- 最终拼接使用精确时长硬切，段内自然转场由 Seedance 在一次 Segment 生成中完成。
+- 图片来源会保留并标记授权状态，正式发布前仍需人工复核。

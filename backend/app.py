@@ -8,7 +8,7 @@
 
 行为：
   - 旧契约（/api/v1/*）：一键直出，POST generate + 轮询 tasks
-  - Project 分阶段（/api/*）：创建项目 → 方案确认 → Master Audio → Segment 视频 → 最终回铺（v1_router.py）
+  - Project 分阶段（/api/*）：创建项目 → 方案确认 → 动态 Segment → 参考音色生成原生音视频 → 可选 BGM 混音（v1_router.py）
   - 有 experiments/config.json（kimi key）→ 真实模式（kimi-k2.6）
   - 无 config.json 或 TRAVELGEN_MOCK=1 → demo 模式，无需任何 key
   - 交互文档：http://127.0.0.1:8000/docs（可导出 OpenAPI）

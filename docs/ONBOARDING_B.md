@@ -91,29 +91,31 @@ curl -X PUT http://127.0.0.1:8000/api/projects/{pid}/shots/3 \
 
 支持字段：`prompt` / `duration_s` / `subject` / `background` / `shot_size` / `camera{angle,movement}`，只写想改的字段。
 
-### ⑥ 批量生成视频
+### ⑥ 确认声音设置后批量生成 Segment
+
+先通过 `/api/voice-presets` + `PUT /api/projects/{pid}/voice` 确认统一参考音色，并通过 `/api/bgm` + `PUT /api/projects/{pid}/bgm` 选择 BGM（或传 `explicit_none:true`）。
 
 ```bash
 curl -X POST http://127.0.0.1:8000/api/projects/{pid}/generate \
   -H "Content-Type: application/json" \
-  -d '{"shots":[1,2,3,4,5,6,7,8],"generate_image":true,"generate_video":true}'
+  -d '{"segments":["seg_01","seg_02"],"generate_video":true}'
 ```
 
-→ `202 {"task_id":"vt_xxx", "shots":[{shot_id,status:"pending"},...]}`。**调用即视为确认分镜**，无需再点别的确认。
+→ `202 {"task_id":"st_xxx", "segments":[{segment_id,status:"pending"},...]}`。不传 `segments` 时生成全部 Segment。
 
-### ⑦ 轮询视频任务
+### ⑦ 轮询 Segment 任务
 
 ```bash
 curl http://127.0.0.1:8000/api/tasks/{tid}
 ```
 
-per-shot 状态推进：`pending → generating → completed`（demo ≈秒级；真实 Seedance 单条 3-4 分钟、8 镜头并发共 ≈5-6 分钟）。全部完成后：
+per-segment 状态推进：`pending → generating → completed`。每个 Segment 内含一个或多个完整 Shot，真实 Seedance 调用不会拆 Shot，也不会为了凑满 15 秒补时长。全部完成后：
 
-- 项目 `GET /api/projects/{pid}` → `status:"completed", progress:100`
-- 视频文件在 `assets/videos/vt_xxx_{shot_id}.mp4`（真实模式）；每条的 `local_path` 直接指向它——**你合成时读这个字段即可**
-- demo 模式 `video_url`/`local_path` 恒 null，属预期
+- 项目 `GET /api/projects/{pid}` → `status:"video_ready"`
+- 每段原生音视频位于 `assets/videos/{project_id}/{segment_id}/`，浏览器读取 `segment_results.{segment_id}.video_url`
+- demo 模式也会生成带静音音轨的真实占位 MP4，以验证 AV 拼接路径
 
-### ⑧ 单 Shot 重生成（不满意时，可选）
+### ⑧ 从 Shot 发起重生成（实际重生成所属 Segment）
 
 ```bash
 curl -X POST http://127.0.0.1:8000/api/projects/{pid}/shots/3/regenerate \
@@ -121,11 +123,13 @@ curl -X POST http://127.0.0.1:8000/api/projects/{pid}/shots/3/regenerate \
   -d '{"reason":"画面不满意","prompt":"换成黄昏色调的断桥"}'
 ```
 
-→ 新 `vt_xxx` 任务，轮询方式同⑦；成功后该 Shot 结果自动覆盖旧的。
+→ 新 `st_xxx` 任务，返回 `regeneration_unit:"segment"`；该 Shot 所属的完整 Segment 会重新生成。
 
-### ⑨ 接口 7/8/9（配音 / 合成 / 成片查询）
+### ⑨ 音色、BGM 与最终合成
 
-`POST /api/projects/{pid}/audio`、`POST /api/projects/{pid}/render`、`GET /api/projects/{pid}/render/status` 本版全部返回 `reserved` 占位（成片由你的 Composer 合成，接口结构已预留）。
+- `GET /api/voice-presets` 获取预设试听；`POST /api/projects/{pid}/voice-candidates` 生成自定义候选；`PUT /api/projects/{pid}/voice` 确认统一音色。
+- `GET /api/bgm` 获取目录；`POST /api/projects/{pid}/bgm/recommendations` 获取 KIMI 建议；`PUT /api/projects/{pid}/bgm` 确认 BGM 或无 BGM。
+- `POST /api/projects/{pid}/render` 拼接 Seedance 原生音视频并可选混入 BGM；`GET /api/projects/{pid}/render/status` 返回 clean/with_bgm 双版本。
 
 ## 4. 状态机速查（调试 409 时对照）
 

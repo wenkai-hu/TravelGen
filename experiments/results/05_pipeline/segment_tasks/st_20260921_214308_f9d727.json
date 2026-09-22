@@ -1,0 +1,57 @@
+{
+  "task_id": "st_20260921_214308_f9d727",
+  "project_id": "p_20260921_212431_c04a27",
+  "kind": "batch",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 1/1 个 Segment",
+  "request": {
+    "segments": [
+      "seg_02"
+    ],
+    "generate_video": true,
+    "plan_version": 1,
+    "storyboard_version": 3,
+    "voice_version": 1,
+    "voice_reference_sha256": "31052a06d83162dd4c599b89adcc6fea4f2c07e155ef992365700da0ffe90d7d",
+    "reference_version": 1
+  },
+  "segments": [
+    {
+      "segment_id": "seg_02",
+      "shot_ids": [
+        5,
+        6
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260921_212431_c04a27/seg_02/st_20260921_214308_f9d727_normalized_av.mp4",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260921_212431_c04a27\\seg_02\\st_20260921_214308_f9d727_raw.mp4",
+      "normalized_av_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260921_212431_c04a27\\seg_02\\st_20260921_214308_f9d727_normalized_av.mp4",
+      "native_audio_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260921_212431_c04a27\\seg_02\\st_20260921_214308_f9d727_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 7.0588,
+        "expected_duration_seconds": 7.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.079,
+        "tail_activity_warning": true,
+        "speech_level_p90_dbfs": -9.54,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "31052a06d83162dd4c599b89adcc6fea4f2c07e155ef992365700da0ffe90d7d",
+      "voice_version": 1,
+      "narration_hash": "081b21624c680c60993dbcb3cf6c19e9337316bed03a2690277cd5a898b9f051",
+      "prompt_hash": "7eabf54a1088f25b0b0d856d081d6f735e4e8326414c24585803bc4d0c3419eb",
+      "reference_asset_ids": [
+        "ref_ede841e5a92b75ce",
+        "ref_a968a60a014ebfc4"
+      ]
+    }
+  ],
+  "error": null,
+  "created_at": "2026-09-21T13:43:08.706101+00:00",
+  "updated_at": "2026-09-21T13:49:48.685716+00:00"
+}

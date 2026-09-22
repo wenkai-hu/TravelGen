@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Project 流程的模型与追加式任务存储。
 
-- Project：一次创作任务的主实体（方案 → 母带 → 分镜 → Segment → 最终合成），
+- Project：一次创作任务的主实体（方案 → 分镜 → 音色/BGM选择 → Segment → 双版本成片），
   落盘 experiments/results/05_pipeline/projects/{project_id}.json
-- AudioTask/SegmentTask/RenderTask：新管线的三个可轮询任务；VideoTask 保留旧数据兼容。
+- VoiceTask/SegmentTask/RenderTask：新管线的三个可轮询任务。
 - Project 与各类任务 GET 时从对应目录懒加载；聚合结果不单独落盘，始终由追加式任务重算，最新任务胜出。
 """
 import json, os
@@ -12,14 +12,12 @@ from datetime import datetime, timezone
 REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 RESULTS_DIR = os.path.join(REPO, "experiments", "results", "05_pipeline")
 PROJECTS_DIR = os.path.join(RESULTS_DIR, "projects")
-VIDEO_TASKS_DIR = os.path.join(RESULTS_DIR, "video_tasks")
-AUDIO_TASKS_DIR = os.path.join(RESULTS_DIR, "audio_tasks")
+VOICE_TASKS_DIR = os.path.join(RESULTS_DIR, "voice_tasks")
 SEGMENT_TASKS_DIR = os.path.join(RESULTS_DIR, "segment_tasks")
 RENDER_TASKS_DIR = os.path.join(RESULTS_DIR, "render_tasks")
 
 PROJECTS: dict[str, "Project"] = {}
-VIDEO_TASKS: dict[str, "VideoTask"] = {}
-AUDIO_TASKS: dict[str, "AudioTask"] = {}
+VOICE_TASKS: dict[str, "VoiceTask"] = {}
 SEGMENT_TASKS: dict[str, "SegmentTask"] = {}
 RENDER_TASKS: dict[str, "RenderTask"] = {}
 
@@ -32,7 +30,7 @@ class Project:
     """一次创作任务。status 状态机见 docs/API_Contract_MVP.md V1 章节。"""
 
     def __init__(self, project_id: str, request: dict, username: str = ""):
-        self.schema_version = 2
+        self.schema_version = 3
         self.project_id = project_id
         self.request = request          # 创建入参（scene_type 已归一化为中文枚举）
         self.username = username        # 归属用户（创建时从登录 token 解析；旧数据为 "" 即视为不可见垃圾数据）
@@ -50,11 +48,10 @@ class Project:
         self.visual_profile = {}
         self.reference_version = 0
         self.visual_assets = {}
-        self.voice = {"status": "reserved", "engine": None}
-        self.music = {"suggestions": [], "status": "reserved"}
-        self.audio = {"status": "none", "version": 0}
-        self.audio_tasks: list[str] = []
-        self.video_tasks: list[str] = []   # task_id 追加式列表（merge 时最新胜出）
+        self.voice = {"status": "none", "version": 0}
+        self.music = {"status": "none", "version": 0,
+                      "recommendation_status": "none", "recommendation": None}
+        self.voice_tasks: list[str] = []
         self.segment_tasks: list[str] = []
         self.render_tasks: list[str] = []
         self.render = {"status": "none", "version": 0}
@@ -79,25 +76,58 @@ class Project:
     def touch(self):
         self.updated_at = _now()
 
-    def to_dict(self) -> dict:
+    def to_dict(self, include_private: bool = False) -> dict:
         self.touch()
         d = {k: getattr(self, k) for k in (
             "schema_version", "project_id", "username", "status", "progress", "message", "request", "planning",
             "copywriting", "script", "storyboard", "plan_id", "plan_version",
             "reference_candidates", "reference_assets", "visual_profile", "reference_version",
-            "visual_assets", "voice", "music", "audio", "audio_tasks", "video_tasks", "segment_tasks",
+            "visual_assets", "voice", "music", "voice_tasks", "segment_tasks",
             "render_tasks", "render",
             "final_video", "safety", "created_at", "updated_at")}
         d["copywriting_text"] = self.copywriting_text
-        d["video_clips"] = merge_video_results(self)  # 权威来自任务重算
-        d["segment_results"] = merge_segment_results(self)
+        if not include_private:
+            # 任务和媒体文件的本机绝对路径只供后端处理；浏览器只拿静态预览 URL。
+            d["voice"] = {key: value for key, value in (self.voice or {}).items()
+                          if key not in {"reference_path", "local_path", "raw_video_path"}}
+            d["music"] = dict(self.music or {})
+            if d["music"].get("selected"):
+                d["music"]["selected"] = {
+                    key: value for key, value in d["music"]["selected"].items()
+                    if key != "local_path"
+                }
+            d["voice_candidates"] = []
+            for task_id in self.voice_tasks:
+                task = load_voice_task(task_id)
+                if task is None:
+                    continue
+                item = task.to_dict()
+                item["result"] = {key: value for key, value in item.get("result", {}).items()
+                                  if key not in {"reference_path", "local_path", "raw_video_path"}}
+                d["voice_candidates"].append(item)
+            d["final_video"] = dict(self.final_video or {})
+            for variant in ("clean", "with_bgm", "bgm_bed"):
+                if d["final_video"].get(variant):
+                    d["final_video"][variant] = {
+                        key: value for key, value in d["final_video"][variant].items()
+                        if key != "local_path"
+                    }
+        segment_results = merge_segment_results(self)
+        if not include_private:
+            private_fields = {"raw_path", "normalized_av_path", "native_audio_path"}
+            segment_results = {
+                segment_id: {key: value for key, value in result.items()
+                             if key not in private_fields}
+                for segment_id, result in segment_results.items()
+            }
+        d["segment_results"] = segment_results
         d["active_segment_ids"] = sorted(active_segment_ids(self))
         return d
 
     def dump(self):
         os.makedirs(PROJECTS_DIR, exist_ok=True)
         with open(os.path.join(PROJECTS_DIR, f"{self.project_id}.json"), "w", encoding="utf-8") as f:
-            json.dump(self.to_dict(), f, ensure_ascii=False, indent=2)
+            json.dump(self.to_dict(include_private=True), f, ensure_ascii=False, indent=2)
 
     @classmethod
     def from_dict(cls, d) -> "Project":
@@ -105,7 +135,7 @@ class Project:
         for k in ("schema_version", "username", "status", "progress", "message", "planning", "copywriting", "script",
                   "storyboard", "plan_id", "plan_version", "reference_candidates",
                   "reference_assets", "visual_profile", "reference_version", "visual_assets", "voice",
-                  "music", "audio", "audio_tasks", "video_tasks", "segment_tasks", "render_tasks",
+                  "music", "voice_tasks", "segment_tasks", "render_tasks",
                   "render", "final_video", "safety",
                   "created_at", "updated_at"):
             if k in d:
@@ -128,81 +158,11 @@ def _asset_url(local_path):
     return "/assets/" + relative.replace("\\", "/")
 
 
-def _web_url(local_path):
-    """本地转存绝对路径 → 浏览器可访问 URL（/assets/videos/xxx.mp4，app.py 已挂载 /assets）。"""
-    if not local_path:
-        return None
-    return _asset_url(local_path)
-
-
-class VideoTask:
-    """一次视频生成子任务（kind=batch 批量 | single 单 shot 重生成）。"""
-
-    def __init__(self, task_id: str, project_id: str, kind: str, request_snapshot: dict):
-        self.task_id = task_id
-        self.project_id = project_id
-        self.kind = kind
-        self.status = "generating"
-        self.progress = 0
-        self.message = ""
-        self.request = request_snapshot   # {shot_ids, generate_image, generate_video, regenerate}
-        self.shots: list[dict] = []
-        self.created_at = _now()
-        self.updated_at = self.created_at
-
-    def init_shots(self, shot_ids: list[int]):
-        self.shots = [{"shot_id": sid, "status": "pending", "image_url": None,
-                       "video_url": None, "local_path": None, "error": None,
-                       "reference_asset_ids": []}
-                      for sid in shot_ids]
-
-    def sync_from_clips(self, clips: list[dict]):
-        """旧格式 clips（pipeline 产出）→ V1 shots 行。clips 原地更新，轮询中每 5s 同步一次。"""
-        for c in clips:
-            row = next((s for s in self.shots if s["shot_id"] == c["shot_id"]), None)
-            if row is None:
-                continue
-            row["reference_asset_ids"] = list(c.get("reference_asset_ids", []))
-            if c["status"] in ("queued", "running"):
-                row["status"] = "generating"
-            elif c["status"] == "succeeded":
-                row["status"] = "completed"
-                row["local_path"] = c.get("local_path")
-                # 前端播放用可访问 URL：本地转存 → /assets/videos/{文件名}（app.py 已挂载 /assets）
-                row["video_url"] = _web_url(c.get("local_path")) or c.get("video_url")
-            else:
-                row["status"] = "failed"
-                row["error"] = c.get("error")
-        n_ok = sum(1 for s in self.shots if s["status"] == "completed")
-        n_done = sum(1 for s in self.shots if s["status"] in ("completed", "failed"))
-        self.progress = int(n_done / len(self.shots) * 100) if self.shots else 0
-        self.message = f"视频生成中 {n_ok}/{len(self.shots)} 完成"
-
-    def to_dict(self) -> dict:
-        self.updated_at = _now()
-        return {k: getattr(self, k) for k in (
-            "task_id", "project_id", "kind", "status", "progress", "message",
-            "request", "shots", "created_at", "updated_at")}
-
-    def dump(self):
-        os.makedirs(VIDEO_TASKS_DIR, exist_ok=True)
-        with open(os.path.join(VIDEO_TASKS_DIR, f"{self.task_id}.json"), "w", encoding="utf-8") as f:
-            json.dump(self.to_dict(), f, ensure_ascii=False, indent=2)
-
-    @classmethod
-    def from_dict(cls, d) -> "VideoTask":
-        t = cls(d["task_id"], d["project_id"], d["kind"], d["request"])
-        for k in ("status", "progress", "message", "shots", "created_at", "updated_at"):
-            if k in d:
-                setattr(t, k, d[k])
-        return t
-
-
-class AudioTask:
+class VoiceTask:
     def __init__(self, task_id: str, project_id: str, request_snapshot: dict):
         self.task_id = task_id
         self.project_id = project_id
-        self.kind = "audio"
+        self.kind = "voice_candidate"
         self.status = "generating"
         self.progress = 0
         self.message = ""
@@ -219,8 +179,8 @@ class AudioTask:
             "request", "result", "error", "created_at", "updated_at")}
 
     def dump(self):
-        os.makedirs(AUDIO_TASKS_DIR, exist_ok=True)
-        with open(os.path.join(AUDIO_TASKS_DIR, f"{self.task_id}.json"), "w", encoding="utf-8") as f:
+        os.makedirs(VOICE_TASKS_DIR, exist_ok=True)
+        with open(os.path.join(VOICE_TASKS_DIR, f"{self.task_id}.json"), "w", encoding="utf-8") as f:
             json.dump(self.to_dict(), f, ensure_ascii=False, indent=2)
 
     @classmethod
@@ -254,10 +214,14 @@ class SegmentTask:
             "status": "pending",
             "video_url": None,
             "raw_path": None,
-            "visual_path": None,
-            "preview_path": None,
+            "normalized_av_path": None,
+            "native_audio_path": None,
+            "audio_qa": {},
             "error": None,
-            "audio_slice_sha256": segment.get("audio_slice_sha256", ""),
+            "voice_reference_sha256": self.request.get("voice_reference_sha256", ""),
+            "voice_version": self.request.get("voice_version", 0),
+            "narration_hash": None,
+            "prompt_hash": None,
             "reference_asset_ids": list(segment.get("reference_asset_ids", [])),
         } for segment in segments]
 
@@ -269,15 +233,17 @@ class SegmentTask:
                 continue
             row["shot_ids"] = list(clip.get("shot_ids", row.get("shot_ids", [])))
             row["reference_asset_ids"] = list(clip.get("reference_asset_ids", []))
-            row["audio_slice_sha256"] = clip.get("audio_slice_sha256", "")
+            for key in ("voice_reference_sha256", "voice_version", "narration_hash", "prompt_hash"):
+                if key in clip:
+                    row[key] = clip.get(key)
             status = clip.get("status")
             if status in ("queued", "running"):
                 row["status"] = "generating"
             elif status == "succeeded":
                 row["status"] = "completed"
-                for key in ("raw_path", "visual_path", "preview_path"):
+                for key in ("raw_path", "normalized_av_path", "native_audio_path", "audio_qa"):
                     row[key] = clip.get(key)
-                row["video_url"] = _asset_url(clip.get("preview_path")) or clip.get("video_url")
+                row["video_url"] = _asset_url(clip.get("normalized_av_path")) or clip.get("video_url")
                 row["error"] = None
             else:
                 row["status"] = "failed"
@@ -335,7 +301,7 @@ class RenderTask:
     @classmethod
     def from_dict(cls, d):
         task = cls(d["task_id"], d["project_id"], d.get("request", {}))
-        for key in ("status", "progress", "message", "result", "error", "created_at", "updated_at"):
+        for key in ("kind", "status", "progress", "message", "result", "error", "created_at", "updated_at"):
             if key in d:
                 setattr(task, key, d[key])
         return task
@@ -355,19 +321,6 @@ def load_project(project_id: str) -> Project | None:
     return p
 
 
-def load_video_task(task_id: str) -> VideoTask | None:
-    t = VIDEO_TASKS.get(task_id)
-    if t is not None:
-        return t
-    path = os.path.join(VIDEO_TASKS_DIR, f"{task_id}.json")
-    if not os.path.exists(path):
-        return None
-    with open(path, encoding="utf-8") as f:
-        t = VideoTask.from_dict(json.load(f))
-    VIDEO_TASKS[task_id] = t
-    return t
-
-
 def _load_task(cache, folder, task_id, cls):
     task = cache.get(task_id)
     if task is not None:
@@ -381,8 +334,8 @@ def _load_task(cache, folder, task_id, cls):
     return task
 
 
-def load_audio_task(task_id: str) -> AudioTask | None:
-    return _load_task(AUDIO_TASKS, AUDIO_TASKS_DIR, task_id, AudioTask)
+def load_voice_task(task_id: str) -> VoiceTask | None:
+    return _load_task(VOICE_TASKS, VOICE_TASKS_DIR, task_id, VoiceTask)
 
 
 def load_segment_task(task_id: str) -> SegmentTask | None:
@@ -394,30 +347,11 @@ def load_render_task(task_id: str) -> RenderTask | None:
 
 
 def load_any_task(task_id: str):
-    for loader in (load_audio_task, load_segment_task, load_render_task, load_video_task):
+    for loader in (load_voice_task, load_segment_task, load_render_task):
         task = loader(task_id)
         if task is not None:
             return task
     return None
-
-
-def active_video_shot_ids(project: Project) -> set[int]:
-    """返回仍在生成的 Shot ID；不同 Shot 可并发，同一 Shot 避免重复扣费。"""
-    active: set[int] = set()
-    for tid in project.video_tasks:
-        task = load_video_task(tid)
-        if task is None or task.status != "generating":
-            continue
-        if task.shots:
-            active.update(
-                row["shot_id"] for row in task.shots
-                if row.get("status") in ("pending", "generating")
-            )
-            continue
-        # create_task 尚未获得调度时 task.shots 还是空的，从请求快照兜住竞态窗口。
-        requested = task.request.get("shots") or task.request.get("shot_ids") or []
-        active.update(int(shot_id) for shot_id in requested)
-    return active
 
 
 def active_segment_ids(project: Project) -> set[str]:
@@ -452,23 +386,6 @@ def list_projects() -> list[Project]:
     return projects
 
 
-def merge_video_results(project: Project) -> dict[int, dict]:
-    """遍历 project.video_tasks，按 shot_id 合并已终止结果（最新 task 胜出）。幂等。"""
-    merged: dict[int, dict] = {}
-    for tid in project.video_tasks:
-        vt = load_video_task(tid)
-        if vt is None:
-            continue
-        for s in vt.shots:
-            if s["status"] in ("completed", "failed"):
-                merged[s["shot_id"]] = {"shot_id": s["shot_id"], "task_id": vt.task_id,
-                                        "status": s["status"], "video_url": s.get("video_url"),
-                                        "local_path": s.get("local_path"),
-                                        "reference_asset_ids": s.get("reference_asset_ids", []),
-                                        "error": s.get("error")}
-    return merged
-
-
 def merge_segment_results(project: Project) -> dict[str, dict]:
     """按 segment_id 合并最新终态任务；stale Segment 不作为当前可渲染结果。"""
     merged: dict[str, dict] = {}
@@ -489,11 +406,19 @@ def merge_segment_results(project: Project) -> dict[str, dict]:
     for segment_id in stale:
         if segment_id in merged:
             merged[segment_id] = {**merged[segment_id], "status": "stale"}
+    current_voice_hash = (project.voice or {}).get("reference_sha256")
+    current_voice_version = (project.voice or {}).get("version")
+    for segment_id, result in list(merged.items()):
+        if result.get("status") == "completed" and (
+            result.get("voice_reference_sha256") != current_voice_hash
+            or result.get("voice_version") != current_voice_version
+        ):
+            merged[segment_id] = {**result, "status": "stale"}
     return merged
 
 
 def recompute_project_status(project: Project):
-    """从当前有效 Segment/旧 Shot 任务重算项目状态，不把旧成片误当作新结果。"""
+    """从当前有效 Segment 任务重算项目状态，不把旧成片误当作新结果。"""
     if project.final_video.get("status") == "completed" and project.render.get("status") == "completed":
         project.status, project.progress, project.message = "completed", 100, "最终视频已生成"
         return
@@ -515,19 +440,3 @@ def recompute_project_status(project: Project):
             project.message = ("存在生成失败的 Segment，可重新生成" if failed
                                else "部分 Segment 已生成，可继续生成或修改")
         return
-    active = any(load_video_task(tid) is not None and load_video_task(tid).status == "generating"
-                 for tid in project.video_tasks)
-    if active:
-        project.status = "generating"
-        return
-    results = merge_video_results(project)
-    total = sum(len(sc.get("shot_list", [])) for sc in project.storyboard.get("scenes", []))
-    done = len(results)
-    if total and done >= total:
-        if any(r["status"] == "failed" for r in results.values()):
-            project.status = "failed"
-        else:
-            project.status, project.progress, project.message = "completed", 100, "全部镜头生成完成"
-    elif done:
-        # 部分镜头已生成（单镜测试/部分失败）：回到分镜编辑态，允许继续生成剩余镜头
-        project.status, project.progress, project.message = "waiting_storyboard_confirm", 40, "分镜待确认（部分镜头已生成）"

@@ -1,1152 +1,2164 @@
-openapi: 3.0.3
-info:
-  title: TravelGen 生成管线 API
-  description: >
-    A侧（AI生成管线）对外契约 v0.2。成员A实现、成员B消费。
-    两套接口并存：
-    - V1 分阶段（/api/*，推荐，对应 TravelGen_v1.md）：创建项目 → 方案确认 → 分镜 → Shot 修改 → 批量生成 → 轮询 tasks。
-      关键语义：POST /api/projects/{id}/generate 即视为"确认分镜"；前端轮询 GET /api/projects/{id}。
-      接口 7/8/9（audio/render/成片）本版返回 reserved 占位。
-    - 旧契约（/api/v1/*）：一键直出，POST generate + 轮询 tasks（保留，答辩 demo 兜底）。
-    storyboard 结构遵循 docs/Storyboard_Schema_v1.md；评审结论见 docs/API_Contract_MVP.md。
-  version: 0.2.0
-servers:
-  - url: http://127.0.0.1:8000
-    description: 本地开发（成员A管线服务）
-  - url: https://mock.apifox.com
-    description: Apifox Mock（前端先行开发）
-tags:
-  - name: 项目分阶段
-    description: V1 project 化分阶段接口（TravelGen_v1.md）
-  - name: 生成任务
-    description: 视频生成任务（A侧，旧契约一键直出）
-  - name: 知识库
-    description: 知识检索（可选能力，供前端知识点预览）
-paths:
-  /api/v1/generate:
-    post:
-      tags: [生成任务]
-      operationId: createGenerateTask
-      summary: 提交视频生成任务（异步）
-      description: 校验参数后立即受理，返回 task_id；阶段输出通过任务查询接口轮询获取。
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GenerateRequest'
-            example:
-              city: 杭州
-              location: 西湖
-              scene_type: 景区推荐
-              theme: 春日西湖旅游宣传
-              audience: 18-35岁年轻游客
-              style: 大气唯美
-              duration_s: 60
-              aspect_ratio: '9:16'
-              resolution: '1080p'
-              description: 突出春日西湖风景、年轻人打卡体验
-              assets:
-                - type: image
-                  url: https://images.example.com/xihu.jpg
-      responses:
-        '202':
-          description: 已受理
-          content:
-            application/json:
-              schema:
-                type: object
-                required: [task_id, status]
-                properties:
-                  task_id:
-                    type: string
-                    example: t_20260813_ab12cd34
-                  status:
-                    $ref: '#/components/schemas/Status'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '429':
-          $ref: '#/components/responses/RateLimited'
-  /api/v1/tasks/{task_id}:
-    get:
-      tags: [生成任务]
-      operationId: getGenerateTask
-      summary: 查询任务状态与阶段输出
-      parameters:
-        - name: task_id
-          in: path
-          required: true
-          description: 提交任务时返回的任务 ID
-          schema:
-            type: string
-      responses:
-        '200':
-          description: 任务详情（阶段字段始终存在，未产生时为空对象/空数组）
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenerateTask'
-        '404':
-          $ref: '#/components/responses/NotFound'
-  /api/projects:
-    post:
-      tags: [项目分阶段]
-      operationId: createProject
-      summary: 创建项目并生成创作方案（接口1）
-      description: >
-        受理后异步生成 planning + copywriting（含 copywriting_text 展示格式）。
-        轮询 GET /api/projects/{project_id} 至 status=waiting_confirm 后前端可编辑/确认。
-        scene_type 支持中文枚举或英文别名（scenic→景区推荐 等，落库统一中文）。
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GenerateRequest'
-      responses:
-        '202':
-          description: 已受理（后台生成中）
-          content:
-            application/json:
-              schema:
-                type: object
-                required: [project_id, status]
-                properties:
-                  project_id:
-                    type: string
-                    example: p_20260815_ab12cd
-                  status:
-                    $ref: '#/components/schemas/ProjectStatus'
-                  progress:
-                    type: integer
-                  message:
-                    type: string
-                  planning:
-                    type: object
-                  copywriting:
-                    $ref: '#/components/schemas/Copywriting'
-                  copywriting_text:
-                    type: string
-                    description: B 文档展示格式（【0-15s】…段落拼接）
-        '400':
-          $ref: '#/components/responses/BadRequest'
-  /api/projects/{project_id}:
-    get:
-      tags: [项目分阶段]
-      operationId: getProject
-      summary: 查询项目全量（分阶段轮询入口，补充端点）
-      description: 返回全部阶段产物 + video_clips（按 video_tasks 合并的最新结果）。V1 文档未列此端点，但分阶段流程轮询必需。
-      parameters:
-        - name: project_id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: 项目详情
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Project'
-        '404':
-          $ref: '#/components/responses/NotFound'
-  /api/projects/{project_id}/plan:
-    put:
-      tags: [项目分阶段]
-      operationId: confirmPlan
-      summary: 修改/确认创作方案（接口2）
-      description: 提交用户编辑后的旁白文案文本（可含【0-15s】标记；丢失标记时后端兜底整段为一个段落）。签发 plan_id，进入 plan_confirmed。
-      parameters:
-        - name: project_id
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ConfirmPlanRequest'
-      responses:
-        '200':
-          description: 方案已确认
-          content:
-            application/json:
-              schema:
-                type: object
-                required: [project_id, status, plan_id]
-                properties:
-                  project_id:
-                    type: string
-                  status:
-                    type: string
-                    example: plan_confirmed
-                  plan_id:
-                    type: string
-                    example: plan_p_xxx_v1
-                  progress:
-                    type: integer
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-  /api/projects/{project_id}/storyboard:
-    post:
-      tags: [项目分阶段]
-      operationId: createStoryboard
-      summary: 生成视频脚本 + 分镜（接口3）
-      description: 基于已确认文案异步生成分镜（JSON 硬校验）。轮询 GET /api/projects/{project_id} 至 waiting_storyboard_confirm。
-      parameters:
-        - name: project_id
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/StoryboardRequest'
-      responses:
-        '202':
-          description: 已受理
-          content:
-            application/json:
-              schema:
-                type: object
-                required: [project_id, status]
-                properties:
-                  project_id:
-                    type: string
-                  status:
-                    type: string
-                    example: storyboarding
-                  progress:
-                    type: integer
-                  message:
-                    type: string
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '409':
-          $ref: '#/components/responses/Conflict'
-  /api/projects/{project_id}/shots/{shot_id}:
-    put:
-      tags: [项目分阶段]
-      operationId: updateShot
-      summary: 修改单个 Shot（接口4）
-      description: 只更新出现的字段；camera/shot_size 等枚举自动归一化（如 鸟瞰→俯拍），非法枚举返回 400。
-      parameters:
-        - name: project_id
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: shot_id
-          in: path
-          required: true
-          description: 镜头编号（int；前端展示标签"Shot 01"即此值补零）
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ShotPatch'
-      responses:
-        '200':
-          description: 更新成功
-          content:
-            application/json:
-              schema:
-                type: object
-                required: [project_id, shot_id, status]
-                properties:
-                  project_id:
-                    type: string
-                  shot_id:
-                    type: integer
-                  status:
-                    type: string
-                    example: updated
-                  shot:
-                    type: object
-                    description: 归一化后的完整 Shot
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-  /api/projects/{project_id}/generate:
-    post:
-      tags: [项目分阶段]
-      operationId: generateBatch
-      summary: 批量生成视频 Shot（接口5）
-      description: >
-        提交即视为"确认分镜"。创建 video task（kind=batch），轮询 GET /api/tasks/{task_id} 看 per-shot 状态。
-        generate_image 参数接受但本版 video-only（image_url 恒 null，需图像 API 后续接入）。
-      parameters:
-        - name: project_id
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GenerateShotsRequest'
-      responses:
-        '202':
-          description: 已受理
-          content:
-            application/json:
-              schema:
-                type: object
-                required: [task_id, project_id, status]
-                properties:
-                  task_id:
-                    type: string
-                    example: vt_20260815_ab12cd
-                  project_id:
-                    type: string
-                  status:
-                    type: string
-                    example: generating
-                  progress:
-                    type: integer
-                  shots:
-                    type: array
-                    description: per-shot 初始状态（pending）
-                    items:
-                      type: object
-                      properties:
-                        shot_id:
-                          type: integer
-                        status:
-                          type: string
-                          example: pending
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '409':
-          $ref: '#/components/responses/Conflict'
-  /api/tasks/{task_id}:
-    get:
-      tags: [项目分阶段]
-      operationId: getVideoTask
-      summary: 查询视频生成任务状态（接口6）
-      parameters:
-        - name: task_id
-          in: path
-          required: true
-          description: POST /generate 或 /regenerate 返回的任务 ID（vt_ 前缀）
-          schema:
-            type: string
-      responses:
-        '200':
-          description: 任务详情（shots 数组含 per-shot 状态与产物地址）
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/VideoTask'
-        '404':
-          $ref: '#/components/responses/NotFound'
-  /api/projects/{project_id}/shots/{shot_id}/regenerate:
-    post:
-      tags: [项目分阶段]
-      operationId: regenerateShot
-      summary: 单 Shot 重新生成（TravelGen_v1.md §十五，系统必须保留）
-      description: 只重生成指定镜头；prompt 与现 Shot 不同时先写回分镜，完成后覆盖旧视频结果。
-      parameters:
-        - name: project_id
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: shot_id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RegenerateShotRequest'
-      responses:
-        '202':
-          description: 已受理
-          content:
-            application/json:
-              schema:
-                type: object
-                required: [task_id, shot_id, status]
-                properties:
-                  task_id:
-                    type: string
-                  shot_id:
-                    type: integer
-                  status:
-                    type: string
-                    example: generating
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
-  /api/projects/{project_id}/audio:
-    post:
-      tags: [项目分阶段]
-      operationId: createAudio
-      summary: 生成配音 + 音乐（接口7，本版占位 reserved）
-      responses:
-        '202':
-          description: 占位
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  task_id:
-                    type: string
-                  status:
-                    type: string
-                    example: reserved
-                  voice:
-                    type: object
-                  music:
-                    type: object
-        '404':
-          $ref: '#/components/responses/NotFound'
-  /api/projects/{project_id}/render:
-    post:
-      tags: [项目分阶段]
-      operationId: createRender
-      summary: 合成最终视频（接口8，本版占位 reserved）
-      responses:
-        '202':
-          description: 占位
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  task_id:
-                    type: string
-                  status:
-                    type: string
-                    example: reserved
-        '404':
-          $ref: '#/components/responses/NotFound'
-  /api/projects/{project_id}/render/status:
-    get:
-      tags: [项目分阶段]
-      operationId: getRenderStatus
-      summary: 查询最终成片状态（接口9，本版占位 reserved）
-      responses:
-        '200':
-          description: 占位
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  task_id:
-                    type: string
-                  status:
-                    type: string
-                    example: reserved
-                  progress:
-                    type: integer
-                  video:
-                    type: object
-                    properties:
-                      status:
-                        type: string
-                        example: reserved
-                      url:
-                        type: string
-                      duration_s:
-                        type: integer
-                      resolution:
-                        type: string
-                      aspect_ratio:
-                        type: string
-        '404':
-          $ref: '#/components/responses/NotFound'
-  /api/kb/search:
-    get:
-      tags: [知识库]
-      operationId: searchKnowledgeBaseV1
-      summary: 知识库检索（V1 体系别名，行为同 /api/v1/kb/search）
-      parameters:
-        - name: q
-          in: query
-          required: true
-          description: 检索词（如"西湖"）
-          schema:
-            type: string
-        - name: top_k
-          in: query
-          required: false
-          schema:
-            type: integer
-            default: 5
-      responses:
-        '200':
-          description: 检索结果
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/KbEntry'
-  /api/v1/kb/search:
-    get:
-      tags: [知识库]
-      operationId: searchKnowledgeBase
-      summary: 知识库检索（旧契约，可选，供前端"知识点"预览）
-      parameters:
-        - name: q
-          in: query
-          required: true
-          description: 检索词（如"西湖"）
-          schema:
-            type: string
-        - name: top_k
-          in: query
-          required: false
-          schema:
-            type: integer
-            default: 5
-      responses:
-        '200':
-          description: 检索结果
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  results:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/KbEntry'
-components:
-  responses:
-    BadRequest:
-      description: 参数错误
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-    NotFound:
-      description: 任务不存在
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-    RateLimited:
-      description: 模型额度/限速
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-    Conflict:
-      description: 状态冲突（状态机前置不满足，如分镜未生成就 generate）
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApiError'
-  schemas:
-    Status:
-      type: string
-      enum: [planning, copywriting, storyboard, generating, audio, composing, done, failed]
-    ProjectStatus:
-      type: string
-      description: V1 项目状态机（POST generate 即确认分镜）
-      enum: [created, planning, waiting_confirm, plan_confirmed, storyboarding,
-             waiting_storyboard_confirm, generating, completed, failed]
-    Project:
-      type: object
-      required: [project_id, status, request]
-      properties:
-        project_id:
-          type: string
-        status:
-          $ref: '#/components/schemas/ProjectStatus'
-        progress:
-          type: integer
-          minimum: 0
-          maximum: 100
-        message:
-          type: string
-        request:
-          type: object
-          description: 创建入参（scene_type 已归一化为中文枚举）
-        planning:
-          type: object
-        copywriting:
-          $ref: '#/components/schemas/Copywriting'
-        copywriting_text:
-          type: string
-          description: B 文档展示格式（【0-15s】…段落拼接）
-        plan_id:
-          type: string
-          nullable: true
-        script:
-          $ref: '#/components/schemas/Script'
-        storyboard:
-          $ref: '#/components/schemas/Storyboard'
-        visual_assets:
-          $ref: '#/components/schemas/VisualAssets'
-        voice:
-          $ref: '#/components/schemas/Voice'
-        music:
-          $ref: '#/components/schemas/Music'
-        video_tasks:
-          type: array
-          description: 视频任务 ID 列表（追加式，merge 时最新胜出）
-          items:
-            type: string
-        video_clips:
-          type: object
-          description: shot_id → 最新视频结果（由 video_tasks 合并重算）
-          additionalProperties:
-            type: object
-        render:
-          type: object
-        final_video:
-          $ref: '#/components/schemas/FinalVideo'
-        safety:
-          $ref: '#/components/schemas/Safety'
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-    VideoTask:
-      type: object
-      required: [task_id, project_id, kind, status, shots]
-      properties:
-        task_id:
-          type: string
-          example: vt_20260815_ab12cd
-        project_id:
-          type: string
-        kind:
-          type: string
-          enum: [batch, single]
-          description: batch=批量生成；single=单 Shot 重生成
-        status:
-          type: string
-          enum: [generating, completed, failed]
-        progress:
-          type: integer
-          minimum: 0
-          maximum: 100
-        message:
-          type: string
-        request:
-          type: object
-          description: 任务请求快照（shot_ids/generate_image/generate_video/regenerate）
-        shots:
-          type: array
-          description: per-shot 生成状态（前端生成进度页直接渲染）
-          items:
-            type: object
-            required: [shot_id, status]
-            properties:
-              shot_id:
-                type: integer
-              status:
-                type: string
-                enum: [pending, generating, completed, failed]
-              image_url:
-                type: string
-                nullable: true
-                description: 分镜图地址（本版恒 null，video-only）
-              video_url:
-                type: string
-                nullable: true
-                description: 视频地址（真实模式为本地转存路径）
-              local_path:
-                type: string
-                nullable: true
-              error:
-                type: string
-                nullable: true
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-    ConfirmPlanRequest:
-      type: object
-      required: [copywriting]
-      properties:
-        copywriting:
-          type: string
-          description: 用户编辑后的旁白文案（可含【0-15s】标记；丢失标记时后端兜底）
-    StoryboardRequest:
-      type: object
-      properties:
-        plan_id:
-          type: string
-          nullable: true
-          description: 可选；与项目当前 plan_id 不匹配时返回 409
-    ShotPatch:
-      type: object
-      description: Shot 部分字段更新（只更新出现的字段）
-      properties:
-        prompt:
-          type: string
-        duration_s:
-          type: integer
-          minimum: 1
-          maximum: 15
-        subject:
-          type: string
-        background:
-          type: string
-        shot_size:
-          type: string
-          enum: [大远景, 全景, 中景, 近景, 特写]
-        camera:
-          type: object
-          properties:
-            type:
-              type: string
-              enum: [航拍, 无人机, 固定机位, 地面机位, 移动机位]
-            movement:
-              type: string
-              enum: [固定, 推, 拉, 摇, 移, 跟, 升降, 环绕]
-            angle:
-              type: string
-              enum: [俯拍, 平拍, 仰拍, 侧拍]
-    GenerateShotsRequest:
-      type: object
-      required: [shots]
-      properties:
-        shots:
-          type: array
-          minItems: 1
-          description: 要生成的镜头编号（int；可先全量再补批）
-          items:
-            type: integer
-        generate_image:
-          type: boolean
-          default: false
-          description: 分镜图（本版接受但 video-only，需图像 API 后续接入）
-        generate_video:
-          type: boolean
-          default: true
-    RegenerateShotRequest:
-      type: object
-      required: [reason]
-      properties:
-        reason:
-          type: string
-          description: 重生成原因（如"人物动作不自然"）
-        prompt:
-          type: string
-          nullable: true
-          description: 可选；与现 Shot 不同时写回分镜并用于新任务
-        keep_style:
-          type: boolean
-          default: true
-    AudioRequest:
-      type: object
-      properties:
-        voice:
-          type: string
-          default: ''
-        music:
-          type: string
-          default: ''
-    RenderRequest:
-      type: object
-      properties:
-        shot_ids:
-          type: array
-          items:
-            type: string
-        voice_url:
-          type: string
-        music_url:
-          type: string
-        subtitle:
-          type: boolean
-          default: true
-        resolution:
-          type: string
-          default: '1080p'
-        aspect_ratio:
-          type: string
-          default: '9:16'
-    AssetType:
-      type: string
-      enum: [image, video, audio]
-    Asset:
-      type: object
-      required: [type, url]
-      properties:
-        type:
-          $ref: '#/components/schemas/AssetType'
-        url:
-          type: string
-          format: uri
-          description: 参考素材地址（MVP 仅启用 image）
-    GenerateRequest:
-      type: object
-      required: [city, location, scene_type, theme]
-      properties:
-        city:
-          type: string
-          example: 杭州
-        location:
-          type: string
-          example: 西湖
-        scene_type:
-          type: string
-          enum: [城市形象宣传, 景区推荐, 节庆活动推广, 非遗文化传播, 打卡视频, 其他]
-        theme:
-          type: string
-          example: 春日西湖旅游宣传
-        audience:
-          type: string
-          default: 18-35岁年轻游客
-        style:
-          type: string
-          default: 大气唯美
-        duration_s:
-          type: integer
-          default: 60
-          minimum: 15
-          maximum: 120
-        aspect_ratio:
-          type: string
-          enum: ['9:16', '16:9', '1:1']
-          default: '9:16'
-        resolution:
-          type: string
-          enum: ['720p', '1080p']
-          default: '1080p'
-        video_model:
-          type: string
-          enum: ['seedance-2.0', 'seedance-2.0-pro']
-          default: seedance-2.0-pro
-          description: 视频模型（默认 Pro；模型 ID 映射在服务端配置）
-        description:
-          type: string
-          description: 补充要求说明
-        assets:
-          type: array
-          description: 参考素材（MVP 仅 image）
-          items:
-            $ref: '#/components/schemas/Asset'
-    GenerateTask:
-      type: object
-      required: [task_id, status, progress]
-      properties:
-        task_id:
-          type: string
-        status:
-          $ref: '#/components/schemas/Status'
-        progress:
-          type: integer
-          minimum: 0
-          maximum: 100
-          description: 阶段进度（done=100）
-        message:
-          type: string
-          description: 进度说明；failed 时必填（失败阶段 + 原因）
-        planning:
-          type: object
-          description: 内容策划大纲（3-5 段：引入/展开/高潮/收尾）
-        copywriting:
-          $ref: '#/components/schemas/Copywriting'
-        script:
-          $ref: '#/components/schemas/Script'
-        storyboard:
-          $ref: '#/components/schemas/Storyboard'
-        visual_assets:
-          $ref: '#/components/schemas/VisualAssets'
-        voice:
-          $ref: '#/components/schemas/Voice'
-        music:
-          $ref: '#/components/schemas/Music'
-        video_clips:
-          type: array
-          description: 逐镜头视频片段（8 条）
-          items:
-            $ref: '#/components/schemas/VideoClip'
-        safety:
-          $ref: '#/components/schemas/Safety'
-        final_video:
-          $ref: '#/components/schemas/FinalVideo'
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-    Copywriting:
-      type: object
-      properties:
-        titles:
-          type: array
-          maxItems: 2
-          items:
-            type: string
-          description: 2 个候选标题
-        paragraphs:
-          type: array
-          description: 文案正文（4 段，含秒数）
-          items:
-            type: object
-            required: [idx, text, duration_s]
-            properties:
-              idx:
-                type: integer
-              text:
-                type: string
-              duration_s:
-                type: integer
-        hashtags:
-          type: array
-          maxItems: 3
-          items:
-            type: string
-          description: 3 个话题标签
-    Script:
-      type: object
-      description: 配音稿/字幕稿（MVP 可作字幕；配音 Phase 5 接入）
-      properties:
-        lines:
-          type: array
-          items:
-            type: object
-            required: [line_id, text, start_s, end_s]
-            properties:
-              line_id:
-                type: integer
-              text:
-                type: string
-              start_s:
-                type: integer
-              end_s:
-                type: integer
-    Storyboard:
-      type: object
-      description: 分镜（严格遵循 docs/Storyboard_Schema_v1.md：全局 6-8 镜头，∑duration≈60s±5）
-      required: [theme, scenes]
-      properties:
-        theme:
-          type: string
-        scenes:
-          type: array
-          items:
-            type: object
-            required: [scene_id, location, time, shot_list]
-            properties:
-              scene_id:
-                type: integer
-              location:
-                type: string
-              time:
-                type: string
-                enum: [清晨, 上午, 午后, 黄昏, 入夜]
-              shot_list:
-                type: array
-                items:
-                  type: object
-                  required: [shot_id, duration_s, camera, shot_size, subject, background, prompt]
-                  properties:
-                    shot_id:
-                      type: integer
-                    duration_s:
-                      type: integer
-                    camera:
-                      type: object
-                      required: [type, movement, angle]
-                      properties:
-                        type:
-                          type: string
-                          enum: [航拍, 无人机, 固定机位, 地面机位, 移动机位]
-                        movement:
-                          type: string
-                          enum: [固定, 推, 拉, 摇, 移, 跟, 升降, 环绕]
-                        angle:
-                          type: string
-                          enum: [俯拍, 平拍, 仰拍, 侧拍]
-                    shot_size:
-                      type: string
-                      enum: [大远景, 全景, 中景, 近景, 特写]
-                    subject:
-                      type: string
-                    background:
-                      type: string
-                    prompt:
-                      type: string
-                      description: 可直接用于文生视频的完整提示词（含主体/环境/光线/质感）
-    VisualAssets:
-      type: object
-      properties:
-        kb_images:
-          type: array
-          description: 知识库视觉锚点图（首帧一致性/风格参考）
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              path:
-                type: string
-              url:
-                type: string
-              license:
-                type: string
-        ref_images:
-          type: array
-          description: 用户参考图（assets 传入，MVP 透传）
-          items:
-            type: string
-    Voice:
-      type: object
-      description: 配音（Phase 5 接入，MVP 恒为空占位）
-      properties:
-        enabled:
-          type: boolean
-          default: false
-        status:
-          type: string
-          default: reserved
-        engine:
-          type: string
-          nullable: true
-    Music:
-      type: object
-      description: 背景音乐建议（MVP 占位）
-      properties:
-        suggestions:
-          type: array
-          items:
-            type: object
-            properties:
-              title:
-                type: string
-              style:
-                type: string
-              mood:
-                type: string
-        status:
-          type: string
-          default: reserved
-    VideoClip:
-      type: object
-      required: [shot_id, status]
-      properties:
-        shot_id:
-          type: integer
-        task_id:
-          type: string
-          description: 视频平台任务 ID（火山方舟）
-        status:
-          type: string
-          enum: [queued, running, succeeded, failed, expired]
-        prompt:
-          type: string
-          description: 实际提交的镜头提示词
-        video_url:
-          type: string
-          description: 视频地址（24h 有效，服务端成功即转存）
-        local_path:
-          type: string
-          description: 本地转存路径（assets/videos/，B 合成直接读取）
-        duration_s:
-          type: integer
-        cost_yuan:
-          type: number
-          description: 单镜头成本估算
-        error:
-          type: string
-          description: 失败原因（failed 时）
-    Safety:
-      type: object
-      properties:
-        passed:
-          type: boolean
-        checks:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                enum: [content, copyright, license]
-              result:
-                type: string
-                enum: [pass, warn, fail]
-              note:
-                type: string
-    FinalVideo:
-      type: object
-      description: 成片（B 合成后回填；MVP 状态 none）
-      properties:
-        status:
-          type: string
-          enum: [none, composing, ready, failed]
-        url:
-          type: string
-          description: 成片地址（B 回填）
-        preview_url:
-          type: string
-        duration_s:
-          type: integer
-        resolution:
-          type: string
-        aspect_ratio:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-    KbEntry:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        city:
-          type: string
-        category:
-          type: string
-        facts:
-          type: array
-          items:
-            type: string
-        source:
-          type: string
-        verified:
-          type: boolean
-    ApiError:
-      type: object
-      required: [code, message]
-      properties:
-        code:
-          type: string
-          example: invalid_param
-        message:
-          type: string
-        detail:
-          type: string
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "TravelGen 生成管线 API",
+    "version": "0.2.0"
+  },
+  "paths": {
+    "/api/projects": {
+      "post": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Create Project",
+        "operationId": "create_project_api_projects_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "List Projects",
+        "operationId": "list_projects_api_projects_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/references": {
+      "get": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Get References",
+        "operationId": "get_references_api_projects__pid__references_get",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/references/confirm": {
+      "post": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Confirm References",
+        "operationId": "confirm_references_api_projects__pid__references_confirm_post",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmReferencesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/plan": {
+      "put": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Confirm Plan",
+        "operationId": "confirm_plan_api_projects__pid__plan_put",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmPlanRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/storyboard": {
+      "post": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Create Storyboard",
+        "operationId": "create_storyboard_api_projects__pid__storyboard_post",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StoryboardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/shots/{shot_id}": {
+      "put": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Update Shot",
+        "operationId": "update_shot_api_projects__pid__shots__shot_id__put",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "shot_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Shot Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShotPatch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/segments/{segment_id}": {
+      "put": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Update Segment",
+        "operationId": "update_segment_api_projects__pid__segments__segment_id__put",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "segment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Segment Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SegmentPatch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/generate": {
+      "post": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Generate Batch",
+        "operationId": "generate_batch_api_projects__pid__generate_post",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateSegmentsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tasks/{task_id}": {
+      "get": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Get Task Status",
+        "operationId": "get_task_status_api_tasks__task_id__get",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Task Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/shots/{shot_id}/regenerate": {
+      "post": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Regenerate Shot",
+        "operationId": "regenerate_shot_api_projects__pid__shots__shot_id__regenerate_post",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "shot_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Shot Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegenerateShotRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/segments/{segment_id}/regenerate": {
+      "post": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Regenerate Segment",
+        "operationId": "regenerate_segment_api_projects__pid__segments__segment_id__regenerate_post",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "segment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Segment Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegenerateSegmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/voice-presets": {
+      "get": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Get Voice Presets",
+        "operationId": "get_voice_presets_api_voice_presets_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/bgm": {
+      "get": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Get Bgm Catalog",
+        "operationId": "get_bgm_catalog_api_bgm_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/voice-candidates": {
+      "post": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Create Voice Candidate",
+        "operationId": "create_voice_candidate_api_projects__pid__voice_candidates_post",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VoiceCandidateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/voice": {
+      "put": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Select Voice",
+        "operationId": "select_voice_api_projects__pid__voice_put",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VoiceSelectionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/bgm/recommendations": {
+      "post": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Refresh Bgm Recommendations",
+        "operationId": "refresh_bgm_recommendations_api_projects__pid__bgm_recommendations_post",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/bgm": {
+      "put": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Select Bgm",
+        "operationId": "select_bgm_api_projects__pid__bgm_put",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MusicSelectionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/render": {
+      "post": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Create Render",
+        "operationId": "create_render_api_projects__pid__render_post",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/RenderRequest"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Req"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/render/mix": {
+      "post": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Mix Render",
+        "operationId": "mix_render_api_projects__pid__render_mix_post",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RenderMixRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}/render/status": {
+      "get": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Render Status",
+        "operationId": "render_status_api_projects__pid__render_status_get",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{pid}": {
+      "get": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Get Project",
+        "operationId": "get_project_api_projects__pid__get",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pid"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/kb/search": {
+      "get": {
+        "tags": [
+          "项目分阶段"
+        ],
+        "summary": "Search Kb",
+        "operationId": "search_kb_api_kb_search_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Q"
+            }
+          },
+          {
+            "name": "top_k",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 5,
+              "title": "Top K"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "登录注册"
+        ],
+        "summary": "Register",
+        "operationId": "register_api_auth_register_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "登录注册"
+        ],
+        "summary": "Login",
+        "operationId": "login_api_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/generate": {
+      "post": {
+        "summary": "Create Generate Task",
+        "description": "提交生成任务（异步，202 返回 task_id）。",
+        "operationId": "create_generate_task_api_v1_generate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tasks/{task_id}": {
+      "get": {
+        "summary": "Get Generate Task",
+        "description": "轮询任务状态与阶段输出（前端 2s 间隔）。",
+        "operationId": "get_generate_task_api_v1_tasks__task_id__get",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Task Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/kb/search": {
+      "get": {
+        "summary": "Search Kb",
+        "description": "知识库检索（可选，供前端知识点预览）。",
+        "operationId": "search_kb_api_v1_kb_search_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Q"
+            }
+          },
+          {
+            "name": "top_k",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 5,
+              "title": "Top K"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Asset": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "default": "image"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          }
+        },
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "title": "Asset"
+      },
+      "ConfirmPlanRequest": {
+        "properties": {
+          "copywriting": {
+            "type": "string",
+            "title": "Copywriting"
+          }
+        },
+        "type": "object",
+        "required": [
+          "copywriting"
+        ],
+        "title": "ConfirmPlanRequest",
+        "description": "接口2：用户修改/确认后的旁白文案（TravelGen_v1.md §八）。"
+      },
+      "ConfirmReferencesRequest": {
+        "properties": {
+          "reference_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 8,
+            "minItems": 1,
+            "title": "Reference Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "reference_ids"
+        ],
+        "title": "ConfirmReferencesRequest",
+        "description": "用户从服务端搜索候选中确认真实景点图片；确认后才启动 VLM 与 Plan。"
+      },
+      "GenerateRequest": {
+        "properties": {
+          "city": {
+            "type": "string",
+            "title": "City"
+          },
+          "location": {
+            "type": "string",
+            "title": "Location"
+          },
+          "scene_type": {
+            "type": "string",
+            "title": "Scene Type"
+          },
+          "theme": {
+            "type": "string",
+            "title": "Theme"
+          },
+          "audience": {
+            "type": "string",
+            "title": "Audience",
+            "default": "18-35岁年轻游客"
+          },
+          "style": {
+            "type": "string",
+            "title": "Style",
+            "default": "大气唯美"
+          },
+          "duration_s": {
+            "type": "integer",
+            "maximum": 120.0,
+            "minimum": 15.0,
+            "title": "Duration S",
+            "default": 60
+          },
+          "aspect_ratio": {
+            "type": "string",
+            "title": "Aspect Ratio",
+            "default": "9:16"
+          },
+          "resolution": {
+            "type": "string",
+            "title": "Resolution",
+            "default": "1080p"
+          },
+          "video_model": {
+            "type": "string",
+            "title": "Video Model",
+            "default": "seedance-2.0-pro"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "default": ""
+          },
+          "assets": {
+            "items": {
+              "$ref": "#/components/schemas/Asset"
+            },
+            "type": "array",
+            "title": "Assets",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "city",
+          "location",
+          "scene_type",
+          "theme"
+        ],
+        "title": "GenerateRequest",
+        "description": "输入契约（docs/API_Contract_MVP.md §2 / TravelGen_v1.md §六）。"
+      },
+      "GenerateSegmentsRequest": {
+        "properties": {
+          "segments": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Segments"
+          },
+          "generate_video": {
+            "type": "boolean",
+            "title": "Generate Video",
+            "default": true
+          }
+        },
+        "type": "object",
+        "title": "GenerateSegmentsRequest",
+        "description": "按一个或多个完整 Segment 生成；空列表表示生成全部待选 Segment。"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "LoginRequest": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "password"
+        ],
+        "title": "LoginRequest"
+      },
+      "MusicSelectionRequest": {
+        "properties": {
+          "bgm_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bgm Id"
+          },
+          "explicit_none": {
+            "type": "boolean",
+            "title": "Explicit None",
+            "default": false
+          }
+        },
+        "type": "object",
+        "title": "MusicSelectionRequest",
+        "description": "确认一首预设 BGM；explicit_none=true 表示明确不要 BGM。"
+      },
+      "RegenerateSegmentRequest": {
+        "properties": {
+          "reason": {
+            "type": "string",
+            "title": "Reason",
+            "default": ""
+          },
+          "transition_note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transition Note"
+          }
+        },
+        "type": "object",
+        "title": "RegenerateSegmentRequest"
+      },
+      "RegenerateShotRequest": {
+        "properties": {
+          "reason": {
+            "type": "string",
+            "title": "Reason",
+            "default": ""
+          },
+          "prompt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt"
+          },
+          "keep_style": {
+            "type": "boolean",
+            "title": "Keep Style",
+            "default": true
+          }
+        },
+        "type": "object",
+        "title": "RegenerateShotRequest",
+        "description": "接口（§十五）：单 Shot 重新生成。\nreason/keep_style 仅作审计落库，不影响生成（每次调用隔离，只认 prompt）。"
+      },
+      "RegisterRequest": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "pattern": "^[\\w一-龥.-]{2,50}$",
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 6,
+            "title": "Password"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "password"
+        ],
+        "title": "RegisterRequest"
+      },
+      "RenderMixRequest": {
+        "properties": {
+          "video_gain_db": {
+            "type": "number",
+            "maximum": 0.0,
+            "minimum": -60.0,
+            "title": "Video Gain Db",
+            "default": 0
+          },
+          "bgm_gain_db": {
+            "type": "number",
+            "maximum": 0.0,
+            "minimum": -60.0,
+            "title": "Bgm Gain Db",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "title": "RenderMixRequest",
+        "description": "成片试听后调整原视频声轨与配乐声轨的音量。"
+      },
+      "RenderRequest": {
+        "properties": {
+          "segment_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Segment Ids"
+          }
+        },
+        "type": "object",
+        "title": "RenderRequest",
+        "description": "拼接 Seedance 原生音视频，并按选择生成 clean/with-BGM 双版本。"
+      },
+      "SegmentPatch": {
+        "properties": {
+          "transition_note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transition Note"
+          }
+        },
+        "type": "object",
+        "title": "SegmentPatch"
+      },
+      "ShotPatch": {
+        "properties": {
+          "prompt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt"
+          },
+          "duration_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration S"
+          },
+          "narration": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Narration"
+          },
+          "subject": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Subject"
+          },
+          "background": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Background"
+          },
+          "shot_size": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shot Size"
+          },
+          "camera": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Camera"
+          },
+          "reference_asset_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Asset Ids"
+          }
+        },
+        "type": "object",
+        "title": "ShotPatch",
+        "description": "接口4：修改单个 Shot 的部分字段（只更新出现的字段）。"
+      },
+      "StoryboardRequest": {
+        "properties": {
+          "plan_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Plan Id"
+          }
+        },
+        "type": "object",
+        "title": "StoryboardRequest",
+        "description": "接口3：生成脚本+分镜（plan_id 可选，用于并发安全校验）。"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "VoiceCandidateRequest": {
+        "properties": {
+          "description": {
+            "type": "string",
+            "maxLength": 300,
+            "minLength": 2,
+            "title": "Description"
+          }
+        },
+        "type": "object",
+        "required": [
+          "description"
+        ],
+        "title": "VoiceCandidateRequest",
+        "description": "用 Seedance 生成一条可试听、可确认的自定义参考音色。"
+      },
+      "VoiceSelectionRequest": {
+        "properties": {
+          "voice_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Voice Id"
+          },
+          "candidate_task_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Candidate Task Id"
+          }
+        },
+        "type": "object",
+        "title": "VoiceSelectionRequest",
+        "description": "确认预设音色，或确认已经完成的自定义音色任务。"
+      }
+    }
+  }
+}

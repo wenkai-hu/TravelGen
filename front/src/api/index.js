@@ -84,9 +84,42 @@ export function createStoryboard(pid, planId) {
   })
 }
 
-// 先生成整条旁白+BGM 母带；Storyboard 将基于真实音频时间轴规划 Segment。
-export function createAudio(pid, payload = {}) {
-  return request(`/api/projects/${pid}/audio`, {
+// Seedance 参考音色与后期 BGM 素材。
+export function getVoicePresets() {
+  return request('/api/voice-presets')
+}
+
+export function getBgmCatalog() {
+  return request('/api/bgm')
+}
+
+export function createVoiceCandidate(pid, description) {
+  return request(`/api/projects/${pid}/voice-candidates`, {
+    method: 'POST',
+    body: JSON.stringify({ description }),
+  })
+}
+
+export function selectVoice(pid, payload) {
+  return request(`/api/projects/${pid}/voice`, {
+    method: 'PUT',
+    body: JSON.stringify(payload),
+  })
+}
+
+export function refreshBgmRecommendations(pid) {
+  return request(`/api/projects/${pid}/bgm/recommendations`, { method: 'POST' })
+}
+
+export function selectBgm(pid, payload) {
+  return request(`/api/projects/${pid}/bgm`, {
+    method: 'PUT',
+    body: JSON.stringify(payload),
+  })
+}
+
+export function mixRender(pid, payload) {
+  return request(`/api/projects/${pid}/render/mix`, {
     method: 'POST',
     body: JSON.stringify(payload),
   })
@@ -100,19 +133,11 @@ export function updateShot(pid, shotId, patch) {
   })
 }
 
-// 接口5：批量生成视频（POST /api/projects/{pid}/generate，202）→ { task_id, ... }
-export function generateShots(pid, shotIds) {
-  return request(`/api/projects/${pid}/generate`, {
-    method: 'POST',
-    body: JSON.stringify({ shots: shotIds, generate_video: true, generate_image: false }),
-  })
-}
-
 // 新管线：一个 Segment 可包含多个 Shot，一次 Seedance 请求生成整段。
 export function generateSegments(pid, segmentIds) {
   return request(`/api/projects/${pid}/generate`, {
     method: 'POST',
-    body: JSON.stringify({ segments: segmentIds, generate_video: true, generate_image: false }),
+    body: JSON.stringify({ segments: segmentIds, generate_video: true }),
   })
 }
 
@@ -139,11 +164,6 @@ export function createRender(pid, payload = {}) {
 
 export function getRenderStatus(pid) {
   return request(`/api/projects/${pid}/render/status`)
-}
-
-// 接口6：视频任务状态（GET /api/tasks/{task_id}），单镜头状态看 shots[]
-export function getVideoTask(taskId) {
-  return request(`/api/tasks/${taskId}`)
 }
 
 // 单镜头重生成（POST /api/projects/{pid}/shots/{shot_id}/regenerate，202）

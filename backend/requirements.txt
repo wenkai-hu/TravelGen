@@ -3,7 +3,7 @@ uvicorn>=0.27
 watchfiles>=0.21  # Faster uvicorn reload on Windows
 pydantic>=2.0
 imageio-ffmpeg>=0.6  # Browser-compatible Seedance transcoding
-edge-tts==7.2.7  # Narration master audio with a stable voice
-sqlalchemy>=2.0  # Database ORM (backend/db, MySQL)
+sqlalchemy[asyncio]>=2.0  # Async ORM; installs greenlet required by AsyncEngine
 aiomysql>=0.2  # Async MySQL driver
+PyMySQL[rsa]>=1.1  # MySQL 8 sha256/caching_sha2_password authentication
 Pillow>=10.0  # Reference image decoding and perceptual deduplication

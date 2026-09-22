@@ -1,0 +1,1338 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260921_155641_e528de",
+  "username": "sherlock",
+  "status": "waiting_storyboard_confirm",
+  "progress": 40,
+  "message": "分镜待确认（可修改 Shot）",
+  "request": {
+    "city": "杭州",
+    "location": "灵隐寺",
+    "scene_type": "景区推荐",
+    "theme": "寺庙禅意",
+    "audience": "学生党",
+    "style": "国风古韵",
+    "duration_s": 25,
+    "aspect_ratio": "16:9",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "山门初见",
+        "content": "以仰视中景拍摄传统中式门楼与繁茂大树，金色牌匾在翠绿枝叶的掩映下更显古朴厚重。画面配合低饱和度国色调色与书法字幕“一抬头，千年风过”，以学生党逃离日常喧嚣的第一视角建立代入感，快速营造国风古韵的禅意基调。",
+        "duration_s": 5,
+        "place_id": "place_1314055c40cda376",
+        "visual_targets": [
+          "传统中式门楼",
+          "金色牌匾",
+          "大树",
+          "绿叶"
+        ],
+        "evidence_asset_ids": [
+          "ref_581e17d6782cc37e"
+        ]
+      },
+      {
+        "section": "展开",
+        "title": "古刹寻幽",
+        "content": "切换平视中景，沿石阶缓缓而上，寺庙建筑正门、佛像与两侧树木形成对称构图。弱化参拜人群的具体动作，突出青石阶与红墙绿窗的古意。字幕“三步一阶，暂别书山题海”，强化学生党可参与的祈福放空体验，展现禅意生活化的核心场景。",
+        "duration_s": 6,
+        "place_id": "place_1314055c40cda376",
+        "visual_targets": [
+          "寺庙建筑",
+          "石阶",
+          "佛像",
+          "牌匾",
+          "树木"
+        ],
+        "evidence_asset_ids": [
+          "ref_c51bf568f04e59e8"
+        ]
+      },
+      {
+        "section": "高潮",
+        "title": "飞檐望翠",
+        "content": "采用高位俯视中景，层叠的黑色瓦片与飞檐在青山绿水间错落，红色灯笼点缀其间。利用灯笼微摆的动态元素配合升格慢镜头与国风配乐高潮，字幕“飞檐之下，群山应答”。将视觉推向国风美学顶点，传递学生党在半日闲游中豁然开朗的情绪释放。",
+        "duration_s": 7,
+        "place_id": "place_1314055c40cda376",
+        "visual_targets": [
+          "中式传统建筑",
+          "黑色瓦片",
+          "飞檐",
+          "红色灯笼",
+          "树木",
+          "山峦"
+        ],
+        "evidence_asset_ids": [
+          "ref_49842a41c8fdbee7"
+        ]
+      },
+      {
+        "section": "收尾",
+        "title": "此间少年",
+        "content": "回归门楼仰视视角，与开篇形成首尾呼应。画面定格于金色牌匾与苍翠枝叶的静谧构图，字幕渐显“少年心事，山林都懂。灵隐半日，最忆杭州”。以情感化的行动召唤收尾，强化学生党低成本治愈之旅的记忆点，引导打卡意愿。",
+        "duration_s": 7,
+        "place_id": "place_1314055c40cda376",
+        "visual_targets": [
+          "传统中式门楼",
+          "金色牌匾",
+          "大树",
+          "绿叶"
+        ],
+        "evidence_asset_ids": [
+          "ref_581e17d6782cc37e"
+        ]
+      }
+    ],
+    "plan_summary": "寺庙禅意"
+  },
+  "copywriting": {
+    "titles": [
+      "灵隐半日，最忆杭州",
+      "飞来峰下，少年游"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "一抬头，千年风过。古木掩映山门，飞来峰下，时光慢了下来。",
+        "duration_s": 5
+      },
+      {
+        "idx": 2,
+        "text": "三步一阶，暂别书山题海。踏过青石，云林深处，佛影与松风相映。",
+        "duration_s": 6
+      },
+      {
+        "idx": 3,
+        "text": "飞檐之下，群山应答。黑瓦层叠，红灯笼轻摇，北高峰的风，吹散了满身疲惫。",
+        "duration_s": 7
+      },
+      {
+        "idx": 4,
+        "text": "少年心事，山林都懂。灵隐半日，最忆杭州。来这千年古刹，寻一场青春放空。",
+        "duration_s": 7
+      }
+    ],
+    "hashtags": [
+      "#灵隐寺",
+      "#学生党治愈之旅",
+      "#最忆杭州"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "一抬头，千年风过。古木掩映山门，飞来峰下，时光慢了下来。",
+        "start_s": 0,
+        "end_s": 5
+      },
+      {
+        "line_id": 2,
+        "text": "三步一阶，暂别书山题海。踏过青石，云林深处，佛影与松风相映。",
+        "start_s": 5,
+        "end_s": 11
+      },
+      {
+        "line_id": 3,
+        "text": "飞檐之下，群山应答。黑瓦层叠，红灯笼轻摇，北高峰的风，吹散了满身疲惫。",
+        "start_s": 11,
+        "end_s": 18
+      },
+      {
+        "line_id": 4,
+        "text": "少年心事，山林都懂。灵隐半日，最忆杭州。来这千年古刹，寻一场青春放空。",
+        "start_s": 18,
+        "end_s": 25
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "灵隐寺禅意国风",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "灵隐寺",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 3,
+            "narration": "一抬头，千年风过。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "固定",
+              "angle": "仰拍"
+            },
+            "shot_size": "中景",
+            "subject": "传统中式门楼、金色牌匾、大树",
+            "background": "翠绿枝叶、天空",
+            "place_id": "place_1314055c40cda376",
+            "reference_asset_ids": [
+              "ref_581e17d6782cc37e"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "传统中式门楼的结构和风格、金色牌匾及文字、大树的枝干和绿叶的布局、仰视的视角"
+            ],
+            "allowed_changes": [
+              "卡通贴纸的样式和位置、监控摄像头的细节、树叶的细微动态"
+            ],
+            "prompt": "写实地面仰拍中景，传统中式门楼位于画面中下部，金色牌匾悬挂门楼中上部，大树枝干从两侧延伸覆盖门楼上方，翠绿枝叶繁茂遮挡部分天空，低饱和度国风色调，清晨柔和自然光，镜头固定",
+            "reference_roles": [
+              {
+                "asset_id": "ref_581e17d6782cc37e",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "俯视拍摄、特写拍摄门楼的下部结构（因视角限制）、远距离远景拍摄（会丢失细节）"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 3000,
+            "timeline_start_ms": 0,
+            "timeline_end_ms": 3000
+          },
+          {
+            "shot_id": 2,
+            "duration_s": 2,
+            "narration": "古木掩映山门，飞来峰下，时光慢了下来。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "推",
+              "angle": "仰拍"
+            },
+            "shot_size": "中景",
+            "subject": "传统中式门楼、金色牌匾、大树枝叶",
+            "background": "山门建筑细节、天空",
+            "place_id": "place_1314055c40cda376",
+            "reference_asset_ids": [
+              "ref_581e17d6782cc37e"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "传统中式门楼的结构和风格、金色牌匾及文字、大树的枝干和绿叶的布局、仰视的视角"
+            ],
+            "allowed_changes": [
+              "卡通贴纸的样式和位置、监控摄像头的细节、树叶的细微动态、光线明暗",
+              "卡通贴纸的样式和位置、监控摄像头的细节、树叶的细微动态"
+            ],
+            "prompt": "写实地面仰拍中景，缓慢前推，古木枝叶掩映传统中式门楼，金色牌匾隐约可见，山门古朴厚重，清晨柔和散射光，低饱和度国风色调，树叶微动",
+            "reference_roles": [
+              {
+                "asset_id": "ref_581e17d6782cc37e",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "俯视拍摄、特写拍摄门楼的下部结构（因视角限制）、远距离远景拍摄（会丢失细节）"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 3000,
+            "segment_local_end_ms": 5000,
+            "timeline_start_ms": 3000,
+            "timeline_end_ms": 5000
+          }
+        ],
+        "place_id": "place_1314055c40cda376"
+      },
+      {
+        "scene_id": 2,
+        "location": "灵隐寺",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 3,
+            "narration": "三步一阶，暂别书山题海。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "青石阶、寺庙建筑正门",
+            "background": "两侧树木、红墙绿窗",
+            "place_id": "place_1314055c40cda376",
+            "reference_asset_ids": [
+              "ref_c51bf568f04e59e8"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "寺庙建筑的中式风格、牌匾文字、石阶结构、佛像位置、树木分布"
+            ],
+            "allowed_changes": [
+              "参拜人群的动作和数量、光线明暗"
+            ],
+            "prompt": "写实地面平拍中景，沿青石阶缓缓上移，寺庙建筑正门位于画面上方，石阶从前景延伸至入口，红墙绿窗古意盎然，两侧树木对称分布，清晨自然光，低饱和度国风色调",
+            "reference_roles": [
+              {
+                "asset_id": "ref_c51bf568f04e59e8",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "俯视或仰视的极端角度、建筑内部的特写（因画面未展示完整内部）"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 5000,
+            "segment_local_end_ms": 8000,
+            "timeline_start_ms": 5000,
+            "timeline_end_ms": 8000
+          },
+          {
+            "shot_id": 4,
+            "duration_s": 3,
+            "narration": "踏过青石，云林深处，佛影与松风相映。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "佛像、寺庙入口、两侧树木",
+            "background": "寺庙建筑、牌匾",
+            "place_id": "place_1314055c40cda376",
+            "reference_asset_ids": [
+              "ref_c51bf568f04e59e8"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "寺庙建筑的中式风格、牌匾文字、石阶结构、佛像位置、树木分布"
+            ],
+            "allowed_changes": [
+              "参拜人群的动作和数量、光线明暗"
+            ],
+            "prompt": "写实地面平拍中景，寺庙入口中央佛像静立，佛影与两侧松柏相映，青石阶纹理清晰，建筑牌匾高悬，红墙绿窗，清晨柔和侧光，低饱和度国风色调，人群虚化处理",
+            "reference_roles": [
+              {
+                "asset_id": "ref_c51bf568f04e59e8",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "俯视或仰视的极端角度、建筑内部的特写（因画面未展示完整内部）"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 8000,
+            "segment_local_end_ms": 11000,
+            "timeline_start_ms": 8000,
+            "timeline_end_ms": 11000
+          }
+        ],
+        "place_id": "place_1314055c40cda376"
+      },
+      {
+        "scene_id": 3,
+        "location": "灵隐寺",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 5,
+            "duration_s": 3,
+            "narration": "飞檐之下，群山应答。",
+            "camera": {
+              "type": "固定机位",
+              "movement": "摇",
+              "angle": "俯拍"
+            },
+            "shot_size": "中景",
+            "subject": "中式传统建筑、黑色瓦片、飞檐",
+            "background": "群山、绿树",
+            "place_id": "place_1314055c40cda376",
+            "reference_asset_ids": [
+              "ref_49842a41c8fdbee7"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "中式传统建筑风格、黑瓦飞檐、红色灯笼、山林背景"
+            ],
+            "allowed_changes": [
+              "人物活动、灯笼摆动（动态元素）"
+            ],
+            "prompt": "写实高位固定俯拍中景，缓慢横摇，层叠中式传统建筑群，黑瓦飞檐错落，红色灯笼点缀其间，背景层叠青山与翠绿树林，清晨明亮自然光，低饱和度国风色调",
+            "reference_roles": [
+              {
+                "asset_id": "ref_49842a41c8fdbee7",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "超低角度仰拍（画面中高位视角，难实现）、水下拍摄（无水域）"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 11000,
+            "segment_local_end_ms": 14000,
+            "timeline_start_ms": 11000,
+            "timeline_end_ms": 14000
+          },
+          {
+            "shot_id": 6,
+            "duration_s": 4,
+            "narration": "黑瓦层叠，红灯笼轻摇，北高峰的风，吹散了满身疲惫。",
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "俯拍"
+            },
+            "shot_size": "中景",
+            "subject": "红色灯笼、黑色瓦片、飞檐",
+            "background": "山峦、树木",
+            "place_id": "place_1314055c40cda376",
+            "reference_asset_ids": [
+              "ref_49842a41c8fdbee7"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "中式传统建筑风格、黑瓦飞檐、红色灯笼、山林背景"
+            ],
+            "allowed_changes": [
+              "灯笼摆动（动态元素）、人物活动",
+              "人物活动、灯笼摆动（动态元素）"
+            ],
+            "prompt": "写实高位固定俯拍中景，黑瓦层叠的中式建筑屋顶，红色灯笼在风中轻摇，升格慢镜头，背景北高峰群山苍翠，清晨柔和侧光，低饱和度国风色调，灯笼流苏微动",
+            "reference_roles": [
+              {
+                "asset_id": "ref_49842a41c8fdbee7",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "超低角度仰拍（画面中高位视角，难实现）、水下拍摄（无水域）"
+            ],
+            "segment_id": "seg_02",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 4000,
+            "timeline_start_ms": 14000,
+            "timeline_end_ms": 18000
+          }
+        ],
+        "place_id": "place_1314055c40cda376"
+      },
+      {
+        "scene_id": 4,
+        "location": "灵隐寺",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 7,
+            "duration_s": 3,
+            "narration": "少年心事，山林都懂。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "固定",
+              "angle": "仰拍"
+            },
+            "shot_size": "中景",
+            "subject": "传统中式门楼、金色牌匾、大树",
+            "background": "苍翠枝叶、天空",
+            "place_id": "place_1314055c40cda376",
+            "reference_asset_ids": [
+              "ref_581e17d6782cc37e"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "传统中式门楼的结构和风格、金色牌匾及文字、大树的枝干和绿叶的布局、仰视的视角"
+            ],
+            "allowed_changes": [
+              "卡通贴纸的样式和位置、监控摄像头的细节、树叶的细微动态"
+            ],
+            "prompt": "写实地面仰拍中景，回归门楼仰视视角，金色牌匾与苍翠枝叶形成静谧构图，传统中式门楼古朴庄重，大树枝叶繁茂，清晨柔和自然光，低饱和度国风色调，镜头固定",
+            "reference_roles": [
+              {
+                "asset_id": "ref_581e17d6782cc37e",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "俯视拍摄、特写拍摄门楼的下部结构（因视角限制）、远距离远景拍摄（会丢失细节）"
+            ],
+            "segment_id": "seg_02",
+            "segment_local_start_ms": 4000,
+            "segment_local_end_ms": 7000,
+            "timeline_start_ms": 18000,
+            "timeline_end_ms": 21000
+          },
+          {
+            "shot_id": 8,
+            "duration_s": 4,
+            "narration": "灵隐半日，最忆杭州。来这千年古刹，寻一场青春放空。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "推",
+              "angle": "仰拍"
+            },
+            "shot_size": "中景",
+            "subject": "金色牌匾、门楼、大树枝叶",
+            "background": "天空",
+            "place_id": "place_1314055c40cda376",
+            "reference_asset_ids": [
+              "ref_581e17d6782cc37e"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "传统中式门楼的结构和风格、金色牌匾及文字、大树的枝干和绿叶的布局、仰视的视角"
+            ],
+            "allowed_changes": [
+              "卡通贴纸的样式和位置、监控摄像头的细节、树叶的细微动态、光线明暗",
+              "卡通贴纸的样式和位置、监控摄像头的细节、树叶的细微动态"
+            ],
+            "prompt": "写实地面仰拍中景，缓慢前推定格，金色牌匾在苍翠枝叶掩映下熠熠生辉，传统中式门楼静谧庄严，清晨柔和散射光，低饱和度国风色调，情感化收尾氛围",
+            "reference_roles": [
+              {
+                "asset_id": "ref_581e17d6782cc37e",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "俯视拍摄、特写拍摄门楼的下部结构（因视角限制）、远距离远景拍摄（会丢失细节）"
+            ],
+            "segment_id": "seg_02",
+            "segment_local_start_ms": 7000,
+            "segment_local_end_ms": 11000,
+            "timeline_start_ms": 21000,
+            "timeline_end_ms": 25000
+          }
+        ],
+        "place_id": "place_1314055c40cda376"
+      }
+    ],
+    "storyboard_version": 3,
+    "duration_ms": 25000,
+    "segments": [
+      {
+        "segment_id": "seg_01",
+        "timeline_start_ms": 0,
+        "timeline_end_ms": 14000,
+        "duration_ms": 14000,
+        "shot_ids": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "narration_text": "一抬头，千年风过。古木掩映山门，飞来峰下，时光慢了下来。三步一阶，暂别书山题海。踏过青石，云林深处，佛影与松风相映。飞檐之下，群山应答。",
+        "reference_asset_ids": [
+          "ref_581e17d6782cc37e",
+          "ref_c51bf568f04e59e8",
+          "ref_49842a41c8fdbee7"
+        ],
+        "transition_note": "保持段内地点、光线和色调连贯，镜头沿运动方向或相似构图自然转场",
+        "status": "pending"
+      },
+      {
+        "segment_id": "seg_02",
+        "timeline_start_ms": 14000,
+        "timeline_end_ms": 25000,
+        "duration_ms": 11000,
+        "shot_ids": [
+          6,
+          7,
+          8
+        ],
+        "narration_text": "黑瓦层叠，红灯笼轻摇，北高峰的风，吹散了满身疲惫。少年心事，山林都懂。灵隐半日，最忆杭州。来这千年古刹，寻一场青春放空。",
+        "reference_asset_ids": [
+          "ref_49842a41c8fdbee7",
+          "ref_581e17d6782cc37e"
+        ],
+        "transition_note": "保持段内地点、光线和色调连贯，镜头沿运动方向或相似构图自然转场",
+        "status": "pending"
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260921_155641_e528de_v1",
+  "plan_version": 1,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_133a6b3de52edb5c",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=1110181727,926314836&fm=3074&app=3074&f=JPEG",
+      "title": "杭州灵隐寺游玩全攻略:一天玩转所有景点!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4683918719019068096",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1e7be92e62c90483",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27MjAyNOeBtemakOWvuumXqOelqOS7t%2BagvF8xNzI4NzgwODU1LjM2OTU1NzY%3D%27/0.png",
+      "title": "杭州灵隐寺游玩全攻略,避坑指南看这里!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4012019945054487563",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d0d04a8d15980c3a",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%2754G16ZqQ5a%2B655qE54mM5a2Q5Zyo5ZOq6YeMXzE3MzQxMTU0MzIuNjc2OTY4Mw%3D%3D%27/0.png",
+      "title": "杭州灵隐寺免费开放,祈福攻略大揭秘!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4921870468862950299",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_cd7be3167ca73a41",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%2754G16ZqQ5a%2B6NjDlsoHku6XkuIrogIHkurrlhY3otLlfMTcyOTMwOTU3NS40MDQ5Mzg1%27/0.png",
+      "title": "杭州灵隐寺必看攻略:18条实用建议",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3513209899460610885",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7b7cb6bc23c92307",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275a%2B86Iiq5Yiw54G16ZqQ5a%2B6XzE3MjgxNzk4ODUuMDk2MDQ1Nw%3D%3D%27/0.png",
+      "title": "🛕杭州灵隐寺游玩全攻略🎋",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4032899988891547155",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a90db261d25ba2c5",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyNDM1OTI1Ljk0Mjk4MQ%3D%3D%27/0.png",
+      "title": "杭州灵隐寺一日游攻略:早去,交通,美食",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4210519997593255883",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_524f16d252340e4b",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=4126251176,420659560&fm=3074&app=3074&f=JPEG?w=1080&h=1410&type=normal&func=",
+      "title": "杭州灵隐寺祈福攻略:求财求事业全指南",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5111137114847475077",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_96b9e6c0b7030528",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzMzA0OTQ1LjcxNjAzOQ%3D%3D%27/0.png",
+      "title": "五一杭州灵隐寺游玩攻略:人山人海也要去!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4528698021152488674",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_049d3738488bfcf5",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=4062257315,241755859&fm=3074&app=3074&f=JPEG?w=1080&h=1401&type=normal&func=",
+      "title": "杭州西湖灵隐寺一日游:从早到晚的完美行程",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5488469705545251047",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_bbb121e50bc1eb22",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/down/-nCu3MSs_rshrUpGfy4rLA709736ed2b8ff450976cbf2ae8e63807.jpg",
+      "title": "来杭州一定要来一趟灵隐寺,不是为了遇见佛,而是为了遇见自己",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=5638815452429308686",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_87c1594f731ef145",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxMDQyNTczLjQzMTY0OA%3D%3D%27/0.png",
+      "title": "杭州灵隐寺一日游攻略:必知事项与拍照技巧",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4263099537195749787",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d7732f0f7f47bb41",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://gips0.baidu.com/it/u=3762433322,3128722016&fm=3074&app=3074&f=JPEG?w=1080&h=1410&type=normal&func=",
+      "title": "杭州灵隐寺:摄影与祈福的绝佳去处",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4008202908876844881",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5150bc94a49cdc73",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://gips0.baidu.com/it/u=4143312933,152312109&fm=3074&app=3074&f=JPEG",
+      "title": "杭州灵隐寺法喜寺祈福之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4980822717325922044",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_4f39144df8689092",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=3931223400,4215592596&fm=3074&app=3074&f=JPEG",
+      "title": "杭州灵隐寺探访:香火鼎盛与幽静散心",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5017452646622228587",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_66e9ee5854786554",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%2754G16ZqQ5a%2B65byA6L%2BH5Yeg5qyh5q2j6Zeo5LqGXzE3MzE1MTQ5NjIuODI2MDgx%27/0.png",
+      "title": "探访杭州灵隐寺:千年古刹的宁静与灵验",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5040527237907982233",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0e827c061166b041",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzNTQxOTY2LjMyMzcxMzg%3D%27/0.png",
+      "title": "秋日探访杭州灵隐寺:宁静与美丽的完美结合",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5261627700756934022",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6aa189ca5497946f",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://qcloud.dpfile.com/pc/OT_k3M3nTe5bmfbCo25MizWR2ambJPFLMHeF8Sy0xQYaYY0PfhlEQ1WPqzILoArg.jpg",
+      "title": "灵隐寺-北高峰-游玩攻略",
+      "source_page_url": "http://m.dianping.com/ugcdetail/298305526?sceneType=0&bizType=29&msource=baiduappugc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_663ef0491cd7ce0d",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxNTAxNzcwLjA0NjU4MTU%3D%27/0.png",
+      "title": "杭州灵隐寺一日游全攻略,拍照必看!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5458270480557438304",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_92109491837b9970",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2Mzc0NDM3LjA1MDkxOQ%3D%3D%27/0.png",
+      "title": "杭州灵隐寺一日游:超详细攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4274980679582251930",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d7167cc40364fff5",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://gips0.baidu.com/it/u=837300158,2502984323&fm=3074&app=3074&f=JPEG?w=1440&h=1050&type=normal&func=",
+      "title": "杭州灵隐寺:必游的千年古刹",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4584344270569553168",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_aed57442617dbafd",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/triiykY_rgN78th6IliDmwd61ff621a936e79a5ac5977fb7384206.jpg",
+      "title": "独行的日子,一路艰辛,一路风景",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4759825961262483157",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_89b6f391ef875a68",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=857406428,801037484&fm=3074&app=3074&f=JPEG?w=2560&h=2044&type=normal&func=",
+      "title": "杭州灵隐寺:感受佛法与自然的和谐",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4446829111167042884",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_2ddae0e3ebd20225",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://pic.app.hualongxiang.com/forum/20241120084148front2_0_3375278_nspX4MV72Tgt_nQ8N3M-zKxIEKvj.jpg?watermark/3/text/QOWQiemqjzBnMg==/fontsize/400/dissolve/100/gravity/SouthEast/fill/I2YzZjNmYQ==/font/5b6u6L2v6ZuF6buR/dx/10/dy/28/image/aHR0cHM6Ly9waWMuYXBwLmh1YWxvbmd4aWFuZy5jb20vd2F0ZXJfaW1nXzIwMjEwMzE2XzU1My5qcGc=/dissolve/100/gravity/SouthEast/dx/118/dy/10",
+      "title": "杭州灵隐寺",
+      "source_page_url": "http://www.hualongxiang.com/chazuo/16331461",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3175b4656d2f0cb7",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzNDUwMDc0Ljc3ODcxM18xNzMzNDUwMDc1LjM0MTY0NTI%3D%27/1.png",
+      "title": "杭州灵隐寺秋游攻略:必去景点和交通指南",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4384318460706780439",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3c6bbb989b1eff85",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyODY2NjI0LjkxODUyODY%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-29T07%3A50%3A25Z%2F-1%2F%2Fcf5f5c0088cd309cf6f1b2c693e7ae7db6398f4c54e23ff78155326407d1f670",
+      "title": "杭州灵隐寺:三柱清香,一方净土",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4232302109097033686",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_956bd11d3b872888",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=2297407534,2137734704&fm=3074&app=3074&f=JPEG",
+      "title": "探秘杭州的千年古刹:灵隐寺 踏入浙江省杭州市的西湖风景名胜区,一座",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4282507227190900339",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_748b5fb2a43fb292",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=3250292754,474643365&fm=3074&app=3074&f=JPEG?w=1200&h=1569&type=normal&func=",
+      "title": "杭州灵隐寺:心诚则灵,福泽常伴",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4250744732979609781",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e9810c09229771e2",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://k.sinaimg.cn/n/sinakd20115/318/w2048h3070/20250228/5351-4744f85aa03c557e36d02a641e61feb3.jpg/w700d1q75cms.jpg",
+      "title": "杭州初雪下的灵隐寺祝愿来年平安顺遂",
+      "source_page_url": "http://cj.sina.com.cn/articles/view/2393857144/p8eaf5c78027012pdw",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3fe531d7de3a11dc",
+      "query": "杭州 灵隐寺 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/IbAkkWOm8M3M1Y0Xnz0mBg1e3b9fadb86f93a06a2db8e8d66fa750.jpg",
+      "title": "我拍了拍杭州的夏天# #杭州同城交流组# 灵隐寺,四季皆美如画,酶鲻",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4623393206544318442",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_581e17d6782cc37e",
+      "candidate_id": "ref_1e7be92e62c90483",
+      "place_id": "place_1314055c40cda376",
+      "place_name": "灵隐寺",
+      "city": "杭州",
+      "original_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27MjAyNOeBtemakOWvuumXqOelqOS7t%2BagvF8xNzI4NzgwODU1LjM2OTU1NzY%3D%27/0.png",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4012019945054487563",
+      "title": "杭州灵隐寺游玩全攻略,避坑指南看这里!",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260921_155641_e528de/ref_581e17d6782cc37e.png",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260921_155641_e528de\\ref_581e17d6782cc37e.png",
+      "sha256": "581e17d6782cc37ed0c7c2c199376d71601925da988b829f55d7df0f9c649b50",
+      "width": 1440,
+      "height": 1050,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 20.256,
+        "usage": {
+          "completion_tokens": 463,
+          "prompt_tokens": 2332,
+          "total_tokens": 2795,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示了一座传统中式建筑的门楼，上方有金色牌匾，周围环绕着枝繁叶茂的大树，树叶翠绿，画面还带有爱心和胡萝卜的卡通贴纸。",
+          "visible_elements": [
+            "传统中式门楼、金色牌匾、大树、绿叶、卡通爱心贴纸、卡通胡萝卜贴纸、监控摄像头"
+          ],
+          "spatial_layout": [
+            "大树的枝干从画面右侧和左侧延伸，覆盖在门楼上方；门楼位于画面中下部，牌匾在门楼的中上部；树叶在画面的中上部和顶部，遮挡部分天空"
+          ],
+          "architecture_and_materials": [
+            "门楼为传统中式风格，屋顶铺有灰黑色瓦片，部分瓦片有苔藓或落叶；门楼主体为深色木质结构，带有雕刻装饰；牌匾为金色，带有黑色文字和小字，底部有金色装饰"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "仰视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "仰视拍摄门楼和大树，树木枝叶向上延伸，门楼向上展开"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断",
+            "weather": "晴天（推测，因为树叶明亮且有光线透过）",
+            "season": "夏季（推测，因为树叶翠绿繁茂）"
+          },
+          "must_keep_candidates": [
+            "传统中式门楼的结构和风格、金色牌匾及文字、大树的枝干和绿叶的布局、仰视的视角"
+          ],
+          "allowed_changes": [
+            "卡通贴纸的样式和位置、监控摄像头的细节、树叶的细微动态"
+          ],
+          "suitable_shots": [
+            "仰视中景拍摄门楼和大树、近景拍摄牌匾文字、全景拍摄门楼及周围树木环境"
+          ],
+          "unsupported_or_risky_shots": [
+            "俯视拍摄、特写拍摄门楼的下部结构（因视角限制）、远距离远景拍摄（会丢失细节）"
+          ],
+          "visible_text": [
+            "靈隱寺、江澤民"
+          ],
+          "uncertain": [
+            "具体地点、树木的种类、建筑的具体年代"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_c51bf568f04e59e8",
+      "candidate_id": "ref_2ddae0e3ebd20225",
+      "place_id": "place_1314055c40cda376",
+      "place_name": "灵隐寺",
+      "city": "杭州",
+      "original_url": "http://pic.app.hualongxiang.com/forum/20241120084148front2_0_3375278_nspX4MV72Tgt_nQ8N3M-zKxIEKvj.jpg?watermark/3/text/QOWQiemqjzBnMg==/fontsize/400/dissolve/100/gravity/SouthEast/fill/I2YzZjNmYQ==/font/5b6u6L2v6ZuF6buR/dx/10/dy/28/image/aHR0cHM6Ly9waWMuYXBwLmh1YWxvbmd4aWFuZy5jb20vd2F0ZXJfaW1nXzIwMjEwMzE2XzU1My5qcGc=/dissolve/100/gravity/SouthEast/dx/118/dy/10",
+      "source_page_url": "http://www.hualongxiang.com/chazuo/16331461",
+      "title": "杭州灵隐寺",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260921_155641_e528de/ref_c51bf568f04e59e8.jpg",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260921_155641_e528de\\ref_c51bf568f04e59e8.jpg",
+      "sha256": "c51bf568f04e59e83195d48fecdf0455aabdf335893e4669b93fb1c77ef6c428",
+      "width": 3072,
+      "height": 4096,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 27.21,
+        "usage": {
+          "completion_tokens": 460,
+          "prompt_tokens": 5524,
+          "total_tokens": 5984,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示了一座传统中式寺庙建筑，前景有石阶通向寺庙入口，入口处有佛像和参拜的人群，建筑上有牌匾和装饰，周围有树木。",
+          "visible_elements": [
+            "寺庙建筑、石阶、树木、佛像、参拜人群、牌匾、窗棂、屋顶、栏杆"
+          ],
+          "spatial_layout": [
+            "石阶位于画面下方，通向寺庙入口；寺庙建筑在石阶上方，分为两层；树木分布在建筑两侧和上方；佛像在寺庙入口内的中央位置；牌匾悬挂在建筑的上层和下层屋檐下。"
+          ],
+          "architecture_and_materials": [
+            "建筑为传统中式风格，屋顶为灰色瓦片，屋檐有红色装饰；墙面为红色，窗棂为绿色格子状；牌匾为金色底黑色字，有雕刻装饰；门窗为木质，带有镂空花纹和红色栅栏；石阶为石质，栏杆为石质雕刻。"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "画面中寺庙建筑正面朝向镜头，石阶从前景延伸至建筑入口，树木在建筑两侧，可判断镜头朝向建筑正面。"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断",
+            "weather": "无法判断",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [
+            "寺庙建筑的中式风格、牌匾文字、石阶结构、佛像位置、树木分布"
+          ],
+          "allowed_changes": [
+            "参拜人群的动作和数量、光线明暗"
+          ],
+          "suitable_shots": [
+            "中景拍摄寺庙正面、近景拍摄牌匾和佛像、全景拍摄寺庙及周围环境"
+          ],
+          "unsupported_or_risky_shots": [
+            "俯视或仰视的极端角度、建筑内部的特写（因画面未展示完整内部）"
+          ],
+          "visible_text": [
+            "雲林禅寺",
+            "靈鷲飛来"
+          ],
+          "uncertain": [
+            "寺庙的具体名称和地理位置、建筑的具体年代"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_49842a41c8fdbee7",
+      "candidate_id": "ref_133a6b3de52edb5c",
+      "place_id": "place_1314055c40cda376",
+      "place_name": "灵隐寺",
+      "city": "杭州",
+      "original_url": "http://gips1.baidu.com/it/u=1110181727,926314836&fm=3074&app=3074&f=JPEG",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4683918719019068096",
+      "title": "杭州灵隐寺游玩全攻略:一天玩转所有景点!",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260921_155641_e528de/ref_49842a41c8fdbee7.jpg",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260921_155641_e528de\\ref_49842a41c8fdbee7.jpg",
+      "sha256": "49842a41c8fdbee7ae2c99414799c61102f6bb3ac951b5784bd0f1d7682e220a",
+      "width": 1440,
+      "height": 1890,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 11.076,
+        "usage": {
+          "completion_tokens": 408,
+          "prompt_tokens": 3875,
+          "total_tokens": 4283,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面呈现中式传统建筑群，黑瓦飞檐，搭配红色灯笼，背景是山林与绿树，营造出古朴雅致的氛围。",
+          "visible_elements": [
+            "中式传统建筑、黑色瓦片、飞檐、红色灯笼、树木、山峦、石栏杆、木质建筑结构"
+          ],
+          "spatial_layout": [
+            "建筑群分布于画面中下部，错落有致；树木位于建筑群中间及背景山峦前；山峦在画面背景，呈层叠状；石栏杆在画面下方前景处"
+          ],
+          "architecture_and_materials": [
+            "建筑为中式传统风格，屋顶黑瓦，飞檐翘角，有龙形装饰；墙体木质，呈棕黄色；灯笼红色，带黄色流苏；石栏杆有雕刻装饰，材质似石材"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "建筑群在下方，山峦在远方，推测镜头从较高处向下拍摄"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天",
+            "weather": "晴天",
+            "season": "春季（树木翠绿，推测）"
+          },
+          "must_keep_candidates": [
+            "中式传统建筑风格、黑瓦飞檐、红色灯笼、山林背景"
+          ],
+          "allowed_changes": [
+            "人物活动、灯笼摆动（动态元素）"
+          ],
+          "suitable_shots": [
+            "中景俯拍建筑群、远景拍摄山林与建筑结合、近景拍摄建筑细节（如飞檐、灯笼）"
+          ],
+          "unsupported_or_risky_shots": [
+            "超低角度仰拍（画面中高位视角，难实现）、水下拍摄（无水域）"
+          ],
+          "visible_text": [
+            "覆"
+          ],
+          "uncertain": [
+            "具体建筑名称、精确地理位置"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_1314055c40cda376",
+    "place_name": "灵隐寺",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_581e17d6782cc37e",
+      "ref_c51bf568f04e59e8",
+      "ref_49842a41c8fdbee7"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "传统中式门楼、金色牌匾、大树、绿叶、卡通爱心贴纸、卡通胡萝卜贴纸、监控摄像头",
+      "寺庙建筑、石阶、树木、佛像、参拜人群、牌匾、窗棂、屋顶、栏杆",
+      "中式传统建筑、黑色瓦片、飞檐、红色灯笼、树木、山峦、石栏杆、木质建筑结构"
+    ],
+    "stable_features": [
+      {
+        "text": "传统中式门楼的结构和风格、金色牌匾及文字、大树的枝干和绿叶的布局、仰视的视角",
+        "evidence_asset_ids": [
+          "ref_581e17d6782cc37e"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "寺庙建筑的中式风格、牌匾文字、石阶结构、佛像位置、树木分布",
+        "evidence_asset_ids": [
+          "ref_c51bf568f04e59e8"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "中式传统建筑风格、黑瓦飞檐、红色灯笼、山林背景",
+        "evidence_asset_ids": [
+          "ref_49842a41c8fdbee7"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "传统中式门楼的结构和风格、金色牌匾及文字、大树的枝干和绿叶的布局、仰视的视角",
+      "寺庙建筑的中式风格、牌匾文字、石阶结构、佛像位置、树木分布",
+      "中式传统建筑风格、黑瓦飞檐、红色灯笼、山林背景"
+    ],
+    "allowed_changes": [
+      "卡通贴纸的样式和位置、监控摄像头的细节、树叶的细微动态",
+      "参拜人群的动作和数量、光线明暗",
+      "人物活动、灯笼摆动（动态元素）"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "具体地点、树木的种类、建筑的具体年代",
+      "寺庙的具体名称和地理位置、建筑的具体年代",
+      "具体建筑名称、精确地理位置"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_581e17d6782cc37e",
+        "summary": "画面展示了一座传统中式建筑的门楼，上方有金色牌匾，周围环绕着枝繁叶茂的大树，树叶翠绿，画面还带有爱心和胡萝卜的卡通贴纸。",
+        "visible_elements": [
+          "传统中式门楼、金色牌匾、大树、绿叶、卡通爱心贴纸、卡通胡萝卜贴纸、监控摄像头"
+        ],
+        "spatial_layout": [
+          "大树的枝干从画面右侧和左侧延伸，覆盖在门楼上方；门楼位于画面中下部，牌匾在门楼的中上部；树叶在画面的中上部和顶部，遮挡部分天空"
+        ],
+        "architecture_and_materials": [
+          "门楼为传统中式风格，屋顶铺有灰黑色瓦片，部分瓦片有苔藓或落叶；门楼主体为深色木质结构，带有雕刻装饰；牌匾为金色，带有黑色文字和小字，底部有金色装饰"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "仰视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "仰视拍摄门楼和大树，树木枝叶向上延伸，门楼向上展开"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断",
+          "weather": "晴天（推测，因为树叶明亮且有光线透过）",
+          "season": "夏季（推测，因为树叶翠绿繁茂）"
+        },
+        "must_keep_candidates": [
+          "传统中式门楼的结构和风格、金色牌匾及文字、大树的枝干和绿叶的布局、仰视的视角"
+        ],
+        "allowed_changes": [
+          "卡通贴纸的样式和位置、监控摄像头的细节、树叶的细微动态"
+        ],
+        "suitable_shots": [
+          "仰视中景拍摄门楼和大树、近景拍摄牌匾文字、全景拍摄门楼及周围树木环境"
+        ],
+        "unsupported_or_risky_shots": [
+          "俯视拍摄、特写拍摄门楼的下部结构（因视角限制）、远距离远景拍摄（会丢失细节）"
+        ]
+      },
+      {
+        "asset_id": "ref_c51bf568f04e59e8",
+        "summary": "画面展示了一座传统中式寺庙建筑，前景有石阶通向寺庙入口，入口处有佛像和参拜的人群，建筑上有牌匾和装饰，周围有树木。",
+        "visible_elements": [
+          "寺庙建筑、石阶、树木、佛像、参拜人群、牌匾、窗棂、屋顶、栏杆"
+        ],
+        "spatial_layout": [
+          "石阶位于画面下方，通向寺庙入口；寺庙建筑在石阶上方，分为两层；树木分布在建筑两侧和上方；佛像在寺庙入口内的中央位置；牌匾悬挂在建筑的上层和下层屋檐下。"
+        ],
+        "architecture_and_materials": [
+          "建筑为传统中式风格，屋顶为灰色瓦片，屋檐有红色装饰；墙面为红色，窗棂为绿色格子状；牌匾为金色底黑色字，有雕刻装饰；门窗为木质，带有镂空花纹和红色栅栏；石阶为石质，栏杆为石质雕刻。"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "画面中寺庙建筑正面朝向镜头，石阶从前景延伸至建筑入口，树木在建筑两侧，可判断镜头朝向建筑正面。"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断",
+          "weather": "无法判断",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [
+          "寺庙建筑的中式风格、牌匾文字、石阶结构、佛像位置、树木分布"
+        ],
+        "allowed_changes": [
+          "参拜人群的动作和数量、光线明暗"
+        ],
+        "suitable_shots": [
+          "中景拍摄寺庙正面、近景拍摄牌匾和佛像、全景拍摄寺庙及周围环境"
+        ],
+        "unsupported_or_risky_shots": [
+          "俯视或仰视的极端角度、建筑内部的特写（因画面未展示完整内部）"
+        ]
+      },
+      {
+        "asset_id": "ref_49842a41c8fdbee7",
+        "summary": "画面呈现中式传统建筑群，黑瓦飞檐，搭配红色灯笼，背景是山林与绿树，营造出古朴雅致的氛围。",
+        "visible_elements": [
+          "中式传统建筑、黑色瓦片、飞檐、红色灯笼、树木、山峦、石栏杆、木质建筑结构"
+        ],
+        "spatial_layout": [
+          "建筑群分布于画面中下部，错落有致；树木位于建筑群中间及背景山峦前；山峦在画面背景，呈层叠状；石栏杆在画面下方前景处"
+        ],
+        "architecture_and_materials": [
+          "建筑为中式传统风格，屋顶黑瓦，飞檐翘角，有龙形装饰；墙体木质，呈棕黄色；灯笼红色，带黄色流苏；石栏杆有雕刻装饰，材质似石材"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "建筑群在下方，山峦在远方，推测镜头从较高处向下拍摄"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天",
+          "weather": "晴天",
+          "season": "春季（树木翠绿，推测）"
+        },
+        "must_keep_candidates": [
+          "中式传统建筑风格、黑瓦飞檐、红色灯笼、山林背景"
+        ],
+        "allowed_changes": [
+          "人物活动、灯笼摆动（动态元素）"
+        ],
+        "suitable_shots": [
+          "中景俯拍建筑群、远景拍摄山林与建筑结合、近景拍摄建筑细节（如飞檐、灯笼）"
+        ],
+        "unsupported_or_risky_shots": [
+          "超低角度仰拍（画面中高位视角，难实现）、水下拍摄（无水域）"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_1.jpg",
+        "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+        "license": "Unsplash License",
+        "alt": "a building with a tree in front of it"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_2.jpg",
+        "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+        "license": "Unsplash License",
+        "alt": "a pagoda in the middle of a park surrounded by trees"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_3.jpg",
+        "url": "https://unsplash.com/photos/brown-and-red-temple-kp3A2jurfP0",
+        "license": "Unsplash License",
+        "alt": "brown and red temple"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_581e17d6782cc37e",
+        "name": "灵隐寺",
+        "url": "/assets/references/p_20260921_155641_e528de/ref_581e17d6782cc37e.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4012019945054487563",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_c51bf568f04e59e8",
+        "name": "灵隐寺",
+        "url": "/assets/references/p_20260921_155641_e528de/ref_c51bf568f04e59e8.jpg",
+        "source_page_url": "http://www.hualongxiang.com/chazuo/16331461",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_49842a41c8fdbee7",
+        "name": "灵隐寺",
+        "url": "/assets/references/p_20260921_155641_e528de/ref_49842a41c8fdbee7.jpg",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4683918719019068096",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "none",
+    "version": 0
+  },
+  "music": {
+    "status": "waiting_select",
+    "version": 0,
+    "recommendation_status": "ready",
+    "recommendations": [
+      {
+        "bgm_id": "bgm_04",
+        "score": 90,
+        "reason": "舒缓、开阔、氛围感；适合湖泊、水乡、山林和慢镜头，与“寺庙禅意”的内容方向匹配。",
+        "editing_tip": "建议低音量连续铺底，并在旁白出现时自动压低。"
+      },
+      {
+        "bgm_id": "bgm_05",
+        "score": 84,
+        "reason": "钢琴与弦乐、温暖抒情；适合古镇、园林、晨昏和历史建筑，与“寺庙禅意”的内容方向匹配。",
+        "editing_tip": "建议低音量连续铺底，并在旁白出现时自动压低。"
+      },
+      {
+        "bgm_id": "bgm_06",
+        "score": 78,
+        "reason": "柔和、带笛声和世界音乐气质；适合竹林、茶园与江南水乡，与“寺庙禅意”的内容方向匹配。",
+        "editing_tip": "建议低音量连续铺底，并在旁白出现时自动压低。"
+      }
+    ]
+  },
+  "voice_tasks": [],
+  "segment_tasks": [],
+  "render_tasks": [],
+  "render": {
+    "status": "none",
+    "version": 0
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "16:9"
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-21T07:56:41.576758+00:00",
+  "updated_at": "2026-09-21T08:27:21.274437+00:00",
+  "copywriting_text": "【0-5s】一抬头，千年风过。古木掩映山门，飞来峰下，时光慢了下来。\n【5-11s】三步一阶，暂别书山题海。踏过青石，云林深处，佛影与松风相映。\n【11-18s】飞檐之下，群山应答。黑瓦层叠，红灯笼轻摇，北高峰的风，吹散了满身疲惫。\n【18-25s】少年心事，山林都懂。灵隐半日，最忆杭州。来这千年古刹，寻一场青春放空。",
+  "segment_results": {},
+  "active_segment_ids": []
+}

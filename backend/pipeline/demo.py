@@ -4,7 +4,7 @@
 用途：B 克隆仓库后无需 key 即可全流程演示；答辩现场 API 不稳时兜底。
 注意：demo 固定回放西湖样例，标题/主题用请求的 theme 覆盖以贴近输入。
 """
-import asyncio, json, os, re
+import asyncio, copy, json, os, re
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 COPYWRITING_PATH = os.path.join(REPO, "experiments", "results", "best_copywriting.txt")
@@ -63,9 +63,25 @@ def demo_plan(req):
 
 
 def demo_storyboard(req, storyboard=None):
-    """回放分镜（theme 覆盖为 城市+地点宣传片）。"""
-    sb = storyboard if storyboard is not None else load_storyboard()
+    """回放分镜并按请求总时长重分配整秒 Shot，确保新动态 Segment 可合法装箱。"""
+    sb = copy.deepcopy(storyboard if storyboard is not None else load_storyboard())
     sb["theme"] = f"{req.get('city', '')}{req.get('location', '')}宣传片"
+    shots = [shot for scene in sb.get("scenes", []) for shot in scene.get("shot_list", [])]
+    target = int(req.get("duration_s", sum(shot.get("duration_s", 0) for shot in shots)))
+    if shots and len(shots) <= target <= len(shots) * 15:
+        weights = [max(1, int(shot.get("duration_s", 1))) for shot in shots]
+        total_weight = sum(weights)
+        durations = [max(1, min(15, int(target * weight / total_weight))) for weight in weights]
+        while sum(durations) < target:
+            index = max((i for i, value in enumerate(durations) if value < 15),
+                        key=lambda i: target * weights[i] / total_weight - durations[i])
+            durations[index] += 1
+        while sum(durations) > target:
+            index = max((i for i, value in enumerate(durations) if value > 1),
+                        key=lambda i: durations[i] - target * weights[i] / total_weight)
+            durations[index] -= 1
+        for shot, duration in zip(shots, durations):
+            shot["duration_s"] = duration
     return sb
 
 

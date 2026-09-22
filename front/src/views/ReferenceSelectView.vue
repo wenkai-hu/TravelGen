@@ -303,7 +303,7 @@ watch(pid, (nextPid, oldPid) => {
         <div class="gallery-head">
           <div>
             <h2>搜索结果</h2>
-            <p>共 {{ candidates.length }} 张候选图，点击卡片即可选择</p>
+            <p>共 {{ candidates.length }} 张候选图</p>
           </div>
           <span class="count" :class="{ filled: selectedCount }">
             已选 {{ selectedCount }}/{{ MAX_SELECTED }}
@@ -320,6 +320,7 @@ watch(pid, (nextPid, oldPid) => {
               broken: brokenIds.includes(candidate.candidate_id),
             }"
             role="checkbox"
+            :aria-label="`选择第 ${index + 1} 张图片`"
             :aria-checked="isSelected(candidate.candidate_id)"
             :tabindex="brokenIds.includes(candidate.candidate_id) ? -1 : 0"
             @click="toggleCandidate(candidate)"
@@ -339,32 +340,20 @@ watch(pid, (nextPid, oldPid) => {
                 <span>图片暂时无法预览</span>
                 <small>请刷新页面或选择其他图片</small>
               </div>
-              <span class="index-tag">{{
-                String(index + 1).padStart(2, "0")
-              }}</span>
-              <span class="check-mark">{{
+              <span class="check-mark" aria-hidden="true">{{
                 isSelected(candidate.candidate_id) ? "✓" : ""
               }}</span>
               <button
                 v-if="!brokenIds.includes(candidate.candidate_id)"
                 type="button"
                 class="zoom-button"
-                aria-label="放大查看图片"
+                :aria-label="`放大查看第 ${index + 1} 张图片`"
                 title="放大查看"
                 @click.stop="openPreview(candidate)"
                 @keydown.stop
               >
                 <span aria-hidden="true"></span>
               </button>
-            </div>
-            <div class="image-info">
-              <h3>
-                {{ candidate.title || `${requestData.location}实景参考` }}
-              </h3>
-              <div class="source-row">
-                <span>{{ candidate.provider || "网络搜索" }}</span>
-                <span>点击卡片选择</span>
-              </div>
             </div>
           </article>
         </section>
@@ -488,12 +477,6 @@ watch(pid, (nextPid, oldPid) => {
           />
         </div>
         <footer class="preview-footer">
-          <div>
-            <h3>
-              {{ previewCandidate.title || `${requestData.location}实景参考` }}
-            </h3>
-            <p>可查看画面细节，判断是否符合真实景点</p>
-          </div>
           <NButton
             :type="isSelected(previewCandidate.candidate_id) ? 'default' : 'primary'"
             size="large"
@@ -502,7 +485,7 @@ watch(pid, (nextPid, oldPid) => {
             {{
               isSelected(previewCandidate.candidate_id)
                 ? "✓ 已选中，点击取消"
-                : "选择这张图片"
+                : "选择图片"
             }}
           </NButton>
         </footer>
@@ -840,13 +823,8 @@ watch(pid, (nextPid, oldPid) => {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
-  transition: transform 0.35s ease;
+  object-fit: contain;
 }
-.image-card:hover .image-wrap img {
-  transform: scale(1.035);
-}
-.index-tag,
 .check-mark {
   position: absolute;
   top: 10px;
@@ -856,12 +834,6 @@ watch(pid, (nextPid, oldPid) => {
   border-radius: 99px;
   background: rgba(17, 24, 39, 0.7);
   backdrop-filter: blur(6px);
-}
-.index-tag {
-  left: 10px;
-  min-width: 27px;
-  height: 27px;
-  font-size: 11px;
 }
 .check-mark {
   right: 10px;
@@ -932,30 +904,13 @@ watch(pid, (nextPid, oldPid) => {
 .broken-placeholder small {
   font-size: 11px;
 }
-.image-info {
-  padding: 12px 13px 13px;
-}
-.image-info h3 {
-  margin: 0 0 10px;
-  overflow: hidden;
-  color: var(--color-ink);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.4;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.source-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  color: #9ca3af;
-  font-size: 11px;
-}
 .preview-shell {
   width: min(1120px, calc(100vw - 48px));
-  max-height: calc(100vh - 48px);
+  height: min(850px, calc(100vh - 48px));
+  height: min(850px, calc(100dvh - 48px));
   position: relative;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
@@ -983,9 +938,9 @@ watch(pid, (nextPid, oldPid) => {
 }
 .preview-close:hover { background: rgba(15, 118, 110, 0.9); }
 .preview-image-wrap {
-  height: min(72vh, 760px);
-  display: grid;
-  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
   background:
     radial-gradient(circle at center, rgba(255, 255, 255, 0.06), transparent 55%),
     #101815;
@@ -997,26 +952,11 @@ watch(pid, (nextPid, oldPid) => {
   object-fit: contain;
 }
 .preview-footer {
-  padding: 15px 18px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  color: var(--color-ink);
-  background: white;
-}
-.preview-footer h3 {
-  max-width: 760px;
-  margin: 0 0 4px;
-  overflow: hidden;
-  font-size: 15px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.preview-footer p {
-  margin: 0;
-  color: var(--color-ink-sub);
-  font-size: 12px;
+  justify-content: flex-end;
+  background: #101815;
 }
 .empty-card {
   padding: 48px;
@@ -1206,9 +1146,10 @@ watch(pid, (nextPid, oldPid) => {
   }
   .preview-shell {
     width: calc(100vw - 20px);
-    max-height: calc(100vh - 20px);
+    height: calc(100vh - 20px);
+    height: calc(100dvh - 20px);
   }
-  .preview-image-wrap { height: 65vh; }
-  .preview-footer { align-items: stretch; flex-direction: column; }
+  .preview-footer { justify-content: stretch; }
+  .preview-footer .n-button { width: 100%; }
 }
 </style>

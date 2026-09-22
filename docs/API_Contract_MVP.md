@@ -119,11 +119,11 @@ GET /api/v1/tasks/t_20260813_a1b2c3        // 轮询③ 最终
 1. **status 枚举 / 异步模型：一致**，直接采用。`audio` 阶段保留但 MVP 跳过；`failed` 附 `message`（失败阶段 + 原因）
 2. **新增可选字段 `video_model`**（默认 `seedance-2.0-pro`）：2.0 与 2.0 Pro 质量、单价不同（Pro ≈1 元/条 5s），字段预留便于 A/B 对比与答辩演示；前端不做下拉也可，后端固定默认值，字段无副作用。模型 ID（如 `doubao-seedance-2-0-260128`）映射在服务端配置，契约只暴露抽象名
 3. **`script` 与 `storyboard` 分工**：B 契约里两者并存易歧义。定义：`script` = 配音稿/字幕稿（文案→逐行文本+起止秒），`storyboard` = 分镜 JSON（Schema v1）。两者均由 A 产出，B 无需猜
-4. **`voice` / `music` / `assets[type=video|audio]`：MVP 预留**。字段始终存在但为空占位（避免前端 undefined）；参考音频/视频（即梦模式）成本与难度大，同意 B 的判断，Phase 5 再议
+4. **`voice` / `music` 已启用**：`voice` 保存统一参考音色及版本，`music` 保存目录选择、KIMI 推荐与版本；素材文件由服务端 ID 管理，不接受任意外链作为权威输入。
 
 ## 7. V1 分阶段接口（TravelGen_v1.md，推荐前端使用）
 
-对应 [TravelGen_v1.md](../TravelGen_v1.md) §七~§十八 的 9 接口 + §十五 单 Shot 重生成。用户流程：**创建项目 → 方案确认 → 分镜 → Shot 修改 → 批量生成 → （音频/合成占位）**，两次人工干预点（方案、Shot）。
+对应 [TravelGen_v1.md](../TravelGen_v1.md) 的分阶段接口。用户流程：**创建项目 → 方案确认 → 动态 Segment → 音色/BGM 确认 → Seedance 原生音视频 → 双版本合成**。
 
 ### 7.1 接口清单
 
@@ -134,12 +134,13 @@ GET /api/v1/tasks/t_20260813_a1b2c3        // 轮询③ 最终
 | 2 | PUT /api/projects/{id}/plan | 提交用户编辑后的文案 → plan_confirmed + plan_id | ✅ |
 | 3 | POST /api/projects/{id}/storyboard | 基于已确认文案生成脚本+分镜（JSON 硬校验） | ✅ |
 | 4 | PUT /api/projects/{id}/shots/{shot_id} | 修改单个 Shot（部分字段，枚举自动归一化） | ✅ |
-| 5 | POST /api/projects/{id}/generate | 批量生成视频（`shots:[1,2,...]`）→ 返回 vt_ task_id | ✅ |
-| 6 | GET /api/tasks/{task_id} | 轮询 per-shot 生成状态（pending/generating/completed/failed） | ✅ |
-| — | POST /api/projects/{id}/shots/{shot_id}/regenerate | 单 Shot 重新生成（文档 §十五"必须保留"） | ✅ |
-| 7 | POST /api/projects/{id}/audio | 配音+音乐 | ⏸ reserved 占位 |
-| 8 | POST /api/projects/{id}/render | 最终合成 | ⏸ reserved 占位 |
-| 9 | GET /api/projects/{id}/render/status | 成片状态 | ⏸ reserved 占位 |
+| 5 | GET /api/voice-presets；POST /voice-candidates；PUT /voice | 预设/自定义参考音色与项目确认 | ✅ |
+| 6 | GET /api/bgm；POST /bgm/recommendations；PUT /bgm | 素材目录、KIMI 推荐、选择 BGM 或无 BGM | ✅ |
+| 7 | POST /api/projects/{id}/generate | 按动态 Segment 生成 Seedance 原生音视频 | ✅ |
+| — | POST /api/projects/{id}/segments/{segment_id}/regenerate | 完整 Segment 重新生成 | ✅ |
+| 8 | GET /api/tasks/{task_id} | 轮询音色、Segment、Render 任务 | ✅ |
+| 9 | POST /api/projects/{id}/render | 拼接原生音视频，生成 clean/with_bgm | ✅ |
+| 10 | GET /api/projects/{id}/render/status | 成片状态与双版本地址 | ✅ |
 | — | GET /api/kb/search | 知识库检索（V1 别名，同 /api/v1/kb/search） | ✅ |
 
 ### 7.2 项目状态机
@@ -153,10 +154,10 @@ created → planning → waiting_confirm → plan_confirmed → storyboarding �
 ```
 
 **关键语义**：
-1. **POST generate 即视为"确认分镜"**（V1 文档无独立确认端点，前端"确认分镜"按钮直接调 generate）
+1. **POST generate 只接受 Segment**：Shot 是可编辑内容单元，Seedance 的最小生成/重生成单位始终是完整 Segment。
 2. **轮询用 GET /api/projects/{id}**（V1 文档未列此端点，本服务补充——方案/分镜异步生成期间轮询它，waiting_confirm / waiting_storyboard_confirm 即对应两次人工确认点）
-3. 允许增量补批：generate 前置只要分镜已生成（waiting_storyboard_confirm/generating/completed/failed 均可）
-4. failed 为终态：文本阶段失败需重建项目；视频阶段失败可 regenerate 单 Shot
+3. generate 前必须确认统一参考音色，并选择 BGM 或明确无 BGM；允许按 Segment 增量补批。
+4. Shot 时长改变会重新动态分组全部 Segment；画面/旁白改变只使所属 Segment 失效。
 
 ### 7.3 字段约定（与 B 文档的差异处理）
 
@@ -164,20 +165,18 @@ created → planning → waiting_confirm → plan_confirmed → storyboarding �
 |---|---|
 | copywriting 双形态 | 接口 1/2 输入输出按 B 文档**字符串**（`【0-15s】…`）；GET project 同时给结构化 `copywriting` 与拼接 `copywriting_text`（展示用）。PUT plan 提交的字符串丢失时间戳标记时，后端兜底整段为一个段落（不拒绝） |
 | shot_id | 统一 **int**（文档示例 "shot_01" 是前端展示标签，即补零） |
-| generate_image | 接受参数但本版 **video-only**（无图像生成 API），`image_url` 恒 null |
-| video 产物 | 真实模式 `video_url` 为本地转存路径（assets/videos/，24h URL 已转存）；demo 模式恒 null |
+| Segment 产物 | `video_url` 指向本地转存的原生音视频；同时保留抽取的 WAV 与音轨 QA |
 | scene_type | 支持中文枚举或英文别名（scenic→景区推荐 等），落库统一中文 |
 
-### 7.4 视频任务（VideoTask，GET /api/tasks/{id} 返回）
+### 7.4 Segment 任务（GET /api/tasks/{id} 返回）
 
 ```jsonc
-{ "task_id": "vt_xxx", "project_id": "p_xxx", "kind": "batch|single",
+{ "task_id": "st_xxx", "project_id": "p_xxx", "kind": "batch|single",
   "status": "generating|completed|failed", "progress": 65,
-  "message": "视频生成中 3/5 完成",
-  "shots": [ { "shot_id": 1, "status": "completed", "image_url": null,
-               "video_url": "D:\\...\\vt_xxx_1.mp4", "local_path": "...", "error": null },
-             { "shot_id": 2, "status": "generating", ... },
-             { "shot_id": 3, "status": "pending", ... } ] }
+  "message": "Segment 生成中 1/2 完成",
+  "segments": [ { "segment_id": "seg_01", "shot_ids": [1,2,3],
+                  "status": "completed", "video_url": "/assets/videos/...",
+                  "audio_qa": {"music_detection":"not_available"}, "error": null } ] }
 ```
 
 ### 7.5 错误码（V1 新增）
@@ -186,12 +185,12 @@ created → planning → waiting_confirm → plan_confirmed → storyboarding �
 |---|---|---|
 | 409 | invalid_state | 状态机前置不满足（分镜未生成就 generate、非 waiting_confirm 就确认方案、plan_id 不匹配） |
 | 404 | project_not_found / shot_not_found | 项目 / 镜头不存在 |
-| 400 | invalid_param | shots 含不存在的镜头、generate_video=false、PUT plan 文案为空等 |
+| 400 | invalid_param | segments 含不存在的分段、generate_video=false、PUT plan 文案为空等 |
 
 ### 7.6 持久化与 demo 模式
 
-- 项目与视频任务自动落盘 `experiments/results/05_pipeline/{projects,video_tasks}/`，服务重启后 GET 懒加载恢复
-- demo 模式（无 key / TRAVELGEN_MOCK=1）：各阶段回放 Phase 3 真实成果（西湖样例），视频为模拟成功——B 克隆仓库后无需任何 key 即可全流程联调
+- 项目与任务自动落盘 `experiments/results/05_pipeline/{projects,voice_tasks,segment_tasks,render_tasks}/`，服务重启后 GET 懒加载恢复
+- demo 模式（无 key / TRAVELGEN_MOCK=1）：文本阶段回放样例，Segment 生成带音轨的真实占位 MP4，可完整测试拼接与双版本导出
 
 ## 8. Apifox 协作流程
 

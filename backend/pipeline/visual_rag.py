@@ -277,7 +277,7 @@ def compile_shot_input(project, shot: dict) -> tuple[str, list[str]]:
 
 
 def compile_segment_input(project, segment: dict) -> tuple[str, list[str]]:
-    """把段内多个 Shot、图片绑定和音频语义编译为一次 Seedance 输入。"""
+    """把统一音色参考、段内新旁白、多 Shot 与图片绑定编译为一次 Seedance 输入。"""
     shots_by_id = {
         shot.get("shot_id"): shot
         for scene in getattr(project, "storyboard", {}).get("scenes", [])
@@ -299,37 +299,71 @@ def compile_segment_input(project, segment: dict) -> tuple[str, list[str]]:
         )
     images = [_local_data_uri(assets[asset_id]["local_path"]) for asset_id in ordered_ids]
     label = {asset_id: f"图片{index}" for index, asset_id in enumerate(ordered_ids, 1)}
-    start_ms = int(segment.get("timeline_start_ms", 0))
     duration_s = int(segment.get("duration_ms", 0)) / 1000
+    narration = str(segment.get("narration_text", "")).strip()
+    if not narration:
+        narration = "".join(str(shot.get("narration", "")).strip() for shot in shots)
+    request = getattr(project, "request", {})
     lines = [
-        f"生成一条完整的{duration_s:g}秒写实电影感文旅短片。",
-        "@音频1是最终旁白与背景音乐母带切片；严格跟随其语义、时间和节奏安排画面切换，"
-        "不改写旁白，不增加新对白，不生成文字、字幕、标志或水印。",
+        f"生成一条完整的{duration_s:g}秒、{request.get('aspect_ratio', '9:16')}、"
+        f"{request.get('style', '写实电影感')}风格的文旅短片。",
+        "",
+        "【声音身份参考】",
+        "@音频1只用于参考唯一画外旁白说话人的声音身份。保持其稳定的音色、年龄感、"
+        "音高范围、共鸣位置、咬字习惯和普通话口音，确保与其他Segment听起来是同一个人。",
+        "只参考说话人的身份特征，不要复述、改写、续写或引用@音频1中的测试台词。",
+        "本段语气和情绪以当前内容为准，不要机械复制测试句的情绪。",
+        "",
+        "【本段表达要求】",
+        f"整体风格为“{request.get('style', '自然真实')}”，自然口语化、不过度播音，"
+        "在本段结束前完整说完且不要截断尾音。",
+        "",
+        "【本段旁白】",
     ]
+    if narration:
+        lines.extend([
+            "只允许上述同一名画外旁白，准确完整地朗读：",
+            f"“{narration}”",
+            "不得增字、删字、换词、重复句子或增加其他对白。",
+        ])
+    else:
+        lines.append("本段不生成任何人声、旁白或对白，只保留画面对应的自然环境声和必要拟音。")
+    lines.extend([
+        "",
+        "【声音规则——固定最高优先级】",
+        "只允许生成上述画外旁白、与当前画面对应的自然环境声，以及必要且克制的真实拟音。",
+        "绝对禁止生成任何背景音乐、配乐、旋律、节奏铺底、鼓点、乐器声、吟唱、歌曲、"
+        "哼唱或音乐化音效。整段从开始到结束都不得出现BGM。",
+        "",
+        "【实景参考】",
+    ])
     for asset_id in ordered_ids:
         used_by = [str(shot["shot_id"]) for shot in shots
                    if asset_id in shot.get("reference_asset_ids", [])]
         lines.append(f"{label[asset_id]}：作为 Shot {'/'.join(used_by)} 的真实地点依据。")
+    lines.extend(["", "【画面与声音时间线】"])
     for order, shot in enumerate(shots, 1):
-        local_start = (int(shot.get("timeline_start_ms", start_ms)) - start_ms) / 1000
-        local_end = (int(shot.get("timeline_end_ms", start_ms)) - start_ms) / 1000
+        local_start = int(shot.get("segment_local_start_ms", 0)) / 1000
+        local_end = int(shot.get("segment_local_end_ms", 0)) / 1000
         refs = "、".join(label[asset_id] for asset_id in shot.get("reference_asset_ids", [])
                         if asset_id in label) or "本 Shot 无单独参考图"
         must_keep = "；".join(_strings(shot.get("must_keep"))) or "真实地点的主体结构和空间关系"
         allowed = "；".join(_strings(shot.get("allowed_changes"))) or "自然光线和少量动态元素"
+        shot_narration = str(shot.get("narration", "")).strip() or "本镜头无新增旁白，延续自然环境声"
         lines.append(
             f"Shot {order}（{local_start:g}–{local_end:g}秒，使用{refs}）："
-            f"{shot.get('prompt', '')}。必须保持：{must_keep}。允许改变：{allowed}。"
+            f"{shot.get('prompt', '')}。旁白安排：{shot_narration}。"
+            "环境声只生成与该画面直接对应的自然声音，不得生成音乐。"
+            f"必须保持：{must_keep}。允许改变：{allowed}。"
         )
     lines.append(
         f"段内统一要求：{segment.get('transition_note') or '保持地点、光线和色调连贯，镜头自然转场'}。"
         "不得增加参考图中不存在的标志性建筑，不得改变主要道路、建筑、山水的相对位置。"
     )
-    units = {unit.get("unit_id"): unit for unit in getattr(project, "audio", {}).get("narration_units", [])}
-    narration = "".join(units[unit_id].get("text", "")
-                         for unit_id in segment.get("narration_unit_ids", []) if unit_id in units)
-    if narration:
-        lines.append(f"旁白原文仅用于校验语义：{narration}")
+    lines.append(
+        "画面中可以出现游客或当地居民，但任何人物都不得对口型说话；旁白始终来自画外。"
+        "不要生成字幕、文字、标题、标志或水印。"
+    )
     return "\n".join(lines), images
 
 

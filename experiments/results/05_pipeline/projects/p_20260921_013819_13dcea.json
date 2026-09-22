@@ -1,0 +1,1313 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260921_013819_13dcea",
+  "username": "sherlock",
+  "status": "completed",
+  "progress": 100,
+  "message": "最终视频已生成",
+  "request": {
+    "city": "杭州",
+    "location": "浙江外国语学院",
+    "scene_type": "城市形象宣传",
+    "theme": "大学宣传",
+    "audience": "18岁高中生",
+    "style": "青春活力",
+    "duration_s": 15,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "梦想之门",
+        "content": "以白色石质大门全景正面快速切入，拱形门洞下学生骑行或快步穿行，配合明亮蓝天与背景建筑群，第一秒即锁定‘入学’的青春仪式感。",
+        "duration_s": 4,
+        "place_id": "place_84c00e9ed5f576ce",
+        "visual_targets": [
+          "白色石质大门",
+          "三个拱形门洞",
+          "顶部文字雕刻",
+          "骑摩托车的人",
+          "蓝天白云",
+          "背景建筑",
+          "石材铺装广场"
+        ],
+        "evidence_asset_ids": [
+          "ref_474c93a91d265752"
+        ]
+      },
+      {
+        "section": "展开",
+        "title": "国际水岸",
+        "content": "沿池塘平滑移镜头，白色欧式建筑的拱形门窗与塔楼倒映水面，远山为屏、绿植环绕，学生在池边步道走过，呈现浙外国际化校园的清新与浪漫。",
+        "duration_s": 5,
+        "place_id": "place_84c00e9ed5f576ce",
+        "visual_targets": [
+          "白色欧式建筑",
+          "拱形门窗",
+          "塔楼",
+          "池塘",
+          "水面倒影",
+          "绿植",
+          "远山"
+        ],
+        "evidence_asset_ids": [
+          "ref_b425bc4f7307df4d"
+        ]
+      },
+      {
+        "section": "高潮",
+        "title": "弘文笃学",
+        "content": "弘文馆正面全景过渡至中景，学生拾级而上走入立柱门廊，红色旗帜在晴空下飘扬，草坪与树木层次分明，将学术殿堂与青春奋斗的昂扬情绪同步推至高点。",
+        "duration_s": 4,
+        "place_id": "place_84c00e9ed5f576ce",
+        "visual_targets": [
+          "弘文馆建筑",
+          "台阶",
+          "草坪",
+          "树木",
+          "行人",
+          "红色旗帜",
+          "蓝天",
+          "立柱结构"
+        ],
+        "evidence_asset_ids": [
+          "ref_1242de9290a6951a"
+        ]
+      },
+      {
+        "section": "收尾",
+        "title": "未来可期",
+        "content": "切回大门中景，人物定格于拱门之下，品牌落版与招生Slogan在晴空背景中呈现，以‘下一站，浙外’的强记忆点收束全片。",
+        "duration_s": 2,
+        "place_id": "place_84c00e9ed5f576ce",
+        "visual_targets": [
+          "白色石质大门",
+          "三个拱形门洞",
+          "蓝天白云"
+        ],
+        "evidence_asset_ids": [
+          "ref_474c93a91d265752"
+        ]
+      }
+    ],
+    "plan_summary": "大学宣传"
+  },
+  "copywriting": {
+    "titles": [
+      "下一站，浙外",
+      "杭州的风，世界的窗"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "三拱门下，杭州迎面，西湖的风，吹动新生。",
+        "duration_s": 4
+      },
+      {
+        "idx": 2,
+        "text": "塔楼倒映清波，像西溪的水，漾着国际的浪。",
+        "duration_s": 5
+      },
+      {
+        "idx": 3,
+        "text": "弘文馆前，拾级而上，野心与未来，一起燃。",
+        "duration_s": 4
+      },
+      {
+        "idx": 4,
+        "text": "下一站，浙外！",
+        "duration_s": 2
+      }
+    ],
+    "hashtags": [
+      "#下一站浙外",
+      "#浙外见世界",
+      "#杭州高校打卡"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "三拱门下，杭州迎面，西湖的风，吹动新生。",
+        "start_s": 0,
+        "end_s": 4
+      },
+      {
+        "line_id": 2,
+        "text": "塔楼倒映清波，像西溪的水，漾着国际的浪。",
+        "start_s": 4,
+        "end_s": 9
+      },
+      {
+        "line_id": 3,
+        "text": "弘文馆前，拾级而上，野心与未来，一起燃。",
+        "start_s": 9,
+        "end_s": 13
+      },
+      {
+        "line_id": 4,
+        "text": "下一站，浙外！",
+        "start_s": 13,
+        "end_s": 15
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "大学宣传",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "浙江外国语学院",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 4,
+            "narration": "三拱门下，杭州迎面，西湖的风，吹动新生。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "白色石质大门、三个拱形门洞、顶部文字雕刻、骑行或快步穿行的学生",
+            "background": "明亮蓝天、背景建筑群、石材铺装广场、远山与绿树",
+            "place_id": "place_84c00e9ed5f576ce",
+            "reference_asset_ids": [
+              "ref_474c93a91d265752"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "白色石质大门（带三个拱形门洞、顶部有文字雕刻）",
+              "石材铺装广场",
+              "背景建筑的风格与布局",
+              "远山与树木的环境搭配",
+              "蓝天白云的天空背景",
+              "大门的白色石质结构、三个拱形门洞及顶部文字雕刻；岗亭的白色外观及位置；背景建筑的风格与布局；远山、树木的环境搭配；广场的石材铺装；蓝天白云的天空背景。"
+            ],
+            "allowed_changes": [
+              "人员的具体动作与路线",
+              "伸缩门的开合状态",
+              "花坛花卉的具体种类和摆放细节",
+              "树木的具体叶片形态",
+              "人员的具体动作（如骑摩托车的人路线、穿反光背心人员的位置）；花坛中花卉的具体种类和摆放细节；伸缩门的开合状态；背景中车辆的有无；树木的具体叶片形态（只要整体季节感符合）。"
+            ],
+            "prompt": "写实地面平视全景，浙江外国语学院白色石质大门正面，三个拱形门洞清晰可见，顶部有文字雕刻，拱形门洞下有学生骑行和快步穿行，背景是明亮蓝天、白色建筑群与远山，石材铺装广场，清晨柔和自然光，镜头快速前推，青春仪式感",
+            "reference_roles": [
+              {
+                "asset_id": "ref_474c93a91d265752",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "从大门后方（校园内）向大门外拍摄（画面中未显示大门后方校园内的详细情况，可能缺乏支撑）；近距离特写大门的微小细节（如文字雕刻的极特写，画面分辨率可能不足）；从高空俯视整个场景（画面为地面视角，高空视角的环境细节可能与实际有偏差）。"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 4000,
+            "timeline_start_ms": 0,
+            "timeline_end_ms": 4000
+          }
+        ],
+        "place_id": "place_84c00e9ed5f576ce"
+      },
+      {
+        "scene_id": 2,
+        "location": "浙江外国语学院",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 2,
+            "duration_s": 5,
+            "narration": "塔楼倒映清波，像西溪的水，漾着国际的浪。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "白色欧式建筑、拱形门窗、塔楼、池塘水面倒影",
+            "background": "远山为屏、绿植环绕、池边步道行走的学生",
+            "place_id": "place_84c00e9ed5f576ce",
+            "reference_asset_ids": [
+              "ref_b425bc4f7307df4d"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "欧式建筑的拱形结构、白色外观、塔楼设计",
+              "池塘及倒影",
+              "建筑与水景的布局",
+              "绿植搭配",
+              "欧式建筑的拱形结构、白色外观、塔楼设计，池塘及倒影，建筑与水景的布局，绿植搭配"
+            ],
+            "allowed_changes": [
+              "人物活动",
+              "水面波纹",
+              "光影角度（小范围）",
+              "树木细节（如叶片疏密）",
+              "人物活动、水面波纹、光影角度（小范围）、树木细节（如叶片疏密）"
+            ],
+            "prompt": "写实地面平视全景，沿池塘平滑横移，白色欧式建筑群倒映在清澈水面，拱形门窗与黑色顶塔楼清晰可见，远山为屏、绿植环绕，池边步道有学生走过，清晨柔和自然光，水面倒影清晰，国际化校园清新浪漫氛围",
+            "reference_roles": [
+              {
+                "asset_id": "ref_b425bc4f7307df4d",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "仰视拍摄建筑顶部（可能遮挡景观），俯视大范围航拍（画面外建筑未知），夜间拍摄（原光线依赖自然光）"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 4000,
+            "segment_local_end_ms": 9000,
+            "timeline_start_ms": 4000,
+            "timeline_end_ms": 9000
+          }
+        ],
+        "place_id": "place_84c00e9ed5f576ce"
+      },
+      {
+        "scene_id": 3,
+        "location": "浙江外国语学院",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 4,
+            "narration": "弘文馆前，拾级而上，野心与未来，一起燃。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "弘文馆建筑、拾级而上的学生、立柱门廊、红色旗帜",
+            "background": "晴空、草坪、树木层次分明",
+            "place_id": "place_84c00e9ed5f576ce",
+            "reference_asset_ids": [
+              "ref_1242de9290a6951a"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "弘文馆白色石材外观、立柱结构、'弘文馆'及'HONGWEN LIBRARY'文字标识",
+              "正面台阶和入口",
+              "草坪树木的布局",
+              "建筑的白色石材外观、立柱结构、‘弘文馆’及‘HONGWEN LIBRARY’文字标识、正面台阶和入口、草坪树木的布局"
+            ],
+            "allowed_changes": [
+              "行人的位置和动作",
+              "旗帜的飘动状态",
+              "光线的细微变化",
+              "行人的位置和动作、旗帜的飘动状态、光线的细微变化"
+            ],
+            "prompt": "写实地面平视全景，弘文馆正面白色建筑，多根白色立柱与三角形山花顶，蓝色玻璃窗，学生拾级而上走入立柱门廊，红色旗帜在晴空下飘扬，前景草坪翠绿、树木层次分明，清晨明亮自然光，镜头缓慢前推至中景，学术殿堂昂扬情绪",
+            "reference_roles": [
+              {
+                "asset_id": "ref_1242de9290a6951a",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "建筑内部视角、建筑背面视角、高空俯视（无足够信息支持）"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 9000,
+            "segment_local_end_ms": 13000,
+            "timeline_start_ms": 9000,
+            "timeline_end_ms": 13000
+          }
+        ],
+        "place_id": "place_84c00e9ed5f576ce"
+      },
+      {
+        "scene_id": 4,
+        "location": "浙江外国语学院",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 4,
+            "duration_s": 2,
+            "narration": "下一站，浙外！",
+            "camera": {
+              "type": "地面机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "白色石质大门中景、人物定格于拱门之下",
+            "background": "蓝天白云、品牌落版与招生Slogan",
+            "place_id": "place_84c00e9ed5f576ce",
+            "reference_asset_ids": [
+              "ref_474c93a91d265752"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "白色石质大门（带三个拱形门洞、顶部有文字雕刻）",
+              "蓝天白云的天空背景",
+              "大门的白色石质结构、三个拱形门洞及顶部文字雕刻；岗亭的白色外观及位置；背景建筑的风格与布局；远山、树木的环境搭配；广场的石材铺装；蓝天白云的天空背景。"
+            ],
+            "allowed_changes": [
+              "人员的具体动作与位置",
+              "品牌落版与Slogan的呈现方式",
+              "人员的具体动作（如骑摩托车的人路线、穿反光背心人员的位置）；花坛中花卉的具体种类和摆放细节；伸缩门的开合状态；背景中车辆的有无；树木的具体叶片形态（只要整体季节感符合）。"
+            ],
+            "prompt": "写实地面平视中景，白色石质大门三个拱形门洞下人物定格，蓝天白云背景，品牌落版与招生Slogan文字呈现，清晨明亮自然光，强记忆点收尾",
+            "reference_roles": [
+              {
+                "asset_id": "ref_474c93a91d265752",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "从大门后方（校园内）向大门外拍摄（画面中未显示大门后方校园内的详细情况，可能缺乏支撑）；近距离特写大门的微小细节（如文字雕刻的极特写，画面分辨率可能不足）；从高空俯视整个场景（画面为地面视角，高空视角的环境细节可能与实际有偏差）。"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 13000,
+            "segment_local_end_ms": 15000,
+            "timeline_start_ms": 13000,
+            "timeline_end_ms": 15000
+          }
+        ],
+        "place_id": "place_84c00e9ed5f576ce"
+      }
+    ],
+    "storyboard_version": 3,
+    "duration_ms": 15000,
+    "segments": [
+      {
+        "segment_id": "seg_01",
+        "timeline_start_ms": 0,
+        "timeline_end_ms": 15000,
+        "duration_ms": 15000,
+        "shot_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "narration_text": "三拱门下，杭州迎面，西湖的风，吹动新生。塔楼倒映清波，像西溪的水，漾着国际的浪。弘文馆前，拾级而上，野心与未来，一起燃。下一站，浙外！",
+        "reference_asset_ids": [
+          "ref_474c93a91d265752",
+          "ref_b425bc4f7307df4d",
+          "ref_1242de9290a6951a"
+        ],
+        "transition_note": "保持段内地点、光线和色调连贯，镜头沿运动方向或相似构图自然转场",
+        "status": "ready"
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260921_013819_13dcea_v1",
+  "plan_version": 1,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_cb3fbb6f31cf561f",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://meizi-zjol-1577-pub.zjol.com.cn/jyjsb/gx/202506/1938165015315173376_1280px.jpg",
+      "title": "在杭州小和山高教园区,有这样一所温婉优美的高校",
+      "source_page_url": "http://edu.zjol.com.cn/jyjsb/gx/202506/t20250626_31077157.shtml",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c39c18218b6ac1a8",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275p2t5bee5aSW5Zu96K%2Bt5a2m6ZmiXzE3MzQ5NzQ5OTMuMDMxMjYwNw%3D%3D%27/0.png",
+      "title": "浙江外国语学院:探索语言与文化的殿堂🏛️",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4820409807644442490",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_af72df4e6913fef0",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://i2.hdslb.com/bfs/archive/221beb10946fc3b4191c487a9ed39ce1aaf8efaa.jpg",
+      "title": "《一角一世界,看我的多元浙外》2025年浙江外国语学院学生原创短视频",
+      "source_page_url": "https://www.bilibili.com/video/BV1p2KXzWEZW",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_009c341d1bfc4bf1",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://pics3.baidu.com/feed/48540923dd54564e8092a576fd58538dd0584f1b.jpeg@f_auto?token=c1fe01c88ac5c2b9c7f844483e7ddf5b",
+      "title": "浙江外国语学院仅设有一个校区,该校区坐落于风景宜人的小和山高教",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1831460426949872520&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5c43a5cb5111f332",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/240117/beautify/e6ad50b47d49668018bf3041e47f7504.jpeg@c_1,w_2048,h_1152,x_0,y_0",
+      "title": "浙江外国语学院,位于浙江省杭州市,是一所由浙江省人民政府举办,以",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1788328655000021251&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_42590c2311c4b6e4",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=891078595,1854336618&fm=3074&app=3074&f=JPEG",
+      "title": "浙江大学外国语学院1+3留学项目全解析",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4982292515336155973",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_cec38b48360ecddc",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMwMzEzMDg3Ljg0OTgxNA%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-10-30T18%3A31%3A28Z%2F-1%2F%2F48a39c971d7c111fb15bd62dc12b8cc578b362e6f977be0175cffce3752a0dcf",
+      "title": "浙江外国语学院生活全攻略🌟 浙江外国语学院,背靠小和山,风景如画",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5451741877097451586",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_8bae1cb07ea2e97a",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275rWZ5rGf5aSW5Zu96K%2Bt5a2m6Zmi5Zu%2B5Lmm6aaGXzE3MzI2MDAyODUuMTUxOTg0%27/0.png",
+      "title": "浙江外国语学院弘文馆全攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3633068525308255814",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_331324998209dcf9",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=2970930142,3766316990&fm=3074&app=3074&f=JPEG?w=2389&h=1050&type=normal&func=",
+      "title": "浙江外国语学院体育设施全攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4153903558412329435",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_13d60bc9c8923bc1",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://pic1.zhimg.com/v2-9ce813180619822e9cc1008d6a380cc0_r.jpg?source=1940ef5c",
+      "title": "在浙江外国语学院(浙江教育学院)就读是怎样一番体验?",
+      "source_page_url": "http://www.zhihu.com/question/26439881/answer/1009291336?utm_id=0",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_49b267e378231bca",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://b0.bdstatic.com/08db27ddd934729cc141d3b513d655f9.jpg",
+      "title": "浙江外国语学院",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4348767174033921030",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_df837e324f291ea5",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://www.zisu.edu.cn/__local/7/78/AA/EFD9D516EBF261178931653B4FE_784BD8CF_3AEE8.jpg",
+      "title": "校园风光-浙江外国语学院",
+      "source_page_url": "http://www.zisu.edu.cn/info/1072/4386.htm",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9b45939ef912574a",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275p2t5bee5aSW5Zu96K%2Bt5a2m5qChXzE3MzE5NTkzNjIuODA4NDA3%27/0.png",
+      "title": "🌟杭州外国语学校60周年校庆盛典🌟",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3888584942828772937",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_eef72cffe1dc13d8",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://q1.itc.cn/images01/20240805/691318b99e3d4cb4a1484f2ee0ff14f3.png",
+      "title": "浙江外国语学院申硕成功2035年更名为浙江外国语大学获批博点",
+      "source_page_url": "http://www.sohu.com/a/798722729_121165438",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_88078507e0033621",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://www.cscse.edu.cn/cscse/imageDir/2022/04/img_pc_site/2022041116125393913.jpg",
+      "title": "四,联系方式联系地址:浙江省杭州市留和路299号浙江外国语学院党委",
+      "source_page_url": "http://www.jxnhrc.com/gaoxiao/zpview_3FC7F1FFB90CAE99.shtml",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1dfebaa367fd5de2",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://q0.itc.cn/q_70/images03/20250619/b6fb70b73c37421ca2ec3e184382a4fa.png",
+      "title": "浙江省人民政府与北京大学在杭州签署支持建设浙江外国语学院合作协议",
+      "source_page_url": "http://learning.sohu.com/a/905906999_362042",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d542da7628c881a5",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275rWZ5rGf5aSW5Zu96K%2Bt5a2m6Zmi5Zyw5Z2AXzE3Mjk1NjYzODAuODQ1NTcx%27/0.png",
+      "title": "浙江外国语学院地址 浙江外国语学院,坐落在美丽的杭州市小和山,是一",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4185451287199850743",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ebcea061c0464e4b",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://i0.hdslb.com/bfs/archive/cf3e36f74badb7e22395c82ea56849bf63457f12.jpg",
+      "title": "浙江外国语学院 考试顺便遛公园视角 bgm 蜜雪冰城 君の虏",
+      "source_page_url": "http://www.bilibili.com/video/av257505354",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5e6a9ae289745476",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=2602139453,1958262975&fm=3074&app=3074&f=JPEG?w=683&h=391&type=normal&func=",
+      "title": "语言文学爱好者的天堂 📚 浙江外国语学院,位于美丽的杭州市,是一所",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4500117015362000276",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_66abd885de729993",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://meizi-zjol-1577-pub.zjol.com.cn/jyjsb/gx/202506/1938165015315173380_1280px.jpg",
+      "title": "用语言开启未来之门! 浙江外国语学院2025年计划招生2280名",
+      "source_page_url": "http://edu.zjol.com.cn/jyjsb/gx/202506/t20250626_31077157.shtml",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_434c0c22c27be01b",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://pics5.baidu.com/feed/d788d43f8794a4c21bc8ce708343d9dbaf6e39c3.jpeg@f_auto?token=69655e1eb0b8410f6b6fdbecfcc87469",
+      "title": "浙江外国语学院的前身是1956年成立的杭州外国语专科学校",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1812544775613535081&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_158d5e8adb5908a6",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://b0.bdstatic.com/299dc2a9ddda30869dca009f2930df56.jpg",
+      "title": "浙江外国语学院 절강외국어대학교",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4656708748352561320",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_8809c20a9306623f",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/9213b07eca806538b8bc371f99dda144ad34826c",
+      "title": "浙江外国语学院",
+      "source_page_url": "http://baike.baidu.com/item/%E6%B5%99%E6%B1%9F%E5%A4%96%E5%9B%BD%E8%AF%AD%E5%AD%A6%E9%99%A2/11060320",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f397ebf824da17cf",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://pic1.zhimg.com/v2-7bb03f6ab762bcc332be0a795ba0fb5f_r.jpg?source=1940ef5c",
+      "title": "在浙外「浙江外国语学院」读书是一种怎样的体验?",
+      "source_page_url": "http://www.zhihu.com/question/50022055/answer/299471695?utm_id=0",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_fc1dac4c6e78101b",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/other/93fed380f5876c0074f9d5d6a2a47bf6.png?for=bg",
+      "title": "浙江外国语学院小和山校区:大学生活全攻略",
+      "source_page_url": "https://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=16649768736655979248",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_867dd513c9bf5c64",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://poi-pic.cdn.bcebos.com/001/0_d10c13b34d4e35ed52748dd261f30aff.jpeg",
+      "title": "浙江外国语学院",
+      "source_page_url": "http://map.baidu.com/place/6201cf7484df54600f0a707a",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f80675c18145e881",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p2t5bee5aSW5Zu96K%2Bt5a2m6ZmiXzE3MjgzNDg1NTcuNTUxODM4NA%3D%3D%27/0.png",
+      "title": "🏫杭州外国语学院探秘",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5081492112141772396",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ddee1d73cdc00cee",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://img.baokaodaxue.com/images/daxue/20150606/143358341280_3504a2336.jpeg",
+      "title": "院校大全 浙江外国语学院 上一页下一页",
+      "source_page_url": "http://www.baokaodaxue.com/bkdx/college/photos?cid=2345",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f82dc35933d5808e",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/a50f4bfbfbedab6443eadeccf936afc379311e25",
+      "title": "浙江外国语学院",
+      "source_page_url": "http://baike.baidu.com/item/%E6%B5%99%E6%B1%9F%E5%A4%96%E5%9B%BD%E8%AF%AD%E5%AD%A6%E9%99%A2/11060320",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_22962ba48d6fa0ed",
+      "query": "杭州 浙江外国语学院 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/574e9258d109b3de6ee87764c2bf6c81800a4c63",
+      "title": "浙江外国语学院",
+      "source_page_url": "http://baike.baidu.com/item/%E6%B5%99%E6%B1%9F%E5%A4%96%E5%9B%BD%E8%AF%AD%E5%AD%A6%E9%99%A2/11060320",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_474c93a91d265752",
+      "candidate_id": "ref_5c43a5cb5111f332",
+      "place_id": "place_84c00e9ed5f576ce",
+      "place_name": "浙江外国语学院",
+      "city": "杭州",
+      "original_url": "http://pic.rmb.bdstatic.com/bjh/240117/beautify/e6ad50b47d49668018bf3041e47f7504.jpeg@c_1,w_2048,h_1152,x_0,y_0",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1788328655000021251&wfr=spider&for=pc",
+      "title": "浙江外国语学院,位于浙江省杭州市,是一所由浙江省人民政府举办,以",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260921_013819_13dcea/ref_474c93a91d265752.jpg",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260921_013819_13dcea\\ref_474c93a91d265752.jpg",
+      "sha256": "474c93a91d265752d7d0bc533a4233a4936fe4d0d14d101a76626ca8a63c3aa5",
+      "width": 2048,
+      "height": 1152,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 19.605,
+        "usage": {
+          "completion_tokens": 796,
+          "prompt_tokens": 3413,
+          "total_tokens": 4209,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示了一座带有三个拱形门洞的白色石质大门，疑似校园入口，背景有建筑、树木、远山和蓝天白云，前景有花坛、伸缩门、岗亭及人员。",
+          "visible_elements": [
+            "白色石质大门（带三个拱形门洞、顶部有文字雕刻）",
+            "花坛（含花卉、小树）",
+            "伸缩门",
+            "岗亭（白色、带玻璃门）",
+            "骑摩托车的人",
+            "穿反光背心的人员",
+            "树木（多种、含绿树和部分黄叶树）",
+            "背景建筑（白色多层建筑、灰色多层建筑、白色欧式风格建筑）",
+            "远山（植被覆盖）",
+            "道路（沥青路、石材铺装广场）",
+            "蓝天白云"
+          ],
+          "spatial_layout": [
+            "大门位于画面中央，三个拱形门洞从左至右排列；岗亭在大门右侧偏后；花坛分布在大门前的广场上，靠近门洞；伸缩门在大门前的广场边缘；背景建筑在大门后方，远山在背景建筑更远处；树木分布在大门两侧及背景建筑周围；道路在大门左右两侧及后方广场外围。"
+          ],
+          "architecture_and_materials": [
+            "大门：白色石质，古典欧式风格，有立柱、拱形门洞，顶部有雕刻文字，材质似石材，色彩为白色；岗亭：白色，现代风格，有玻璃门，材质似混凝土或石材；背景建筑：白色多层建筑（欧式风格、有立柱）、灰色多层建筑（现代风格），材质似混凝土，色彩为白色、灰色。"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "大门朝向镜头，背景建筑在大门后方，远山在背景建筑之后，天空在上方，推测镜头朝向大门，可能为正前方或稍偏角度。"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天（蓝天、白云、光线明亮）",
+            "weather": "晴天（蓝天、白云、光线充足）",
+            "season": "秋季（部分树木有黄叶，整体植被仍较绿，推测可能为秋季）"
+          },
+          "must_keep_candidates": [
+            "大门的白色石质结构、三个拱形门洞及顶部文字雕刻；岗亭的白色外观及位置；背景建筑的风格与布局；远山、树木的环境搭配；广场的石材铺装；蓝天白云的天空背景。"
+          ],
+          "allowed_changes": [
+            "人员的具体动作（如骑摩托车的人路线、穿反光背心人员的位置）；花坛中花卉的具体种类和摆放细节；伸缩门的开合状态；背景中车辆的有无；树木的具体叶片形态（只要整体季节感符合）。"
+          ],
+          "suitable_shots": [
+            "大门的全景正面拍摄；从大门拱形门洞内向外拍摄背景建筑；岗亭及大门右侧区域的中景拍摄；天空与大门顶部的仰拍；前景花坛与大门的结合拍摄。"
+          ],
+          "unsupported_or_risky_shots": [
+            "从大门后方（校园内）向大门外拍摄（画面中未显示大门后方校园内的详细情况，可能缺乏支撑）；近距离特写大门的微小细节（如文字雕刻的极特写，画面分辨率可能不足）；从高空俯视整个场景（画面为地面视角，高空视角的环境细节可能与实际有偏差）。"
+          ],
+          "visible_text": [
+            "浙江外国语学院"
+          ],
+          "uncertain": [
+            "大门是否为浙江外国语学院的校门；背景建筑的具体功能；树木的具体种类；远山的具体名称；人员的具体身份。"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_b425bc4f7307df4d",
+      "candidate_id": "ref_009c341d1bfc4bf1",
+      "place_id": "place_84c00e9ed5f576ce",
+      "place_name": "浙江外国语学院",
+      "city": "杭州",
+      "original_url": "http://pics3.baidu.com/feed/48540923dd54564e8092a576fd58538dd0584f1b.jpeg@f_auto?token=c1fe01c88ac5c2b9c7f844483e7ddf5b",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1831460426949872520&wfr=spider&for=pc",
+      "title": "浙江外国语学院仅设有一个校区,该校区坐落于风景宜人的小和山高教",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260921_013819_13dcea/ref_b425bc4f7307df4d.webp",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260921_013819_13dcea\\ref_b425bc4f7307df4d.webp",
+      "sha256": "b425bc4f7307df4d56afb96e87e2424f91fc369c9f1e149528c2c15c4f787478",
+      "width": 1024,
+      "height": 652,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 12.024,
+        "usage": {
+          "completion_tokens": 498,
+          "prompt_tokens": 1255,
+          "total_tokens": 1753,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示了一处带有水景和绿植的欧式风格建筑群，建筑以白色为主，搭配拱形门窗和塔楼，背景有远山和其他建筑，整体环境清新雅致。",
+          "visible_elements": [
+            "白色欧式建筑（含拱形门窗、塔楼）、池塘、绿植（草坪、灌木、树木）、远山、其他建筑、人物（远处）、水面倒影"
+          ],
+          "spatial_layout": [
+            "池塘位于画面下方，建筑在池塘后方的台地上，左侧建筑与中间八角形建筑通过连廊连接，背景建筑在中间建筑右侧远处，树木分布在建筑周边和池塘对岸"
+          ],
+          "architecture_and_materials": [
+            "建筑为白色石材或仿石材质，造型欧式，有拱形门窗、立柱、塔楼（黑顶），八角形建筑二层有连续拱窗，底层为大拱门，左侧建筑有竖向文字"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "建筑受光面在左侧，水面倒影清晰，背景远山在右侧后方"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "清晨或傍晚（光线柔和，建筑有暖光）",
+            "weather": "晴天（天空晴朗，光线充足）",
+            "season": "春季或秋季（树木有绿叶，草坪翠绿）"
+          },
+          "must_keep_candidates": [
+            "欧式建筑的拱形结构、白色外观、塔楼设计，池塘及倒影，建筑与水景的布局，绿植搭配"
+          ],
+          "allowed_changes": [
+            "人物活动、水面波纹、光影角度（小范围）、树木细节（如叶片疏密）"
+          ],
+          "suitable_shots": [
+            "全景展示建筑群与水景，中景拍摄建筑细节（拱门、立柱），特写水面倒影，移镜头沿池塘拍摄建筑"
+          ],
+          "unsupported_or_risky_shots": [
+            "仰视拍摄建筑顶部（可能遮挡景观），俯视大范围航拍（画面外建筑未知），夜间拍摄（原光线依赖自然光）"
+          ],
+          "visible_text": [
+            "左侧建筑有竖向文字（部分可见）"
+          ],
+          "uncertain": [
+            "建筑具体名称、地点，文字内容，远山具体信息"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_1242de9290a6951a",
+      "candidate_id": "ref_66abd885de729993",
+      "place_id": "place_84c00e9ed5f576ce",
+      "place_name": "浙江外国语学院",
+      "city": "杭州",
+      "original_url": "http://meizi-zjol-1577-pub.zjol.com.cn/jyjsb/gx/202506/1938165015315173380_1280px.jpg",
+      "source_page_url": "http://edu.zjol.com.cn/jyjsb/gx/202506/t20250626_31077157.shtml",
+      "title": "用语言开启未来之门! 浙江外国语学院2025年计划招生2280名",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260921_013819_13dcea/ref_1242de9290a6951a.jpg",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260921_013819_13dcea\\ref_1242de9290a6951a.jpg",
+      "sha256": "1242de9290a6951ad33fc8f1535dd8e06cb809468e8c3c48cbf14e08ec887fb0",
+      "width": 1024,
+      "height": 575,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-1-6-vision-250815",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 10.748,
+        "usage": {
+          "completion_tokens": 477,
+          "prompt_tokens": 1155,
+          "total_tokens": 1632,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示了一座名为‘弘文馆（HONGWEN LIBRARY）’的大型白色建筑，建筑前有台阶、草坪、树木和行人，天空晴朗。",
+          "visible_elements": [
+            "弘文馆建筑、台阶、草坪、树木、行人、路灯、红色旗帜、蓝天"
+          ],
+          "spatial_layout": [
+            "建筑位于画面中央，台阶在建筑正前方，草坪在台阶前，树木分布在草坪左右两侧，行人在台阶上，路灯在草坪边缘，红色旗帜在草坪左右的树木旁"
+          ],
+          "architecture_and_materials": [
+            "建筑为多层，白色石材外观，正面有多根白色立柱，三角形山花顶，山花顶有圆形徽章，墙面有蓝色玻璃窗，建筑材质似石材，色彩以白色为主，搭配蓝色玻璃和红色徽章"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "建筑正面朝向镜头，台阶和入口清晰可见"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天（推测为上午或下午，光线明亮）",
+            "weather": "晴天（蓝天无云）",
+            "season": "夏季或秋季（草坪翠绿，树木茂盛）"
+          },
+          "must_keep_candidates": [
+            "建筑的白色石材外观、立柱结构、‘弘文馆’及‘HONGWEN LIBRARY’文字标识、正面台阶和入口、草坪树木的布局"
+          ],
+          "allowed_changes": [
+            "行人的位置和动作、旗帜的飘动状态、光线的细微变化"
+          ],
+          "suitable_shots": [
+            "建筑正面全景、中景（展示入口和立柱）、近景（展示建筑细节和文字）、草坪树木与建筑的结合景"
+          ],
+          "unsupported_or_risky_shots": [
+            "建筑内部视角、建筑背面视角、高空俯视（无足够信息支持）"
+          ],
+          "visible_text": [
+            "弘文馆",
+            "HONGWEN LIBRARY"
+          ],
+          "uncertain": [
+            "建筑的具体位置、行人的身份、树木的具体种类"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_84c00e9ed5f576ce",
+    "place_name": "浙江外国语学院",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_474c93a91d265752",
+      "ref_b425bc4f7307df4d",
+      "ref_1242de9290a6951a"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "白色石质大门（带三个拱形门洞、顶部有文字雕刻）",
+      "花坛（含花卉、小树）",
+      "伸缩门",
+      "岗亭（白色、带玻璃门）",
+      "骑摩托车的人",
+      "穿反光背心的人员",
+      "树木（多种、含绿树和部分黄叶树）",
+      "背景建筑（白色多层建筑、灰色多层建筑、白色欧式风格建筑）",
+      "远山（植被覆盖）",
+      "道路（沥青路、石材铺装广场）",
+      "蓝天白云",
+      "白色欧式建筑（含拱形门窗、塔楼）、池塘、绿植（草坪、灌木、树木）、远山、其他建筑、人物（远处）、水面倒影",
+      "弘文馆建筑、台阶、草坪、树木、行人、路灯、红色旗帜、蓝天"
+    ],
+    "stable_features": [
+      {
+        "text": "大门的白色石质结构、三个拱形门洞及顶部文字雕刻；岗亭的白色外观及位置；背景建筑的风格与布局；远山、树木的环境搭配；广场的石材铺装；蓝天白云的天空背景。",
+        "evidence_asset_ids": [
+          "ref_474c93a91d265752"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "欧式建筑的拱形结构、白色外观、塔楼设计，池塘及倒影，建筑与水景的布局，绿植搭配",
+        "evidence_asset_ids": [
+          "ref_b425bc4f7307df4d"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "建筑的白色石材外观、立柱结构、‘弘文馆’及‘HONGWEN LIBRARY’文字标识、正面台阶和入口、草坪树木的布局",
+        "evidence_asset_ids": [
+          "ref_1242de9290a6951a"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "大门的白色石质结构、三个拱形门洞及顶部文字雕刻；岗亭的白色外观及位置；背景建筑的风格与布局；远山、树木的环境搭配；广场的石材铺装；蓝天白云的天空背景。",
+      "欧式建筑的拱形结构、白色外观、塔楼设计，池塘及倒影，建筑与水景的布局，绿植搭配",
+      "建筑的白色石材外观、立柱结构、‘弘文馆’及‘HONGWEN LIBRARY’文字标识、正面台阶和入口、草坪树木的布局"
+    ],
+    "allowed_changes": [
+      "人员的具体动作（如骑摩托车的人路线、穿反光背心人员的位置）；花坛中花卉的具体种类和摆放细节；伸缩门的开合状态；背景中车辆的有无；树木的具体叶片形态（只要整体季节感符合）。",
+      "人物活动、水面波纹、光影角度（小范围）、树木细节（如叶片疏密）",
+      "行人的位置和动作、旗帜的飘动状态、光线的细微变化"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "大门是否为浙江外国语学院的校门；背景建筑的具体功能；树木的具体种类；远山的具体名称；人员的具体身份。",
+      "建筑具体名称、地点，文字内容，远山具体信息",
+      "建筑的具体位置、行人的身份、树木的具体种类"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_474c93a91d265752",
+        "summary": "画面展示了一座带有三个拱形门洞的白色石质大门，疑似校园入口，背景有建筑、树木、远山和蓝天白云，前景有花坛、伸缩门、岗亭及人员。",
+        "visible_elements": [
+          "白色石质大门（带三个拱形门洞、顶部有文字雕刻）",
+          "花坛（含花卉、小树）",
+          "伸缩门",
+          "岗亭（白色、带玻璃门）",
+          "骑摩托车的人",
+          "穿反光背心的人员",
+          "树木（多种、含绿树和部分黄叶树）",
+          "背景建筑（白色多层建筑、灰色多层建筑、白色欧式风格建筑）",
+          "远山（植被覆盖）",
+          "道路（沥青路、石材铺装广场）",
+          "蓝天白云"
+        ],
+        "spatial_layout": [
+          "大门位于画面中央，三个拱形门洞从左至右排列；岗亭在大门右侧偏后；花坛分布在大门前的广场上，靠近门洞；伸缩门在大门前的广场边缘；背景建筑在大门后方，远山在背景建筑更远处；树木分布在大门两侧及背景建筑周围；道路在大门左右两侧及后方广场外围。"
+        ],
+        "architecture_and_materials": [
+          "大门：白色石质，古典欧式风格，有立柱、拱形门洞，顶部有雕刻文字，材质似石材，色彩为白色；岗亭：白色，现代风格，有玻璃门，材质似混凝土或石材；背景建筑：白色多层建筑（欧式风格、有立柱）、灰色多层建筑（现代风格），材质似混凝土，色彩为白色、灰色。"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "大门朝向镜头，背景建筑在大门后方，远山在背景建筑之后，天空在上方，推测镜头朝向大门，可能为正前方或稍偏角度。"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天（蓝天、白云、光线明亮）",
+          "weather": "晴天（蓝天、白云、光线充足）",
+          "season": "秋季（部分树木有黄叶，整体植被仍较绿，推测可能为秋季）"
+        },
+        "must_keep_candidates": [
+          "大门的白色石质结构、三个拱形门洞及顶部文字雕刻；岗亭的白色外观及位置；背景建筑的风格与布局；远山、树木的环境搭配；广场的石材铺装；蓝天白云的天空背景。"
+        ],
+        "allowed_changes": [
+          "人员的具体动作（如骑摩托车的人路线、穿反光背心人员的位置）；花坛中花卉的具体种类和摆放细节；伸缩门的开合状态；背景中车辆的有无；树木的具体叶片形态（只要整体季节感符合）。"
+        ],
+        "suitable_shots": [
+          "大门的全景正面拍摄；从大门拱形门洞内向外拍摄背景建筑；岗亭及大门右侧区域的中景拍摄；天空与大门顶部的仰拍；前景花坛与大门的结合拍摄。"
+        ],
+        "unsupported_or_risky_shots": [
+          "从大门后方（校园内）向大门外拍摄（画面中未显示大门后方校园内的详细情况，可能缺乏支撑）；近距离特写大门的微小细节（如文字雕刻的极特写，画面分辨率可能不足）；从高空俯视整个场景（画面为地面视角，高空视角的环境细节可能与实际有偏差）。"
+        ]
+      },
+      {
+        "asset_id": "ref_b425bc4f7307df4d",
+        "summary": "画面展示了一处带有水景和绿植的欧式风格建筑群，建筑以白色为主，搭配拱形门窗和塔楼，背景有远山和其他建筑，整体环境清新雅致。",
+        "visible_elements": [
+          "白色欧式建筑（含拱形门窗、塔楼）、池塘、绿植（草坪、灌木、树木）、远山、其他建筑、人物（远处）、水面倒影"
+        ],
+        "spatial_layout": [
+          "池塘位于画面下方，建筑在池塘后方的台地上，左侧建筑与中间八角形建筑通过连廊连接，背景建筑在中间建筑右侧远处，树木分布在建筑周边和池塘对岸"
+        ],
+        "architecture_and_materials": [
+          "建筑为白色石材或仿石材质，造型欧式，有拱形门窗、立柱、塔楼（黑顶），八角形建筑二层有连续拱窗，底层为大拱门，左侧建筑有竖向文字"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "建筑受光面在左侧，水面倒影清晰，背景远山在右侧后方"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "清晨或傍晚（光线柔和，建筑有暖光）",
+          "weather": "晴天（天空晴朗，光线充足）",
+          "season": "春季或秋季（树木有绿叶，草坪翠绿）"
+        },
+        "must_keep_candidates": [
+          "欧式建筑的拱形结构、白色外观、塔楼设计，池塘及倒影，建筑与水景的布局，绿植搭配"
+        ],
+        "allowed_changes": [
+          "人物活动、水面波纹、光影角度（小范围）、树木细节（如叶片疏密）"
+        ],
+        "suitable_shots": [
+          "全景展示建筑群与水景，中景拍摄建筑细节（拱门、立柱），特写水面倒影，移镜头沿池塘拍摄建筑"
+        ],
+        "unsupported_or_risky_shots": [
+          "仰视拍摄建筑顶部（可能遮挡景观），俯视大范围航拍（画面外建筑未知），夜间拍摄（原光线依赖自然光）"
+        ]
+      },
+      {
+        "asset_id": "ref_1242de9290a6951a",
+        "summary": "画面展示了一座名为‘弘文馆（HONGWEN LIBRARY）’的大型白色建筑，建筑前有台阶、草坪、树木和行人，天空晴朗。",
+        "visible_elements": [
+          "弘文馆建筑、台阶、草坪、树木、行人、路灯、红色旗帜、蓝天"
+        ],
+        "spatial_layout": [
+          "建筑位于画面中央，台阶在建筑正前方，草坪在台阶前，树木分布在草坪左右两侧，行人在台阶上，路灯在草坪边缘，红色旗帜在草坪左右的树木旁"
+        ],
+        "architecture_and_materials": [
+          "建筑为多层，白色石材外观，正面有多根白色立柱，三角形山花顶，山花顶有圆形徽章，墙面有蓝色玻璃窗，建筑材质似石材，色彩以白色为主，搭配蓝色玻璃和红色徽章"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "建筑正面朝向镜头，台阶和入口清晰可见"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天（推测为上午或下午，光线明亮）",
+          "weather": "晴天（蓝天无云）",
+          "season": "夏季或秋季（草坪翠绿，树木茂盛）"
+        },
+        "must_keep_candidates": [
+          "建筑的白色石材外观、立柱结构、‘弘文馆’及‘HONGWEN LIBRARY’文字标识、正面台阶和入口、草坪树木的布局"
+        ],
+        "allowed_changes": [
+          "行人的位置和动作、旗帜的飘动状态、光线的细微变化"
+        ],
+        "suitable_shots": [
+          "建筑正面全景、中景（展示入口和立柱）、近景（展示建筑细节和文字）、草坪树木与建筑的结合景"
+        ],
+        "unsupported_or_risky_shots": [
+          "建筑内部视角、建筑背面视角、高空俯视（无足够信息支持）"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_1.jpg",
+        "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+        "license": "Unsplash License",
+        "alt": "a building with a tree in front of it"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_2.jpg",
+        "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+        "license": "Unsplash License",
+        "alt": "a pagoda in the middle of a park surrounded by trees"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_3.jpg",
+        "url": "https://unsplash.com/photos/brown-and-red-temple-kp3A2jurfP0",
+        "license": "Unsplash License",
+        "alt": "brown and red temple"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_474c93a91d265752",
+        "name": "浙江外国语学院",
+        "url": "/assets/references/p_20260921_013819_13dcea/ref_474c93a91d265752.jpg",
+        "source_page_url": "http://baijiahao.baidu.com/s?id=1788328655000021251&wfr=spider&for=pc",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_b425bc4f7307df4d",
+        "name": "浙江外国语学院",
+        "url": "/assets/references/p_20260921_013819_13dcea/ref_b425bc4f7307df4d.webp",
+        "source_page_url": "http://baijiahao.baidu.com/s?id=1831460426949872520&wfr=spider&for=pc",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_1242de9290a6951a",
+        "name": "浙江外国语学院",
+        "url": "/assets/references/p_20260921_013819_13dcea/ref_1242de9290a6951a.jpg",
+        "source_page_url": "http://edu.zjol.com.cn/jyjsb/gx/202506/t20250626_31077157.shtml",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "selected",
+    "version": 1,
+    "source": "preset",
+    "voice_id": "voice_01_female_fresh",
+    "name": "清新探索女声",
+    "description": "清新明亮、自然松弛、带轻微笑意",
+    "reference_path": "D:\\code\\TravelGen-main\\assets\\media\\voices\\01_清新探索_女声.wav",
+    "preview_url": "/assets/media/voices/01_清新探索_女声.wav",
+    "reference_sha256": "13a6d9325965fa6f457d18ee4e105049d35c7088da941ee840613bb7f8970281"
+  },
+  "music": {
+    "status": "selected",
+    "version": 3,
+    "bgm_gain_db": -9.0,
+    "recommendation_status": "ready",
+    "recommendations": [
+      {
+        "bgm_id": "bgm_01",
+        "score": 90,
+        "reason": "大气、向上、电影配乐感；适合城市天际线、产业、交通和航拍开篇，与“大学宣传”的内容方向匹配。",
+        "editing_tip": "建议低音量连续铺底，并在旁白出现时自动压低。"
+      },
+      {
+        "bgm_id": "bgm_02",
+        "score": 84,
+        "reason": "都市、时尚、电子氛围；适合夜景、商圈、科技与现代生活，与“大学宣传”的内容方向匹配。",
+        "editing_tip": "建议低音量连续铺底，并在旁白出现时自动压低。"
+      },
+      {
+        "bgm_id": "bgm_03",
+        "score": 78,
+        "reason": "松弛、积极、节奏稳定；适合城市漫游、街区和人文生活，与“大学宣传”的内容方向匹配。",
+        "editing_tip": "建议低音量连续铺底，并在旁白出现时自动压低。"
+      }
+    ],
+    "selected": {
+      "bgm_id": "bgm_13",
+      "scene": "校园/城市打卡",
+      "title": "Reaching Out",
+      "artist": "Michael Ramir C.",
+      "duration": "01:44",
+      "description": "青春、坚定、独立流行；适合校园建筑、社团和毕业季",
+      "preview_url": "/assets/media/bgm/05_campus_city_checkin/01_Reaching_Out__Michael_Ramir_C.mp3",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\media\\bgm\\05_campus_city_checkin\\01_Reaching_Out__Michael_Ramir_C.mp3",
+      "source_page": "https://mixkit.co/free-stock-music/tag/youth/",
+      "license": "Mixkit Stock Music Free License"
+    }
+  },
+  "voice_tasks": [],
+  "segment_tasks": [
+    "st_20260921_014953_4f42c5"
+  ],
+  "render_tasks": [
+    "rt_20260921_015521_0ca524"
+  ],
+  "render": {
+    "status": "completed",
+    "version": 1,
+    "task_id": "rt_20260921_015521_0ca524"
+  },
+  "final_video": {
+    "status": "completed",
+    "url": "/assets/renders/p_20260921_013819_13dcea/v1/with_bgm.mp4",
+    "preview_url": "/assets/renders/p_20260921_013819_13dcea/v1/with_bgm.mp4",
+    "default_variant": "with_bgm",
+    "clean": {
+      "url": "/assets/renders/p_20260921_013819_13dcea/v1/clean.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260921_013819_13dcea\\v1\\clean.mp4"
+    },
+    "with_bgm": {
+      "url": "/assets/renders/p_20260921_013819_13dcea/v1/with_bgm.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260921_013819_13dcea\\v1\\with_bgm.mp4"
+    },
+    "bgm_mix": {
+      "bgm_id": "bgm_13",
+      "title": "Reaching Out",
+      "target_lufs": -23.0,
+      "gain_db": -9.0,
+      "strategy": "loudness_normalized_mix"
+    },
+    "duration_s": 15.02,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16",
+    "version": 1,
+    "voice_version": 1,
+    "music_version": 3
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-20T17:38:19.636959+00:00",
+  "updated_at": "2026-09-20T17:55:26.824588+00:00",
+  "copywriting_text": "【0-4s】三拱门下，杭州迎面，西湖的风，吹动新生。\n【4-9s】塔楼倒映清波，像西溪的水，漾着国际的浪。\n【9-13s】弘文馆前，拾级而上，野心与未来，一起燃。\n【13-15s】下一站，浙外！",
+  "segment_results": {
+    "seg_01": {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260921_013819_13dcea/seg_01/st_20260921_014953_4f42c5_normalized_av.mp4",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260921_013819_13dcea\\seg_01\\st_20260921_014953_4f42c5_raw.mp4",
+      "normalized_av_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260921_013819_13dcea\\seg_01\\st_20260921_014953_4f42c5_normalized_av.mp4",
+      "native_audio_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260921_013819_13dcea\\seg_01\\st_20260921_014953_4f42c5_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 15.072,
+        "expected_duration_seconds": 15.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.072,
+        "tail_activity_warning": true,
+        "speech_level_p90_dbfs": -11.64,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "13a6d9325965fa6f457d18ee4e105049d35c7088da941ee840613bb7f8970281",
+      "voice_version": 1,
+      "narration_hash": "31c4409bcfe555b8896ca81dd4b9a13551a54dd14010e09f92bf5b4db43d4699",
+      "prompt_hash": "bc0a94854a5c5641f778c758bcdad18500596618f5b8553e8bae32f8e534c0a6",
+      "reference_asset_ids": [
+        "ref_474c93a91d265752",
+        "ref_b425bc4f7307df4d",
+        "ref_1242de9290a6951a"
+      ],
+      "task_id": "st_20260921_014953_4f42c5"
+    }
+  },
+  "active_segment_ids": []
+}

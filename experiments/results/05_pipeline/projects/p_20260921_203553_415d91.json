@@ -1,0 +1,305 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260921_203553_415d91",
+  "username": "sherlock",
+  "status": "waiting_reference_confirm",
+  "progress": 5,
+  "message": "参考图分析失败，请重新选择｜RuntimeError: 所有参考图均下载或分析失败",
+  "request": {
+    "city": "杭州",
+    "location": "西湖断桥残雪",
+    "scene_type": "景区推荐",
+    "theme": "西湖断桥雪景",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 20,
+    "aspect_ratio": "16:9",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {},
+  "copywriting": {},
+  "script": {},
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_3a31b87ab9410260",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://i0.hdslb.com/bfs/archive/8f605bc0b50f7fa2c713364bd211bcca44503df5.jpg",
+      "title": "金融打工人: 西湖断桥残雪",
+      "source_page_url": "http://www.bilibili.com/video/BV1inz7BgEPE",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_fb711234e8930c6f",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=2034157892,3117842012&fm=3074&app=3074&f=JPEG",
+      "title": "杭州西湖断桥残雪全攻略,必打卡景点推荐",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4928354228636448308",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_aeaa0bd8350f6682",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3f161dcbd1b/260120/f0ecd93f7de1cbac029076e8821b152c.jpeg",
+      "title": "残雪西湖断桥残雪图片断桥残雪照片杭州西湖断桥残雪图片断桥残雪图片",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4904764983940657905",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6af32bf411506739",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://q7.itc.cn/q_70/images01/20260120/bcb806187d01437da0c7290fb97a0b99.jpeg",
+      "title": "西湖断桥残雪今昔:跨越时空的诗意邂逅 西湖断桥残雪今昔:跨越时空的",
+      "source_page_url": "http://www.sohu.com/a/978108619_122614430",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_bedd277380c6befd",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://q2.itc.cn/q_70/images03/20260120/0faf1598374948f89939b5e2b273ba27.jpeg",
+      "title": "断桥残雪难寻?这份真相与指南藏着答案",
+      "source_page_url": "http://news.sohu.com/a/978056971_121893989",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6d1d560c8d34f8b7",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/d484d06e58afd762293c0118c761b2f8.jpg",
+      "title": "杭州五年一遇\"断桥残雪\"引爆全民追雪潮",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4937869509943307486",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_df423b754dc6fc1d",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/personal_page_creator/nHs-WvE5T2_07bXEnIvOoA83f84b5986e74abe7927be6177b4d53e.jpg",
+      "title": "西湖\"断桥残雪\"景观再现,临安山区积雪达5",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3622071592151402788",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_2267992b83b7f7ca",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://inews.gtimg.com/news_bt/OUHqdTh1WQSqk-wVFCK1RnrKQ-RBM52tBhxn8xSupYSpgAA/641",
+      "title": "杭州西湖再现断桥残雪,美不胜收!",
+      "source_page_url": "http://news.qq.com/rain/a/20260120A05D8D00",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_4d2a09b6d3c30699",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/down/8f1ad34ce110154cd8bdc05ea884b448.png",
+      "title": "今天,我要和你分享杭州西湖的美丽景色,特别是那令人陶醉的断桥残雪",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1783888350164334695&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_67fe2cfaa7fceba2",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://p4-q.mafengwo.net/s11/M00/2F/EA/wKgBEFpyxyGAZQaIABXSZc-Fx5c03.jpeg",
+      "title": "西湖断桥残雪怎么去,断桥残雪在哪里,断桥残雪交通路线",
+      "source_page_url": "http://mungfali.com/explore/%B6%CF%C7%C5%B2%D0%D1%A9-%BC%F2%C6%D7",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_97c05060522f062d",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/78bbddb77c3f74da24e60b8631b13fc3.jpg",
+      "title": "冬日时刻分享#冬至时分,不妨前往杭州西湖",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3717221919595565624",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6a8ec93f40c07665",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/84ab29648c69071063d2692beab07803.jpg",
+      "title": "杭州西湖:冬日断桥残雪美如画,白娘子与许仙的千年传说,在雪景",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1842482307083008257&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f4bfc2a38dc3f895",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/bc11a045e458/260124/c8537a95dace623ae1adc0b61e586f19.jpeg",
+      "title": "奇景!杭州西湖再现断桥残雪,令人陶醉!",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1855155760312603797&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_dfc9d326b2e2eb5c",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://pics6.baidu.com/feed/d009b3de9c82d1584f60cbced7a03ec8bd3e422d.jpeg@f_auto?token=f09e8b96f5a70d6dcecfc817da4fa13d",
+      "title": "雪后西湖:断桥美景与游客热浪",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1837661864958349799&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5b36ef08fe5b3cda",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/other/ffd4df011eda8a63373417a3f6e3b69e.jpeg?for=bg",
+      "title": "杭州西湖断桥残雪,呈现绝美的旅游美景",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=6476234023280259282",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_21a5c94d04ac6aec",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/4afc2d937ba5bd4dc3f9c6ce85a5ff5e.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "西湖十景是杭州西湖最具代表性的景观群,形成于南宋时期,历经元,明,清",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1826123680359079871&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_08e2021990c14514",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/240506/events/eab4febed065d83b4afde485f81e58724502.jpeg",
+      "title": "西湖断桥残雪是著名的西湖十景之一",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4364194704868493232",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_fd47c95fdf00bdc4",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/2f7ac6a5bd81549c8edb226a21dc739f.jpg",
+      "title": "杭州西湖:冬日断桥残雪美如画,白娘子与许仙的千年传说,在雪景",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1842482307083008257&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a80557e2739897fc",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://inews.gtimg.com/news_bt/OUFlGY87_aijMAFKT2bwI1WGuLQ43l_G7EEUJ4_w_tuZEAA/641",
+      "title": "杭州西湖再现断桥残雪,美不胜收!",
+      "source_page_url": "http://news.qq.com/rain/a/20260120A05D8D00",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_2b0f126692df1e9c",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=705594267,4049119304&fm=3074&app=3074&f=JPEG",
+      "title": "断桥残雪:西湖雪景的绝美之地",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3772395318749398800",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_2a2a17e62003989d",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://upload-images.jianshu.io/upload_images/4376557-a9fb34ce824fe4f2.jpg",
+      "title": "断桥残雪",
+      "source_page_url": "http://www.jianshu.com/p/17016504cec6",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_658e230e2391c6ad",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/down/NMdpDl409zmPm1Lg32pqZQ58a5a7443daf4f186c7f13fabbffcf27.jpg?for=bg",
+      "title": "西湖雪落断桥,千年等一回",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=5099610891605193744",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_4ab383d52aaa6ffb",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://ss2.meipian.me/users/12639239/43b2c96e8667a59279b92b53d00d7bd5.jpg?meipian-watermark/bucket/ivwen/key/dXNlcnMvMTI2MzkyMzkvNDNiMmM5NmU4NjY3YTU5Mjc5YjkyYjUzZDAwZDdiZDUuanBn/nickname/6IOh5a6d6b6Z/userid/MTI2MzkyMzk=/sign/350b112cec73fdabcef5ec0682b45cf2%7cimageView2/3/w/750/interlace/0/q/80",
+      "title": "杭州西湖断桥残雪",
+      "source_page_url": "http://www.meipian.cn/554gx3ic",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f658d81ed11ec3d2",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://q8.itc.cn/images01/20240605/7a62d29f50d24bf78ce88fbd96e39464.jpeg",
+      "title": "西湖断桥的来历,你真的了解吗?该如何游玩?建议收藏!",
+      "source_page_url": "http://www.sohu.com/a/783940916_121492536",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3747c562e55f964c",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://se-feed-bucket.bj.bcebos.com/map_uigc_scence_compare/c16d2bbb6fe94ced6af5b88b7f309cbc.jpg",
+      "title": "断桥残雪和西湖风景区各有千秋,我们一起来对比一下!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3910244772335211553",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_50c144b74fa62d0e",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://q8.itc.cn/q_70/images03/20260121/0bf6a30547c04e37915b1bfa3cd8c6ba.jpeg",
+      "title": "迪士尼飞雪,断桥残雪重现,黄鹤楼披银装,附避坑+防寒全攻略",
+      "source_page_url": "http://www.sohu.com/a/978268036_121893989",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_73f6cb347e123d64",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3f17b06cb20/240729/0fc49105fc04d3c1687e45855f17db60.jpeg",
+      "title": "无人西湖断桥风景图片冬天西湖断桥残雪图片冷色西湖西湖冬景图片",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4844190994435760534",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ae95e0cce8ac3d0c",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/240822/1d602cd5dc60de1bc12abf842a693b6c5771.jpeg",
+      "title": "\"断桥残雪\"是西湖上著名的景色,民间",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4498323041857060564",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e1eb60b4bec74d2f",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=2879654769,821853921&fm=3074&app=3074&f=JPEG?w=800&h=551&type=normal&func=",
+      "title": "🌉 西湖断桥:爱情与美景的邂逅 西湖,这片位于杭州的自然与文化瑰宝",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4062189286481134680",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_51ef4036529252d2",
+      "query": "杭州 西湖断桥残雪 实景 风景",
+      "image_url": "http://inews.gtimg.com/news_bt/OX4BZFuEun7zVx3Gde3iCdm1u3jlBiEgGtdvbjtS5caeAAA/641",
+      "title": "杭州西湖再现断桥残雪,美不胜收!",
+      "source_page_url": "http://news.qq.com/rain/a/20260120A05D8D00",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [],
+  "visual_profile": {},
+  "reference_version": 0,
+  "visual_assets": {},
+  "voice": {
+    "status": "none",
+    "version": 0
+  },
+  "music": {
+    "status": "none",
+    "version": 0,
+    "recommendation_status": "none",
+    "recommendation": null
+  },
+  "voice_tasks": [],
+  "segment_tasks": [],
+  "render_tasks": [],
+  "render": {
+    "status": "none",
+    "version": 0
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "16:9"
+  },
+  "safety": {},
+  "created_at": "2026-09-21T12:35:53.124635+00:00",
+  "updated_at": "2026-09-21T12:39:53.173779+00:00",
+  "copywriting_text": "",
+  "segment_results": {},
+  "active_segment_ids": []
+}

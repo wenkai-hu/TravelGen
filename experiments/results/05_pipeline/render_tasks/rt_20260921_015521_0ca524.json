@@ -1,0 +1,46 @@
+{
+  "task_id": "rt_20260921_015521_0ca524",
+  "project_id": "p_20260921_013819_13dcea",
+  "kind": "render",
+  "status": "completed",
+  "progress": 100,
+  "message": "最终视频已生成",
+  "request": {
+    "segment_ids": [
+      "seg_01"
+    ],
+    "voice_version": 1,
+    "voice_reference_sha256": "13a6d9325965fa6f457d18ee4e105049d35c7088da941ee840613bb7f8970281",
+    "music_version": 3
+  },
+  "result": {
+    "status": "completed",
+    "url": "/assets/renders/p_20260921_013819_13dcea/v1/with_bgm.mp4",
+    "preview_url": "/assets/renders/p_20260921_013819_13dcea/v1/with_bgm.mp4",
+    "default_variant": "with_bgm",
+    "clean": {
+      "url": "/assets/renders/p_20260921_013819_13dcea/v1/clean.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260921_013819_13dcea\\v1\\clean.mp4"
+    },
+    "with_bgm": {
+      "url": "/assets/renders/p_20260921_013819_13dcea/v1/with_bgm.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260921_013819_13dcea\\v1\\with_bgm.mp4"
+    },
+    "bgm_mix": {
+      "bgm_id": "bgm_13",
+      "title": "Reaching Out",
+      "target_lufs": -23.0,
+      "gain_db": -9.0,
+      "strategy": "loudness_normalized_mix"
+    },
+    "duration_s": 15.02,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16",
+    "version": 1,
+    "voice_version": 1,
+    "music_version": 3
+  },
+  "error": null,
+  "created_at": "2026-09-20T17:55:21.213018+00:00",
+  "updated_at": "2026-09-20T17:55:26.823589+00:00"
+}

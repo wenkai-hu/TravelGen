@@ -43,6 +43,7 @@ class ShotPatch(BaseModel):
     """接口4：修改单个 Shot 的部分字段（只更新出现的字段）。"""
     prompt: str | None = None
     duration_s: int | None = None
+    narration: str | None = None
     subject: str | None = None
     background: str | None = None
     shot_size: str | None = None
@@ -50,11 +51,9 @@ class ShotPatch(BaseModel):
     reference_asset_ids: list[str] | None = None
 
 
-class GenerateShotsRequest(BaseModel):
-    """接口5：新项目按 Segment 生成；shots 仅保留给旧 Storyboard 兼容。"""
+class GenerateSegmentsRequest(BaseModel):
+    """按一个或多个完整 Segment 生成；空列表表示生成全部待选 Segment。"""
     segments: list[str] = Field(default_factory=list)
-    shots: list[int] = Field(default_factory=list)
-    generate_image: bool = False
     generate_video: bool = True
 
 
@@ -66,21 +65,32 @@ class RegenerateShotRequest(BaseModel):
     keep_style: bool = True
 
 
-class AudioRequest(BaseModel):
-    """接口7：先生成完整旁白与 BGM 母带。"""
-    voice: str = "zh-CN-XiaoxiaoNeural"
-    music: str = "ambient"
+class VoiceCandidateRequest(BaseModel):
+    """用 Seedance 生成一条可试听、可确认的自定义参考音色。"""
+    description: str = Field(..., min_length=2, max_length=300)
+
+
+class VoiceSelectionRequest(BaseModel):
+    """确认预设音色，或确认已经完成的自定义音色任务。"""
+    voice_id: str | None = None
+    candidate_task_id: str | None = None
+
+
+class MusicSelectionRequest(BaseModel):
+    """确认一首预设 BGM；explicit_none=true 表示明确不要 BGM。"""
+    bgm_id: str | None = None
+    explicit_none: bool = False
+
+
+class RenderMixRequest(BaseModel):
+    """成片试听后调整原视频声轨与配乐声轨的音量。"""
+    video_gain_db: float = Field(0, ge=-60, le=0)
+    bgm_gain_db: float = Field(0, ge=-60, le=0)
 
 
 class RenderRequest(BaseModel):
-    """接口8：拼接 Segment 静音画面并回铺项目 master audio。"""
+    """拼接 Seedance 原生音视频，并按选择生成 clean/with-BGM 双版本。"""
     segment_ids: list[str] = Field(default_factory=list)
-    shot_ids: list[str] = Field(default_factory=list)  # 旧客户端兼容，服务端不再作为权威输入
-    voice_url: str = ""
-    music_url: str = ""
-    subtitle: bool = True
-    resolution: str = "1080p"
-    aspect_ratio: str = "9:16"
 
 
 class SegmentPatch(BaseModel):

@@ -5,10 +5,10 @@
 - demo 模式：无 config.json 时回放 Phase 3 真实成果（demo.py），全流程可演示
 - 视频阶段（Seedance 2.0 Pro）：当前两模式均模拟推进，真实接入 Phase 5（火山方舟异步任务）
 """
-import asyncio, json, os, re
+import asyncio, hashlib, json, os, re
 
 from . import model_client, validate as v
-from . import segment_planner, visual_rag
+from . import media_qc, segment_planner, visual_rag
 from . import demo as demo_mod
 from .demo import parse_script
 from .kb import knowledge_text, visual_assets
@@ -65,9 +65,6 @@ STORYBOARD_PROMPT = """你是一位电影分镜师。请将以下宣传片文案
 【文案】
 {script}
 
-【已经实测的完整旁白时间轴】
-{audio_timeline}
-
 【用户确认的实景视觉档案与图片目录】
 {visual_grounding}
 
@@ -82,9 +79,8 @@ JSON结构（scene→shot两级，严格遵循）：
       "shot_list": [
         {{
           "shot_id": 1,
-          "segment_id": "seg_01",
-          "narration_unit_ids": ["n_01"],
           "duration_s": 8,
+          "narration": "该 Shot 对应的原始旁白片段",
           "camera": {{"type": "地面机位", "movement": "推", "angle": "平拍"}},
           "shot_size": "全景",
           "subject": "参考图中可确认的真实主体",
@@ -106,14 +102,15 @@ JSON结构（scene→shot两级，严格遵循）：
 2. 机位类型 camera.type 只能用：航拍/无人机/固定机位/地面机位/移动机位（禁止"地面/固定"等缩写）
 3. 角度 camera.angle 只能用：俯拍/平拍/仰拍/侧拍（禁止"侧俯"等组合词）
 4. 景别 shot_size 枚举：大远景/全景/中景/近景/特写；运镜 movement 枚举：固定/推/拉/摇/移/跟/升降/环绕
-5. 镜头数量 {min_shots}-{max_shots}个；Shot 是段内画面单位，每镜 duration_s 取1-15的整数，各镜头之和≈{duration_s}（容差±5%）
+5. 镜头数量 {min_shots}-{max_shots}个；每镜 duration_s 取1-15的整数，所有 Shot 时长之和必须严格等于{duration_s}秒
 6. shot_id 全片唯一递增（1..N），禁止每个 scene 各自从 1 编号
 7. 地标描述跨镜头保持一致（如雷峰塔样式、湖色色调不冲突）
 8. 每镜头 prompt 字段须可直接用于文生图/文生视频，含主体/环境/光线/质感
 9. 每个镜头从 view_catalog 选择1-3个真实存在且适配主体/机位的 reference_asset_ids；没有适配图时留空并设 grounding_strength="none"，禁止编造ID
 10. 镜头机位不得超出视觉档案支持范围；must_keep 保留地标结构，allowed_changes 仅写可变化的氛围与动态元素
-11. 每个 Shot 必须归入上方旁白时间轴已有的 segment_id，并绑定对应 narration_unit_ids；同一 Segment 内 Shot 时长之和应等于该音频窗口时长，不得让 Shot 跨 Segment
-12. 只输出JSON对象，禁止代码块标记和任何解释文字"""
+11. narration 必须从已确认文案中按原顺序切分；所有 Shot 的 narration 连起来必须与原文一致，不增字、不删字、不换词；允许某个纯画面 Shot 留空
+12. 不要输出 segment_id；后端会在不拆 Shot 的前提下，将连续 Shot 动态装入4-15秒的 Segment。时长序列必须可行，尤其不能留下不足4秒且无法与前一个Shot合并的尾段
+13. 只输出JSON对象，禁止代码块标记和任何解释文字"""
 
 RETRY_NOTE = "上一次输出未通过校验，严格按结构约束重新输出（只输出JSON）。具体错误：{errors}"
 
@@ -199,22 +196,11 @@ class PipelineRunner:
             sb, errors = await self._storyboard(project)
             if sb is None:
                 raise RuntimeError(f"分镜校验未通过: {'；'.join(errors[:4])}")
-            project.storyboard = segment_planner.attach_segment_plan(sb, project.audio)
+            project.storyboard = segment_planner.attach_segment_plan(sb, project.copywriting)
         else:
             project.storyboard = segment_planner.attach_segment_plan(
-                demo_mod.demo_storyboard(project.request), project.audio)
+                demo_mod.demo_storyboard(project.request), project.copywriting)
         return project
-
-    async def generate_videos(self, project, shot_ids, task=None, on_progress=None):
-        """V1 阶段③：按 shot_ids 子集批量生成视频（seedance 真实，否则模拟）。返回旧格式 clips。
-        task 提供 task_id 作下载文件名（VideoTask）；on_progress(clips, done, total) 同步 per-shot 进度。"""
-        shots = [sh for sc in project.storyboard["scenes"] for sh in sc["shot_list"]
-                 if sh["shot_id"] in shot_ids]
-        if self.seedance is None:
-            return await self._video_simulated(shots, project=project)
-        return await self._run_video_jobs(shots, task, on_progress=on_progress, project=project,
-                                          ratio=project.request.get("aspect_ratio"),
-                                          resolution=project.request.get("resolution"))
 
     async def generate_segments(self, project, segment_ids, task=None, on_progress=None):
         """V1 新链路：一次 Seedance 请求生成一个含多个 Shot 的 Segment。"""
@@ -244,27 +230,31 @@ class PipelineRunner:
         for segment in segments:
             segment_id = segment["segment_id"]
             folder = os.path.join(REPO, "assets", "videos", project.project_id, segment_id)
-            visual = os.path.join(folder, f"{task.task_id}_visual.mp4")
-            preview = os.path.join(folder, f"{task.task_id}_preview.mp4")
+            normalized = os.path.join(folder, f"{task.task_id}_normalized_av.mp4")
+            native_audio = os.path.join(folder, f"{task.task_id}_native_audio.wav")
             duration = segment["duration_ms"] / 1000
             ok = await asyncio.to_thread(
-                ark_client.create_placeholder_video, visual, duration,
+                ark_client.create_placeholder_av, normalized, duration,
                 project.request.get("resolution", "720p"),
                 project.request.get("aspect_ratio", "9:16"),
             )
             if ok:
-                await asyncio.to_thread(
-                    ark_client.mux_audio, visual, segment["audio_slice_path"], preview)
+                await asyncio.to_thread(ark_client.extract_audio, normalized, native_audio)
+            audio_qa = (await asyncio.to_thread(media_qc.inspect_wav, native_audio, duration)
+                        if ok and os.path.exists(native_audio) else {})
             clips.append({
                 "segment_id": segment_id,
                 "shot_ids": list(segment.get("shot_ids", [])),
                 "status": "succeeded" if ok else "failed",
                 "task_id": f"demo-{segment_id}",
                 "duration_s": duration,
-                "visual_path": visual if ok else None,
-                "preview_path": preview if ok and os.path.exists(preview) else visual if ok else None,
-                "raw_path": visual if ok else None,
-                "audio_slice_sha256": segment.get("audio_slice_sha256", ""),
+                "normalized_av_path": normalized if ok else None,
+                "native_audio_path": native_audio if ok and os.path.exists(native_audio) else None,
+                "audio_qa": audio_qa,
+                "raw_path": normalized if ok else None,
+                "voice_reference_sha256": project.voice.get("reference_sha256", ""),
+                "voice_version": project.voice.get("version", 0),
+                "narration_hash": hashlib.sha256(segment.get("narration_text", "").encode("utf-8")).hexdigest(),
                 "reference_asset_ids": list(segment.get("reference_asset_ids", [])),
                 "error": None if ok else "demo 占位视频生成失败",
             })
@@ -277,15 +267,16 @@ class PipelineRunner:
                                 ratio="adaptive", resolution=None):
         from . import ark_client
         resolution = resolution or self.seedance.get("resolution", "720p")
+        voice_path = (getattr(project, "voice", {}) or {}).get("reference_path")
+        if not voice_path or not os.path.isfile(voice_path):
+            raise FileNotFoundError(f"项目参考音色不存在: {voice_path}")
+        voice_audio = self._audio_data_uri(voice_path)
         prepared = {}
         for segment in segments:
             prompt, images = visual_rag.compile_segment_input(project, segment)
-            audio_path = segment.get("audio_slice_path")
-            if not audio_path or not os.path.isfile(audio_path):
-                raise FileNotFoundError(f"{segment['segment_id']} 音频切片不存在: {audio_path}")
-            prepared[segment["segment_id"]] = (
-                prompt, images, self._audio_data_uri(audio_path)
-            )
+            if not images:
+                raise ValueError(f"{segment['segment_id']} 没有参考图；Seedance 音色参考不能作为唯一参考输入")
+            prepared[segment["segment_id"]] = (prompt, images, voice_audio)
 
         clips = []
         for segment in segments:
@@ -303,7 +294,10 @@ class PipelineRunner:
                 "status": "queued" if tid else "failed",
                 "prompt": prompt,
                 "duration_s": duration,
-                "audio_slice_sha256": segment.get("audio_slice_sha256", ""),
+                "voice_reference_sha256": project.voice.get("reference_sha256", ""),
+                "voice_version": project.voice.get("version", 0),
+                "narration_hash": hashlib.sha256(segment.get("narration_text", "").encode("utf-8")).hexdigest(),
+                "prompt_hash": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
                 "reference_asset_ids": list(segment.get("reference_asset_ids", [])),
                 "error": err if not tid else None,
             })
@@ -328,9 +322,9 @@ class PipelineRunner:
                     clip["video_url"] = url
                     paths = await self._download_segment(project, task, clip, url)
                     clip.update(paths)
-                    if not clip.get("visual_path"):
+                    if not clip.get("normalized_av_path"):
                         clip["status"] = "failed"
-                        clip["error"] = "视频下载或静音画面转码失败"
+                        clip["error"] = "视频下载或原生音视频归一化失败"
                 elif status in ("failed", "expired", "cancelled"):
                     clip["status"], clip["error"] = "failed", err
                 else:
@@ -364,22 +358,22 @@ class PipelineRunner:
         folder = os.path.join(REPO, "assets", "videos", project.project_id, segment_id)
         os.makedirs(folder, exist_ok=True)
         raw = os.path.join(folder, f"{task.task_id}_raw.mp4")
-        visual = os.path.join(folder, f"{task.task_id}_visual.mp4")
-        preview = os.path.join(folder, f"{task.task_id}_preview.mp4")
+        normalized = os.path.join(folder, f"{task.task_id}_normalized_av.mp4")
+        native_audio = os.path.join(folder, f"{task.task_id}_native_audio.wav")
         try:
             size = await asyncio.to_thread(ark_client.download, url, raw)
             if size <= 0:
                 return {}
-            if not await asyncio.to_thread(ark_client.normalize_visual_only, raw, visual):
+            duration = float(clip.get("duration_s", 0))
+            if not await asyncio.to_thread(ark_client.normalize_av, raw, normalized, duration):
                 return {"raw_path": raw}
-            segment = next(item for item in project.storyboard["segments"]
-                           if item["segment_id"] == segment_id)
-            await asyncio.to_thread(
-                ark_client.mux_audio, visual, segment["audio_slice_path"], preview)
-            return {"raw_path": raw, "visual_path": visual,
-                    "preview_path": preview if os.path.exists(preview) else visual}
-        except Exception:
-            return {}
+            if not await asyncio.to_thread(ark_client.extract_audio, raw, native_audio):
+                return {"raw_path": raw, "normalized_av_path": normalized}
+            audio_qa = await asyncio.to_thread(media_qc.inspect_wav, native_audio, duration)
+            return {"raw_path": raw, "normalized_av_path": normalized,
+                    "native_audio_path": native_audio, "audio_qa": audio_qa}
+        except Exception as exc:
+            return {"error": f"原生音视频处理失败: {type(exc).__name__}: {exc}"}
 
     async def _text_real(self, task):
         """kimi 真实生成：planning → copywriting/script → storyboard（硬校验失败重试 1 次）。"""
@@ -443,16 +437,10 @@ class PipelineRunner:
     async def _storyboard(self, task):
         cw_text = "".join(f"【{p['idx']}】{p['text']}\n" for p in task.copywriting["paragraphs"])
         min_shots, max_shots = v.shot_count_range(task.request["duration_s"])
-        audio_units = getattr(task, "audio", {}).get("narration_units", [])
-        min_shots = max(min_shots, len(audio_units))
-        max_shots = max(max_shots, min_shots)
         grounding = visual_rag.grounding_for_prompt(getattr(task, "visual_profile", {}),
                                                      include_catalog=True)
         planning = json.dumps(task.planning, ensure_ascii=False, indent=2)
         prompt = STORYBOARD_PROMPT.format(planning=planning, script=cw_text,
-                                          audio_timeline=json.dumps(
-                                              getattr(task, "audio", {}).get("narration_units", []),
-                                              ensure_ascii=False, indent=2),
                                           visual_grounding=grounding,
                                           duration_s=task.request["duration_s"],
                                           min_shots=min_shots, max_shots=max_shots)
@@ -464,6 +452,11 @@ class PipelineRunner:
             if not text:
                 continue
             ok, errors, data = v.validate_and_normalize(text, target_s=task.request["duration_s"])
+            if ok:
+                try:
+                    segment_planner.partition_shots(segment_planner.flatten_shots(data))
+                except ValueError as exc:
+                    ok, errors = False, [str(exc)]
             if ok:
                 if getattr(task, "visual_profile", {}).get("reference_asset_ids"):
                     data = visual_rag.bind_storyboard_references(data, task.visual_profile)

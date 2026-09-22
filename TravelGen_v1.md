@@ -664,166 +664,74 @@ Shot 05   等待
 
 ---
 
-# 十二、接口5：生成分镜图片 \+ 视频Shot
+# 十二、接口5：按动态 Segment 生成原生音视频
 
-用户确认分镜以后，开始真正的多模态生成。
+用户确认分镜、统一参考音色和 BGM 选择后，按 Segment 调用 Seedance。Segment 只组合连续完整 Shot，实际时长为成员 Shot 时长之和，不拆 Shot，也不补齐到 15 秒。
 
 ## POST /api/projects/\{project\_id\}/generate
 
-### 输入
-
 ```JSON
 {
-"project_id": "p_001",
-
-"shots": [1,2,3,4],
-
-"generate_image": true, //分镜图
-
-"generate_video": true
+  "segments": ["seg_01", "seg_02"],
+  "generate_video": true
 }
 ```
 
-### 输出
+不传 `segments` 表示生成全部 Segment。返回：
 
 ```JSON
 {
-  "task_id": "task_001",
-
+  "task_id": "st_001",
   "project_id": "p_001",
-
   "status": "generating",
-
-  "progress": 0,
-
-  "shots": [
-    {
-      "shot_id": "shot_01",
-      "status": "pending"
-    },
-    {
-      "shot_id": "shot_02",
-      "status": "pending"
-    }
+  "segments": [
+    {"segment_id": "seg_01", "shot_ids": [1,2,3], "status": "pending"},
+    {"segment_id": "seg_02", "shot_ids": [4], "status": "pending"}
   ]
 }
 ```
 
 ---
 
-# 十三、Shot生成方式
-
-后端内部采用：
+# 十三、Segment 生成方式
 
 ```Plain Text
-Storyboard
+Storyboard Shot
+    ↓ 动态规划：连续完整 Shot 组合为 4–15 秒 Segment
+统一参考音色 + 本段准确旁白 + 多 Shot 时间线 + 实景参考图
     ↓
-Shot Prompt
+Seedance 原生画面、旁白、环境声与拟音（Prompt 固定禁止 BGM）
     ↓
-生成分镜图 / Key Frame
-    ↓
-图片作为视频参考
-    ↓
-视频模型
-    ↓
-Video Shot
+保留原始 MP4、归一化 AV 与抽取 WAV
 ```
-
-即：
-
-> **先图后视频**
-> 
-> 
-
-这样可以提高画面可控性和多镜头视觉一致性。
-
-视频模型具体使用哪一家由后端统一决定，例如：
-
-```Plain Text
-可灵
-即梦
-其他视频生成模型
-```
-
-前端不需要关心具体模型。
 
 ---
 
 # 十四、接口6：查询生成任务
 
-由于图片和视频生成都是异步任务，不能让前端一直等待接口。
-
 ## GET /api/tasks/\{task\_id\}
 
-### 输出
-
 ```JSON
 {
-  "task_id": "task_001",
-
+  "task_id": "st_001",
   "status": "generating",
-
-  "progress": 65,
-
-  "shots": [
-
+  "progress": 50,
+  "segments": [
     {
-      "shot_id": "shot_01",
+      "segment_id": "seg_01",
+      "shot_ids": [1,2,3],
       "status": "completed",
-
-      "image_url": "https://.../shot01.jpg",
-
-      "video_url": "https://.../shot01.mp4"
+      "video_url": "/assets/videos/p_001/seg_01/st_001_normalized_av.mp4",
+      "audio_qa": {"duration_ok": true, "music_detection": "not_available"}
     },
-
-    {
-      "shot_id": "shot_02",
-      "status": "completed",
-
-      "image_url": "https://.../shot02.jpg",
-
-      "video_url": "https://.../shot02.mp4"
-    },
-
-    {
-      "shot_id": "shot_03",
-      "status": "generating",
-
-      "progress": 70
-    },
-
-    {
-      "shot_id": "shot_04",
-      "status": "pending"
-    }
-  ]
-}
-```
-
-最终：
-
-```JSON
-{
-  "task_id": "task_001",
-
-  "status": "completed",
-
-  "progress": 100,
-
-  "shots": [
-    {
-      "shot_id": "shot_01",
-      "status": "completed",
-      "image_url": "https://...",
-      "video_url": "https://..."
-    }
+    {"segment_id": "seg_02", "shot_ids": [4], "status": "generating"}
   ]
 }
 ```
 
 ---
 
-# 十五、Shot级重新生成
+# 十五、从 Shot 发起所属 Segment 重生成
 
 这是系统必须保留的功能。
 
@@ -873,63 +781,21 @@ Video Shot
 
 ---
 
-# 十六、接口7：生成配音与背景音乐
+# 十六、接口7：确认统一参考音色与后期 BGM
 
-配音和音乐可以在视频Shot生成的同时进行。
+系统不再预生成 TTS 母带。用户从 8 条预设音色中选择，或让 Seedance 生成试听样本并抽取音轨；确认后，同一条参考音频会注入每个 Segment。BGM 只在最终合成时加入，Seedance 的 Segment Prompt 固定禁止生成 BGM。
 
-## POST /api/projects/\{project\_id\}/audio
+```Plain Text
+GET  /api/voice-presets
+POST /api/projects/{project_id}/voice-candidates
+PUT  /api/projects/{project_id}/voice
 
-### 输入
-
-```JSON
-{
-  "project_id": "p_001",
-
-  "voice": "",
-
-  "music": ""
-}
+GET  /api/bgm
+POST /api/projects/{project_id}/bgm/recommendations
+PUT  /api/projects/{project_id}/bgm
 ```
 
-### 输出
-
-```JSON
-{
-  "task_id": "audio_001",
-
-  "status": "generating",
-
-  "voice": {
-    "status": "generating"
-  },
-
-  "music": {
-    "status": "generating"
-  }
-}
-```
-
-完成后：
-
-```JSON
-{
-  "task_id": "audio_001",
-
-  "status": "completed",
-
-  "voice_url": "https://.../voice.mp3",
-
-  "music_url": "https://.../music.mp3"
-}
-```
-
-如果时间有限，背景音乐第一版也可以采用：
-
-> AI推荐 \+ 系统音乐素材库
-> 
-> 
-
-不一定必须自己训练音乐模型。
+用户必须确认一个音色，并选择一首 BGM 或明确选择无 BGM，之后才能生成 Segment。详细数据流见 `docs/Seedance_Native_Audio_Pipeline.md`。
 
 ---
 
@@ -938,16 +804,12 @@ Video Shot
 当：
 
 ```Plain Text
-视频Shot
+Seedance Segment 原生音视频
 +
-配音
-+
-背景音乐
-+
-字幕
+用户选择的后期 BGM（可选）
 ```
 
-准备完成以后进行最终合成。
+准备完成以后进行最终合成，同时保留纯净版和带 BGM 展示版。
 
 ## POST /api/projects/\{project\_id\}/render
 
@@ -955,23 +817,7 @@ Video Shot
 
 ```JSON
 {
-  "project_id": "p_001",
-
-  "shot_ids": [
-    "shot_01",
-    "shot_02",
-    "shot_03"
-  ],
-
-  "voice_url": "https://.../voice.mp3",
-
-  "music_url": "https://.../music.mp3",
-
-  "subtitle": true,
-
-  "resolution": "1080p",
-
-  "aspect_ratio": "9:16"
+  "segment_ids": ["seg_01", "seg_02"]
 }
 ```
 
@@ -1002,12 +848,13 @@ Video Shot
   "progress": 100,
 
   "video": {
-
-    "url": "https://.../final.mp4",
-
-    "duration_s": 59.8,
-
-    "resolution": "1080x1920"
+    "url": "/assets/renders/p_001/v1/with_bgm.mp4",
+    "default_variant": "with_bgm",
+    "clean": {"url": "/assets/renders/p_001/v1/clean.mp4"},
+    "with_bgm": {"url": "/assets/renders/p_001/v1/with_bgm.mp4"},
+    "duration_s": 60,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
   }
 }
 ```
@@ -1023,9 +870,9 @@ Video Shot
 ```Plain Text
 [播放]
 
-[重新生成某个Shot]
+[重新生成某个 Segment]
 
-[导出视频]
+[下载纯净版 / 下载带 BGM 版]
 ```
 
 ---
@@ -1547,9 +1394,9 @@ AI音乐
 查询图片/视频生成状态
 
 
-⑦ POST
-/api/projects/{project_id}/audio
-生成配音+音乐
+⑦ GET/PUT/POST
+/api/voice-presets、/api/projects/{project_id}/voice、/api/bgm
+选择统一参考音色与后期 BGM
 
 
 ⑧ POST

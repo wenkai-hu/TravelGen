@@ -1,0 +1,39 @@
+{
+  "task_id": "rt_20260921_011221_613d3e",
+  "project_id": "p_20260920_211436_a96ea5",
+  "kind": "render",
+  "status": "completed",
+  "progress": 100,
+  "message": "最终视频已生成",
+  "request": {
+    "segment_ids": [
+      "seg_01"
+    ],
+    "voice_version": 1,
+    "voice_reference_sha256": "8f5f2ceb7f5cbb2005b51d7e9f5ddd6b6a3b0ab7b26fcce6fe9ea93b4c2ab89b",
+    "music_version": 1
+  },
+  "result": {
+    "status": "completed",
+    "url": "/assets/renders/p_20260920_211436_a96ea5/v1/with_bgm.mp4",
+    "preview_url": "/assets/renders/p_20260920_211436_a96ea5/v1/with_bgm.mp4",
+    "default_variant": "with_bgm",
+    "clean": {
+      "url": "/assets/renders/p_20260920_211436_a96ea5/v1/clean.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260920_211436_a96ea5\\v1\\clean.mp4"
+    },
+    "with_bgm": {
+      "url": "/assets/renders/p_20260920_211436_a96ea5/v1/with_bgm.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260920_211436_a96ea5\\v1\\with_bgm.mp4"
+    },
+    "duration_s": 15.02,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16",
+    "version": 1,
+    "voice_version": 1,
+    "music_version": 1
+  },
+  "error": null,
+  "created_at": "2026-09-20T17:12:21.581529+00:00",
+  "updated_at": "2026-09-20T17:12:27.110682+00:00"
+}
