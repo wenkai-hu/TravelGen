@@ -1,0 +1,59 @@
+{
+  "task_id": "st_20260922_222125_1603f8",
+  "project_id": "p_20260922_220426_8b5017",
+  "kind": "batch",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 1/1 个生成片段",
+  "request": {
+    "shot_ids": [
+      3
+    ],
+    "segments": [
+      "seg_03"
+    ],
+    "generate_video": true,
+    "plan_version": 1,
+    "storyboard_version": 4,
+    "voice_version": 1,
+    "voice_reference_sha256": "31052a06d83162dd4c599b89adcc6fea4f2c07e155ef992365700da0ffe90d7d",
+    "reference_version": 1
+  },
+  "segments": [
+    {
+      "segment_id": "seg_03",
+      "shot_ids": [
+        3
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260922_220426_8b5017/seg_03/st_20260922_222125_1603f8_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179008689700300000000000000000000ffffac1446b2f25365.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260922%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260922T142440Z&X-Tos-Expires=86400&X-Tos-Signature=8b5483a027fda42840dbbcd2546b90ee1d05ab35327754c76a06b02c8c2459bb&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_220426_8b5017\\seg_03\\st_20260922_222125_1603f8_raw.mp4",
+      "normalized_av_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_220426_8b5017\\seg_03\\st_20260922_222125_1603f8_normalized_av.mp4",
+      "native_audio_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_220426_8b5017\\seg_03\\st_20260922_222125_1603f8_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 7.072,
+        "expected_duration_seconds": 7.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.572,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -11.47,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "31052a06d83162dd4c599b89adcc6fea4f2c07e155ef992365700da0ffe90d7d",
+      "voice_version": 1,
+      "narration_hash": "a37fb94134316633a7659b1add7c75fb416048bcfc0ca5db3ec91fe91b01a4d8",
+      "prompt_hash": "0806deacd75384f953502f027f36a7f7f40c60ffd35ed2b2ab29c628c9dc9db5",
+      "reference_asset_ids": [
+        "ref_494a65661de40055"
+      ]
+    }
+  ],
+  "error": null,
+  "created_at": "2026-09-22T14:21:25.249501+00:00",
+  "updated_at": "2026-09-22T14:25:07.948984+00:00"
+}

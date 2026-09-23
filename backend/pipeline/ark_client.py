@@ -33,7 +33,7 @@ def _get(provider, path):
 
 
 def submit(provider, prompt, duration=5, resolution="1080p", ratio="adaptive", images=None,
-           audio=None, generate_audio=False):
+           audio=None, generate_audio=False, video=None):
     """提交单镜头生成任务；返回 (task_id, error)。task_id 形如 cpt-xxx。
     ratio 对应请求里的 aspect_ratio（官方字段名 ratio，9:16 竖屏短视频必须显式传，
     否则默认 adaptive 自适应比例）。
@@ -43,6 +43,9 @@ def submit(provider, prompt, duration=5, resolution="1080p", ratio="adaptive", i
     if images:
         content += [{"type": "image_url", "image_url": {"url": u}, "role": "reference_image"}
                     for u in images[:9]]  # 官方上限 9 张
+    if video:
+        content.append({"type": "video_url", "video_url": {"url": video},
+                        "role": "reference_video"})
     if audio:
         content.append({"type": "audio_url", "audio_url": {"url": audio},
                         "role": "reference_audio"})

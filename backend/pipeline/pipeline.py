@@ -40,7 +40,8 @@ COPYWRITING_PROMPT = """你是一位浙江文旅宣传片资深编导。请依�
 3. 必须融入真实文旅信息（可从下方知识库资料取材，禁止编造数据/典故）
 4. 风格：【{style}】；目标人群：【{audience}】；主题：【{theme}】
 5. 补充要求：{description}
-6. 输出格式：分 N 段（N=大纲 section 数），每段标注起止秒数（如【0-15s】）；按中文自然口播约每秒3.5-4字控制字数，宁可留出画面呼吸，不要堆字
+6. 输出格式：分 N 段（N=大纲 section 数），每段标注起止秒数（如【0-15s】）。字数硬约束：每段字符数（含标点）不得超过「该段秒数×4」——大纲已逐段标出上限，超限即不合格。
+   按中文自然口播约每秒3.5-4字，宁可留出画面呼吸，也不要用长句把秒数填满；句子短、停顿多，配音才不会赶
 7. 同时输出（末尾附加，严格用此格式，禁止其他写法）：
    **备选标题：**
    1.《标题一》
@@ -102,14 +103,14 @@ JSON结构（scene→shot两级，严格遵循）：
 2. 机位类型 camera.type 只能用：航拍/无人机/固定机位/地面机位/移动机位（禁止"地面/固定"等缩写）
 3. 角度 camera.angle 只能用：俯拍/平拍/仰拍/侧拍（禁止"侧俯"等组合词）
 4. 景别 shot_size 枚举：大远景/全景/中景/近景/特写；运镜 movement 枚举：固定/推/拉/摇/移/跟/升降/环绕
-5. 镜头数量 {min_shots}-{max_shots}个；每镜 duration_s 取1-15的整数，所有 Shot 时长之和必须严格等于{duration_s}秒
+5. 镜头数量必须为 {max_shots} 个；可以将多个大纲小节和旁白段落合为同一个 Shot，但不得改变旁白顺序。每镜 duration_s 至少4秒，所有 Shot 时长之和必须严格等于{duration_s}秒。单镜超过15秒由后端续写，分镜仍只写一个 Shot
 6. shot_id 全片唯一递增（1..N），禁止每个 scene 各自从 1 编号
 7. 地标描述跨镜头保持一致（如雷峰塔样式、湖色色调不冲突）
 8. 每镜头 prompt 字段须可直接用于文生图/文生视频，含主体/环境/光线/质感
-9. 每个镜头从 view_catalog 选择1-3个真实存在且适配主体/机位的 reference_asset_ids；没有适配图时留空并设 grounding_strength="none"，禁止编造ID
+9. 每个 Shot 只绑定一张实景参考图，全片每张图最多出现一次，片尾也不得重复片头的图片。创作方案中若重复引用同一图片，以本条唯一性约束为准；旁白仍按原顺序完整分配。优先让一张图覆盖更长的连续画面，不要为了拆旁白而拆 Shot；禁止编造图片ID
 10. 镜头机位不得超出视觉档案支持范围；must_keep 保留地标结构，allowed_changes 仅写可变化的氛围与动态元素
 11. narration 必须从已确认文案中按原顺序切分；所有 Shot 的 narration 连起来必须与原文一致，不增字、不删字、不换词；允许某个纯画面 Shot 留空
-12. 不要输出 segment_id；后端会在不拆 Shot 的前提下，将连续 Shot 动态装入4-15秒的 Segment。时长序列必须可行，尤其不能留下不足4秒且无法与前一个Shot合并的尾段
+12. 不要输出 segment_id；一个 Shot 是一条连续镜头，不要在内部突然跳切、改变机位或景别。多句旁白可以共用同一镜头，主体可在一个稳定构图里自然变化
 13. 只输出JSON对象，禁止代码块标记和任何解释文字"""
 
 RETRY_NOTE = "上一次输出未通过校验，严格按结构约束重新输出（只输出JSON）。具体错误：{errors}"
@@ -199,11 +200,11 @@ class PipelineRunner:
             project.storyboard = segment_planner.attach_segment_plan(sb, project.copywriting)
         else:
             project.storyboard = segment_planner.attach_segment_plan(
-                demo_mod.demo_storyboard(project.request), project.copywriting)
+                demo_mod.demo_storyboard(project.request, visual_profile=project.visual_profile), project.copywriting)
         return project
 
     async def generate_segments(self, project, segment_ids, task=None, on_progress=None):
-        """V1 新链路：一次 Seedance 请求生成一个含多个 Shot 的 Segment。"""
+        """按内部片段提交：新分镜通常一片段一 Shot，超长 Shot 依次续写。"""
         by_id = {segment["segment_id"]: segment
                  for segment in project.storyboard.get("segments", [])}
         segments = [by_id[segment_id] for segment_id in segment_ids if segment_id in by_id]
@@ -267,6 +268,9 @@ class PipelineRunner:
                                 ratio="adaptive", resolution=None):
         from . import ark_client
         resolution = resolution or self.seedance.get("resolution", "720p")
+        if any(segment.get("continuation_index", 1) > 1 for segment in segments):
+            return await self._run_continuation_jobs(
+                project, segments, task, on_progress, ratio, resolution)
         voice_path = (getattr(project, "voice", {}) or {}).get("reference_path")
         if not voice_path or not os.path.isfile(voice_path):
             raise FileNotFoundError(f"项目参考音色不存在: {voice_path}")
@@ -352,6 +356,85 @@ class PipelineRunner:
                 clip["error"] = "生成超时（>20 分钟）"
         return clips
 
+    async def _run_continuation_jobs(self, project, segments, task, on_progress, ratio, resolution):
+        """超长 Shot 的后续片段必须在前片完成后，以前片视频作为续写输入。"""
+        from . import ark_client
+        import projects as P
+
+        voice_path = (getattr(project, "voice", {}) or {}).get("reference_path")
+        if not voice_path or not os.path.isfile(voice_path):
+            raise FileNotFoundError(f"项目参考音色不存在: {voice_path}")
+        voice_audio = self._audio_data_uri(voice_path)
+        by_id = {item["segment_id"]: item for item in project.storyboard.get("segments", [])}
+        order = {sid: index for index, sid in enumerate(by_id)}
+        segments = sorted(segments, key=lambda item: order[item["segment_id"]])
+        completed = P.merge_segment_results(project)
+        clips = []
+        for segment in segments:
+            sid = segment["segment_id"]
+            previous = segment.get("previous_segment_id")
+            previous_clip = completed.get(previous) if previous else None
+            if previous and (not previous_clip or previous_clip.get("status") not in {"completed", "succeeded"}
+                             or not (previous_clip.get("source_video_url") or previous_clip.get("video_url"))):
+                raise ValueError(f"{sid} 需要先完成 {previous}，才能续写同一 Shot")
+            prompt, images = visual_rag.compile_segment_input(project, segment)
+            if not images and not previous:
+                raise ValueError(f"{sid} 没有参考图")
+            if previous:
+                prompt = ("向后延长视频1，只生成紧接其结尾的后续画面。保持同一地点、机位、"
+                          "景别和运动方向，镜头不断开，不重复视频1已有画面和旁白。\n\n" + prompt)
+            duration = int(round(segment["duration_ms"] / 1000))
+            clip = {
+                "segment_id": sid, "shot_ids": list(segment["shot_ids"]),
+                "duration_s": duration, "prompt": prompt,
+                "voice_reference_sha256": project.voice.get("reference_sha256", ""),
+                "voice_version": project.voice.get("version", 0),
+                "narration_hash": hashlib.sha256(segment.get("narration_text", "").encode("utf-8")).hexdigest(),
+                "prompt_hash": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+                "reference_asset_ids": list(segment.get("reference_asset_ids", [])),
+                "status": "queued", "task_id": None, "error": None,
+            }
+            clips.append(clip)
+            for attempt in range(2):
+                tid, err = await asyncio.to_thread(
+                    ark_client.submit, self.seedance, prompt, duration, resolution,
+                    "adaptive" if previous else ratio,
+                    images=images or None, audio=voice_audio, generate_audio=True,
+                    video=(previous_clip.get("source_video_url") or previous_clip.get("video_url"))
+                    if previous_clip else None,
+                )
+                if not tid:
+                    clip["status"], clip["error"] = "failed", err
+                    continue
+                clip["task_id"], clip["status"], clip["error"] = tid, "queued", None
+                for _ in range(240):
+                    await asyncio.sleep(5)
+                    status, url, error = await asyncio.to_thread(ark_client.get_task, self.seedance, tid)
+                    if status == "succeeded":
+                        clip["video_url"] = url
+                        clip.update(await self._download_segment(project, task, clip, url))
+                        if clip.get("normalized_av_path"):
+                            clip["status"] = "succeeded"
+                        else:
+                            clip["status"], clip["error"] = "failed", "视频下载或归一化失败"
+                        break
+                    if status in {"failed", "expired", "cancelled"}:
+                        clip["status"], clip["error"] = "failed", error
+                        break
+                    clip["status"] = status
+                else:
+                    clip["status"], clip["error"] = "failed", "生成超时（>20 分钟）"
+                if clip["status"] == "succeeded":
+                    break
+                clip["retried"] = attempt == 0
+            if clip["status"] == "succeeded":
+                completed[sid] = clip
+            if on_progress:
+                on_progress(clips, sum(item["status"] == "succeeded" for item in clips), len(segments))
+            if clip["status"] != "succeeded" and any(item.get("previous_segment_id") == sid for item in segments):
+                break
+        return clips
+
     async def _download_segment(self, project, task, clip, url):
         from . import ark_client
         segment_id = clip["segment_id"]
@@ -417,7 +500,8 @@ class PipelineRunner:
         req = task.request
         knowledge = knowledge_text(req)
         planning = "\n".join(
-            f"{i+1}. {o.get('section', '')}｜{o.get('title', '')}（{o.get('duration_s', '')}s）："
+            f"{i+1}. {o.get('section', '')}｜{o.get('title', '')}"
+            f"（{o.get('duration_s', '')}s，旁白≤{narration_budget(o.get('duration_s'))}字）："
             f"{o.get('content', '')}｜地点ID：{o.get('place_id', '')}｜"
             f"视觉目标：{o.get('visual_targets', [])}｜证据图片：{o.get('evidence_asset_ids', [])}"
             for i, o in enumerate(task.planning.get("outline", []))) \
@@ -425,18 +509,34 @@ class PipelineRunner:
         grounding = visual_rag.grounding_for_prompt(getattr(task, "visual_profile", {}))
         prompt = COPYWRITING_PROMPT.format(planning=planning, knowledge=knowledge,
                                            visual_grounding=grounding, **req)
-        text = await self._ask([{"role": "system", "content": SYSTEM},
-                                {"role": "user", "content": prompt}])
-        if not text:
-            raise RuntimeError("Copywriting 调用失败")
-        cw = _parse_cw(text)
-        if not cw["paragraphs"]:
-            raise RuntimeError("Copywriting 输出格式无法解析")
-        return cw, parse_script(cw)
+        messages = [{"role": "system", "content": SYSTEM},
+                    {"role": "user", "content": prompt}]
+        last_errors, last_cw = ["模型无响应"], None
+        for _ in range(2):
+            text = await self._ask(messages)
+            if not text:
+                continue
+            cw = _parse_cw(text)
+            if not cw["paragraphs"]:
+                last_errors = ["Copywriting 输出格式无法解析"]
+            else:
+                last_errors = narration_length_errors(cw["paragraphs"])
+                if not last_errors:
+                    return cw, parse_script(cw)
+                last_cw = cw
+            messages = messages + [{"role": "assistant", "content": text},
+                                   {"role": "user", "content": RETRY_NOTE.format(errors="；".join(last_errors[:4]))}]
+        if last_cw is None:
+            raise RuntimeError(f"Copywriting 调用失败: {'；'.join(last_errors[:2])}")
+        # 重试仍超字：文案可用，只是 Seedance 原生配音会念偏快，先出片再人工压字
+        print(f"[copywriting] 旁白超字数上限，配音会偏快：{'；'.join(last_errors[:4])}")
+        return last_cw, parse_script(last_cw)
 
     async def _storyboard(self, task):
         cw_text = "".join(f"【{p['idx']}】{p['text']}\n" for p in task.copywriting["paragraphs"])
-        min_shots, max_shots = v.shot_count_range(task.request["duration_s"])
+        profile = getattr(task, "visual_profile", {})
+        reference_count = len(profile.get("reference_asset_ids", [])) or None
+        min_shots, max_shots = v.shot_count_range(task.request["duration_s"], reference_count)
         grounding = visual_rag.grounding_for_prompt(getattr(task, "visual_profile", {}),
                                                      include_catalog=True)
         planning = json.dumps(task.planning, ensure_ascii=False, indent=2)
@@ -451,16 +551,16 @@ class PipelineRunner:
             text = await self._ask(messages)
             if not text:
                 continue
-            ok, errors, data = v.validate_and_normalize(text, target_s=task.request["duration_s"])
+            ok, errors, data = v.validate_and_normalize(
+                text, target_s=task.request["duration_s"], reference_count=reference_count)
             if ok:
                 try:
-                    segment_planner.partition_shots(segment_planner.flatten_shots(data))
+                    if reference_count:
+                        data = visual_rag.bind_storyboard_references(data, profile)
+                        segment_planner.attach_segment_plan(data, task.copywriting)
+                    return data, []
                 except ValueError as exc:
                     ok, errors = False, [str(exc)]
-            if ok:
-                if getattr(task, "visual_profile", {}).get("reference_asset_ids"):
-                    data = visual_rag.bind_storyboard_references(data, task.visual_profile)
-                return data, []  # 返回归一化后的数据（枚举漂移已修正落库）
             last_errors = errors
             messages = messages + [{"role": "assistant", "content": text},
                                    {"role": "user", "content": RETRY_NOTE.format(errors="；".join(errors[:4]))}]
@@ -640,6 +740,28 @@ def _extract_titles(text):
         if s and s not in items:
             items.append(s)
     return items
+
+
+NARRATION_CHARS_PER_SEC = 4  # 中文口播含标点的自然语速；实测 7 字/秒听感就是赶稿
+
+
+def narration_budget(duration_s) -> int:
+    """一段旁白的字符上限（含标点）；秒数非法返回 0（不限制）。"""
+    try:
+        seconds = float(duration_s)
+    except (TypeError, ValueError):
+        return 0
+    return int(seconds * NARRATION_CHARS_PER_SEC) if seconds > 0 else 0
+
+
+def narration_length_errors(paragraphs: list[dict]) -> list[str]:
+    errors = []
+    for p in paragraphs:
+        limit = narration_budget(p.get("duration_s"))
+        length = len(re.sub(r"\s", "", p.get("text", "")))
+        if limit and length > limit:
+            errors.append(f"第{p.get('idx')}段（{p.get('duration_s')}s）{length}字，超过上限{limit}字")
+    return errors
 
 
 def _parse_cw(text):

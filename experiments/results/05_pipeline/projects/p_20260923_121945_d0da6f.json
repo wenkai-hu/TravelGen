@@ -1,0 +1,1888 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260923_121945_d0da6f",
+  "username": "sherlock",
+  "status": "completed",
+  "progress": 100,
+  "message": "最终视频已生成",
+  "request": {
+    "city": "杭州",
+    "location": "西溪湿地",
+    "scene_type": "景区推荐",
+    "theme": "湿地秘境",
+    "audience": "学生党",
+    "style": "文艺清新",
+    "duration_s": 20,
+    "aspect_ratio": "16:9",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "视觉吸引",
+        "title": "20秒，坠入一片水上森林",
+        "content": "以高空俯瞰开场，水网把整片湿地切成一块块绿色岛屿，低层建筑安静散落在植被间；镜头缓推向远方，城市天际线与两侧山峦轮廓一同入画——原来杭州城里还藏着一片秘境。文案走文艺清新路线，配一句轻旁白：“在杭州，把20秒借给一片湿地。”",
+        "duration_s": 5,
+        "place_id": "place_54ce759a1f38be91",
+        "visual_targets": [
+          "水网环绕植被岛的湿地整体格局",
+          "大面积茂密常绿植被的整体风貌",
+          "中下部集中的几组低层建筑的布局与形态",
+          "远方城市建筑群与湿地的层次关系",
+          "远方两侧山峦的轮廓"
+        ],
+        "evidence_asset_ids": [
+          "ref_3199fab57ff00f59"
+        ]
+      },
+      {
+        "section": "核心景观",
+        "title": "入口那块石头，是秘境的开关",
+        "content": "落到地面，镜头从灰色石板路缓缓推进，刻着“西溪国家湿地公园”的棕褐色景观石正面迎上来，左边白色鹭鸟立在黑色小船造型上，前方开花灌木丛与矮竹栅栏围出一圈温柔；石后是茂密乔木，头顶是蓝天白云。适合学生党第一站打卡合影。",
+        "duration_s": 4,
+        "place_id": "place_54ce759a1f38be91",
+        "visual_targets": [
+          "刻有“西溪国家湿地公园”字样的棕褐色景观石主体",
+          "景观石左侧的鹭鸟小船造型装饰",
+          "景观石前的开花灌木丛与矮竹栅栏组合",
+          "景观石后方的茂密乔木背景",
+          "前景的灰色石板路面"
+        ],
+        "evidence_asset_ids": [
+          "ref_cfeb6723ad89f004"
+        ]
+      },
+      {
+        "section": "特色体验",
+        "title": "一条青绿河道，一艘带顶棚的船",
+        "content": "镜头切到林间河道，青绿色水面上，带顶棚的木质摇橹船从深处缓缓驶来，船工与乘客的身影点缀其间；两岸是茂密林木、草地坡地和沿河木桩护岸。文艺感来自水色与树影，体验感来自“坐船穿过湿地”这件事本身。",
+        "duration_s": 4,
+        "place_id": "place_54ce759a1f38be91",
+        "visual_targets": [
+          "青绿色的河道形态",
+          "带顶棚的木质摇橹船",
+          "船上乘客与船工",
+          "两岸茂密的林木与草地坡地",
+          "沿河岸的木桩护岸结构",
+          "林间自然的水岸风貌"
+        ],
+        "evidence_asset_ids": [
+          "ref_d7b6379dfb7ac016"
+        ]
+      },
+      {
+        "section": "文化特色",
+        "title": "树枝框住的水乡，像一帧国画",
+        "content": "前景虬曲带苔藓的大树枝干做天然画框，框住平静水面与倒影，对岸中式传统建筑沿水而立，岸边石板步道与长条坐凳延伸开去。此处不报具体建筑名称，只讲故事感：湿地不只有自然，还有临水而居的江南日常。",
+        "duration_s": 4,
+        "place_id": "place_54ce759a1f38be91",
+        "visual_targets": [
+          "前景虬曲带苔藓的大树枝干框景结构",
+          "平静的水体及水面倒影",
+          "对岸的中式传统建筑形态与布局",
+          "沿岸茂密的绿色植被景观",
+          "沿水的石板步道形态"
+        ],
+        "evidence_asset_ids": [
+          "ref_2d44f58bbf73bc48"
+        ]
+      },
+      {
+        "section": "行动召唤",
+        "title": "周末，把20秒过成一整天",
+        "content": "回到高空大远景，从湿地拉升到城市与山峦，字幕落下：杭州·西溪湿地，学生党周末低成本出逃首选。文案收束——“带上学生证，坐一次摇橹船，把这片青绿存进相册。”",
+        "duration_s": 3,
+        "place_id": "place_54ce759a1f38be91",
+        "visual_targets": [
+          "水网环绕植被岛的湿地整体格局",
+          "大面积茂密常绿植被的整体风貌",
+          "远方城市建筑群与湿地的层次关系",
+          "远方两侧山峦的轮廓"
+        ],
+        "evidence_asset_ids": [
+          "ref_3199fab57ff00f59"
+        ]
+      }
+    ],
+    "plan_summary": "湿地秘境"
+  },
+  "copywriting": {
+    "titles": [
+      "在杭州，把20秒借给西溪",
+      "学生党周末，去西溪把青绿带走"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "在杭州，把20秒借给一片湿地。",
+        "duration_s": 5
+      },
+      {
+        "idx": 2,
+        "text": "石上西溪，中国首个国家湿地公园。",
+        "duration_s": 4
+      },
+      {
+        "idx": 3,
+        "text": "坐摇橹船，穿过青绿。",
+        "duration_s": 4
+      },
+      {
+        "idx": 4,
+        "text": "枝影为框，冷野淡雅。",
+        "duration_s": 4
+      },
+      {
+        "idx": 5,
+        "text": "周末去西溪，把青绿带走。",
+        "duration_s": 3
+      }
+    ],
+    "hashtags": [
+      "#杭州西溪湿地",
+      "#湿地秘境",
+      "#学生党周末出逃"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "在杭州，把20秒借给一片湿地。",
+        "start_s": 0,
+        "end_s": 5
+      },
+      {
+        "line_id": 2,
+        "text": "石上西溪，中国首个国家湿地公园。",
+        "start_s": 5,
+        "end_s": 9
+      },
+      {
+        "line_id": 3,
+        "text": "坐摇橹船，穿过青绿。",
+        "start_s": 9,
+        "end_s": 13
+      },
+      {
+        "line_id": 4,
+        "text": "枝影为框，冷野淡雅。",
+        "start_s": 13,
+        "end_s": 17
+      },
+      {
+        "line_id": 5,
+        "text": "周末去西溪，把青绿带走。",
+        "start_s": 17,
+        "end_s": 20
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "杭州西溪湿地学生党周末低成本出逃宣传片",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "西溪湿地",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 5,
+            "narration": "在杭州，把20秒借给一片湿地。",
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "高空俯瞰下，水网环绕植被岛的湿地整体格局，中下部集中分布的低层建筑，大面积茂密常绿植被。",
+            "background": "远方城市建筑群与两侧山峦轮廓，晴朗蓝天与零散云朵。",
+            "place_id": "place_54ce759a1f38be91",
+            "reference_asset_ids": [
+              "ref_3199fab57ff00f59"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "水网环绕植被岛的湿地整体格局",
+              "中下部集中的几组低层建筑的布局与形态",
+              "大面积茂密常绿植被的整体风貌",
+              "远方城市建筑群与湿地的层次关系",
+              "远方两侧山峦的轮廓"
+            ],
+            "allowed_changes": [
+              "天空中云朵的形态与位置",
+              "水面的波纹与光影动态",
+              "植被的轻微光影变化",
+              "步道上的行人动态"
+            ],
+            "prompt": "写实航拍俯视大远景，严格保持参考图中的水网环绕植被岛、低层建筑布局、远方城市与山峦层次，上午晴朗自然光，大面积常绿植被呈现鲜绿与深绿质感，镜头缓慢向前推进。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_3199fab57ff00f59",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "建筑内部空间的镜头",
+              "湿地背面、被植被完全遮挡区域的镜头",
+              "近距离仰视建筑的特写镜头",
+              "城市建筑群内部细节的特写镜头"
+            ],
+            "timeline_start_ms": 0,
+            "timeline_end_ms": 5000,
+            "segment_ids": [
+              "seg_01"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 5000
+          },
+          {
+            "shot_id": 2,
+            "duration_s": 4,
+            "narration": "石上西溪，中国首个国家湿地公园。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "刻有“西溪国家湿地公园”字样的棕褐色景观石主体。",
+            "background": "景观石左侧的白色鹭鸟与黑色小船造型装饰，前方开花灌木丛与矮竹栅栏，后方茂密乔木林，前景灰色石板路面，上方蓝天白云。",
+            "place_id": "place_54ce759a1f38be91",
+            "reference_asset_ids": [
+              "ref_cfeb6723ad89f004"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "刻有“西溪国家湿地公园”字样的棕褐色景观石主体",
+              "景观石左侧的鹭鸟小船造型装饰",
+              "景观石前的开花灌木丛与矮竹栅栏组合",
+              "景观石后方的茂密乔木背景",
+              "前景的灰色石板路面"
+            ],
+            "allowed_changes": [
+              "天空云朵的形态与分布",
+              "灌木丛上花朵的数量与开放状态",
+              "树叶的轻微晃动效果",
+              "光线的明暗细微变化"
+            ],
+            "prompt": "写实地面平视中景，严格保持参考图中的棕褐色景观石及“西溪国家湿地公园”字样、左侧鹭鸟小船装饰、前方开花灌木丛与矮竹栅栏、后方茂密乔木，上午晴朗柔和自然光，镜头从灰色石板路缓慢向前推进，石板与岩石质感清晰。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_cfeb6723ad89f004",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "景观石后方区域的穿越镜头",
+              "俯瞰整个公园的高空俯视镜头",
+              "景观石背面的展示镜头",
+              "快速环绕景观石360度的旋转镜头"
+            ],
+            "timeline_start_ms": 5000,
+            "timeline_end_ms": 9000,
+            "segment_ids": [
+              "seg_02"
+            ],
+            "segment_id": "seg_02",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 4000
+          },
+          {
+            "shot_id": 3,
+            "duration_s": 11,
+            "narration": "坐摇橹船，穿过青绿。枝影为框，冷野淡雅。周末去西溪，把青绿带走。",
+            "camera": {
+              "type": "移动机位",
+              "movement": "跟",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "青绿色河道中带顶棚的木质摇橹船，船上有乘客与船工。",
+            "background": "两岸茂密林木与草地坡地，沿河岸木桩护岸结构，林间自然水岸风貌，左上角前景树叶。",
+            "place_id": "place_54ce759a1f38be91",
+            "reference_asset_ids": [
+              "ref_d7b6379dfb7ac016"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "青绿色的河道形态",
+              "带顶棚的木质摇橹船",
+              "两岸茂密的林木与草地坡地",
+              "沿河岸的木桩护岸结构",
+              "林间自然的水岸风貌"
+            ],
+            "allowed_changes": [
+              "船上乘客的数量、姿态",
+              "水面的波纹细节",
+              "岸边行人的有无",
+              "天空的云量变化",
+              "植被的轻微晃动"
+            ],
+            "prompt": "写实地面平视中景，严格保持参考图中的青绿色河道、带顶棚木质摇橹船、两岸茂密林木草地与木桩护岸，上午晴朗自然光，镜头沿河道缓慢跟移，前景树叶自然入画形成轻微框景，水面有自然波纹与青绿倒影质感。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_d7b6379dfb7ac016",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "高空俯视整个河道全貌的镜头",
+              "进入船只内部的特写镜头",
+              "河道尽头未知区域的镜头",
+              "右岸后方林地深处的穿行镜头"
+            ],
+            "timeline_start_ms": 9000,
+            "timeline_end_ms": 20000,
+            "segment_ids": [
+              "seg_03"
+            ],
+            "segment_id": "seg_03",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 11000
+          }
+        ],
+        "place_id": "place_54ce759a1f38be91"
+      }
+    ],
+    "storyboard_version": 4,
+    "duration_ms": 20000,
+    "segments": [
+      {
+        "segment_id": "seg_01",
+        "timeline_start_ms": 0,
+        "timeline_end_ms": 5000,
+        "duration_ms": 5000,
+        "shot_ids": [
+          1
+        ],
+        "narration_text": "在杭州，把20秒借给一片湿地。",
+        "reference_asset_ids": [
+          "ref_3199fab57ff00f59"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_02",
+        "timeline_start_ms": 5000,
+        "timeline_end_ms": 9000,
+        "duration_ms": 4000,
+        "shot_ids": [
+          2
+        ],
+        "narration_text": "石上西溪，中国首个国家湿地公园。",
+        "reference_asset_ids": [
+          "ref_cfeb6723ad89f004"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_03",
+        "timeline_start_ms": 9000,
+        "timeline_end_ms": 20000,
+        "duration_ms": 11000,
+        "shot_ids": [
+          3
+        ],
+        "narration_text": "坐摇橹船，穿过青绿。枝影为框，冷野淡雅。周末去西溪，把青绿带走。",
+        "reference_asset_ids": [
+          "ref_d7b6379dfb7ac016"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260923_121945_d0da6f_v1",
+  "plan_version": 1,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_6b7708fe8c5e669d",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275p2t5bee5peF5ri4XzE3MjUwMzcwMzEuMzQ5NjkyOA%3D%3D%27/0.png",
+      "title": "🌳探秘杭州西溪湿地🌿",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4375238706611860670",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0288a4b62409b34b",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://gips0.baidu.com/it/u=235873043,2040362945&fm=3074&app=3074&f=JPEG",
+      "title": "杭州西溪湿地:自然与人文的完美交融 🌿",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4231402292010671781",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d031f1335f2f85e1",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3f120079a32/240613/3de8570d01b424ab335c4f32ee16a112.jpeg",
+      "title": "西溪湿地:蓝绿交织的城市绿肺",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3754211883163132604",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_60da052536b477dc",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyODk5Nzk5LjAwMDM3MjQ%3D%27/0.png",
+      "title": "杭州西溪湿地公园必打卡的5个景点",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5311462291994795127",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d71805349c52a2ab",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/km5zLX3sWbEN7bIdreSTxg56ff2dfc924dcf62390d478e850bdd78.jpg",
+      "title": "西溪湿地公园:杭州的诗画之源",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3959290807729725522",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_fbcd7cdc59275595",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxNTc2NTI4LjQ2MDgxMDQ%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-14T09%3A28%3A49Z%2F-1%2F%2Ff9957a3f0124b88bce852004af94ed733a807b4ecb57faa1a97cc64fafafa46d",
+      "title": "杭州亲子游:西溪湿地水路全攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5281269973341184514",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9ff503d7c005336b",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275p2t5bee6KW/5rqq5rm/5Zyw5pmv54K55LuL57uNXzE3MzE1MTQxNzUuNjE4MzI3OQ%3D%3D%27/0.png",
+      "title": "探索杭州西溪湿地:观鸟赏景全攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4063236592446052925",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_4d5d920cb7e996f3",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276KW/5rqq5rm/5Zyw5YeM5rOi5qGlXzE3MzM3MDExNTAuODQyODY1%27/0.png",
+      "title": "凌波桥与美景的邂逅 🌿西溪湿地,被誉为\"绿野仙踪\",是杭州的一颗",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4340753542185579385",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c582975827278618",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276KW/5rqq5rm/5Zyw5YWs5ZutXzE3MzU0MjAzMjguOTYyMTcxMw%3D%3D%27/0.png",
+      "title": "浙江西溪湿地公园:城市中的自然秘境 如果你在杭州,想找个地方放松一",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_6206570958976903117",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a8d2a0ebef0021d3",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://n.sinaimg.cn/news/1_img/upload/6e865411/382/w2048h1534/20241216/2519-691adea58af552d8d5b2f2c39ff8e2dc.jpg",
+      "title": "杭州:西溪湿地层林尽染 游客舟行碧波上如在画中游",
+      "source_page_url": "http://slide.news.sina.com.cn/c/slide_1_2841_603834.html#p=1",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e9c588404c80cf7d",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://img1.baa.bitautotech.com/dzusergroupfiles/2025/05/26/38af37015bef4f4db7546665ec9ea175.jpg",
+      "title": "周末来杭州西溪国家湿地公园逛逛,绝对是个不错的选择,与天籁西溪有个",
+      "source_page_url": "http://baa.m.yiche.com/teana/thread-52493116.html",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ddb69c607cd48447",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=2372010513,50135598&fm=3074&app=3074&f=JPEG?w=1080&h=1410&type=normal&func=",
+      "title": "杭州西溪湿地:西湖之外的绿色天堂",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3102569132724921865",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c0f1ba4c1894133a",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2MjAxMTE5LjMzMjQwNjM%3D%27/0.png",
+      "title": "杭州西溪湿地一日游体验分享",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4393746257461205871",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c70f40d9239c853c",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM1NzY5MDMzLjUzNzc0MjY%3D%27/0.png",
+      "title": "杭州西溪湿地:自然与人文的和谐共生",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5049194503891520351",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_449508c5a64e7b47",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=4174728320,2828940635&fm=3074&app=3074&f=JPEG?w=1080&h=1410&type=normal&func=",
+      "title": "西溪湿地:杭州的宁静散步地",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4337100075656677405",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_71773f4428c9eb91",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://q0.itc.cn/images01/20250510/fefa6a165fcf44df85bbd3a12309ea59.jpeg",
+      "title": "浙江杭州市西溪湿地旅游区,中国首个国家湿地公园",
+      "source_page_url": "http://news.sohu.com/a/893936468_122365627",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a8039bd71f94e1fb",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276KW/5rqq5Zu95a625rm/5Zyw5YWs5Zut6Zeo56WoXzE3Mjk5Nzk5NjcuMjQ1ODU4Mg%3D%3D%27/0.png",
+      "title": "🌿西溪湿地国家公园,位于杭州城区西部,是杭州的一颗璀璨明珠",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3914863111916912018",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c035822193ee661a",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM1MjcxNjU5LjE1MDU4NTc%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-27T03%3A54%3A20Z%2F-1%2F%2F16f38d9e058331c6856523437a362ac1103b467cdf12a0b972705625a1bc5616",
+      "title": "杭州西溪湿地一日游:妈妈的最爱",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3656008422264667376",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_21e4c7069c32244d",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM1NTE3MjE0Ljk5ODk5Nzc%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-30T00%3A06%3A57Z%2F-1%2F%2Fff11022910453fabbcf3a05c43b8a4a559f9b867d965adea5fc3b3ce3382bad3",
+      "title": "西溪国家湿地公园:杭州的天然氧吧",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4676781162279721751",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a79974866b9c0ee7",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMwMTgwMDgzLjQwMTU4NzU%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-10-29T05%3A34%3A44Z%2F-1%2F%2Fa2c0b713c4a7a865b4468af0b3075dc3079c25c1e4f69e4dca7440d0c7e2abc7",
+      "title": "杭州西溪湿地隐秘度假胜地探秘",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5362303537911461133",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_95be86193824ec21",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=2401362357,4291485771&fm=3074&app=3074&f=JPEG",
+      "title": "杭州西溪湿地公园必游景点和攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5287053241313668937",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_8221f126282f6855",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://pics6.baidu.com/feed/d833c895d143ad4bf096d01e4b6105a0a50f0622.jpeg@f_auto?token=39fa7ab6df60abfcb88b1baeae78cae8",
+      "title": "杭州西溪湿地:自然与人文交织的生态明珠",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1823569353084577719&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_610221580c435068",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/D2OBM6RHjlvV6q5m4xQ_eQ0bc68599d72f0f1a7565f00a82b2cc64.jpg",
+      "title": "来杭州玩,西溪湿地公园一定得安排上,这地方简直棒呆了!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3894724388255148795",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_004a13f1b79bdac4",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://pics3.baidu.com/feed/d8f9d72a6059252db49bc54bd4ed272b5ab5b97c.jpeg@f_auto?token=81c5af234228ae33df6f282b808232e4",
+      "title": "杭州秘境:西溪湿地超越西湖的生态宝藏",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1837437533644434547&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9a325e50666b4678",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://pics4.baidu.com/feed/e61190ef76c6a7eff713b6ba3499f05ef2de66e3.jpeg@f_auto?token=e1644df7f0cedde27f99a1ab68a1b99d",
+      "title": "杭州西溪湿地:自然与人文交织的生态明珠",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1823569353084577719&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_637645a8422b75be",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=81414535,2248327170&fm=3074&app=3074&f=JPEG?w=828&h=972&type=normal&func=",
+      "title": "杭州西溪湿地公园必游景点推荐",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4333647561726454056",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_09d0fa8cf7cdc58a",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://gips0.baidu.com/it/u=3214730836,2141251963&fm=3074&app=3074&f=JPEG",
+      "title": "杭州西溪湿地:城市中的水乡秘境 🌿",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5358623180456909211",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_4da3c566671d8b43",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/240724/0992de039b37fada383f34f02b13db013231.jpeg",
+      "title": "39℃的高温跑去杭州西溪国家湿地公园",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3833364015833512926",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0a5b2a8337fdc453",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxNzM1NjA3LjUzNTUzOQ%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-16T05%3A40%3A08Z%2F-1%2F%2F71b7e1e108385d76032d8909eea1e5d0bb7238c478d00b81069e9fd903ead3fd",
+      "title": "杭州西溪湿地公园:2.5公里悠闲漫步攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4215979640054565310",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e0401b6d97a32b05",
+      "query": "杭州 西溪湿地 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/km5zLX3sWbEN7bIdreSTxg723ec0122e202f5c70f8b65ec0665e17.jpg@h_1280",
+      "title": "西溪湿地公园:杭州的诗画之源",
+      "source_page_url": "https://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4538148439536096029",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_3199fab57ff00f59",
+      "candidate_id": "ref_004a13f1b79bdac4",
+      "place_id": "place_54ce759a1f38be91",
+      "place_name": "西溪湿地",
+      "city": "杭州",
+      "original_url": "http://pics3.baidu.com/feed/d8f9d72a6059252db49bc54bd4ed272b5ab5b97c.jpeg@f_auto?token=81c5af234228ae33df6f282b808232e4",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1837437533644434547&wfr=spider&for=pc",
+      "title": "杭州秘境:西溪湿地超越西湖的生态宝藏",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_121945_d0da6f/ref_3199fab57ff00f59.webp",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260923_121945_d0da6f\\ref_3199fab57ff00f59.webp",
+      "sha256": "3199fab57ff00f5974277ae60e902e8892b3c28f2ba81e80bc40b4b9062305a9",
+      "width": 1081,
+      "height": 1152,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 14.813,
+        "usage": {
+          "completion_tokens": 733,
+          "prompt_tokens": 1736,
+          "total_tokens": 2469,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "高空俯瞰视角下的大面积湿地景观，区域内水网密布，植被繁茂，散落着多组建筑，远处可见城市建筑群与山峦，天空晴朗有云。",
+          "visible_elements": [
+            "大面积茂密的绿色植被",
+            "交错分布的蓝绿色水系河道与湖泊",
+            "多组低层现代风格建筑",
+            "远处的城市建筑群",
+            "远处的连绵山峦",
+            "晴朗蓝天与零散云朵",
+            "林间的小型步道"
+          ],
+          "spatial_layout": [
+            "水系在画面中下部及中部交错环绕，将植被区域分割为多个岛状地块",
+            "建筑集中分布在画面中下部的被水系环绕的植被地块上",
+            "城市建筑群位于画面远方的地平线上，横亘在湿地与远山之间",
+            "山峦分布在画面远方的左右两侧",
+            "天空占据画面上方约三分之一的区域"
+          ],
+          "architecture_and_materials": [
+            "建筑多为2-4层的低层建筑，造型偏现代简约",
+            "建筑屋顶多为深灰色平顶或缓坡顶",
+            "建筑外墙以浅灰、白色调为主，部分带有深色窗框或装饰线条"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "画面下方为近景湿地区域，上方为远方城市与山峦，可判断拍摄方向朝向湿地纵深及远方城市"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足，推测为上午或下午",
+            "weather": "晴朗，有少量零散云朵",
+            "season": "植被繁茂呈深绿、鲜绿色，推测为夏季或春末夏初"
+          },
+          "must_keep_candidates": [
+            "水网环绕植被岛的湿地整体格局",
+            "中下部集中的几组低层建筑的布局与形态",
+            "大面积茂密常绿植被的整体风貌",
+            "远方城市建筑群与湿地的层次关系",
+            "远方两侧山峦的轮廓"
+          ],
+          "allowed_changes": [
+            "天空中云朵的形态与位置",
+            "水面的波纹与光影动态",
+            "植被的轻微光影变化",
+            "步道上的行人动态"
+          ],
+          "suitable_shots": [
+            "高空大远景航拍推进镜头，展现湿地整体风貌到远方城市的层次",
+            "环绕中下部建筑组的航拍环绕镜头",
+            "沿水系河道飞行的低空航拍镜头",
+            "从湿地向远方城市拉升的远景镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "建筑内部空间的镜头",
+            "湿地背面、被植被完全遮挡区域的镜头",
+            "近距离仰视建筑的特写镜头",
+            "城市建筑群内部细节的特写镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "湿地的具体名称与所在城市",
+            "建筑的具体功能与名称",
+            "远方城市与山峦的具体名称"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_cfeb6723ad89f004",
+      "candidate_id": "ref_4da3c566671d8b43",
+      "place_id": "place_54ce759a1f38be91",
+      "place_name": "西溪湿地",
+      "city": "杭州",
+      "original_url": "http://pic.rmb.bdstatic.com/bjh/240724/0992de039b37fada383f34f02b13db013231.jpeg",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3833364015833512926",
+      "title": "39℃的高温跑去杭州西溪国家湿地公园",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_121945_d0da6f/ref_cfeb6723ad89f004.jpg",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260923_121945_d0da6f\\ref_cfeb6723ad89f004.jpg",
+      "sha256": "cfeb6723ad89f0041dbd9af791585c91b68bf8488d82785379ee2690e6bb2b80",
+      "width": 2296,
+      "height": 3061,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 28.292,
+        "usage": {
+          "completion_tokens": 788,
+          "prompt_tokens": 1712,
+          "total_tokens": 2500,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示一处公园入口的标识景观，前景为石板路面，中间是刻有文字的景观石，周围环绕绿植，背景是茂密树林与蓝天白云。",
+          "visible_elements": [
+            "刻有文字的大型景观石",
+            "景观石前的开花灌木丛",
+            "灌木丛前的矮竹栅栏",
+            "前景的灰色石板路面",
+            "景观石后方的茂密乔木林",
+            "蓝天与白色云朵",
+            "景观石左侧的白色鹭鸟与小船造型装饰",
+            "景观石右下角的红色小字"
+          ],
+          "spatial_layout": [
+            "灰色石板路面位于画面最前景",
+            "矮竹栅栏在石板路后方，沿弧形分布",
+            "开花灌木丛在竹栅栏后方，遮挡景观石下部",
+            "大型景观石位于灌木丛后方，横向占据画面中下部",
+            "茂密乔木林在景观石后方，分布于画面中上部两侧及中间",
+            "蓝天与云朵占据画面上部区域"
+          ],
+          "architecture_and_materials": [
+            "景观石为仿自然岩石形态，表面呈棕褐色粗糙质感，文字为白色立体字",
+            "矮栅栏由细竹竿排列组成，呈浅棕褐色",
+            "前景路面由灰色方形石板铺成，石板间有缝隙",
+            "景观石左侧装饰为白色鹭鸟站在黑色小船造型上"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "景观石正面朝向镜头，镜头正对公园入口标识方向"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足，无法判断具体时段",
+            "weather": "晴天，有少量云朵",
+            "season": "植被繁茂，无法判断具体季节"
+          },
+          "must_keep_candidates": [
+            "刻有“西溪国家湿地公园”字样的棕褐色景观石主体",
+            "景观石左侧的鹭鸟小船造型装饰",
+            "景观石前的开花灌木丛与矮竹栅栏组合",
+            "景观石后方的茂密乔木背景",
+            "前景的灰色石板路面"
+          ],
+          "allowed_changes": [
+            "天空云朵的形态与分布",
+            "灌木丛上花朵的数量与开放状态",
+            "树叶的轻微晃动效果",
+            "光线的明暗细微变化"
+          ],
+          "suitable_shots": [
+            "从前景石板路向前推进至景观石的推镜头",
+            "以景观石为中心的左右横移镜头",
+            "从景观石向上摇至天空树林的上摇镜头",
+            "固定机位展示入口标识的静态镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "景观石后方区域的穿越镜头",
+            "俯瞰整个公园的高空俯视镜头",
+            "景观石背面的展示镜头",
+            "快速环绕景观石360度的旋转镜头"
+          ],
+          "visible_text": [
+            "西溪國家濕地公園",
+            "江泽民"
+          ],
+          "uncertain": [
+            "无法确认该地点是否为真实的西溪国家湿地公园主入口",
+            "无法确认景观石的具体材质是天然岩石还是人工仿造",
+            "无法确认景观石后方树林的具体范围与内部结构"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_d7b6379dfb7ac016",
+      "candidate_id": "ref_e9c588404c80cf7d",
+      "place_id": "place_54ce759a1f38be91",
+      "place_name": "西溪湿地",
+      "city": "杭州",
+      "original_url": "http://img1.baa.bitautotech.com/dzusergroupfiles/2025/05/26/38af37015bef4f4db7546665ec9ea175.jpg",
+      "source_page_url": "http://baa.m.yiche.com/teana/thread-52493116.html",
+      "title": "周末来杭州西溪国家湿地公园逛逛,绝对是个不错的选择,与天籁西溪有个",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_121945_d0da6f/ref_d7b6379dfb7ac016.jpg",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260923_121945_d0da6f\\ref_d7b6379dfb7ac016.jpg",
+      "sha256": "d7b6379dfb7ac01679049f4ba90d96ffb65c368afed2eb4b7e6e91628a21a0cb",
+      "width": 1080,
+      "height": 1440,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 15.045,
+        "usage": {
+          "completion_tokens": 646,
+          "prompt_tokens": 1712,
+          "total_tokens": 2358,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "一条青绿色河道穿行于茂密的林间，一艘载有乘客的木船行驶在河道中，两岸是覆有绿植的坡地与树木，呈现出自然的水乡林间风貌",
+          "visible_elements": [
+            "青绿色河道",
+            "带顶棚的木船",
+            "船上的乘客与船工",
+            "河道左岸的草地、土路、树干",
+            "河道右岸的草地、树木、木桩护岸",
+            "远处的成片林木",
+            "岸边的石桌石凳",
+            "左岸站立的行人",
+            "左上角的前景树叶"
+          ],
+          "spatial_layout": [
+            "河道从画面深处向近景延伸，占据画面中下部",
+            "木船位于河道中偏左的位置，朝向画面右前方",
+            "河道左岸在画面左侧，有草地、土路和树木",
+            "河道右岸在画面右侧，有草地、树木和沿河岸的木桩护岸",
+            "成片林木分布在河道两岸及远处",
+            "石桌石凳位于右岸后方的草地上"
+          ],
+          "architecture_and_materials": [
+            "木船为深棕色木质结构，带有编织质感的棕色顶棚，船身有白色文字标识",
+            "岸边木桩为浅棕色木质，沿河岸排列",
+            "石桌石凳为深灰色石质",
+            "树木树干多为深褐色，植被叶片为鲜绿色、深绿色"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "河道向画面深处延伸，船首朝向画面右前方，两岸沿河道纵向分布"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足",
+            "weather": "晴朗，天空明亮无明显云层",
+            "season": "夏季或春末，植被繁茂翠绿"
+          },
+          "must_keep_candidates": [
+            "青绿色的河道形态",
+            "带顶棚的木质摇橹船",
+            "两岸茂密的林木与草地坡地",
+            "沿河岸的木桩护岸结构",
+            "林间自然的水岸风貌"
+          ],
+          "allowed_changes": [
+            "船上乘客的数量、姿态",
+            "水面的波纹细节",
+            "岸边行人的有无",
+            "天空的云量变化",
+            "植被的轻微晃动"
+          ],
+          "suitable_shots": [
+            "沿河道平移的跟拍船行镜头",
+            "从岸边平视河道与船只的固定镜头",
+            "缓慢向前推进的河道远景镜头",
+            "侧拍船行经过岸边的中景镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "高空俯视整个河道全貌的镜头",
+            "进入船只内部的特写镜头",
+            "河道尽头未知区域的镜头",
+            "右岸后方林地深处的穿行镜头"
+          ],
+          "visible_text": [
+            "西溪橹2100"
+          ],
+          "uncertain": [
+            "具体的景区位置（仅船身文字提及西溪，无法完全确认对应地点）",
+            "河道的整体长度与走向全貌"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_2d44f58bbf73bc48",
+      "candidate_id": "ref_fbcd7cdc59275595",
+      "place_id": "place_54ce759a1f38be91",
+      "place_name": "西溪湿地",
+      "city": "杭州",
+      "original_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxNTc2NTI4LjQ2MDgxMDQ%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-14T09%3A28%3A49Z%2F-1%2F%2Ff9957a3f0124b88bce852004af94ed733a807b4ecb57faa1a97cc64fafafa46d",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5281269973341184514",
+      "title": "杭州亲子游:西溪湿地水路全攻略",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_121945_d0da6f/ref_2d44f58bbf73bc48.png",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260923_121945_d0da6f\\ref_2d44f58bbf73bc48.png",
+      "sha256": "2d44f58bbf73bc485d8465dad600b30f3b17e1cdad5a985d3a84c43a0a3fce32",
+      "width": 1280,
+      "height": 930,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 18.926,
+        "usage": {
+          "completion_tokens": 782,
+          "prompt_tokens": 1701,
+          "total_tokens": 2483,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面以前景虬曲的大树枝干为框，展现临水的中式园林景致，对岸分布着传统建筑与茂密植被，水面平静倒映景物，岸边有石板步道。",
+          "visible_elements": [
+            "前景虬曲的大树枝干与翠绿叶片",
+            "平静的青绿色水体",
+            "对岸茂密的绿色植被、草地",
+            "对岸的中式传统建筑",
+            "岸边的石板步道",
+            "步道旁的长条坐凳",
+            "建筑旁的红色植物丛",
+            "右侧的石桥结构",
+            "建筑旁的少量人物"
+          ],
+          "spatial_layout": [
+            "大树枝干位于画面前景上部，形成天然框景",
+            "水体占据画面下半部分，横向延伸",
+            "对岸的植被与建筑位于水体后方",
+            "石板步道位于画面右下角，沿水体边缘延伸",
+            "红色植物丛位于对岸建筑前方，其倒影在水面中对应呈现",
+            "石桥位于画面最右侧，连接对岸与步道侧"
+          ],
+          "architecture_and_materials": [
+            "建筑为中式传统样式，有深色坡屋顶",
+            "部分建筑墙面为白色，部分为土黄色墙面",
+            "建筑有深色木质门窗框架",
+            "步道由不规则青灰色石板铺成",
+            "石桥为石质结构，带有木质栏杆",
+            "坐凳为石质底座搭配木质凳面"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "画面朝向水体对岸的建筑与植被方向",
+              "步道沿画面右下方向左侧延伸，指向水体沿岸"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足",
+            "weather": "晴朗，可见蓝天",
+            "season": "植被繁茂，为温暖季节（春夏季）"
+          },
+          "must_keep_candidates": [
+            "前景虬曲带苔藓的大树枝干框景结构",
+            "平静的水体及水面倒影",
+            "对岸的中式传统建筑形态与布局",
+            "沿岸茂密的绿色植被景观",
+            "沿水的石板步道形态"
+          ],
+          "allowed_changes": [
+            "水面的波纹动态",
+            "树叶的轻微晃动",
+            "步道上的行人数量与状态",
+            "光线的明暗细微变化",
+            "天空云量的少量变化"
+          ],
+          "suitable_shots": [
+            "固定机位的静帧景观镜头",
+            "沿步道缓慢向前推进的平移镜头",
+            "从前景树枝向对岸建筑缓慢拉远的镜头",
+            "低角度贴近水面的平移镜头",
+            "框景式的全景展示镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "建筑内部的视角镜头",
+            "大树顶部的俯视镜头",
+            "环绕建筑360度的运动镜头",
+            "水体下方的水下镜头",
+            "画面左侧未呈现区域的景观镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体的地点名称",
+            "建筑的具体功能与年代",
+            "大树的具体树种与树龄",
+            "水体的具体名称"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_54ce759a1f38be91",
+    "place_name": "西溪湿地",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_3199fab57ff00f59",
+      "ref_cfeb6723ad89f004",
+      "ref_d7b6379dfb7ac016",
+      "ref_2d44f58bbf73bc48"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "大面积茂密的绿色植被",
+      "交错分布的蓝绿色水系河道与湖泊",
+      "多组低层现代风格建筑",
+      "远处的城市建筑群",
+      "远处的连绵山峦",
+      "晴朗蓝天与零散云朵",
+      "林间的小型步道",
+      "刻有文字的大型景观石",
+      "景观石前的开花灌木丛",
+      "灌木丛前的矮竹栅栏",
+      "前景的灰色石板路面",
+      "景观石后方的茂密乔木林",
+      "蓝天与白色云朵",
+      "景观石左侧的白色鹭鸟与小船造型装饰",
+      "景观石右下角的红色小字",
+      "青绿色河道",
+      "带顶棚的木船",
+      "船上的乘客与船工",
+      "河道左岸的草地、土路、树干",
+      "河道右岸的草地、树木、木桩护岸",
+      "远处的成片林木",
+      "岸边的石桌石凳",
+      "左岸站立的行人",
+      "左上角的前景树叶",
+      "前景虬曲的大树枝干与翠绿叶片",
+      "平静的青绿色水体",
+      "对岸茂密的绿色植被、草地",
+      "对岸的中式传统建筑",
+      "岸边的石板步道",
+      "步道旁的长条坐凳"
+    ],
+    "stable_features": [
+      {
+        "text": "水网环绕植被岛的湿地整体格局",
+        "evidence_asset_ids": [
+          "ref_3199fab57ff00f59"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "中下部集中的几组低层建筑的布局与形态",
+        "evidence_asset_ids": [
+          "ref_3199fab57ff00f59"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "大面积茂密常绿植被的整体风貌",
+        "evidence_asset_ids": [
+          "ref_3199fab57ff00f59"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "远方城市建筑群与湿地的层次关系",
+        "evidence_asset_ids": [
+          "ref_3199fab57ff00f59"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "远方两侧山峦的轮廓",
+        "evidence_asset_ids": [
+          "ref_3199fab57ff00f59"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "刻有“西溪国家湿地公园”字样的棕褐色景观石主体",
+        "evidence_asset_ids": [
+          "ref_cfeb6723ad89f004"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "景观石左侧的鹭鸟小船造型装饰",
+        "evidence_asset_ids": [
+          "ref_cfeb6723ad89f004"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "景观石前的开花灌木丛与矮竹栅栏组合",
+        "evidence_asset_ids": [
+          "ref_cfeb6723ad89f004"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "景观石后方的茂密乔木背景",
+        "evidence_asset_ids": [
+          "ref_cfeb6723ad89f004"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "前景的灰色石板路面",
+        "evidence_asset_ids": [
+          "ref_cfeb6723ad89f004"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "青绿色的河道形态",
+        "evidence_asset_ids": [
+          "ref_d7b6379dfb7ac016"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "带顶棚的木质摇橹船",
+        "evidence_asset_ids": [
+          "ref_d7b6379dfb7ac016"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "两岸茂密的林木与草地坡地",
+        "evidence_asset_ids": [
+          "ref_d7b6379dfb7ac016"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "沿河岸的木桩护岸结构",
+        "evidence_asset_ids": [
+          "ref_d7b6379dfb7ac016"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "林间自然的水岸风貌",
+        "evidence_asset_ids": [
+          "ref_d7b6379dfb7ac016"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "前景虬曲带苔藓的大树枝干框景结构",
+        "evidence_asset_ids": [
+          "ref_2d44f58bbf73bc48"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "平静的水体及水面倒影",
+        "evidence_asset_ids": [
+          "ref_2d44f58bbf73bc48"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "对岸的中式传统建筑形态与布局",
+        "evidence_asset_ids": [
+          "ref_2d44f58bbf73bc48"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "沿岸茂密的绿色植被景观",
+        "evidence_asset_ids": [
+          "ref_2d44f58bbf73bc48"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "沿水的石板步道形态",
+        "evidence_asset_ids": [
+          "ref_2d44f58bbf73bc48"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "水网环绕植被岛的湿地整体格局",
+      "中下部集中的几组低层建筑的布局与形态",
+      "大面积茂密常绿植被的整体风貌",
+      "远方城市建筑群与湿地的层次关系",
+      "远方两侧山峦的轮廓",
+      "刻有“西溪国家湿地公园”字样的棕褐色景观石主体",
+      "景观石左侧的鹭鸟小船造型装饰",
+      "景观石前的开花灌木丛与矮竹栅栏组合",
+      "景观石后方的茂密乔木背景",
+      "前景的灰色石板路面",
+      "青绿色的河道形态",
+      "带顶棚的木质摇橹船",
+      "两岸茂密的林木与草地坡地",
+      "沿河岸的木桩护岸结构",
+      "林间自然的水岸风貌",
+      "前景虬曲带苔藓的大树枝干框景结构",
+      "平静的水体及水面倒影",
+      "对岸的中式传统建筑形态与布局",
+      "沿岸茂密的绿色植被景观",
+      "沿水的石板步道形态"
+    ],
+    "allowed_changes": [
+      "天空中云朵的形态与位置",
+      "水面的波纹与光影动态",
+      "植被的轻微光影变化",
+      "步道上的行人动态",
+      "天空云朵的形态与分布",
+      "灌木丛上花朵的数量与开放状态",
+      "树叶的轻微晃动效果",
+      "光线的明暗细微变化",
+      "船上乘客的数量、姿态",
+      "水面的波纹细节",
+      "岸边行人的有无",
+      "天空的云量变化",
+      "植被的轻微晃动",
+      "水面的波纹动态",
+      "树叶的轻微晃动"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "湿地的具体名称与所在城市",
+      "建筑的具体功能与名称",
+      "远方城市与山峦的具体名称",
+      "无法确认该地点是否为真实的西溪国家湿地公园主入口",
+      "无法确认景观石的具体材质是天然岩石还是人工仿造",
+      "无法确认景观石后方树林的具体范围与内部结构",
+      "具体的景区位置（仅船身文字提及西溪，无法完全确认对应地点）",
+      "河道的整体长度与走向全貌",
+      "具体的地点名称",
+      "建筑的具体功能与年代",
+      "大树的具体树种与树龄",
+      "水体的具体名称"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_3199fab57ff00f59",
+        "summary": "高空俯瞰视角下的大面积湿地景观，区域内水网密布，植被繁茂，散落着多组建筑，远处可见城市建筑群与山峦，天空晴朗有云。",
+        "visible_elements": [
+          "大面积茂密的绿色植被",
+          "交错分布的蓝绿色水系河道与湖泊",
+          "多组低层现代风格建筑",
+          "远处的城市建筑群",
+          "远处的连绵山峦",
+          "晴朗蓝天与零散云朵",
+          "林间的小型步道"
+        ],
+        "spatial_layout": [
+          "水系在画面中下部及中部交错环绕，将植被区域分割为多个岛状地块",
+          "建筑集中分布在画面中下部的被水系环绕的植被地块上",
+          "城市建筑群位于画面远方的地平线上，横亘在湿地与远山之间",
+          "山峦分布在画面远方的左右两侧",
+          "天空占据画面上方约三分之一的区域"
+        ],
+        "architecture_and_materials": [
+          "建筑多为2-4层的低层建筑，造型偏现代简约",
+          "建筑屋顶多为深灰色平顶或缓坡顶",
+          "建筑外墙以浅灰、白色调为主，部分带有深色窗框或装饰线条"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "画面下方为近景湿地区域，上方为远方城市与山峦，可判断拍摄方向朝向湿地纵深及远方城市"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足，推测为上午或下午",
+          "weather": "晴朗，有少量零散云朵",
+          "season": "植被繁茂呈深绿、鲜绿色，推测为夏季或春末夏初"
+        },
+        "must_keep_candidates": [
+          "水网环绕植被岛的湿地整体格局",
+          "中下部集中的几组低层建筑的布局与形态",
+          "大面积茂密常绿植被的整体风貌",
+          "远方城市建筑群与湿地的层次关系",
+          "远方两侧山峦的轮廓"
+        ],
+        "allowed_changes": [
+          "天空中云朵的形态与位置",
+          "水面的波纹与光影动态",
+          "植被的轻微光影变化",
+          "步道上的行人动态"
+        ],
+        "suitable_shots": [
+          "高空大远景航拍推进镜头，展现湿地整体风貌到远方城市的层次",
+          "环绕中下部建筑组的航拍环绕镜头",
+          "沿水系河道飞行的低空航拍镜头",
+          "从湿地向远方城市拉升的远景镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "建筑内部空间的镜头",
+          "湿地背面、被植被完全遮挡区域的镜头",
+          "近距离仰视建筑的特写镜头",
+          "城市建筑群内部细节的特写镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_cfeb6723ad89f004",
+        "summary": "画面展示一处公园入口的标识景观，前景为石板路面，中间是刻有文字的景观石，周围环绕绿植，背景是茂密树林与蓝天白云。",
+        "visible_elements": [
+          "刻有文字的大型景观石",
+          "景观石前的开花灌木丛",
+          "灌木丛前的矮竹栅栏",
+          "前景的灰色石板路面",
+          "景观石后方的茂密乔木林",
+          "蓝天与白色云朵",
+          "景观石左侧的白色鹭鸟与小船造型装饰",
+          "景观石右下角的红色小字"
+        ],
+        "spatial_layout": [
+          "灰色石板路面位于画面最前景",
+          "矮竹栅栏在石板路后方，沿弧形分布",
+          "开花灌木丛在竹栅栏后方，遮挡景观石下部",
+          "大型景观石位于灌木丛后方，横向占据画面中下部",
+          "茂密乔木林在景观石后方，分布于画面中上部两侧及中间",
+          "蓝天与云朵占据画面上部区域"
+        ],
+        "architecture_and_materials": [
+          "景观石为仿自然岩石形态，表面呈棕褐色粗糙质感，文字为白色立体字",
+          "矮栅栏由细竹竿排列组成，呈浅棕褐色",
+          "前景路面由灰色方形石板铺成，石板间有缝隙",
+          "景观石左侧装饰为白色鹭鸟站在黑色小船造型上"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "景观石正面朝向镜头，镜头正对公园入口标识方向"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足，无法判断具体时段",
+          "weather": "晴天，有少量云朵",
+          "season": "植被繁茂，无法判断具体季节"
+        },
+        "must_keep_candidates": [
+          "刻有“西溪国家湿地公园”字样的棕褐色景观石主体",
+          "景观石左侧的鹭鸟小船造型装饰",
+          "景观石前的开花灌木丛与矮竹栅栏组合",
+          "景观石后方的茂密乔木背景",
+          "前景的灰色石板路面"
+        ],
+        "allowed_changes": [
+          "天空云朵的形态与分布",
+          "灌木丛上花朵的数量与开放状态",
+          "树叶的轻微晃动效果",
+          "光线的明暗细微变化"
+        ],
+        "suitable_shots": [
+          "从前景石板路向前推进至景观石的推镜头",
+          "以景观石为中心的左右横移镜头",
+          "从景观石向上摇至天空树林的上摇镜头",
+          "固定机位展示入口标识的静态镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "景观石后方区域的穿越镜头",
+          "俯瞰整个公园的高空俯视镜头",
+          "景观石背面的展示镜头",
+          "快速环绕景观石360度的旋转镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_d7b6379dfb7ac016",
+        "summary": "一条青绿色河道穿行于茂密的林间，一艘载有乘客的木船行驶在河道中，两岸是覆有绿植的坡地与树木，呈现出自然的水乡林间风貌",
+        "visible_elements": [
+          "青绿色河道",
+          "带顶棚的木船",
+          "船上的乘客与船工",
+          "河道左岸的草地、土路、树干",
+          "河道右岸的草地、树木、木桩护岸",
+          "远处的成片林木",
+          "岸边的石桌石凳",
+          "左岸站立的行人",
+          "左上角的前景树叶"
+        ],
+        "spatial_layout": [
+          "河道从画面深处向近景延伸，占据画面中下部",
+          "木船位于河道中偏左的位置，朝向画面右前方",
+          "河道左岸在画面左侧，有草地、土路和树木",
+          "河道右岸在画面右侧，有草地、树木和沿河岸的木桩护岸",
+          "成片林木分布在河道两岸及远处",
+          "石桌石凳位于右岸后方的草地上"
+        ],
+        "architecture_and_materials": [
+          "木船为深棕色木质结构，带有编织质感的棕色顶棚，船身有白色文字标识",
+          "岸边木桩为浅棕色木质，沿河岸排列",
+          "石桌石凳为深灰色石质",
+          "树木树干多为深褐色，植被叶片为鲜绿色、深绿色"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "河道向画面深处延伸，船首朝向画面右前方，两岸沿河道纵向分布"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足",
+          "weather": "晴朗，天空明亮无明显云层",
+          "season": "夏季或春末，植被繁茂翠绿"
+        },
+        "must_keep_candidates": [
+          "青绿色的河道形态",
+          "带顶棚的木质摇橹船",
+          "两岸茂密的林木与草地坡地",
+          "沿河岸的木桩护岸结构",
+          "林间自然的水岸风貌"
+        ],
+        "allowed_changes": [
+          "船上乘客的数量、姿态",
+          "水面的波纹细节",
+          "岸边行人的有无",
+          "天空的云量变化",
+          "植被的轻微晃动"
+        ],
+        "suitable_shots": [
+          "沿河道平移的跟拍船行镜头",
+          "从岸边平视河道与船只的固定镜头",
+          "缓慢向前推进的河道远景镜头",
+          "侧拍船行经过岸边的中景镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "高空俯视整个河道全貌的镜头",
+          "进入船只内部的特写镜头",
+          "河道尽头未知区域的镜头",
+          "右岸后方林地深处的穿行镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_2d44f58bbf73bc48",
+        "summary": "画面以前景虬曲的大树枝干为框，展现临水的中式园林景致，对岸分布着传统建筑与茂密植被，水面平静倒映景物，岸边有石板步道。",
+        "visible_elements": [
+          "前景虬曲的大树枝干与翠绿叶片",
+          "平静的青绿色水体",
+          "对岸茂密的绿色植被、草地",
+          "对岸的中式传统建筑",
+          "岸边的石板步道",
+          "步道旁的长条坐凳",
+          "建筑旁的红色植物丛",
+          "右侧的石桥结构",
+          "建筑旁的少量人物"
+        ],
+        "spatial_layout": [
+          "大树枝干位于画面前景上部，形成天然框景",
+          "水体占据画面下半部分，横向延伸",
+          "对岸的植被与建筑位于水体后方",
+          "石板步道位于画面右下角，沿水体边缘延伸",
+          "红色植物丛位于对岸建筑前方，其倒影在水面中对应呈现",
+          "石桥位于画面最右侧，连接对岸与步道侧"
+        ],
+        "architecture_and_materials": [
+          "建筑为中式传统样式，有深色坡屋顶",
+          "部分建筑墙面为白色，部分为土黄色墙面",
+          "建筑有深色木质门窗框架",
+          "步道由不规则青灰色石板铺成",
+          "石桥为石质结构，带有木质栏杆",
+          "坐凳为石质底座搭配木质凳面"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "画面朝向水体对岸的建筑与植被方向",
+            "步道沿画面右下方向左侧延伸，指向水体沿岸"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足",
+          "weather": "晴朗，可见蓝天",
+          "season": "植被繁茂，为温暖季节（春夏季）"
+        },
+        "must_keep_candidates": [
+          "前景虬曲带苔藓的大树枝干框景结构",
+          "平静的水体及水面倒影",
+          "对岸的中式传统建筑形态与布局",
+          "沿岸茂密的绿色植被景观",
+          "沿水的石板步道形态"
+        ],
+        "allowed_changes": [
+          "水面的波纹动态",
+          "树叶的轻微晃动",
+          "步道上的行人数量与状态",
+          "光线的明暗细微变化",
+          "天空云量的少量变化"
+        ],
+        "suitable_shots": [
+          "固定机位的静帧景观镜头",
+          "沿步道缓慢向前推进的平移镜头",
+          "从前景树枝向对岸建筑缓慢拉远的镜头",
+          "低角度贴近水面的平移镜头",
+          "框景式的全景展示镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "建筑内部的视角镜头",
+          "大树顶部的俯视镜头",
+          "环绕建筑360度的运动镜头",
+          "水体下方的水下镜头",
+          "画面左侧未呈现区域的景观镜头"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西溪湿地",
+        "path": "images/hz-xixi-shidi_1.jpg",
+        "url": "https://unsplash.com/photos/a-body-of-water-with-trees-around-it-2w90XFCNxVo",
+        "license": "Unsplash License",
+        "alt": "a body of water with trees around it"
+      },
+      {
+        "name": "西溪湿地",
+        "path": "images/hz-xixi-shidi_2.jpg",
+        "url": "https://unsplash.com/photos/a-landscape-with-trees-and-buildings-in-the-distance-L-y3az_nrTg",
+        "license": "Unsplash License",
+        "alt": "a landscape with trees and buildings in the distance"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_1.jpg",
+        "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+        "license": "Unsplash License",
+        "alt": "a building with a tree in front of it"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_3199fab57ff00f59",
+        "name": "西溪湿地",
+        "url": "/assets/references/p_20260923_121945_d0da6f/ref_3199fab57ff00f59.webp",
+        "source_page_url": "http://baijiahao.baidu.com/s?id=1837437533644434547&wfr=spider&for=pc",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_cfeb6723ad89f004",
+        "name": "西溪湿地",
+        "url": "/assets/references/p_20260923_121945_d0da6f/ref_cfeb6723ad89f004.jpg",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3833364015833512926",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_d7b6379dfb7ac016",
+        "name": "西溪湿地",
+        "url": "/assets/references/p_20260923_121945_d0da6f/ref_d7b6379dfb7ac016.jpg",
+        "source_page_url": "http://baa.m.yiche.com/teana/thread-52493116.html",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_2d44f58bbf73bc48",
+        "name": "西溪湿地",
+        "url": "/assets/references/p_20260923_121945_d0da6f/ref_2d44f58bbf73bc48.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5281269973341184514",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "selected",
+    "version": 2,
+    "source": "preset",
+    "voice_id": "voice_07_male_travel",
+    "name": "轻松漫游男声",
+    "description": "自然松弛的男声、亲切口语感",
+    "reference_path": "D:\\code\\TravelGen-main\\assets\\media\\voices\\07_轻松漫游_男声.wav",
+    "preview_url": "/assets/media/voices/07_轻松漫游_男声.wav?v=d46e81004aca",
+    "reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265"
+  },
+  "music": {
+    "status": "selected",
+    "version": 1,
+    "recommendation_status": "none",
+    "recommendation": null,
+    "warning": null,
+    "selected": {
+      "bgm_id": "bgm_04",
+      "scene": "景区推荐",
+      "scene_type": "景区推荐",
+      "title": "Serene View",
+      "artist": "Arulo",
+      "duration": "01:54",
+      "description": "舒缓、开阔、氛围感；适合湖泊、水乡、山林和慢镜头",
+      "preview_url": "/assets/media/bgm/02_scenic_recommendation/01_Serene_View__Arulo.mp3",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\media\\bgm\\02_scenic_recommendation\\01_Serene_View__Arulo.mp3",
+      "source_page": "https://mixkit.co/free-stock-music/tag/travel/",
+      "license": "Mixkit Stock Music Free License"
+    }
+  },
+  "voice_tasks": [],
+  "segment_tasks": [
+    "st_20260923_122621_bc8e35",
+    "st_20260923_122623_bb317a",
+    "st_20260923_122624_34c80d"
+  ],
+  "render_tasks": [
+    "rt_20260923_123550_19b233"
+  ],
+  "render": {
+    "status": "completed",
+    "version": 1,
+    "task_id": "rt_20260923_123550_19b233"
+  },
+  "final_video": {
+    "status": "completed",
+    "url": "/assets/renders/p_20260923_121945_d0da6f/v1/with_bgm.mp4",
+    "preview_url": "/assets/renders/p_20260923_121945_d0da6f/v1/with_bgm.mp4",
+    "default_variant": "with_bgm",
+    "clean": {
+      "url": "/assets/renders/p_20260923_121945_d0da6f/v1/clean.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260923_121945_d0da6f\\v1\\clean.mp4"
+    },
+    "with_bgm": {
+      "url": "/assets/renders/p_20260923_121945_d0da6f/v1/with_bgm.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260923_121945_d0da6f\\v1\\with_bgm.mp4"
+    },
+    "bgm_bed": {
+      "url": "/assets/renders/p_20260923_121945_d0da6f/v1/bgm_bed.m4a",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260923_121945_d0da6f\\v1\\bgm_bed.m4a"
+    },
+    "bgm_mix": {
+      "bgm_id": "bgm_04",
+      "title": "Serene View",
+      "target_lufs": -23.0,
+      "video_gain_db": 0,
+      "bgm_gain_db": 0,
+      "gain_db": 0,
+      "strategy": "loudness_normalized_mix"
+    },
+    "duration_s": 20.03,
+    "resolution": "1080p",
+    "aspect_ratio": "16:9",
+    "version": 1,
+    "voice_version": 2,
+    "music_version": 1
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-23T04:19:45.192861+00:00",
+  "updated_at": "2026-09-23T04:35:58.648807+00:00",
+  "copywriting_text": "【0-5s】在杭州，把20秒借给一片湿地。\n【5-9s】石上西溪，中国首个国家湿地公园。\n【9-13s】坐摇橹船，穿过青绿。\n【13-17s】枝影为框，冷野淡雅。\n【17-20s】周末去西溪，把青绿带走。",
+  "segment_results": {
+    "seg_01": {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_121945_d0da6f/seg_01/st_20260923_122621_bc8e35_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179013758719100000000000000000000ffffac158e25ac1fb9.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T043209Z&X-Tos-Expires=86400&X-Tos-Signature=b54f68dc4284d9604fc9ea152e42f97b803becefa965d3179237c7bc1008fa9f&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260923_121945_d0da6f\\seg_01\\st_20260923_122621_bc8e35_raw.mp4",
+      "normalized_av_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260923_121945_d0da6f\\seg_01\\st_20260923_122621_bc8e35_normalized_av.mp4",
+      "native_audio_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260923_121945_d0da6f\\seg_01\\st_20260923_122621_bc8e35_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 5.056,
+        "expected_duration_seconds": 5.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.936,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -9.38,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265",
+      "voice_version": 2,
+      "narration_hash": "3ba321124009f0098c65db3901ae4eaa24ea1bec9763786c99e5767155f407dc",
+      "prompt_hash": "fbec6c4ef761036e562f2d0c95c1354d0a97f9b83d52445cf514f83babcfe01a",
+      "reference_asset_ids": [
+        "ref_3199fab57ff00f59"
+      ],
+      "task_id": "st_20260923_122621_bc8e35"
+    },
+    "seg_02": {
+      "segment_id": "seg_02",
+      "shot_ids": [
+        2
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_121945_d0da6f/seg_02/st_20260923_122623_bb317a_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179013759711000000000000000000000ffffac175b7070c5aa.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T042859Z&X-Tos-Expires=86400&X-Tos-Signature=7f384e635eb052a97fd0487a776dc8884d8a3f1ab67aeb446464fb218d8e65bb&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260923_121945_d0da6f\\seg_02\\st_20260923_122623_bb317a_raw.mp4",
+      "normalized_av_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260923_121945_d0da6f\\seg_02\\st_20260923_122623_bb317a_normalized_av.mp4",
+      "native_audio_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260923_121945_d0da6f\\seg_02\\st_20260923_122623_bb317a_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 4.064,
+        "expected_duration_seconds": 4.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.244,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -10.82,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265",
+      "voice_version": 2,
+      "narration_hash": "aed83989461fa3798e70c23f80107fa15083d877014757d2955b89097af60c38",
+      "prompt_hash": "9e61fe96aae5dfd3a41ae876c919e62f4e59ddfb620abfb293e08c8a3ddeed6a",
+      "reference_asset_ids": [
+        "ref_cfeb6723ad89f004"
+      ],
+      "task_id": "st_20260923_122623_bb317a"
+    },
+    "seg_03": {
+      "segment_id": "seg_03",
+      "shot_ids": [
+        3
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_121945_d0da6f/seg_03/st_20260923_122624_34c80d_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179013759288900000000000000000000ffffac158e256fdbc7.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T043256Z&X-Tos-Expires=86400&X-Tos-Signature=5d85126222b0f1e2ab9d6d23881637758d465ead2daa6f7981619bb666ef0907&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260923_121945_d0da6f\\seg_03\\st_20260923_122624_34c80d_raw.mp4",
+      "normalized_av_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260923_121945_d0da6f\\seg_03\\st_20260923_122624_34c80d_normalized_av.mp4",
+      "native_audio_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260923_121945_d0da6f\\seg_03\\st_20260923_122624_34c80d_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 11.072,
+        "expected_duration_seconds": 11.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 1.092,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -10.34,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265",
+      "voice_version": 2,
+      "narration_hash": "23a8051248611318a3b0c8eb230f5c514dd45c80a98afd8338c911aba0d6a547",
+      "prompt_hash": "c8555d644305f79a2c066a929e5e3a6aea2374d4c70ab3d1dd99a77f66c3a9b1",
+      "reference_asset_ids": [
+        "ref_d7b6379dfb7ac016"
+      ],
+      "task_id": "st_20260923_122624_34c80d"
+    }
+  },
+  "active_segment_ids": []
+}

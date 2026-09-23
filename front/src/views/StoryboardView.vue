@@ -8,19 +8,21 @@ import {
   watch,
 } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { NButton, NInput, NSlider, useMessage } from "naive-ui";
+import { NButton, NInput, NInputNumber, NSlider, useMessage } from "naive-ui";
 import logoUrl from "../images/logo.png";
 import {
   createRender,
   createStoryboard,
   createVoiceCandidate,
   generateSegments,
+  generateShots,
   getBgmCatalog,
   getProject,
   getRenderStatus,
   getVoicePresets,
   mixRender,
   regenerateSegment,
+  regenerateShot,
   refreshBgmRecommendations,
   selectBgm,
   selectVoice,
@@ -66,6 +68,7 @@ let previewAudioStarting = false;
 const req = computed(() => project.value?.request || {});
 const scenes = computed(() => project.value?.storyboard?.scenes || []);
 const segments = computed(() => project.value?.storyboard?.segments || []);
+const shotPlan = computed(() => (project.value?.storyboard?.storyboard_version || 0) >= 4);
 const voice = computed(() => project.value?.voice || {});
 const music = computed(() => project.value?.music || {});
 const voiceCandidates = computed(() => project.value?.voice_candidates || []);
@@ -329,7 +332,7 @@ async function chooseVoice(payload) {
   actionBusy.value = true;
   try {
     await selectVoice(pid.value, payload);
-    message.success("参考音色已确认，后续所有 Segment 都会使用它");
+    message.success("参考音色已确认，后续所有镜头都会使用它");
     await refresh();
   } catch (error) {
     message.error(error.message || "音色确认失败");
@@ -379,7 +382,7 @@ async function applyMix() {
       bgm_gain_db: bgmGainDb.value,
     });
     mixPending.value = true;
-    message.info("正在按试听音量导出，Segment 无需重新生成");
+    message.info("正在按试听音量导出，镜头无需重新生成");
     await refresh();
   } catch (error) {
     message.error(error.message || "混音导出失败");
@@ -423,8 +426,8 @@ async function saveShot(shot) {
     cancelEdit();
     message.success(
       response.invalidated_segment_ids?.length > 1
-        ? "时长已更新，全部 Segment 已重新动态分组"
-        : "所属 Segment 已标记为需重新生成",
+        ? "时长已更新，相关镜头需要重新生成"
+        : "此镜头已标记为需重新生成",
     );
     await refresh();
   } catch (error) {
@@ -455,21 +458,27 @@ async function startSegments(ids, regenerate = false) {
     localActive[id] = true;
   });
   try {
-    if (regenerate && ids.length === 1) {
+    if (shotPlan.value) {
+      const shotIds = [...new Set(ids.map((id) => segments.value.find((segment) => segment.segment_id === id)?.shot_ids?.[0]).filter(Boolean))];
+      if (regenerate && shotIds.length === 1)
+        await regenerateShot(pid.value, shotIds[0], { reason: "用户从镜头卡片重新生成" });
+      else
+        await generateShots(pid.value, shotIds);
+    } else if (regenerate && ids.length === 1) {
       await regenerateSegment(pid.value, ids[0], {
-        reason: "用户从 Segment 卡片重新生成",
+        reason: "用户从镜头卡片重新生成",
         transition_note: segmentNotes[ids[0]] || "",
       });
     } else {
       await generateSegments(pid.value, ids);
     }
-    message.info(`${ids.length} 个 Segment 已进入生成队列`);
+    message.info(`${ids.length} 个生成片段已进入队列`);
     await refresh();
   } catch (error) {
     ids.forEach((id) => {
       delete localActive[id];
     });
-    message.error(error.message || "Segment 生成启动失败");
+    message.error(error.message || "镜头生成启动失败");
   } finally {
     actionBusy.value = false;
   }
@@ -481,7 +490,7 @@ function generateRemaining() {
         !["completed", "generating"].includes(stateFor(segment).status),
     )
     .map((segment) => segment.segment_id);
-  if (!ids.length) return message.info("所有 Segment 均已生成");
+  if (!ids.length) return message.info("所有镜头均已生成");
   startSegments(ids);
 }
 async function renderFinal() {
@@ -506,6 +515,18 @@ async function retryFailedStage() {
     await refresh();
   } catch (error) {
     message.error(error.message || "重试失败");
+  } finally {
+    actionBusy.value = false;
+  }
+}
+async function replanShots() {
+  actionBusy.value = true;
+  try {
+    await createStoryboard(pid.value, project.value?.plan_id, true);
+    message.info("正在按一图一镜重新规划；原成片文件仍保留");
+    await refresh();
+  } catch (error) {
+    message.error(error.message || "重新规划失败");
   } finally {
     actionBusy.value = false;
   }
@@ -572,7 +593,7 @@ async function retryFailedStage() {
             <div>
               <h2>1. 选择统一参考音色</h2>
               <p>
-                同一个参考音频会注入每个 Segment。Seedance
+                同一个参考音频会注入每个镜头。Seedance
                 只参考说话人身份，并自行生成本段旁白与环境声。
               </p>
             </div>
@@ -762,12 +783,13 @@ async function retryFailedStage() {
         <div class="guide" :class="{ blocked: !soundReady }">
           <b>{{
             soundReady
-              ? "声音设置已确认，可以生成 Segment"
+              ? "声音设置已确认，可以生成镜头"
               : "生成前还需要确认声音设置"
           }}</b
           ><span
-            >Segment 只是 Seedance 15 秒限制下的调用容器；完整 Shot 不会为了填满
-            15 秒而被拆开。Seedance 被强约束为不生成任何 BGM。</span
+            >{{ shotPlan
+              ? "每个镜头只用一张实景图，单独生成。镜头超过 15 秒时会依据前一段视频续写。Seedance 被强约束为不生成任何 BGM。"
+              : "当前项目仍使用旧的多镜头 Segment 分镜；可点击“按一图一镜重新规划”切换。" }}</span
           >
         </div>
 
@@ -779,7 +801,7 @@ async function retryFailedStage() {
           <header class="segment-head">
             <div>
               <div class="segment-title">
-                <h2>{{ segment.segment_id }}</h2>
+                <h2>{{ shotPlan ? `Shot ${segment.shot_ids?.[0]}` : segment.segment_id }}<template v-if="shotPlan && segment.continuation_total > 1"> · 续写片段 {{ segment.continuation_index }}/{{ segment.continuation_total }}</template></h2>
                 <span class="status" :class="stateFor(segment).status">{{
                   statusLabel(stateFor(segment).status)
                 }}</span
@@ -788,8 +810,7 @@ async function retryFailedStage() {
               <p>
                 {{ fmtMs(segment.timeline_start_ms) }} –
                 {{ fmtMs(segment.timeline_end_ms) }} · 实际
-                {{ fmtMs(segment.duration_ms) }} ·
-                {{ shotsFor(segment).length }} 个完整 Shot
+                {{ fmtMs(segment.duration_ms) }}<template v-if="!shotPlan"> · {{ shotsFor(segment).length }} 个完整 Shot</template>
               </p>
             </div>
             <NButton
@@ -808,8 +829,8 @@ async function retryFailedStage() {
               "
               >{{
                 stateFor(segment).status === "completed"
-                  ? "重新生成此段"
-                  : "生成此段"
+                  ? (shotPlan ? "重新生成此镜头" : "重新生成此段")
+                  : (shotPlan ? "生成此镜头" : "生成此段")
               }}</NButton
             >
           </header>
@@ -819,7 +840,7 @@ async function retryFailedStage() {
               {{ segment.narration_text || "本段没有旁白，仅保留自然环境声" }}
             </p>
           </div>
-          <div class="transition-row">
+          <div v-if="!shotPlan" class="transition-row">
             <NInput
               v-model:value="segmentNotes[segment.segment_id]"
               placeholder="描述段内镜头如何自然衔接"
@@ -827,7 +848,7 @@ async function retryFailedStage() {
               >保存转场要求</NButton
             >
           </div>
-          <div class="shot-list">
+          <div v-if="!shotPlan || segment.continuation_index === 1" class="shot-list">
             <article
               v-for="shot in shotsFor(segment)"
               :key="shot.shot_id"
@@ -852,11 +873,11 @@ async function retryFailedStage() {
                     v-model:value="editNarration"
                     type="textarea"
                     :autosize="{ minRows: 2, maxRows: 4 }"
-                  /><label>时长（改变后会重新动态分组）</label
+                  /><label>镜头总时长</label
                   ><NInputNumber
                     v-model:value="editDuration"
-                    :min="1"
-                    :max="15"
+                    :min="shotPlan ? 4 : 1"
+                    :max="shotPlan ? 120 : 15"
                     :precision="0"
                   />
                   <div class="inline-actions edit-actions">
@@ -929,7 +950,7 @@ async function retryFailedStage() {
             v-else-if="stateFor(segment).status === 'failed'"
             class="error-text"
           >
-            {{ stateFor(segment).error || "生成失败，请重新生成此 Segment" }}
+            {{ stateFor(segment).error || "生成失败，请重新生成此镜头" }}
           </p>
         </section>
 
@@ -937,7 +958,7 @@ async function retryFailedStage() {
           <div>
             <h2>
               {{
-                phase === "completed" ? "成片已完成" : "完成所有 Segment 后合成"
+                phase === "completed" ? "成片已完成" : "完成所有镜头后合成"
               }}
             </h2>
             <p>
@@ -946,11 +967,17 @@ async function retryFailedStage() {
           </div>
           <div class="button-row">
             <NButton
+              v-if="!shotPlan && ['editing', 'video_ready', 'completed'].includes(phase)"
+              :disabled="actionBusy"
+              @click="replanShots"
+              >按一图一镜重新规划</NButton
+            >
+            <NButton
               v-if="!['video_ready', 'composing', 'completed'].includes(phase)"
               type="primary"
               :disabled="actionBusy || !soundReady"
               @click="generateRemaining"
-              >生成所有待完成 Segment</NButton
+              >生成所有待完成镜头</NButton
             ><NButton
               v-if="phase === 'video_ready'"
               type="primary"

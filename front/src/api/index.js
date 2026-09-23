@@ -77,10 +77,10 @@ export function confirmPlan(pid, copywriting) {
 }
 
 // 接口3：生成分镜（POST /api/projects/{pid}/storyboard，202），plan_id 防并发覆盖
-export function createStoryboard(pid, planId) {
+export function createStoryboard(pid, planId, replan = false) {
   return request(`/api/projects/${pid}/storyboard`, {
     method: 'POST',
-    body: JSON.stringify({ plan_id: planId ?? null }),
+    body: JSON.stringify({ plan_id: planId ?? null, replan }),
   })
 }
 
@@ -138,6 +138,13 @@ export function generateSegments(pid, segmentIds) {
   return request(`/api/projects/${pid}/generate`, {
     method: 'POST',
     body: JSON.stringify({ segments: segmentIds, generate_video: true }),
+  })
+}
+
+export function generateShots(pid, shotIds) {
+  return request(`/api/projects/${pid}/generate`, {
+    method: 'POST',
+    body: JSON.stringify({ shot_ids: shotIds, generate_video: true }),
   })
 }
 

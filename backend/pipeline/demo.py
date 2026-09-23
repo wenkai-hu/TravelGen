@@ -62,8 +62,31 @@ def demo_plan(req):
     return planning, copywriting, parse_script(copywriting)
 
 
-def demo_storyboard(req, storyboard=None):
-    """回放分镜并按请求总时长重分配整秒 Shot，确保新动态 Segment 可合法装箱。"""
+def demo_storyboard(req, storyboard=None, visual_profile=None):
+    """无文案模型时按用户确认的图片生成一图一镜的演示分镜。"""
+    catalog = (visual_profile or {}).get("view_catalog", [])
+    if catalog:
+        target = int(req.get("duration_s", 20))
+        count = min(len(catalog), target // 4, max(1, round(target / 7)))
+        durations = [target // count + (i < target % count) for i in range(count)]
+        shots = []
+        for index, (entry, duration) in enumerate(zip(catalog[:count], durations), 1):
+            elements = entry.get("visible_elements", [])
+            subject = "、".join(elements[:2]) or entry.get("summary", "用户确认的实景")
+            shots.append({
+                "shot_id": index, "duration_s": duration, "narration": "",
+                "camera": {"type": "固定机位", "movement": "固定", "angle": "平拍"},
+                "shot_size": "全景", "subject": subject,
+                "background": entry.get("summary", "用户确认的实景"),
+                "place_id": (visual_profile or {}).get("place_id", ""),
+                "reference_asset_ids": [entry["asset_id"]],
+                "grounding_strength": "strong",
+                "prompt": f"写实文旅画面，参考图中的{subject}保持原有空间关系，镜头连续平稳，"
+                          "只允许轻微自然动态，不要切换机位或突然改变景别",
+            })
+        return {"theme": req.get("theme", "文旅宣传片"),
+                "scenes": [{"scene_id": 1, "location": req.get("location", ""),
+                            "time": "上午", "shot_list": shots}]}
     sb = copy.deepcopy(storyboard if storyboard is not None else load_storyboard())
     sb["theme"] = f"{req.get('city', '')}{req.get('location', '')}宣传片"
     shots = [shot for scene in sb.get("scenes", []) for shot in scene.get("shot_list", [])]

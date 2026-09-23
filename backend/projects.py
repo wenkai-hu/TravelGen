@@ -114,7 +114,7 @@ class Project:
                     }
         segment_results = merge_segment_results(self)
         if not include_private:
-            private_fields = {"raw_path", "normalized_av_path", "native_audio_path"}
+            private_fields = {"raw_path", "normalized_av_path", "native_audio_path", "source_video_url"}
             segment_results = {
                 segment_id: {key: value for key, value in result.items()
                              if key not in private_fields}
@@ -213,6 +213,7 @@ class SegmentTask:
             "shot_ids": list(segment.get("shot_ids", [])),
             "status": "pending",
             "video_url": None,
+            "source_video_url": None,
             "raw_path": None,
             "normalized_av_path": None,
             "native_audio_path": None,
@@ -243,6 +244,7 @@ class SegmentTask:
                 row["status"] = "completed"
                 for key in ("raw_path", "normalized_av_path", "native_audio_path", "audio_qa"):
                     row[key] = clip.get(key)
+                row["source_video_url"] = clip.get("video_url")
                 row["video_url"] = _asset_url(clip.get("normalized_av_path")) or clip.get("video_url")
                 row["error"] = None
             else:

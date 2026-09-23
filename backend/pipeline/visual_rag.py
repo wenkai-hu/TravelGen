@@ -209,18 +209,27 @@ def _catalog_score(shot: dict, entry: dict) -> int:
 
 
 def bind_storyboard_references(storyboard: dict, profile: dict) -> dict:
-    """校正 LLM 给出的引用 ID；缺失或非法时按视角/主体目录自动补齐。"""
+    """为每个 Shot 绑定唯一实景图；参考图全片只使用一次。"""
     valid_ids = set(profile.get("reference_asset_ids", []))
     catalog = [entry for entry in profile.get("view_catalog", []) if entry.get("asset_id") in valid_ids]
+    used_ids = set()
     for scene in storyboard.get("scenes", []):
         scene.setdefault("place_id", profile.get("place_id"))
         for shot in scene.get("shot_list", []):
             requested = shot.get("reference_asset_ids")
-            selected = [aid for aid in requested if aid in valid_ids] if isinstance(requested, list) else []
-            if not selected and catalog:
-                ranked = sorted(catalog, key=lambda entry: _catalog_score(shot, entry), reverse=True)
-                selected = [entry["asset_id"] for entry in ranked[:1]]
-            selected = selected[:MAX_REFERENCES_PER_SHOT]
+            if isinstance(requested, list) and len(requested) > 1:
+                raise ValueError(f"Shot {shot.get('shot_id')} 只能引用一张参考图")
+            selected = requested[0] if isinstance(requested, list) and requested and requested[0] in valid_ids else None
+            if selected in used_ids:
+                raise ValueError(f"参考图 {selected} 被多个 Shot 重复使用")
+            if selected is None:
+                ranked = sorted((entry for entry in catalog if entry["asset_id"] not in used_ids),
+                                key=lambda entry: _catalog_score(shot, entry), reverse=True)
+                selected = ranked[0]["asset_id"] if ranked and _catalog_score(shot, ranked[0]) > 0 else None
+            if selected is None:
+                raise ValueError("可用参考图不足：每个 Shot 必须独占一张图，请减少 Shot 数量")
+            used_ids.add(selected)
+            selected = [selected]
             shot["place_id"] = profile.get("place_id")
             shot["reference_asset_ids"] = selected
             shot["reference_roles"] = [
@@ -238,10 +247,8 @@ def bind_storyboard_references(storyboard: dict, profile: dict) -> dict:
                                 for text in entry.get("allowed_changes", [])]
             selected_risks = [text for entry in selected_entries
                               for text in entry.get("unsupported_or_risky_shots", [])]
-            shot["must_keep"] = _unique(
-                _strings(shot.get("must_keep")) + selected_must_keep, 12)
-            shot["allowed_changes"] = _unique(
-                _strings(shot.get("allowed_changes")) + selected_allowed, 10)
+            shot["must_keep"] = _unique(selected_must_keep or _strings(shot.get("must_keep")), 12)
+            shot["allowed_changes"] = _unique(selected_allowed or _strings(shot.get("allowed_changes")), 10)
             shot["unsupported_or_risky_shots"] = _unique(selected_risks, 10)
     return storyboard
 
@@ -287,6 +294,8 @@ def compile_segment_input(project, segment: dict) -> tuple[str, list[str]]:
              if shot_id in shots_by_id]
     if not shots:
         raise ValueError(f"{segment.get('segment_id')} 没有可编译的 Shot")
+    if getattr(project, "storyboard", {}).get("storyboard_version", 0) >= 4 and len(shots) != 1:
+        raise ValueError("新分镜的一次生成请求只能包含一个 Shot")
     assets = {asset.get("asset_id"): asset for asset in getattr(project, "reference_assets", [])}
     ordered_ids = []
     for shot in shots:
@@ -297,8 +306,11 @@ def compile_segment_input(project, segment: dict) -> tuple[str, list[str]]:
         raise ValueError(
             f"{segment.get('segment_id')} 去重后有 {len(ordered_ids)} 张参考图，超过 {MAX_REFERENCES_PER_SEGMENT} 张"
         )
-    images = [_local_data_uri(assets[asset_id]["local_path"]) for asset_id in ordered_ids]
-    label = {asset_id: f"图片{index}" for index, asset_id in enumerate(ordered_ids, 1)}
+    continuation = (getattr(project, "storyboard", {}).get("storyboard_version", 0) >= 4
+                    and segment.get("continuation_index", 1) > 1)
+    images = [] if continuation else [_local_data_uri(assets[asset_id]["local_path"]) for asset_id in ordered_ids]
+    label = {asset_id: ("视频1" if continuation else f"图片{index}")
+             for index, asset_id in enumerate(ordered_ids, 1)}
     duration_s = int(segment.get("duration_ms", 0)) / 1000
     narration = str(segment.get("narration_text", "")).strip()
     if not narration:
@@ -337,29 +349,41 @@ def compile_segment_input(project, segment: dict) -> tuple[str, list[str]]:
         "",
         "【实景参考】",
     ])
-    for asset_id in ordered_ids:
-        used_by = [str(shot["shot_id"]) for shot in shots
-                   if asset_id in shot.get("reference_asset_ids", [])]
-        lines.append(f"{label[asset_id]}：作为 Shot {'/'.join(used_by)} 的真实地点依据。")
+    if continuation:
+        lines.append("沿用视频1中已建立的真实地点、构图和镜头运动，继续同一条镜头。")
+    else:
+        for asset_id in ordered_ids:
+            used_by = [str(shot["shot_id"]) for shot in shots
+                       if asset_id in shot.get("reference_asset_ids", [])]
+            lines.append(f"{label[asset_id]}：作为 Shot {'/'.join(used_by)} 的真实地点依据。")
     lines.extend(["", "【画面与声音时间线】"])
     for order, shot in enumerate(shots, 1):
-        local_start = int(shot.get("segment_local_start_ms", 0)) / 1000
-        local_end = int(shot.get("segment_local_end_ms", 0)) / 1000
+        if getattr(project, "storyboard", {}).get("storyboard_version", 0) >= 4:
+            local_start = 0
+            local_end = duration_s
+        else:
+            local_start = int(shot.get("segment_local_start_ms", 0)) / 1000
+            local_end = int(shot.get("segment_local_end_ms", 0)) / 1000
         refs = "、".join(label[asset_id] for asset_id in shot.get("reference_asset_ids", [])
                         if asset_id in label) or "本 Shot 无单独参考图"
         must_keep = "；".join(_strings(shot.get("must_keep"))) or "真实地点的主体结构和空间关系"
         allowed = "；".join(_strings(shot.get("allowed_changes"))) or "自然光线和少量动态元素"
-        shot_narration = str(shot.get("narration", "")).strip() or "本镜头无新增旁白，延续自然环境声"
+        shot_narration = (narration if len(shots) == 1 else str(shot.get("narration", "")).strip()) \
+            or "本镜头无新增旁白，延续自然环境声"
         lines.append(
             f"Shot {order}（{local_start:g}–{local_end:g}秒，使用{refs}）："
             f"{shot.get('prompt', '')}。旁白安排：{shot_narration}。"
             "环境声只生成与该画面直接对应的自然声音，不得生成音乐。"
             f"必须保持：{must_keep}。允许改变：{allowed}。"
         )
-    lines.append(
-        f"段内统一要求：{segment.get('transition_note') or '保持地点、光线和色调连贯，镜头自然转场'}。"
-        "不得增加参考图中不存在的标志性建筑，不得改变主要道路、建筑、山水的相对位置。"
-    )
+    if getattr(project, "storyboard", {}).get("storyboard_version", 0) >= 4:
+        lines.append("本片段是一条连续镜头，保持同一机位和稳定景别，不要突然切镜、跳变远近或重新取景。"
+                     "不得增加参考图中不存在的标志性建筑，不得改变主要道路、建筑、山水的相对位置。")
+    else:
+        lines.append(
+            f"段内统一要求：{segment.get('transition_note') or '保持地点、光线和色调连贯，镜头自然转场'}。"
+            "不得增加参考图中不存在的标志性建筑，不得改变主要道路、建筑、山水的相对位置。"
+        )
     lines.append(
         "画面中可以出现游客或当地居民，但任何人物都不得对口型说话；旁白始终来自画外。"
         "不要生成字幕、文字、标题、标志或水印。"

@@ -123,7 +123,7 @@ GET /api/v1/tasks/t_20260813_a1b2c3        // 轮询③ 最终
 
 ## 7. V1 分阶段接口（TravelGen_v1.md，推荐前端使用）
 
-对应 [TravelGen_v1.md](../TravelGen_v1.md) 的分阶段接口。用户流程：**创建项目 → 方案确认 → 动态 Segment → 音色/BGM 确认 → Seedance 原生音视频 → 双版本合成**。
+对应 [TravelGen_v1.md](../TravelGen_v1.md) 的分阶段接口。当前新项目流程：**创建项目 → 方案确认 → 一图一镜分镜 → 音色/BGM 确认 → 每镜独立生成 → 双版本合成**。已有 v3 项目仍可读取旧 Segment 数据。
 
 ### 7.1 接口清单
 
@@ -136,8 +136,9 @@ GET /api/v1/tasks/t_20260813_a1b2c3        // 轮询③ 最终
 | 4 | PUT /api/projects/{id}/shots/{shot_id} | 修改单个 Shot（部分字段，枚举自动归一化） | ✅ |
 | 5 | GET /api/voice-presets；POST /voice-candidates；PUT /voice | 预设/自定义参考音色与项目确认 | ✅ |
 | 6 | GET /api/bgm；POST /bgm/recommendations；PUT /bgm | 素材目录、KIMI 推荐、选择 BGM 或无 BGM | ✅ |
-| 7 | POST /api/projects/{id}/generate | 按动态 Segment 生成 Seedance 原生音视频 | ✅ |
-| — | POST /api/projects/{id}/segments/{segment_id}/regenerate | 完整 Segment 重新生成 | ✅ |
+| 7 | POST /api/projects/{id}/generate | 新分镜传 `shot_ids`，按 Shot 生成原生音视频；旧 `segments` 参数兼容保留 | ✅ |
+| — | POST /api/projects/{id}/shots/{shot_id}/regenerate | 重新生成完整 Shot；超过 15 秒时重生成其全部续写片段 | ✅ |
+| — | POST /api/projects/{id}/segments/{segment_id}/regenerate | 旧项目接口；新项目转为该片段所属 Shot 的重生成 | ✅ |
 | 8 | GET /api/tasks/{task_id} | 轮询音色、Segment、Render 任务 | ✅ |
 | 9 | POST /api/projects/{id}/render | 拼接原生音视频，生成 clean/with_bgm | ✅ |
 | 10 | GET /api/projects/{id}/render/status | 成片状态与双版本地址 | ✅ |
@@ -154,10 +155,10 @@ created → planning → waiting_confirm → plan_confirmed → storyboarding �
 ```
 
 **关键语义**：
-1. **POST generate 只接受 Segment**：Shot 是可编辑内容单元，Seedance 的最小生成/重生成单位始终是完整 Segment。
+1. **新分镜的一张参考图只绑定一个 Shot，且全片不得复用**；通常一个 Shot 对应一次 4–15 秒 Seedance 调用。超过 15 秒的同一 Shot 拆成多个内部片段，后段以前段视频续写，不再重新输入原参考图。
 2. **轮询用 GET /api/projects/{id}**（V1 文档未列此端点，本服务补充——方案/分镜异步生成期间轮询它，waiting_confirm / waiting_storyboard_confirm 即对应两次人工确认点）
-3. generate 前必须确认统一参考音色，并选择 BGM 或明确无 BGM；允许按 Segment 增量补批。
-4. Shot 时长改变会重新动态分组全部 Segment；画面/旁白改变只使所属 Segment 失效。
+3. generate 前必须确认统一参考音色，并选择 BGM 或明确无 BGM；新项目允许按 `shot_ids` 增量补批。
+4. Shot 时长改变会重新计算全部内部片段；画面/旁白改变只使该 Shot 的片段失效。`POST /storyboard` 可传 `replan: true`，显式把已完成项目按新规则重新规划；失败时保留原分镜与成片状态。
 
 ### 7.3 字段约定（与 B 文档的差异处理）
 

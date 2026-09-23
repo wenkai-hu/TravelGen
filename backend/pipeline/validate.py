@@ -2,7 +2,7 @@
 """分镜 JSON 硬校验（Storyboard Schema v1，docs/Storyboard_Schema_v1.md）+ 枚举归一化。
 
 策略（三层防线）：
-1. 校验：枚举逐项检查 + 镜头数按总时长推导 + 每镜 1-15s + 总时长严格等于目标
+1. 校验：枚举逐项检查 + 镜头数按参考图和总时长推导 + 每镜 4-120s + 总时长严格等于目标
 2. 归一化：LLM 常见枚举漂移（如 "暮色"→"黄昏"、"侧俯"→"侧拍"、"地面"→"地面机位"）自动修正后落库
 3. 无法归一化的字段仍判失败 → 上游带错误重试
 """
@@ -14,16 +14,19 @@ MOVEMENT_ENUM = ["固定", "推", "拉", "摇", "移", "跟", "升降", "环绕"
 ANGLE_ENUM = ["俯拍", "平拍", "仰拍", "侧拍"]
 SHOT_SIZE_ENUM = ["大远景", "全景", "中景", "近景", "特写"]
 
-# Shot 是 Segment 内的编辑单位，可以短于 Seedance 最小生成时长；4–15s 限制属于 Segment。
-SHOT_MIN, SHOT_MAX = 1, 15
+# 新项目的 Shot 是完整视觉镜头；超过 15 秒时底层续写同一镜头。
+SHOT_MIN, SHOT_MAX = 4, 120
 SEGMENT_MIN, SEGMENT_MAX = 4, 15
 
 
-def shot_count_range(target_s):
-    """目标时长 → 合理 Shot 数区间；生成时长合法性由 Segment 校验负责。"""
-    min_shots = max(1, -(-target_s // SHOT_MAX))  # ceil(target_s/15)：每镜顶格15s 所需最少镜数
-    max_shots = max(min_shots, target_s // 2)  # 避免生成大量无法观看的 1 秒碎镜头
-    return min_shots, max_shots
+def shot_count_range(target_s, reference_count=None):
+    """有实景图时，每张图最多生成一条 Shot，且不给模型制造无图镜头。"""
+    if reference_count is not None:
+        count = min(reference_count, target_s // SHOT_MIN,
+                    max(1, round(target_s / 7)))
+        return count, count
+    min_shots = max(1, -(-target_s // 15))
+    return min_shots, max(min_shots, target_s // 4)
 
 # 常见变体 → 标准枚举（LLM 漂移实测：暮色/侧俯/地面/推进 等）
 TIME_ALIASES = {"暮色": "黄昏", "夕照": "黄昏", "傍晚": "黄昏", "夜晚": "入夜", "深夜": "入夜",
@@ -138,7 +141,7 @@ def validate_shot_patch(patch):
     return not errors, errors, patch
 
 
-def validate_and_normalize(text, target_s=60):
+def validate_and_normalize(text, target_s=60, reference_count=None):
     """完整校验 + 归一化；返回 (ok, errors, data)。ok 时 data 为归一化后的分镜数据。
 
     target_s 为成片目标时长（用户输入 duration_s）。Segment 时长直接来自 Shot 合计，
@@ -178,7 +181,7 @@ def validate_and_normalize(text, target_s=60):
         ok, errs, _ = normalize_shot(sh)
         errors.extend(errs)
 
-    min_shots, max_shots = shot_count_range(target_s)
+    min_shots, max_shots = shot_count_range(target_s, reference_count)
     if not min_shots <= len(shots) <= max_shots:
         errors.append(f"镜头总数 {len(shots)} 需在 {min_shots}-{max_shots}（时长{target_s}s ÷ 每镜{SHOT_MIN}-{SHOT_MAX}s）")
     total = sum(sh.get("duration_s", 0) for sh in shots if isinstance(sh.get("duration_s"), int))

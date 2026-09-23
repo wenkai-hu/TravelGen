@@ -1,0 +1,1642 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260922_214248_da609e",
+  "username": "sherlock",
+  "status": "video_ready",
+  "progress": 85,
+  "message": "全部 Segment 已生成，可合成成片",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "西湖十景",
+    "audience": "学生党",
+    "style": "青春活力",
+    "duration_s": 20,
+    "aspect_ratio": "16:9",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "视觉吸引",
+        "title": "荷叶开场，青春入画",
+        "content": "学生党第一视角冲进西湖：低角度贴近前景大片荷叶，粉白荷花与花苞入镜，蓝天白云做背景；前景虚化转清晰，字幕“西湖十景，出发！”，节奏轻快。",
+        "duration_s": 4,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "前景大片荷花荷叶",
+          "盛开的粉白色花朵",
+          "粉色花苞",
+          "蓝天与白色云朵"
+        ],
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ]
+      },
+      {
+        "section": "核心景观",
+        "title": "湖面横移，十景入框",
+        "content": "横移镜头扫过开阔蓝色湖面，沿岸垂柳与茂密林木、连绵山峦依次入画，远处多层飞檐古塔立在山前，湖面小船点缀；用横向延伸感带出西湖十景的开阔气质。",
+        "duration_s": 4,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "开阔的蓝色湖面",
+          "沿岸的茂密林木（含垂柳）",
+          "覆满深绿植被的连绵山峦",
+          "多层飞檐古塔",
+          "湖面上的小型船只"
+        ],
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ]
+      },
+      {
+        "section": "特色体验",
+        "title": "日落古亭，剪影出片",
+        "content": "日落时分切到临水双层飞檐古亭，平台上人群聚集，湖面泛金色反光，远处山际尖顶塔状建筑成剪影；低角度贴近荷叶前景虚化，背景古亭与湖面清晰，学生党拍剪影大片。",
+        "duration_s": 4,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "双层飞檐中式古亭",
+          "聚集在亭台平台上的人群",
+          "开阔的湖泊水面",
+          "日落时分天空与水面的金色光影效果",
+          "山峦上的尖顶塔状建筑轮廓",
+          "前景大片荷叶"
+        ],
+        "evidence_asset_ids": [
+          "ref_494a65661de40055"
+        ]
+      },
+      {
+        "section": "文化特色",
+        "title": "湖桥山楼阁，古意同框",
+        "content": "固定远景展示石拱桥横跨湖面，中式游船经过，背景茂密山林与山顶多层中式楼阁层次展开，前景荷花荷叶轻轻晃动；用湖、桥、山、楼阁同框表达西湖十景的古典底色。",
+        "duration_s": 4,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "石拱桥的单孔石砌结构与整体形态",
+          "中式游船",
+          "茂密山林",
+          "山顶多层中式楼阁的飞檐翘角、多层结构特征",
+          "前景荷花荷叶"
+        ],
+        "evidence_asset_ids": [
+          "ref_0f8857aa518936c4"
+        ]
+      },
+      {
+        "section": "行动召唤",
+        "title": "学生党打卡，青春版西湖十景",
+        "content": "回到前景荷花-中景湖面-远景山林古塔的层次，固定机位定格整体景观；字幕“西湖十景，青春版等你来拍”，号召学生党来杭州西湖打卡同款。",
+        "duration_s": 4,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "前景大片荷花荷叶的景观层次",
+          "开阔湖面的横向延伸感",
+          "背景覆满植被的连绵山峦轮廓",
+          "山峦前的多层飞檐古塔的整体造型与位置"
+        ],
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ]
+      }
+    ],
+    "plan_summary": "西湖十景"
+  },
+  "copywriting": {
+    "titles": [
+      "西湖十景，青春版出发！",
+      "20秒冲进西湖的夏天"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "冲进西湖的夏天——荷叶比人还高，荷花正开，“西湖十景，出发！”",
+        "duration_s": 4
+      },
+      {
+        "idx": 2,
+        "text": "一眼望去，湖面好开阔，垂柳、山林、古塔全在框里，小船划过，风都变慢了。",
+        "duration_s": 4
+      },
+      {
+        "idx": 3,
+        "text": "日落时分，古亭临水，湖面泛着金色，站上去，随手一拍就是剪影大片。",
+        "duration_s": 4
+      },
+      {
+        "idx": 4,
+        "text": "石拱桥横跨湖面，游船慢慢经过，山、桥、楼阁同框——这就是西湖的古典底色。",
+        "duration_s": 4
+      },
+      {
+        "idx": 5,
+        "text": "2011年列入世界遗产，还免费开放，西湖十景，青春版等你来拍！",
+        "duration_s": 4
+      }
+    ],
+    "hashtags": [
+      "#西湖十景",
+      "#青春版西湖",
+      "#杭州打卡"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "冲进西湖的夏天——荷叶比人还高，荷花正开，“西湖十景，出发！”",
+        "start_s": 0,
+        "end_s": 4
+      },
+      {
+        "line_id": 2,
+        "text": "一眼望去，湖面好开阔，垂柳、山林、古塔全在框里，小船划过，风都变慢了。",
+        "start_s": 4,
+        "end_s": 8
+      },
+      {
+        "line_id": 3,
+        "text": "日落时分，古亭临水，湖面泛着金色，站上去，随手一拍就是剪影大片。",
+        "start_s": 8,
+        "end_s": 12
+      },
+      {
+        "line_id": 4,
+        "text": "石拱桥横跨湖面，游船慢慢经过，山、桥、楼阁同框——这就是西湖的古典底色。",
+        "start_s": 12,
+        "end_s": 16
+      },
+      {
+        "line_id": 5,
+        "text": "2011年列入世界遗产，还免费开放，西湖十景，青春版等你来拍！",
+        "start_s": 16,
+        "end_s": 20
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "西湖十景·青春版打卡宣传片",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "西湖",
+        "time": "午后",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 8,
+            "narration": "冲进西湖的夏天——荷叶比人还高，荷花正开，“西湖十景，出发！”一眼望去，湖面好开阔，垂柳、山林、古塔全在框里，小船划过，风都变慢了。",
+            "camera": {
+              "type": "移动机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "前景大片盛开的粉白色荷花与鲜绿色圆形荷叶，中景开阔蓝色湖面，远景覆满植被的山峦与多层飞檐古塔",
+            "background": "沿岸茂密林木（含垂柳）成带分布，湖面零星小型船只，晴朗蓝天与少量白色云朵",
+            "place_id": "place_317fc6749411d659",
+            "reference_asset_ids": [
+              "ref_cfc6d53f5d130439"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "前景大片荷花荷叶的景观层次",
+              "开阔湖面的横向延伸感",
+              "湖岸茂密林木（含垂柳）的沿岸分布形态",
+              "背景覆满植被的连绵山峦轮廓",
+              "山峦前的多层飞檐古塔的整体造型与位置",
+              "前景荷花-中景湖面-远景山林古塔的空间层次结构"
+            ],
+            "allowed_changes": [
+              "荷花的花朵开合状态、花苞数量的细微变化",
+              "湖面水波的动态变化",
+              "天空云朵的形态与位置变化",
+              "湖面上船只的位置与数量变化",
+              "林木枝叶的轻微晃动"
+            ],
+            "prompt": "写实地面平视全景横移镜头：前景大片鲜绿色圆形荷叶与盛开粉白色荷花、粉色花苞从镜头近前滑过，中景开阔湛蓝色湖面横向延伸，对岸沿岸垂柳与茂密阔叶林带，远景覆满深绿植被的连绵山峦，山峦前矗立深灰近黑色的多层飞檐古塔、顶部带金色塔刹，湖面点缀零星小船，晴朗蓝天少量白云，夏日午后明亮通透的自然光，画面细腻清晰、层次分明，镜头缓慢横向平移，空间关系稳定",
+            "reference_roles": [
+              {
+                "asset_id": "ref_cfc6d53f5d130439",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "环绕古塔的环绕镜头",
+              "进入古塔内部的内景镜头",
+              "从湖面下方仰拍的水下视角镜头",
+              "飞越山峦顶部的高空俯瞰镜头",
+              "展现湖岸背面区域的镜头"
+            ],
+            "timeline_start_ms": 0,
+            "timeline_end_ms": 8000,
+            "segment_ids": [
+              "seg_01"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 8000
+          }
+        ],
+        "place_id": "place_317fc6749411d659"
+      },
+      {
+        "scene_id": 2,
+        "location": "西湖",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 2,
+            "duration_s": 6,
+            "narration": "日落时分，古亭临水，湖面泛着金色，站上去，随手一拍就是剪影大片。石拱桥横跨湖面，游船慢慢经过，山、桥",
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "临水双层飞檐中式古亭及其延伸入湖的平台与聚集人群，整体呈深暗剪影",
+            "background": "开阔湖面延伸至远方连绵山峦，山际线上方低空落日与云层，湖面泛金色反光，右侧山顶尖顶塔状建筑剪影，前景大片荷叶与少量花苞",
+            "place_id": "place_317fc6749411d659",
+            "reference_asset_ids": [
+              "ref_494a65661de40055"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "双层飞檐中式古亭的形态与临水位置",
+              "前景大片荷叶的荷塘景观",
+              "开阔湖面与远方山峦的层次结构",
+              "日落时分天空与水面的金色光影效果",
+              "山峦上的尖顶塔状建筑轮廓"
+            ],
+            "allowed_changes": [
+              "古亭平台上人群的数量、姿态和位置",
+              "湖面远处船只的数量和位置",
+              "天空云层的具体形态",
+              "荷叶的轻微晃动状态"
+            ],
+            "prompt": "写实地面平视全景固定镜头：画面左侧临水双层重檐攒尖顶中式古亭呈深暗剪影，飞檐翘角、顶部有宝顶，亭下临水平台聚集人群；湖面自前景荷叶延伸至远方山脚，水面泛着金色落日反光，低空太阳悬于山际线上方，天空布满云层，右远方山峦顶部细高尖顶塔状建筑呈剪影，前景大片荷叶与少量粉色花苞，黄昏暖金色调，空气通透，画面层次分明，机位稳定不动",
+            "reference_roles": [
+              {
+                "asset_id": "ref_494a65661de40055",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "环绕古亭的360度旋转镜头",
+              "飞向远方山峦尖顶建筑的长距离推进镜头",
+              "古亭内部细节的特写镜头",
+              "水下视角的镜头"
+            ],
+            "timeline_start_ms": 8000,
+            "timeline_end_ms": 14000,
+            "segment_ids": [
+              "seg_02"
+            ],
+            "segment_id": "seg_02",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 6000
+          }
+        ],
+        "place_id": "place_317fc6749411d659"
+      },
+      {
+        "scene_id": 3,
+        "location": "西湖",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 6,
+            "narration": "、楼阁同框——这就是西湖的古典底色。2011年列入世界遗产，还免费开放，西湖十景，青春版等你来拍！",
+            "camera": {
+              "type": "地面机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "浅黄褐色石块砌筑的单孔石拱桥横跨湖面，一艘红棕色木质中式游船缓缓经过",
+            "background": "桥后覆盖茂密绿植的山丘与山顶红棕色多层飞檐翘角中式楼阁，山林间小型中式建筑，前景荷花荷叶，晴朗蓝天",
+            "place_id": "place_317fc6749411d659",
+            "reference_asset_ids": [
+              "ref_0f8857aa518936c4"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "石拱桥的单孔石砌结构与整体形态",
+              "山顶多层中式楼阁的飞檐翘角、多层结构特征",
+              "前景荷花荷叶的景观元素",
+              "湖面与山林、古建的层次布局"
+            ],
+            "allowed_changes": [
+              "游船的位置、行驶方向",
+              "桥上行人的数量、行走状态",
+              "湖面水波的动态变化",
+              "天空云朵的形态与分布"
+            ],
+            "prompt": "写实地面平视全景缓慢推镜：前景虚化的荷花荷叶轻轻晃动，中景开阔湖面上一艘红棕色木质带遮阳顶棚的中式游船缓缓前行，中后景浅黄褐色石块砌筑的单孔石拱桥横跨水面、桥面设石质护栏并有行人，桥后覆盖茂密绿植的山丘，山顶红棕色多层飞檐翘角中式楼阁，山林间红墙深瓦与白墙深顶的小型中式建筑，晴朗蓝天，白天明亮自然的日光，画面清晰通透、空间层次分明，镜头平稳缓慢前移",
+            "reference_roles": [
+              {
+                "asset_id": "ref_0f8857aa518936c4",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "石拱桥背面视角的镜头",
+              "山顶楼阁内部的镜头",
+              "低空贴近湖面快速穿越桥洞的运动镜头",
+              "山林深处建筑的近景特写镜头"
+            ],
+            "timeline_start_ms": 14000,
+            "timeline_end_ms": 20000,
+            "segment_ids": [
+              "seg_03"
+            ],
+            "segment_id": "seg_03",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 6000
+          }
+        ],
+        "place_id": "place_317fc6749411d659"
+      }
+    ],
+    "storyboard_version": 4,
+    "duration_ms": 20000,
+    "segments": [
+      {
+        "segment_id": "seg_01",
+        "timeline_start_ms": 0,
+        "timeline_end_ms": 8000,
+        "duration_ms": 8000,
+        "shot_ids": [
+          1
+        ],
+        "narration_text": "冲进西湖的夏天——荷叶比人还高，荷花正开，“西湖十景，出发！”一眼望去，湖面好开阔，垂柳、山林、古塔全在框里，小船划过，风都变慢了。",
+        "reference_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_02",
+        "timeline_start_ms": 8000,
+        "timeline_end_ms": 14000,
+        "duration_ms": 6000,
+        "shot_ids": [
+          2
+        ],
+        "narration_text": "日落时分，古亭临水，湖面泛着金色，站上去，随手一拍就是剪影大片。石拱桥横跨湖面，游船慢慢经过，山、桥",
+        "reference_asset_ids": [
+          "ref_494a65661de40055"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_03",
+        "timeline_start_ms": 14000,
+        "timeline_end_ms": 20000,
+        "duration_ms": 6000,
+        "shot_ids": [
+          3
+        ],
+        "narration_text": "、楼阁同框——这就是西湖的古典底色。2011年列入世界遗产，还免费开放，西湖十景，青春版等你来拍！",
+        "reference_asset_ids": [
+          "ref_0f8857aa518936c4"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260922_214248_da609e_v1",
+  "plan_version": 1,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_eb7beb5aa87905ed",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275p2t5bee6KW/5rmW6aOO5pmvXzE3MjQzNDg2MDguNDc2MDIzNA%3D%3D%27/0.png",
+      "title": "🚣探索杭州西湖的绝美风光🌄",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4446043819304317679",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0fb9aca18eb3675f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM1NjAwODMwLjg2MDcwOTQ%3D%27/0.png",
+      "title": "杭州西湖全攻略:美景美食交通指南",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4416224780862387825",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_aac74507af89d5b2",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=2017135480,3935072200&fm=3074&app=3074&f=JPEG",
+      "title": "杭州西湖:江南明珠的四季风情",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5147528140700808667",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_670bd6bbe859ad90",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM2NzMzMTE0LjE1ODIyODQ%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2025-01-13T01%3A51%3A55Z%2F-1%2F%2Fe5f70b24839d22fd05e340ef78a7bdaf08d9b530d825327b4071514119f8c699",
+      "title": "杭州夏日西湖美景:避暑胜地与摄影天堂",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5048729040778321549",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_2d8945bdfe39ef00",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276KW/5rmW5pmv5Yy6XzE3MzAwNDY1MzMuNjE2MTQ2Mw%3D%3D%27/0.png",
+      "title": "春季打卡点:苏堤春晓 苏堤是苏东坡在杭州劝职",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4608205291833183408",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1fdcb05d62b9c659",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%276aOO5pmv5aaC55S755qE6buE5bGxLCDmuZbmsLTnoqfnu7/nmoTml6XmnIjmva3kvaDnmoQg5a625Lmh5piv5ZOq6YeMXzE3MzUyODU0MDIuMDE0NTMwNA%3D%3D%27/0.png",
+      "title": "🌊🌳 西湖,杭州的璀璨明珠,以其碧绿的湖水和如画的风景吸引着无",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5749590892465509419",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6201471ff5fd2288",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxNzM3NzExLjI2ODIyNjk%3D%27/0.png",
+      "title": "杭州西湖必打卡景点攻略,美景尽收眼底!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4210813545669650152",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b3581fc5e876d79a",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://q9.itc.cn/images01/20250218/ad29a044687f44c9a470ef5785d741b8.jpeg",
+      "title": "西湖:穿越千年的水墨画卷",
+      "source_page_url": "http://mt.sohu.com/a/860537814_122245578",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_bb87098e336bd637",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjhai/fa7b04fc8f6aae4b668d6a1f1c0518f1.jpg",
+      "title": "夏日来我的家乡玩一圈,杭州免费十大景区推荐 杭州,这座古典与现代",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4259693885865428473",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_12f89fe7da54f163",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pics0.baidu.com/feed/faf2b2119313b07e7e643adeb8980e3395dd8cef.jpeg@f_auto?token=c03ace22447253b7a0bab6df1d811293",
+      "title": "杭州西湖四大魅力:自然,文化,景观与世界遗产",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1846082116245340881&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_40a74c3cecd13b99",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276KW/5rmW6aOO5YWJ56eA5Li9LOWPr%2Becn%2BaYr%2BacieWxseeahuWbvueUu18xNzM1Mjc5Mzk0LjUzMDUxNw%3D%3D%27/0.png",
+      "title": "杭州西湖风景描述",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5655113367153562946",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_435a158a08304060",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://q7.itc.cn/q_70/images03/20250518/5998af620991432399cca11d02a77414.jpeg",
+      "title": "杭州西湖美景",
+      "source_page_url": "http://travel.sohu.com/a/896378349_121124733",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_90e5397cfa5e4a6c",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://am.zdmimg.com/202504/17/6800d933035fa7229.jpg_e1080.jpg",
+      "title": "杭州西湖人间天堂的璀璨明珠",
+      "source_page_url": "http://post.m.smzdm.com/p/a44pwqxl/",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3d96d5856d7501ce",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/news/7bad6c3921704dd021440a3be5c5bf21.png",
+      "title": "西湖:杭州璀璨明珠的四季美景与文化魅力",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1827425899476055287&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e3d084761b9a0c4f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM1ODYwOTk4LjYxMjQxNjU%3D%27/0.png",
+      "title": "西湖美景:湖光山色与清新的风 在杭州市区的核心地带,有一个被誉为\"",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4503021791805443085",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_663c7a3fb75063d1",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pic3.zhimg.com/100/v2-3fa16a354b2522a2804f9090f55dd870_r.jpg",
+      "title": "夕阳斜照 的想法: 西湖四季不同的美",
+      "source_page_url": "http://www.zhihu.com/pin/1771100992551178240",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3f5414f8c2c2bbca",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://dimg04.c-ctrip.com/images/1me1k12000pv3hmnzD163_R_640_10000_Q90.jpg?proc=source/tripcommunity",
+      "title": "超强攻略_玩转杭州西湖风景名胜区之行",
+      "source_page_url": "http://m.ctrip.com/webapp/you/tripshoot/paipai/detail/detail?articleId=229489128&isHideNavBar=YES&seo=0&twojumpwakeup=0&allianceId=1049189&sid=19855591",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_70ad89087db9d34f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://picx.zhimg.com/100/v2-325aabdb200e455cb5ae915e4f720f8d_r.jpg",
+      "title": "知乎用户1av1wl 的想法: 西湖的日落,是杭州最浪漫的风景.",
+      "source_page_url": "http://www.zhihu.com/pin/1877352578842497025",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7a39eace951cf4d5",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2MDM3NjE3LjkxNzE5MQ%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2025-01-05T00%3A40%3A19Z%2F-1%2F%2F070ebbbb3e7eacea4ffc89a014e8fd9a695751c76646f84b0dc0a34de69cc208",
+      "title": "西湖美景,不可错过的杭州之旅!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4789227018158700675",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a6dcd0ddd4e4b0aa",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/25a604ce4d89d7366818ef1565b4f287.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "杭州西湖,人间天堂湖山相融十景流转四季如画",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1867753383410673254&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_cea9459b4a3e6fd6",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://p4.itc.cn/images01/20230228/90caa137bc5e4157aa3c1ddeff8c0d4b.jpeg",
+      "title": "春日旅行图鉴丨杭州",
+      "source_page_url": "http://mt.sohu.com/a/647599178_121016965",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ace6fe07f2e85f52",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://vd3.bdstatic.com/mda-setigu6biw2zh67r/1779973400/mda-setigu6biw2zh67r.jpg?for=bg",
+      "title": "杭州市西湖区的雷峰塔景区,游山玩水看西湖好风景",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=8909898572175240297",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_11d5a96e74428c5f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://ss2.meipian.me/users/9831115/9f2c1457b4c94e31a28e8e127408f866.jpg?meipian-raw/bucket/ivwen/key/dXNlcnMvOTgzMTExNS85ZjJjMTQ1N2I0Yzk0ZTMxYTI4ZThlMTI3NDA4Zjg2Ni5qcGc=/sign/6cdb9c19c36d14569c9522bc3e178172.jpg",
+      "title": "欲把西湖比西子,淡妆浓抹总相宜",
+      "source_page_url": "http://www.meipian.cn/1ifvb6cy",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6e0e8b5a2ac5d0e3",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://n.sinaimg.cn/spider20260504/192/w1024h768/20260504/5320-00252438659ed232599320cfe54eb536.jpg",
+      "title": "2026年5月1日,浙江杭州西湖风景区游客络绎不绝.周方玲摄",
+      "source_page_url": "http://finance.sina.com.cn/wm/2026-05-04/doc-inhwsuhm3981221.shtml",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_829d72d3d580bd39",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://p3-sign.toutiaoimg.com/tos-cn-i-ezhpy3drpa/7b73d2e502f34a25bcfca12b8f80f904~tplv-obj:800:1358.image?_iz=97245&bid=15&from=post&gid=1827277082301760&lk3s=06827d14&x-expires=1769644800&x-signature=9Ce9OQWbgean%2BjbOS5PN%2FCGRLOU%3D",
+      "title": "\"杭州西湖之美,美在湖光山色,美在人文底蕴,它",
+      "source_page_url": "http://web.toutiao.com/w/1827277082301760/",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_8c3c740364082283",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/d50735fae6cd7b899e51099fca6f55a7d933c895a0de",
+      "title": "杭州市杭州西湖风景区",
+      "source_page_url": "http://baike.baidu.com/item/%E6%9D%AD%E5%B7%9E%E5%B8%82%E6%9D%AD%E5%B7%9E%E8%A5%BF%E6%B9%96%E9%A3%8E%E6%99%AF%E5%8C%BA/65000333",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9a8258b668536bdf",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pics6.baidu.com/feed/562c11dfa9ec8a1388aece9cc620f39fa1ecc0ce.jpeg@f_auto?token=6869eeb7430d2e3b41c36c49906b37f4",
+      "title": "2011年6月24日,\"杭州西湖文化景观\"成功列入世界遗产名录,成为世界",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1841777389909823105&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e702363142c23fa9",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://k.sinaimg.cn/n/sinakd20260321s/498/w1242h1656/20260321/3ac8-02ed5dc02d74ddd3462bd5ad8c063a08.jpg/w700d1q75cms.jpg?by=cms_fixed_width",
+      "title": "收好这份杭州西湖游玩攻略,遇见诗画江南!",
+      "source_page_url": "http://k.sina.com.cn/article_7879922979_1d5ae152301901pq0q.html",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3fbd087f7a2e162c",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pic.app.hualongxiang.com/forum/20241107160111front2_0_3375278_nm8aG39aMc83YCqHyfV86MkllRWe.jpg?watermark/3/text/QOWQiemqjzBnMg==/fontsize/400/dissolve/100/gravity/SouthEast/fill/I2YzZjNmYQ==/font/5b6u6L2v6ZuF6buR/dx/10/dy/28/image/aHR0cHM6Ly9waWMuYXBwLmh1YWxvbmd4aWFuZy5jb20vd2F0ZXJfaW1nXzIwMjEwMzE2XzU1My5qcGc=/dissolve/100/gravity/SouthEast/dx/118/dy/10",
+      "title": "杭州西湖美景",
+      "source_page_url": "http://www.hualongxiang.com/read.php?tid=16326726",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_abfcf88b1b287ce5",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pic.app.hualongxiang.com/forum/20241107160108front2_0_3375278_nkQLml_QZ8sldBjeRNEMs7m5uW5-.jpg?watermark/3/text/QOWQiemqjzBnMg==/fontsize/400/dissolve/100/gravity/SouthEast/fill/I2YzZjNmYQ==/font/5b6u6L2v6ZuF6buR/dx/10/dy/28/image/aHR0cHM6Ly9waWMuYXBwLmh1YWxvbmd4aWFuZy5jb20vd2F0ZXJfaW1nXzIwMjEwMzE2XzU1My5qcGc=/dissolve/100/gravity/SouthEast/dx/118/dy/10",
+      "title": "杭州西湖美景",
+      "source_page_url": "http://www.hualongxiang.com/read.php?tid=16326726",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_cfc6d53f5d130439",
+      "candidate_id": "ref_eb7beb5aa87905ed",
+      "place_id": "place_317fc6749411d659",
+      "place_name": "西湖",
+      "city": "杭州",
+      "original_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275p2t5bee6KW/5rmW6aOO5pmvXzE3MjQzNDg2MDguNDc2MDIzNA%3D%3D%27/0.png",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4446043819304317679",
+      "title": "🚣探索杭州西湖的绝美风光🌄",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260922_214248_da609e/ref_cfc6d53f5d130439.png",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260922_214248_da609e\\ref_cfc6d53f5d130439.png",
+      "sha256": "cfc6d53f5d130439a818bdfff986c78ae2f4cc373e258a27c1151c07ea206564",
+      "width": 1080,
+      "height": 1410,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 21.952,
+        "usage": {
+          "completion_tokens": 839,
+          "prompt_tokens": 1712,
+          "total_tokens": 2551,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "前景为大片荷花荷叶，中景是开阔湖面与沿岸林木，远景是覆满植被的山峦，山间矗立一座多层古塔，天空有淡云，整体是晴日的山水园林景观。",
+          "visible_elements": [
+            "荷花（含盛开的粉白色花朵、粉色花苞、莲蓬）",
+            "荷叶（大片鲜绿色圆形荷叶）",
+            "开阔的蓝色湖面",
+            "沿岸的茂密林木（含垂柳、阔叶树）",
+            "覆满深绿植被的连绵山峦",
+            "多层飞檐古塔（顶部有金色塔刹）",
+            "蓝天与白色云朵",
+            "湖面上的小型船只"
+          ],
+          "spatial_layout": [
+            "荷花荷叶位于画面最前景，占据画面下半部分",
+            "湖面在荷花后方，横向延伸占据画面中下部",
+            "沿岸林木带在湖对岸，沿湖岸分布",
+            "连绵山峦在林木后方，占据画面中上部背景",
+            "古塔位于山峦前方、林木带后方的中轴位置",
+            "天空在山峦上方，占据画面最上部"
+          ],
+          "architecture_and_materials": [
+            "古塔为多层楼阁式塔，具有飞檐翘角的中式传统建筑形态",
+            "古塔塔身呈深灰近黑色，每层设有窗格结构",
+            "古塔顶部为金色塔刹",
+            "沿岸林木植被以深浅不同的绿色为主，垂柳枝条下垂"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "视线朝向湖对岸的山峦与古塔方向",
+              "前景荷花处于拍摄者近前，背景山峦古塔在远方"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足，应为晴朗的日间时段",
+            "weather": "晴天，有少量白云，天空湛蓝",
+            "season": "夏季，荷花盛开符合夏季特征"
+          },
+          "must_keep_candidates": [
+            "前景大片荷花荷叶的景观层次",
+            "开阔湖面的横向延伸感",
+            "湖岸茂密林木（含垂柳）的沿岸分布形态",
+            "背景覆满植被的连绵山峦轮廓",
+            "山峦前的多层飞檐古塔的整体造型与位置",
+            "前景荷花-中景湖面-远景山林古塔的空间层次结构"
+          ],
+          "allowed_changes": [
+            "荷花的花朵开合状态、花苞数量的细微变化",
+            "湖面水波的动态变化",
+            "天空云朵的形态与位置变化",
+            "湖面上船只的位置与数量变化",
+            "林木枝叶的轻微晃动"
+          ],
+          "suitable_shots": [
+            "从前景荷花向远方古塔缓慢推进的推镜头",
+            "横向扫过湖面、沿岸林木与山峦古塔的横移镜头",
+            "固定机位展现整体景观的静止长镜头",
+            "以荷花为前景虚化、聚焦远方古塔的景深变化镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "环绕古塔的环绕镜头",
+            "进入古塔内部的内景镜头",
+            "从湖面下方仰拍的水下视角镜头",
+            "飞越山峦顶部的高空俯瞰镜头",
+            "展现湖岸背面区域的镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体地点名称",
+            "古塔的具体名称与建造年代",
+            "湖泊的具体名称与精确面积",
+            "山峦的具体名称与海拔"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_494a65661de40055",
+      "candidate_id": "ref_70ad89087db9d34f",
+      "place_id": "place_317fc6749411d659",
+      "place_name": "西湖",
+      "city": "杭州",
+      "original_url": "http://picx.zhimg.com/100/v2-325aabdb200e455cb5ae915e4f720f8d_r.jpg",
+      "source_page_url": "http://www.zhihu.com/pin/1877352578842497025",
+      "title": "知乎用户1av1wl 的想法: 西湖的日落,是杭州最浪漫的风景.",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260922_214248_da609e/ref_494a65661de40055.png",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260922_214248_da609e\\ref_494a65661de40055.png",
+      "sha256": "494a65661de4005583cbb717ff4b64c6b87fce0e6f2e369333bb2c2370157377",
+      "width": 2560,
+      "height": 1920,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 21.534,
+        "usage": {
+          "completion_tokens": 805,
+          "prompt_tokens": 1712,
+          "total_tokens": 2517,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "日落时分的湖滨景观，前景是大片荷叶，湖面延伸向远方山峦，左侧临水古亭聚集着人群，天空布满云层，夕阳在山际线上方，水面映着金色日光。",
+          "visible_elements": [
+            "双层飞檐中式古亭",
+            "聚集在亭台平台上的人群",
+            "开阔的湖泊水面",
+            "前景大片荷叶及少量荷花花苞",
+            "远方连绵的山峦",
+            "山峦上的尖顶塔状建筑",
+            "天空中的云层",
+            "低空的太阳",
+            "湖面远处的小型船只"
+          ],
+          "spatial_layout": [
+            "荷叶位于画面前景下部，占据画面下方近景区域",
+            "古亭位于画面左侧临水处，延伸入湖面",
+            "人群集中在古亭下方的临水平台上",
+            "湖面占据画面中下部的大部分区域，从前景荷叶处延伸至远方山脚下",
+            "山峦位于画面中后部的湖对岸，呈横向延伸",
+            "太阳位于画面中部偏左的山际线上方",
+            "尖顶塔状建筑位于远方山峦的右侧顶部",
+            "云层布满画面上部的天空"
+          ],
+          "architecture_and_materials": [
+            "古亭为双层重檐攒尖顶，飞檐翘角，整体呈深暗的剪影色调，顶部有宝顶装饰",
+            "古亭由多根立柱支撑，搭建在临水的平台上",
+            "远方山峦上的尖顶建筑为细高塔状，呈深色剪影"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "太阳位于远方山际线上方，湖面有太阳的金色反光，朝向日落方向"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "日落时分（傍晚）",
+            "weather": "多云",
+            "season": "夏季（荷塘有茂盛荷叶，推测为夏季）"
+          },
+          "must_keep_candidates": [
+            "双层飞檐中式古亭的形态与临水位置",
+            "前景大片荷叶的荷塘景观",
+            "开阔湖面与远方山峦的层次结构",
+            "日落时分天空与水面的金色光影效果",
+            "山峦上的尖顶塔状建筑轮廓"
+          ],
+          "allowed_changes": [
+            "古亭平台上人群的数量、姿态和位置",
+            "湖面远处船只的数量和位置",
+            "天空云层的具体形态",
+            "荷叶的轻微晃动状态"
+          ],
+          "suitable_shots": [
+            "固定机位的日落延时镜头",
+            "从前景荷叶缓慢推向古亭与湖面的推镜头",
+            "横向平移展示湖滨全景的移镜头",
+            "低角度贴近荷叶的前景虚化、背景清晰的意境镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "环绕古亭的360度旋转镜头",
+            "飞向远方山峦尖顶建筑的长距离推进镜头",
+            "古亭内部细节的特写镜头",
+            "水下视角的镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体湖泊与地点名称",
+            "古亭的具体名称与建造年代",
+            "远方尖顶塔的具体名称与属性",
+            "山峦的具体名称"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_0f8857aa518936c4",
+      "candidate_id": "ref_0fb9aca18eb3675f",
+      "place_id": "place_317fc6749411d659",
+      "place_name": "西湖",
+      "city": "杭州",
+      "original_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM1NjAwODMwLjg2MDcwOTQ%3D%27/0.png",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4416224780862387825",
+      "title": "杭州西湖全攻略:美景美食交通指南",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260922_214248_da609e/ref_0f8857aa518936c4.png",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\references\\p_20260922_214248_da609e\\ref_0f8857aa518936c4.png",
+      "sha256": "0f8857aa518936c461bdfaa3c2ab022f7620777ceaf22fe4039c90c84156b4f8",
+      "width": 1137,
+      "height": 1676,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 16.984,
+        "usage": {
+          "completion_tokens": 603,
+          "prompt_tokens": 1688,
+          "total_tokens": 2291,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面前景为虚化的荷花荷叶，中景是开阔湖面与一艘游船，中后段有石拱桥，背景是覆盖茂密绿植的山丘，山丘上分布着中式古建筑，天空晴朗。",
+          "visible_elements": [
+            "荷花荷叶",
+            "开阔湖面",
+            "中式游船",
+            "石拱桥",
+            "行人",
+            "茂密山林",
+            "多层中式楼阁",
+            "小型中式建筑",
+            "晴朗蓝天"
+          ],
+          "spatial_layout": [
+            "荷花荷叶位于画面前景，处于最靠近镜头的位置",
+            "湖面占据画面中下部区域，游船在湖面偏右侧",
+            "石拱桥横亘在湖面后方，桥身横跨水面",
+            "石拱桥后方是覆盖绿植的山丘，山丘上分布着中式建筑",
+            "蓝天占据画面最上方区域"
+          ],
+          "architecture_and_materials": [
+            "石拱桥由浅黄褐色石块砌筑，桥身有单孔拱形桥洞，桥面设有石质护栏",
+            "山顶多层楼阁为传统中式风格，飞檐翘角，主体呈红棕色，屋顶为深黑色，有多层结构",
+            "山林间的小型中式建筑多为红墙配深色屋顶，部分建筑为白墙样式",
+            "游船为木质结构，整体呈红棕色，带有遮阳顶棚"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "以石拱桥和湖面为参照，镜头朝向对岸山林方向"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天",
+            "weather": "晴朗",
+            "season": "夏季"
+          },
+          "must_keep_candidates": [
+            "石拱桥的单孔石砌结构与整体形态",
+            "山顶多层中式楼阁的飞檐翘角、多层结构特征",
+            "前景荷花荷叶的景观元素",
+            "湖面与山林、古建的层次布局"
+          ],
+          "allowed_changes": [
+            "游船的位置、行驶方向",
+            "桥上行人的数量、行走状态",
+            "湖面水波的动态变化",
+            "天空云朵的形态与分布"
+          ],
+          "suitable_shots": [
+            "固定机位远景展示湖、桥、山、古建的整体景观",
+            "缓慢推镜聚焦山顶楼阁",
+            "横移镜头展现湖面与沿岸景观",
+            "前景荷花虚化的远景风光镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "石拱桥背面视角的镜头",
+            "山顶楼阁内部的镜头",
+            "低空贴近湖面快速穿越桥洞的运动镜头",
+            "山林深处建筑的近景特写镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "无法确认具体地点名称",
+            "无法确认各古建筑的具体名称与建造年代",
+            "无法确认石拱桥的具体名称与长度参数"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_317fc6749411d659",
+    "place_name": "西湖",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_cfc6d53f5d130439",
+      "ref_494a65661de40055",
+      "ref_0f8857aa518936c4"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "荷花（含盛开的粉白色花朵、粉色花苞、莲蓬）",
+      "荷叶（大片鲜绿色圆形荷叶）",
+      "开阔的蓝色湖面",
+      "沿岸的茂密林木（含垂柳、阔叶树）",
+      "覆满深绿植被的连绵山峦",
+      "多层飞檐古塔（顶部有金色塔刹）",
+      "蓝天与白色云朵",
+      "湖面上的小型船只",
+      "双层飞檐中式古亭",
+      "聚集在亭台平台上的人群",
+      "开阔的湖泊水面",
+      "前景大片荷叶及少量荷花花苞",
+      "远方连绵的山峦",
+      "山峦上的尖顶塔状建筑",
+      "天空中的云层",
+      "低空的太阳",
+      "湖面远处的小型船只",
+      "荷花荷叶",
+      "开阔湖面",
+      "中式游船",
+      "石拱桥",
+      "行人",
+      "茂密山林",
+      "多层中式楼阁",
+      "小型中式建筑",
+      "晴朗蓝天"
+    ],
+    "stable_features": [
+      {
+        "text": "前景大片荷花荷叶的景观层次",
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "开阔湖面的横向延伸感",
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "湖岸茂密林木（含垂柳）的沿岸分布形态",
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "背景覆满植被的连绵山峦轮廓",
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "山峦前的多层飞檐古塔的整体造型与位置",
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "前景荷花-中景湖面-远景山林古塔的空间层次结构",
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "双层飞檐中式古亭的形态与临水位置",
+        "evidence_asset_ids": [
+          "ref_494a65661de40055"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "前景大片荷叶的荷塘景观",
+        "evidence_asset_ids": [
+          "ref_494a65661de40055"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "开阔湖面与远方山峦的层次结构",
+        "evidence_asset_ids": [
+          "ref_494a65661de40055"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "日落时分天空与水面的金色光影效果",
+        "evidence_asset_ids": [
+          "ref_494a65661de40055"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "山峦上的尖顶塔状建筑轮廓",
+        "evidence_asset_ids": [
+          "ref_494a65661de40055"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "石拱桥的单孔石砌结构与整体形态",
+        "evidence_asset_ids": [
+          "ref_0f8857aa518936c4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "山顶多层中式楼阁的飞檐翘角、多层结构特征",
+        "evidence_asset_ids": [
+          "ref_0f8857aa518936c4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "前景荷花荷叶的景观元素",
+        "evidence_asset_ids": [
+          "ref_0f8857aa518936c4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "湖面与山林、古建的层次布局",
+        "evidence_asset_ids": [
+          "ref_0f8857aa518936c4"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "前景大片荷花荷叶的景观层次",
+      "开阔湖面的横向延伸感",
+      "湖岸茂密林木（含垂柳）的沿岸分布形态",
+      "背景覆满植被的连绵山峦轮廓",
+      "山峦前的多层飞檐古塔的整体造型与位置",
+      "前景荷花-中景湖面-远景山林古塔的空间层次结构",
+      "双层飞檐中式古亭的形态与临水位置",
+      "前景大片荷叶的荷塘景观",
+      "开阔湖面与远方山峦的层次结构",
+      "日落时分天空与水面的金色光影效果",
+      "山峦上的尖顶塔状建筑轮廓",
+      "石拱桥的单孔石砌结构与整体形态",
+      "山顶多层中式楼阁的飞檐翘角、多层结构特征",
+      "前景荷花荷叶的景观元素",
+      "湖面与山林、古建的层次布局"
+    ],
+    "allowed_changes": [
+      "荷花的花朵开合状态、花苞数量的细微变化",
+      "湖面水波的动态变化",
+      "天空云朵的形态与位置变化",
+      "湖面上船只的位置与数量变化",
+      "林木枝叶的轻微晃动",
+      "古亭平台上人群的数量、姿态和位置",
+      "湖面远处船只的数量和位置",
+      "天空云层的具体形态",
+      "荷叶的轻微晃动状态",
+      "游船的位置、行驶方向",
+      "桥上行人的数量、行走状态",
+      "天空云朵的形态与分布"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "具体地点名称",
+      "古塔的具体名称与建造年代",
+      "湖泊的具体名称与精确面积",
+      "山峦的具体名称与海拔",
+      "具体湖泊与地点名称",
+      "古亭的具体名称与建造年代",
+      "远方尖顶塔的具体名称与属性",
+      "山峦的具体名称",
+      "无法确认具体地点名称",
+      "无法确认各古建筑的具体名称与建造年代",
+      "无法确认石拱桥的具体名称与长度参数"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_cfc6d53f5d130439",
+        "summary": "前景为大片荷花荷叶，中景是开阔湖面与沿岸林木，远景是覆满植被的山峦，山间矗立一座多层古塔，天空有淡云，整体是晴日的山水园林景观。",
+        "visible_elements": [
+          "荷花（含盛开的粉白色花朵、粉色花苞、莲蓬）",
+          "荷叶（大片鲜绿色圆形荷叶）",
+          "开阔的蓝色湖面",
+          "沿岸的茂密林木（含垂柳、阔叶树）",
+          "覆满深绿植被的连绵山峦",
+          "多层飞檐古塔（顶部有金色塔刹）",
+          "蓝天与白色云朵",
+          "湖面上的小型船只"
+        ],
+        "spatial_layout": [
+          "荷花荷叶位于画面最前景，占据画面下半部分",
+          "湖面在荷花后方，横向延伸占据画面中下部",
+          "沿岸林木带在湖对岸，沿湖岸分布",
+          "连绵山峦在林木后方，占据画面中上部背景",
+          "古塔位于山峦前方、林木带后方的中轴位置",
+          "天空在山峦上方，占据画面最上部"
+        ],
+        "architecture_and_materials": [
+          "古塔为多层楼阁式塔，具有飞檐翘角的中式传统建筑形态",
+          "古塔塔身呈深灰近黑色，每层设有窗格结构",
+          "古塔顶部为金色塔刹",
+          "沿岸林木植被以深浅不同的绿色为主，垂柳枝条下垂"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "视线朝向湖对岸的山峦与古塔方向",
+            "前景荷花处于拍摄者近前，背景山峦古塔在远方"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足，应为晴朗的日间时段",
+          "weather": "晴天，有少量白云，天空湛蓝",
+          "season": "夏季，荷花盛开符合夏季特征"
+        },
+        "must_keep_candidates": [
+          "前景大片荷花荷叶的景观层次",
+          "开阔湖面的横向延伸感",
+          "湖岸茂密林木（含垂柳）的沿岸分布形态",
+          "背景覆满植被的连绵山峦轮廓",
+          "山峦前的多层飞檐古塔的整体造型与位置",
+          "前景荷花-中景湖面-远景山林古塔的空间层次结构"
+        ],
+        "allowed_changes": [
+          "荷花的花朵开合状态、花苞数量的细微变化",
+          "湖面水波的动态变化",
+          "天空云朵的形态与位置变化",
+          "湖面上船只的位置与数量变化",
+          "林木枝叶的轻微晃动"
+        ],
+        "suitable_shots": [
+          "从前景荷花向远方古塔缓慢推进的推镜头",
+          "横向扫过湖面、沿岸林木与山峦古塔的横移镜头",
+          "固定机位展现整体景观的静止长镜头",
+          "以荷花为前景虚化、聚焦远方古塔的景深变化镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "环绕古塔的环绕镜头",
+          "进入古塔内部的内景镜头",
+          "从湖面下方仰拍的水下视角镜头",
+          "飞越山峦顶部的高空俯瞰镜头",
+          "展现湖岸背面区域的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_494a65661de40055",
+        "summary": "日落时分的湖滨景观，前景是大片荷叶，湖面延伸向远方山峦，左侧临水古亭聚集着人群，天空布满云层，夕阳在山际线上方，水面映着金色日光。",
+        "visible_elements": [
+          "双层飞檐中式古亭",
+          "聚集在亭台平台上的人群",
+          "开阔的湖泊水面",
+          "前景大片荷叶及少量荷花花苞",
+          "远方连绵的山峦",
+          "山峦上的尖顶塔状建筑",
+          "天空中的云层",
+          "低空的太阳",
+          "湖面远处的小型船只"
+        ],
+        "spatial_layout": [
+          "荷叶位于画面前景下部，占据画面下方近景区域",
+          "古亭位于画面左侧临水处，延伸入湖面",
+          "人群集中在古亭下方的临水平台上",
+          "湖面占据画面中下部的大部分区域，从前景荷叶处延伸至远方山脚下",
+          "山峦位于画面中后部的湖对岸，呈横向延伸",
+          "太阳位于画面中部偏左的山际线上方",
+          "尖顶塔状建筑位于远方山峦的右侧顶部",
+          "云层布满画面上部的天空"
+        ],
+        "architecture_and_materials": [
+          "古亭为双层重檐攒尖顶，飞檐翘角，整体呈深暗的剪影色调，顶部有宝顶装饰",
+          "古亭由多根立柱支撑，搭建在临水的平台上",
+          "远方山峦上的尖顶建筑为细高塔状，呈深色剪影"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "太阳位于远方山际线上方，湖面有太阳的金色反光，朝向日落方向"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "日落时分（傍晚）",
+          "weather": "多云",
+          "season": "夏季（荷塘有茂盛荷叶，推测为夏季）"
+        },
+        "must_keep_candidates": [
+          "双层飞檐中式古亭的形态与临水位置",
+          "前景大片荷叶的荷塘景观",
+          "开阔湖面与远方山峦的层次结构",
+          "日落时分天空与水面的金色光影效果",
+          "山峦上的尖顶塔状建筑轮廓"
+        ],
+        "allowed_changes": [
+          "古亭平台上人群的数量、姿态和位置",
+          "湖面远处船只的数量和位置",
+          "天空云层的具体形态",
+          "荷叶的轻微晃动状态"
+        ],
+        "suitable_shots": [
+          "固定机位的日落延时镜头",
+          "从前景荷叶缓慢推向古亭与湖面的推镜头",
+          "横向平移展示湖滨全景的移镜头",
+          "低角度贴近荷叶的前景虚化、背景清晰的意境镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "环绕古亭的360度旋转镜头",
+          "飞向远方山峦尖顶建筑的长距离推进镜头",
+          "古亭内部细节的特写镜头",
+          "水下视角的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_0f8857aa518936c4",
+        "summary": "画面前景为虚化的荷花荷叶，中景是开阔湖面与一艘游船，中后段有石拱桥，背景是覆盖茂密绿植的山丘，山丘上分布着中式古建筑，天空晴朗。",
+        "visible_elements": [
+          "荷花荷叶",
+          "开阔湖面",
+          "中式游船",
+          "石拱桥",
+          "行人",
+          "茂密山林",
+          "多层中式楼阁",
+          "小型中式建筑",
+          "晴朗蓝天"
+        ],
+        "spatial_layout": [
+          "荷花荷叶位于画面前景，处于最靠近镜头的位置",
+          "湖面占据画面中下部区域，游船在湖面偏右侧",
+          "石拱桥横亘在湖面后方，桥身横跨水面",
+          "石拱桥后方是覆盖绿植的山丘，山丘上分布着中式建筑",
+          "蓝天占据画面最上方区域"
+        ],
+        "architecture_and_materials": [
+          "石拱桥由浅黄褐色石块砌筑，桥身有单孔拱形桥洞，桥面设有石质护栏",
+          "山顶多层楼阁为传统中式风格，飞檐翘角，主体呈红棕色，屋顶为深黑色，有多层结构",
+          "山林间的小型中式建筑多为红墙配深色屋顶，部分建筑为白墙样式",
+          "游船为木质结构，整体呈红棕色，带有遮阳顶棚"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "以石拱桥和湖面为参照，镜头朝向对岸山林方向"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天",
+          "weather": "晴朗",
+          "season": "夏季"
+        },
+        "must_keep_candidates": [
+          "石拱桥的单孔石砌结构与整体形态",
+          "山顶多层中式楼阁的飞檐翘角、多层结构特征",
+          "前景荷花荷叶的景观元素",
+          "湖面与山林、古建的层次布局"
+        ],
+        "allowed_changes": [
+          "游船的位置、行驶方向",
+          "桥上行人的数量、行走状态",
+          "湖面水波的动态变化",
+          "天空云朵的形态与分布"
+        ],
+        "suitable_shots": [
+          "固定机位远景展示湖、桥、山、古建的整体景观",
+          "缓慢推镜聚焦山顶楼阁",
+          "横移镜头展现湖面与沿岸景观",
+          "前景荷花虚化的远景风光镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "石拱桥背面视角的镜头",
+          "山顶楼阁内部的镜头",
+          "低空贴近湖面快速穿越桥洞的运动镜头",
+          "山林深处建筑的近景特写镜头"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_cfc6d53f5d130439",
+        "name": "西湖",
+        "url": "/assets/references/p_20260922_214248_da609e/ref_cfc6d53f5d130439.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4446043819304317679",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_494a65661de40055",
+        "name": "西湖",
+        "url": "/assets/references/p_20260922_214248_da609e/ref_494a65661de40055.png",
+        "source_page_url": "http://www.zhihu.com/pin/1877352578842497025",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_0f8857aa518936c4",
+        "name": "西湖",
+        "url": "/assets/references/p_20260922_214248_da609e/ref_0f8857aa518936c4.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4416224780862387825",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "selected",
+    "version": 1,
+    "source": "preset",
+    "voice_id": "voice_01_female_fresh",
+    "name": "清新探索女声",
+    "description": "年轻清亮女高音、音质纤细通透",
+    "reference_path": "D:\\code\\TravelGen-main\\assets\\media\\voices\\01_清新探索_女声.wav",
+    "preview_url": "/assets/media/voices/01_清新探索_女声.wav?v=31052a06d831",
+    "reference_sha256": "31052a06d83162dd4c599b89adcc6fea4f2c07e155ef992365700da0ffe90d7d"
+  },
+  "music": {
+    "status": "selected",
+    "version": 1,
+    "recommendation_status": "none",
+    "recommendation": null,
+    "warning": null,
+    "selected": {
+      "bgm_id": "bgm_04",
+      "scene": "景区推荐",
+      "scene_type": "景区推荐",
+      "title": "Serene View",
+      "artist": "Arulo",
+      "duration": "01:54",
+      "description": "舒缓、开阔、氛围感；适合湖泊、水乡、山林和慢镜头",
+      "preview_url": "/assets/media/bgm/02_scenic_recommendation/01_Serene_View__Arulo.mp3",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\media\\bgm\\02_scenic_recommendation\\01_Serene_View__Arulo.mp3",
+      "source_page": "https://mixkit.co/free-stock-music/tag/travel/",
+      "license": "Mixkit Stock Music Free License"
+    }
+  },
+  "voice_tasks": [],
+  "segment_tasks": [
+    "st_20260922_215217_26b117",
+    "st_20260922_215217_c2bf0f",
+    "st_20260922_215219_4c98ff"
+  ],
+  "render_tasks": [],
+  "render": {
+    "status": "none",
+    "version": 0
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "16:9"
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-22T13:42:48.249666+00:00",
+  "updated_at": "2026-09-22T13:56:45.510950+00:00",
+  "copywriting_text": "【0-4s】冲进西湖的夏天——荷叶比人还高，荷花正开，“西湖十景，出发！”\n【4-8s】一眼望去，湖面好开阔，垂柳、山林、古塔全在框里，小船划过，风都变慢了。\n【8-12s】日落时分，古亭临水，湖面泛着金色，站上去，随手一拍就是剪影大片。\n【12-16s】石拱桥横跨湖面，游船慢慢经过，山、桥、楼阁同框——这就是西湖的古典底色。\n【16-20s】2011年列入世界遗产，还免费开放，西湖十景，青春版等你来拍！",
+  "segment_results": {
+    "seg_01": {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260922_214248_da609e/seg_01/st_20260922_215217_26b117_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179008514540400000000000000000000ffffac1906319ffc63.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260922%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260922T135529Z&X-Tos-Expires=86400&X-Tos-Signature=d6e612fd7be9265068dc058920a175c6e4057bfda24dd4bfaebc2167254c80a3&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_214248_da609e\\seg_01\\st_20260922_215217_26b117_raw.mp4",
+      "normalized_av_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_214248_da609e\\seg_01\\st_20260922_215217_26b117_normalized_av.mp4",
+      "native_audio_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_214248_da609e\\seg_01\\st_20260922_215217_26b117_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 8.064,
+        "expected_duration_seconds": 8.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.004,
+        "tail_activity_warning": true,
+        "speech_level_p90_dbfs": -10.39,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "31052a06d83162dd4c599b89adcc6fea4f2c07e155ef992365700da0ffe90d7d",
+      "voice_version": 1,
+      "narration_hash": "de22a5da6d39763a585d2f6e2f2b2b7481a6e0a57e745945d2509237d9ad30ae",
+      "prompt_hash": "75111319b0aca446adc986bb863c04036c5b34955d88a094d66a06dcfd672eb9",
+      "reference_asset_ids": [
+        "ref_cfc6d53f5d130439"
+      ],
+      "task_id": "st_20260922_215217_26b117"
+    },
+    "seg_02": {
+      "segment_id": "seg_02",
+      "shot_ids": [
+        2
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260922_214248_da609e/seg_02/st_20260922_215217_c2bf0f_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179008514516900000000000000000000ffffac18056a21b942.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260922%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260922T135522Z&X-Tos-Expires=86400&X-Tos-Signature=dce91a30f701c9ff08a2079c37f139f40ef222d675d5d8ec7fa27995eccbaac9&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_214248_da609e\\seg_02\\st_20260922_215217_c2bf0f_raw.mp4",
+      "normalized_av_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_214248_da609e\\seg_02\\st_20260922_215217_c2bf0f_normalized_av.mp4",
+      "native_audio_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_214248_da609e\\seg_02\\st_20260922_215217_c2bf0f_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 6.08,
+        "expected_duration_seconds": 6.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.04,
+        "tail_activity_warning": true,
+        "speech_level_p90_dbfs": -7.72,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "31052a06d83162dd4c599b89adcc6fea4f2c07e155ef992365700da0ffe90d7d",
+      "voice_version": 1,
+      "narration_hash": "b645424b6df5a4781442f9988fa88f302c87c5c71c3a7fc2b78504a1cef4fa44",
+      "prompt_hash": "b826dfc77a99aed7c33f9d7f079009bd2a602fa39d7939fc14411baf46052ba1",
+      "reference_asset_ids": [
+        "ref_494a65661de40055"
+      ],
+      "task_id": "st_20260922_215217_c2bf0f"
+    },
+    "seg_03": {
+      "segment_id": "seg_03",
+      "shot_ids": [
+        3
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260922_214248_da609e/seg_03/st_20260922_215219_4c98ff_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179008514441300000000000000000000ffffac1933dea06861.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260922%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260922T135634Z&X-Tos-Expires=86400&X-Tos-Signature=e399f72533b6b5395a06bf89855ff116beca5d05d74c4dcb77d0f0f130454b68&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_214248_da609e\\seg_03\\st_20260922_215219_4c98ff_raw.mp4",
+      "normalized_av_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_214248_da609e\\seg_03\\st_20260922_215219_4c98ff_normalized_av.mp4",
+      "native_audio_path": "D:\\code\\TravelGen-main\\assets\\videos\\p_20260922_214248_da609e\\seg_03\\st_20260922_215219_4c98ff_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 6.0604,
+        "expected_duration_seconds": 6.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.02,
+        "tail_activity_warning": true,
+        "speech_level_p90_dbfs": -7.98,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "31052a06d83162dd4c599b89adcc6fea4f2c07e155ef992365700da0ffe90d7d",
+      "voice_version": 1,
+      "narration_hash": "5cc607fd7d7f3fab4825fea18a362d1bb8c714825762fda70817d16342f91315",
+      "prompt_hash": "45683f744b1132ea61844d1c92ebb879b91118385de7e09dadd8a7761a844263",
+      "reference_asset_ids": [
+        "ref_0f8857aa518936c4"
+      ],
+      "task_id": "st_20260922_215219_4c98ff"
+    }
+  },
+  "active_segment_ids": []
+}

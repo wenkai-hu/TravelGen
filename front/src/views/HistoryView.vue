@@ -152,7 +152,7 @@ onMounted(() => {
               <span v-if="p.scene_type">🧩 {{ p.scene_type }}</span>
               <span v-if="p.duration_s">⏱ {{ p.duration_s }}s</span>
               <span v-if="p.shot_count">🎞 {{ p.shot_count }} 镜头</span>
-              <span v-if="p.segment_count">▣ {{ p.segment_count }} 段</span>
+              <span v-if="p.segment_count">▣ {{ p.segment_count }} 个生成片段</span>
             </p>
             <p class="p-time">更新于 {{ fmtTime(p.updated_at) }}</p>
           </div>

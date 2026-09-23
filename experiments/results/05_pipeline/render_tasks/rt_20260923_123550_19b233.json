@@ -1,0 +1,54 @@
+{
+  "task_id": "rt_20260923_123550_19b233",
+  "project_id": "p_20260923_121945_d0da6f",
+  "kind": "render",
+  "status": "completed",
+  "progress": 100,
+  "message": "最终视频已生成",
+  "request": {
+    "segment_ids": [
+      "seg_01",
+      "seg_02",
+      "seg_03"
+    ],
+    "voice_version": 2,
+    "voice_reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265",
+    "music_version": 1
+  },
+  "result": {
+    "status": "completed",
+    "url": "/assets/renders/p_20260923_121945_d0da6f/v1/with_bgm.mp4",
+    "preview_url": "/assets/renders/p_20260923_121945_d0da6f/v1/with_bgm.mp4",
+    "default_variant": "with_bgm",
+    "clean": {
+      "url": "/assets/renders/p_20260923_121945_d0da6f/v1/clean.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260923_121945_d0da6f\\v1\\clean.mp4"
+    },
+    "with_bgm": {
+      "url": "/assets/renders/p_20260923_121945_d0da6f/v1/with_bgm.mp4",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260923_121945_d0da6f\\v1\\with_bgm.mp4"
+    },
+    "bgm_bed": {
+      "url": "/assets/renders/p_20260923_121945_d0da6f/v1/bgm_bed.m4a",
+      "local_path": "D:\\code\\TravelGen-main\\assets\\renders\\p_20260923_121945_d0da6f\\v1\\bgm_bed.m4a"
+    },
+    "bgm_mix": {
+      "bgm_id": "bgm_04",
+      "title": "Serene View",
+      "target_lufs": -23.0,
+      "video_gain_db": 0,
+      "bgm_gain_db": 0,
+      "gain_db": 0,
+      "strategy": "loudness_normalized_mix"
+    },
+    "duration_s": 20.03,
+    "resolution": "1080p",
+    "aspect_ratio": "16:9",
+    "version": 1,
+    "voice_version": 2,
+    "music_version": 1
+  },
+  "error": null,
+  "created_at": "2026-09-23T04:35:50.672445+00:00",
+  "updated_at": "2026-09-23T04:35:58.644753+00:00"
+}

@@ -37,6 +37,7 @@ class ConfirmReferencesRequest(BaseModel):
 class StoryboardRequest(BaseModel):
     """接口3：生成脚本+分镜（plan_id 可选，用于并发安全校验）。"""
     plan_id: str | None = None
+    replan: bool = False
 
 
 class ShotPatch(BaseModel):
@@ -52,7 +53,8 @@ class ShotPatch(BaseModel):
 
 
 class GenerateSegmentsRequest(BaseModel):
-    """按一个或多个完整 Segment 生成；空列表表示生成全部待选 Segment。"""
+    """新项目按 Shot 生成；segments 保留给已有项目和旧客户端。"""
+    shot_ids: list[int] = Field(default_factory=list)
     segments: list[str] = Field(default_factory=list)
     generate_video: bool = True
 

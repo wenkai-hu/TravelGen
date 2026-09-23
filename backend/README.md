@@ -41,7 +41,7 @@ python app.py
 
 ## 声音与合成
 
-- 每个 Segment 都注入同一条用户确认的参考音色。参考音频只定义说话人身份，不提供本段正式旁白。
+- 新分镜中每张参考图全片只用于一个 Shot，每个 Shot 独立生成；超过 15 秒的 Shot 使用前段视频续写。所有生成片段都注入同一条用户确认的参考音色。
 - 本段旁白、Shot 时间窗、环境声要求和固定的“禁止任何 BGM”约束通过动态 Prompt 交给 Seedance。
 - Seedance 返回的旁白、自然环境声和真实拟音均被保留；不会剥离原生音轨，也不会再回铺 TTS 母带。
 - 最终先拼接所有 Segment 的原生音视频生成 `clean.mp4`，再在完整时间线上循环、裁剪、淡入淡出并归一化所选 BGM，生成独立声轨和 `with_bgm.mp4`。成片后可试听调整视频原声与 BGM 音量，`POST /api/projects/{id}/render/mix` 只重新混音。
@@ -54,7 +54,7 @@ python app.py
 | 图片搜索与视觉理解 | 百度千帆 + 豆包 VLM | 搜图/VLM 缺失时停止并说明错误 |
 | 文案与分镜 | KIMI | 回放内置演示素材并按目标时长调整 |
 | 自定义音色 | Seedance 生成视频后 FFmpeg 抽取 WAV | 复制一条真实预设 WAV 作为可试听候选 |
-| Segment | Seedance：统一音色参考 + 多 Shot + 原生音轨 | 生成带静音音轨的可合成占位视频 |
+| Shot | Seedance：一张实景图 + 一条连续镜头 + 原生音轨；超长镜头依次续写 | 生成带静音音轨的可合成占位视频 |
 | 合成 | FFmpeg 原生音视频拼接与可选 BGM 混音 | 相同 |
 
 - 项目和任务：`experiments/results/05_pipeline/{projects,voice_tasks,segment_tasks,render_tasks}/`
@@ -73,5 +73,5 @@ cp experiments/config.example.json experiments/config.json
 ## 已知边界
 
 - “不得生成 BGM”依靠固定高优先级 Prompt，并保留原生音轨供人工试听；当前没有可靠的自动音乐分类器，`audio_qa.music_detection` 会明确返回 `not_available`。
-- 最终拼接使用精确时长硬切，段内自然转场由 Seedance 在一次 Segment 生成中完成。
+- 最终拼接按 Shot 顺序硬切；同一 Shot 的超长续写接缝仍需试听和目视检查。
 - 图片来源会保留并标记授权状态，正式发布前仍需人工复核。
