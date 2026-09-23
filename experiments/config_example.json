@@ -1,0 +1,50 @@
+{
+  "_note": "复制为 config.json 并填入真实 key（config.json 已被 gitignore，不会误提交）",
+  "db": {
+    "async_url": "mysql+aiomysql://root:你的MySQL密码@localhost:3306/travelgen?charset=utf8"
+  },
+  "providers": [
+    {
+      "name": "kimi",
+      "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+      "api_key": "你的火山方舟APIKey",
+      "model": "deepseek-v4-1-flash-260910",
+      "temperature": 1,
+      "note": "名字保留 kimi 是因为 model_client.load_config() 写死读这个名字。也可换成月之暗面官方：base_url=https://api.moonshot.cn/v1，model=kimi-k2.6，api_key=sk-xxx。实测可替代：deepseek-v4-1-flash-260910(6s)、glm-5-3-flash-260828(13s)、doubao-seed-2-1-pro-260915(29s)"
+    },
+    {
+      "name": "seedance",
+      "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+      "api_key": "你的火山方舟APIKey",
+      "model": "doubao-seedance-2-0-260128",
+      "duration": 5,
+      "resolution": "1080p"
+    },
+    {
+      "name": "embedding",
+      "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+      "api_key": "你的火山方舟APIKey",
+      "model": "doubao-embedding-vision-251215",
+      "note": "多模态向量化，走 /embeddings/multimodal（一次请求=一个样本）；RAG_Test/rag.py 按 name=embedding 读取，缺省回退 seedance"
+    },
+    {
+      "name": "vlm",
+      "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+      "api_key": "你的火山方舟APIKey",
+      "model": "doubao-seed-2-1-turbo-260628",
+      "thinking": "disabled",
+      "detail": "high",
+      "max_completion_tokens": 1600,
+      "note": "景点参考图视觉理解；与 seedance/embedding 同一个方舟账号，换 key 时三处一起改"
+    },
+    {
+      "name": "qianfan_image_search",
+      "base_url": "https://qianfan.baidubce.com/v2/ai_search",
+      "endpoint": "/web_search",
+      "api_key": "你的百度千帆APIKey",
+      "search_source": "baidu_search_v2",
+      "top_k": 30,
+      "note": "百度千帆图片搜索；Key 只放这里，与其他 provider 格式一致"
+    }
+  ]
+}

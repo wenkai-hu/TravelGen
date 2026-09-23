@@ -39,7 +39,7 @@ desktop.ini
 *.tmp
 *.log
 test
-backend\tests
+backend/tests
 
 # ===== 前端 =====
 front/node_modules/
