@@ -21,12 +21,15 @@ venv/
 *.zip
 *.rar
 *.7z
-assets/videos/
-assets/images_raw/
 experiments/results/03_video/*.mp4
 experiments/results/04_voice/*.wav
 experiments/results/04_voice/*.mp3
-assets
+
+# assets/ 下只有人工整理的资产入库：BGM 目录 + 预设音色（media_catalog.py 读这两个路径）
+# 其余（references/renders/videos/voices/custom）都是跑出来的产物
+assets/*
+!assets/media/
+assets/media/voices/custom/
 
 # 注：experiments/results/ 下的 .md/.csv/.json 文本结果要提交（可复现），仅排除视频音频文件
 
