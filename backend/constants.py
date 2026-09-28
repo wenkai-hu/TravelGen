@@ -6,6 +6,10 @@ ASPECT_RATIOS = ["9:16", "16:9", "1:1"]
 RESOLUTIONS = ["720p", "1080p"]
 VIDEO_MODELS = ["seedance-2.0", "seedance-2.0-pro"]
 
+# 一次生成最多确认几张参考图。一图一镜，所以这也是镜头数的上限。
+# 前端 MAX_SELECTED、ConfirmReferencesRequest 的上限、上传端点的额度校验都从这里取。
+MAX_SELECTED_REFERENCES = 8
+
 # V1 文档 scene_type 英文示例 → 落库中文枚举（TravelGen_v1.md §六 "scenic" 等）
 SCENE_TYPE_ALIASES = {
     "scenic": "景区推荐",

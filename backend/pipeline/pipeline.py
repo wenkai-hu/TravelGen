@@ -17,6 +17,29 @@ REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 
 SYSTEM = "你是专业的浙江文旅内容创作助手。"
 
+# 平台只回 content[k]（content[0] 是提示词），靠它反查是哪张参考图被拦
+_CONTENT_INDEX = re.compile(r"content\[(\d+)\]")
+# 内容审核／参数类拒绝：同样的输入重试必然再失败，别浪费一次重试
+_PERMANENT_SUBMIT_ERRORS = ("PolicyViolation", "SensitiveContent", "InvalidParameter")
+
+
+def _is_permanent_submit_error(err) -> bool:
+    return bool(err) and any(key in str(err) for key in _PERMANENT_SUBMIT_ERRORS)
+
+
+def _explain_submit_error(err, images, asset_ids):
+    """审核类报错补上被拦的是哪张图：content[k] = 第 k 张参考图 = ordered_asset_ids[k-1]。"""
+    if not err or not images:
+        return err
+    match = _CONTENT_INDEX.search(str(err))
+    if not match:
+        return err
+    index = int(match.group(1))
+    if not 1 <= index <= len(images):
+        return err
+    name = asset_ids[index - 1] if index - 1 < len(asset_ids) else "未知"
+    return f"{err}\n→ 被拦截的是第 {index} 张参考图（{name}）：请更换这张图后重新生成"
+
 PLANNER_PROMPT = """你是浙江文旅视频策划。请为以下需求生成内容大纲（3-5 段：引入/展开/高潮/收尾）。
 城市：{city}｜地点：{location}｜场景类型：{scene_type}｜主题：{theme}
 目标人群：{audience}｜风格：{style}｜时长：{duration_s}秒
@@ -107,13 +130,37 @@ JSON结构（scene→shot两级，严格遵循）：
 6. shot_id 全片唯一递增（1..N），禁止每个 scene 各自从 1 编号
 7. 地标描述跨镜头保持一致（如雷峰塔样式、湖色色调不冲突）
 8. 每镜头 prompt 字段须可直接用于文生图/文生视频，含主体/环境/光线/质感
-9. 每个 Shot 只绑定一张实景参考图，全片每张图最多出现一次，片尾也不得重复片头的图片。创作方案中若重复引用同一图片，以本条唯一性约束为准；旁白仍按原顺序完整分配。优先让一张图覆盖更长的连续画面，不要为了拆旁白而拆 Shot；禁止编造图片ID
+9. {order_rule}
 10. 镜头机位不得超出视觉档案支持范围；must_keep 保留地标结构，allowed_changes 仅写可变化的氛围与动态元素
 11. narration 必须从已确认文案中按原顺序切分；所有 Shot 的 narration 连起来必须与原文一致，不增字、不删字、不换词；允许某个纯画面 Shot 留空
 12. 不要输出 segment_id；一个 Shot 是一条连续镜头，不要在内部突然跳切、改变机位或景别。多句旁白可以共用同一镜头，主体可在一个稳定构图里自然变化
 13. 只输出JSON对象，禁止代码块标记和任何解释文字"""
 
 RETRY_NOTE = "上一次输出未通过校验，严格按结构约束重新输出（只输出JSON）。具体错误：{errors}"
+
+# 约束 9 的前半段：图片怎么分给 Shot。用户排了顺序就照顺序，交给 AI 就让它按内容自己配。
+# 后半段的唯一性是两种口径共用的硬约束，与顺序谁定无关。
+ORDER_RULE_BY_USER = (
+    "图片目录（visual_grounding.view_catalog）的排列顺序就是用户排定的使用顺序："
+    "第 1 个 Shot 绑定目录里第 1 张图，第 2 个 Shot 绑定第 2 张图，依次往下；"
+    "Shot 数少于图片数时用靠前的图，多出来的图本片不用。"
+    "据此反向编排每个 Shot 的画面，让主体的内容与该位置那张图对得上。"
+)
+ORDER_RULE_BY_AI = (
+    "图片目录（visual_grounding.view_catalog）里的图由你自行分配："
+    "用户没有指定顺序，请对照每个 Shot 的主体、机位、景别与各张图的可见元素和适合镜头，"
+    "把最贴题的那张配给最能发挥它的 Shot。顺序不作要求，但每张图都要用在它最合适的镜头上。"
+)
+ORDER_RULE_COMMON = (
+    "每个 Shot 只绑定一张实景参考图，全片每张图最多出现一次，片尾也不得重复片头的图片。"
+    "创作方案中若重复引用同一图片，以本条唯一性约束为准；旁白仍按原顺序完整分配。"
+    "优先让一张图覆盖更长的连续画面，不要为了拆旁白而拆 Shot；禁止编造图片ID"
+)
+
+
+def order_rule(auto_order: bool) -> str:
+    """约束 9 的完整正文。auto_order 由用户在确认参考图时选。"""
+    return (ORDER_RULE_BY_AI if auto_order else ORDER_RULE_BY_USER) + ORDER_RULE_COMMON
 
 # V1 场景模板（TravelGen_v1.md §五）：按 scene_type 注入 planner 的内容结构建议
 SCENE_STRUCTURES = {
@@ -288,9 +335,13 @@ class PipelineRunner:
             prompt, images, audio = prepared[segment_id]
             duration = int(round(segment["duration_ms"] / 1000))
             tid, err = await asyncio.to_thread(
-                ark_client.submit, self.seedance, prompt, duration, resolution, ratio,
+                ark_client.submit_safe, self.seedance, prompt, duration, resolution, ratio,
                 images=images or None, audio=audio, generate_audio=True,
             )
+            if not tid:
+                asset_ids = visual_rag.ordered_asset_ids(
+                    project, visual_rag.segment_shots(project, segment))[:len(images)]
+                err = _explain_submit_error(err, images, asset_ids)
             clips.append({
                 "segment_id": segment_id,
                 "shot_ids": list(segment.get("shot_ids", [])),
@@ -304,6 +355,7 @@ class PipelineRunner:
                 "prompt_hash": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
                 "reference_asset_ids": list(segment.get("reference_asset_ids", [])),
                 "error": err if not tid else None,
+                "no_retry": _is_permanent_submit_error(err),
             })
         if on_progress:
             on_progress(clips, 0, len(clips))
@@ -311,13 +363,14 @@ class PipelineRunner:
         polls = 0
         while polls < 240:
             running = [clip for clip in clips if clip["status"] in ("queued", "running")]
-            retry = [clip for clip in clips if clip["status"] == "failed" and not clip.get("retried")]
+            retry = [clip for clip in clips
+                     if clip["status"] == "failed" and not clip.get("retried") and not clip.get("no_retry")]
             if not running and not retry:
                 break
             await asyncio.sleep(5)
             polls += 1
             results = await asyncio.gather(*(
-                asyncio.to_thread(ark_client.get_task, self.seedance, clip["task_id"])
+                asyncio.to_thread(ark_client.get_task_safe, self.seedance, clip["task_id"])
                 for clip in running
             ))
             for clip, (status, url, err) in zip(running, results):
@@ -331,11 +384,13 @@ class PipelineRunner:
                         clip["error"] = "视频下载或原生音视频归一化失败"
                 elif status in ("failed", "expired", "cancelled"):
                     clip["status"], clip["error"] = "failed", err
+                elif err:
+                    clip["poll_error"] = err   # 网络抖动：记下但继续轮询，由轮询上限兜底
                 else:
                     clip["status"] = status
             results = await asyncio.gather(*(
                 asyncio.to_thread(
-                    ark_client.submit, self.seedance, clip["prompt"], clip["duration_s"],
+                    ark_client.submit_safe, self.seedance, clip["prompt"], clip["duration_s"],
                     resolution, ratio,
                     images=prepared[clip["segment_id"]][1] or None,
                     audio=prepared[clip["segment_id"]][2], generate_audio=True,
@@ -353,7 +408,7 @@ class PipelineRunner:
         for clip in clips:
             if clip["status"] in ("queued", "running"):
                 clip["status"] = "failed"
-                clip["error"] = "生成超时（>20 分钟）"
+                clip["error"] = clip.get("poll_error") or "生成超时（>20 分钟）"
         return clips
 
     async def _run_continuation_jobs(self, project, segments, task, on_progress, ratio, resolution):
@@ -397,19 +452,24 @@ class PipelineRunner:
             clips.append(clip)
             for attempt in range(2):
                 tid, err = await asyncio.to_thread(
-                    ark_client.submit, self.seedance, prompt, duration, resolution,
+                    ark_client.submit_safe, self.seedance, prompt, duration, resolution,
                     "adaptive" if previous else ratio,
                     images=images or None, audio=voice_audio, generate_audio=True,
                     video=(previous_clip.get("source_video_url") or previous_clip.get("video_url"))
                     if previous_clip else None,
                 )
                 if not tid:
+                    err = _explain_submit_error(
+                        err, images,
+                        visual_rag.ordered_asset_ids(project, visual_rag.segment_shots(project, segment)))
                     clip["status"], clip["error"] = "failed", err
+                    if _is_permanent_submit_error(err):
+                        break        # 审核/参数类拒绝：重试同样的输入必然再失败
                     continue
                 clip["task_id"], clip["status"], clip["error"] = tid, "queued", None
                 for _ in range(240):
                     await asyncio.sleep(5)
-                    status, url, error = await asyncio.to_thread(ark_client.get_task, self.seedance, tid)
+                    status, url, error = await asyncio.to_thread(ark_client.get_task_safe, self.seedance, tid)
                     if status == "succeeded":
                         clip["video_url"] = url
                         clip.update(await self._download_segment(project, task, clip, url))
@@ -540,10 +600,12 @@ class PipelineRunner:
         grounding = visual_rag.grounding_for_prompt(getattr(task, "visual_profile", {}),
                                                      include_catalog=True)
         planning = json.dumps(task.planning, ensure_ascii=False, indent=2)
+        auto_order = bool(task.request.get("auto_order"))
         prompt = STORYBOARD_PROMPT.format(planning=planning, script=cw_text,
                                           visual_grounding=grounding,
                                           duration_s=task.request["duration_s"],
-                                          min_shots=min_shots, max_shots=max_shots)
+                                          min_shots=min_shots, max_shots=max_shots,
+                                          order_rule=order_rule(auto_order))
         messages = [{"role": "system", "content": SYSTEM},
                     {"role": "user", "content": prompt}]
         last_errors = ["模型无响应"]
@@ -556,7 +618,8 @@ class PipelineRunner:
             if ok:
                 try:
                     if reference_count:
-                        data = visual_rag.bind_storyboard_references(data, profile)
+                        data = visual_rag.bind_storyboard_references(
+                            data, profile, auto_order=auto_order)
                         segment_planner.attach_segment_plan(data, task.copywriting)
                     return data, []
                 except ValueError as exc:
@@ -620,7 +683,7 @@ class PipelineRunner:
             duration = _shot_duration(sh)
             compiled_prompt, images = prepared[sh["shot_id"]]
             tid, err = await asyncio.to_thread(
-                ark_client.submit, self.seedance, compiled_prompt, duration, resolution, ratio,
+                ark_client.submit_safe, self.seedance, compiled_prompt, duration, resolution, ratio,
                 images=images or None)
             clips.append({"shot_id": sh["shot_id"], "task_id": tid,
                           "status": "queued" if tid else "failed",
@@ -628,7 +691,9 @@ class PipelineRunner:
                           "reference_asset_ids": list(sh.get("reference_asset_ids", [])),
                           "duration_s": duration, "cost_yuan": 1.0})
             if not tid:
-                clips[-1]["error"] = err
+                clips[-1]["error"] = _explain_submit_error(
+                    err, images, visual_rag.ordered_asset_ids(project or task, [sh])[:len(images)])
+                clips[-1]["no_retry"] = _is_permanent_submit_error(err)
         if on_progress:
             on_progress(clips, 0, len(clips))
 
@@ -637,14 +702,15 @@ class PipelineRunner:
         polls = 0
         while polls < 180:
             running = [c for c in clips if c["status"] in ("queued", "running")]
-            retry = [c for c in clips if c["status"] == "failed" and not c.get("retried")]
+            retry = [c for c in clips
+                     if c["status"] == "failed" and not c.get("retried") and not c.get("no_retry")]
             if not running and not retry:
                 break
             await asyncio.sleep(5)
             polls += 1
             # 2a) 查询进行中的任务
             results = await asyncio.gather(*(
-                asyncio.to_thread(ark_client.get_task, self.seedance, c["task_id"]) for c in running))
+                asyncio.to_thread(ark_client.get_task_safe, self.seedance, c["task_id"]) for c in running))
             for c, (status, url, err) in zip(running, results):
                 if status == "succeeded":
                     c["status"] = "succeeded"
@@ -653,12 +719,14 @@ class PipelineRunner:
                 elif status in ("failed", "expired"):
                     c["status"] = "failed"
                     c["error"] = err
+                elif err:
+                    c["poll_error"] = err   # 网络抖动：记下但继续轮询，由轮询上限兜底
                 else:
                     c["status"] = status
             # 2b) 失败未重试的重新提交（1 次机会）
             results = await asyncio.gather(*(
                 asyncio.to_thread(
-                    ark_client.submit, self.seedance, c["prompt"], c["duration_s"], resolution, ratio,
+                    ark_client.submit_safe, self.seedance, c["prompt"], c["duration_s"], resolution, ratio,
                     images=prepared[c["shot_id"]][1] or None)
                 for c in retry))
             for c, (tid, err) in zip(retry, results):
@@ -675,7 +743,7 @@ class PipelineRunner:
         for c in clips:
             if c["status"] in ("queued", "running"):
                 c["status"] = "failed"
-                c["error"] = c.get("error") or "生成超时（>15 分钟）"
+                c["error"] = c.get("poll_error") or c.get("error") or "生成超时（>15 分钟）"
         return clips
 
     async def _download_video(self, task, clip, url):

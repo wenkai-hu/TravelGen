@@ -2,6 +2,8 @@
 """共享 Pydantic 请求模型（app.py 旧契约 + v1_router V1 接口共用）。"""
 from pydantic import BaseModel, Field
 
+from constants import MAX_SELECTED_REFERENCES
+
 
 class Asset(BaseModel):
     type: str = "image"
@@ -31,7 +33,11 @@ class ConfirmPlanRequest(BaseModel):
 
 class ConfirmReferencesRequest(BaseModel):
     """用户从服务端搜索候选中确认真实景点图片；确认后才启动 VLM 与 Plan。"""
-    reference_ids: list[str] = Field(..., min_length=1, max_length=8)
+    reference_ids: list[str] = Field(..., min_length=1, max_length=MAX_SELECTED_REFERENCES)
+    # True = 顺序交给模型：确认时不定死「第 N 张配第 N 个镜头」，等生成分镜时
+    # 模型已经知道每个镜头要拍什么，再按内容给每个 Shot 挑最合适的一张。
+    # reference_ids 这时只表达「用这几张」，先后无意义。
+    auto_order: bool = False
 
 
 class StoryboardRequest(BaseModel):

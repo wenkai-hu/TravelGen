@@ -9,6 +9,14 @@ import {
 } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { NButton, NInput, NInputNumber, NSlider, useMessage } from "naive-ui";
+import {
+  PhCheck,
+  PhClock,
+  PhGear,
+  PhMapPin,
+  PhWarning,
+} from "@phosphor-icons/vue";
+import ThemeToggle from "../components/ThemeToggle.vue";
 import logoUrl from "../images/logo.png";
 import {
   createRender,
@@ -29,7 +37,7 @@ import {
   updateSegment,
   updateShot,
 } from "../api";
-import { isLoggedIn } from "../auth";
+import { isLoggedIn, logout as clearSession } from "../auth";
 
 const POLL_MS = 2000;
 const message = useMessage();
@@ -284,7 +292,16 @@ async function refresh() {
     }
     await advancePipeline(next);
   } catch (error) {
-    if (error.status === 404) router.replace("/");
+    if (error.status === 404) {
+      router.replace("/");
+    } else if (error.status === 401) {
+      // 登录态失效（token 过期 / 后端重启后内存会话丢失）。这里原来是**静默吞掉**的：
+      // 页面一直空着转圈，不报错也不跳转，只能靠用户自己猜到要去重新登录
+      stopPolling();
+      clearSession();
+      message.error("登录已失效（后端重启会清空登录态），请重新登录");
+      router.replace("/login");
+    }
   } finally {
     loading.value = false;
     refreshing = false;
@@ -545,7 +562,8 @@ async function replanShots() {
         </div>
         <nav class="nav-links">
           <a href="#" @click.prevent="router.push('/')">工作台</a
-          ><router-link v-if="isLoggedIn()" to="/history">我的创作</router-link>
+          ><router-link v-if="isLoggedIn()" to="/history">我的创作</router-link
+          ><ThemeToggle />
         </nav>
       </div>
     </header>
@@ -556,11 +574,9 @@ async function replanShots() {
       </section>
       <section v-else-if="phase === 'preparing'" class="card processing-card">
         <div class="orbit" aria-hidden="true">
-          <span
-            class="orbit-core iconfont icon-huabansikao"
-            role="img"
-            aria-label="AI 正在思考"
-          ></span>
+          <span class="orbit-core" role="img" aria-label="AI 正在思考">
+            <PhGear />
+          </span>
           <i v-for="n in 3" :key="n" :class="`orbit-dot dot-${n}`"></i>
         </div>
         <span class="state-badge">创作准备中</span>
@@ -578,8 +594,10 @@ async function replanShots() {
             <span class="eyebrow">Seedance Native Audio Pipeline</span>
             <h1>{{ req.theme }}</h1>
             <p>
-              📍 {{ req.city }} · {{ req.location }}　⏱
-              {{ req.duration_s }}s　{{ req.aspect_ratio }}
+              <PhMapPin class="ico-inline" /> {{ req.city }} · {{ req.location
+              }}　<PhClock class="ico-inline" /> {{ req.duration_s }}s　{{
+                req.aspect_ratio
+              }}
             </p>
           </div>
           <div class="summary-status">
@@ -934,9 +952,23 @@ async function replanShots() {
                 >此处播放 Seedance 原生音轨：旁白 + 环境声 + 拟音，无后期
                 BGM</span
               ><span v-if="stateFor(segment).audio_qa"
-                >音轨 {{ stateFor(segment).audio_qa.has_audio ? "✓" : "⚠" }} ·
-                时长 {{ stateFor(segment).audio_qa.duration_ok ? "✓" : "⚠" }} ·
-                BGM 需人工试听</span
+                >音轨
+                <PhCheck
+                  v-if="stateFor(segment).audio_qa.has_audio"
+                  :size="12"
+                  weight="bold"
+                  class="ico-inline"
+                />
+                <PhWarning v-else :size="12" weight="bold" class="ico-inline" />
+                · 时长
+                <PhCheck
+                  v-if="stateFor(segment).audio_qa.duration_ok"
+                  :size="12"
+                  weight="bold"
+                  class="ico-inline"
+                />
+                <PhWarning v-else :size="12" weight="bold" class="ico-inline" />
+                · BGM 需人工试听</span
               >
             </div>
             <a
@@ -1113,9 +1145,9 @@ async function replanShots() {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: #fcf8f1;
+  background: var(--surface-nav);
   border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 2px 12px rgba(31, 41, 55, 0.05);
+  box-shadow: var(--shadow-soft);
 }
 .nav-inner {
   max-width: 1180px;
@@ -1136,6 +1168,7 @@ async function replanShots() {
   height: 68px;
   border-radius: 12px;
   object-fit: cover;
+  box-shadow: 0 0 0 1px var(--logo-ring);
 }
 .logo-text {
   font-family: var(--font-serif);
@@ -1227,7 +1260,7 @@ h1 {
   line-height: 1.7;
 }
 .processing-card small {
-  color: #9ca3af;
+  color: var(--color-ink-muted);
 }
 .state-badge {
   padding: 5px 11px;
@@ -1249,8 +1282,8 @@ h1 {
   color: var(--color-primary);
   border: 1px solid var(--color-primary-light);
   border-radius: 50%;
-  background: linear-gradient(145deg, #fff, var(--color-primary-fade));
-  box-shadow: 0 12px 35px rgba(15, 118, 110, 0.12);
+  background: var(--gradient-ring);
+  box-shadow: 0 12px 35px var(--shadow-primary);
 }
 .orbit-core {
   width: 42px;
@@ -1258,7 +1291,7 @@ h1 {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  color: white;
+  color: var(--color-on-primary);
   background: var(--color-primary);
   font-family: var(--font-serif);
   font-size: 20px;
@@ -1290,7 +1323,7 @@ h1 {
   width: 42%;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--color-primary), #2dd4bf);
+  background: var(--gradient-bar);
   animation: loading 1.6s ease-in-out infinite;
 }
 .summary {
@@ -1340,13 +1373,13 @@ h1 {
   flex-shrink: 0;
   padding: 6px 10px;
   border-radius: 99px;
-  background: #fff0e5;
-  color: #a44b17;
+  background: var(--status-tip-bg);
+  color: var(--status-tip-fg);
   font-size: 12px;
 }
 .selection-state.ready {
-  background: #e2f4ec;
-  color: #127252;
+  background: var(--status-ok-bg);
+  color: var(--status-ok-fg);
 }
 .head-actions {
   display: flex;
@@ -1371,14 +1404,14 @@ h1 {
   gap: 9px;
   border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: #fffdfa;
+  background: var(--surface-elevated);
 }
 .media-option.selected {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.12);
+  box-shadow: 0 0 0 2px var(--shadow-primary);
 }
 .media-option.recommended {
-  background: #f3fbf8;
+  background: var(--status-ok-faint);
 }
 .media-option b {
   font-size: 14px;
@@ -1387,7 +1420,7 @@ h1 {
   margin-left: 5px;
   padding: 2px 6px;
   border-radius: 99px;
-  background: #dff4ed;
+  background: var(--status-ok-chip);
   color: var(--color-primary);
   font-size: 10px;
   font-style: normal;
@@ -1399,7 +1432,7 @@ h1 {
   line-height: 1.5;
 }
 .media-option small {
-  color: #8a7464;
+  color: var(--color-ink-warm);
 }
 .media-option audio,
 .candidate audio {
@@ -1417,7 +1450,7 @@ h1 {
   grid-template-columns: minmax(220px, 0.8fr) 1fr auto;
   gap: 12px;
   align-items: center;
-  border: 1px dashed #b9aa98;
+  border: 1px dashed var(--border-warm);
   border-radius: 10px;
 }
 .custom-voice p,
@@ -1438,7 +1471,7 @@ h1 {
   gap: 12px;
   align-items: center;
   border-radius: 8px;
-  background: #f7f3ed;
+  background: var(--surface-sunken);
 }
 .candidate p {
   margin: 3px 0;
@@ -1451,7 +1484,7 @@ h1 {
   margin-bottom: 13px;
   padding: 12px 14px;
   border-left: 3px solid var(--color-primary);
-  background: #f0f8f6;
+  background: var(--status-ok-soft-bg);
 }
 .recommendations > p {
   margin: 8px 0 0;
@@ -1466,7 +1499,7 @@ h1 {
   padding: 16px;
   border: 1px solid var(--color-primary-light);
   border-radius: 10px;
-  background: linear-gradient(135deg, #f7fcfa, #fffdfa);
+  background: var(--gradient-gain);
 }
 .bgm-gain-head {
   display: flex;
@@ -1525,7 +1558,7 @@ h1 {
   margin: 6px 264px 0 48px;
   display: flex;
   justify-content: space-between;
-  color: #9a897a;
+  color: var(--color-ink-warm-dim);
   font-size: 10px;
 }
 .guide {
@@ -1533,16 +1566,16 @@ h1 {
   padding: 13px 16px;
   display: flex;
   gap: 10px;
-  border: 1px solid #b8dcd1;
+  border: 1px solid var(--status-ok-line);
   border-radius: 10px;
-  background: #eef8f5;
-  color: #235e51;
+  background: var(--status-ok-soft-bg);
+  color: var(--status-ok-soft-fg);
   font-size: 13px;
 }
 .guide.blocked {
-  border-color: #e3c4a5;
-  background: #fff6ec;
-  color: #8f4a1e;
+  border-color: var(--status-warn-line);
+  background: var(--status-warn-bg);
+  color: var(--status-warn-fg);
 }
 .guide b {
   flex-shrink: 0;
@@ -1578,31 +1611,31 @@ h1 {
   font-size: 11px;
 }
 .status.pending {
-  background: #eee9e1;
+  background: var(--status-idle-bg);
 }
 .status.generating {
-  color: #9a5b0a;
-  background: #fff0c7;
+  color: var(--status-busy-fg);
+  background: var(--status-busy-bg);
 }
 .status.completed,
 .status.ready {
-  color: #11684c;
-  background: #def2e9;
+  color: var(--status-done-fg);
+  background: var(--status-done-bg);
 }
 .status.failed,
 .status.stale {
-  color: #a2382a;
-  background: #fae5df;
+  color: var(--status-bad-fg);
+  background: var(--status-bad-bg);
 }
 .no-music-badge {
-  color: #6b4e85;
-  background: #f0e8f8;
+  color: var(--status-note-fg);
+  background: var(--status-note-bg);
 }
 .narration {
   margin-top: 14px;
   padding: 10px 13px;
   border-radius: 8px;
-  background: #f8f4ee;
+  background: var(--surface-sunken);
 }
 .narration p {
   margin: 5px 0 0;
@@ -1655,7 +1688,7 @@ h1 {
 }
 .shot-narration {
   margin-bottom: 9px;
-  color: #795d47;
+  color: var(--color-ink-warm-deep);
   font-size: 12px;
 }
 .inline-actions {
@@ -1700,7 +1733,7 @@ h1 {
   width: 100%;
   max-height: 560px;
   border-radius: 10px;
-  background: #000;
+  background: var(--video-bg);
 }
 .segment-preview a,
 .final-video a {

@@ -1,0 +1,265 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260926_004620_8c03d1",
+  "username": "Ryan",
+  "status": "waiting_reference_confirm",
+  "progress": 5,
+  "message": "找到 25 张候选图片，请确认真实景点图片",
+  "request": {
+    "city": "杭州",
+    "location": "太子湾",
+    "scene_type": "景区推荐",
+    "theme": "郁金香",
+    "audience": "18-35岁年轻游客",
+    "style": "文艺清新",
+    "duration_s": 60,
+    "aspect_ratio": "16:9",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {},
+  "copywriting": {},
+  "script": {},
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_8bce287eae7b36fb",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzMDYxMDg5LjY3NjI3MjI%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-01T13%3A51%3A30Z%2F-1%2F%2Fda193e4ad9446efbdc3299f33b6d50522e5a145ecd254b6fef7daf36f399fe12",
+      "title": "杭州太子湾公园:赏枫叶的绝佳去处 🍁",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4796354176867606607",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7e8c617ef96da8d3",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyOTA1NzIwLjg4NTc4ODI%3D%27/0.png",
+      "title": "太子湾公园:四季法式风情拍照指南 太子湾公园就像是杭州人的私人法式",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3768023183514677778",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6ff91c02d4b453bc",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276KW/5rmW6L655pyA576O55qE5YWs5ZutXzE3Mjk0NTgwMjYuNzg0OTAz%27/0.png",
+      "title": "太子湾公园:杭州的秘密花园",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4540246642772008838",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_04ea741166ddf73b",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=1789454182,2275557612&fm=3074&app=3074&f=JPEG?w=1080&h=1890&type=normal&func=",
+      "title": "杭州太子湾公园:初秋的绝美去处!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4581071071567382953",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b04a52e4780231cc",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzNDA0MzUxLjI4MjY1MjE%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-05T13%3A12%3A32Z%2F-1%2F%2F8b049b4ccc1e08764bba3b29461f9ddc743944d00be5e0731f0695192120b9b2",
+      "title": "杭州太子湾公园:秋日赏枫好去处",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4884138472470222864",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_cdc573cb48148fd4",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3f13a53e829/251112/68b4feb4a9edb5bc086d0c03fffaabf2.jpeg",
+      "title": "秋天去哪儿玩# 杭州秋色集萃",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4915701241932395900",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5193024f7661cf39",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=3788851226,1638052316&fm=3074&app=3074&f=JPEG?w=1080&h=1411&type=normal&func=",
+      "title": "杭州太子湾公园:春日赏花绝佳地",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4195779528398581777",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_746a14e6a9964bcd",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=1870749924,2380195513&fm=3074&app=3074&f=JPEG",
+      "title": "🍁杭州太子湾的秋日胜景🍂",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5739891048043520571",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_957bf784ffe7b0ef",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxODMxNjU0LjM4MTYyNDU%3D%27/0.png",
+      "title": "如果你只能来杭州一个地方,我一定会推荐太子湾公园,而不是西湖",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4460561792554118236",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_287119bb39564c84",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM1NDM3NTY1LjU5NzYzMzQ%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-12-29T01%3A59%3A26Z%2F-1%2F%2F3e54fd4148fd943e782dd6e6bb2023660a345b78187ed4db6a3fe424680908e5",
+      "title": "太子湾秘境,秋览西湖全景!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3909256616404127822",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_814a8c3923df56d4",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/73d6c8817a258bd351343e112a54025c.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "务必提前在\"杭州西湖风景名胜区\"公众号预约",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5200748257248285728",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6883167a41a300d6",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://ss-mpvolc.meipian.me/users/546324/0b2971137d74ddeb7ace13081432415bmpand__jpg.heic~tplv-s1ctq42ewb-wm-s2-cC-q:watermark/1/image/dG9zLWNuLWktczFjdHE0MmV3Yi9hcnRpY2xlL2NvbnRlbnRfaW1nX2xvZ28ucG5n/dissolve/80/gravity/SouthEast/dx/16/dy/120/ws/0.09/wst/2%7Cwatermark/2/text/QOWxseiwt-eahOmjjg/dissolve/80/gravity/SouthEast/dx/16/dy/64/font/UWluaXUgRm9udA/fontsize/640/fill/I2ZmZmZmZg%7Cwatermark/2/text/576O56-H5Y-3OjU0NjMyNA/dissolve/80/gravity/SouthEast/dx/16/dy/16/font/UWluaXUgRm9udA/fontsize/640/fill/I2ZmZmZmZg:750:0:0:0:q80.webp",
+      "title": "杭州太子湾公园",
+      "source_page_url": "http://www.meipian.cn/5cmu56ik",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_216dfc1fe6b2b791",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p2t5bee5aSq5a2Q5rm%2B5YWs5Zut5pmv54K55LuL57uNXzE3MzIxMzE1NjIuODc0MTI5OA%3D%3D%27/0.png",
+      "title": "太子湾公园登九曜山,半小时俯瞰西湖全景",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3873513104165026029",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3a96b434e83d010d",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p2t5bee5aSq5a2Q5rm%2B5pyA5L2z6KeC6LWP5pe26Ze0XzE3MjkzNjg3NTYuMjUzMDI0%27/0.png",
+      "title": "🌸杭州太子湾公园游玩攻略🌸",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5829505777006977474",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_981487d5a2299068",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=3589675090,2074873991&fm=3074&app=3074&f=JPEG?w=1440&h=1890&type=normal&func=",
+      "title": "杭州太子湾公园:初夏的绝美拍照地!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4646413866381456422",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7649336ede35b713",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275ZCN5LiN6Jma5Lyg5aS45aS45p%2BQ5aSE6aOO5pmvXzE3Mjk4ODE0NjEuMzMzNTM%3D%27/0.png",
+      "title": "太子湾公园:五月杭州的绿野仙踪 🌿",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4882851279103251167",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e3e098cf0302d139",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/down/dH5HpWb5-n3LyynKJUww8w9d5b137232175703f46515c443a87c3a.jpg",
+      "title": "杭州太子湾公园的夏天,治愈39度高温下的心情",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=4269981741120339699",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a3e0bd3cbabd4413",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2NjQ0MDExLjY3NzI0Mg%3D%3D%27/0.png",
+      "title": "太子湾公园:秋日里的绝美风景",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4485656362836960463",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_11e1851f22bbd4a7",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://b0.bdstatic.com/644b6765208ba655139042b2606d04ba.jpg",
+      "title": "杭州12.4太子湾现状!已红!速来!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5962472363775308022",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0af3c3c6be41352f",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM0NDgyODc1LjgyODc0Mw%3D%3D%27/0.png",
+      "title": "太子湾公园:西湖旁的静谧之地 这次杭州之行,朋友们推荐了一个非常",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4013207224544543401",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3d2155ec633107f2",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275aSq5a2Q5rm%2B55qE5ri4546p6Lev57q/5pS755WlXzE3Mjk4MjIzNzAuMjY5NjUzNg%3D%3D%27/0.png",
+      "title": "杭州太子湾公园夏日避暑全攻略🌳🌞",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5447839375368303985",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3f123b70e1a8e7dc",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM2MTk2Nzc5LjU4NzYzODRfMTczNjE5Njc4MS40ODIzNzY4XzE3MzYxOTY3ODMuMzgwNDM3%27/2.png",
+      "title": "🌳太子湾公园:杭州的春日秘境🌸",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4913803914352396089",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1ee9434f8b78e628",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/bb9196367464/250524/ba3a8740045a60ebb7d20e115943e15f.jpeg@c_1,w_1080,h_1920,x_0,y_0?for=bg",
+      "title": "端午旅游,杭州的太子湾公园大美风景,处处景色美如画,旅游推荐",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=4924801392949787855",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_dee7cdbd51a3b121",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/edit/8f475b5a38ee0f48b4b344eb339afa01.jpg@h_1280",
+      "title": "杭州太子湾公园,真的是个隐藏在城市中的小秘密啊!",
+      "source_page_url": "https://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4039164538032107397",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_2650ab9cc6aa4612",
+      "query": "杭州 太子湾 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3ea1125b6dd4/240704/595936f16c2c3221534ac730eb0abedf.jpeg",
+      "title": "杭州太子湾公园什么时候去最好",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1803622539500864394&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [],
+  "visual_profile": {},
+  "reference_version": 0,
+  "visual_assets": {},
+  "voice": {
+    "status": "none",
+    "version": 0
+  },
+  "music": {
+    "status": "none",
+    "version": 0,
+    "recommendation_status": "none",
+    "recommendation": null
+  },
+  "voice_tasks": [],
+  "segment_tasks": [],
+  "render_tasks": [],
+  "render": {
+    "status": "none",
+    "version": 0
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "16:9"
+  },
+  "safety": {},
+  "created_at": "2026-09-25T16:46:20.372869+00:00",
+  "updated_at": "2026-09-25T16:46:21.348683+00:00",
+  "copywriting_text": "",
+  "segment_results": {},
+  "active_segment_ids": []
+}

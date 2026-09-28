@@ -1,12 +1,22 @@
+import {
+  PhBuildings,
+  PhConfetti,
+  PhMapPin,
+  PhMountains,
+  PhNeedle,
+  PhSparkle,
+} from '@phosphor-icons/vue'
+
 // 与后端 backend/constants.py 保持一致的前端枚举（改后端时记得同步这里）
 // 场景类型：首页卡片选择器的数据源（6 类，覆盖比赛要求 ≥2 类）
+// icon 是 Phosphor 组件（全站统一图标家族），渲染时用 <component :is="s.icon" />
 export const SCENE_TYPES = [
-  { value: '城市形象宣传', emoji: '🏙️', desc: '航拍地标，城市气质' },
-  { value: '景区推荐', emoji: '🏞️', desc: '核心景观与特色体验' },
-  { value: '节庆活动推广', emoji: '🎉', desc: '节庆氛围与行动召唤' },
-  { value: '非遗文化传播', emoji: '🪡', desc: '传统技艺的年轻表达' },
-  { value: '打卡视频', emoji: '📍', desc: '年轻人爱分享的机位' },
-  { value: '其他', emoji: '✨', desc: '自由主题创作' },
+  { value: '城市形象宣传', icon: PhBuildings, desc: '航拍地标，城市气质' },
+  { value: '景区推荐', icon: PhMountains, desc: '核心景观与特色体验' },
+  { value: '节庆活动推广', icon: PhConfetti, desc: '节庆氛围与行动召唤' },
+  { value: '非遗文化传播', icon: PhNeedle, desc: '传统技艺的年轻表达' },
+  { value: '打卡视频', icon: PhMapPin, desc: '年轻人爱分享的机位' },
+  { value: '其他', icon: PhSparkle, desc: '自由主题创作' },
 ]
 
 export const ASPECT_RATIOS = ['9:16', '16:9', '1:1']

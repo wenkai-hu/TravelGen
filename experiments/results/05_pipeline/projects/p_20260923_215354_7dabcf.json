@@ -1,0 +1,3165 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260923_215354_7dabcf",
+  "username": "Ryan",
+  "status": "generating",
+  "progress": 45,
+  "message": "Shot 视频生成中 0/1 个生成片段完成",
+  "request": {
+    "city": "绍兴",
+    "location": "鲁迅故居",
+    "scene_type": "景区推荐",
+    "theme": "文化特色",
+    "audience": "18-35岁年轻游客",
+    "style": "文艺清新",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "一面石墙，翻开鲁迅故里",
+        "content": "镜头从“鲁迅故里”浅灰色石材主题景墙正面全景开始，缓慢推近“LUXUN NATIVE PLACE”英文与持烟男子剪影；白墙黑瓦中式建筑、灰色石板广场和景墙前人物雕塑静立入画。画面像一页被风翻开的旧书，文艺清新地开启绍兴文化之旅。",
+        "duration_s": 10,
+        "place_id": "place_41ee207f6c0e5979",
+        "visual_targets": [
+          "浅灰色石材主题景墙",
+          "景墙上的“鲁迅故里”汉字及“LUXUN NATIVE PLACE”英文",
+          "景墙右侧持烟男子人物剪影",
+          "景墙前各人物雕塑",
+          "两侧白墙黑瓦中式建筑",
+          "灰色石板铺装广场"
+        ],
+        "evidence_asset_ids": [
+          "ref_d1c8382c6a791321"
+        ]
+      },
+      {
+        "section": "展开",
+        "title": "穿过圆洞门，走进白墙灰瓦的留白",
+        "content": "第一视角从圆形门洞外缓慢向内穿过，两扇老旧木门敞开，扇形题字石匾、门洞顶部中式瓦顶与爬藤植物依次掠过；园内粗壮树木、碎石/土路步道和白墙灰瓦建筑缓缓展开。脚步放轻，像走进江南园林的一处安静注脚。",
+        "duration_s": 13,
+        "place_id": "place_41ee207f6c0e5979",
+        "visual_targets": [
+          "中式圆形门洞",
+          "两扇敞开的老旧木门及门环",
+          "门洞上方扇形题字石匾",
+          "门洞顶部中式瓦顶与爬藤植物",
+          "园内粗壮树木",
+          "园内白墙灰瓦建筑"
+        ],
+        "evidence_asset_ids": [
+          "ref_e634888ec2ffdd88"
+        ]
+      },
+      {
+        "section": "高潮",
+        "title": "水巷、乌篷船与倒影里的绍兴",
+        "content": "镜头从高位沿水巷向前推进，并缓慢下降，狭窄水道向远处延伸；两侧传统民居白墙黛瓦与石砌驳岸临水而立，乌篷船停靠水道两旁，远处石桥横跨，上方繁茂枝叶与水面清晰倒影交织。这是绍兴最柔软的水声，也是年轻人会想定格的一帧。",
+        "duration_s": 15,
+        "place_id": "place_41ee207f6c0e5979",
+        "visual_targets": [
+          "水巷纵向空间结构",
+          "沿水道停靠的乌篷船",
+          "横跨水道的石桥",
+          "两侧传统民居白墙黛瓦与石砌驳岸",
+          "上方繁茂树木枝叶",
+          "水面建筑与树木倒影"
+        ],
+        "evidence_asset_ids": [
+          "ref_7e75298ab88c9918"
+        ]
+      },
+      {
+        "section": "文化特色",
+        "title": "三味书屋：木梁架下的书卷气",
+        "content": "转入三味书屋室内，平视缓慢推进到“三味书屋”匾额、深灰木构隔墙与竖幅立轴画；再横移带出雕花翘头案几和多组传统中式木质桌椅。木梁架屋顶下，光线安静，书卷气与旧木香一起留在画面里。",
+        "duration_s": 14,
+        "place_id": "place_41ee207f6c0e5979",
+        "visual_targets": [
+          "“三味书屋”匾额",
+          "中间深灰木构隔墙及墙面立轴画",
+          "雕花翘头案几",
+          "传统中式木质桌椅",
+          "木梁架屋顶"
+        ],
+        "evidence_asset_ids": [
+          "ref_ff34f79d213ffd05"
+        ]
+      },
+      {
+        "section": "收尾",
+        "title": "临水戏台前，把绍兴慢慢带走",
+        "content": "在临水戏台前用水平横移或固定长镜头收尾，灰瓦翘角屋顶、石木平桥、红色串状灯笼与水面倒影叠成尾声。来绍兴，把课本里的名字走成一段慢旅行，在鲁迅故里的白墙黛瓦间，遇见文艺清新的江南。",
+        "duration_s": 8,
+        "place_id": "place_41ee207f6c0e5979",
+        "visual_targets": [
+          "临水戏台灰瓦翘角屋顶",
+          "石木平桥",
+          "水面及建筑倒影",
+          "红色串状灯笼与白地红穗宫灯"
+        ],
+        "evidence_asset_ids": [
+          "ref_cc1b92abb5c8aec0"
+        ]
+      }
+    ],
+    "plan_summary": "文化特色"
+  },
+  "copywriting": {
+    "titles": [
+      "一墙石影，翻开鲁迅故里",
+      "在鲁迅故里，把课本走成慢旅行"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "一墙石影，翻开鲁迅故里。白墙黑瓦间，少年绍兴，正缓缓醒来。",
+        "duration_s": 10
+      },
+      {
+        "idx": 2,
+        "text": "穿过圆洞门，脚步放轻。扇形石匾下，老树与白墙灰瓦，摊开江南的留白。",
+        "duration_s": 13
+      },
+      {
+        "idx": 3,
+        "text": "水巷向前，乌篷船停成旧时光。石桥横跨，白墙黛瓦都落在水里，轻轻晃。这是绍兴最柔软的水声。",
+        "duration_s": 15
+      },
+      {
+        "idx": 4,
+        "text": "三味书屋，少年私塾。木梁安静。匾额下，桌椅留着书卷气；相传那张刻“早”字的书桌，也留着自勉。",
+        "duration_s": 14
+      },
+      {
+        "idx": 5,
+        "text": "戏台灯影落水，桥影成句。来绍兴，把课本里的名字走成慢旅行。",
+        "duration_s": 8
+      }
+    ],
+    "hashtags": [
+      "#鲁迅故里",
+      "#绍兴旅行",
+      "#文艺江南"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "一墙石影，翻开鲁迅故里。白墙黑瓦间，少年绍兴，正缓缓醒来。",
+        "start_s": 0,
+        "end_s": 10
+      },
+      {
+        "line_id": 2,
+        "text": "穿过圆洞门，脚步放轻。扇形石匾下，老树与白墙灰瓦，摊开江南的留白。",
+        "start_s": 10,
+        "end_s": 23
+      },
+      {
+        "line_id": 3,
+        "text": "水巷向前，乌篷船停成旧时光。石桥横跨，白墙黛瓦都落在水里，轻轻晃。这是绍兴最柔软的水声。",
+        "start_s": 23,
+        "end_s": 38
+      },
+      {
+        "line_id": 4,
+        "text": "三味书屋，少年私塾。木梁安静。匾额下，桌椅留着书卷气；相传那张刻“早”字的书桌，也留着自勉。",
+        "start_s": 38,
+        "end_s": 52
+      },
+      {
+        "line_id": 5,
+        "text": "戏台灯影落水，桥影成句。来绍兴，把课本里的名字走成慢旅行。",
+        "start_s": 52,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "鲁迅故里：白墙黛瓦间，遇见文艺清新的江南",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "鲁迅故居",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 10,
+            "narration": "一墙石影，翻开鲁迅故里。白墙黑瓦间，少年绍兴，正缓缓醒来。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "浅灰色石材主题景墙，墙上有“鲁迅故里”汉字、“LUXUN NATIVE PLACE”英文、街巷剪影和右侧持烟男子剪影；景墙前有多组人物雕塑。",
+            "background": "两侧白墙黑瓦中式建筑、灰色石板铺装广场、盆栽与绿色乔木，晴朗蓝天。",
+            "place_id": "place_41ee207f6c0e5979",
+            "reference_asset_ids": [
+              "ref_d1c8382c6a791321"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "浅灰色石材主题景墙的整体形态",
+              "景墙上“鲁迅故里”文字、英文标注、街巷剪影和持烟男子剪影的内容与位置",
+              "景墙前各人物雕塑的造型、数量与相对位置",
+              "两侧白墙黑瓦中式建筑的外观风格",
+              "灰色石板广场的铺装形式"
+            ],
+            "allowed_changes": [
+              "广场上的光影效果",
+              "背景树木的枝叶动态",
+              "盆栽植物的细节形态",
+              "天空的云彩形态"
+            ],
+            "prompt": "写实地面平视全景，清晰呈现浅灰色石材主题景墙，墙上“鲁迅故里”汉字、“LUXUN NATIVE PLACE”英文、街巷剪影和右侧持烟男子剪影保持原位；景墙前多组人物雕塑静立，两侧白墙黑瓦中式建筑与灰色石板广场围合；上午晴朗柔和自然光，镜头从正面缓慢推近，材质粗糙石面与江南民居质感真实。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_d1c8382c6a791321",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "景墙后方区域的拍摄镜头",
+              "建筑内部空间的拍摄镜头",
+              "环绕景墙360度的运动镜头",
+              "高空俯视整个场地的镜头"
+            ],
+            "timeline_start_ms": 0,
+            "timeline_end_ms": 10000,
+            "segment_ids": [
+              "seg_01"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 10000
+          },
+          {
+            "shot_id": 2,
+            "duration_s": 6,
+            "narration": "穿过圆洞门，脚步放轻。",
+            "camera": {
+              "type": "移动机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "中式圆形门洞，两扇敞开的老旧木门及门环，门洞上方扇形题字石匾，顶部中式瓦顶与爬藤植物。",
+            "background": "园内粗壮树木、白墙灰瓦建筑、石板步道，晴朗蓝天。",
+            "place_id": "place_41ee207f6c0e5979",
+            "reference_asset_ids": [
+              "ref_e634888ec2ffdd88"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "圆形门洞的整体形态与结构",
+              "门洞上方的扇形题字石匾及文字",
+              "两侧老旧木门及门环的样式",
+              "门洞顶部的中式瓦顶与爬藤植物",
+              "园内入口处的粗壮树木",
+              "园内白墙灰瓦的建筑风格"
+            ],
+            "allowed_changes": [
+              "园内远处的人物数量与状态",
+              "地面软管的有无与位置",
+              "树叶的轻微晃动状态",
+              "光影的随时间细微变化"
+            ],
+            "prompt": "写实地面平视中景，正对中式圆形门洞，两扇深棕老旧木门敞开，门环清晰，门洞上方扇形题字石匾与瓦顶爬藤保持原样；园内粗壮树木、白墙灰瓦建筑和碎石步道可见；上午晴朗自然光，镜头缓慢穿过门洞向前推进，木质与白墙岁月质感真实。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_e634888ec2ffdd88",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "门洞后方园林深处的全景俯瞰镜头",
+              "门洞建筑背面的视角镜头",
+              "环绕门洞建筑360度的运动镜头",
+              "园内白墙建筑内部的镜头"
+            ],
+            "timeline_start_ms": 10000,
+            "timeline_end_ms": 16000,
+            "segment_ids": [
+              "seg_02"
+            ],
+            "segment_id": "seg_02",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 6000
+          },
+          {
+            "shot_id": 3,
+            "duration_s": 7,
+            "narration": "扇形石匾下，老树与白墙灰瓦，摊开江南的留白。",
+            "camera": {
+              "type": "移动机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "中式圆洞门院墙，黑色对开木门与金属门钹，门上方扇形石质题额，弧形青瓦屋顶，两侧花窗。",
+            "background": "门洞内土路、树木、高秆绿植、木栅栏，远处少量人群。",
+            "place_id": "place_41ee207f6c0e5979",
+            "reference_asset_ids": [
+              "ref_0a84e69980233bf2"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "中式圆洞门的整体形态与结构",
+              "黑色对开木门与金属门钹",
+              "门上方的扇形题额",
+              "弧形青瓦屋顶",
+              "院墙两侧的镂空花窗",
+              "门洞内的土路与两侧的植被、木栅栏布局"
+            ],
+            "allowed_changes": [
+              "人群的数量、穿着与位置",
+              "植被的疏密程度",
+              "地面积水的多少",
+              "光线的明暗变化"
+            ],
+            "prompt": "写实地面平视中景，镜头从门外向中式圆洞门缓慢推进，黑色对开木门与金属门钹、扇形石质题额、弧形青瓦屋顶和两侧镂空花窗保持原位；门洞内土路两侧有树木、高秆绿植与木栅栏，远处人群虚化；上午阴天柔和散射光，白墙青苔与旧木质感真实。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_0a84e69980233bf2",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "圆洞门背面的视角镜头",
+              "高空俯视整个园区的镜头",
+              "园区内部深处建筑的特写镜头",
+              "环绕圆洞门360度的运动镜头"
+            ],
+            "timeline_start_ms": 16000,
+            "timeline_end_ms": 23000,
+            "segment_ids": [
+              "seg_03"
+            ],
+            "segment_id": "seg_03",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 7000
+          },
+          {
+            "shot_id": 4,
+            "duration_s": 9,
+            "narration": "水巷向前，乌篷船停成旧时光。石桥横跨，白墙黛瓦都落在水里，轻轻晃。",
+            "camera": {
+              "type": "无人机",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "全景",
+            "subject": "狭窄水巷纵向延伸，沿水道停靠的乌篷船，远处横跨水道的石桥，两侧传统民居白墙黛瓦与石砌驳岸。",
+            "background": "上方繁茂树木枝叶覆盖，水面有建筑与树木倒影。",
+            "place_id": "place_41ee207f6c0e5979",
+            "reference_asset_ids": [
+              "ref_7e75298ab88c9918"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "水巷的纵向空间结构",
+              "两侧传统民居的白墙黛瓦形态与石砌驳岸",
+              "沿水道停靠的乌篷船",
+              "横跨水道的石桥",
+              "上方覆盖的繁茂树木枝叶",
+              "水面清晰的建筑与树木倒影"
+            ],
+            "allowed_changes": [
+              "乌篷船的位置与数量微调",
+              "水面的波纹动态",
+              "树叶的轻微晃动",
+              "光影的缓慢移动变化"
+            ],
+            "prompt": "写实无人机俯拍全景，沿狭窄水巷向前缓慢推进并轻微下降，水道纵向延伸，两侧传统民居白墙黛瓦与石砌驳岸临水而立，乌篷船停靠两旁，远处石桥横跨；上方繁茂枝叶覆盖，水面倒影清晰；上午晴朗自然光，水乡柔软水声氛围，青灰瓦与白墙质感真实。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_7e75298ab88c9918",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "建筑内部视角的镜头",
+              "水巷尽头石桥另一侧的纵深镜头",
+              "低空贴水面快速穿梭的运动镜头",
+              "仰视屋顶上方全貌的镜头"
+            ],
+            "timeline_start_ms": 23000,
+            "timeline_end_ms": 32000,
+            "segment_ids": [
+              "seg_04"
+            ],
+            "segment_id": "seg_04",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 9000
+          },
+          {
+            "shot_id": 5,
+            "duration_s": 6,
+            "narration": "这是绍兴最柔软的水声。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "河道与两侧临水传统民居，白墙木窗、坡屋顶，绿植盆栽，红色竖版招牌。",
+            "background": "水面倒影，远处现代多层楼房，前景垂落树叶。",
+            "place_id": "place_41ee207f6c0e5979",
+            "reference_asset_ids": [
+              "ref_64eb8d9aa67e889f"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "河道与两侧临水传统民居的整体水乡格局",
+              "民居坡屋顶、白墙木窗的传统建筑特征",
+              "建筑墙面斑驳、临水生长绿植的老旧生活质感",
+              "红色竖版招牌的样式与位置",
+              "远处现代楼房与古民居的层次对比"
+            ],
+            "allowed_changes": [
+              "河道水面的波纹动态",
+              "绿植的轻微晃动",
+              "民居门口人物的活动",
+              "悬挂的红绸、灯笼的轻微摆动",
+              "天空的光影细微变化"
+            ],
+            "prompt": "写实地面平视中景，镜头沿河道缓慢横移，水面平静倒映两侧临水传统民居，白墙木窗与坡屋顶、斑驳墙面和绿植保持真实；前景有垂落树叶，远处现代楼房形成层次；上午柔和自然光，红色竖版招牌点缀，江南生活质感。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_64eb8d9aa67e889f",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "河道左侧民居内部的视角镜头",
+              "高空俯视整个水乡全貌的镜头",
+              "进入民居室内的穿梭镜头",
+              "河道尽头远处区域的特写镜头"
+            ],
+            "timeline_start_ms": 32000,
+            "timeline_end_ms": 38000,
+            "segment_ids": [
+              "seg_05"
+            ],
+            "segment_id": "seg_05",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 6000
+          },
+          {
+            "shot_id": 6,
+            "duration_s": 10,
+            "narration": "三味书屋，少年私塾。木梁安静。匾额下，桌椅留着书卷气；相传那张刻“早”字的书桌，也留着自勉。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "“三味书屋”匾额、深灰木构隔墙、竖幅立轴画、雕花翘头案几、多组传统中式木质桌椅、木梁架屋顶。",
+            "background": "白灰墙面、小型说明牌、照明灯泡、拉绳围栏。",
+            "place_id": "place_41ee207f6c0e5979",
+            "reference_asset_ids": [
+              "ref_ff34f79d213ffd05"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "“三味书屋”匾额的形制与文字",
+              "中间深灰木构隔墙及墙面立轴画的布局",
+              "翘头案几的雕花形态与摆放位置",
+              "传统中式木质桌椅的形制与整体空间格局",
+              "木梁架屋顶的结构样式"
+            ],
+            "allowed_changes": [
+              "人工照明的亮度与光影效果",
+              "桌面摆放的小件物品样式",
+              "拉绳围栏的有无",
+              "说明牌的具体文字内容"
+            ],
+            "prompt": "写实地面平视中景，镜头在室内缓慢推进，正对“三味书屋”匾额与深灰木构隔墙，竖幅立轴画、雕花翘头案几和多组传统中式木质桌椅保持原位；木梁架屋顶下光线安静，白灰墙面与深棕旧木质感真实，书卷气与旧木香氛围。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_ff34f79d213ffd05",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "室外环境镜头",
+              "屋顶上方视角的俯拍镜头",
+              "空间右侧未完全展示区域的纵深运动镜头",
+              "展示建筑外观的镜头"
+            ],
+            "timeline_start_ms": 38000,
+            "timeline_end_ms": 48000,
+            "segment_ids": [
+              "seg_06"
+            ],
+            "segment_id": "seg_06",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 10000
+          },
+          {
+            "shot_id": 7,
+            "duration_s": 4,
+            "narration": "",
+            "camera": {
+              "type": "地面机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "“思仁堂”木质匾额、三联中堂书画、中式实木条案方桌扶手椅、带红色流苏宫灯、木格花窗。",
+            "background": "木质立柱与石质柱础、石质地面，窗外绿植与建筑。",
+            "place_id": "place_41ee207f6c0e5979",
+            "reference_asset_ids": [
+              "ref_d25f1b324bd1b544"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "“思仁堂”匾额的形制与文字",
+              "正墙三联中堂书画的布局与样式",
+              "中式实木厅堂家具的组合形制与雕花特征",
+              "带红色流苏的中式宫灯样式与悬挂布局",
+              "木质立柱与石质柱础的结构",
+              "两侧木格花窗的样式",
+              "深木色墙面与石质地面的材质质感"
+            ],
+            "allowed_changes": [
+              "宫灯的光影晃动效果",
+              "绿植的轻微动态",
+              "窗外光线的明暗变化",
+              "室外景象的细微动态"
+            ],
+            "prompt": "写实地面平视全景，固定镜头呈现中式传统厅堂，正墙“思仁堂”匾额与三联中堂书画居中，下方条案、方桌和扶手椅对称摆放，两侧悬挂带红色流苏宫灯，木格花窗透入室外绿植；上午自然光与室内柔光交织，深木色与石质地面质感真实。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_d25f1b324bd1b544",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "环绕厅堂360度旋转镜头（无法确认厅堂背面与完整四周结构）",
+              "俯视航拍厅堂内部镜头（无顶部完整结构信息）",
+              "室外向室内推进的穿越镜头（无法确认室外完整环境与建筑外部结构）",
+              "展示厅堂后方区域的镜头（无正墙后方的空间信息）"
+            ],
+            "timeline_start_ms": 48000,
+            "timeline_end_ms": 52000,
+            "segment_ids": [
+              "seg_07"
+            ],
+            "segment_id": "seg_07",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 4000
+          },
+          {
+            "shot_id": 8,
+            "duration_s": 8,
+            "narration": "戏台灯影落水，桥影成句。来绍兴，把课本里的名字走成慢旅行。",
+            "camera": {
+              "type": "地面机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "临水戏台灰瓦翘角屋顶、石木平桥、红色串状灯笼与白地红穗宫灯、戏台木质镂空护栏。",
+            "background": "水面及建筑倒影、相邻传统灰瓦建筑、常绿阔叶树与落叶秃枝树。",
+            "place_id": "place_41ee207f6c0e5979",
+            "reference_asset_ids": [
+              "ref_cc1b92abb5c8aec0"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "临水戏台的灰瓦翘角屋顶形态",
+              "石立柱配黄色楹联的结构特征",
+              "连通岸边与戏台的石木平桥",
+              "戏台檐下的串状红灯笼与带红穗的宫灯",
+              "戏台木质镂空护栏",
+              "水面及建筑倒影的整体布局"
+            ],
+            "allowed_changes": [
+              "灯笼的摆动状态",
+              "水面的波纹与倒影细节",
+              "戏台台面上桌椅的摆放细节",
+              "天空的云层形态",
+              "树木枝叶的轻微动态"
+            ],
+            "prompt": "写实地面平视中景，镜头水平横移，临水戏台灰瓦翘角屋顶与石木平桥保持原样，檐下红色串状灯笼和白地红穗宫灯点缀，戏台木质镂空护栏清晰；水面倒影与相邻传统建筑、树木构成尾声；上午柔和散射光，江南水乡收尾氛围。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_cc1b92abb5c8aec0",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "戏台内部纵深的穿梭镜头，无法确认内部完整结构",
+              "高空俯视全景镜头，无法获取顶部及周边全域布局",
+              "从戏台后方拍摄的反向视角镜头，无后方画面参考",
+              "环绕建筑360度的运动镜头，无法确认建筑背面与侧面全貌"
+            ],
+            "timeline_start_ms": 52000,
+            "timeline_end_ms": 60000,
+            "segment_ids": [
+              "seg_08"
+            ],
+            "segment_id": "seg_08",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 8000
+          }
+        ],
+        "place_id": "place_41ee207f6c0e5979"
+      }
+    ],
+    "storyboard_version": 4,
+    "duration_ms": 60000,
+    "segments": [
+      {
+        "segment_id": "seg_01",
+        "timeline_start_ms": 0,
+        "timeline_end_ms": 10000,
+        "duration_ms": 10000,
+        "shot_ids": [
+          1
+        ],
+        "narration_text": "一墙石影，翻开鲁迅故里。白墙黑瓦间，少年绍兴，正缓缓醒来。",
+        "reference_asset_ids": [
+          "ref_d1c8382c6a791321"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "pending"
+      },
+      {
+        "segment_id": "seg_02",
+        "timeline_start_ms": 10000,
+        "timeline_end_ms": 16000,
+        "duration_ms": 6000,
+        "shot_ids": [
+          2
+        ],
+        "narration_text": "穿过圆洞门，脚步放轻。",
+        "reference_asset_ids": [
+          "ref_e634888ec2ffdd88"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_03",
+        "timeline_start_ms": 16000,
+        "timeline_end_ms": 23000,
+        "duration_ms": 7000,
+        "shot_ids": [
+          3
+        ],
+        "narration_text": "扇形石匾下，老树与白墙灰瓦，摊开江南的留白。",
+        "reference_asset_ids": [
+          "ref_0a84e69980233bf2"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "pending"
+      },
+      {
+        "segment_id": "seg_04",
+        "timeline_start_ms": 23000,
+        "timeline_end_ms": 32000,
+        "duration_ms": 9000,
+        "shot_ids": [
+          4
+        ],
+        "narration_text": "水巷向前，乌篷船停成旧时光。石桥横跨，白墙黛瓦都落在水里，轻轻晃。",
+        "reference_asset_ids": [
+          "ref_7e75298ab88c9918"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_05",
+        "timeline_start_ms": 32000,
+        "timeline_end_ms": 38000,
+        "duration_ms": 6000,
+        "shot_ids": [
+          5
+        ],
+        "narration_text": "这是绍兴最柔软的水声。",
+        "reference_asset_ids": [
+          "ref_64eb8d9aa67e889f"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "pending"
+      },
+      {
+        "segment_id": "seg_06",
+        "timeline_start_ms": 38000,
+        "timeline_end_ms": 48000,
+        "duration_ms": 10000,
+        "shot_ids": [
+          6
+        ],
+        "narration_text": "三味书屋，少年私塾。木梁安静。匾额下，桌椅留着书卷气；相传那张刻“早”字的书桌，也留着自勉。",
+        "reference_asset_ids": [
+          "ref_ff34f79d213ffd05"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_07",
+        "timeline_start_ms": 48000,
+        "timeline_end_ms": 52000,
+        "duration_ms": 4000,
+        "shot_ids": [
+          7
+        ],
+        "narration_text": "",
+        "reference_asset_ids": [
+          "ref_d25f1b324bd1b544"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "pending"
+      },
+      {
+        "segment_id": "seg_08",
+        "timeline_start_ms": 52000,
+        "timeline_end_ms": 60000,
+        "duration_ms": 8000,
+        "shot_ids": [
+          8
+        ],
+        "narration_text": "戏台灯影落水，桥影成句。来绍兴，把课本里的名字走成慢旅行。",
+        "reference_asset_ids": [
+          "ref_cc1b92abb5c8aec0"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "pending"
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260923_215354_7dabcf_v1",
+  "plan_version": 1,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_9565beffee276514",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://q3.itc.cn/images01/20251029/62f4052c75844e769b281f0f188ce9a0.jpeg",
+      "title": "绍兴鲁迅故居:从百草园到咸亨酒店的文化寻踪",
+      "source_page_url": "http://www.sohu.com/a/948718619_121271812",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_050b7a7630008ef8",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://q0.itc.cn/images01/20240510/af6146849e464254a3cde3eb4290443a.jpeg",
+      "title": "智游港研学之旅:穿越鲁迅故居,体验百年文化魅力!",
+      "source_page_url": "http://www.sohu.com/a/777817331_121933443",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0024742d13477dda",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://q5.itc.cn/q_70/images03/20250615/5edc066ab56a4d1d91bf0b2a1a1b03fb.jpeg",
+      "title": "杭州+绍兴鲁迅故居+乌镇西栅+西塘+浙江大学+3大定制体验",
+      "source_page_url": "http://travel.sohu.com/a/904463027_121124416",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_28de15aba294a357",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://q3.itc.cn/q_70/images03/20260425/d1a4d851efde489dba66449e4dc074aa.jpeg",
+      "title": "具文化内涵和古城水乡经典风貌的历史街区之一,资源独特,拥有鲁迅故居",
+      "source_page_url": "http://www.sohu.com/a/1014294466_121124403",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0b46a0a5dde5359a",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://p0.itc.cn/q_70/images03/20230122/2df9ecf5c495416ca932b7374858606b.jpeg",
+      "title": "跟着课本游\"绍兴\" 绍兴鲁迅故居 柯岩 鲁镇 鉴湖一",
+      "source_page_url": "http://www.sohu.com/a/633759597_121123826",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c30a308d40310f05",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://q0.itc.cn/images01/20260127/b29d95702a144c76b88a0f2932d4ece4.jpeg",
+      "title": "绍兴八字桥水乡笔记:黄酒坛,乌篷船与鲁迅故居雨日 绍兴八字桥水乡",
+      "source_page_url": "http://roll.sohu.com/a/980559218_121271812",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0880e890549fa72f",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://q6.itc.cn/q_70/images03/20260425/9a82f704aef1400880d881e14067450f.jpeg",
+      "title": "具文化内涵和古城水乡经典风貌的历史街区之一,资源独特,拥有鲁迅故居",
+      "source_page_url": "http://www.sohu.com/a/1014294466_121124403",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3e7ddedb779f1465",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://p7.itc.cn/images01/20210625/3fd479b8b5334d1cbd91739baac577cf.jpeg",
+      "title": "绍兴鲁迅故居一日游",
+      "source_page_url": "http://www.sohu.com/na/474071921_419393",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_76ef19df598ed1ad",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://p5.itc.cn/images01/20200709/9180ea962e414175809dfebff60cb121.jpeg",
+      "title": "—鲁迅故居,周家新台门和百草园,忆鲁迅童年",
+      "source_page_url": "http://www.sohu.com/a/406580897_120779470?_trans_=000014_bdss_bddk",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c47121970c47034b",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://q9.itc.cn/images01/20240715/9ae3c4078b244e70bd5a22dab23488a4.jpeg",
+      "title": "绍兴鲁迅故居包含鲁迅祖居,鲁迅故居,百草园,鲁迅纪念馆,三味书屋",
+      "source_page_url": "http://www.sohu.com/a/793440263_121900907",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_003b4abfaf612951",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F1228%2F7cb275bdj00s6d6bj02cbd000v900ktp.jpg&thumbnail=660x2147483647&quality=80&type=jpg",
+      "title": "绍兴鲁迅故居游记",
+      "source_page_url": "http://www.163.com/dy/article/IN267CAO05561KTJ.html",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a1f08372b5693e69",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://5b0988e595225.cdn.sohucs.com/images/20180904/5235a5e696ab4651b1f267606a1886ed.jpeg",
+      "title": "浙江绍兴周末周边游玩好去处之,鲁迅故居,探寻当初在课本的地方",
+      "source_page_url": "http://www.sohu.com/a/251911321_100225410?open_source=weibo_search",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6e19de05ea37faa2",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://img.mp.sohu.com/upload/20161111/2711c5fe5c584d139f1dd96a294ce00e_th.jpg",
+      "title": "绍兴鲁迅故居 #梦寻诗画江南,心泊水城绍兴",
+      "source_page_url": "http://www.sohu.com/a/118718789_105155",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_686ebcae180b0690",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://p3.itc.cn/q_70/images03/20230122/0a8e8c88c3db446390c4332759d47daf.jpeg",
+      "title": "跟着课本游\"绍兴\" 绍兴鲁迅故居 柯岩 鲁镇 鉴湖一",
+      "source_page_url": "http://www.sohu.com/a/633759597_121123826",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_31f3a4db4ccc63d0",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://img.mp.sohu.com/upload/20161111/86ccef654ff449b984d334c9aa4cd54b_th.jpg",
+      "title": "绍兴鲁迅故居 #梦寻诗画江南,心泊水城绍兴",
+      "source_page_url": "http://www.sohu.com/a/118718789_105155",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c0ab51b17e4141aa",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://p9.itc.cn/images01/20200709/cf6baad0ec1d47f5bb3df4ec9283a995.jpeg",
+      "title": "—鲁迅故居,周家新台门和百草园,忆鲁迅童年",
+      "source_page_url": "http://www.sohu.com/a/406580897_120779470",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_73bba37ab71a8ed6",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://5b0988e595225.cdn.sohucs.com/images/20180904/d0b53333dea14262a585bf42f3f8b81d.jpeg",
+      "title": "浙江绍兴周末周边游玩好去处之,鲁迅故居,探寻当初在课本的地方",
+      "source_page_url": "http://www.sohu.com/a/251911321_100225410?open_source=weibo_search",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a060bbc000266981",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://p7.itc.cn/q_70/images03/20220920/60196b5264db43799260498c7fb439a7.jpeg",
+      "title": "浙江绍兴,充满了人文气息的文化古城,走进课本中的鲁迅故居",
+      "source_page_url": "http://roll.sohu.com/a/586517100_121383032",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_adc711347949195a",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://p1.itc.cn/q_70/images03/20220920/0110d1b2c9f34480832859cc583dfc36.jpeg",
+      "title": "浙江绍兴,充满了人文气息的文化古城,走进课本中的鲁迅故居",
+      "source_page_url": "http://travel.sohu.com/a/586517100_121383032",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9b88790e070cb428",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F1228%2F78ee4a8fj00s6d68801hnd000v900nfp.jpg&thumbnail=660x2147483647&quality=80&type=jpg",
+      "title": "绍兴鲁迅故居游记",
+      "source_page_url": "http://www.163.com/dy/article/IN267CAO05561KTJ.html",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6cf8768c8cc9bf1d",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F1228%2F507ebd06j00s6d63d01v9d000v900hkp.jpg&thumbnail=660x2147483647&quality=80&type=jpg",
+      "title": "绍兴鲁迅故居游记",
+      "source_page_url": "http://www.163.com/dy/article/IN267CAO05561KTJ.html",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f47a2aed643c1da6",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2FlJQX04ezdfaVgSSg6Jv88tditqYt0z4%3DeYHVE8BO3VibA1530311837164compressflag.jpeg&thumbnail=660x2147483647&quality=80&type=jpg",
+      "title": "绍兴鲁迅故居,坐拥市中心,4000平米80多个房间",
+      "source_page_url": "http://www.163.com/dy/article/DLHFFS550524MI04.html",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c70a44520afeffd7",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://q4.itc.cn/q_70/images03/20260425/179020b0092d4bdfb12bb5dc7ee291df.jpeg",
+      "title": "5月1日出发,江南美景最动人,青绿之间见",
+      "source_page_url": "http://www.sohu.com/a/1014294466_121124403",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_26aaa13b4d8fb067",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://5b0988e595225.cdn.sohucs.com/images/20190916/b0909eb2f0ea4f3e981cc60aaea34d3d.jpeg",
+      "title": "绍兴,鲁迅故居采风",
+      "source_page_url": "http://www.sohu.com/a/341211596_628744?_trans_=000019_wzwza",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_40ea60b2d15d8fc5",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://nimg.ws.126.net/?url=http%3A%2F%2Fspider.ws.126.net%2F007a0db08e83f6154df0be24f643a988.jpeg&thumbnail=660x2147483647&quality=80&type=jpg",
+      "title": "访绍兴鲁迅故居",
+      "source_page_url": "http://www.163.com/dy/article/EMD93Q100518JR8D.html",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9fdfc17be6d7aac4",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://p9.itc.cn/q_70/images03/20230122/a360f236d8bf4677877b933de7d82c8d.jpeg",
+      "title": "跟着课本游\"绍兴\" 绍兴鲁迅故居 柯岩 鲁镇 鉴湖一",
+      "source_page_url": "http://www.sohu.com/a/633759597_121123826",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b528345121acbbb2",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/a71ea8d3fd1f413490699d80251f95cad0c85ef5",
+      "title": "绍兴鲁迅故居",
+      "source_page_url": "http://baike.baidu.com/item/%E7%BB%8D%E5%85%B4%E9%B2%81%E8%BF%85%E6%95%85%E5%B1%85/5472477",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7a05acd719003397",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F1228%2F77c51691j00s6d68t01hbd000v900nfp.jpg&thumbnail=660x2147483647&quality=80&type=jpg",
+      "title": "绍兴鲁迅故居游记",
+      "source_page_url": "http://www.163.com/dy/article/IN267CAO05561KTJ.html",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c8022505ce9bb412",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://q2.itc.cn/q_70/images03/20260425/49b9161419e74315adc36522eb6c2dff.jpeg",
+      "title": "具文化内涵和古城水乡经典风貌的历史街区之一,资源独特,拥有鲁迅故居",
+      "source_page_url": "http://www.sohu.com/a/1014294466_121124403",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3f4a2c81a76538dd",
+      "query": "绍兴 鲁迅故居 实景 风景",
+      "image_url": "http://img.mp.sohu.com/upload/20161111/51b48b8d68c6438a89347bbaf2d6b7fb_th.jpg",
+      "title": "绍兴鲁迅故居 #梦寻诗画江南,心泊水城绍兴",
+      "source_page_url": "http://www.sohu.com/a/118718789_105155",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_d1c8382c6a791321",
+      "candidate_id": "ref_28de15aba294a357",
+      "place_id": "place_41ee207f6c0e5979",
+      "place_name": "鲁迅故居",
+      "city": "绍兴",
+      "original_url": "http://q3.itc.cn/q_70/images03/20260425/d1a4d851efde489dba66449e4dc074aa.jpeg",
+      "source_page_url": "http://www.sohu.com/a/1014294466_121124403",
+      "title": "具文化内涵和古城水乡经典风貌的历史街区之一,资源独特,拥有鲁迅故居",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_215354_7dabcf/ref_d1c8382c6a791321.webp",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_215354_7dabcf\\ref_d1c8382c6a791321.webp",
+      "sha256": "d1c8382c6a791321a9f70d398e6073e90c4fbf7d3573a91a16806f279a083272",
+      "width": 1080,
+      "height": 612,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 19.222,
+        "usage": {
+          "completion_tokens": 923,
+          "prompt_tokens": 1737,
+          "total_tokens": 2660,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示一处带有文化主题墙的户外广场场景，主题墙为浅灰色石材墙面，上面有文字、街巷图案与人物剪影，墙前摆放多组人物雕塑，两侧是白墙黑瓦的中式建筑，背景有树木，天气晴朗。",
+          "visible_elements": [
+            "浅灰色石材主题景墙",
+            "景墙上的“鲁迅故里”汉字及“LUXUN NATIVE PLACE”英文",
+            "景墙上的黑白街巷建筑剪影图案",
+            "景墙右侧的持烟男子人物剪影",
+            "左侧站立的成人与孩童深色人物雕塑",
+            "右侧三组古铜色人物雕塑（站立孩童、坐于石上戴帽人物、跪坐人物）",
+            "两侧白墙黑瓦的中式建筑",
+            "地面灰色石板铺装广场",
+            "左侧苏铁类盆栽植物",
+            "右侧盆栽植物",
+            "背景的绿色乔木与竹类植物",
+            "蓝色天空",
+            "左侧建筑墙面上的小型标识牌",
+            "右侧建筑墙面上的黄色标识牌"
+          ],
+          "spatial_layout": [
+            "主题景墙位于画面中后区域，横向延伸",
+            "人物雕塑全部放置在景墙前方的广场地面上",
+            "白墙黑瓦建筑分别位于景墙的左右两侧，与景墙衔接",
+            "树木位于景墙及建筑的后方上方区域",
+            "广场地面占据画面下半部分",
+            "左侧盆栽位于左侧雕塑旁的广场边缘",
+            "右侧盆栽位于右侧建筑旁的广场边缘"
+          ],
+          "architecture_and_materials": [
+            "主题景墙为浅灰色粗糙石材材质，表面有自然水痕痕迹",
+            "两侧建筑为白色抹灰墙面，搭配黑色坡屋顶，是江南民居风格形态",
+            "广场地面由灰色长方形石板铺砌而成",
+            "人物雕塑为金属材质，左侧雕塑呈深黑色，右侧雕塑呈古铜色",
+            "景墙上的图案与文字为黑色"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "画面正对主题景墙，拍摄方向朝向景墙正面"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足，应为上午或下午时段",
+            "weather": "晴朗，天空呈蓝色，有少量淡云",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [
+            "浅灰色石材主题景墙的整体形态",
+            "景墙上“鲁迅故里”文字、英文标注、街巷剪影和持烟男子剪影的内容与位置",
+            "景墙前各人物雕塑的造型、数量与相对位置",
+            "两侧白墙黑瓦中式建筑的外观风格",
+            "灰色石板广场的铺装形式"
+          ],
+          "allowed_changes": [
+            "广场上的光影效果",
+            "背景树木的枝叶动态",
+            "盆栽植物的细节形态",
+            "天空的云彩形态"
+          ],
+          "suitable_shots": [
+            "正面全景固定镜头展示整体场景",
+            "从左到右的横移镜头展示景墙全貌与雕塑",
+            "向前推进的推镜头聚焦景墙文字或雕塑细节",
+            "低角度平视镜头展现景墙与雕塑的组合"
+          ],
+          "unsupported_or_risky_shots": [
+            "景墙后方区域的拍摄镜头",
+            "建筑内部空间的拍摄镜头",
+            "环绕景墙360度的运动镜头",
+            "高空俯视整个场地的镜头"
+          ],
+          "visible_text": [
+            "鲁迅故里",
+            "LUXUN NATIVE PLACE"
+          ],
+          "uncertain": [
+            "具体所在城市与精确地理位置",
+            "雕塑的具体创作年代与材质细节",
+            "两侧建筑的具体功能与内部结构"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_ff34f79d213ffd05",
+      "candidate_id": "ref_0880e890549fa72f",
+      "place_id": "place_41ee207f6c0e5979",
+      "place_name": "鲁迅故居",
+      "city": "绍兴",
+      "original_url": "http://q6.itc.cn/q_70/images03/20260425/9a82f704aef1400880d881e14067450f.jpeg",
+      "source_page_url": "http://www.sohu.com/a/1014294466_121124403",
+      "title": "具文化内涵和古城水乡经典风貌的历史街区之一,资源独特,拥有鲁迅故居",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_215354_7dabcf/ref_ff34f79d213ffd05.webp",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_215354_7dabcf\\ref_ff34f79d213ffd05.webp",
+      "sha256": "ff34f79d213ffd05047b43e246ddd012dbd5093ddad8ff5df2ea71031ff1ab96",
+      "width": 1080,
+      "height": 725,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 14.507,
+        "usage": {
+          "completion_tokens": 664,
+          "prompt_tokens": 1717,
+          "total_tokens": 2381,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "这是一间传统中式室内空间，摆放着多组木质桌椅，墙面挂有匾额和立轴画，整体呈现古朴的书房/塾堂风貌",
+          "visible_elements": [
+            "木质梁架屋顶",
+            "白灰墙面",
+            "深灰色木构隔墙",
+            "“三味书屋”匾额",
+            "竖幅立轴画",
+            "雕花翘头案几",
+            "多组木质桌椅",
+            "墙面小型说明牌",
+            "照明灯泡",
+            "拉绳围栏"
+          ],
+          "spatial_layout": [
+            "深灰色木构隔墙位于画面中后部，正对观看方向",
+            "匾额悬挂在木构隔墙的上方位置",
+            "竖幅立轴画挂在木构隔墙正中、匾额下方",
+            "翘头案几紧贴木构隔墙放置，在立轴画下方",
+            "多组木质桌椅分布在案几前方及画面左右区域",
+            "小型说明牌固定在画面左侧的白墙面上",
+            "木质梁架结构位于空间顶部"
+          ],
+          "architecture_and_materials": [
+            "屋顶为传统木梁架搭配瓦椽结构，木材呈深棕褐色",
+            "墙面为白灰抹面，色调偏米白",
+            "中间隔墙为深灰偏蓝的木构墙面，表面有斑驳痕迹",
+            "家具均为深棕木质，案几带有雕花装饰，桌椅为传统中式形制",
+            "匾额为浅色底配深色书法字体"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "以挂有匾额和立轴画的隔墙为正前方参照，桌椅分布在隔墙的前方区域"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断，室内有人工照明",
+            "weather": "无法判断",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [
+            "“三味书屋”匾额的形制与文字",
+            "中间深灰木构隔墙及墙面立轴画的布局",
+            "翘头案几的雕花形态与摆放位置",
+            "传统中式木质桌椅的形制与整体空间格局",
+            "木梁架屋顶的结构样式"
+          ],
+          "allowed_changes": [
+            "人工照明的亮度与光影效果",
+            "桌面摆放的小件物品样式",
+            "拉绳围栏的有无",
+            "说明牌的具体文字内容"
+          ],
+          "suitable_shots": [
+            "室内平拍全景展示整体空间布局",
+            "缓慢推进镜头聚焦匾额与案几区域",
+            "横移镜头展示两侧桌椅排布",
+            "中景固定镜头呈现塾堂整体氛围"
+          ],
+          "unsupported_or_risky_shots": [
+            "室外环境镜头",
+            "屋顶上方视角的俯拍镜头",
+            "空间右侧未完全展示区域的纵深运动镜头",
+            "展示建筑外观的镜头"
+          ],
+          "visible_text": [
+            "三味书屋",
+            "鲁迅座位"
+          ],
+          "uncertain": [
+            "无法确认该空间的具体地理位置与所属建筑",
+            "无法确认立轴画的具体内容",
+            "无法确认建筑的建造年代"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_e634888ec2ffdd88",
+      "candidate_id": "ref_9565beffee276514",
+      "place_id": "place_41ee207f6c0e5979",
+      "place_name": "鲁迅故居",
+      "city": "绍兴",
+      "original_url": "http://q3.itc.cn/images01/20251029/62f4052c75844e769b281f0f188ce9a0.jpeg",
+      "source_page_url": "http://www.sohu.com/a/948718619_121271812",
+      "title": "绍兴鲁迅故居:从百草园到咸亨酒店的文化寻踪",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_215354_7dabcf/ref_e634888ec2ffdd88.webp",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_215354_7dabcf\\ref_e634888ec2ffdd88.webp",
+      "sha256": "e634888ec2ffdd884a2d91099ab50863d632b4d6248b9bb8cd3f0d6986653f72",
+      "width": 636,
+      "height": 780,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 16.095,
+        "usage": {
+          "completion_tokens": 845,
+          "prompt_tokens": 1721,
+          "total_tokens": 2566,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面呈现一处中式园林的圆形门洞入口，门洞两侧木门敞开，前方有步道通向园内，周边被茂密绿植环绕，天气晴朗。",
+          "visible_elements": [
+            "中式圆形门洞建筑",
+            "两扇敞开的老旧木门",
+            "门洞上方的扇形题字石匾",
+            "园内的粗壮树木",
+            "园内的白墙建筑",
+            "园内的碎石/土路步道",
+            "前景的石板步道",
+            "门洞顶部及周边的茂密爬藤植物",
+            "画面上方及两侧的高大阔叶树木",
+            "蓝色天空",
+            "园内远处的少量人物",
+            "地面的浅色软管"
+          ],
+          "spatial_layout": [
+            "圆形门洞位于画面中央，是视觉中心",
+            "两扇木门分别位于圆形门洞的左右两侧，处于敞开状态",
+            "石板步道从画面前景延伸至圆形门洞内",
+            "树木分布在门洞后方的园内区域、门洞顶部及画面两侧上方",
+            "白墙建筑位于园内树木的后方",
+            "爬藤植物覆盖在门洞顶部的屋顶及右侧墙体上"
+          ],
+          "architecture_and_materials": [
+            "门洞为白色抹灰墙体，带有岁月留下的污渍痕迹，呈圆形拱洞形态",
+            "门洞顶部为弧形坡屋顶，铺设深灰色中式瓦片，瓦片上长有杂草和苔藓",
+            "门洞上方嵌有浅灰色扇形石匾，上面有黑色书法字体",
+            "两侧木门为深棕色老旧木材，表面有磨损、褪色痕迹，配有金属门环",
+            "园内可见白墙灰瓦的中式建筑，墙面为白色抹灰材质"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "镜头正对圆形门洞，朝向园林内部",
+              "光线从画面上方偏前方向照射，门洞内地面有树木投下的阴影"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，阳光充足",
+            "weather": "晴朗，蓝天无云",
+            "season": "植被繁茂，为温暖季节（春夏季）"
+          },
+          "must_keep_candidates": [
+            "圆形门洞的整体形态与结构",
+            "门洞上方的扇形题字石匾及文字",
+            "两侧老旧木门及门环的样式",
+            "门洞顶部的中式瓦顶与爬藤植物",
+            "园内入口处的粗壮树木",
+            "园内白墙灰瓦的建筑风格"
+          ],
+          "allowed_changes": [
+            "园内远处的人物数量与状态",
+            "地面软管的有无与位置",
+            "树叶的轻微晃动状态",
+            "光影的随时间细微变化"
+          ],
+          "suitable_shots": [
+            "从门洞外向内推进的平移镜头",
+            "正对门洞的固定全景镜头",
+            "缓慢穿过门洞的第一视角移动镜头",
+            "门洞局部细节的特写镜头（如石匾、木门）"
+          ],
+          "unsupported_or_risky_shots": [
+            "门洞后方园林深处的全景俯瞰镜头",
+            "门洞建筑背面的视角镜头",
+            "环绕门洞建筑360度的运动镜头",
+            "园内白墙建筑内部的镜头"
+          ],
+          "visible_text": [
+            "百草园"
+          ],
+          "uncertain": [
+            "该园林的具体地理位置与所属景区",
+            "园内白墙建筑的具体功能与内部结构",
+            "建筑的建造年代"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_7e75298ab88c9918",
+      "candidate_id": "ref_c30a308d40310f05",
+      "place_id": "place_41ee207f6c0e5979",
+      "place_name": "鲁迅故居",
+      "city": "绍兴",
+      "original_url": "http://q0.itc.cn/images01/20260127/b29d95702a144c76b88a0f2932d4ece4.jpeg",
+      "source_page_url": "http://roll.sohu.com/a/980559218_121271812",
+      "title": "绍兴八字桥水乡笔记:黄酒坛,乌篷船与鲁迅故居雨日 绍兴八字桥水乡",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_215354_7dabcf/ref_7e75298ab88c9918.webp",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_215354_7dabcf\\ref_7e75298ab88c9918.webp",
+      "sha256": "7e75298ab88c9918b605581d878808334dd8d8fcb5ee413374f3ef806cb2efe0",
+      "width": 552,
+      "height": 717,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 15.831,
+        "usage": {
+          "completion_tokens": 616,
+          "prompt_tokens": 1712,
+          "total_tokens": 2328,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展现一条狭窄的水巷，水道两侧是传统民居建筑，水面停泊多艘乌篷船，上方有繁茂的树木枝叶覆盖，远处可见石桥，整体是江南水乡风格的街巷水景。",
+          "visible_elements": [
+            "狭窄水道",
+            "乌篷船",
+            "传统民居建筑",
+            "石砌驳岸",
+            "石阶",
+            "石桥",
+            "繁茂乔木",
+            "水面倒影",
+            "橙色救生圈",
+            "石质平台"
+          ],
+          "spatial_layout": [
+            "水道沿画面纵向延伸，位于画面中央",
+            "民居建筑分列水道左右两侧，沿水道排布",
+            "左侧建筑旁有石砌台阶与平台延伸至水边",
+            "右侧建筑旁有石阶通向水面",
+            "乌篷船分别停靠在水道左右两侧的岸边",
+            "远处水道上横跨一座石桥",
+            "高大乔木的枝叶从画面上方覆盖水巷上空"
+          ],
+          "architecture_and_materials": [
+            "建筑为低层传统民居，墙面多为白墙，部分墙面有斑驳脱落痕迹",
+            "屋顶为深色坡屋顶，带有传统瓦作构件",
+            "驳岸、台阶、平台由灰色石材砌筑",
+            "建筑开有小尺寸窗洞，右侧建筑墙面有一排竖向小窗",
+            "乌篷船为木质船体，带有弧形深色篷顶"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "水道向画面深处延伸，视线沿水道纵向朝向远处石桥"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，阳光充足",
+            "weather": "晴朗",
+            "season": "夏末或秋季，树木叶片以绿色为主，部分叶片呈黄绿色"
+          },
+          "must_keep_candidates": [
+            "水巷的纵向空间结构",
+            "两侧传统民居的白墙黛瓦形态与石砌驳岸",
+            "沿水道停靠的乌篷船",
+            "横跨水道的石桥",
+            "上方覆盖的繁茂树木枝叶",
+            "水面清晰的建筑与树木倒影"
+          ],
+          "allowed_changes": [
+            "乌篷船的位置与数量微调",
+            "水面的波纹动态",
+            "树叶的轻微晃动",
+            "光影的缓慢移动变化"
+          ],
+          "suitable_shots": [
+            "沿水道向前推进的移动镜头",
+            "从当前高位缓慢下降的镜头",
+            "固定机位的水巷静帧镜头",
+            "聚焦水面倒影的特写镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "建筑内部视角的镜头",
+            "水巷尽头石桥另一侧的纵深镜头",
+            "低空贴水面快速穿梭的运动镜头",
+            "仰视屋顶上方全貌的镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体地名与所属古镇",
+            "建筑的具体建造年代",
+            "水道的准确长度与宽度"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_d25f1b324bd1b544",
+      "candidate_id": "ref_9b88790e070cb428",
+      "place_id": "place_41ee207f6c0e5979",
+      "place_name": "鲁迅故居",
+      "city": "绍兴",
+      "original_url": "http://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F1228%2F78ee4a8fj00s6d68801hnd000v900nfp.jpg&thumbnail=660x2147483647&quality=80&type=jpg",
+      "source_page_url": "http://www.163.com/dy/article/IN267CAO05561KTJ.html",
+      "title": "绍兴鲁迅故居游记",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_215354_7dabcf/ref_d25f1b324bd1b544.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_215354_7dabcf\\ref_d25f1b324bd1b544.jpg",
+      "sha256": "d25f1b324bd1b544deac63b8dcc388023c2bc2e2cb9d845cae2f589d9ef48d9e",
+      "width": 660,
+      "height": 495,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 27.73,
+        "usage": {
+          "completion_tokens": 1129,
+          "prompt_tokens": 1712,
+          "total_tokens": 2841,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面呈现中式传统厅堂内部，正墙悬挂匾额与三联书画，下方摆放成套中式实木家具，两侧悬挂宫灯，左右设窗可看到室外景象，整体为古典中式厅堂布局。",
+          "visible_elements": [
+            "中式厅堂内部空间",
+            "木质屋顶梁架与椽子",
+            "带红色流苏的中式宫灯",
+            "“思仁堂”木质匾额",
+            "三联中堂书画（中间为山水画作，两侧为书法条幅）",
+            "中式实木条案、方桌、扶手椅",
+            "青花瓷盆栽（绿植）",
+            "带纹饰的高花几",
+            "瓷质帽筒",
+            "木质立柱与石质柱础",
+            "木格花窗",
+            "室外建筑与绿植（窗外可见）",
+            "侧边实木桌椅",
+            "石质地面"
+          ],
+          "spatial_layout": [
+            "匾额悬挂于正墙上方，位于三联中堂书画的正上方",
+            "三联中堂书画挂在正墙中央，两侧书法条幅对称分布在中间画作两侧",
+            "条案紧贴正墙摆放，在三联书画的正下方",
+            "方桌位于条案前方正中间，两把扶手椅对称摆放在方桌左右两侧",
+            "两个高花几分列条案左右两侧，花几上各放置一盆青花瓷盆栽绿植",
+            "两顶宫灯悬挂在厅堂左侧上方，右侧上方也悬挂有宫灯，左右宫灯对称分布",
+            "木格花窗分别开设在厅堂左右两侧墙面，窗外可见室外景象",
+            "侧边桌椅分别摆放在厅堂左右两侧靠窗位置",
+            "木质立柱立于厅堂左右两侧，底部承托石质柱础"
+          ],
+          "architecture_and_materials": [
+            "屋顶为深色木质梁架与椽子结构，木材呈深褐偏黑的做旧质感",
+            "正墙为深棕色木质护墙板，表面平整有木纹",
+            "匾额为浅黄底木质，带有做旧痕迹，字体为深色书法字体",
+            "中堂书画为米黄色卷轴装裱，两侧条幅有橙色书法区域",
+            "家具为深棕色实木材质，带有传统雕花、回纹等中式装饰纹样",
+            "宫灯为木质框架，灯罩为带山水图案的半透明材质，垂挂红色流苏",
+            "立柱为深绿色（带纹饰）木质，柱础为浅灰色石质",
+            "花窗为深色木质格栅样式",
+            "地面为大块青灰色石质板材铺设"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "镜头正对厅堂正墙，朝向正墙方向"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天",
+            "weather": "晴朗（窗外光线充足明亮）",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [
+            "“思仁堂”匾额的形制与文字",
+            "正墙三联中堂书画的布局与样式",
+            "中式实木厅堂家具的组合形制与雕花特征",
+            "带红色流苏的中式宫灯样式与悬挂布局",
+            "木质立柱与石质柱础的结构",
+            "两侧木格花窗的样式",
+            "深木色墙面与石质地面的材质质感"
+          ],
+          "allowed_changes": [
+            "宫灯的光影晃动效果",
+            "绿植的轻微动态",
+            "窗外光线的明暗变化",
+            "室外景象的细微动态"
+          ],
+          "suitable_shots": [
+            "正面平视推进镜头（从厅堂入口向正墙缓慢推进）",
+            "左右横移镜头（展示厅堂两侧对称布局）",
+            "固定全景镜头（呈现厅堂整体风貌）",
+            "中景镜头（聚焦正墙家具与书画组合）",
+            "特写镜头（展示匾额、雕花家具、宫灯的细节）"
+          ],
+          "unsupported_or_risky_shots": [
+            "环绕厅堂360度旋转镜头（无法确认厅堂背面与完整四周结构）",
+            "俯视航拍厅堂内部镜头（无顶部完整结构信息）",
+            "室外向室内推进的穿越镜头（无法确认室外完整环境与建筑外部结构）",
+            "展示厅堂后方区域的镜头（无正墙后方的空间信息）"
+          ],
+          "visible_text": [
+            "思仁堂",
+            "君子處事有忍乃濟",
+            "儒者履辭既和且平",
+            "网易号 | 瞰浙里"
+          ],
+          "uncertain": [
+            "具体建筑所在地",
+            "建筑的具体年代",
+            "厅堂所属的具体宅院/场馆名称",
+            "窗外建筑的具体信息"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_cc1b92abb5c8aec0",
+      "candidate_id": "ref_f47a2aed643c1da6",
+      "place_id": "place_41ee207f6c0e5979",
+      "place_name": "鲁迅故居",
+      "city": "绍兴",
+      "original_url": "http://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2FlJQX04ezdfaVgSSg6Jv88tditqYt0z4%3DeYHVE8BO3VibA1530311837164compressflag.jpeg&thumbnail=660x2147483647&quality=80&type=jpg",
+      "source_page_url": "http://www.163.com/dy/article/DLHFFS550524MI04.html",
+      "title": "绍兴鲁迅故居,坐拥市中心,4000平米80多个房间",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_215354_7dabcf/ref_cc1b92abb5c8aec0.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_215354_7dabcf\\ref_cc1b92abb5c8aec0.jpg",
+      "sha256": "cc1b92abb5c8aec0a4c5d2d2525a41f449b39d1573bed5c4e05842b3c14dfb4a",
+      "width": 660,
+      "height": 863,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 18.326,
+        "usage": {
+          "completion_tokens": 955,
+          "prompt_tokens": 1712,
+          "total_tokens": 2667,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展示了一座临水而建的中式传统戏台类建筑，旁有石桥连通，周边有植被与其他传统建筑，天空呈浅淡色调。",
+          "visible_elements": [
+            "中式传统戏台建筑",
+            "石木结合的平桥",
+            "水面",
+            "常绿阔叶树",
+            "落叶秃枝树",
+            "相邻的传统灰瓦建筑",
+            "米黄色墙面建筑",
+            "红色串状灯笼",
+            "白地红穗宫灯",
+            "黄色楹联",
+            "红色绣纹桌椅",
+            "木质护栏",
+            "立地指示牌"
+          ],
+          "spatial_layout": [
+            "戏台建筑临水面建造，底部由石砌台基支撑",
+            "石桥从画面左侧延伸至戏台平台，桥面高于水面",
+            "水面位于画面底部，承接石桥与戏台的倒影",
+            "常绿树木位于画面左侧，在戏台左后方",
+            "落叶秃枝树位于常绿树木上方、戏台左上方",
+            "其他传统建筑位于戏台后方及右侧",
+            "指示牌放置在石桥左侧的岸边平台上"
+          ],
+          "architecture_and_materials": [
+            "戏台为中式传统木结构，灰黑色筒瓦歇山顶，屋檐起翘，檐角有装饰构件",
+            "戏台立柱为石质，呈浅灰白色，柱身挂黄色底黑字楹联",
+            "戏台护栏为深棕色木质，带有镂空花纹",
+            "石桥桥墩为浅灰色石材，桥面护栏为深棕色木构件配石质望柱",
+            "戏台内部墙面为白色，设深色木框格窗",
+            "戏台台面上铺有紫红色地垫，摆放红色带纹饰的桌椅",
+            "相邻建筑墙面为米黄色，屋顶为灰黑色瓦面"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "画面朝向戏台正面，可看到戏台的入口与台内陈设"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线柔和，具体时段无法判断",
+            "weather": "阴天，天空呈均匀浅灰白色，无明显阳光阴影",
+            "season": "无法判断，存在常绿树与落叶秃枝树，无明确季节指向特征"
+          },
+          "must_keep_candidates": [
+            "临水戏台的灰瓦翘角屋顶形态",
+            "石立柱配黄色楹联的结构特征",
+            "连通岸边与戏台的石木平桥",
+            "戏台檐下的串状红灯笼与带红穗的宫灯",
+            "戏台木质镂空护栏",
+            "水面及建筑倒影的整体布局"
+          ],
+          "allowed_changes": [
+            "灯笼的摆动状态",
+            "水面的波纹与倒影细节",
+            "戏台台面上桌椅的摆放细节",
+            "天空的云层形态",
+            "树木枝叶的轻微动态"
+          ],
+          "suitable_shots": [
+            "从当前位置向前推进的推镜头，展现戏台正面细节",
+            "沿石桥向戏台移动的跟拍镜头",
+            "水平横移镜头展示戏台与周边水景、建筑的关系",
+            "固定机位长镜头记录水面与建筑的静态氛围"
+          ],
+          "unsupported_or_risky_shots": [
+            "戏台内部纵深的穿梭镜头，无法确认内部完整结构",
+            "高空俯视全景镜头，无法获取顶部及周边全域布局",
+            "从戏台后方拍摄的反向视角镜头，无后方画面参考",
+            "环绕建筑360度的运动镜头，无法确认建筑背面与侧面全貌"
+          ],
+          "visible_text": [
+            "四面碧波三尺水",
+            "地似三山春似海",
+            "花為四壁錦為家",
+            "一亭明月半逕"
+          ],
+          "uncertain": [
+            "具体地点名称",
+            "建筑的建造年代",
+            "戏台所属的园林或古镇名称",
+            "指示牌上的具体文字内容"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_64eb8d9aa67e889f",
+      "candidate_id": "ref_c70a44520afeffd7",
+      "place_id": "place_41ee207f6c0e5979",
+      "place_name": "鲁迅故居",
+      "city": "绍兴",
+      "original_url": "http://q4.itc.cn/q_70/images03/20260425/179020b0092d4bdfb12bb5dc7ee291df.jpeg",
+      "source_page_url": "http://www.sohu.com/a/1014294466_121124403",
+      "title": "5月1日出发,江南美景最动人,青绿之间见",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_215354_7dabcf/ref_64eb8d9aa67e889f.webp",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_215354_7dabcf\\ref_64eb8d9aa67e889f.webp",
+      "sha256": "64eb8d9aa67e889f4013dd28a3a1f23656b8b0ddae4c85a4684df6c2a7a7e1ce",
+      "width": 1080,
+      "height": 1440,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 16.517,
+        "usage": {
+          "completion_tokens": 813,
+          "prompt_tokens": 1712,
+          "total_tokens": 2525,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展现了一条河道沿两侧排布着传统民居的水乡风貌，河道水面平静倒映建筑，远处可见现代楼房，前景有树叶垂入画面，民居外挂有招牌、绿植与装饰。",
+          "visible_elements": [
+            "河道",
+            "传统临水民居",
+            "现代多层楼房",
+            "垂落的树叶",
+            "绿植盆栽",
+            "红色竖版招牌",
+            "红色灯笼",
+            "空调外机",
+            "晾晒的网状物与红绸",
+            "金属置物架",
+            "蓝色塑料桶"
+          ],
+          "spatial_layout": [
+            "河道位于画面左侧及中部，沿纵深方向延伸",
+            "传统民居沿河道右侧依次排布，紧邻水面",
+            "现代楼房位于传统民居后方的远处",
+            "树叶从画面顶部垂入，处于画面前景上方",
+            "红色竖版招牌悬挂在河道右侧靠前的民居外，朝向河道"
+          ],
+          "architecture_and_materials": [
+            "传统民居为坡屋顶，铺设深灰色瓦片，部分瓦片长有杂草",
+            "民居墙面多为白墙，部分墙面斑驳脱落、底部有水渍霉斑，呈现老旧质感",
+            "民居有木质门窗，窗框多为深棕或红棕色，部分窗户带有木格栅",
+            "部分民居有临水的小平台或挑出的结构",
+            "远处现代楼房为白色外墙、平顶，带有玻璃窗与空调外机"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "河道沿画面纵深向远处延伸，视线沿河道方向向前",
+              "民居主要分布在河道右侧，左侧也有民居向远处排列"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线柔和，应为上午或下午",
+            "weather": "晴天，天空明亮无明显云层",
+            "season": "夏季或春末秋初，植被生长茂盛"
+          },
+          "must_keep_candidates": [
+            "河道与两侧临水传统民居的整体水乡格局",
+            "民居坡屋顶、白墙木窗的传统建筑特征",
+            "建筑墙面斑驳、临水生长绿植的老旧生活质感",
+            "红色竖版招牌的样式与位置",
+            "远处现代楼房与古民居的层次对比"
+          ],
+          "allowed_changes": [
+            "河道水面的波纹动态",
+            "绿植的轻微晃动",
+            "民居门口人物的活动",
+            "悬挂的红绸、灯笼的轻微摆动",
+            "天空的光影细微变化"
+          ],
+          "suitable_shots": [
+            "沿河道向前推进的平移镜头",
+            "固定机位展现水乡风貌的静帧镜头",
+            "从前景树叶逐渐下移展现河道民居的镜头",
+            "聚焦右侧民居细节的缓慢横移镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "河道左侧民居内部的视角镜头",
+            "高空俯视整个水乡全貌的镜头",
+            "进入民居室内的穿梭镜头",
+            "河道尽头远处区域的特写镜头"
+          ],
+          "visible_text": [
+            "越醫名宿"
+          ],
+          "uncertain": [
+            "具体地点名称",
+            "建筑的具体建造年代",
+            "河道的具体长度与走向",
+            "远处现代楼房的具体功能"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_0a84e69980233bf2",
+      "candidate_id": "ref_686ebcae180b0690",
+      "place_id": "place_41ee207f6c0e5979",
+      "place_name": "鲁迅故居",
+      "city": "绍兴",
+      "original_url": "http://p3.itc.cn/q_70/images03/20230122/0a8e8c88c3db446390c4332759d47daf.jpeg",
+      "source_page_url": "http://www.sohu.com/a/633759597_121123826",
+      "title": "跟着课本游\"绍兴\" 绍兴鲁迅故居 柯岩 鲁镇 鉴湖一",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_215354_7dabcf/ref_0a84e69980233bf2.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_215354_7dabcf\\ref_0a84e69980233bf2.jpg",
+      "sha256": "0a84e69980233bf20fd64b6d0f69bf39edc4fd9cfeca1cfb6e19134fb395324c",
+      "width": 1080,
+      "height": 810,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 18.365,
+        "usage": {
+          "completion_tokens": 863,
+          "prompt_tokens": 1712,
+          "total_tokens": 2575,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面呈现一座中式圆洞门建筑，门两侧的黑色木门向外敞开，透过门洞可见内部的土路、植被与人群，门上方有石质题额，整体是中式园林入口的景象。",
+          "visible_elements": [
+            "中式圆洞门院墙",
+            "两扇黑色对开木门",
+            "门上方石质题额",
+            "青瓦弧形屋顶",
+            "门洞内的土路",
+            "土路左侧的树木与高秆绿植",
+            "土路右侧的木栅栏与低矮绿植",
+            "远处聚集的人群",
+            "院墙两侧的花窗",
+            "门前景石与杂草",
+            "屋顶上方的树木枝叶"
+          ],
+          "spatial_layout": [
+            "圆洞门位于画面中央，是视觉中心",
+            "两扇黑色木门分别位于圆洞门左右两侧，向外敞开",
+            "石质题额位于圆洞门正上方的院墙顶部",
+            "弧形青瓦屋顶在题额上方，覆盖院墙顶部",
+            "土路从圆洞门内向远处延伸",
+            "树木与高秆绿植在土路左侧，木栅栏与低矮绿植在土路右侧",
+            "人群聚集在土路远端",
+            "花窗分别嵌在左右两侧的院墙上，位于木门外侧"
+          ],
+          "architecture_and_materials": [
+            "院墙为白色抹灰墙面，底部有污渍与青苔痕迹",
+            "圆洞门为圆形门洞，门洞边缘有黑色线条装饰",
+            "木门为黑色实木材质，配有金属环形门钹",
+            "题额为扇形石质，表面刻有深色文字",
+            "屋顶铺设深灰色青瓦，呈弧形起伏",
+            "院墙两侧花窗为黑色镂空纹样，呈花瓣形图案",
+            "木栅栏为深棕色木质，由竖条组成"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "镜头正对圆洞门，朝向门洞内部的园区方向"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，具体时段无法判断",
+            "weather": "阴天，地面有积水痕迹，可能刚下过雨",
+            "season": "植被繁茂，为温暖季节，具体无法判断"
+          },
+          "must_keep_candidates": [
+            "中式圆洞门的整体形态与结构",
+            "黑色对开木门与金属门钹",
+            "门上方的扇形题额",
+            "弧形青瓦屋顶",
+            "院墙两侧的镂空花窗",
+            "门洞内的土路与两侧的植被、木栅栏布局"
+          ],
+          "allowed_changes": [
+            "人群的数量、穿着与位置",
+            "植被的疏密程度",
+            "地面积水的多少",
+            "光线的明暗变化"
+          ],
+          "suitable_shots": [
+            "从门外正对圆洞门的固定全景镜头",
+            "从门外向门内缓慢推进的推镜头",
+            "穿过圆洞门向园区内部移动的跟拍镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "圆洞门背面的视角镜头",
+            "高空俯视整个园区的镜头",
+            "园区内部深处建筑的特写镜头",
+            "环绕圆洞门360度的运动镜头"
+          ],
+          "visible_text": [
+            "西草園"
+          ],
+          "uncertain": [
+            "具体地点名称",
+            "建筑的建造年代",
+            "园区内部的整体布局",
+            "远处人群的身份与目的地"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_41ee207f6c0e5979",
+    "place_name": "鲁迅故居",
+    "city": "绍兴",
+    "reference_asset_ids": [
+      "ref_d1c8382c6a791321",
+      "ref_ff34f79d213ffd05",
+      "ref_e634888ec2ffdd88",
+      "ref_7e75298ab88c9918",
+      "ref_d25f1b324bd1b544",
+      "ref_cc1b92abb5c8aec0",
+      "ref_64eb8d9aa67e889f",
+      "ref_0a84e69980233bf2"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "浅灰色石材主题景墙",
+      "景墙上的“鲁迅故里”汉字及“LUXUN NATIVE PLACE”英文",
+      "景墙上的黑白街巷建筑剪影图案",
+      "景墙右侧的持烟男子人物剪影",
+      "左侧站立的成人与孩童深色人物雕塑",
+      "右侧三组古铜色人物雕塑（站立孩童、坐于石上戴帽人物、跪坐人物）",
+      "两侧白墙黑瓦的中式建筑",
+      "地面灰色石板铺装广场",
+      "左侧苏铁类盆栽植物",
+      "右侧盆栽植物",
+      "背景的绿色乔木与竹类植物",
+      "蓝色天空",
+      "左侧建筑墙面上的小型标识牌",
+      "右侧建筑墙面上的黄色标识牌",
+      "木质梁架屋顶",
+      "白灰墙面",
+      "深灰色木构隔墙",
+      "“三味书屋”匾额",
+      "竖幅立轴画",
+      "雕花翘头案几",
+      "多组木质桌椅",
+      "墙面小型说明牌",
+      "照明灯泡",
+      "拉绳围栏",
+      "中式圆形门洞建筑",
+      "两扇敞开的老旧木门",
+      "门洞上方的扇形题字石匾",
+      "园内的粗壮树木",
+      "园内的白墙建筑",
+      "园内的碎石/土路步道"
+    ],
+    "stable_features": [
+      {
+        "text": "浅灰色石材主题景墙的整体形态",
+        "evidence_asset_ids": [
+          "ref_d1c8382c6a791321"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "景墙上“鲁迅故里”文字、英文标注、街巷剪影和持烟男子剪影的内容与位置",
+        "evidence_asset_ids": [
+          "ref_d1c8382c6a791321"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "景墙前各人物雕塑的造型、数量与相对位置",
+        "evidence_asset_ids": [
+          "ref_d1c8382c6a791321"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "两侧白墙黑瓦中式建筑的外观风格",
+        "evidence_asset_ids": [
+          "ref_d1c8382c6a791321"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "灰色石板广场的铺装形式",
+        "evidence_asset_ids": [
+          "ref_d1c8382c6a791321"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "“三味书屋”匾额的形制与文字",
+        "evidence_asset_ids": [
+          "ref_ff34f79d213ffd05"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "中间深灰木构隔墙及墙面立轴画的布局",
+        "evidence_asset_ids": [
+          "ref_ff34f79d213ffd05"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "翘头案几的雕花形态与摆放位置",
+        "evidence_asset_ids": [
+          "ref_ff34f79d213ffd05"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "传统中式木质桌椅的形制与整体空间格局",
+        "evidence_asset_ids": [
+          "ref_ff34f79d213ffd05"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "木梁架屋顶的结构样式",
+        "evidence_asset_ids": [
+          "ref_ff34f79d213ffd05"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "圆形门洞的整体形态与结构",
+        "evidence_asset_ids": [
+          "ref_e634888ec2ffdd88"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "门洞上方的扇形题字石匾及文字",
+        "evidence_asset_ids": [
+          "ref_e634888ec2ffdd88"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "两侧老旧木门及门环的样式",
+        "evidence_asset_ids": [
+          "ref_e634888ec2ffdd88"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "门洞顶部的中式瓦顶与爬藤植物",
+        "evidence_asset_ids": [
+          "ref_e634888ec2ffdd88"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "园内入口处的粗壮树木",
+        "evidence_asset_ids": [
+          "ref_e634888ec2ffdd88"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "园内白墙灰瓦的建筑风格",
+        "evidence_asset_ids": [
+          "ref_e634888ec2ffdd88"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "水巷的纵向空间结构",
+        "evidence_asset_ids": [
+          "ref_7e75298ab88c9918"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "两侧传统民居的白墙黛瓦形态与石砌驳岸",
+        "evidence_asset_ids": [
+          "ref_7e75298ab88c9918"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "沿水道停靠的乌篷船",
+        "evidence_asset_ids": [
+          "ref_7e75298ab88c9918"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "横跨水道的石桥",
+        "evidence_asset_ids": [
+          "ref_7e75298ab88c9918"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "上方覆盖的繁茂树木枝叶",
+        "evidence_asset_ids": [
+          "ref_7e75298ab88c9918"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "水面清晰的建筑与树木倒影",
+        "evidence_asset_ids": [
+          "ref_7e75298ab88c9918"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "“思仁堂”匾额的形制与文字",
+        "evidence_asset_ids": [
+          "ref_d25f1b324bd1b544"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "正墙三联中堂书画的布局与样式",
+        "evidence_asset_ids": [
+          "ref_d25f1b324bd1b544"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "中式实木厅堂家具的组合形制与雕花特征",
+        "evidence_asset_ids": [
+          "ref_d25f1b324bd1b544"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "带红色流苏的中式宫灯样式与悬挂布局",
+        "evidence_asset_ids": [
+          "ref_d25f1b324bd1b544"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "木质立柱与石质柱础的结构",
+        "evidence_asset_ids": [
+          "ref_d25f1b324bd1b544"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "两侧木格花窗的样式",
+        "evidence_asset_ids": [
+          "ref_d25f1b324bd1b544"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "深木色墙面与石质地面的材质质感",
+        "evidence_asset_ids": [
+          "ref_d25f1b324bd1b544"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "临水戏台的灰瓦翘角屋顶形态",
+        "evidence_asset_ids": [
+          "ref_cc1b92abb5c8aec0"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "浅灰色石材主题景墙的整体形态",
+      "景墙上“鲁迅故里”文字、英文标注、街巷剪影和持烟男子剪影的内容与位置",
+      "景墙前各人物雕塑的造型、数量与相对位置",
+      "两侧白墙黑瓦中式建筑的外观风格",
+      "灰色石板广场的铺装形式",
+      "“三味书屋”匾额的形制与文字",
+      "中间深灰木构隔墙及墙面立轴画的布局",
+      "翘头案几的雕花形态与摆放位置",
+      "传统中式木质桌椅的形制与整体空间格局",
+      "木梁架屋顶的结构样式",
+      "圆形门洞的整体形态与结构",
+      "门洞上方的扇形题字石匾及文字",
+      "两侧老旧木门及门环的样式",
+      "门洞顶部的中式瓦顶与爬藤植物",
+      "园内入口处的粗壮树木",
+      "园内白墙灰瓦的建筑风格",
+      "水巷的纵向空间结构",
+      "两侧传统民居的白墙黛瓦形态与石砌驳岸",
+      "沿水道停靠的乌篷船",
+      "横跨水道的石桥"
+    ],
+    "allowed_changes": [
+      "广场上的光影效果",
+      "背景树木的枝叶动态",
+      "盆栽植物的细节形态",
+      "天空的云彩形态",
+      "人工照明的亮度与光影效果",
+      "桌面摆放的小件物品样式",
+      "拉绳围栏的有无",
+      "说明牌的具体文字内容",
+      "园内远处的人物数量与状态",
+      "地面软管的有无与位置",
+      "树叶的轻微晃动状态",
+      "光影的随时间细微变化",
+      "乌篷船的位置与数量微调",
+      "水面的波纹动态",
+      "树叶的轻微晃动"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "具体所在城市与精确地理位置",
+      "雕塑的具体创作年代与材质细节",
+      "两侧建筑的具体功能与内部结构",
+      "无法确认该空间的具体地理位置与所属建筑",
+      "无法确认立轴画的具体内容",
+      "无法确认建筑的建造年代",
+      "该园林的具体地理位置与所属景区",
+      "园内白墙建筑的具体功能与内部结构",
+      "建筑的建造年代",
+      "具体地名与所属古镇",
+      "建筑的具体建造年代",
+      "水道的准确长度与宽度",
+      "具体建筑所在地",
+      "建筑的具体年代",
+      "厅堂所属的具体宅院/场馆名称"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_d1c8382c6a791321",
+        "summary": "画面展示一处带有文化主题墙的户外广场场景，主题墙为浅灰色石材墙面，上面有文字、街巷图案与人物剪影，墙前摆放多组人物雕塑，两侧是白墙黑瓦的中式建筑，背景有树木，天气晴朗。",
+        "visible_elements": [
+          "浅灰色石材主题景墙",
+          "景墙上的“鲁迅故里”汉字及“LUXUN NATIVE PLACE”英文",
+          "景墙上的黑白街巷建筑剪影图案",
+          "景墙右侧的持烟男子人物剪影",
+          "左侧站立的成人与孩童深色人物雕塑",
+          "右侧三组古铜色人物雕塑（站立孩童、坐于石上戴帽人物、跪坐人物）",
+          "两侧白墙黑瓦的中式建筑",
+          "地面灰色石板铺装广场",
+          "左侧苏铁类盆栽植物",
+          "右侧盆栽植物",
+          "背景的绿色乔木与竹类植物",
+          "蓝色天空",
+          "左侧建筑墙面上的小型标识牌",
+          "右侧建筑墙面上的黄色标识牌"
+        ],
+        "spatial_layout": [
+          "主题景墙位于画面中后区域，横向延伸",
+          "人物雕塑全部放置在景墙前方的广场地面上",
+          "白墙黑瓦建筑分别位于景墙的左右两侧，与景墙衔接",
+          "树木位于景墙及建筑的后方上方区域",
+          "广场地面占据画面下半部分",
+          "左侧盆栽位于左侧雕塑旁的广场边缘",
+          "右侧盆栽位于右侧建筑旁的广场边缘"
+        ],
+        "architecture_and_materials": [
+          "主题景墙为浅灰色粗糙石材材质，表面有自然水痕痕迹",
+          "两侧建筑为白色抹灰墙面，搭配黑色坡屋顶，是江南民居风格形态",
+          "广场地面由灰色长方形石板铺砌而成",
+          "人物雕塑为金属材质，左侧雕塑呈深黑色，右侧雕塑呈古铜色",
+          "景墙上的图案与文字为黑色"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "画面正对主题景墙，拍摄方向朝向景墙正面"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足，应为上午或下午时段",
+          "weather": "晴朗，天空呈蓝色，有少量淡云",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [
+          "浅灰色石材主题景墙的整体形态",
+          "景墙上“鲁迅故里”文字、英文标注、街巷剪影和持烟男子剪影的内容与位置",
+          "景墙前各人物雕塑的造型、数量与相对位置",
+          "两侧白墙黑瓦中式建筑的外观风格",
+          "灰色石板广场的铺装形式"
+        ],
+        "allowed_changes": [
+          "广场上的光影效果",
+          "背景树木的枝叶动态",
+          "盆栽植物的细节形态",
+          "天空的云彩形态"
+        ],
+        "suitable_shots": [
+          "正面全景固定镜头展示整体场景",
+          "从左到右的横移镜头展示景墙全貌与雕塑",
+          "向前推进的推镜头聚焦景墙文字或雕塑细节",
+          "低角度平视镜头展现景墙与雕塑的组合"
+        ],
+        "unsupported_or_risky_shots": [
+          "景墙后方区域的拍摄镜头",
+          "建筑内部空间的拍摄镜头",
+          "环绕景墙360度的运动镜头",
+          "高空俯视整个场地的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_ff34f79d213ffd05",
+        "summary": "这是一间传统中式室内空间，摆放着多组木质桌椅，墙面挂有匾额和立轴画，整体呈现古朴的书房/塾堂风貌",
+        "visible_elements": [
+          "木质梁架屋顶",
+          "白灰墙面",
+          "深灰色木构隔墙",
+          "“三味书屋”匾额",
+          "竖幅立轴画",
+          "雕花翘头案几",
+          "多组木质桌椅",
+          "墙面小型说明牌",
+          "照明灯泡",
+          "拉绳围栏"
+        ],
+        "spatial_layout": [
+          "深灰色木构隔墙位于画面中后部，正对观看方向",
+          "匾额悬挂在木构隔墙的上方位置",
+          "竖幅立轴画挂在木构隔墙正中、匾额下方",
+          "翘头案几紧贴木构隔墙放置，在立轴画下方",
+          "多组木质桌椅分布在案几前方及画面左右区域",
+          "小型说明牌固定在画面左侧的白墙面上",
+          "木质梁架结构位于空间顶部"
+        ],
+        "architecture_and_materials": [
+          "屋顶为传统木梁架搭配瓦椽结构，木材呈深棕褐色",
+          "墙面为白灰抹面，色调偏米白",
+          "中间隔墙为深灰偏蓝的木构墙面，表面有斑驳痕迹",
+          "家具均为深棕木质，案几带有雕花装饰，桌椅为传统中式形制",
+          "匾额为浅色底配深色书法字体"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "以挂有匾额和立轴画的隔墙为正前方参照，桌椅分布在隔墙的前方区域"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断，室内有人工照明",
+          "weather": "无法判断",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [
+          "“三味书屋”匾额的形制与文字",
+          "中间深灰木构隔墙及墙面立轴画的布局",
+          "翘头案几的雕花形态与摆放位置",
+          "传统中式木质桌椅的形制与整体空间格局",
+          "木梁架屋顶的结构样式"
+        ],
+        "allowed_changes": [
+          "人工照明的亮度与光影效果",
+          "桌面摆放的小件物品样式",
+          "拉绳围栏的有无",
+          "说明牌的具体文字内容"
+        ],
+        "suitable_shots": [
+          "室内平拍全景展示整体空间布局",
+          "缓慢推进镜头聚焦匾额与案几区域",
+          "横移镜头展示两侧桌椅排布",
+          "中景固定镜头呈现塾堂整体氛围"
+        ],
+        "unsupported_or_risky_shots": [
+          "室外环境镜头",
+          "屋顶上方视角的俯拍镜头",
+          "空间右侧未完全展示区域的纵深运动镜头",
+          "展示建筑外观的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_e634888ec2ffdd88",
+        "summary": "画面呈现一处中式园林的圆形门洞入口，门洞两侧木门敞开，前方有步道通向园内，周边被茂密绿植环绕，天气晴朗。",
+        "visible_elements": [
+          "中式圆形门洞建筑",
+          "两扇敞开的老旧木门",
+          "门洞上方的扇形题字石匾",
+          "园内的粗壮树木",
+          "园内的白墙建筑",
+          "园内的碎石/土路步道",
+          "前景的石板步道",
+          "门洞顶部及周边的茂密爬藤植物",
+          "画面上方及两侧的高大阔叶树木",
+          "蓝色天空",
+          "园内远处的少量人物",
+          "地面的浅色软管"
+        ],
+        "spatial_layout": [
+          "圆形门洞位于画面中央，是视觉中心",
+          "两扇木门分别位于圆形门洞的左右两侧，处于敞开状态",
+          "石板步道从画面前景延伸至圆形门洞内",
+          "树木分布在门洞后方的园内区域、门洞顶部及画面两侧上方",
+          "白墙建筑位于园内树木的后方",
+          "爬藤植物覆盖在门洞顶部的屋顶及右侧墙体上"
+        ],
+        "architecture_and_materials": [
+          "门洞为白色抹灰墙体，带有岁月留下的污渍痕迹，呈圆形拱洞形态",
+          "门洞顶部为弧形坡屋顶，铺设深灰色中式瓦片，瓦片上长有杂草和苔藓",
+          "门洞上方嵌有浅灰色扇形石匾，上面有黑色书法字体",
+          "两侧木门为深棕色老旧木材，表面有磨损、褪色痕迹，配有金属门环",
+          "园内可见白墙灰瓦的中式建筑，墙面为白色抹灰材质"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "镜头正对圆形门洞，朝向园林内部",
+            "光线从画面上方偏前方向照射，门洞内地面有树木投下的阴影"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，阳光充足",
+          "weather": "晴朗，蓝天无云",
+          "season": "植被繁茂，为温暖季节（春夏季）"
+        },
+        "must_keep_candidates": [
+          "圆形门洞的整体形态与结构",
+          "门洞上方的扇形题字石匾及文字",
+          "两侧老旧木门及门环的样式",
+          "门洞顶部的中式瓦顶与爬藤植物",
+          "园内入口处的粗壮树木",
+          "园内白墙灰瓦的建筑风格"
+        ],
+        "allowed_changes": [
+          "园内远处的人物数量与状态",
+          "地面软管的有无与位置",
+          "树叶的轻微晃动状态",
+          "光影的随时间细微变化"
+        ],
+        "suitable_shots": [
+          "从门洞外向内推进的平移镜头",
+          "正对门洞的固定全景镜头",
+          "缓慢穿过门洞的第一视角移动镜头",
+          "门洞局部细节的特写镜头（如石匾、木门）"
+        ],
+        "unsupported_or_risky_shots": [
+          "门洞后方园林深处的全景俯瞰镜头",
+          "门洞建筑背面的视角镜头",
+          "环绕门洞建筑360度的运动镜头",
+          "园内白墙建筑内部的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_7e75298ab88c9918",
+        "summary": "画面展现一条狭窄的水巷，水道两侧是传统民居建筑，水面停泊多艘乌篷船，上方有繁茂的树木枝叶覆盖，远处可见石桥，整体是江南水乡风格的街巷水景。",
+        "visible_elements": [
+          "狭窄水道",
+          "乌篷船",
+          "传统民居建筑",
+          "石砌驳岸",
+          "石阶",
+          "石桥",
+          "繁茂乔木",
+          "水面倒影",
+          "橙色救生圈",
+          "石质平台"
+        ],
+        "spatial_layout": [
+          "水道沿画面纵向延伸，位于画面中央",
+          "民居建筑分列水道左右两侧，沿水道排布",
+          "左侧建筑旁有石砌台阶与平台延伸至水边",
+          "右侧建筑旁有石阶通向水面",
+          "乌篷船分别停靠在水道左右两侧的岸边",
+          "远处水道上横跨一座石桥",
+          "高大乔木的枝叶从画面上方覆盖水巷上空"
+        ],
+        "architecture_and_materials": [
+          "建筑为低层传统民居，墙面多为白墙，部分墙面有斑驳脱落痕迹",
+          "屋顶为深色坡屋顶，带有传统瓦作构件",
+          "驳岸、台阶、平台由灰色石材砌筑",
+          "建筑开有小尺寸窗洞，右侧建筑墙面有一排竖向小窗",
+          "乌篷船为木质船体，带有弧形深色篷顶"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "水道向画面深处延伸，视线沿水道纵向朝向远处石桥"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，阳光充足",
+          "weather": "晴朗",
+          "season": "夏末或秋季，树木叶片以绿色为主，部分叶片呈黄绿色"
+        },
+        "must_keep_candidates": [
+          "水巷的纵向空间结构",
+          "两侧传统民居的白墙黛瓦形态与石砌驳岸",
+          "沿水道停靠的乌篷船",
+          "横跨水道的石桥",
+          "上方覆盖的繁茂树木枝叶",
+          "水面清晰的建筑与树木倒影"
+        ],
+        "allowed_changes": [
+          "乌篷船的位置与数量微调",
+          "水面的波纹动态",
+          "树叶的轻微晃动",
+          "光影的缓慢移动变化"
+        ],
+        "suitable_shots": [
+          "沿水道向前推进的移动镜头",
+          "从当前高位缓慢下降的镜头",
+          "固定机位的水巷静帧镜头",
+          "聚焦水面倒影的特写镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "建筑内部视角的镜头",
+          "水巷尽头石桥另一侧的纵深镜头",
+          "低空贴水面快速穿梭的运动镜头",
+          "仰视屋顶上方全貌的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_d25f1b324bd1b544",
+        "summary": "画面呈现中式传统厅堂内部，正墙悬挂匾额与三联书画，下方摆放成套中式实木家具，两侧悬挂宫灯，左右设窗可看到室外景象，整体为古典中式厅堂布局。",
+        "visible_elements": [
+          "中式厅堂内部空间",
+          "木质屋顶梁架与椽子",
+          "带红色流苏的中式宫灯",
+          "“思仁堂”木质匾额",
+          "三联中堂书画（中间为山水画作，两侧为书法条幅）",
+          "中式实木条案、方桌、扶手椅",
+          "青花瓷盆栽（绿植）",
+          "带纹饰的高花几",
+          "瓷质帽筒",
+          "木质立柱与石质柱础",
+          "木格花窗",
+          "室外建筑与绿植（窗外可见）",
+          "侧边实木桌椅",
+          "石质地面"
+        ],
+        "spatial_layout": [
+          "匾额悬挂于正墙上方，位于三联中堂书画的正上方",
+          "三联中堂书画挂在正墙中央，两侧书法条幅对称分布在中间画作两侧",
+          "条案紧贴正墙摆放，在三联书画的正下方",
+          "方桌位于条案前方正中间，两把扶手椅对称摆放在方桌左右两侧",
+          "两个高花几分列条案左右两侧，花几上各放置一盆青花瓷盆栽绿植",
+          "两顶宫灯悬挂在厅堂左侧上方，右侧上方也悬挂有宫灯，左右宫灯对称分布",
+          "木格花窗分别开设在厅堂左右两侧墙面，窗外可见室外景象",
+          "侧边桌椅分别摆放在厅堂左右两侧靠窗位置",
+          "木质立柱立于厅堂左右两侧，底部承托石质柱础"
+        ],
+        "architecture_and_materials": [
+          "屋顶为深色木质梁架与椽子结构，木材呈深褐偏黑的做旧质感",
+          "正墙为深棕色木质护墙板，表面平整有木纹",
+          "匾额为浅黄底木质，带有做旧痕迹，字体为深色书法字体",
+          "中堂书画为米黄色卷轴装裱，两侧条幅有橙色书法区域",
+          "家具为深棕色实木材质，带有传统雕花、回纹等中式装饰纹样",
+          "宫灯为木质框架，灯罩为带山水图案的半透明材质，垂挂红色流苏",
+          "立柱为深绿色（带纹饰）木质，柱础为浅灰色石质",
+          "花窗为深色木质格栅样式",
+          "地面为大块青灰色石质板材铺设"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "镜头正对厅堂正墙，朝向正墙方向"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天",
+          "weather": "晴朗（窗外光线充足明亮）",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [
+          "“思仁堂”匾额的形制与文字",
+          "正墙三联中堂书画的布局与样式",
+          "中式实木厅堂家具的组合形制与雕花特征",
+          "带红色流苏的中式宫灯样式与悬挂布局",
+          "木质立柱与石质柱础的结构",
+          "两侧木格花窗的样式",
+          "深木色墙面与石质地面的材质质感"
+        ],
+        "allowed_changes": [
+          "宫灯的光影晃动效果",
+          "绿植的轻微动态",
+          "窗外光线的明暗变化",
+          "室外景象的细微动态"
+        ],
+        "suitable_shots": [
+          "正面平视推进镜头（从厅堂入口向正墙缓慢推进）",
+          "左右横移镜头（展示厅堂两侧对称布局）",
+          "固定全景镜头（呈现厅堂整体风貌）",
+          "中景镜头（聚焦正墙家具与书画组合）",
+          "特写镜头（展示匾额、雕花家具、宫灯的细节）"
+        ],
+        "unsupported_or_risky_shots": [
+          "环绕厅堂360度旋转镜头（无法确认厅堂背面与完整四周结构）",
+          "俯视航拍厅堂内部镜头（无顶部完整结构信息）",
+          "室外向室内推进的穿越镜头（无法确认室外完整环境与建筑外部结构）",
+          "展示厅堂后方区域的镜头（无正墙后方的空间信息）"
+        ]
+      },
+      {
+        "asset_id": "ref_cc1b92abb5c8aec0",
+        "summary": "画面展示了一座临水而建的中式传统戏台类建筑，旁有石桥连通，周边有植被与其他传统建筑，天空呈浅淡色调。",
+        "visible_elements": [
+          "中式传统戏台建筑",
+          "石木结合的平桥",
+          "水面",
+          "常绿阔叶树",
+          "落叶秃枝树",
+          "相邻的传统灰瓦建筑",
+          "米黄色墙面建筑",
+          "红色串状灯笼",
+          "白地红穗宫灯",
+          "黄色楹联",
+          "红色绣纹桌椅",
+          "木质护栏",
+          "立地指示牌"
+        ],
+        "spatial_layout": [
+          "戏台建筑临水面建造，底部由石砌台基支撑",
+          "石桥从画面左侧延伸至戏台平台，桥面高于水面",
+          "水面位于画面底部，承接石桥与戏台的倒影",
+          "常绿树木位于画面左侧，在戏台左后方",
+          "落叶秃枝树位于常绿树木上方、戏台左上方",
+          "其他传统建筑位于戏台后方及右侧",
+          "指示牌放置在石桥左侧的岸边平台上"
+        ],
+        "architecture_and_materials": [
+          "戏台为中式传统木结构，灰黑色筒瓦歇山顶，屋檐起翘，檐角有装饰构件",
+          "戏台立柱为石质，呈浅灰白色，柱身挂黄色底黑字楹联",
+          "戏台护栏为深棕色木质，带有镂空花纹",
+          "石桥桥墩为浅灰色石材，桥面护栏为深棕色木构件配石质望柱",
+          "戏台内部墙面为白色，设深色木框格窗",
+          "戏台台面上铺有紫红色地垫，摆放红色带纹饰的桌椅",
+          "相邻建筑墙面为米黄色，屋顶为灰黑色瓦面"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "画面朝向戏台正面，可看到戏台的入口与台内陈设"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线柔和，具体时段无法判断",
+          "weather": "阴天，天空呈均匀浅灰白色，无明显阳光阴影",
+          "season": "无法判断，存在常绿树与落叶秃枝树，无明确季节指向特征"
+        },
+        "must_keep_candidates": [
+          "临水戏台的灰瓦翘角屋顶形态",
+          "石立柱配黄色楹联的结构特征",
+          "连通岸边与戏台的石木平桥",
+          "戏台檐下的串状红灯笼与带红穗的宫灯",
+          "戏台木质镂空护栏",
+          "水面及建筑倒影的整体布局"
+        ],
+        "allowed_changes": [
+          "灯笼的摆动状态",
+          "水面的波纹与倒影细节",
+          "戏台台面上桌椅的摆放细节",
+          "天空的云层形态",
+          "树木枝叶的轻微动态"
+        ],
+        "suitable_shots": [
+          "从当前位置向前推进的推镜头，展现戏台正面细节",
+          "沿石桥向戏台移动的跟拍镜头",
+          "水平横移镜头展示戏台与周边水景、建筑的关系",
+          "固定机位长镜头记录水面与建筑的静态氛围"
+        ],
+        "unsupported_or_risky_shots": [
+          "戏台内部纵深的穿梭镜头，无法确认内部完整结构",
+          "高空俯视全景镜头，无法获取顶部及周边全域布局",
+          "从戏台后方拍摄的反向视角镜头，无后方画面参考",
+          "环绕建筑360度的运动镜头，无法确认建筑背面与侧面全貌"
+        ]
+      },
+      {
+        "asset_id": "ref_64eb8d9aa67e889f",
+        "summary": "画面展现了一条河道沿两侧排布着传统民居的水乡风貌，河道水面平静倒映建筑，远处可见现代楼房，前景有树叶垂入画面，民居外挂有招牌、绿植与装饰。",
+        "visible_elements": [
+          "河道",
+          "传统临水民居",
+          "现代多层楼房",
+          "垂落的树叶",
+          "绿植盆栽",
+          "红色竖版招牌",
+          "红色灯笼",
+          "空调外机",
+          "晾晒的网状物与红绸",
+          "金属置物架",
+          "蓝色塑料桶"
+        ],
+        "spatial_layout": [
+          "河道位于画面左侧及中部，沿纵深方向延伸",
+          "传统民居沿河道右侧依次排布，紧邻水面",
+          "现代楼房位于传统民居后方的远处",
+          "树叶从画面顶部垂入，处于画面前景上方",
+          "红色竖版招牌悬挂在河道右侧靠前的民居外，朝向河道"
+        ],
+        "architecture_and_materials": [
+          "传统民居为坡屋顶，铺设深灰色瓦片，部分瓦片长有杂草",
+          "民居墙面多为白墙，部分墙面斑驳脱落、底部有水渍霉斑，呈现老旧质感",
+          "民居有木质门窗，窗框多为深棕或红棕色，部分窗户带有木格栅",
+          "部分民居有临水的小平台或挑出的结构",
+          "远处现代楼房为白色外墙、平顶，带有玻璃窗与空调外机"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "河道沿画面纵深向远处延伸，视线沿河道方向向前",
+            "民居主要分布在河道右侧，左侧也有民居向远处排列"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线柔和，应为上午或下午",
+          "weather": "晴天，天空明亮无明显云层",
+          "season": "夏季或春末秋初，植被生长茂盛"
+        },
+        "must_keep_candidates": [
+          "河道与两侧临水传统民居的整体水乡格局",
+          "民居坡屋顶、白墙木窗的传统建筑特征",
+          "建筑墙面斑驳、临水生长绿植的老旧生活质感",
+          "红色竖版招牌的样式与位置",
+          "远处现代楼房与古民居的层次对比"
+        ],
+        "allowed_changes": [
+          "河道水面的波纹动态",
+          "绿植的轻微晃动",
+          "民居门口人物的活动",
+          "悬挂的红绸、灯笼的轻微摆动",
+          "天空的光影细微变化"
+        ],
+        "suitable_shots": [
+          "沿河道向前推进的平移镜头",
+          "固定机位展现水乡风貌的静帧镜头",
+          "从前景树叶逐渐下移展现河道民居的镜头",
+          "聚焦右侧民居细节的缓慢横移镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "河道左侧民居内部的视角镜头",
+          "高空俯视整个水乡全貌的镜头",
+          "进入民居室内的穿梭镜头",
+          "河道尽头远处区域的特写镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_0a84e69980233bf2",
+        "summary": "画面呈现一座中式圆洞门建筑，门两侧的黑色木门向外敞开，透过门洞可见内部的土路、植被与人群，门上方有石质题额，整体是中式园林入口的景象。",
+        "visible_elements": [
+          "中式圆洞门院墙",
+          "两扇黑色对开木门",
+          "门上方石质题额",
+          "青瓦弧形屋顶",
+          "门洞内的土路",
+          "土路左侧的树木与高秆绿植",
+          "土路右侧的木栅栏与低矮绿植",
+          "远处聚集的人群",
+          "院墙两侧的花窗",
+          "门前景石与杂草",
+          "屋顶上方的树木枝叶"
+        ],
+        "spatial_layout": [
+          "圆洞门位于画面中央，是视觉中心",
+          "两扇黑色木门分别位于圆洞门左右两侧，向外敞开",
+          "石质题额位于圆洞门正上方的院墙顶部",
+          "弧形青瓦屋顶在题额上方，覆盖院墙顶部",
+          "土路从圆洞门内向远处延伸",
+          "树木与高秆绿植在土路左侧，木栅栏与低矮绿植在土路右侧",
+          "人群聚集在土路远端",
+          "花窗分别嵌在左右两侧的院墙上，位于木门外侧"
+        ],
+        "architecture_and_materials": [
+          "院墙为白色抹灰墙面，底部有污渍与青苔痕迹",
+          "圆洞门为圆形门洞，门洞边缘有黑色线条装饰",
+          "木门为黑色实木材质，配有金属环形门钹",
+          "题额为扇形石质，表面刻有深色文字",
+          "屋顶铺设深灰色青瓦，呈弧形起伏",
+          "院墙两侧花窗为黑色镂空纹样，呈花瓣形图案",
+          "木栅栏为深棕色木质，由竖条组成"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "镜头正对圆洞门，朝向门洞内部的园区方向"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，具体时段无法判断",
+          "weather": "阴天，地面有积水痕迹，可能刚下过雨",
+          "season": "植被繁茂，为温暖季节，具体无法判断"
+        },
+        "must_keep_candidates": [
+          "中式圆洞门的整体形态与结构",
+          "黑色对开木门与金属门钹",
+          "门上方的扇形题额",
+          "弧形青瓦屋顶",
+          "院墙两侧的镂空花窗",
+          "门洞内的土路与两侧的植被、木栅栏布局"
+        ],
+        "allowed_changes": [
+          "人群的数量、穿着与位置",
+          "植被的疏密程度",
+          "地面积水的多少",
+          "光线的明暗变化"
+        ],
+        "suitable_shots": [
+          "从门外正对圆洞门的固定全景镜头",
+          "从门外向门内缓慢推进的推镜头",
+          "穿过圆洞门向园区内部移动的跟拍镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "圆洞门背面的视角镜头",
+          "高空俯视整个园区的镜头",
+          "园区内部深处建筑的特写镜头",
+          "环绕圆洞门360度的运动镜头"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "绍兴鲁迅故里",
+        "path": "images\\shaoxing-lu-xun-former-residence_1.jpg",
+        "url": "https://unsplash.com/photos/a-row-of-buildings-with-a-mountain-in-the-background-pd-eJW80j8U",
+        "license": "Unsplash License",
+        "alt": "a row of buildings with a mountain in the background"
+      },
+      {
+        "name": "绍兴鲁迅故里",
+        "path": "images\\shaoxing-lu-xun-former-residence_2.jpg",
+        "url": "https://unsplash.com/photos/a-view-of-a-city-with-mountains-in-the-background-bTY0XhM0AnM",
+        "license": "Unsplash License",
+        "alt": "a view of a city with mountains in the background"
+      },
+      {
+        "name": "绍兴鲁迅故里",
+        "path": "images\\shaoxing-lu-xun-former-residence_3.jpg",
+        "url": "https://unsplash.com/photos/traditional-chinese-village-street-with-red-lanterns-wZdr1yy2a-A",
+        "license": "Unsplash License",
+        "alt": "Traditional chinese village street with red lanterns."
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_d1c8382c6a791321",
+        "name": "鲁迅故居",
+        "url": "/assets/references/p_20260923_215354_7dabcf/ref_d1c8382c6a791321.webp",
+        "source_page_url": "http://www.sohu.com/a/1014294466_121124403",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_ff34f79d213ffd05",
+        "name": "鲁迅故居",
+        "url": "/assets/references/p_20260923_215354_7dabcf/ref_ff34f79d213ffd05.webp",
+        "source_page_url": "http://www.sohu.com/a/1014294466_121124403",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_e634888ec2ffdd88",
+        "name": "鲁迅故居",
+        "url": "/assets/references/p_20260923_215354_7dabcf/ref_e634888ec2ffdd88.webp",
+        "source_page_url": "http://www.sohu.com/a/948718619_121271812",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_7e75298ab88c9918",
+        "name": "鲁迅故居",
+        "url": "/assets/references/p_20260923_215354_7dabcf/ref_7e75298ab88c9918.webp",
+        "source_page_url": "http://roll.sohu.com/a/980559218_121271812",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_d25f1b324bd1b544",
+        "name": "鲁迅故居",
+        "url": "/assets/references/p_20260923_215354_7dabcf/ref_d25f1b324bd1b544.jpg",
+        "source_page_url": "http://www.163.com/dy/article/IN267CAO05561KTJ.html",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_cc1b92abb5c8aec0",
+        "name": "鲁迅故居",
+        "url": "/assets/references/p_20260923_215354_7dabcf/ref_cc1b92abb5c8aec0.jpg",
+        "source_page_url": "http://www.163.com/dy/article/DLHFFS550524MI04.html",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_64eb8d9aa67e889f",
+        "name": "鲁迅故居",
+        "url": "/assets/references/p_20260923_215354_7dabcf/ref_64eb8d9aa67e889f.webp",
+        "source_page_url": "http://www.sohu.com/a/1014294466_121124403",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_0a84e69980233bf2",
+        "name": "鲁迅故居",
+        "url": "/assets/references/p_20260923_215354_7dabcf/ref_0a84e69980233bf2.jpg",
+        "source_page_url": "http://www.sohu.com/a/633759597_121123826",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "selected",
+    "version": 1,
+    "source": "preset",
+    "voice_id": "voice_06_male_warm",
+    "name": "温暖故事男声",
+    "description": "温暖柔和男中音、亲切细腻",
+    "reference_path": "D:\\AI_tourist_video\\assets\\media\\voices\\06_温暖故事_男声.wav",
+    "preview_url": "/assets/media/voices/06_温暖故事_男声.wav?v=42bccb3b555b",
+    "reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b"
+  },
+  "music": {
+    "status": "selected",
+    "version": 1,
+    "recommendation_status": "none",
+    "recommendation": null,
+    "warning": null,
+    "selected": {
+      "bgm_id": "bgm_10",
+      "scene": "非遗文化传播",
+      "scene_type": "非遗文化传播",
+      "title": "A Decade in Beijing",
+      "artist": "Michael Ramir C.",
+      "duration": "01:57",
+      "description": "东方气质、轻快但不喧闹；适合传统工艺、古建、服饰和民俗",
+      "preview_url": "/assets/media/bgm/04_intangible_heritage/01_A_Decade_in_Beijing__Michael_Ramir_C.mp3",
+      "local_path": "D:\\AI_tourist_video\\assets\\media\\bgm\\04_intangible_heritage\\01_A_Decade_in_Beijing__Michael_Ramir_C.mp3",
+      "source_page": "https://mixkit.co/free-stock-music/traditional/",
+      "license": "Mixkit Stock Music Free License"
+    }
+  },
+  "voice_tasks": [],
+  "segment_tasks": [
+    "st_20260923_220033_d4fa6c",
+    "st_20260923_220435_b01079",
+    "st_20260923_220730_448d8b",
+    "st_20260923_220733_4a4c90",
+    "st_20260923_220737_9fdc6a",
+    "st_20260923_220741_3fe11c",
+    "st_20260923_220749_312cdf",
+    "st_20260923_220751_1d394a",
+    "st_20260923_220753_d5c59d",
+    "st_20260923_222446_108c40",
+    "st_20260923_222450_040e87",
+    "st_20260923_222453_6db6f5",
+    "st_20260923_222455_3491e8"
+  ],
+  "render_tasks": [],
+  "render": {
+    "status": "none",
+    "version": 0
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-23T13:53:54.133021+00:00",
+  "updated_at": "2026-09-23T14:25:41.034343+00:00",
+  "copywriting_text": "【0-10s】一墙石影，翻开鲁迅故里。白墙黑瓦间，少年绍兴，正缓缓醒来。\n【10-23s】穿过圆洞门，脚步放轻。扇形石匾下，老树与白墙灰瓦，摊开江南的留白。\n【23-38s】水巷向前，乌篷船停成旧时光。石桥横跨，白墙黛瓦都落在水里，轻轻晃。这是绍兴最柔软的水声。\n【38-52s】三味书屋，少年私塾。木梁安静。匾额下，桌椅留着书卷气；相传那张刻“早”字的书桌，也留着自勉。\n【52-60s】戏台灯影落水，桥影成句。来绍兴，把课本里的名字走成慢旅行。",
+  "segment_results": {
+    "seg_01": {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1
+      ],
+      "status": "failed",
+      "video_url": null,
+      "source_video_url": null,
+      "raw_path": null,
+      "normalized_av_path": null,
+      "native_audio_path": null,
+      "audio_qa": {},
+      "error": "提交失败(400): {\"error\":{\"code\":\"InputImageSensitiveContentDetected.PolicyViolation\",\"message\":\"The request failed because the input image 'content[1]' may be related to copyright restrictions. Request id: 021790172310646fd0de7354b348b065f00b895e07126b8cb1a7f\",\"param\":\"\",\"type\":\"BadRequest\"}}",
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "834102019375b6519a49da800d4d9e689185622f1c3c2737b532abf56c71f284",
+      "prompt_hash": "cf6e55d79b413031d6e58e2f8dc843c22c6e0aaf770ce92fb884b51128da937b",
+      "reference_asset_ids": [
+        "ref_d1c8382c6a791321"
+      ],
+      "task_id": "st_20260923_220435_b01079"
+    },
+    "seg_02": {
+      "segment_id": "seg_02",
+      "shot_ids": [
+        2
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_215354_7dabcf/seg_02/st_20260923_220730_448d8b_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179017245501300000000000000000000ffffac191a38a772ad.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T141134Z&X-Tos-Expires=86400&X-Tos-Signature=8412e2559ab4847d80827bba70d04a26233bd1a34b8a45cf37f47eb7fbeeb8b6&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_215354_7dabcf\\seg_02\\st_20260923_220730_448d8b_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_215354_7dabcf\\seg_02\\st_20260923_220730_448d8b_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_215354_7dabcf\\seg_02\\st_20260923_220730_448d8b_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 6.08,
+        "expected_duration_seconds": 6.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.98,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -22.1,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "f25f3df92bd22cd907af0fa842f0f4a72c8259ea51ff8f3278e31090afc377c7",
+      "prompt_hash": "76fbdfc70d4c8d925086e72f0fd4f460db4489e4edd780dc598a01c5ad3f4cab",
+      "reference_asset_ids": [
+        "ref_e634888ec2ffdd88"
+      ],
+      "task_id": "st_20260923_220730_448d8b"
+    },
+    "seg_04": {
+      "segment_id": "seg_04",
+      "shot_ids": [
+        4
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_215354_7dabcf/seg_04/st_20260923_220737_9fdc6a_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179017255343200000000000000000000ffffac174213c9c19b.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T141655Z&X-Tos-Expires=86400&X-Tos-Signature=7a189e6ce7b29deada6a21ff504bce82ed51ca72d873a0271b32fd760d5e9ea5&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_215354_7dabcf\\seg_04\\st_20260923_220737_9fdc6a_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_215354_7dabcf\\seg_04\\st_20260923_220737_9fdc6a_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_215354_7dabcf\\seg_04\\st_20260923_220737_9fdc6a_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 9.0558,
+        "expected_duration_seconds": 9.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.556,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -9.16,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "b652e401e66c29e23a237820a918be34c522a7e757a57699b51f910f9a30c6dc",
+      "prompt_hash": "fb7dd1f5ea3882e8b5a6624319ebe08976d44b260e9dfda28d32cee6a4cc9597",
+      "reference_asset_ids": [
+        "ref_7e75298ab88c9918"
+      ],
+      "task_id": "st_20260923_220737_9fdc6a"
+    },
+    "seg_06": {
+      "segment_id": "seg_06",
+      "shot_ids": [
+        6
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_215354_7dabcf/seg_06/st_20260923_220749_312cdf_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179017255457000000000000000000000ffffac18033ce5d55f.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T141221Z&X-Tos-Expires=86400&X-Tos-Signature=922c8646b37aae2d8a5b1e8752faec3b1ce0e8c20f6a11da3ac1a3c91a7f9cd8&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_215354_7dabcf\\seg_06\\st_20260923_220749_312cdf_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_215354_7dabcf\\seg_06\\st_20260923_220749_312cdf_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_215354_7dabcf\\seg_06\\st_20260923_220749_312cdf_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 10.08,
+        "expected_duration_seconds": 10.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.2,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -15.84,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "8e0cfbbb561a2ee51aa265f35ca9f3ecc35b5cf20156111034a5dc71b9c890a8",
+      "prompt_hash": "3188e8b1c9c09d464f3cdc747e80e36de33b4ee8394249400665fb459cb87cab",
+      "reference_asset_ids": [
+        "ref_ff34f79d213ffd05"
+      ],
+      "task_id": "st_20260923_220749_312cdf"
+    }
+  },
+  "active_segment_ids": [
+    "seg_03",
+    "seg_05",
+    "seg_08"
+  ]
+}

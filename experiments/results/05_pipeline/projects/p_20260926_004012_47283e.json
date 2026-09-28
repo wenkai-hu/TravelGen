@@ -1,0 +1,1012 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260926_004012_47283e",
+  "username": "ui_9ee2c510",
+  "status": "waiting_confirm",
+  "progress": 10,
+  "message": "方案待确认",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "宋韵杭州",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 30,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": [
+      {
+        "type": "image",
+        "url": "/assets/references/p_20260926_004012_47283e/ref_5221a02ef378bf87.jpg"
+      },
+      {
+        "type": "image",
+        "url": "/assets/references/p_20260926_004012_47283e/ref_4d6215a92a72ccfa.jpg"
+      }
+    ]
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入·视觉吸引",
+        "title": "一池荷风，入画西湖",
+        "content": "开场以地面平视远景固定机位，从前景大片荷花荷叶切入，湖面开阔、远处多层古塔稳定入画；字幕/旁白：这个夏天，来杭州西湖，走进一幅宋韵长卷。",
+        "duration_s": 5,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "荷花",
+          "荷叶",
+          "湖泊",
+          "多层古塔"
+        ],
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ]
+      },
+      {
+        "section": "展开·核心景观",
+        "title": "湖山塔影，宋韵天开",
+        "content": "用横移镜头扫过中景开阔湖泊、湖对岸沿岸林木与远处山峦，保持多层古塔的位置与背景山峦轮廓；旁白：一湖开阔，两岸青翠，塔影入山，风雅自来。",
+        "duration_s": 7,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "湖泊",
+          "沿岸林木",
+          "多层古塔",
+          "山峦",
+          "蓝天",
+          "白色云朵"
+        ],
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ]
+      },
+      {
+        "section": "展开·特色体验",
+        "title": "泛舟湖上，荷香入袖",
+        "content": "从湖面视角朝向多层古塔方向拍摄远景，湖面上的小型船只缓行，水波形态变化，前景荷花花苞与盛开状态动态变化；旁白：乘一艘小船，穿过荷香与水光，把夏天慢下来。",
+        "duration_s": 6,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "湖面上的小型船只",
+          "湖泊",
+          "荷花",
+          "荷叶",
+          "多层古塔"
+        ],
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ]
+      },
+      {
+        "section": "高潮·文化特色",
+        "title": "宋韵风雅，一塔一湖",
+        "content": "固定机位静态长镜头，前景荷花荷叶与远处多层古塔同框，林木光影明暗变化；以古塔飞檐翘角、金色塔刹、塔身白色围栏窗饰作为宋韵视觉符号，不说明具体名称与年代；旁白：不须多言，湖山之间自有宋韵流转。",
+        "duration_s": 7,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "多层古塔",
+          "荷花",
+          "荷叶",
+          "山峦",
+          "湖泊"
+        ],
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ]
+      },
+      {
+        "section": "收尾·行动召唤",
+        "title": "这个夏天，赴一场西湖宋韵",
+        "content": "从前景荷花向远处多层古塔缓慢推进，收束到湖山塔影与蓝天白云；字幕/旁白：杭州西湖，宋韵之约，等你入画。引导18-35岁年轻游客前来打卡。",
+        "duration_s": 5,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "荷花",
+          "荷叶",
+          "多层古塔",
+          "湖泊",
+          "蓝天"
+        ],
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ]
+      }
+    ],
+    "plan_summary": "宋韵杭州"
+  },
+  "copywriting": {
+    "titles": [
+      "这个夏天，来西湖走进宋韵长卷",
+      "一塔一湖，杭州西湖把夏天慢下来"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "这个夏天，来杭州西湖，走进一幅宋韵长卷。",
+        "duration_s": 5
+      },
+      {
+        "idx": 2,
+        "text": "一湖开阔，两岸青翠，世界遗产，塔影入山，风雅自来。",
+        "duration_s": 7
+      },
+      {
+        "idx": 3,
+        "text": "乘一艘小船，穿过荷香水光，把夏天慢下来。",
+        "duration_s": 6
+      },
+      {
+        "idx": 4,
+        "text": "一塔一湖，不须多言，西湖十景，宋韵流转。",
+        "duration_s": 7
+      },
+      {
+        "idx": 5,
+        "text": "这个夏天，杭州西湖，宋韵之约，等你入画。",
+        "duration_s": 5
+      }
+    ],
+    "hashtags": [
+      "#杭州西湖",
+      "#宋韵杭州",
+      "#这个夏天入画西湖"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "这个夏天，来杭州西湖，走进一幅宋韵长卷。",
+        "start_s": 0,
+        "end_s": 5
+      },
+      {
+        "line_id": 2,
+        "text": "一湖开阔，两岸青翠，世界遗产，塔影入山，风雅自来。",
+        "start_s": 5,
+        "end_s": 12
+      },
+      {
+        "line_id": 3,
+        "text": "乘一艘小船，穿过荷香水光，把夏天慢下来。",
+        "start_s": 12,
+        "end_s": 18
+      },
+      {
+        "line_id": 4,
+        "text": "一塔一湖，不须多言，西湖十景，宋韵流转。",
+        "start_s": 18,
+        "end_s": 25
+      },
+      {
+        "line_id": 5,
+        "text": "这个夏天，杭州西湖，宋韵之约，等你入画。",
+        "start_s": 25,
+        "end_s": 30
+      }
+    ]
+  },
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_d573ec94440314b5",
+      "query": "杭州 西湖",
+      "image_url": "/assets/references/p_20260926_004012_47283e/ref_5221a02ef378bf87.jpg",
+      "title": "用户提供的参考图",
+      "source_page_url": "",
+      "provider": "user"
+    },
+    {
+      "candidate_id": "ref_496594cd8efe09b7",
+      "query": "杭州 西湖",
+      "image_url": "/assets/references/p_20260926_004012_47283e/ref_4d6215a92a72ccfa.jpg",
+      "title": "用户提供的参考图",
+      "source_page_url": "",
+      "provider": "user"
+    },
+    {
+      "candidate_id": "ref_eb7beb5aa87905ed",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275p2t5bee6KW/5rmW6aOO5pmvXzE3MjQzNDg2MDguNDc2MDIzNA%3D%3D%27/0.png",
+      "title": "🚣探索杭州西湖的绝美风光🌄",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4446043819304317679",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0fb9aca18eb3675f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM1NjAwODMwLjg2MDcwOTQ%3D%27/0.png",
+      "title": "杭州西湖全攻略:美景美食交通指南",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4416224780862387825",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_aac74507af89d5b2",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=2017135480,3935072200&fm=3074&app=3074&f=JPEG",
+      "title": "杭州西湖:江南明珠的四季风情",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5147528140700808667",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_670bd6bbe859ad90",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM2NzMzMTE0LjE1ODIyODQ%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2025-01-13T01%3A51%3A55Z%2F-1%2F%2Fe5f70b24839d22fd05e340ef78a7bdaf08d9b530d825327b4071514119f8c699",
+      "title": "杭州夏日西湖美景:避暑胜地与摄影天堂",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5048729040778321549",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_2d8945bdfe39ef00",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276KW/5rmW5pmv5Yy6XzE3MzAwNDY1MzMuNjE2MTQ2Mw%3D%3D%27/0.png",
+      "title": "西湖必打卡景点攻略,四季美景全掌握!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4608205291833183408",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1fdcb05d62b9c659",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%276aOO5pmv5aaC55S755qE6buE5bGxLCDmuZbmsLTnoqfnu7/nmoTml6XmnIjmva3kvaDnmoQg5a625Lmh5piv5ZOq6YeMXzE3MzUyODU0MDIuMDE0NTMwNA%3D%3D%27/0.png",
+      "title": "西湖美景:心灵的避风港 🌊🌳",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5749590892465509419",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6201471ff5fd2288",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxNzM3NzExLjI2ODIyNjk%3D%27/0.png",
+      "title": "杭州西湖必打卡景点攻略,美景尽收眼底!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4210813545669650152",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b3581fc5e876d79a",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://q9.itc.cn/images01/20250218/ad29a044687f44c9a470ef5785d741b8.jpeg",
+      "title": "西湖:穿越千年的水墨画卷",
+      "source_page_url": "http://mt.sohu.com/a/860537814_122245578",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_bb87098e336bd637",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjhai/fa7b04fc8f6aae4b668d6a1f1c0518f1.jpg",
+      "title": "夏日来我的家乡玩一圈,杭州免费十大景区推荐 杭州,这座古典与现代交",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4259693885865428473",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_12f89fe7da54f163",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pics0.baidu.com/feed/faf2b2119313b07e7e643adeb8980e3395dd8cef.jpeg@f_auto?token=c03ace22447253b7a0bab6df1d811293",
+      "title": "杭州西湖四大魅力:自然,文化,景观与世界遗产",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1846082116245340881&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_40a74c3cecd13b99",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276KW/5rmW6aOO5YWJ56eA5Li9LOWPr%2Becn%2BaYr%2BacieWxseeahuWbvueUu18xNzM1Mjc5Mzk0LjUzMDUxNw%3D%3D%27/0.png",
+      "title": "杭州西湖风景描述",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5655113367153562946",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_435a158a08304060",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://q7.itc.cn/q_70/images03/20250518/5998af620991432399cca11d02a77414.jpeg",
+      "title": "杭州西湖美景",
+      "source_page_url": "http://travel.sohu.com/a/896378349_121124733",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_90e5397cfa5e4a6c",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://am.zdmimg.com/202504/17/6800d933035fa7229.jpg_e1080.jpg",
+      "title": "杭州西湖:人间天堂的璀璨明珠",
+      "source_page_url": "http://post.m.smzdm.com/p/a44pwqxl/",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5275f822aefa3ff9",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM2NDYyMzA5LjQxNTQ0OTE%3D%27/0.png",
+      "title": "西湖:杭州的璀璨明珠与美食指南",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5115134492215924125",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3f5414f8c2c2bbca",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://dimg04.c-ctrip.com/images/1me1k12000pv3hmnzD163_R_640_10000_Q90.jpg?proc=source/tripcommunity",
+      "title": "超强攻略_玩转杭州西湖风景名胜区之行",
+      "source_page_url": "http://m.ctrip.com/webapp/you/tripshoot/paipai/detail/detail?articleId=229489128&isHideNavBar=YES&seo=0&twojumpwakeup=0&allianceId=1049189&sid=19855591",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e3d084761b9a0c4f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM1ODYwOTk4LjYxMjQxNjU%3D%27/0.png",
+      "title": "西湖美景:湖光山色与清新的风",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4503021791805443085",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_663c7a3fb75063d1",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pic3.zhimg.com/100/v2-3fa16a354b2522a2804f9090f55dd870_r.jpg",
+      "title": "夕阳斜照 的想法: 西湖四季不同的美",
+      "source_page_url": "http://www.zhihu.com/pin/1771100992551178240",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_70ad89087db9d34f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://picx.zhimg.com/100/v2-325aabdb200e455cb5ae915e4f720f8d_r.jpg",
+      "title": "知乎用户1av1wl 的想法: 西湖的日落,是杭州最浪漫的风景.暮色初临,湖",
+      "source_page_url": "http://www.zhihu.com/pin/1877352578842497025",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ace6fe07f2e85f52",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://vd3.bdstatic.com/mda-setigu6biw2zh67r/1779973400/mda-setigu6biw2zh67r.jpg?for=bg",
+      "title": "杭州市西湖区的雷峰塔景区,游山玩水看西湖好风景",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=8909898572175240297",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7a39eace951cf4d5",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2MDM3NjE3LjkxNzE5MQ%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2025-01-05T00%3A40%3A19Z%2F-1%2F%2F070ebbbb3e7eacea4ffc89a014e8fd9a695751c76646f84b0dc0a34de69cc208",
+      "title": "西湖美景,不可错过的杭州之旅!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4789227018158700675",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a6dcd0ddd4e4b0aa",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/25a604ce4d89d7366818ef1565b4f287.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "杭州西湖,人间天堂湖山相融十景流转四季如画",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1867753383410673254&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_cea9459b4a3e6fd6",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://p4.itc.cn/images01/20230228/90caa137bc5e4157aa3c1ddeff8c0d4b.jpeg",
+      "title": "春日旅行图鉴丨杭州",
+      "source_page_url": "http://mt.sohu.com/a/647599178_121016965",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_11d5a96e74428c5f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://ss2.meipian.me/users/9831115/9f2c1457b4c94e31a28e8e127408f866.jpg?meipian-raw/bucket/ivwen/key/dXNlcnMvOTgzMTExNS85ZjJjMTQ1N2I0Yzk0ZTMxYTI4ZThlMTI3NDA4Zjg2Ni5qcGc=/sign/6cdb9c19c36d14569c9522bc3e178172.jpg",
+      "title": "欲把西湖比西子,淡妆浓抹总相宜",
+      "source_page_url": "http://www.meipian.cn/1ifvb6cy",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_8c3c740364082283",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/d50735fae6cd7b899e51099fca6f55a7d933c895a0de",
+      "title": "杭州市杭州西湖风景区",
+      "source_page_url": "http://baike.baidu.com/item/%E6%9D%AD%E5%B7%9E%E5%B8%82%E6%9D%AD%E5%B7%9E%E8%A5%BF%E6%B9%96%E9%A3%8E%E6%99%AF%E5%8C%BA/65000333",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6e0e8b5a2ac5d0e3",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://n.sinaimg.cn/spider20260504/192/w1024h768/20260504/5320-00252438659ed232599320cfe54eb536.jpg",
+      "title": "新闻早茶丨全国开展电动自行车淘汰赛?官方回应!\"五一\"假期进入返程高",
+      "source_page_url": "http://finance.sina.com.cn/wm/2026-05-04/doc-inhwsuhm3981221.shtml",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_829d72d3d580bd39",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://p3-sign.toutiaoimg.com/tos-cn-i-ezhpy3drpa/7b73d2e502f34a25bcfca12b8f80f904~tplv-obj:800:1358.image?_iz=97245&bid=15&from=post&gid=1827277082301760&lk3s=06827d14&x-expires=1769644800&x-signature=9Ce9OQWbgean%2BjbOS5PN%2FCGRLOU%3D",
+      "title": "#头条创作挑战赛#杭州西湖之美:古韵与诗意的交融 \"欲把西湖比西子,淡",
+      "source_page_url": "http://web.toutiao.com/w/1827277082301760/",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9a8258b668536bdf",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pics6.baidu.com/feed/562c11dfa9ec8a1388aece9cc620f39fa1ecc0ce.jpeg@f_auto?token=6869eeb7430d2e3b41c36c49906b37f4",
+      "title": "西湖十景深度游:断桥残雪,苏堤春晓等特色景点解析",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1841777389909823105&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e702363142c23fa9",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://k.sinaimg.cn/n/sinakd20260321s/498/w1242h1656/20260321/3ac8-02ed5dc02d74ddd3462bd5ad8c063a08.jpg/w700d1q75cms.jpg?by=cms_fixed_width",
+      "title": "人间天堂,西湖胜景!收好这份杭州西湖游玩攻略,遇见诗画江南!",
+      "source_page_url": "http://k.sina.com.cn/article_7879922979_1d5ae152301901pq0q.html",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3fbd087f7a2e162c",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pic.app.hualongxiang.com/forum/20241107160111front2_0_3375278_nm8aG39aMc83YCqHyfV86MkllRWe.jpg?watermark/3/text/QOWQiemqjzBnMg==/fontsize/400/dissolve/100/gravity/SouthEast/fill/I2YzZjNmYQ==/font/5b6u6L2v6ZuF6buR/dx/10/dy/28/image/aHR0cHM6Ly9waWMuYXBwLmh1YWxvbmd4aWFuZy5jb20vd2F0ZXJfaW1nXzIwMjEwMzE2XzU1My5qcGc=/dissolve/100/gravity/SouthEast/dx/118/dy/10",
+      "title": "杭州西湖美景",
+      "source_page_url": "http://www.hualongxiang.com/read.php?tid=16326726",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_41d70abb9312412b",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://gossv-vcg.cfp.cn/videos/snapshot/VCG2237795355_00001.jpg",
+      "title": "杭州西湖南山路秋天风景正版高清视频素材",
+      "source_page_url": "http://www.vcg.com/creative-video/38063908",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_cfc6d53f5d130439",
+      "candidate_id": "ref_eb7beb5aa87905ed",
+      "place_id": "place_317fc6749411d659",
+      "place_name": "西湖",
+      "city": "杭州",
+      "original_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275p2t5bee6KW/5rmW6aOO5pmvXzE3MjQzNDg2MDguNDc2MDIzNA%3D%3D%27/0.png",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4446043819304317679",
+      "title": "🚣探索杭州西湖的绝美风光🌄",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260926_004012_47283e/ref_cfc6d53f5d130439.png",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260926_004012_47283e\\ref_cfc6d53f5d130439.png",
+      "sha256": "cfc6d53f5d130439a818bdfff986c78ae2f4cc373e258a27c1151c07ea206564",
+      "width": 1080,
+      "height": 1410,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 13.544,
+        "usage": {
+          "completion_tokens": 664,
+          "prompt_tokens": 1712,
+          "total_tokens": 2376,
+          "prompt_tokens_details": {
+            "cached_tokens": 1336
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "前景为大片荷花荷叶，中景是开阔湖面，湖对岸有茂密林木，远处山林间矗立一座多层古塔，天空有少量云朵，整体是山水园林景观。",
+          "visible_elements": [
+            "荷花（含盛开的粉白色荷花、粉色荷花花苞）",
+            "荷叶（大片绿色圆形荷叶）",
+            "湖泊（开阔的蓝色水面）",
+            "沿岸林木（包含垂柳等多种绿色树木）",
+            "多层古塔",
+            "覆盖茂密植被的山峦",
+            "蓝天",
+            "白色云朵",
+            "湖面上的小型船只"
+          ],
+          "spatial_layout": [
+            "荷花荷叶位于画面前景，占据画面下半部分",
+            "湖泊在荷花后方，横向贯穿画面中部",
+            "湖的对岸分布着成片的林木",
+            "多层古塔坐落在远处的山林间，位置在画面中上部偏中间",
+            "山峦在林木后方，构成画面背景的上半部分",
+            "天空在山峦上方，占据画面最顶部"
+          ],
+          "architecture_and_materials": [
+            "古塔为多层楼阁式塔，飞檐翘角，塔顶为金色塔刹",
+            "古塔塔身主体为深灰近黑色，每层带有白色的围栏/窗饰结构",
+            "沿岸林木为自然植被，无明确建筑材质可辨"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "画面朝向湖泊对岸的山林与古塔方向，无明确方位标识"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足，应为晴朗的日间时段",
+            "weather": "晴天，有少量白云",
+            "season": "夏季，荷花盛开符合夏季特征"
+          },
+          "must_keep_candidates": [
+            "前景大片荷花荷叶的景观结构",
+            "中景开阔湖泊的形态",
+            "湖对岸茂密林木的层次",
+            "远处山林间的多层古塔的造型与位置",
+            "背景山峦的整体轮廓与植被覆盖状态"
+          ],
+          "allowed_changes": [
+            "荷花的开放状态、花苞数量的动态变化",
+            "湖面水波的形态变化",
+            "天空云朵的形态与位置变化",
+            "湖面上船只的位置与数量变化",
+            "林木的光影明暗变化"
+          ],
+          "suitable_shots": [
+            "从前景荷花向远处古塔推进的推镜头",
+            "横向扫过湖面、林木与远山的横移镜头",
+            "固定机位展现荷花与远景古塔的静态长镜头",
+            "从湖面视角朝向古塔方向的远景镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "环绕古塔的环绕镜头（无法获取古塔周边全貌）",
+            "进入古塔内部的镜头（无内部信息）",
+            "低空掠过荷花丛后快速升高的大动态航拍镜头（无高处视角信息支撑）",
+            "展现山后区域的镜头（画面无山后内容）"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体地点名称",
+            "古塔的具体名称与建造年代",
+            "湖泊的具体名称",
+            "山峦的具体名称"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_4d6215a92a72ccfa",
+      "candidate_id": "ref_496594cd8efe09b7",
+      "place_id": "place_317fc6749411d659",
+      "place_name": "西湖",
+      "city": "杭州",
+      "original_url": "/assets/references/p_20260926_004012_47283e/ref_4d6215a92a72ccfa.jpg",
+      "source_page_url": "",
+      "title": "用户提供的参考图",
+      "provider": "user",
+      "cached_url": "/assets/references/p_20260926_004012_47283e/ref_4d6215a92a72ccfa.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260926_004012_47283e\\ref_4d6215a92a72ccfa.jpg",
+      "sha256": "4d6215a92a72ccfa358fde3f0692290e3a79d713a888819c159c56506ea57967",
+      "width": 900,
+      "height": 700,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 4.898,
+        "usage": {
+          "completion_tokens": 234,
+          "prompt_tokens": 1753,
+          "total_tokens": 1987,
+          "prompt_tokens_details": {
+            "cached_tokens": 1336
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面整体为均匀的蓝色纯色区域，无任何可辨识的实体景物、纹理或边界。",
+          "visible_elements": [],
+          "spatial_layout": [],
+          "architecture_and_materials": [],
+          "viewpoint": {
+            "camera_position": "无法判断",
+            "angle": "无法判断",
+            "shot_size": "无法判断",
+            "orientation_clues": []
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断",
+            "weather": "无法判断",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [],
+          "allowed_changes": [],
+          "suitable_shots": [],
+          "unsupported_or_risky_shots": [
+            "所有涉及实景元素、空间结构、场景变化的镜头设计均无法可靠支持"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "画面的具体属性（如是否为天空、水面、纯色背景等）无法确认"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_5221a02ef378bf87",
+      "candidate_id": "ref_d573ec94440314b5",
+      "place_id": "place_317fc6749411d659",
+      "place_name": "西湖",
+      "city": "杭州",
+      "original_url": "/assets/references/p_20260926_004012_47283e/ref_5221a02ef378bf87.jpg",
+      "source_page_url": "",
+      "title": "用户提供的参考图",
+      "provider": "user",
+      "cached_url": "/assets/references/p_20260926_004012_47283e/ref_5221a02ef378bf87.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260926_004012_47283e\\ref_5221a02ef378bf87.jpg",
+      "sha256": "5221a02ef378bf87228b19b6be6f21b646d6367338fd9790b7e59c0575aaebf1",
+      "width": 900,
+      "height": 700,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 5.589,
+        "usage": {
+          "completion_tokens": 235,
+          "prompt_tokens": 1753,
+          "total_tokens": 1988,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面为均匀的纯红色填充，无任何可辨识的实景物体、场景或细节元素",
+          "visible_elements": [],
+          "spatial_layout": [],
+          "architecture_and_materials": [],
+          "viewpoint": {
+            "camera_position": "无法判断",
+            "angle": "无法判断",
+            "shot_size": "无法判断",
+            "orientation_clues": []
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断",
+            "weather": "无法判断",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [],
+          "allowed_changes": [],
+          "suitable_shots": [],
+          "unsupported_or_risky_shots": [
+            "所有涉及实景场景、建筑、自然景观的视角与运动镜头均无法可靠支持"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "画面是否为实景拍摄内容、是否存在被遮挡的场景、红色区域的实际属性"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_317fc6749411d659",
+    "place_name": "西湖",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_cfc6d53f5d130439",
+      "ref_4d6215a92a72ccfa",
+      "ref_5221a02ef378bf87"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "荷花（含盛开的粉白色荷花、粉色荷花花苞）",
+      "荷叶（大片绿色圆形荷叶）",
+      "湖泊（开阔的蓝色水面）",
+      "沿岸林木（包含垂柳等多种绿色树木）",
+      "多层古塔",
+      "覆盖茂密植被的山峦",
+      "蓝天",
+      "白色云朵",
+      "湖面上的小型船只"
+    ],
+    "stable_features": [
+      {
+        "text": "前景大片荷花荷叶的景观结构",
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "中景开阔湖泊的形态",
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "湖对岸茂密林木的层次",
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "远处山林间的多层古塔的造型与位置",
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "背景山峦的整体轮廓与植被覆盖状态",
+        "evidence_asset_ids": [
+          "ref_cfc6d53f5d130439"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "前景大片荷花荷叶的景观结构",
+      "中景开阔湖泊的形态",
+      "湖对岸茂密林木的层次",
+      "远处山林间的多层古塔的造型与位置",
+      "背景山峦的整体轮廓与植被覆盖状态"
+    ],
+    "allowed_changes": [
+      "荷花的开放状态、花苞数量的动态变化",
+      "湖面水波的形态变化",
+      "天空云朵的形态与位置变化",
+      "湖面上船只的位置与数量变化",
+      "林木的光影明暗变化"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "具体地点名称",
+      "古塔的具体名称与建造年代",
+      "湖泊的具体名称",
+      "山峦的具体名称",
+      "画面的具体属性（如是否为天空、水面、纯色背景等）无法确认",
+      "画面是否为实景拍摄内容、是否存在被遮挡的场景、红色区域的实际属性"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_cfc6d53f5d130439",
+        "summary": "前景为大片荷花荷叶，中景是开阔湖面，湖对岸有茂密林木，远处山林间矗立一座多层古塔，天空有少量云朵，整体是山水园林景观。",
+        "visible_elements": [
+          "荷花（含盛开的粉白色荷花、粉色荷花花苞）",
+          "荷叶（大片绿色圆形荷叶）",
+          "湖泊（开阔的蓝色水面）",
+          "沿岸林木（包含垂柳等多种绿色树木）",
+          "多层古塔",
+          "覆盖茂密植被的山峦",
+          "蓝天",
+          "白色云朵",
+          "湖面上的小型船只"
+        ],
+        "spatial_layout": [
+          "荷花荷叶位于画面前景，占据画面下半部分",
+          "湖泊在荷花后方，横向贯穿画面中部",
+          "湖的对岸分布着成片的林木",
+          "多层古塔坐落在远处的山林间，位置在画面中上部偏中间",
+          "山峦在林木后方，构成画面背景的上半部分",
+          "天空在山峦上方，占据画面最顶部"
+        ],
+        "architecture_and_materials": [
+          "古塔为多层楼阁式塔，飞檐翘角，塔顶为金色塔刹",
+          "古塔塔身主体为深灰近黑色，每层带有白色的围栏/窗饰结构",
+          "沿岸林木为自然植被，无明确建筑材质可辨"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "画面朝向湖泊对岸的山林与古塔方向，无明确方位标识"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足，应为晴朗的日间时段",
+          "weather": "晴天，有少量白云",
+          "season": "夏季，荷花盛开符合夏季特征"
+        },
+        "must_keep_candidates": [
+          "前景大片荷花荷叶的景观结构",
+          "中景开阔湖泊的形态",
+          "湖对岸茂密林木的层次",
+          "远处山林间的多层古塔的造型与位置",
+          "背景山峦的整体轮廓与植被覆盖状态"
+        ],
+        "allowed_changes": [
+          "荷花的开放状态、花苞数量的动态变化",
+          "湖面水波的形态变化",
+          "天空云朵的形态与位置变化",
+          "湖面上船只的位置与数量变化",
+          "林木的光影明暗变化"
+        ],
+        "suitable_shots": [
+          "从前景荷花向远处古塔推进的推镜头",
+          "横向扫过湖面、林木与远山的横移镜头",
+          "固定机位展现荷花与远景古塔的静态长镜头",
+          "从湖面视角朝向古塔方向的远景镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "环绕古塔的环绕镜头（无法获取古塔周边全貌）",
+          "进入古塔内部的镜头（无内部信息）",
+          "低空掠过荷花丛后快速升高的大动态航拍镜头（无高处视角信息支撑）",
+          "展现山后区域的镜头（画面无山后内容）"
+        ]
+      },
+      {
+        "asset_id": "ref_4d6215a92a72ccfa",
+        "summary": "画面整体为均匀的蓝色纯色区域，无任何可辨识的实体景物、纹理或边界。",
+        "visible_elements": [],
+        "spatial_layout": [],
+        "architecture_and_materials": [],
+        "viewpoint": {
+          "camera_position": "无法判断",
+          "angle": "无法判断",
+          "shot_size": "无法判断",
+          "orientation_clues": []
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断",
+          "weather": "无法判断",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [],
+        "allowed_changes": [],
+        "suitable_shots": [],
+        "unsupported_or_risky_shots": [
+          "所有涉及实景元素、空间结构、场景变化的镜头设计均无法可靠支持"
+        ]
+      },
+      {
+        "asset_id": "ref_5221a02ef378bf87",
+        "summary": "画面为均匀的纯红色填充，无任何可辨识的实景物体、场景或细节元素",
+        "visible_elements": [],
+        "spatial_layout": [],
+        "architecture_and_materials": [],
+        "viewpoint": {
+          "camera_position": "无法判断",
+          "angle": "无法判断",
+          "shot_size": "无法判断",
+          "orientation_clues": []
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断",
+          "weather": "无法判断",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [],
+        "allowed_changes": [],
+        "suitable_shots": [],
+        "unsupported_or_risky_shots": [
+          "所有涉及实景场景、建筑、自然景观的视角与运动镜头均无法可靠支持"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_cfc6d53f5d130439",
+        "name": "西湖",
+        "url": "/assets/references/p_20260926_004012_47283e/ref_cfc6d53f5d130439.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4446043819304317679",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_4d6215a92a72ccfa",
+        "name": "西湖",
+        "url": "/assets/references/p_20260926_004012_47283e/ref_4d6215a92a72ccfa.jpg",
+        "source_page_url": "",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_5221a02ef378bf87",
+        "name": "西湖",
+        "url": "/assets/references/p_20260926_004012_47283e/ref_5221a02ef378bf87.jpg",
+        "source_page_url": "",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "none",
+    "version": 0
+  },
+  "music": {
+    "status": "none",
+    "version": 0,
+    "recommendation_status": "none",
+    "recommendation": null
+  },
+  "voice_tasks": [],
+  "segment_tasks": [],
+  "render_tasks": [],
+  "render": {
+    "status": "none",
+    "version": 0
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-25T16:40:12.150138+00:00",
+  "updated_at": "2026-09-25T16:42:16.200775+00:00",
+  "copywriting_text": "【0-5s】这个夏天，来杭州西湖，走进一幅宋韵长卷。\n【5-12s】一湖开阔，两岸青翠，世界遗产，塔影入山，风雅自来。\n【12-18s】乘一艘小船，穿过荷香水光，把夏天慢下来。\n【18-25s】一塔一湖，不须多言，西湖十景，宋韵流转。\n【25-30s】这个夏天，杭州西湖，宋韵之约，等你入画。",
+  "segment_results": {},
+  "active_segment_ids": []
+}

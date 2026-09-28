@@ -3,7 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" id="theme-color" content="#f7f5f0" />
     <title>TravelGen — 面向浙江文旅的AIGC短视频生成系统</title>
+    <script>
+      // 首屏防闪：必须在样式表生效前定好主题，否则深色用户会先闪一下白。
+      // 判定规则与 src/theme.js 的 readStored() 保持一致。
+      (function () {
+        var dark = false
+        try {
+          dark = localStorage.getItem('travelgen_theme') === 'dark'
+        } catch (e) {
+          /* storage 被禁则按默认浅色走 */
+        }
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+        var meta = document.getElementById('theme-color')
+        if (meta) meta.setAttribute('content', dark ? '#17150f' : '#f7f5f0')
+      })()
+    </script>
   </head>
   <body>
     <div id="app"></div>

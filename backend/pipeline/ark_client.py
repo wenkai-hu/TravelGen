@@ -11,25 +11,33 @@ import json, os, subprocess, urllib.request, urllib.error
 CONTENT_TYPES = {"video_url": "succeeded", "url": "succeeded"}
 
 
+class NetworkError(Exception):
+    """网络层异常（SSL EOF／超时／连接重置）。与业务失败区分：同一个请求稍后重试即可。"""
+
+
+def _request(req, timeout=60):
+    """统一发请求：HTTP 错误转 error dict（业务失败），网络层异常抛 NetworkError（可重试）。
+    ⚠️ HTTPError 是 URLError 的子类，必须先 catch。"""
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        return {"error": {"code": e.code, "message": e.read().decode("utf-8", "ignore")[:300]}}
+    except (urllib.error.URLError, OSError, ValueError) as exc:
+        raise NetworkError(f"{type(exc).__name__}: {exc}") from exc
+
+
 def _post(provider, path, body):
     url = provider["base_url"].rstrip("/") + path
     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {provider['api_key']}"}
     req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), headers=headers)
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        return {"error": {"code": e.code, "message": e.read().decode("utf-8", "ignore")[:300]}}
+    return _request(req)
 
 
 def _get(provider, path):
     url = provider["base_url"].rstrip("/") + path
     req = urllib.request.Request(url, headers={"Authorization": f"Bearer {provider['api_key']}"})
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        return {"error": {"code": e.code, "message": e.read().decode("utf-8", "ignore")[:300]}}
+    return _request(req)
 
 
 def submit(provider, prompt, duration=5, resolution="1080p", ratio="adaptive", images=None,
@@ -78,6 +86,23 @@ def get_task(provider, task_id):
         if not url:
             return "failed", None, f"succeeded 但无视频URL: {str(data)[:200]}"
     return status, url, None
+
+
+def submit_safe(provider, *args, **kwargs):
+    """submit 的网络异常版：连接类错误不冒泡，按 (None, 错误文本) 返回，交给上层按失败重试。
+    批次里一条片段网络抖动不应该让整批生成失败（见 pipeline._run_*_jobs）。"""
+    try:
+        return submit(provider, *args, **kwargs)
+    except NetworkError as exc:
+        return None, f"网络错误（{exc}）"
+
+
+def get_task_safe(provider, task_id):
+    """get_task 的网络异常版：连接类错误按"仍在进行"返回，让轮询继续（由轮询上限兜底）。"""
+    try:
+        return get_task(provider, task_id)
+    except NetworkError as exc:
+        return "running", None, f"网络错误（{exc}）"
 
 
 def download(url, dest_path):

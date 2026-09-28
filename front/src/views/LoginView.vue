@@ -2,6 +2,8 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { NAlert, NButton, NInput, useMessage } from "naive-ui";
+import { PhArrowLeft } from "@phosphor-icons/vue";
+import ThemeToggle from "../components/ThemeToggle.vue";
 import { login, register } from "../api";
 import { setSession } from "../auth";
 import logoUrl from "../images/logo.png";
@@ -52,9 +54,12 @@ async function onSubmit() {
           <img :src="logoUrl" class="logo-mark" alt="TravelGen" />
           <span class="logo-text gradient-text">TravelGen</span>
         </div>
-        <router-link to="/" class="back-link">
-          <i class="iconfont icon-fanhui"></i> 返回工作台
-        </router-link>
+        <div class="nav-right">
+          <ThemeToggle />
+          <router-link to="/" class="back-link">
+            <PhArrowLeft :size="15" /> 返回工作台
+          </router-link>
+        </div>
       </div>
     </header>
 
@@ -159,9 +164,9 @@ async function onSubmit() {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: #fcf8f1;
+  background: var(--surface-nav);
   border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 2px 12px rgba(31, 41, 55, 0.05);
+  box-shadow: var(--shadow-soft);
 }
 .nav-inner {
   max-width: 1200px;
@@ -184,6 +189,7 @@ async function onSubmit() {
   object-fit: cover;
   display: block;
   flex-shrink: 0;
+  box-shadow: 0 0 0 1px var(--logo-ring);
 }
 .logo-text {
   font-family: var(--font-serif);
@@ -200,11 +206,14 @@ async function onSubmit() {
   font-size: 15px;
   transition: color 0.15s;
 }
-.back-link .iconfont {
-  font-size: 14px;
-}
 .back-link:hover {
   color: var(--color-primary);
+}
+/* 返回链接 + 主题开关同一组，保持返回链接仍贴右边缘 */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .auth-wrap {
@@ -225,14 +234,14 @@ async function onSubmit() {
 .glow-1 {
   width: 420px;
   height: 420px;
-  background: #17a398;
+  background: var(--glow-primary);
   top: -60px;
   right: -60px;
 }
 .glow-2 {
   width: 320px;
   height: 320px;
-  background: #c9a227;
+  background: var(--glow-gold);
   bottom: 80px;
   left: -100px;
   opacity: 0.18;
@@ -262,7 +271,7 @@ async function onSubmit() {
   height: 64px;
   border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.18);
+  box-shadow: 0 6px 16px var(--shadow-primary);
 }
 .card-logo .logo-text {
   font-family: var(--font-serif);
@@ -296,7 +305,7 @@ async function onSubmit() {
   background: var(--color-card);
   color: var(--color-primary);
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.12);
+  box-shadow: 0 2px 8px var(--shadow-primary);
 }
 
 /* 输入字段 */
@@ -328,14 +337,14 @@ async function onSubmit() {
 
 /* 主按钮：白字 + 青绿渐变，hover 泛金 */
 .auth-btn {
-  --n-text-color: #fff !important;
-  --n-text-color-hover: #fff !important;
-  --n-text-color-pressed: #fff !important;
-  --n-text-color-focus: #fff !important;
-  --n-color: #0f766e !important;
-  --n-color-hover: #115e59 !important;
-  --n-color-pressed: #0d5f58 !important;
-  --n-color-focus: #115e59 !important;
+  --n-text-color: var(--color-on-primary) !important;
+  --n-text-color-hover: var(--color-on-primary) !important;
+  --n-text-color-pressed: var(--color-on-primary) !important;
+  --n-text-color-focus: var(--color-on-primary) !important;
+  --n-color: var(--color-primary) !important;
+  --n-color-hover: var(--color-primary-deep) !important;
+  --n-color-pressed: var(--color-primary-deep) !important;
+  --n-color-focus: var(--color-primary-deep) !important;
   --n-border: none;
   --n-border-hover: none;
   --n-border-pressed: none;
@@ -343,13 +352,13 @@ async function onSubmit() {
   --n-border-radius: 10px;
   font-size: 16px;
   letter-spacing: 4px;
-  background: linear-gradient(120deg, #0f766e, #115e59);
-  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
+  background: var(--gradient-btn);
+  box-shadow: 0 4px 14px var(--shadow-primary);
   transition: all 0.2s ease;
 }
 .auth-btn:hover {
-  background: linear-gradient(120deg, #138a80, #0f766e);
-  box-shadow: 0 6px 20px rgba(15, 118, 110, 0.35);
+  background: var(--gradient-btn-hover);
+  box-shadow: 0 6px 20px var(--shadow-primary);
   transform: translateY(-1px);
 }
 .auth-btn:active {

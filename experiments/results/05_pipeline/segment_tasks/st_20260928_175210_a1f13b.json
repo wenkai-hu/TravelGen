@@ -1,0 +1,58 @@
+{
+  "task_id": "st_20260928_175210_a1f13b",
+  "project_id": "p_20260928_174225_e4e9b8",
+  "kind": "single",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 1/1 个生成片段",
+  "request": {
+    "segments": [
+      "seg_03"
+    ],
+    "regenerate": {
+      "reason": "用户从镜头卡片重新生成",
+      "prompt": null,
+      "keep_style": true
+    },
+    "voice_version": 1,
+    "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+    "reference_version": 1
+  },
+  "segments": [
+    {
+      "segment_id": "seg_03",
+      "shot_ids": [
+        3
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260928_174225_e4e9b8/seg_03/st_20260928_175210_a1f13b_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179058913709400000000000000000000ffffac191d2e252c83.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260928%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260928T095535Z&X-Tos-Expires=86400&X-Tos-Signature=a0c93875018befde8a1fef061f1e403553a6aeef84d0b41da57bc90196415d6c&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_03\\st_20260928_175210_a1f13b_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_03\\st_20260928_175210_a1f13b_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_03\\st_20260928_175210_a1f13b_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 15.072,
+        "expected_duration_seconds": 15.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.432,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -14.77,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "6cd32b2650e5d420ef8ea98ae358eb9dbc5ce5aef61edb08d83229fdd0630ee6",
+      "prompt_hash": "0356bdb6f4e4b300bb888d614ff83f859cd0b38560e3a348d19dca0ccabc6c01",
+      "reference_asset_ids": [
+        "ref_0a0bc512f1821ad2"
+      ]
+    }
+  ],
+  "error": null,
+  "created_at": "2026-09-28T09:52:10.424610+00:00",
+  "updated_at": "2026-09-28T09:55:46.348654+00:00"
+}

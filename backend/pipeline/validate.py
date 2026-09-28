@@ -19,11 +19,19 @@ SHOT_MIN, SHOT_MAX = 4, 120
 SEGMENT_MIN, SEGMENT_MAX = 4, 15
 
 
+def max_useful_references(target_s):
+    """时长决定的参考图有效上限：再多也消化不掉。
+
+    一图一镜，所以「用得上几张图」等价于「最多几个镜头」。前端拿它给用户
+    提示还能再选几张 —— 必须从这里取，别在前端复制公式，否则时长规则一改就不同步。
+    """
+    return min(target_s // SHOT_MIN, max(1, round(target_s / 7)))
+
+
 def shot_count_range(target_s, reference_count=None):
     """有实景图时，每张图最多生成一条 Shot，且不给模型制造无图镜头。"""
     if reference_count is not None:
-        count = min(reference_count, target_s // SHOT_MIN,
-                    max(1, round(target_s / 7)))
+        count = min(reference_count, max_useful_references(target_s))
         return count, count
     min_shots = max(1, -(-target_s // 15))
     return min_shots, max(min_shots, target_s // 4)

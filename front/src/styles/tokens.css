@@ -1,18 +1,31 @@
 /* ============================================================
-   TravelGen 前端设计 token（方案：宋韵青绿浅色 + 深色科技预留）
-   浅色编辑页：青绿 + 宣纸米白 + 鎏金点缀（浙江宋韵）
-   深色过程页：墨蓝黑 + 青绿霓虹（生成进度/结果页，后续接入）
+   TravelGen 前端设计 token（双主题）
+
+   浅色「宋韵青绿」：青绿 + 宣纸米白 + 鎏金点缀（浙江宋韵）
+   深色「墨韵暖调」：深墨底 + 青绿 + 鎏金，同一血脉，不用冷调科技蓝
+
+   主题切换：<html data-theme="dark">（由 src/theme.js 写入）
+   所有颜色都必须走这里的变量，视图里不再写颜色字面量，
+   唯一的例外是「功能性颜色」——见文件末尾那一节。
    ============================================================ */
 
 :root {
+  color-scheme: light;
+
   /* —— 宋韵青绿主色 —— */
   --color-primary: #0f766e;
   --color-primary-deep: #115e59;
   --color-primary-light: #e8f2ef;
   --color-primary-fade: #f0f7f4;
+  /* 压在青绿/鎏金/朱砂填充上的文字色。
+     鎏金是中明度色，白字压上去只有 2.4:1 —— 用暖墨（印章观感也更对）。 */
+  --color-on-primary: #ffffff;
+  --color-on-gold: #3a2b06;
+  --color-on-error: #ffffff;
 
   /* —— 鎏金点缀（克制使用：强调、徽章、进度高亮） —— */
   --color-gold: #c9a227;
+  --color-gold-text: #7a5d12;  /* 金色「当文字」时用这个（#c9a227 只有 2.4:1） */
   --color-gold-light: #e8d9a0;
   --color-gold-ink: #7a5d12;   /* 浅金底上的深金文字（标签/话题） */
   --color-gold-fade: #fdf9ec;  /* 话题标签的奶油底 */
@@ -21,20 +34,105 @@
   --color-bg: #f7f5f0;      /* 宣纸米白 */
   --color-card: #ffffff;
   --color-border: #e3ded3;
+  --surface-nav: #fcf8f1;     /* 导航底（与 logo 图底色同色，消除色差） */
+  --surface-sunken: #f8f4ee;  /* 次级下沉表面（引用块、旁白、候选卡） */
+  --surface-elevated: #fffdfa;
+  --border-dashed: #ddd6c8;
+  --border-strong: #c9c1b0;
 
   /* —— 文字 —— */
   --color-ink: #1f2937;     /* 墨色正文 */
-  --color-ink-sub: #6b7280; /* 次要文字 */
+  --color-ink-sub: #5f6875; /* 次要文字（原 #6b7280 只有 4.44:1） */
+  --color-ink-muted: #656d79; /* 更淡一档（占位、图注）；原 #6b7280 只有 4.44:1 */
+  /* 暖褐次要文字（分镜页那张宣纸底上用的色，与青绿系并行的一套中性色） */
+  --color-ink-warm: #7e6858;      /* 原 #8a7464 压在白卡上只有 4.41:1 */
+  --color-ink-warm-dim: #7a6a5a;  /* 原 #9a897a 只有 3.3:1 */
+  --color-ink-warm-deep: #795d47;
 
   /* —— 状态色 —— */
   --color-success: #2f855a;
   --color-error: #b03a2e;   /* 朱砂红 */
+  --color-error-border: rgba(176, 58, 46, 0.22);
+  --color-error-fade: rgba(176, 58, 46, 0.06);
+  --shadow-deep: rgba(17, 94, 89, 0.2);   /* 浮层（底栏/大卡）的深青投影 */
 
-  /* —— 深色科技区（生成页预留，与浅色区同一青绿血脉） —— */
-  --dark-bg: #0b1220;
-  --dark-card: #111a2e;
-  --dark-glow: #2dd4bf;
-  --dark-gold: #f0b429;
+  --status-ok-fg: #127252;      --status-ok-bg: #e2f4ec;
+  --status-ok-faint: #f3fbf8;                    /* 推荐项底色 */
+  --status-ok-chip: #dff4ed;                     /* 推荐标签底色 */
+  --status-done-fg: #11684c;    --status-done-bg: #def2e9;
+  --status-ok-soft-fg: #235e51; --status-ok-soft-bg: #eef8f5;
+  --status-ok-line: #b8dcd1;
+  --status-busy-fg: #9a5b0a;    --status-busy-bg: #fff0c7;
+  --status-warn-fg: #8f4a1e;    --status-warn-bg: #fff6ec;
+  --status-warn-line: #e3c4a5;
+  --status-bad-fg: #a2382a;     --status-bad-bg: #fae5df;
+  --status-idle-bg: #eee9e1;
+  --status-note-fg: #6b4e85;    --status-note-bg: #f0e8f8;
+  --status-tip-fg: #a44b17;     --status-tip-bg: #fff0e5;
+  --border-warm: #b9aa98;                        /* 暖褐虚线框 */
+
+  /* —— 阴影 / 质感（深色下必须换，否则是发光的黑斑） —— */
+  --shadow-card: 0 6px 24px rgba(15, 118, 110, 0.08);
+  --shadow-card-hover: 0 10px 32px rgba(15, 118, 110, 0.14);
+  --shadow-soft: 0 2px 12px rgba(31, 41, 55, 0.05);
+  --shadow-color: rgba(31, 41, 55, 0.05);
+  --shadow-primary: rgba(15, 118, 110, 0.14);  /* 悬停/选中的青绿投影 */
+  --inset-highlight: rgba(255, 255, 255, 0.9); /* 凹槽顶部高光 */
+  --inset-shadow: rgba(31, 41, 55, 0.05);      /* 凹槽底部暗边 */
+
+  /* —— 装饰光斑 / 金辉 —— */
+  --glow-primary: #17a398;
+  --glow-gold: #c9a227;
+  --glow-gold-soft: rgba(201, 162, 39, 0.28);   /* 面板 ready 的金边光晕 */
+  --shadow-gold: 0 6px 18px rgba(201, 162, 39, 0.35); /* 金色按钮的金辉 */
+
+  /* —— 面板细节 —— */
+  --panel-inset: #fbfaf6;                        /* 工作台面板内嵌的 5px 圈边 */
+  --divider-primary: rgba(17, 94, 89, 0.18);     /* 行间青绿虚线 / 浅青描边 */
+  --input-bg: rgba(255, 255, 255, 0.65);         /* 槽位里的选择框底色 */
+  --surface-nav-glass: rgba(252, 248, 241, 0.94); /* 半透明毛玻璃导航 */
+  --card-glass: rgba(255, 255, 255, 0.93);        /* 半透明卡片 / 吸底操作条 */
+  --glow-primary-soft: rgba(15, 118, 110, 0.08);  /* 页面角落的青绿氛围光斑 */
+  --glow-gold-faint: rgba(201, 162, 39, 0.09);
+  --media-placeholder: #e8edea;                   /* 图片未加载时的占位底 */
+  --checker-a: #f4f3ef;                           /* 棋盘格（透明底提示） */
+  --checker-b: #eceae4;
+
+  /* logo.png 底板 #fcf8f1 是烤死在图里的（图片不透明，透明托底无效）。
+     浅色下它和导航底同色，不需要描边；深色下补一道暖色描边，
+     让那块亮色读起来是「有意放的卡纸」而不是漏白。 */
+  --logo-ring: transparent;
+
+  /* —— 渐变（整体作为 token，视图里不拼色标） —— */
+  --gradient-title: linear-gradient(120deg, #0f766e 10%, #17a398 55%, #c9a227 120%);
+  --gradient-btn: linear-gradient(120deg, #0f766e, #115e59);
+  --gradient-btn-hover: linear-gradient(120deg, #138a80, #0f766e);
+  --gradient-bar: linear-gradient(90deg, #0f766e, #17a398);
+  --gradient-ring: linear-gradient(145deg, #ffffff, var(--color-primary-fade));
+  --gradient-gain: linear-gradient(135deg, #f7fcfa, #fffdfa);
+  --grid-line: rgba(15, 118, 110, 0.04);  /* 工作台网格线（极淡） */
+
+  /* —— 工作台（创意工坊） —— */
+  --slot-bg: #fdfcf8;        /* 槽位底色（暖白，略区别于面板） */
+  --slot-border: #ddd6c8;    /* 槽位描边（暖灰） */
+  --slot-empty: #786e5e;     /* 空槽提示文字（原 #b8ae9c 只有 2.14:1） */
+
+  /* —— 功能性颜色：任何主题下都不翻转 —— */
+  --video-bg: #000000;         /* 视频 letterbox，翻成浅色会让视频四周发亮 */
+  --lightbox-bg: #101815;      /* 观片灯箱腔体，深色是有意设计 */
+  --lightbox-hairline: rgba(255, 255, 255, 0.2);
+  --lightbox-sheen: rgba(255, 255, 255, 0.06);
+  --scrim: rgba(17, 24, 39, 0.72);        /* 压在照片上的控件底 */
+  --scrim-border: rgba(255, 255, 255, 0.7);
+  --scrim-hover: rgba(15, 118, 110, 0.9); /* 灯箱关闭按钮 hover */
+  --on-photo: #ffffff;                    /* 压在照片/深色 scrim 上的字与描边 */
+  --on-photo-soft: rgba(255, 255, 255, 0.55);
+  --photo-divider: #ffffff;               /* 叠压缩略图之间的白色分隔环 */
+  /* 作品卡上的状态角标：压在照片上，饱和度要足够，两个主题共用 */
+  --badge-info-bg: rgba(15, 118, 110, 0.85);
+  --badge-warn-bg: rgba(201, 162, 39, 0.9);
+  --badge-ok-bg: rgba(21, 128, 61, 0.9);
+  --badge-bad-bg: rgba(190, 18, 60, 0.88);
 
   /* —— 字体 —— */
   --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', serif;
@@ -42,31 +140,142 @@
 
   /* —— 通用 —— */
   --radius: 10px;
-  --shadow-card: 0 6px 24px rgba(15, 118, 110, 0.08);
-  --shadow-card-hover: 0 10px 32px rgba(15, 118, 110, 0.14);
+}
 
-  /* —— 工作台（创意工坊） —— */
-  --slot-bg: #fdfcf8;        /* 槽位底色（暖白，略区别于面板） */
-  --slot-border: #ddd6c8;    /* 槽位描边（暖灰） */
-  --slot-empty: #b8ae9c;     /* 空槽提示文字 */
-  --grid-line: rgba(15, 118, 110, 0.04);  /* 工作台网格线（极淡） */
+/* ============================================================
+   深色主题「墨韵暖调」
+   底不用纯黑（#000 会杀死层次），用暖墨；字不用纯白。
+   ============================================================ */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* 青绿在深底上要提亮才读得出；填充态改用深墨字（--color-on-primary） */
+  --color-primary: #5ecab8;
+  --color-primary-deep: #45b8a5;
+  --color-primary-light: #26443d;
+  --color-primary-fade: #16241f;
+  --color-on-primary: #0d1a17;
+  --color-on-gold: #241c05;
+  --color-on-error: #2a0f0a;
+
+  --color-gold: #d9b348;
+  --color-gold-text: #d9b348;
+  --color-gold-light: #4a3d1c;
+  --color-gold-ink: #e0c070;
+  --color-gold-fade: #2a2418;
+
+  --color-bg: #17150f;
+  --color-card: #211e17;
+  --color-border: #3d382c;
+  --surface-nav: #1b1913;
+  --surface-sunken: #1c1a14;
+  --surface-elevated: #262218;
+  --border-dashed: #3d382c;
+  --border-strong: #4a4436;
+
+  --color-ink: #eae5da;      /* 暖白，不是纯白 */
+  --color-ink-sub: #a99f8d;
+  --color-ink-muted: #8d8474;
+  --color-ink-warm: #a99f8d;
+  --color-ink-warm-dim: #8d8474;
+  --color-ink-warm-deep: #c4b8a4;
+
+  --color-success: #5cc08a;
+  --color-error: #e0796a;
+  --color-error-border: rgba(224, 121, 106, 0.32);
+  --color-error-fade: rgba(224, 121, 106, 0.1);
+  --shadow-deep: rgba(0, 0, 0, 0.55);
+
+  --status-ok-fg: #7fd3a5;      --status-ok-bg: #16281e;
+  --status-ok-faint: #17251f;
+  --status-ok-chip: #1d3229;
+  --status-done-fg: #7fd3a5;    --status-done-bg: #16281e;
+  --status-ok-soft-fg: #8fd0be; --status-ok-soft-bg: #172722;
+  --status-ok-line: #2c5442;
+  --border-warm: #4a4436;
+  --status-busy-fg: #e8c069;    --status-busy-bg: #2c2413;
+  --status-warn-fg: #e0a06a;    --status-warn-bg: #2e2113;
+  --status-warn-line: #4d3a22;
+  --status-bad-fg: #e58c7d;     --status-bad-bg: #2e1a16;
+  --status-idle-bg: #24211a;
+  --status-note-fg: #c3a8dd;    --status-note-bg: #251f2e;
+  --status-tip-fg: #e39a63;     --status-tip-bg: #2e2013;
+
+  --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 10px 32px rgba(0, 0, 0, 0.55);
+  --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.4);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-primary: rgba(0, 0, 0, 0.5);
+  --inset-highlight: rgba(255, 255, 255, 0.06);
+  --inset-shadow: rgba(0, 0, 0, 0.25);
+
+  --glow-primary: #2f8f83;
+  --glow-gold: #8a7128;
+  --glow-gold-soft: rgba(217, 179, 72, 0.22);
+  --shadow-gold: 0 6px 18px rgba(217, 179, 72, 0.3);
+
+  --panel-inset: #262218;
+  --divider-primary: rgba(94, 202, 184, 0.22);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --logo-ring: rgba(234, 229, 218, 0.16);
+  --surface-nav-glass: rgba(27, 25, 19, 0.94);
+  --card-glass: rgba(33, 30, 23, 0.9);
+  --glow-primary-soft: rgba(94, 202, 184, 0.07);
+  --glow-gold-faint: rgba(217, 179, 72, 0.08);
+  --media-placeholder: #1c1a14;
+  --checker-a: #1c1a14;
+  --checker-b: #232019;
+
+  --gradient-title: linear-gradient(120deg, #5ecab8 10%, #7dd8c8 55%, #d9b348 120%);
+  --gradient-btn: linear-gradient(120deg, #45b8a5, #2f8f83);
+  --gradient-btn-hover: linear-gradient(120deg, #5ecab8, #45b8a5);
+  --gradient-bar: linear-gradient(90deg, #45b8a5, #7dd8c8);
+  --gradient-ring: linear-gradient(145deg, #2a2620, var(--color-primary-fade));
+  --gradient-gain: linear-gradient(135deg, #1c2622, #201d16);
+  --grid-line: rgba(94, 202, 184, 0.05);
+
+  --slot-bg: #1e1b15;
+  --slot-border: #3d382c;
+  --slot-empty: #8d8474;
+}
+
+/* ============================================================
+   基础：页面外缘 / overscroll 区不再露白
+   ============================================================ */
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+/* 图标：Phosphor 的 svg 默认 inline，靠 vertical-align 与旁边文字对齐。
+   -0.125em 是图标字体的通行值，比基线略低，视觉上正好居中于 x-height。
+   尺寸一律走 1em（Phosphor 的默认），所以容器 font-size 就是图标大小。 */
+.ico-inline {
+  vertical-align: -0.125em;
+}
+
+/* naive 按钮的 .n-button__content 是 flex 容器，图标作为 flex 项不要被压扁，
+   这里的 vertical-align 不生效，间距由文本节点里的空格提供。 */
+.btn-ico {
+  flex-shrink: 0;
 }
 
 /* 渐变工具类：青绿主按钮 / 标题文字 */
 .gradient-text {
-  background: linear-gradient(120deg, #0f766e 10%, #17a398 55%, #c9a227 120%);
+  background: var(--gradient-title);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .gradient-btn {
-  background: linear-gradient(120deg, #0f766e, #115e59);
-  color: #fff;
+  background: var(--gradient-btn);
+  color: var(--color-on-primary);
   border: none;
 }
 .gradient-btn:hover {
-  background: linear-gradient(120deg, #138a80, #0f766e);
+  background: var(--gradient-btn-hover);
   box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
 }
 
@@ -90,4 +299,23 @@
 @keyframes arrow-nudge {
   0%, 100% { transform: translateX(0); opacity: 0.85; }
   50%      { transform: translateX(5px); opacity: 1; }
+}
+
+/* ============================================================
+   动效降级：系统开了"减弱动态效果"就全部关掉
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .fade-up-1,
+  .fade-up-2,
+  .fade-up-3 {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,0 +1,48 @@
+{
+  "task_id": "st_20260923_222450_040e87",
+  "project_id": "p_20260923_215354_7dabcf",
+  "kind": "batch",
+  "status": "generating",
+  "progress": 0,
+  "message": "Segment 生成中 0/1 完成",
+  "request": {
+    "shot_ids": [
+      5
+    ],
+    "segments": [
+      "seg_05"
+    ],
+    "generate_video": true,
+    "plan_version": 1,
+    "storyboard_version": 4,
+    "voice_version": 1,
+    "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+    "reference_version": 1
+  },
+  "segments": [
+    {
+      "segment_id": "seg_05",
+      "shot_ids": [
+        5
+      ],
+      "status": "generating",
+      "video_url": null,
+      "source_video_url": null,
+      "raw_path": null,
+      "normalized_av_path": null,
+      "native_audio_path": null,
+      "audio_qa": {},
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "832dacd9c7b2565755d431c2a3eb53479f5a2e37c4720301c896f20e4f567112",
+      "prompt_hash": "a986fda311ededf4882bd0f55f56155b738bc11fb29731df438bc842ca4fb29a",
+      "reference_asset_ids": [
+        "ref_64eb8d9aa67e889f"
+      ]
+    }
+  ],
+  "error": null,
+  "created_at": "2026-09-23T14:24:50.839737+00:00",
+  "updated_at": "2026-09-23T14:25:40.926798+00:00"
+}

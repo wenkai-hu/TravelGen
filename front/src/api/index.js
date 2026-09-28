@@ -9,8 +9,10 @@ async function request(path, options = {}) {
   let res
   // 登录态自动带 Authorization；未登录（如 /api/auth/login）则不发
   const token = getToken()
+  // FormData 不能手动设 Content-Type —— multipart 的 boundary 要由浏览器生成
+  const isForm = typeof FormData !== 'undefined' && options.body instanceof FormData
   const headers = {
-    'Content-Type': 'application/json',
+    ...(isForm ? {} : { 'Content-Type': 'application/json' }),
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
     ...options.headers,
   }
@@ -60,11 +62,26 @@ export function getProjectReferences(pid) {
   return request(`/api/projects/${pid}/references`)
 }
 
+// 接口1.3：添加一张用户自己的参考图 —— 传文件，或给一个远端链接。
+// 两者都自动入选；搜图还在跑时也能加（后端统一合并，不会被搜图结果覆盖）。
+export function addReferenceSource(pid, { file, url } = {}) {
+  const body = new FormData()
+  if (file) body.append('file', file)
+  if (url) body.append('url', url)
+  return request(`/api/projects/${pid}/reference-uploads`, {
+    method: 'POST',
+    body,
+    // 传文件比 JSON 调用慢得多，20s 默认超时不够用
+    signal: AbortSignal.timeout(120000),
+  })
+}
+
 // 接口1.2：用户确认真实景点参考图，后端随后下载并调用 VLM
-export function confirmProjectReferences(pid, referenceIds) {
+export function confirmProjectReferences(pid, referenceIds, autoOrder = false) {
   return request(`/api/projects/${pid}/references/confirm`, {
     method: 'POST',
-    body: JSON.stringify({ reference_ids: referenceIds }),
+    // autoOrder 时 referenceIds 只表达「用这几张」，先后由模型在分镜阶段自己配
+    body: JSON.stringify({ reference_ids: referenceIds, auto_order: autoOrder }),
   })
 }
 

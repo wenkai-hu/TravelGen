@@ -1,0 +1,90 @@
+{
+  "task_id": "vt_20260815_113943_c7148d",
+  "project_id": "p_20260815_113342_18623a",
+  "kind": "batch",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 8/8 成功",
+  "request": {
+    "shots": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "generate_image": true,
+    "generate_video": true
+  },
+  "shots": [
+    {
+      "shot_id": 1,
+      "status": "completed",
+      "image_url": null,
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_1.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_1.mp4",
+      "error": null
+    },
+    {
+      "shot_id": 2,
+      "status": "completed",
+      "image_url": null,
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_2.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_2.mp4",
+      "error": null
+    },
+    {
+      "shot_id": 3,
+      "status": "completed",
+      "image_url": null,
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_3.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_3.mp4",
+      "error": null
+    },
+    {
+      "shot_id": 4,
+      "status": "completed",
+      "image_url": null,
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_4.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_4.mp4",
+      "error": null
+    },
+    {
+      "shot_id": 5,
+      "status": "completed",
+      "image_url": null,
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_5.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_5.mp4",
+      "error": null
+    },
+    {
+      "shot_id": 6,
+      "status": "completed",
+      "image_url": null,
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_6.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_6.mp4",
+      "error": null
+    },
+    {
+      "shot_id": 7,
+      "status": "completed",
+      "image_url": null,
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_7.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_7.mp4",
+      "error": null
+    },
+    {
+      "shot_id": 8,
+      "status": "completed",
+      "image_url": null,
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_8.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_8.mp4",
+      "error": null
+    }
+  ],
+  "created_at": "2026-08-15T03:39:43.029316+00:00",
+  "updated_at": "2026-08-15T03:43:15.232896+00:00"
+}

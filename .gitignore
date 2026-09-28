@@ -1,6 +1,7 @@
 # ===== 密钥与配置（绝不提交！）=====
 # 注意：gitignore 不支持行内注释，末尾不能带 # 说明
 experiments/config.json
+experiments/config.json.*
 experiments/config_text.json
 experiments/03_video/video_config.json
 .env
@@ -32,6 +33,11 @@ assets/*
 assets/media/voices/custom/
 
 # 注：experiments/results/ 下的 .md/.csv/.json 文本结果要提交（可复现），仅排除视频音频文件
+
+# ===== 竞赛材料（不随代码库走）=====
+# 根目录的说明 PDF 只在本地看；报名材料/ 是提交用的成品（pptx/pdf/演示视频）
+/*.pdf
+/报名材料/
 
 # ===== 系统文件 =====
 .DS_Store

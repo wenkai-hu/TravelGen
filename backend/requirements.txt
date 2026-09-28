@@ -7,3 +7,4 @@ sqlalchemy[asyncio]>=2.0  # Async ORM; installs greenlet required by AsyncEngine
 aiomysql>=0.2  # Async MySQL driver
 PyMySQL[rsa]>=1.1  # MySQL 8 sha256/caching_sha2_password authentication
 Pillow>=10.0  # Reference image decoding and perceptual deduplication
+python-multipart>=0.0.9  # multipart/form-data parsing; required by FastAPI for UploadFile

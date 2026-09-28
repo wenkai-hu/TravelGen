@@ -1,0 +1,32 @@
+{
+  "task_id": "vt_20260815_112145_cbb684",
+  "project_id": "p_20260815_112131_be46c9",
+  "kind": "single",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 1/1 成功",
+  "request": {
+    "shot_ids": [
+      3
+    ],
+    "generate_image": false,
+    "generate_video": true,
+    "regenerate": {
+      "reason": "画面动作不自然",
+      "prompt": "重生成版本prompt",
+      "keep_style": true
+    }
+  },
+  "shots": [
+    {
+      "shot_id": 3,
+      "status": "completed",
+      "image_url": null,
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    }
+  ],
+  "created_at": "2026-08-15T03:21:45.318191+00:00",
+  "updated_at": "2026-08-15T03:21:45.629866+00:00"
+}

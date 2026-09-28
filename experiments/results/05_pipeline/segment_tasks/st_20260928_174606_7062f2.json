@@ -1,0 +1,161 @@
+{
+  "task_id": "st_20260928_174606_7062f2",
+  "project_id": "p_20260928_174225_e4e9b8",
+  "kind": "batch",
+  "status": "completed",
+  "progress": 100,
+  "message": "完成 4/4 个生成片段",
+  "request": {
+    "shot_ids": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "segments": [
+      "seg_01",
+      "seg_02",
+      "seg_03",
+      "seg_04"
+    ],
+    "generate_video": true,
+    "plan_version": 1,
+    "storyboard_version": 4,
+    "voice_version": 1,
+    "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+    "reference_version": 1
+  },
+  "segments": [
+    {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260928_174225_e4e9b8/seg_01/st_20260928_174606_7062f2_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179058877415200000000000000000000ffffac1802a3795a9c.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260928%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260928T095210Z&X-Tos-Expires=86400&X-Tos-Signature=fd8a7ca08f04c7948ae8b1af9340fad3ecc91d07ca1f1ac819ab3f6fea091c77&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_01\\st_20260928_174606_7062f2_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_01\\st_20260928_174606_7062f2_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_01\\st_20260928_174606_7062f2_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 15.0698,
+        "expected_duration_seconds": 15.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 1.29,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -16.36,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "4388702b7914f1d1adeab63dea66bc0b15989deb38326a47e98cc422baa80501",
+      "prompt_hash": "bee11b135cc04a5abc8876a7ac22ed47aa31ee39b77af7dcf9c7faf314601576",
+      "reference_asset_ids": [
+        "ref_6f0648dcae3cc7bf"
+      ]
+    },
+    {
+      "segment_id": "seg_02",
+      "shot_ids": [
+        2
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260928_174225_e4e9b8/seg_02/st_20260928_174606_7062f2_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179058877803900000000000000000000ffffac18056a996e2d.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260928%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260928T100309Z&X-Tos-Expires=86400&X-Tos-Signature=74937e5adae3e45c97f79bf8aa22fdcba54a69c547eb46bbaa169322253d888f&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_02\\st_20260928_174606_7062f2_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_02\\st_20260928_174606_7062f2_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_02\\st_20260928_174606_7062f2_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 15.0698,
+        "expected_duration_seconds": 15.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.71,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -12.19,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "207e5f2b92e5bb5db135c8628b9c005b40d2182bf427f12270b8dc703cbc9bb5",
+      "prompt_hash": "27c703eacad5cf61b8e6e91823ac74ce4e14c50810807276a9dc90665f1da991",
+      "reference_asset_ids": [
+        "ref_f5c0c9bbbadd9ea7"
+      ]
+    },
+    {
+      "segment_id": "seg_03",
+      "shot_ids": [
+        3
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260928_174225_e4e9b8/seg_03/st_20260928_174606_7062f2_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179058878151100000000000000000000ffffac1926ada14614.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260928%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260928T095025Z&X-Tos-Expires=86400&X-Tos-Signature=1b5ffc2270fd8a0597bca45f14fd79c31265d990d6b1423ac6bbf49c61e373ee&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_03\\st_20260928_174606_7062f2_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_03\\st_20260928_174606_7062f2_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_03\\st_20260928_174606_7062f2_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 15.072,
+        "expected_duration_seconds": 15.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.432,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -14.32,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "6cd32b2650e5d420ef8ea98ae358eb9dbc5ce5aef61edb08d83229fdd0630ee6",
+      "prompt_hash": "0356bdb6f4e4b300bb888d614ff83f859cd0b38560e3a348d19dca0ccabc6c01",
+      "reference_asset_ids": [
+        "ref_0a0bc512f1821ad2"
+      ]
+    },
+    {
+      "segment_id": "seg_04",
+      "shot_ids": [
+        4
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260928_174225_e4e9b8/seg_04/st_20260928_174606_7062f2_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179058878539900000000000000000000ffffac193b2b8df9e3.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260928%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260928T095023Z&X-Tos-Expires=86400&X-Tos-Signature=aff7e53bb2d16eea6f8f54ccbe8e701f719e81753522d44dc7546897aa698442&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_04\\st_20260928_174606_7062f2_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_04\\st_20260928_174606_7062f2_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_04\\st_20260928_174606_7062f2_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 15.072,
+        "expected_duration_seconds": 15.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.032,
+        "tail_activity_warning": true,
+        "speech_level_p90_dbfs": -14.28,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "3f5e74aef798bbfe0643320bca9039f2d0700eb17f5b0ff38b96ac7fa69b83e2",
+      "prompt_hash": "4db1693bad2e68abfbfa56054c939e7a0c7b7a3a1779df4b6aa5d9ad93832139",
+      "reference_asset_ids": [
+        "ref_f0f876be6febe754"
+      ]
+    }
+  ],
+  "error": null,
+  "created_at": "2026-09-28T09:46:06.023828+00:00",
+  "updated_at": "2026-09-28T10:03:17.878953+00:00"
+}

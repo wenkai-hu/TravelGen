@@ -1,0 +1,2598 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260923_223510_8c9175",
+  "username": "Ryan",
+  "status": "completed",
+  "progress": 100,
+  "message": "最终视频已生成",
+  "request": {
+    "city": "杭州",
+    "location": "千岛湖",
+    "scene_type": "景区推荐",
+    "theme": "千岛湖风景",
+    "audience": "18-35岁年轻游客",
+    "style": "水墨诗意",
+    "duration_s": 60,
+    "aspect_ratio": "16:9",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "一笔淡墨，落在千岛湖",
+        "content": "以高空大远景缓缓推进开场：大型湖泊铺展如宣纸，众多被植被覆盖的岛屿像墨点散落，远处层叠山脉横成天际线，天空云朵轻扫。画面保持开阔、平静，用字幕轻点“杭州·千岛湖”，把18-35岁游客带入一幅会呼吸的水墨长卷。",
+        "duration_s": 10,
+        "place_id": "place_84a0a8be6a415345",
+        "visual_targets": [
+          "大型湖泊",
+          "众多被植被覆盖的岛屿",
+          "远处层叠的山脉",
+          "天空中的云朵",
+          "高空俯瞰大远景推进"
+        ],
+        "evidence_asset_ids": [
+          "ref_0f3a748e8f35b6aa",
+          "ref_7a3f00de63594f64"
+        ]
+      },
+      {
+        "section": "展开",
+        "title": "千岛如砚，湖水为纸",
+        "content": "横向平移航拍展示千岛湖式密集岛屿湖泊格局：岛屿被茂密深绿植被覆盖，边缘露出浅黄褐色岸线；湖水呈现蓝绿与青蓝色调，平静如镜。远景山脉层层退远，湖滨城市建筑群在远山前隐约成线，岛屿上的输电塔成为画面里细小的人间笔触。",
+        "duration_s": 14,
+        "place_id": "place_84a0a8be6a415345",
+        "visual_targets": [
+          "千岛湖式的密集岛屿湖泊整体格局",
+          "岛屿被深绿植被覆盖、岸线呈浅黄褐色的特征",
+          "湖水的蓝绿色调与青蓝色调",
+          "远处层叠山脉的天际线轮廓",
+          "岛屿上的输电塔标识",
+          "远景山脉与湖滨城市的层次关系"
+        ],
+        "evidence_asset_ids": [
+          "ref_7a3f00de63594f64",
+          "ref_5e2ebb1602f686a4",
+          "ref_e327c93c63c44c0e",
+          "ref_0f3a748e8f35b6aa"
+        ]
+      },
+      {
+        "section": "高潮",
+        "title": "风车塔下，栈道入湖",
+        "content": "前景绿色枝叶形成天然框景，镜头沿弯曲水上栈道缓慢跟拍：白色塔楼缀着红色风车立于小片陆地，栈道上有行人走入湖心。开阔平静的水域向远处铺开，多个小岛散布其间，层叠山峦与多云天空构成背景。这里不催人赶路，只适合慢慢走、慢慢看。",
+        "duration_s": 14,
+        "place_id": "place_84a0a8be6a415345",
+        "visual_targets": [
+          "前景绿色树叶与树枝的框景结构",
+          "带红色风车的白色塔楼",
+          "弯曲的水上步行栈道与栈道上的行人",
+          "开阔平静的水域",
+          "水域中散布的多个小岛",
+          "远处层叠的山脉与多云的天空"
+        ],
+        "evidence_asset_ids": [
+          "ref_52caefac2a1254a1"
+        ]
+      },
+      {
+        "section": "文化特色",
+        "title": "白墙黑瓦，临湖而居",
+        "content": "高空俯瞰临湖岛屿与岸线，白墙黑瓦的新中式建筑群错落分布，沿湖道路、停靠车辆与临湖码头串联起湖边生活。镜头从建筑群向湖面拉升，岛屿及山体被茂密绿植覆盖，湖水蓝绿，远山层叠，呈现江南山水与当代旅居相融的气质。",
+        "duration_s": 12,
+        "place_id": "place_84a0a8be6a415345",
+        "visual_targets": [
+          "白墙黑瓦的新中式建筑群临湖分布的形态",
+          "沿湖道路与停靠车辆",
+          "临湖码头",
+          "岛屿及山体的茂密绿植覆盖特征",
+          "湖水的蓝绿色调",
+          "远处层叠山脉的天际线轮廓"
+        ],
+        "evidence_asset_ids": [
+          "ref_d8f7fe145bceb5bb"
+        ]
+      },
+      {
+        "section": "收尾",
+        "title": "把周末，交给一片湖",
+        "content": "最后回到高空大远景：阳光下的湖泊、星罗棋布的绿植岛屿、层叠山脉与白云同框，湖面小船与沿湖公路轻轻点出可抵达的旅行感。画面渐稳，字幕收束——“杭州千岛湖，等你来入画”。以行动召唤结束，适合年轻游客收藏、出发、分享。",
+        "duration_s": 10,
+        "place_id": "place_84a0a8be6a415345",
+        "visual_targets": [
+          "高空俯瞰的湖泊与星罗棋布的绿植岛屿",
+          "层叠山脉与白云",
+          "湖面的小型船只",
+          "沿湖道路",
+          "晴朗蓝天配白云的天空基调"
+        ],
+        "evidence_asset_ids": [
+          "ref_e327c93c63c44c0e",
+          "ref_5e2ebb1602f686a4",
+          "ref_0f3a748e8f35b6aa"
+        ]
+      }
+    ],
+    "plan_summary": "千岛湖风景"
+  },
+  "copywriting": {
+    "titles": [
+      "一笔淡墨，落进千岛湖",
+      "把周末，交给一片湖"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "一笔淡墨，落进千岛湖。1078个岛屿，铺成一幅会呼吸的水墨长卷。",
+        "duration_s": 10
+      },
+      {
+        "idx": 2,
+        "text": "千岛如砚，湖水为纸。绿岛密布，岸线描一层浅浅的金腰带。水色蓝绿，静如明镜，远山层层退远，湖滨城郭隐约成线。",
+        "duration_s": 14
+      },
+      {
+        "idx": 3,
+        "text": "白塔红风车，一条栈道慢慢伸进湖心。有人在走，风在吹，云在走。这里不催人赶路，只适合慢慢走、慢慢看。",
+        "duration_s": 14
+      },
+      {
+        "idx": 4,
+        "text": "白墙黑瓦，临湖而居。码头、沿湖公路、停靠的车，串起湖边日常。江南的山水，正好装下当代的旅居。",
+        "duration_s": 12
+      },
+      {
+        "idx": 5,
+        "text": "把周末，交给一片湖。小船在湖上，公路在湖边。杭州千岛湖，等你来入画。",
+        "duration_s": 10
+      }
+    ],
+    "hashtags": [
+      "#杭州千岛湖",
+      "#天下第一秀水",
+      "#周末去哪儿"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "一笔淡墨，落进千岛湖。1078个岛屿，铺成一幅会呼吸的水墨长卷。",
+        "start_s": 0,
+        "end_s": 10
+      },
+      {
+        "line_id": 2,
+        "text": "千岛如砚，湖水为纸。绿岛密布，岸线描一层浅浅的金腰带。水色蓝绿，静如明镜，远山层层退远，湖滨城郭隐约成线。",
+        "start_s": 10,
+        "end_s": 24
+      },
+      {
+        "line_id": 3,
+        "text": "白塔红风车，一条栈道慢慢伸进湖心。有人在走，风在吹，云在走。这里不催人赶路，只适合慢慢走、慢慢看。",
+        "start_s": 24,
+        "end_s": 38
+      },
+      {
+        "line_id": 4,
+        "text": "白墙黑瓦，临湖而居。码头、沿湖公路、停靠的车，串起湖边日常。江南的山水，正好装下当代的旅居。",
+        "start_s": 38,
+        "end_s": 50
+      },
+      {
+        "line_id": 5,
+        "text": "把周末，交给一片湖。小船在湖上，公路在湖边。杭州千岛湖，等你来入画。",
+        "start_s": 50,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "杭州千岛湖：把周末交给一片湖",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "杭州千岛湖",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 10,
+            "narration": "一笔淡墨，落进千岛湖。1078个岛屿，铺成一幅会呼吸的水墨长卷。",
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "大型湖泊与众多被植被覆盖的岛屿，远处层叠山脉，岛屿上的输电塔，湖面小型船只",
+            "background": "晴朗天空中的云朵，开阔湖面，湖面的红色围网设施",
+            "place_id": "place_84a0a8be6a415345",
+            "reference_asset_ids": [
+              "ref_0f3a748e8f35b6aa"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "千岛湖式的密集岛屿湖泊整体格局",
+              "岛屿被茂密深绿植被覆盖、边缘有浅黄岸线的特征",
+              "远处层叠山脉的背景结构",
+              "岛屿上的输电塔标识"
+            ],
+            "allowed_changes": [
+              "湖面船只的位置和数量",
+              "云朵的形态和位置",
+              "湖面的光影变化",
+              "红色围网的具体形态"
+            ],
+            "prompt": "写实航拍俯拍大远景，严格保持参考图中的千岛湖密集岛屿湖泊格局：大型湖泊占据画面中下部，大量被深绿植被覆盖的岛屿散布湖面，左侧更密集，远处层叠山脉横成天际线，天空有云朵，岛屿上有输电塔，湖面有小船和红色围网。清晨柔和自然光，湖水蓝绿平静，镜头缓慢向前推进。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_0f3a748e8f35b6aa",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "岛屿内部近景特写镜头",
+              "湖面低角度仰拍山脉的镜头",
+              "水下景观镜头",
+              "岛屿背面视角的镜头"
+            ],
+            "timeline_start_ms": 0,
+            "timeline_end_ms": 10000,
+            "segment_ids": [
+              "seg_01"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 10000
+          }
+        ],
+        "place_id": "place_84a0a8be6a415345"
+      },
+      {
+        "scene_id": 2,
+        "location": "杭州千岛湖",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 2,
+            "duration_s": 14,
+            "narration": "千岛如砚，湖水为纸。绿岛密布，岸线描一层浅浅的金腰带。水色蓝绿，静如明镜，远山层层退远，湖滨城郭隐约成线。",
+            "camera": {
+              "type": "航拍",
+              "movement": "移",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "大型湖泊与众多被茂密植被覆盖的湖岛，前景山坡的茂密林木，远处连绵山脉与山脚下城市建筑群",
+            "background": "蓝天与白色云朵，湖滨城市建筑群隐约成线，湖水青蓝色调",
+            "place_id": "place_84a0a8be6a415345",
+            "reference_asset_ids": [
+              "ref_5e2ebb1602f686a4"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "千岛湖式的多植被岛屿湖泊格局",
+              "湖水的青蓝色调",
+              "岛屿全覆盖茂密绿植的特征",
+              "远景山脉与湖滨城市的层次关系",
+              "晴朗蓝天配白云的天空基调"
+            ],
+            "allowed_changes": [
+              "云朵的具体形态与位置",
+              "湖面的波纹动态",
+              "光照的强弱与光影角度",
+              "远处城市建筑的细节表现"
+            ],
+            "prompt": "写实航拍俯拍大远景，严格保持参考图中的千岛湖多植被岛屿湖泊格局：前景山坡覆盖茂密林木，湖面散布大量被植被覆盖的岛屿，湖水呈青蓝色调，远处连绵山脉前分布湖滨城市建筑群，天空晴朗有白云。上午自然光，水面平静如镜，镜头缓慢横向平移，展示绿岛密布与远山层叠的空间层次。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_5e2ebb1602f686a4",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "贴近湖面的低角度穿行镜头",
+              "岛屿内部近景特写镜头",
+              "城市建筑内部细节镜头",
+              "湖底或水下视角镜头"
+            ],
+            "timeline_start_ms": 10000,
+            "timeline_end_ms": 24000,
+            "segment_ids": [
+              "seg_02"
+            ],
+            "segment_id": "seg_02",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 14000
+          }
+        ],
+        "place_id": "place_84a0a8be6a415345"
+      },
+      {
+        "scene_id": 3,
+        "location": "杭州千岛湖",
+        "time": "午后",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 14,
+            "narration": "白塔红风车，一条栈道慢慢伸进湖心。有人在走，风在吹，云在走。这里不催人赶路，只适合慢慢走、慢慢看。",
+            "camera": {
+              "type": "无人机",
+              "movement": "跟",
+              "angle": "俯拍"
+            },
+            "shot_size": "全景",
+            "subject": "带红色风车的白色塔楼，弯曲的水上步行栈道，栈道上的行人，前景绿色树叶与树枝框景",
+            "background": "开阔平静的水域，水域中散布的多个小岛，远处层叠山脉与多云的天空",
+            "place_id": "place_84a0a8be6a415345",
+            "reference_asset_ids": [
+              "ref_52caefac2a1254a1"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "白色带红色风车的塔楼造型与位置",
+              "弯曲水上栈道的形态与走向",
+              "前景绿叶的框景结构",
+              "开阔水域与远处层叠山峦的空间层次",
+              "水域中小岛的分布格局"
+            ],
+            "allowed_changes": [
+              "栈道上行人的数量、衣着与行走状态",
+              "天空云层的形态与分布",
+              "水面的波纹动态",
+              "前景枝叶的轻微晃动"
+            ],
+            "prompt": "写实无人机俯拍全景，严格保持参考图中的风车塔楼与水上栈道结构：左侧前景绿色枝叶形成框景，白色塔楼配红色风车立于小片陆地，弯曲水上步行栈道从画面左下伸入湖心，栈道上有行人，开阔平静水域中散布多个小岛，远处层叠山脉与多云天空。午后自然光，镜头沿栈道方向缓慢跟拍，氛围舒缓。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_52caefac2a1254a1",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "塔楼内部的视角镜头",
+              "环绕山体背面的运动镜头",
+              "低空贴近水面且穿过栈道下方的穿越镜头",
+              "展示小岛背面未呈现区域的镜头"
+            ],
+            "timeline_start_ms": 24000,
+            "timeline_end_ms": 38000,
+            "segment_ids": [
+              "seg_03"
+            ],
+            "segment_id": "seg_03",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 14000
+          },
+          {
+            "shot_id": 4,
+            "duration_s": 12,
+            "narration": "白墙黑瓦，临湖而居。码头、沿湖公路、停靠的车，串起湖边日常。江南的山水，正好装下当代的旅居。",
+            "camera": {
+              "type": "航拍",
+              "movement": "拉",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "白墙黑瓦的新中式建筑群临湖分布，沿湖道路与停靠车辆，临湖码头",
+            "background": "大型湖泊，多座被茂密绿植覆盖的岛屿，层叠山林与远处山脉，蓝天白云",
+            "place_id": "place_84a0a8be6a415345",
+            "reference_asset_ids": [
+              "ref_d8f7fe145bceb5bb"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "湖泊与星罗棋布的绿植岛屿的整体格局",
+              "白墙黑瓦的新中式建筑群临湖分布的形态",
+              "远处层叠山脉的天际线轮廓",
+              "湖水的蓝绿色调",
+              "岛屿及山体的茂密绿植覆盖特征"
+            ],
+            "allowed_changes": [
+              "天空中云朵的形态与分布",
+              "道路上车辆的数量与位置",
+              "湖面的波纹状态",
+              "植被的细微光影变化"
+            ],
+            "prompt": "写实航拍俯拍大远景，严格保持参考图中的临湖建筑群与湖岛结构：大型湖泊中散布多座绿植岛屿，白墙黑瓦新中式建筑群集中临湖错落分布，沿湖道路有停靠车辆，临湖码头伸入湖面，湖水蓝绿，岛屿及山体茂密绿植，远处山脉横成天际线，晴朗有白云。午后光线，镜头从建筑群向湖面缓慢拉升，呈现江南山水与当代旅居相融。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_d8f7fe145bceb5bb",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "建筑内部空间的镜头",
+              "山体背面、岛屿背面的视角",
+              "贴近湖面的低角度快速穿梭镜头",
+              "夜晚场景的镜头"
+            ],
+            "timeline_start_ms": 38000,
+            "timeline_end_ms": 50000,
+            "segment_ids": [
+              "seg_04"
+            ],
+            "segment_id": "seg_04",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 12000
+          }
+        ],
+        "place_id": "place_84a0a8be6a415345"
+      },
+      {
+        "scene_id": 4,
+        "location": "杭州千岛湖",
+        "time": "午后",
+        "shot_list": [
+          {
+            "shot_id": 5,
+            "duration_s": 5,
+            "narration": "把周末，交给一片湖。小船在湖上，公路在湖边。",
+            "camera": {
+              "type": "航拍",
+              "movement": "移",
+              "angle": "俯拍"
+            },
+            "shot_size": "全景",
+            "subject": "湖面上的小型船只，沿湖延伸的多车道公路与沿岸建筑群，密集绿植岛屿",
+            "background": "大型蓝色湖泊，外围层叠环绕的山脉，跨水域道路桥梁，晴朗有轻微薄雾",
+            "place_id": "place_84a0a8be6a415345",
+            "reference_asset_ids": [
+              "ref_e327c93c63c44c0e"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "千岛湖式的密集岛屿湖泊整体格局",
+              "岛屿被深绿植被覆盖、岸线呈浅黄褐色的特征",
+              "左侧沿湖蜿蜒的公路与沿岸建筑群布局",
+              "外围层叠环绕的山脉轮廓",
+              "湖水的深蓝色调"
+            ],
+            "allowed_changes": [
+              "湖面船只的位置、数量与类型",
+              "天空的云量与薄雾浓度",
+              "植被的细微色彩深浅变化",
+              "公路上的车辆数量与位置"
+            ],
+            "prompt": "写实航拍俯拍全景，严格保持参考图中的沿湖公路与密集岛屿湖泊格局：大型蓝色湖泊中散布众多深绿植被岛屿，岛屿岸线呈浅黄褐色，画面左侧沿湖蜿蜒的多车道公路串联沿岸建筑群与码头，湖面有小型船只，外围层叠环绕山脉，晴朗有轻微薄雾。午后自然光，镜头沿湖岸缓慢横移，轻轻点出可抵达的旅行感。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_e327c93c63c44c0e",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "岛屿内部林间的近景穿行镜头",
+              "建筑内部空间的拍摄",
+              "山脉背面区域的视角镜头",
+              "湖面水下视角的拍摄"
+            ],
+            "timeline_start_ms": 50000,
+            "timeline_end_ms": 55000,
+            "segment_ids": [
+              "seg_05"
+            ],
+            "segment_id": "seg_05",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 5000
+          },
+          {
+            "shot_id": 6,
+            "duration_s": 5,
+            "narration": "杭州千岛湖，等你来入画。",
+            "camera": {
+              "type": "航拍",
+              "movement": "固定",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "大面积蓝色湖泊水体与众多被绿色植被覆盖的岛屿，岛屿边缘黄褐色裸露岸带",
+            "background": "远处层叠连绵山峦，晴朗蓝天与少量白色云团，远处山峦间隐约建筑轮廓",
+            "place_id": "place_84a0a8be6a415345",
+            "reference_asset_ids": [
+              "ref_7a3f00de63594f64"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "千岛湖式的星罗棋布的岛屿湖泊整体格局",
+              "岛屿被绿植覆盖、边缘有黄褐色裸露岸线的特征",
+              "湖水蓝绿的色彩与平静的水面状态",
+              "远山层叠的空间层次"
+            ],
+            "allowed_changes": [
+              "天空云的形态与分布",
+              "湖面的细微水纹波动",
+              "光线的强弱与光影角度（在白天范围内）",
+              "植被的细微色彩深浅变化"
+            ],
+            "prompt": "写实航拍俯拍大远景，严格保持参考图中的星罗棋布岛屿湖泊格局：大面积明亮蓝绿湖水，众多被绿色植被覆盖的岛屿错落分布，岛屿边缘有黄褐色裸露岸线，远处层叠连绵山峦，蓝天与少量白色云团，山峦间隐约建筑轮廓。午后自然光，水面平静，镜头固定，画面渐稳，字幕收束。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_7a3f00de63594f64",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "岛屿内部的近景、特写镜头（无法看到岛内细节）",
+              "湖面低空飞行贴近水面的镜头（无水面近处细节参考）",
+              "远处模糊建筑的清晰展示镜头（建筑细节无法确认）",
+              "夜间、阴雨等非当前天气的场景镜头"
+            ],
+            "timeline_start_ms": 55000,
+            "timeline_end_ms": 60000,
+            "segment_ids": [
+              "seg_06"
+            ],
+            "segment_id": "seg_06",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 5000
+          }
+        ],
+        "place_id": "place_84a0a8be6a415345"
+      }
+    ],
+    "storyboard_version": 4,
+    "duration_ms": 60000,
+    "segments": [
+      {
+        "segment_id": "seg_01",
+        "timeline_start_ms": 0,
+        "timeline_end_ms": 10000,
+        "duration_ms": 10000,
+        "shot_ids": [
+          1
+        ],
+        "narration_text": "一笔淡墨，落进千岛湖。1078个岛屿，铺成一幅会呼吸的水墨长卷。",
+        "reference_asset_ids": [
+          "ref_0f3a748e8f35b6aa"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_02",
+        "timeline_start_ms": 10000,
+        "timeline_end_ms": 24000,
+        "duration_ms": 14000,
+        "shot_ids": [
+          2
+        ],
+        "narration_text": "千岛如砚，湖水为纸。绿岛密布，岸线描一层浅浅的金腰带。水色蓝绿，静如明镜，远山层层退远，湖滨城郭隐约成线。",
+        "reference_asset_ids": [
+          "ref_5e2ebb1602f686a4"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_03",
+        "timeline_start_ms": 24000,
+        "timeline_end_ms": 38000,
+        "duration_ms": 14000,
+        "shot_ids": [
+          3
+        ],
+        "narration_text": "白塔红风车，一条栈道慢慢伸进湖心。有人在走，风在吹，云在走。这里不催人赶路，只适合慢慢走、慢慢看。",
+        "reference_asset_ids": [
+          "ref_52caefac2a1254a1"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_04",
+        "timeline_start_ms": 38000,
+        "timeline_end_ms": 50000,
+        "duration_ms": 12000,
+        "shot_ids": [
+          4
+        ],
+        "narration_text": "白墙黑瓦，临湖而居。码头、沿湖公路、停靠的车，串起湖边日常。江南的山水，正好装下当代的旅居。",
+        "reference_asset_ids": [
+          "ref_d8f7fe145bceb5bb"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_05",
+        "timeline_start_ms": 50000,
+        "timeline_end_ms": 55000,
+        "duration_ms": 5000,
+        "shot_ids": [
+          5
+        ],
+        "narration_text": "把周末，交给一片湖。小船在湖上，公路在湖边。",
+        "reference_asset_ids": [
+          "ref_e327c93c63c44c0e"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_06",
+        "timeline_start_ms": 55000,
+        "timeline_end_ms": 60000,
+        "duration_ms": 5000,
+        "shot_ids": [
+          6
+        ],
+        "narration_text": "杭州千岛湖，等你来入画。",
+        "reference_asset_ids": [
+          "ref_7a3f00de63594f64"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260923_223510_8c9175_v1",
+  "plan_version": 1,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_ba64652dd8d14450",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=1479742564,441697582&fm=3074&app=3074&f=JPEG?w=1080&h=1890&type=normal&func=",
+      "title": "千岛湖:一幅天然的山水画卷 🌿",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5172043938406936625",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1f75a9854f9b31c9",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/3ebebc7ef514dd6484da47eaddafe247.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "千岛湖之美:探索自然和文化的绝佳去处",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1779924375611463638&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_177c66621447c507",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2MzgzMzI2LjYwNzk5NTc%3D%27/0.png",
+      "title": "千岛湖自驾游停车攻略:美景与便利并存",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3515816094084551739",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_50ed0468e08b102f",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=1816829221,2511484332&fm=3074&app=3074&f=JPEG?w=1024&h=994&type=normal&func=",
+      "title": "🌊🏞️ 千岛湖,位于浙江省杭州市淳安县,是一处风景如画的自然",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4208267411843354595",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_fc066ee561870d20",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM2NDY3NTY0Ljk4ODY3MTg%3D%27/0.png",
+      "title": "千岛湖游记:美景与失望并存",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4665850818235520764",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_885cb4405fefb261",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/news/e00f204a28f52f53346477ea59ab4708.png",
+      "title": "探秘杭州千岛湖:领略山川湖泊的独特魅力",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1823006101236295915&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a43962cfb815516e",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=2944790341,2708789960&fm=3074&app=3074&f=JPEG?w=1440&h=1050&type=normal&func=",
+      "title": "杭州千岛湖一日游:最佳路线与实用攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4330839512302265992",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_727208f59f782ada",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://i2.hdslb.com/bfs/archive/dbc261d731faf1572055e2b0f9d26df09813229f.jpg",
+      "title": "千岛湖犹如一颗镶嵌在杭州西部的一颗明珠,蓝天白云映衬下,碧波万顷间",
+      "source_page_url": "http://www.bilibili.com/video/BV1CMnFzzEkt",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c4d02607bea24dd0",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxMTQ1MTY3Ljg3NDM2Mw%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-09T09%3A39%3A28Z%2F-1%2F%2F5107ebbe15b7f46cfd336d215430adc1167568b43503b42f8116a9ac8cad35cf",
+      "title": "千岛湖旅游攻略:美景与美食全指南 千岛湖,这个位于浙江省杭州市淳安",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5107993233086564391",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_56a40b469be9b0d3",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://q5.itc.cn/q_70/images03/20250730/90f4ef1a5c7f46d9b06ecf8c727b5732.jpeg",
+      "title": "千岛湖:湖光山色间的梦幻之旅",
+      "source_page_url": "http://travel.sohu.com/a/919138664_121124731",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5dcf1237b4fb899b",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275Y2D5bKb5rmW5pyA576O55qE5LiJ5Liq5bKbXzE3Mjk2MTkzMzEuMjQ4NzU3Ng%3D%3D%27/0.png",
+      "title": "千岛湖一日游攻略:小众景点推荐",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4435732053831582954",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_dcd351cf8d6ea593",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/news/bb3d8c2cec3586f8ce59734cbf8ae50c.png",
+      "title": "探秘杭州千岛湖:领略山川湖泊的独特魅力",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1823006101236295915&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_28a296deb5cb88fa",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://gips0.baidu.com/it/u=1973893659,2487236229&fm=3074&app=3074&f=JPEG",
+      "title": "千岛湖游玩心得:风景如画,但需谨慎选择",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4911737124613298729",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_97ebb327e3e879ca",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275aSp5LiL5Li65YWs5Zu%2B54mHXzE3MzYzNTc2MjQuNTMwODcxOQ%3D%3D%27/0.png",
+      "title": "千岛湖的旅行体验 中国的千岛湖位于浙江省杭州市淳安县,从杭州东做",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4640596290419723896",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_243c5d6bd191f5a8",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://se-feed-bucket.bj.bcebos.com/produce-record2348669/902630ba972e6fba4f929d71153d6c78.jpg",
+      "title": "🍃上午:千岛湖风景区 🚄首日抵达杭州萧山国际",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4301411891081187974",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_034d77636b42624d",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://q0.itc.cn/images01/20250507/4c813c9f7eb243f583602fa1dc95eb91.jpeg",
+      "title": "杭州市千岛湖风景名胜区,天下第一秀水",
+      "source_page_url": "http://news.sohu.com/a/892619759_122365627",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_cb3b4c271c46263e",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://q5.itc.cn/q_70/images01/20250414/74a6c4ef72ae4daba077586c2de2dbca.png",
+      "title": "在《富春山居图》实景地,遇见半城山色半城湖的江南诗意",
+      "source_page_url": "http://travel.sohu.com/a/883960817_122309499",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_be7698a118542b0d",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3ea18bec16dc/241023/1f0479cead48f2991c9ee07a1b7f6704.jpeg",
+      "title": "浙江杭州市千岛湖风景名胜5a景区深度攻略",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1813664866345768351&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_bbc2edcd20081a64",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMwODYzMjk1Ljk5Nzc3Ng%3D%3D%27/0.png",
+      "title": "🌄 春日千岛湖:阴雨中的别样风光",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4787057969455904377",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_75bf4052bb60f505",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/news/f6626a73360e6aa467c998cfd5419fb5.png",
+      "title": "探秘杭州千岛湖:领略山川湖泊的独特魅力",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1823006101236295915&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6292a9a6b283e57c",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/news/233c4457b59c38584f284e8bb22ce4c7.png",
+      "title": "探秘杭州千岛湖:领略山川湖泊的独特魅力",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1823006101236295915&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e2c12f75e2441711",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://img.meituan.net/leadinimg/110d7783bdab4bd1489ec908fe7eafbf784487.jpg%40watermark%3D0",
+      "title": "n\\\\n📍坐标:浙江省杭州市淳安县千岛湖镇珍珠大道千岛湖东南湖区",
+      "source_page_url": "http://m.dianping.com/ugcdetail/242418840?sceneType=0&bizType=29&msource=baiduappugc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b135236ef1deebbf",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/news/8bb365c117cf15c204ef36b531aa9110.png",
+      "title": "探秘杭州千岛湖:领略山川湖泊的独特魅力",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1823006101236295915&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1544969b34fde20f",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM1NTA0MzI1LjAzMTQzNzY%3D%27/0.png",
+      "title": "千岛湖:一场天气与美景的奇妙邂逅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5579683893084863264",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_d52aee98ec808e4d",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMwODY3MjkzLjI2MDk5MjU%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-06T04%3A28%3A13Z%2F-1%2F%2Fe401e5d0bfb7efe056132f04e3af0f04b605c9cae484dc9429479cd245ff540b",
+      "title": "千岛湖一日游:美景不输三亚!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5398483333314785328",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_fba37e96cfeda5f2",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/news/b865e82783541ea7012f1602c4ef76ca.png",
+      "title": "探秘杭州千岛湖:领略山川湖泊的独特魅力",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1823006101236295915&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_53e3045b592d2ffc",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=3746343247,362599657&fm=3074&app=3074&f=JPEG?w=2560&h=1890&type=normal&func=",
+      "title": "千岛湖穷游攻略:天屿山日落必打卡",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4311211305384210484",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_dad84336807d3f10",
+      "query": "杭州 千岛湖 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/2fdda3cc7cd98d10afe4fb172b3fb80e7bec90e0",
+      "title": "杭州市千岛湖风景区",
+      "source_page_url": "http://baike.baidu.com/item/%E6%9D%AD%E5%B7%9E%E5%B8%82%E5%8D%83%E5%B2%9B%E6%B9%96%E9%A3%8E%E6%99%AF%E5%8C%BA/65002165",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_0f3a748e8f35b6aa",
+      "candidate_id": "ref_727208f59f782ada",
+      "place_id": "place_84a0a8be6a415345",
+      "place_name": "千岛湖",
+      "city": "杭州",
+      "original_url": "http://i2.hdslb.com/bfs/archive/dbc261d731faf1572055e2b0f9d26df09813229f.jpg",
+      "source_page_url": "http://www.bilibili.com/video/BV1CMnFzzEkt",
+      "title": "千岛湖犹如一颗镶嵌在杭州西部的一颗明珠,蓝天白云映衬下,碧波万顷间",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_223510_8c9175/ref_0f3a748e8f35b6aa.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_223510_8c9175\\ref_0f3a748e8f35b6aa.jpg",
+      "sha256": "0f3a748e8f35b6aa0c951784b470c7b7bb8f987f0c6f0f3a44077aaf684da8a5",
+      "width": 2560,
+      "height": 1440,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 13.237,
+        "usage": {
+          "completion_tokens": 604,
+          "prompt_tokens": 1737,
+          "total_tokens": 2341,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "高空俯瞰下的大型湖泊景观，湖内分布大量被植被覆盖的岛屿，远处是层叠的山脉，天空有云朵，整体开阔自然。",
+          "visible_elements": [
+            "大型湖泊",
+            "众多被植被覆盖的岛屿",
+            "远处层叠的山脉",
+            "天空中的云朵",
+            "输电塔",
+            "湖面的小型船只",
+            "湖面的红色围网设施"
+          ],
+          "spatial_layout": [
+            "湖泊占据画面中下部及中部区域，向远方延伸",
+            "大量岛屿分布在湖泊中，左侧岛屿分布更密集",
+            "山脉位于湖泊的远方，构成画面的背景",
+            "天空占据画面上部区域，在山脉的上方",
+            "输电塔分布在部分岛屿的山顶处"
+          ],
+          "architecture_and_materials": [
+            "岛屿上的输电塔为金属桁架结构，呈灰白色",
+            "湖面的红色围网为线状设施，颜色为红色"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "画面呈现从高空向远方俯瞰的视角，无明确方位标识"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天",
+            "weather": "晴，有云朵",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [
+            "千岛湖式的密集岛屿湖泊整体格局",
+            "岛屿被茂密深绿植被覆盖、边缘有浅黄岸线的特征",
+            "远处层叠山脉的背景结构",
+            "岛屿上的输电塔标识"
+          ],
+          "allowed_changes": [
+            "湖面船只的位置和数量",
+            "云朵的形态和位置",
+            "湖面的光影变化",
+            "红色围网的具体形态"
+          ],
+          "suitable_shots": [
+            "高空大远景俯瞰推进镜头",
+            "横向平移展示群岛分布的镜头",
+            "从高空逐渐下降的俯冲镜头",
+            "环绕单个岛屿的航拍镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "岛屿内部近景特写镜头",
+            "湖面低角度仰拍山脉的镜头",
+            "水下景观镜头",
+            "岛屿背面视角的镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体湖泊名称及地理位置",
+            "岛屿的具体名称和数量",
+            "山脉的具体名称"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_52caefac2a1254a1",
+      "candidate_id": "ref_5dcf1237b4fb899b",
+      "place_id": "place_84a0a8be6a415345",
+      "place_name": "千岛湖",
+      "city": "杭州",
+      "original_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275Y2D5bKb5rmW5pyA576O55qE5LiJ5Liq5bKbXzE3Mjk2MTkzMzEuMjQ4NzU3Ng%3D%3D%27/0.png",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4435732053831582954",
+      "title": "千岛湖一日游攻略:小众景点推荐",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_223510_8c9175/ref_52caefac2a1254a1.png",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_223510_8c9175\\ref_52caefac2a1254a1.png",
+      "sha256": "52caefac2a1254a13d394b2f53ad10f433ce3e69d9145778c2b0ea4edec139af",
+      "width": 1080,
+      "height": 1410,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 18.393,
+        "usage": {
+          "completion_tokens": 827,
+          "prompt_tokens": 1712,
+          "total_tokens": 2539,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面以左侧前景的绿叶为框，展现了开阔水域中一座带风车的白色塔楼，塔楼坐落于小型陆地上，通过弯曲的水上步道与画面外相连，步道上有不少行人，远处是层叠的山峦与散布的小岛，天空多云。",
+          "visible_elements": [
+            "前景绿色树叶与树枝",
+            "开阔平静的水域",
+            "带红色风车的白色塔楼",
+            "塔楼所在的小型陆地（长有绿草、分布岩石）",
+            "弯曲的水上步行栈道",
+            "栈道上的行人",
+            "水域中散布的多个小岛（岛上有植被、岸线呈红褐色）",
+            "远处层叠的山脉",
+            "多云的天空"
+          ],
+          "spatial_layout": [
+            "绿色枝叶位于画面前景的左上及左侧区域，形成框景效果",
+            "白色风车塔楼位于画面中下部的小型陆地上，处于视觉中心区域",
+            "弯曲的水上栈道从画面左下角延伸，连接至塔楼所在的小岛",
+            "开阔水域占据画面中下部及右侧大部分区域",
+            "多个小岛散布在塔楼后方的水域中",
+            "层叠山脉位于水域尽头的远方",
+            "天空占据画面上部区域"
+          ],
+          "architecture_and_materials": [
+            "塔楼为高耸的圆柱形，主体为白色，顶部是红色尖顶，配有红色风车叶片，塔身开有多扇拱形小窗",
+            "水上栈道桥面为浅色调，护栏是白色金属栏杆，由深色桥墩支撑立于水中",
+            "小岛岸线为红褐色土质，岛上覆盖绿色草本植被，散落浅褐色岩石"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "前景枝叶在画面左侧，塔楼位于画面中部偏下，远山在水域北侧方向（仅为相对位置，无绝对朝向依据）"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，具体时段无法判断",
+            "weather": "多云",
+            "season": "植被繁茂，为温暖季节，具体无法判断"
+          },
+          "must_keep_candidates": [
+            "白色带红色风车的塔楼造型与位置",
+            "弯曲水上栈道的形态与走向",
+            "前景绿叶的框景结构",
+            "开阔水域与远处层叠山峦的空间层次",
+            "水域中小岛的分布格局"
+          ],
+          "allowed_changes": [
+            "栈道上行人的数量、衣着与行走状态",
+            "天空云层的形态与分布",
+            "水面的波纹动态",
+            "前景枝叶的轻微晃动"
+          ],
+          "suitable_shots": [
+            "从当前高位视角缓慢推进的远景镜头，展现整体湖岛与风车景观",
+            "沿栈道方向移动的跟拍镜头，呈现栈道与周边水景",
+            "以前景枝叶为前景的固定长镜头，记录湖面与塔楼的静态氛围"
+          ],
+          "unsupported_or_risky_shots": [
+            "塔楼内部的视角镜头",
+            "环绕山体背面的运动镜头",
+            "低空贴近水面且穿过栈道下方的穿越镜头",
+            "展示小岛背面未呈现区域的镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体水域与山脉的名称、所属地点",
+            "塔楼的功能与建造年代",
+            "栈道的具体长度与材质细节",
+            "精确的地理位置"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_d8f7fe145bceb5bb",
+      "candidate_id": "ref_be7698a118542b0d",
+      "place_id": "place_84a0a8be6a415345",
+      "place_name": "千岛湖",
+      "city": "杭州",
+      "original_url": "http://pic.rmb.bdstatic.com/bjh/3ea18bec16dc/241023/1f0479cead48f2991c9ee07a1b7f6704.jpeg",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1813664866345768351&wfr=spider&for=pc",
+      "title": "浙江杭州市千岛湖风景名胜5a景区深度攻略",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_223510_8c9175/ref_d8f7fe145bceb5bb.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_223510_8c9175\\ref_d8f7fe145bceb5bb.jpg",
+      "sha256": "d8f7fe145bceb5bb64c4b6dbb84f2f23fdfa91c9ae7043523fb85fefc43e05d6",
+      "width": 2600,
+      "height": 1948,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 15.779,
+        "usage": {
+          "completion_tokens": 632,
+          "prompt_tokens": 1712,
+          "total_tokens": 2344,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "高空俯瞰下的大型湖泊景观，湖中有多座被绿植覆盖的岛屿，部分岛屿建有新中式风格的建筑群，远处是层叠的山林与山脉，天空晴朗有云。",
+          "visible_elements": [
+            "大型湖泊",
+            "多座被茂密绿植覆盖的岛屿",
+            "新中式风格建筑群",
+            "沿湖道路",
+            "停靠车辆",
+            "临湖码头",
+            "层叠山林",
+            "远处山脉",
+            "蓝天",
+            "白色云朵",
+            "湖边草地",
+            "乔木植被"
+          ],
+          "spatial_layout": [
+            "湖泊占据画面中下部及中部核心区域",
+            "多座绿植岛屿散布在湖泊中",
+            "建筑群集中在画面右下方的临湖岛屿及岸线上",
+            "沿湖道路位于画面右下角，毗邻建筑群",
+            "远处山脉横亘在画面上部的天际线处",
+            "天空占据画面上方约三分之一区域",
+            "临湖码头延伸入画面中下部的湖面"
+          ],
+          "architecture_and_materials": [
+            "建筑为新中式风格，以白墙黑瓦为主要特征",
+            "部分建筑为坡屋顶，部分为平顶结合坡顶的设计",
+            "建筑外墙材质观感为涂料类，呈白色，屋顶为深灰或黑色",
+            "建筑群依湖岸地势错落分布"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "画面下方为近景的湖岸与建筑群，上方为远处山脉与天空，呈现由近及远的纵深"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足，推测为上午或下午",
+            "weather": "晴朗，有少量白云",
+            "season": "植被繁茂呈深绿色，推测为春末至秋季"
+          },
+          "must_keep_candidates": [
+            "湖泊与星罗棋布的绿植岛屿的整体格局",
+            "白墙黑瓦的新中式建筑群临湖分布的形态",
+            "远处层叠山脉的天际线轮廓",
+            "湖水的蓝绿色调",
+            "岛屿及山体的茂密绿植覆盖特征"
+          ],
+          "allowed_changes": [
+            "天空中云朵的形态与分布",
+            "道路上车辆的数量与位置",
+            "湖面的波纹状态",
+            "植被的细微光影变化"
+          ],
+          "suitable_shots": [
+            "高空俯瞰的大远景推进镜头",
+            "沿湖岸横向移动的航拍镜头",
+            "从湖面朝向建筑群的拉升镜头",
+            "远景展现湖山整体风貌的固定镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "建筑内部空间的镜头",
+            "山体背面、岛屿背面的视角",
+            "贴近湖面的低角度快速穿梭镜头",
+            "夜晚场景的镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体湖泊名称与地理位置",
+            "建筑的具体功能与名称",
+            "山脉的具体名称"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_5e2ebb1602f686a4",
+      "candidate_id": "ref_b135236ef1deebbf",
+      "place_id": "place_84a0a8be6a415345",
+      "place_name": "千岛湖",
+      "city": "杭州",
+      "original_url": "http://pic.rmb.bdstatic.com/bjh/news/8bb365c117cf15c204ef36b531aa9110.png",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1823006101236295915&wfr=spider&for=pc",
+      "title": "探秘杭州千岛湖:领略山川湖泊的独特魅力",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_223510_8c9175/ref_5e2ebb1602f686a4.png",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_223510_8c9175\\ref_5e2ebb1602f686a4.png",
+      "sha256": "5e2ebb1602f686a4f68c18e9365dfb5cc611625f15b2d4dd9b4fc4e101027116",
+      "width": 1080,
+      "height": 780,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 14.912,
+        "usage": {
+          "completion_tokens": 532,
+          "prompt_tokens": 1701,
+          "total_tokens": 2233,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "高位俯瞰视角下的大型湖泊景观，湖内分布大量被茂密植被覆盖的岛屿，远处有连绵山脉与城市建筑群，天空晴朗有白云",
+          "visible_elements": [
+            "大型湖泊",
+            "众多被植被覆盖的湖岛",
+            "前景山坡的茂密林木",
+            "远处连绵山脉",
+            "山脚下的城市建筑群",
+            "蓝天",
+            "白色云朵"
+          ],
+          "spatial_layout": [
+            "前景为覆盖绿植的山坡，位于画面下方",
+            "湖泊占据画面中下部及中部大部分区域",
+            "大小不一的植被岛屿散布在湖泊水域中",
+            "湖泊远端衔接连绵山脉",
+            "城市建筑群分布在远处山脉前的湖滨区域",
+            "天空占据画面上部区域"
+          ],
+          "architecture_and_materials": [
+            "远处城市建筑为高层楼宇形态，外观呈浅色调",
+            "湖岛及山坡植被为自然林木，无可见人工建筑材质细节"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "画面下方为近侧山坡，上方为天空，视线朝向湖泊及远方山脉延伸"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天",
+            "weather": "晴朗，有分散白云",
+            "season": "植被生长茂盛，为温暖季节，无法精确判断"
+          },
+          "must_keep_candidates": [
+            "千岛湖式的多植被岛屿湖泊格局",
+            "湖水的青蓝色调",
+            "岛屿全覆盖茂密绿植的特征",
+            "远景山脉与湖滨城市的层次关系",
+            "晴朗蓝天配白云的天空基调"
+          ],
+          "allowed_changes": [
+            "云朵的具体形态与位置",
+            "湖面的波纹动态",
+            "光照的强弱与光影角度",
+            "远处城市建筑的细节表现"
+          ],
+          "suitable_shots": [
+            "高空俯瞰大景推进镜头",
+            "横向扫过湖岛群的全景镜头",
+            "从前景山坡抬升展现全湖的镜头",
+            "远景固定延时拍摄云影移动的镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "贴近湖面的低角度穿行镜头",
+            "岛屿内部近景特写镜头",
+            "城市建筑内部细节镜头",
+            "湖底或水下视角镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体湖泊名称与所属地点",
+            "远处城市的具体名称",
+            "植被的具体树种",
+            "精确的地理位置"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_e327c93c63c44c0e",
+      "candidate_id": "ref_1f75a9854f9b31c9",
+      "place_id": "place_84a0a8be6a415345",
+      "place_name": "千岛湖",
+      "city": "杭州",
+      "original_url": "http://copyright.bdstatic.com/vcg/creative/3ebebc7ef514dd6484da47eaddafe247.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1779924375611463638&wfr=spider&for=pc",
+      "title": "千岛湖之美:探索自然和文化的绝佳去处",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_223510_8c9175/ref_e327c93c63c44c0e.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_223510_8c9175\\ref_e327c93c63c44c0e.jpg",
+      "sha256": "e327c93c63c44c0e4426adf8d53ed55732b08c13f283f670171dd9788a630998",
+      "width": 2048,
+      "height": 1364,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 18.106,
+        "usage": {
+          "completion_tokens": 803,
+          "prompt_tokens": 1717,
+          "total_tokens": 2520,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "高空俯瞰下的大型湖泊景观，湖内分布大量被植被覆盖的岛屿，湖周边环绕连绵山脉，左侧有沿湖延伸的公路与沿岸建筑群，远处山峦层叠，整体视野开阔。",
+          "visible_elements": [
+            "大型蓝色湖泊",
+            "众多被深绿色植被覆盖的岛屿",
+            "连绵的层叠山脉",
+            "沿湖延伸的多车道公路",
+            "沿岸的建筑群（含多层建筑、规整园区、码头设施）",
+            "湖面上的小型船只",
+            "跨水域的道路桥梁",
+            "山坡上的开阔平地与少量建设地块"
+          ],
+          "spatial_layout": [
+            "湖泊占据画面中右及中部核心区域，岛屿零散分布在湖面各处",
+            "连绵山脉位于画面背景及湖泊外围，环绕整个湖区",
+            "公路沿画面左侧湖岸蜿蜒延伸，串联起沿岸的建筑群",
+            "沿岸建筑群集中在画面左下角的湖岸区域，配套有码头伸向湖面",
+            "远处山脉由近及远呈现出层次渐变的效果"
+          ],
+          "architecture_and_materials": [
+            "沿岸多层建筑多为平顶，外立面以浅灰、白色为主",
+            "规整园区建筑呈网格状排布，屋顶为深灰色",
+            "公路为沥青路面，带有清晰的车道标线",
+            "码头为混凝土结构，延伸至湖面",
+            "岛屿岸线多为浅黄褐色的岩土边缘，岛上被深绿色林木覆盖"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "公路沿左侧湖岸纵向延伸",
+              "湖泊向画面深处（上方）延展，远处山脉横亘在画面顶部"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足",
+            "weather": "晴朗，有轻微薄雾",
+            "season": "植被繁茂，为温暖季节（春夏季）"
+          },
+          "must_keep_candidates": [
+            "千岛湖式的密集岛屿湖泊整体格局",
+            "岛屿被深绿植被覆盖、岸线呈浅黄褐色的特征",
+            "左侧沿湖蜿蜒的公路与沿岸建筑群布局",
+            "外围层叠环绕的山脉轮廓",
+            "湖水的深蓝色调"
+          ],
+          "allowed_changes": [
+            "湖面船只的位置、数量与类型",
+            "天空的云量与薄雾浓度",
+            "植被的细微色彩深浅变化",
+            "公路上的车辆数量与位置"
+          ],
+          "suitable_shots": [
+            "高空大远景俯瞰湖泊群岛的全景推进镜头",
+            "沿湖岸公路的高空跟随航拍镜头",
+            "从湖面岛屿向远处山脉拉升的远景镜头",
+            "沿岸建筑群与湖泊衔接的中景航拍镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "岛屿内部林间的近景穿行镜头",
+            "建筑内部空间的拍摄",
+            "山脉背面区域的视角镜头",
+            "湖面水下视角的拍摄"
+          ],
+          "visible_text": [
+            "©百家号 / 视觉中国"
+          ],
+          "uncertain": [
+            "具体湖泊名称与所属地域",
+            "建筑的具体功能与名称",
+            "山脉的具体名称与海拔",
+            "公路的编号与具体走向"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_7a3f00de63594f64",
+      "candidate_id": "ref_d52aee98ec808e4d",
+      "place_id": "place_84a0a8be6a415345",
+      "place_name": "千岛湖",
+      "city": "杭州",
+      "original_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMwODY3MjkzLjI2MDk5MjU%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-06T04%3A28%3A13Z%2F-1%2F%2Fe401e5d0bfb7efe056132f04e3af0f04b605c9cae484dc9429479cd245ff540b",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5398483333314785328",
+      "title": "千岛湖一日游:美景不输三亚!",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260923_223510_8c9175/ref_7a3f00de63594f64.png",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260923_223510_8c9175\\ref_7a3f00de63594f64.png",
+      "sha256": "7a3f00de63594f64e34078338ae5d1e8357fdf907d826561bf4f2f9d2a8722ab",
+      "width": 1441,
+      "height": 1050,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 19.108,
+        "usage": {
+          "completion_tokens": 733,
+          "prompt_tokens": 1743,
+          "total_tokens": 2476,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "高空俯瞰下的大型湖泊景观，湖面上散布着众多被植被覆盖的岛屿，远处是层叠的山峦，天空晴朗有薄云",
+          "visible_elements": [
+            "大面积蓝色湖泊水体",
+            "众多大小不一、被绿色植被覆盖的岛屿",
+            "岛屿边缘的黄褐色裸露岸带",
+            "远处层叠的连绵山峦",
+            "蓝色天空与少量白色云团",
+            "远处山峦间隐约的建筑轮廓"
+          ],
+          "spatial_layout": [
+            "湖泊占据画面中下部及大部分区域，岛屿错落分布在湖面各处",
+            "近处岛屿体积较大、细节清晰，越往远处岛屿越小、越模糊",
+            "层叠的远山位于画面中上部的湖泊尽头",
+            "天空占据画面上部约三分之一区域，在远山的上方"
+          ],
+          "architecture_and_materials": [
+            "远处山峦间有模糊的建筑轮廓，无法辨识具体形态、材质与色彩",
+            "岛屿岸带为黄褐色裸露岩土质感，岛上覆盖深绿、翠绿的林木植被",
+            "湖水呈现明亮的蓝绿色，水面平静"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "画面从近景的湖面岛屿向远方的山峦延伸，视线由近及远朝向地平线方向"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足，具体时段无法判断",
+            "weather": "晴朗，有少量薄云",
+            "season": "植被茂密翠绿，无法精确判断季节"
+          },
+          "must_keep_candidates": [
+            "千岛湖式的星罗棋布的岛屿湖泊整体格局",
+            "岛屿被绿植覆盖、边缘有黄褐色裸露岸线的特征",
+            "湖水蓝绿的色彩与平静的水面状态",
+            "远山层叠的空间层次"
+          ],
+          "allowed_changes": [
+            "天空云的形态与分布",
+            "湖面的细微水纹波动",
+            "光线的强弱与光影角度（在白天范围内）",
+            "植被的细微色彩深浅变化"
+          ],
+          "suitable_shots": [
+            "高空俯瞰的大远景推进镜头，展现湖岛整体风貌",
+            "横向平移的航拍远景镜头，展示湖岛分布",
+            "从近景岛屿逐渐拉远展现整片湖区的拉远镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "岛屿内部的近景、特写镜头（无法看到岛内细节）",
+            "湖面低空飞行贴近水面的镜头（无水面近处细节参考）",
+            "远处模糊建筑的清晰展示镜头（建筑细节无法确认）",
+            "夜间、阴雨等非当前天气的场景镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体湖泊名称与地理位置",
+            "远处山峦间建筑的具体类型、名称与细节",
+            "精确的季节与具体时段",
+            "岛屿的具体数量与每座岛屿的详细形态"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_84a0a8be6a415345",
+    "place_name": "千岛湖",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_0f3a748e8f35b6aa",
+      "ref_52caefac2a1254a1",
+      "ref_d8f7fe145bceb5bb",
+      "ref_5e2ebb1602f686a4",
+      "ref_e327c93c63c44c0e",
+      "ref_7a3f00de63594f64"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "大型湖泊",
+      "众多被植被覆盖的岛屿",
+      "远处层叠的山脉",
+      "天空中的云朵",
+      "输电塔",
+      "湖面的小型船只",
+      "湖面的红色围网设施",
+      "前景绿色树叶与树枝",
+      "开阔平静的水域",
+      "带红色风车的白色塔楼",
+      "塔楼所在的小型陆地（长有绿草、分布岩石）",
+      "弯曲的水上步行栈道",
+      "栈道上的行人",
+      "水域中散布的多个小岛（岛上有植被、岸线呈红褐色）",
+      "多云的天空",
+      "多座被茂密绿植覆盖的岛屿",
+      "新中式风格建筑群",
+      "沿湖道路",
+      "停靠车辆",
+      "临湖码头",
+      "层叠山林",
+      "远处山脉",
+      "蓝天",
+      "白色云朵",
+      "湖边草地",
+      "乔木植被",
+      "众多被植被覆盖的湖岛",
+      "前景山坡的茂密林木",
+      "远处连绵山脉",
+      "山脚下的城市建筑群"
+    ],
+    "stable_features": [
+      {
+        "text": "千岛湖式的密集岛屿湖泊整体格局",
+        "evidence_asset_ids": [
+          "ref_0f3a748e8f35b6aa"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "岛屿被茂密深绿植被覆盖、边缘有浅黄岸线的特征",
+        "evidence_asset_ids": [
+          "ref_0f3a748e8f35b6aa"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "远处层叠山脉的背景结构",
+        "evidence_asset_ids": [
+          "ref_0f3a748e8f35b6aa"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "岛屿上的输电塔标识",
+        "evidence_asset_ids": [
+          "ref_0f3a748e8f35b6aa"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "白色带红色风车的塔楼造型与位置",
+        "evidence_asset_ids": [
+          "ref_52caefac2a1254a1"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "弯曲水上栈道的形态与走向",
+        "evidence_asset_ids": [
+          "ref_52caefac2a1254a1"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "前景绿叶的框景结构",
+        "evidence_asset_ids": [
+          "ref_52caefac2a1254a1"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "开阔水域与远处层叠山峦的空间层次",
+        "evidence_asset_ids": [
+          "ref_52caefac2a1254a1"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "水域中小岛的分布格局",
+        "evidence_asset_ids": [
+          "ref_52caefac2a1254a1"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "湖泊与星罗棋布的绿植岛屿的整体格局",
+        "evidence_asset_ids": [
+          "ref_d8f7fe145bceb5bb"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "白墙黑瓦的新中式建筑群临湖分布的形态",
+        "evidence_asset_ids": [
+          "ref_d8f7fe145bceb5bb"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "远处层叠山脉的天际线轮廓",
+        "evidence_asset_ids": [
+          "ref_d8f7fe145bceb5bb"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "湖水的蓝绿色调",
+        "evidence_asset_ids": [
+          "ref_d8f7fe145bceb5bb"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "岛屿及山体的茂密绿植覆盖特征",
+        "evidence_asset_ids": [
+          "ref_d8f7fe145bceb5bb"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "千岛湖式的多植被岛屿湖泊格局",
+        "evidence_asset_ids": [
+          "ref_5e2ebb1602f686a4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "湖水的青蓝色调",
+        "evidence_asset_ids": [
+          "ref_5e2ebb1602f686a4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "岛屿全覆盖茂密绿植的特征",
+        "evidence_asset_ids": [
+          "ref_5e2ebb1602f686a4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "远景山脉与湖滨城市的层次关系",
+        "evidence_asset_ids": [
+          "ref_5e2ebb1602f686a4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "晴朗蓝天配白云的天空基调",
+        "evidence_asset_ids": [
+          "ref_5e2ebb1602f686a4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "千岛湖式的密集岛屿湖泊整体格局",
+        "evidence_asset_ids": [
+          "ref_e327c93c63c44c0e"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "岛屿被深绿植被覆盖、岸线呈浅黄褐色的特征",
+        "evidence_asset_ids": [
+          "ref_e327c93c63c44c0e"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "左侧沿湖蜿蜒的公路与沿岸建筑群布局",
+        "evidence_asset_ids": [
+          "ref_e327c93c63c44c0e"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "外围层叠环绕的山脉轮廓",
+        "evidence_asset_ids": [
+          "ref_e327c93c63c44c0e"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "湖水的深蓝色调",
+        "evidence_asset_ids": [
+          "ref_e327c93c63c44c0e"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "千岛湖式的星罗棋布的岛屿湖泊整体格局",
+        "evidence_asset_ids": [
+          "ref_7a3f00de63594f64"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "岛屿被绿植覆盖、边缘有黄褐色裸露岸线的特征",
+        "evidence_asset_ids": [
+          "ref_7a3f00de63594f64"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "湖水蓝绿的色彩与平静的水面状态",
+        "evidence_asset_ids": [
+          "ref_7a3f00de63594f64"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "远山层叠的空间层次",
+        "evidence_asset_ids": [
+          "ref_7a3f00de63594f64"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "千岛湖式的密集岛屿湖泊整体格局",
+      "岛屿被茂密深绿植被覆盖、边缘有浅黄岸线的特征",
+      "远处层叠山脉的背景结构",
+      "岛屿上的输电塔标识",
+      "白色带红色风车的塔楼造型与位置",
+      "弯曲水上栈道的形态与走向",
+      "前景绿叶的框景结构",
+      "开阔水域与远处层叠山峦的空间层次",
+      "水域中小岛的分布格局",
+      "湖泊与星罗棋布的绿植岛屿的整体格局",
+      "白墙黑瓦的新中式建筑群临湖分布的形态",
+      "远处层叠山脉的天际线轮廓",
+      "湖水的蓝绿色调",
+      "岛屿及山体的茂密绿植覆盖特征",
+      "千岛湖式的多植被岛屿湖泊格局",
+      "湖水的青蓝色调",
+      "岛屿全覆盖茂密绿植的特征",
+      "远景山脉与湖滨城市的层次关系",
+      "晴朗蓝天配白云的天空基调",
+      "岛屿被深绿植被覆盖、岸线呈浅黄褐色的特征"
+    ],
+    "allowed_changes": [
+      "湖面船只的位置和数量",
+      "云朵的形态和位置",
+      "湖面的光影变化",
+      "红色围网的具体形态",
+      "栈道上行人的数量、衣着与行走状态",
+      "天空云层的形态与分布",
+      "水面的波纹动态",
+      "前景枝叶的轻微晃动",
+      "天空中云朵的形态与分布",
+      "道路上车辆的数量与位置",
+      "湖面的波纹状态",
+      "植被的细微光影变化",
+      "云朵的具体形态与位置",
+      "湖面的波纹动态",
+      "光照的强弱与光影角度"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "具体湖泊名称及地理位置",
+      "岛屿的具体名称和数量",
+      "山脉的具体名称",
+      "具体水域与山脉的名称、所属地点",
+      "塔楼的功能与建造年代",
+      "栈道的具体长度与材质细节",
+      "精确的地理位置",
+      "具体湖泊名称与地理位置",
+      "建筑的具体功能与名称",
+      "具体湖泊名称与所属地点",
+      "远处城市的具体名称",
+      "植被的具体树种",
+      "具体湖泊名称与所属地域",
+      "山脉的具体名称与海拔",
+      "公路的编号与具体走向"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_0f3a748e8f35b6aa",
+        "summary": "高空俯瞰下的大型湖泊景观，湖内分布大量被植被覆盖的岛屿，远处是层叠的山脉，天空有云朵，整体开阔自然。",
+        "visible_elements": [
+          "大型湖泊",
+          "众多被植被覆盖的岛屿",
+          "远处层叠的山脉",
+          "天空中的云朵",
+          "输电塔",
+          "湖面的小型船只",
+          "湖面的红色围网设施"
+        ],
+        "spatial_layout": [
+          "湖泊占据画面中下部及中部区域，向远方延伸",
+          "大量岛屿分布在湖泊中，左侧岛屿分布更密集",
+          "山脉位于湖泊的远方，构成画面的背景",
+          "天空占据画面上部区域，在山脉的上方",
+          "输电塔分布在部分岛屿的山顶处"
+        ],
+        "architecture_and_materials": [
+          "岛屿上的输电塔为金属桁架结构，呈灰白色",
+          "湖面的红色围网为线状设施，颜色为红色"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "画面呈现从高空向远方俯瞰的视角，无明确方位标识"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天",
+          "weather": "晴，有云朵",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [
+          "千岛湖式的密集岛屿湖泊整体格局",
+          "岛屿被茂密深绿植被覆盖、边缘有浅黄岸线的特征",
+          "远处层叠山脉的背景结构",
+          "岛屿上的输电塔标识"
+        ],
+        "allowed_changes": [
+          "湖面船只的位置和数量",
+          "云朵的形态和位置",
+          "湖面的光影变化",
+          "红色围网的具体形态"
+        ],
+        "suitable_shots": [
+          "高空大远景俯瞰推进镜头",
+          "横向平移展示群岛分布的镜头",
+          "从高空逐渐下降的俯冲镜头",
+          "环绕单个岛屿的航拍镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "岛屿内部近景特写镜头",
+          "湖面低角度仰拍山脉的镜头",
+          "水下景观镜头",
+          "岛屿背面视角的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_52caefac2a1254a1",
+        "summary": "画面以左侧前景的绿叶为框，展现了开阔水域中一座带风车的白色塔楼，塔楼坐落于小型陆地上，通过弯曲的水上步道与画面外相连，步道上有不少行人，远处是层叠的山峦与散布的小岛，天空多云。",
+        "visible_elements": [
+          "前景绿色树叶与树枝",
+          "开阔平静的水域",
+          "带红色风车的白色塔楼",
+          "塔楼所在的小型陆地（长有绿草、分布岩石）",
+          "弯曲的水上步行栈道",
+          "栈道上的行人",
+          "水域中散布的多个小岛（岛上有植被、岸线呈红褐色）",
+          "远处层叠的山脉",
+          "多云的天空"
+        ],
+        "spatial_layout": [
+          "绿色枝叶位于画面前景的左上及左侧区域，形成框景效果",
+          "白色风车塔楼位于画面中下部的小型陆地上，处于视觉中心区域",
+          "弯曲的水上栈道从画面左下角延伸，连接至塔楼所在的小岛",
+          "开阔水域占据画面中下部及右侧大部分区域",
+          "多个小岛散布在塔楼后方的水域中",
+          "层叠山脉位于水域尽头的远方",
+          "天空占据画面上部区域"
+        ],
+        "architecture_and_materials": [
+          "塔楼为高耸的圆柱形，主体为白色，顶部是红色尖顶，配有红色风车叶片，塔身开有多扇拱形小窗",
+          "水上栈道桥面为浅色调，护栏是白色金属栏杆，由深色桥墩支撑立于水中",
+          "小岛岸线为红褐色土质，岛上覆盖绿色草本植被，散落浅褐色岩石"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "前景枝叶在画面左侧，塔楼位于画面中部偏下，远山在水域北侧方向（仅为相对位置，无绝对朝向依据）"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，具体时段无法判断",
+          "weather": "多云",
+          "season": "植被繁茂，为温暖季节，具体无法判断"
+        },
+        "must_keep_candidates": [
+          "白色带红色风车的塔楼造型与位置",
+          "弯曲水上栈道的形态与走向",
+          "前景绿叶的框景结构",
+          "开阔水域与远处层叠山峦的空间层次",
+          "水域中小岛的分布格局"
+        ],
+        "allowed_changes": [
+          "栈道上行人的数量、衣着与行走状态",
+          "天空云层的形态与分布",
+          "水面的波纹动态",
+          "前景枝叶的轻微晃动"
+        ],
+        "suitable_shots": [
+          "从当前高位视角缓慢推进的远景镜头，展现整体湖岛与风车景观",
+          "沿栈道方向移动的跟拍镜头，呈现栈道与周边水景",
+          "以前景枝叶为前景的固定长镜头，记录湖面与塔楼的静态氛围"
+        ],
+        "unsupported_or_risky_shots": [
+          "塔楼内部的视角镜头",
+          "环绕山体背面的运动镜头",
+          "低空贴近水面且穿过栈道下方的穿越镜头",
+          "展示小岛背面未呈现区域的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_d8f7fe145bceb5bb",
+        "summary": "高空俯瞰下的大型湖泊景观，湖中有多座被绿植覆盖的岛屿，部分岛屿建有新中式风格的建筑群，远处是层叠的山林与山脉，天空晴朗有云。",
+        "visible_elements": [
+          "大型湖泊",
+          "多座被茂密绿植覆盖的岛屿",
+          "新中式风格建筑群",
+          "沿湖道路",
+          "停靠车辆",
+          "临湖码头",
+          "层叠山林",
+          "远处山脉",
+          "蓝天",
+          "白色云朵",
+          "湖边草地",
+          "乔木植被"
+        ],
+        "spatial_layout": [
+          "湖泊占据画面中下部及中部核心区域",
+          "多座绿植岛屿散布在湖泊中",
+          "建筑群集中在画面右下方的临湖岛屿及岸线上",
+          "沿湖道路位于画面右下角，毗邻建筑群",
+          "远处山脉横亘在画面上部的天际线处",
+          "天空占据画面上方约三分之一区域",
+          "临湖码头延伸入画面中下部的湖面"
+        ],
+        "architecture_and_materials": [
+          "建筑为新中式风格，以白墙黑瓦为主要特征",
+          "部分建筑为坡屋顶，部分为平顶结合坡顶的设计",
+          "建筑外墙材质观感为涂料类，呈白色，屋顶为深灰或黑色",
+          "建筑群依湖岸地势错落分布"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "画面下方为近景的湖岸与建筑群，上方为远处山脉与天空，呈现由近及远的纵深"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足，推测为上午或下午",
+          "weather": "晴朗，有少量白云",
+          "season": "植被繁茂呈深绿色，推测为春末至秋季"
+        },
+        "must_keep_candidates": [
+          "湖泊与星罗棋布的绿植岛屿的整体格局",
+          "白墙黑瓦的新中式建筑群临湖分布的形态",
+          "远处层叠山脉的天际线轮廓",
+          "湖水的蓝绿色调",
+          "岛屿及山体的茂密绿植覆盖特征"
+        ],
+        "allowed_changes": [
+          "天空中云朵的形态与分布",
+          "道路上车辆的数量与位置",
+          "湖面的波纹状态",
+          "植被的细微光影变化"
+        ],
+        "suitable_shots": [
+          "高空俯瞰的大远景推进镜头",
+          "沿湖岸横向移动的航拍镜头",
+          "从湖面朝向建筑群的拉升镜头",
+          "远景展现湖山整体风貌的固定镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "建筑内部空间的镜头",
+          "山体背面、岛屿背面的视角",
+          "贴近湖面的低角度快速穿梭镜头",
+          "夜晚场景的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_5e2ebb1602f686a4",
+        "summary": "高位俯瞰视角下的大型湖泊景观，湖内分布大量被茂密植被覆盖的岛屿，远处有连绵山脉与城市建筑群，天空晴朗有白云",
+        "visible_elements": [
+          "大型湖泊",
+          "众多被植被覆盖的湖岛",
+          "前景山坡的茂密林木",
+          "远处连绵山脉",
+          "山脚下的城市建筑群",
+          "蓝天",
+          "白色云朵"
+        ],
+        "spatial_layout": [
+          "前景为覆盖绿植的山坡，位于画面下方",
+          "湖泊占据画面中下部及中部大部分区域",
+          "大小不一的植被岛屿散布在湖泊水域中",
+          "湖泊远端衔接连绵山脉",
+          "城市建筑群分布在远处山脉前的湖滨区域",
+          "天空占据画面上部区域"
+        ],
+        "architecture_and_materials": [
+          "远处城市建筑为高层楼宇形态，外观呈浅色调",
+          "湖岛及山坡植被为自然林木，无可见人工建筑材质细节"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "画面下方为近侧山坡，上方为天空，视线朝向湖泊及远方山脉延伸"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天",
+          "weather": "晴朗，有分散白云",
+          "season": "植被生长茂盛，为温暖季节，无法精确判断"
+        },
+        "must_keep_candidates": [
+          "千岛湖式的多植被岛屿湖泊格局",
+          "湖水的青蓝色调",
+          "岛屿全覆盖茂密绿植的特征",
+          "远景山脉与湖滨城市的层次关系",
+          "晴朗蓝天配白云的天空基调"
+        ],
+        "allowed_changes": [
+          "云朵的具体形态与位置",
+          "湖面的波纹动态",
+          "光照的强弱与光影角度",
+          "远处城市建筑的细节表现"
+        ],
+        "suitable_shots": [
+          "高空俯瞰大景推进镜头",
+          "横向扫过湖岛群的全景镜头",
+          "从前景山坡抬升展现全湖的镜头",
+          "远景固定延时拍摄云影移动的镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "贴近湖面的低角度穿行镜头",
+          "岛屿内部近景特写镜头",
+          "城市建筑内部细节镜头",
+          "湖底或水下视角镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_e327c93c63c44c0e",
+        "summary": "高空俯瞰下的大型湖泊景观，湖内分布大量被植被覆盖的岛屿，湖周边环绕连绵山脉，左侧有沿湖延伸的公路与沿岸建筑群，远处山峦层叠，整体视野开阔。",
+        "visible_elements": [
+          "大型蓝色湖泊",
+          "众多被深绿色植被覆盖的岛屿",
+          "连绵的层叠山脉",
+          "沿湖延伸的多车道公路",
+          "沿岸的建筑群（含多层建筑、规整园区、码头设施）",
+          "湖面上的小型船只",
+          "跨水域的道路桥梁",
+          "山坡上的开阔平地与少量建设地块"
+        ],
+        "spatial_layout": [
+          "湖泊占据画面中右及中部核心区域，岛屿零散分布在湖面各处",
+          "连绵山脉位于画面背景及湖泊外围，环绕整个湖区",
+          "公路沿画面左侧湖岸蜿蜒延伸，串联起沿岸的建筑群",
+          "沿岸建筑群集中在画面左下角的湖岸区域，配套有码头伸向湖面",
+          "远处山脉由近及远呈现出层次渐变的效果"
+        ],
+        "architecture_and_materials": [
+          "沿岸多层建筑多为平顶，外立面以浅灰、白色为主",
+          "规整园区建筑呈网格状排布，屋顶为深灰色",
+          "公路为沥青路面，带有清晰的车道标线",
+          "码头为混凝土结构，延伸至湖面",
+          "岛屿岸线多为浅黄褐色的岩土边缘，岛上被深绿色林木覆盖"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "公路沿左侧湖岸纵向延伸",
+            "湖泊向画面深处（上方）延展，远处山脉横亘在画面顶部"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足",
+          "weather": "晴朗，有轻微薄雾",
+          "season": "植被繁茂，为温暖季节（春夏季）"
+        },
+        "must_keep_candidates": [
+          "千岛湖式的密集岛屿湖泊整体格局",
+          "岛屿被深绿植被覆盖、岸线呈浅黄褐色的特征",
+          "左侧沿湖蜿蜒的公路与沿岸建筑群布局",
+          "外围层叠环绕的山脉轮廓",
+          "湖水的深蓝色调"
+        ],
+        "allowed_changes": [
+          "湖面船只的位置、数量与类型",
+          "天空的云量与薄雾浓度",
+          "植被的细微色彩深浅变化",
+          "公路上的车辆数量与位置"
+        ],
+        "suitable_shots": [
+          "高空大远景俯瞰湖泊群岛的全景推进镜头",
+          "沿湖岸公路的高空跟随航拍镜头",
+          "从湖面岛屿向远处山脉拉升的远景镜头",
+          "沿岸建筑群与湖泊衔接的中景航拍镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "岛屿内部林间的近景穿行镜头",
+          "建筑内部空间的拍摄",
+          "山脉背面区域的视角镜头",
+          "湖面水下视角的拍摄"
+        ]
+      },
+      {
+        "asset_id": "ref_7a3f00de63594f64",
+        "summary": "高空俯瞰下的大型湖泊景观，湖面上散布着众多被植被覆盖的岛屿，远处是层叠的山峦，天空晴朗有薄云",
+        "visible_elements": [
+          "大面积蓝色湖泊水体",
+          "众多大小不一、被绿色植被覆盖的岛屿",
+          "岛屿边缘的黄褐色裸露岸带",
+          "远处层叠的连绵山峦",
+          "蓝色天空与少量白色云团",
+          "远处山峦间隐约的建筑轮廓"
+        ],
+        "spatial_layout": [
+          "湖泊占据画面中下部及大部分区域，岛屿错落分布在湖面各处",
+          "近处岛屿体积较大、细节清晰，越往远处岛屿越小、越模糊",
+          "层叠的远山位于画面中上部的湖泊尽头",
+          "天空占据画面上部约三分之一区域，在远山的上方"
+        ],
+        "architecture_and_materials": [
+          "远处山峦间有模糊的建筑轮廓，无法辨识具体形态、材质与色彩",
+          "岛屿岸带为黄褐色裸露岩土质感，岛上覆盖深绿、翠绿的林木植被",
+          "湖水呈现明亮的蓝绿色，水面平静"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "画面从近景的湖面岛屿向远方的山峦延伸，视线由近及远朝向地平线方向"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足，具体时段无法判断",
+          "weather": "晴朗，有少量薄云",
+          "season": "植被茂密翠绿，无法精确判断季节"
+        },
+        "must_keep_candidates": [
+          "千岛湖式的星罗棋布的岛屿湖泊整体格局",
+          "岛屿被绿植覆盖、边缘有黄褐色裸露岸线的特征",
+          "湖水蓝绿的色彩与平静的水面状态",
+          "远山层叠的空间层次"
+        ],
+        "allowed_changes": [
+          "天空云的形态与分布",
+          "湖面的细微水纹波动",
+          "光线的强弱与光影角度（在白天范围内）",
+          "植被的细微色彩深浅变化"
+        ],
+        "suitable_shots": [
+          "高空俯瞰的大远景推进镜头，展现湖岛整体风貌",
+          "横向平移的航拍远景镜头，展示湖岛分布",
+          "从近景岛屿逐渐拉远展现整片湖区的拉远镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "岛屿内部的近景、特写镜头（无法看到岛内细节）",
+          "湖面低空飞行贴近水面的镜头（无水面近处细节参考）",
+          "远处模糊建筑的清晰展示镜头（建筑细节无法确认）",
+          "夜间、阴雨等非当前天气的场景镜头"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "千岛湖",
+        "path": "images/hz-qiandaohu_1.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-trees-zd6YYodOoc8",
+        "license": "Unsplash License",
+        "alt": "a large body of water surrounded by trees"
+      },
+      {
+        "name": "千岛湖",
+        "path": "images/hz-qiandaohu_2.jpg",
+        "url": "https://unsplash.com/photos/a-bridge-over-a-body-of-water-5Q2T-dswI-k",
+        "license": "Unsplash License",
+        "alt": "a bridge over a body of water"
+      },
+      {
+        "name": "千岛湖",
+        "path": "images/hz-qiandaohu_3.jpg",
+        "url": "https://unsplash.com/photos/a-bridge-over-a-river-OLMkBXnLEwE",
+        "license": "Unsplash License",
+        "alt": "a bridge over a river"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_0f3a748e8f35b6aa",
+        "name": "千岛湖",
+        "url": "/assets/references/p_20260923_223510_8c9175/ref_0f3a748e8f35b6aa.jpg",
+        "source_page_url": "http://www.bilibili.com/video/BV1CMnFzzEkt",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_52caefac2a1254a1",
+        "name": "千岛湖",
+        "url": "/assets/references/p_20260923_223510_8c9175/ref_52caefac2a1254a1.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4435732053831582954",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_d8f7fe145bceb5bb",
+        "name": "千岛湖",
+        "url": "/assets/references/p_20260923_223510_8c9175/ref_d8f7fe145bceb5bb.jpg",
+        "source_page_url": "http://baijiahao.baidu.com/s?id=1813664866345768351&wfr=spider&for=pc",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_5e2ebb1602f686a4",
+        "name": "千岛湖",
+        "url": "/assets/references/p_20260923_223510_8c9175/ref_5e2ebb1602f686a4.png",
+        "source_page_url": "http://baijiahao.baidu.com/s?id=1823006101236295915&wfr=spider&for=pc",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_e327c93c63c44c0e",
+        "name": "千岛湖",
+        "url": "/assets/references/p_20260923_223510_8c9175/ref_e327c93c63c44c0e.jpg",
+        "source_page_url": "http://baijiahao.baidu.com/s?id=1779924375611463638&wfr=spider&for=pc",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_7a3f00de63594f64",
+        "name": "千岛湖",
+        "url": "/assets/references/p_20260923_223510_8c9175/ref_7a3f00de63594f64.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5398483333314785328",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "selected",
+    "version": 1,
+    "source": "preset",
+    "voice_id": "voice_07_male_travel",
+    "name": "轻松漫游男声",
+    "description": "自然松弛的男声、亲切口语感",
+    "reference_path": "D:\\AI_tourist_video\\assets\\media\\voices\\07_轻松漫游_男声.wav",
+    "preview_url": "/assets/media/voices/07_轻松漫游_男声.wav?v=d46e81004aca",
+    "reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265"
+  },
+  "music": {
+    "status": "selected",
+    "version": 1,
+    "recommendation_status": "none",
+    "recommendation": null,
+    "warning": null,
+    "selected": {
+      "bgm_id": "bgm_12",
+      "scene": "非遗文化传播",
+      "scene_type": "非遗文化传播",
+      "title": "Relaxation 05",
+      "artist": "Lily J",
+      "duration": "01:58",
+      "description": "长笛、竖琴、冥想氛围；适合茶文化、丝绸、青瓷和展陈",
+      "preview_url": "/assets/media/bgm/04_intangible_heritage/03_Relaxation_05__Lily_J.mp3",
+      "local_path": "D:\\AI_tourist_video\\assets\\media\\bgm\\04_intangible_heritage\\03_Relaxation_05__Lily_J.mp3",
+      "source_page": "https://mixkit.co/free-stock-music/corporate-music/",
+      "license": "Mixkit Stock Music Free License"
+    }
+  },
+  "voice_tasks": [],
+  "segment_tasks": [
+    "st_20260923_224554_474a95"
+  ],
+  "render_tasks": [
+    "rt_20260923_225435_45a6fe"
+  ],
+  "render": {
+    "status": "completed",
+    "version": 1,
+    "task_id": "rt_20260923_225435_45a6fe"
+  },
+  "final_video": {
+    "status": "completed",
+    "url": "/assets/renders/p_20260923_223510_8c9175/v1/with_bgm.mp4",
+    "preview_url": "/assets/renders/p_20260923_223510_8c9175/v1/with_bgm.mp4",
+    "default_variant": "with_bgm",
+    "clean": {
+      "url": "/assets/renders/p_20260923_223510_8c9175/v1/clean.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260923_223510_8c9175\\v1\\clean.mp4"
+    },
+    "with_bgm": {
+      "url": "/assets/renders/p_20260923_223510_8c9175/v1/with_bgm.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260923_223510_8c9175\\v1\\with_bgm.mp4"
+    },
+    "bgm_bed": {
+      "url": "/assets/renders/p_20260923_223510_8c9175/v1/bgm_bed.m4a",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260923_223510_8c9175\\v1\\bgm_bed.m4a"
+    },
+    "bgm_mix": {
+      "bgm_id": "bgm_12",
+      "title": "Relaxation 05",
+      "target_lufs": -23.0,
+      "video_gain_db": 0,
+      "bgm_gain_db": 0,
+      "gain_db": 0,
+      "strategy": "loudness_normalized_mix"
+    },
+    "duration_s": 60.07,
+    "resolution": "1080p",
+    "aspect_ratio": "16:9",
+    "version": 1,
+    "voice_version": 1,
+    "music_version": 1
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-23T14:35:10.051322+00:00",
+  "updated_at": "2026-09-23T14:54:52.924611+00:00",
+  "copywriting_text": "【0-10s】一笔淡墨，落进千岛湖。1078个岛屿，铺成一幅会呼吸的水墨长卷。\n【10-24s】千岛如砚，湖水为纸。绿岛密布，岸线描一层浅浅的金腰带。水色蓝绿，静如明镜，远山层层退远，湖滨城郭隐约成线。\n【24-38s】白塔红风车，一条栈道慢慢伸进湖心。有人在走，风在吹，云在走。这里不催人赶路，只适合慢慢走、慢慢看。\n【38-50s】白墙黑瓦，临湖而居。码头、沿湖公路、停靠的车，串起湖边日常。江南的山水，正好装下当代的旅居。\n【50-60s】把周末，交给一片湖。小船在湖上，公路在湖边。杭州千岛湖，等你来入画。",
+  "segment_results": {
+    "seg_01": {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_223510_8c9175/seg_01/st_20260923_224554_474a95_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179017475944700000000000000000000ffffac175b6f269377.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T144916Z&X-Tos-Expires=86400&X-Tos-Signature=e2bc3770a907ff72d939c0c99e47f62ca49597492126c8c737108143dc38936a&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_01\\st_20260923_224554_474a95_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_01\\st_20260923_224554_474a95_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_01\\st_20260923_224554_474a95_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 10.08,
+        "expected_duration_seconds": 10.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.54,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -9.36,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265",
+      "voice_version": 1,
+      "narration_hash": "61e17e5abbd242a93fa029b6a628ca7fd9e7fda0425dab70a09f30df9067c169",
+      "prompt_hash": "1f8ed11b48387bd9569a62a9e15768edf3827b29c84a7484c05e99dc0ed0bcfa",
+      "reference_asset_ids": [
+        "ref_0f3a748e8f35b6aa"
+      ],
+      "task_id": "st_20260923_224554_474a95"
+    },
+    "seg_02": {
+      "segment_id": "seg_02",
+      "shot_ids": [
+        2
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_223510_8c9175/seg_02/st_20260923_224554_474a95_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179017476331900000000000000000000ffffac175b699c276a.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T145120Z&X-Tos-Expires=86400&X-Tos-Signature=5da9c24bf417924be53ccd700107d4607cbcf0f795a402f1cb9d557e54953f5b&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_02\\st_20260923_224554_474a95_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_02\\st_20260923_224554_474a95_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_02\\st_20260923_224554_474a95_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 14.0713,
+        "expected_duration_seconds": 14.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.211,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -9.22,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265",
+      "voice_version": 1,
+      "narration_hash": "14d4ea48186f8103537532c25aeb0fc3272a17d920416e995c4188c7718d21ba",
+      "prompt_hash": "f18e8490351f3b1932ff076cd51d1804650ba481dc5a0de5a3b5c3239cf50c85",
+      "reference_asset_ids": [
+        "ref_5e2ebb1602f686a4"
+      ],
+      "task_id": "st_20260923_224554_474a95"
+    },
+    "seg_03": {
+      "segment_id": "seg_03",
+      "shot_ids": [
+        3
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_223510_8c9175/seg_03/st_20260923_224554_474a95_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179017476732800000000000000000000ffffac141a612ed08e.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T145038Z&X-Tos-Expires=86400&X-Tos-Signature=57d6141cc35c4c359e4aff2414583425e242706d95c26921b632b2576ce67394&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_03\\st_20260923_224554_474a95_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_03\\st_20260923_224554_474a95_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_03\\st_20260923_224554_474a95_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 14.08,
+        "expected_duration_seconds": 14.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.56,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -9.21,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265",
+      "voice_version": 1,
+      "narration_hash": "41bb8fa08bb56712aa5d5ff9a756b50c36b2cbc8726ecf02b0f4ffa4dfc70e10",
+      "prompt_hash": "495192928131505b58a76e2c06cdc000503fa36ac17ebe4dec953fe04fa1203f",
+      "reference_asset_ids": [
+        "ref_52caefac2a1254a1"
+      ],
+      "task_id": "st_20260923_224554_474a95"
+    },
+    "seg_04": {
+      "segment_id": "seg_04",
+      "shot_ids": [
+        4
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_223510_8c9175/seg_04/st_20260923_224554_474a95_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179017477069200000000000000000000ffffac175b70617e49.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T145229Z&X-Tos-Expires=86400&X-Tos-Signature=e28225ac47fce720b731325dd8992efe80a8573835b38d3a579035a657da44cb&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_04\\st_20260923_224554_474a95_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_04\\st_20260923_224554_474a95_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_04\\st_20260923_224554_474a95_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 12.0512,
+        "expected_duration_seconds": 12.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.311,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -9.08,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265",
+      "voice_version": 1,
+      "narration_hash": "1b3652327ea5710d1a54e2a48ff4ba024ee0c2afef0fa308eb77ef0b22da49a5",
+      "prompt_hash": "42037c6efb3c1ac548c67a6109a554b4c1ede4ddbf66ea2101a7f8401639dca8",
+      "reference_asset_ids": [
+        "ref_d8f7fe145bceb5bb"
+      ],
+      "task_id": "st_20260923_224554_474a95"
+    },
+    "seg_05": {
+      "segment_id": "seg_05",
+      "shot_ids": [
+        5
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_223510_8c9175/seg_05/st_20260923_224554_474a95_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179017477444600000000000000000000ffffac1516084cc9af.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T144923Z&X-Tos-Expires=86400&X-Tos-Signature=10765fe7d6afcc876e53eaea71dc07720d0b75e3ab3d9b9daed022922305020e&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_05\\st_20260923_224554_474a95_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_05\\st_20260923_224554_474a95_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_05\\st_20260923_224554_474a95_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 5.056,
+        "expected_duration_seconds": 5.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.076,
+        "tail_activity_warning": true,
+        "speech_level_p90_dbfs": -12.12,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265",
+      "voice_version": 1,
+      "narration_hash": "afb1a22ae3aced3cc06e99af018a27f82851bd25944327b4583e6875dde5b5d1",
+      "prompt_hash": "cf962b047159f9cc651b58c03c781926c24b8698b900479b2fb9b93d6833958e",
+      "reference_asset_ids": [
+        "ref_e327c93c63c44c0e"
+      ],
+      "task_id": "st_20260923_224554_474a95"
+    },
+    "seg_06": {
+      "segment_id": "seg_06",
+      "shot_ids": [
+        6
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260923_223510_8c9175/seg_06/st_20260923_224554_474a95_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179017477817900000000000000000000ffffac1814117b5abc.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260923%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260923T144846Z&X-Tos-Expires=86400&X-Tos-Signature=e8a514d120b2e1ffc19699c93551b8f8653a151af8ac8829cdfc4987b74c7d9a&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_06\\st_20260923_224554_474a95_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_06\\st_20260923_224554_474a95_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260923_223510_8c9175\\seg_06\\st_20260923_224554_474a95_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 5.056,
+        "expected_duration_seconds": 5.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.796,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -8.2,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "d46e81004aca9c59cffe7f49ccab173d9203c126b9901f2d5977c9f40407e265",
+      "voice_version": 1,
+      "narration_hash": "0610ea1fff8fefcc404de1a4332fb25c6dd6802a492fcdbcda2e75ced6fd047b",
+      "prompt_hash": "cb67863ec188924ab133255aaf0f6659c34461cbba344a0f6e8054c41368e6e8",
+      "reference_asset_ids": [
+        "ref_7a3f00de63594f64"
+      ],
+      "task_id": "st_20260923_224554_474a95"
+    }
+  },
+  "active_segment_ids": []
+}

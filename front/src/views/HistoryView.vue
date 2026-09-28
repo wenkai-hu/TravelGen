@@ -2,6 +2,15 @@
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { NButton } from "naive-ui";
+import {
+  PhFilmSlate,
+  PhFilmStrip,
+  PhPuzzlePiece,
+  PhSparkle,
+  PhStack,
+  PhTimer,
+} from "@phosphor-icons/vue";
+import ThemeToggle from "../components/ThemeToggle.vue";
 import logoUrl from "../images/logo.png";
 import { listProjects } from "../api";
 import { isLoggedIn, logout as clearSession } from "../auth";
@@ -99,6 +108,7 @@ onMounted(() => {
         <nav class="nav-links">
           <router-link to="/">工作台</router-link>
           <router-link to="/history" class="active">我的创作</router-link>
+          <ThemeToggle />
         </nav>
       </div>
     </header>
@@ -121,7 +131,10 @@ onMounted(() => {
 
       <!-- 空态 -->
       <div v-else-if="!projects.length" class="card center">
-        <p class="center-text">还没有作品，去工作台开始第一支吧 ✨</p>
+        <p class="center-text">
+          还没有作品，去工作台开始第一支吧
+          <PhSparkle :size="12" weight="fill" class="ico-inline" />
+        </p>
         <NButton
           size="small"
           type="primary"
@@ -141,7 +154,7 @@ onMounted(() => {
         >
           <div class="cover">
             <img v-if="p.cover_url" :src="p.cover_url" :alt="p.theme" />
-            <span v-else class="cover-fallback">🎬</span>
+            <span v-else class="cover-fallback"><PhFilmSlate /></span>
             <span class="badge" :class="statusOf(p.status).cls">
               {{ statusOf(p.status).label }}
             </span>
@@ -149,10 +162,21 @@ onMounted(() => {
           <div class="body">
             <h3 class="p-title">{{ p.theme }}</h3>
             <p class="p-meta">
-              <span v-if="p.scene_type">🧩 {{ p.scene_type }}</span>
-              <span v-if="p.duration_s">⏱ {{ p.duration_s }}s</span>
-              <span v-if="p.shot_count">🎞 {{ p.shot_count }} 镜头</span>
-              <span v-if="p.segment_count">▣ {{ p.segment_count }} 个生成片段</span>
+              <span v-if="p.scene_type">
+                <PhPuzzlePiece :size="12" class="ico-inline" />
+                {{ p.scene_type }}
+              </span>
+              <span v-if="p.duration_s">
+                <PhTimer :size="12" class="ico-inline" /> {{ p.duration_s }}s
+              </span>
+              <span v-if="p.shot_count">
+                <PhFilmStrip :size="12" class="ico-inline" />
+                {{ p.shot_count }} 镜头
+              </span>
+              <span v-if="p.segment_count">
+                <PhStack :size="12" class="ico-inline" />
+                {{ p.segment_count }} 个生成片段
+              </span>
             </p>
             <p class="p-time">更新于 {{ fmtTime(p.updated_at) }}</p>
           </div>
@@ -175,9 +199,9 @@ onMounted(() => {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: #fcf8f1;
+  background: var(--surface-nav);
   border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 2px 12px rgba(31, 41, 55, 0.05);
+  box-shadow: var(--shadow-soft);
 }
 .nav-inner {
   max-width: 1200px;
@@ -200,6 +224,7 @@ onMounted(() => {
   object-fit: cover;
   display: block;
   flex-shrink: 0;
+  box-shadow: 0 0 0 1px var(--logo-ring);
 }
 .logo-text {
   font-family: var(--font-serif);
@@ -294,7 +319,7 @@ onMounted(() => {
 }
 .project-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(15, 118, 110, 0.18);
+  box-shadow: 0 10px 24px var(--shadow-primary);
 }
 .cover {
   position: relative;
@@ -321,20 +346,21 @@ onMounted(() => {
   padding: 3px 10px;
   border-radius: 999px;
   font-size: 12px;
-  color: #fff;
+  color: var(--on-photo);
   backdrop-filter: blur(2px);
 }
 .badge.info {
-  background: rgba(15, 118, 110, 0.85);
+  background: var(--badge-info-bg);
 }
 .badge.warn {
-  background: rgba(201, 162, 39, 0.9);
+  background: var(--badge-warn-bg);
+  color: var(--color-on-gold); /* 金底压白字只有 2.5:1 */
 }
 .badge.ok {
-  background: rgba(21, 128, 61, 0.9);
+  background: var(--badge-ok-bg);
 }
 .badge.bad {
-  background: rgba(190, 18, 60, 0.88);
+  background: var(--badge-bad-bg);
 }
 .body {
   padding: 14px 16px 16px;

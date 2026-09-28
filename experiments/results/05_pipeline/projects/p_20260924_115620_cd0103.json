@@ -1,0 +1,2674 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260924_115620_cd0103",
+  "username": "Ryan",
+  "status": "completed",
+  "progress": 100,
+  "message": "最终视频已生成",
+  "request": {
+    "city": "杭州",
+    "location": "宋城",
+    "scene_type": "节庆活动推广",
+    "theme": "宋城春节活动",
+    "audience": "18-35岁年轻游客",
+    "style": "国风古韵",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "入城·灯笼亮起",
+        "content": "傍晚入夜，镜头沿砖石步行街向前推进，两侧“杭州宋城”“千古情”幡旗与成串橙黄色灯笼次第亮起，仿古木质商铺前年轻游客穿行停留。字幕：这个春节，入画杭州宋城。",
+        "duration_s": 12,
+        "place_id": "place_5bd941b763cbf631",
+        "visual_targets": [
+          "写有“杭州宋城”的竖版幡旗",
+          "写有“千古情”的竖版幡旗",
+          "橙黄色串状灯笼",
+          "仿古木质商铺摊位",
+          "砖石铺装步行街",
+          "行走停留的游客人群"
+        ],
+        "evidence_asset_ids": [
+          "ref_170c8e199bf237b4"
+        ]
+      },
+      {
+        "section": "展开",
+        "title": "廊下·红笼寻年",
+        "content": "仰视中式廊檐，镜头沿廊檐走向平移，印有“宋城”字样的红色灯笼在木质廊柱与镂空木格栅间轻晃，绿植作前景；转至临水建筑，成串红灯笼与水面倒影相映，国风年味铺开。",
+        "duration_s": 15,
+        "place_id": "place_5bd941b763cbf631",
+        "visual_targets": [
+          "中式翘角飞檐廊檐建筑",
+          "印有“宋城”字样的红色仿古灯笼",
+          "木质廊柱与镂空木格栅装饰",
+          "临水架空中式传统建筑",
+          "成串悬挂红色灯笼",
+          "水面建筑倒影"
+        ],
+        "evidence_asset_ids": [
+          "ref_92352d720630fe90",
+          "ref_4afaa92a9465ff06"
+        ]
+      },
+      {
+        "section": "高潮",
+        "title": "廊桥·雾河夜泉",
+        "content": "平视推进中式廊桥，多层飞檐、桥身“宋城”“SONG CHENG”红色文字与悬挂红灯笼入画，河道水面雾气浮动，带红色顶棚游船停靠；切夜晚喊泉，蓝色灯光喷泉与古建筑“宋城”发光字点亮，年轻游客聚集打卡。字幕：来宋城，把新春过成一场千古情。",
+        "duration_s": 20,
+        "place_id": "place_5bd941b763cbf631",
+        "visual_targets": [
+          "中式廊桥多层飞檐",
+          "桥身“宋城”红色文字与“SONG CHENG”英文标识",
+          "廊桥悬挂红色灯笼",
+          "横跨河道拱桥结构",
+          "河道及水面雾气",
+          "带红色顶棚游船",
+          "蓝色灯光喊泉喷泉",
+          "中式古建筑飞檐造型",
+          "建筑上“宋城”发光字与“SONG CHENG”标识",
+          "红色顶棚与立柱前景结构"
+        ],
+        "evidence_asset_ids": [
+          "ref_3c7ed6466dad5134",
+          "ref_1261e86950af081c"
+        ]
+      },
+      {
+        "section": "收尾",
+        "title": "登阶·新春定格",
+        "content": "从石阶梯底部仰视，黄底红边“宋城”旗帜沿阶排列，镜头缓慢上升，顶端红棕色中式古建筑与门楣牌匾显现，大树枝叶覆盖上方；年轻游客拾级而上，最后定格在灯笼与幡旗交织的宋城街景。字幕：杭州宋城春节，等你入画。",
+        "duration_s": 13,
+        "place_id": "place_5bd941b763cbf631",
+        "visual_targets": [
+          "向上延伸的石阶梯及两侧石护栏",
+          "阶梯两侧“宋城”黄底红边旗帜",
+          "顶端中式红棕色古建筑及门楣牌匾",
+          "上方大树枝叶覆盖效果",
+          "仰视空间纵深感",
+          "灯笼与幡旗交织街景"
+        ],
+        "evidence_asset_ids": [
+          "ref_84bf8349ad82ebb9",
+          "ref_170c8e199bf237b4"
+        ]
+      }
+    ],
+    "plan_summary": "宋城春节活动"
+  },
+  "copywriting": {
+    "titles": [
+      "入画宋城：一盏灯亮起的杭州年",
+      "来宋城，把新春过成一场千古情"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "暮色一落，灯就亮了。幡旗招展，写上杭州宋城。橙黄串串，沿街铺开——今夜，入画。",
+        "duration_s": 12
+      },
+      {
+        "idx": 2,
+        "text": "抬头，是翘角飞檐。红灯笼上写着宋城，在木格栅间轻轻摇晃。转个身，临水一排红灯，倒影落进水里，年味就有了形状。",
+        "duration_s": 15
+      },
+      {
+        "idx": 3,
+        "text": "往前，是横跨河道的廊桥。多层飞檐，红灯笼垂着，水面雾气浮动，红顶游船靠岸。夜里，喊泉亮起蓝光——喊一声，水就冲上天。来宋城，把新春过成一场千古情。",
+        "duration_s": 20
+      },
+      {
+        "idx": 4,
+        "text": "拾级而上，黄底红边的宋城旗帜一路相随。灯笼与幡旗交织，年味就在抬头之间。杭州宋城春节，等你入画。",
+        "duration_s": 13
+      }
+    ],
+    "hashtags": [
+      "#杭州宋城",
+      "#宋城千古情",
+      "#国风年味"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "暮色一落，灯就亮了。幡旗招展，写上杭州宋城。橙黄串串，沿街铺开——今夜，入画。",
+        "start_s": 0,
+        "end_s": 12
+      },
+      {
+        "line_id": 2,
+        "text": "抬头，是翘角飞檐。红灯笼上写着宋城，在木格栅间轻轻摇晃。转个身，临水一排红灯，倒影落进水里，年味就有了形状。",
+        "start_s": 12,
+        "end_s": 27
+      },
+      {
+        "line_id": 3,
+        "text": "往前，是横跨河道的廊桥。多层飞檐，红灯笼垂着，水面雾气浮动，红顶游船靠岸。夜里，喊泉亮起蓝光——喊一声，水就冲上天。来宋城，把新春过成一场千古情。",
+        "start_s": 27,
+        "end_s": 47
+      },
+      {
+        "line_id": 4,
+        "text": "拾级而上，黄底红边的宋城旗帜一路相随。灯笼与幡旗交织，年味就在抬头之间。杭州宋城春节，等你入画。",
+        "start_s": 47,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "杭州宋城春节宣传片——入画宋城，新春千古情",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "杭州宋城",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 12,
+            "narration": "暮色一落，灯就亮了。幡旗招展，写上杭州宋城。橙黄串串，沿街铺开——今夜，入画。",
+            "camera": {
+              "type": "移动机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "仿古商业街，两侧悬挂写有“杭州宋城”和“千古情”的竖版幡旗与成串橙黄色灯笼，仿古木质商铺，砖石步行街上有游客穿行",
+            "background": "傍晚入夜的暗蓝天空，街道两侧的树木绿植，远处仿古建筑结构",
+            "place_id": "place_5bd941b763cbf631",
+            "reference_asset_ids": [
+              "ref_170c8e199bf237b4"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "街道两侧的仿古幡旗与成串发光灯笼的布局",
+              "“杭州宋城”“千古情”的幡旗文字标识",
+              "步行街的纵深走向与砖石路面",
+              "两侧仿古木质商铺的建筑形态",
+              "两侧的绿植树木分布"
+            ],
+            "allowed_changes": [
+              "游客的数量、穿着、行走姿态与位置",
+              "灯笼的光影明暗细微变化",
+              "天空的色彩深浅过渡",
+              "商铺摊位的具体陈设细节"
+            ],
+            "prompt": "写实地面平视中景，入夜，仿古商业街纵深向前延伸，两侧悬挂写有“杭州宋城”和“千古情”的竖版幡旗，成串橙黄色灯笼次第亮起，仿古木质商铺，砖石路面，年轻游客穿行停留，暖黄灯光与暗蓝天空对比，国风市井氛围，镜头缓慢前推。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_170c8e199bf237b4",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "街道两侧建筑内部的视角镜头",
+              "高空俯视整条街区的全景镜头",
+              "街道尽头深处的细节特写镜头",
+              "建筑背面或地下区域的相关镜头"
+            ],
+            "timeline_start_ms": 0,
+            "timeline_end_ms": 12000,
+            "segment_ids": [
+              "seg_01"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 12000
+          },
+          {
+            "shot_id": 2,
+            "duration_s": 7,
+            "narration": "抬头，是翘角飞檐。红灯笼上写着宋城，在木格栅间轻轻摇晃。",
+            "camera": {
+              "type": "移动机位",
+              "movement": "移",
+              "angle": "仰拍"
+            },
+            "shot_size": "中景",
+            "subject": "中式仿古廊檐建筑，青灰色翘角飞檐，深棕色木质廊柱，镂空木格栅，悬挂印有“宋城”字样的红色六面柱形灯笼",
+            "background": "绿色及红紫色叶片的绿植，远处的茂密树林，入夜后的深色天空",
+            "place_id": "place_5bd941b763cbf631",
+            "reference_asset_ids": [
+              "ref_92352d720630fe90"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "中式翘角飞檐的廊檐建筑结构",
+              "印有“宋城”字样的红色仿古灯笼",
+              "木质廊柱与镂空木格栅装饰",
+              "廊檐沿走向排布的整体结构"
+            ],
+            "allowed_changes": [
+              "灯笼的轻微晃动动态",
+              "植被的随风摆动",
+              "光线的明暗柔和变化",
+              "天空云量的少量变化"
+            ],
+            "prompt": "写实地面仰拍中景，入夜，中式仿古廊檐沿画面右上向左下延伸，青灰色翘角飞檐，深棕色木质廊柱与镂空木格栅，廊下悬挂多盏印有“宋城”字样的红色六面柱形灯笼，灯笼亮起暖光，前景有绿植叶片，镜头沿廊檐走向缓慢平移，光影柔和。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_92352d720630fe90",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "建筑内部空间的拍摄",
+              "廊建筑背面视角的镜头",
+              "俯瞰整个区域的高空远景镜头",
+              "快速环绕建筑的运动镜头"
+            ],
+            "timeline_start_ms": 12000,
+            "timeline_end_ms": 19000,
+            "segment_ids": [
+              "seg_02"
+            ],
+            "segment_id": "seg_02",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 7000
+          },
+          {
+            "shot_id": 3,
+            "duration_s": 8,
+            "narration": "转个身，临水一排红灯，倒影落进水里，年味就有了形状。",
+            "camera": {
+              "type": "移动机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "临水而建的中式传统建筑群，黑灰坡屋顶，木质雕花栏杆，底层立柱架空于水面，成串红色灯笼悬挂",
+            "background": "平静的河道水面，清晰的建筑倒影，垂柳类绿植，远处朦胧的现代风格建筑与山石结构",
+            "place_id": "place_5bd941b763cbf631",
+            "reference_asset_ids": [
+              "ref_4afaa92a9465ff06"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "临水架空的中式传统建筑形态",
+              "成串悬挂的红色灯笼布局",
+              "水面清晰的建筑倒影效果",
+              "黑灰坡屋顶的中式建筑特征",
+              "沿岸建筑的整体排布结构"
+            ],
+            "allowed_changes": [
+              "灯笼的晃动状态",
+              "水面的轻微波纹变化",
+              "绿植的轻微动态",
+              "天空的光影明暗变化"
+            ],
+            "prompt": "写实地面平拍全景，入夜，临水而建的中式传统建筑群沿河道排布，黑灰坡屋顶，木质雕花栏杆，底层立柱架空于水面，成串红色灯笼倒映在平静水面，倒影清晰，岸边垂柳，水面有薄雾，暖红灯笼光与冷色水面相映，镜头沿河道缓慢横移。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_4afaa92a9465ff06",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "建筑内部空间的镜头",
+              "环绕建筑背面的运动镜头",
+              "高空俯视的大航拍镜头",
+              "远处现代建筑内部的镜头"
+            ],
+            "timeline_start_ms": 19000,
+            "timeline_end_ms": 27000,
+            "segment_ids": [
+              "seg_03"
+            ],
+            "segment_id": "seg_03",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 8000
+          },
+          {
+            "shot_id": 4,
+            "duration_s": 10,
+            "narration": "往前，是横跨河道的廊桥。多层飞檐，红灯笼垂着，水面雾气浮动，红顶游船靠岸。",
+            "camera": {
+              "type": "移动机位",
+              "movement": "推",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "横跨河道的多层飞檐中式廊桥，桥身有红色立体文字“宋城”与英文“SONG CHENG”，悬挂红色灯笼，河道水面雾气浮动，带红色顶棚的游船停靠岸边",
+            "background": "岸边中式黑瓦建筑，茂密绿植含垂柳，入夜后的深色天空",
+            "place_id": "place_5bd941b763cbf631",
+            "reference_asset_ids": [
+              "ref_3c7ed6466dad5134"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "廊桥的多层飞檐中式建筑形态",
+              "桥身的“宋城”红色文字与“SONG CHENG”英文标识",
+              "廊桥悬挂的红色灯笼",
+              "横跨河道的拱桥结构",
+              "河道及水面雾气的景观",
+              "岸边中式黑瓦建筑"
+            ],
+            "allowed_changes": [
+              "水面雾气的浓淡变化",
+              "游船的位置、数量变化",
+              "水面波纹的动态变化",
+              "天空云层的形态变化"
+            ],
+            "prompt": "写实地面平拍全景，入夜，中式廊桥横跨河道，多层飞檐，深棕色木质结构，桥身有红色立体文字“宋城”与英文“SONG CHENG”，廊下悬挂红色灯笼，河道水面雾气浮动，带红色顶棚的游船停靠岸边，岸边黑瓦中式建筑，绿植茂密，镜头缓慢前推靠近廊桥。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_3c7ed6466dad5134",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "廊桥内部空间的穿梭镜头",
+              "廊桥背面视角的镜头",
+              "高空俯视整个区域的全景镜头",
+              "河道远端深处的景观镜头"
+            ],
+            "timeline_start_ms": 27000,
+            "timeline_end_ms": 37000,
+            "segment_ids": [
+              "seg_04"
+            ],
+            "segment_id": "seg_04",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 10000
+          },
+          {
+            "shot_id": 5,
+            "duration_s": 10,
+            "narration": "夜里，喊泉亮起蓝光——喊一声，水就冲上天。来宋城，把新春过成一场千古情。",
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "夜晚喊泉喷泉，蓝色灯光水柱从前景喷出，后方中式多层古建筑有飞檐翘角，建筑上有“宋城”发光字与“SONG CHENG”标识，左侧有“ANCESHOW”竖排发光字，红色顶棚与立柱前景",
+            "background": "夜晚景区地面铺装，木质围栏，喊泉说明立牌，少量游客",
+            "place_id": "place_5bd941b763cbf631",
+            "reference_asset_ids": [
+              "ref_1261e86950af081c"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "中式古建筑的飞檐造型与整体轮廓",
+              "建筑上的“宋城”发光字与“SONG CHENG”标识",
+              "蓝色灯光的喊泉喷泉形态",
+              "左侧“ANCESHOW”竖排发光字",
+              "右侧喊泉说明立牌的样式与位置",
+              "红色顶棚与立柱的前景结构"
+            ],
+            "allowed_changes": [
+              "喷泉的水柱高度与形态变化",
+              "现场的行人数量与位置",
+              "灯光的明暗动态效果"
+            ],
+            "prompt": "写实地面平拍全景，夜晚，前景蓝色灯光喊泉喷泉喷出水柱，水花飞溅，后方中式多层古建筑飞檐翘角，屋檐黄色灯带，建筑上有发光的“宋城”与“SONG CHENG”标识，左侧有“ANCESHOW”竖排发光字，红色顶棚与立柱在前景左上，地面反光，游客聚集打卡，镜头固定。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_1261e86950af081c",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "建筑内部视角的镜头",
+              "高空俯视整个景区的航拍镜头",
+              "建筑背面视角的镜头",
+              "环绕古建筑360度的运动镜头"
+            ],
+            "timeline_start_ms": 37000,
+            "timeline_end_ms": 47000,
+            "segment_ids": [
+              "seg_05"
+            ],
+            "segment_id": "seg_05",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 10000
+          }
+        ],
+        "place_id": "place_5bd941b763cbf631"
+      },
+      {
+        "scene_id": 2,
+        "location": "杭州宋城",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 6,
+            "duration_s": 13,
+            "narration": "拾级而上，黄底红边的宋城旗帜一路相随。灯笼与幡旗交织，年味就在抬头之间。杭州宋城春节，等你入画。",
+            "camera": {
+              "type": "移动机位",
+              "movement": "升降",
+              "angle": "仰拍"
+            },
+            "shot_size": "全景",
+            "subject": "从石阶梯底部仰视，宽阔石质阶梯向上延伸，两侧石护栏，阶梯两侧排列黄底红边“宋城”旗帜，顶端中式红棕色古建筑与门楣牌匾，上方大树枝叶覆盖",
+            "background": "晴朗蓝天，右侧土坡岩壁，站在建筑门口的人，左侧提示标识牌",
+            "place_id": "place_5bd941b763cbf631",
+            "reference_asset_ids": [
+              "ref_84bf8349ad82ebb9"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "向上延伸的石阶梯及两侧石护栏的结构",
+              "阶梯两侧排列的“宋城”黄底红边旗帜",
+              "顶端的中式红棕色古建筑及门楣牌匾",
+              "上方大树枝叶的覆盖效果",
+              "整体仰视的空间纵深感"
+            ],
+            "allowed_changes": [
+              "阶梯上落叶的数量和位置",
+              "建筑门口的人物",
+              "树叶的轻微晃动",
+              "光影的随时间变化"
+            ],
+            "prompt": "写实地面仰拍全景，上午，从石阶梯底部向上拍摄，宽阔石质阶梯向上延伸，两侧石护栏，阶梯两侧排列黄底红边写有“宋城”的旗帜，顶端中式红棕色古建筑，门楣牌匾，上方大树枝叶覆盖，晴朗蓝天，年轻游客拾级而上，镜头缓慢上升，仰视空间纵深感强。",
+            "reference_roles": [
+              {
+                "asset_id": "ref_84bf8349ad82ebb9",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "建筑内部的镜头",
+              "阶梯下方区域的镜头",
+              "建筑背面或侧面的环绕镜头",
+              "高空俯视整个场地的镜头"
+            ],
+            "timeline_start_ms": 47000,
+            "timeline_end_ms": 60000,
+            "segment_ids": [
+              "seg_06"
+            ],
+            "segment_id": "seg_06",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 13000
+          }
+        ],
+        "place_id": "place_5bd941b763cbf631"
+      }
+    ],
+    "storyboard_version": 4,
+    "duration_ms": 60000,
+    "segments": [
+      {
+        "segment_id": "seg_01",
+        "timeline_start_ms": 0,
+        "timeline_end_ms": 12000,
+        "duration_ms": 12000,
+        "shot_ids": [
+          1
+        ],
+        "narration_text": "暮色一落，灯就亮了。幡旗招展，写上杭州宋城。橙黄串串，沿街铺开——今夜，入画。",
+        "reference_asset_ids": [
+          "ref_170c8e199bf237b4"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_02",
+        "timeline_start_ms": 12000,
+        "timeline_end_ms": 19000,
+        "duration_ms": 7000,
+        "shot_ids": [
+          2
+        ],
+        "narration_text": "抬头，是翘角飞檐。红灯笼上写着宋城，在木格栅间轻轻摇晃。",
+        "reference_asset_ids": [
+          "ref_92352d720630fe90"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_03",
+        "timeline_start_ms": 19000,
+        "timeline_end_ms": 27000,
+        "duration_ms": 8000,
+        "shot_ids": [
+          3
+        ],
+        "narration_text": "转个身，临水一排红灯，倒影落进水里，年味就有了形状。",
+        "reference_asset_ids": [
+          "ref_4afaa92a9465ff06"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_04",
+        "timeline_start_ms": 27000,
+        "timeline_end_ms": 37000,
+        "duration_ms": 10000,
+        "shot_ids": [
+          4
+        ],
+        "narration_text": "往前，是横跨河道的廊桥。多层飞檐，红灯笼垂着，水面雾气浮动，红顶游船靠岸。",
+        "reference_asset_ids": [
+          "ref_3c7ed6466dad5134"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_05",
+        "timeline_start_ms": 37000,
+        "timeline_end_ms": 47000,
+        "duration_ms": 10000,
+        "shot_ids": [
+          5
+        ],
+        "narration_text": "夜里，喊泉亮起蓝光——喊一声，水就冲上天。来宋城，把新春过成一场千古情。",
+        "reference_asset_ids": [
+          "ref_1261e86950af081c"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_06",
+        "timeline_start_ms": 47000,
+        "timeline_end_ms": 60000,
+        "duration_ms": 13000,
+        "shot_ids": [
+          6
+        ],
+        "narration_text": "拾级而上，黄底红边的宋城旗帜一路相随。灯笼与幡旗交织，年味就在抬头之间。杭州宋城春节，等你入画。",
+        "reference_asset_ids": [
+          "ref_84bf8349ad82ebb9"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260924_115620_cd0103_v1",
+  "plan_version": 1,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_45176c766d6d6fdf",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://se-feed-bucket.bj.bcebos.com/produce-record3385405/first_1729654454",
+      "title": "杭州宋城,宋代穿越记",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4592713044273644209",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_39f9d49a528a8be1",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/inRtRYE2s7CSveAMv_zsZA68937be65b7c9eee1589a46ce2848b57.jpg",
+      "title": "杭州宋城青石板上踏过千年,宋城将临安旧梦折叠成实景",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4983211264692280253",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1337c20c2678ffed",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275a6L5Z%2BO5Y2D5Y%2Bk5oOF5pmv54K55LuL57uNXzE3MzQ1NTk4NzYuNTgxMTk1OA%3D%3D%27/0.png",
+      "title": "杭州宋城景区必看亮点与游玩攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4252215359755113540",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ced017aa068af777",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://q7.itc.cn/images01/20251107/02e6419c192a439a90baae593174bd43.jpeg",
+      "title": "浙江杭州5a级景区宋城,令无数游客心动的古城!",
+      "source_page_url": "http://travel.sohu.com/a/952044210_100142210",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_2539bd490ee5e2d8",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275a6L5Z%2BO5LiA5pel5ri45pyA5L2z6Lev57q/5Zu%2BXzE3MzM0MzI2NzkuMDA4Mjg3Mg%3D%3D%27/0.png",
+      "title": "杭州宋城一日游全攻略:必看亮点与游玩建议",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4722800504080191133",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_da6a45873d29596a",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p2t5bee5a6L5Z%2BO5peF5ri45pS755WlXzE3Mjk5NTkyNDEuNzY0ODE5OQ%3D%3D%27/0.png",
+      "title": "杭州宋城夜游攻略:穿越诡秘世界",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5930578868691671064",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0c87621a4ec4d56f",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p2t5bee5a6L5Z%2BOXzE3MzQ3OTg0NzcuNDE4NTQyMQ%3D%3D%27/0.png",
+      "title": "宋城千古情:穿越千年的杭州之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3179193853385157270",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3755f53867404255",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27MjAyNOW5tOadreW3nuWui%2BWfjuiKguebruWNlV8xNzMwMDA2MTkxLjk1MTA3NzI%3D%27/0.png",
+      "title": "杭州宋城必看节目清单,周末必打卡!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5048947380013823194",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_123a7d40b752c182",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxNDg1MjQ3LjkzNDkyNw%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-13T08%3A07%3A29Z%2F-1%2F%2Ffa49ff07028b57ebcec40af536760afc40f8da9da572193e16784aa6bd8e7e4c",
+      "title": "杭州亲子游:宋城半日游全攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3429362207908087047",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_12dcb7f060b3b91c",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://q9.itc.cn/images01/20241106/08840c4ac16c4bd4bf21823168c095eb.jpeg",
+      "title": "杭州宋城:穿越千年的历史画卷",
+      "source_page_url": "http://www.sohu.com/a/824153460_120360066",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_25803087edb8317f",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275a6L5Z%2BO5pmv5Yy65LuL57uNXzE3MzQ4ODYzNDUuNzgyNjQxNg%3D%3D%27/0.png",
+      "title": "杭州宋城:穿越时空的宋文化之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4562433352918957049",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e48b23bb9a243164",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275a6L5Z%2BO5pmv5Yy65LuL57uNXzE3MjM3MDI4OTcuMzE5MDA3%27/0.png",
+      "title": "🎉探秘杭州宋城景区🏰",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4616263122972811164",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ffaef8beabd6c94a",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%275p2t5bee5a6L5Z%2BO6Leo5bm0XzE3MzQ2NjM5NTEuODUyODU5NQ%3D%3D%27/0.png",
+      "title": "杭州宋城跨年攻略:18个必玩项目!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4830777674017549050",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_24503c7de12c58b7",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://gips0.baidu.com/it/u=879422094,4222769746&fm=3074&app=3074&f=JPEG",
+      "title": "杭州宋城:穿越千年的不夜城之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5072910561356929472",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_44953dab24cf6056",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/km5zLX3sWbEN7bIdreSTxgd4c7a60a8f9e9dd48c520fcb45b2f059.jpg",
+      "title": "杭州宋城图片 风景图片宋城景区宋朝繁华杭州宋城千古情杭州宋城照片",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4935321159415059773",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0959ce38f69dfa1d",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=259209319,4117412110&fm=3074&app=3074&f=JPEG",
+      "title": "🏰 杭州宋城:千古情之旅 🎭",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4330808863420771898",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_fc6352e1d2000d4f",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=822299801,1807818039&fm=3074&app=3074&f=JPEG",
+      "title": "杭州宋城:一场穿越时空的奇幻之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5205577359731259341",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3edd9255a000fba6",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275a6L5Z%2BO5bqU6K%2Bl5LuO5ZOq5Liq6Zeo6L%2Bb5YWlXzE3MjQ3MTA1NTYuNTI1MzMyNQ%3D%3D%27/0.png",
+      "title": "🚪 杭州宋城游玩,哪个门进?",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4166884693192413945",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_fdf7668e4a913163",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/EhZkRQodQL76MQa5xYaXtwa57672234712f0ba2edeb5d5885df042.jpg",
+      "title": "照片杭州宋城图片 风景图片宋城图片风景图片大全江南宋城图片高清",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5288639372796053610",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_840a0b3a39055b48",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://pica.zhimg.com/100/v2-0cde0896e0986c5185934123eb026d82_r.jpg",
+      "title": "杭州宋城图片风景图片大全高清杭州宋城景区图片杭州宋城景区宋城景区",
+      "source_page_url": "http://www.zhihu.com/pin/1840112966965530624",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c7bfb9f6f0a89145",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3ea179450e6b/240603/ce6bc5dcb9119c1c724814556187baed.jpeg?x-bce-process=image/crop,w_1920,h_1280,x_0,y_0",
+      "title": "杭州宋城景区重现宋代风华!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3782139663396085287",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_df4b52743526a3be",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275p2t5bee5a6L5Z%2BO5ri4546p6ZyA6KaB5aSa6ZW/5pe26Ze0XzE3MjQ3NDAyNjYuNDU0NTk3Mg%3D%3D%27/0.png",
+      "title": "🎉杭州宋城游玩耗时多久?",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4252181988121025431",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_52ee66368d4d7020",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=2806169636,1858316457&fm=3074&app=3074&f=JPEG",
+      "title": "杭州宋城游玩攻略:必看小贴士和省钱技巧",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5088317193122065832",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a9bbeb450370102b",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/250106/dump/896c97707b50dacb60a2a59ba1633463.jpeg",
+      "title": "宋城千古情:浙江的文化名片,视觉与听觉的享受",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1820464762632625910&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_78d71396a2dda9eb",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://q1.itc.cn/images01/20251107/1b76660c79f9448f83e7959586528a82.jpeg",
+      "title": "浙江杭州5a级景区宋城,令无数游客心动的古城!",
+      "source_page_url": "http://www.sohu.com/a/952044210_100142210",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_bd62189331263f21",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://pics6.baidu.com/feed/c2fdfc039245d68803655e821aa21d11d21b2425.jpeg@f_auto?token=fcae8cfeaefbb1cf397833d820b69270",
+      "title": "杭州宋城:穿越千年 领略宋代风情的文化胜地",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1823638961789350800&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_84c9596fb0b76aaa",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275a6L5Z%2BOXzE3Mjg2NzIxODkuNTg1OTQ2Ng%3D%3D%27/0.png",
+      "title": "杭州宋城:穿越时空的宋代之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4765859685682382106",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1bc66212a44030cc",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/e1fe9925bc315c601f353c6c83b1cb1348547794",
+      "title": "杭州宋城",
+      "source_page_url": "http://baike.baidu.com/item/%E6%9D%AD%E5%B7%9E%E5%AE%8B%E5%9F%8E/2521195",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_723c2abc1264aac1",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzMDU5Mjg2LjAwNDU4MjQ%3D%27/0.png",
+      "title": "杭州宋城千古情特惠攻略:99元畅游",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3853215723971611197",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_09b7275daec400f1",
+      "query": "杭州 宋城 实景 风景",
+      "image_url": "http://bj.bcebos.com/bjh-pixel/1698527520986976451_0_ainote_new.jpg?for=bg",
+      "title": "杭州宋城景区,一座以宋.@内敛温柔酸梅汤爱梨的动态",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4282776508951011348",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_170c8e199bf237b4",
+      "candidate_id": "ref_ced017aa068af777",
+      "place_id": "place_5bd941b763cbf631",
+      "place_name": "宋城",
+      "city": "杭州",
+      "original_url": "http://q7.itc.cn/images01/20251107/02e6419c192a439a90baae593174bd43.jpeg",
+      "source_page_url": "http://travel.sohu.com/a/952044210_100142210",
+      "title": "浙江杭州5a级景区宋城,令无数游客心动的古城!",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260924_115620_cd0103/ref_170c8e199bf237b4.webp",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260924_115620_cd0103\\ref_170c8e199bf237b4.webp",
+      "sha256": "170c8e199bf237b4c716df1b2e6cdb52275d81ceb815d81fd7d6fd1e5cdeb6cd",
+      "width": 871,
+      "height": 1263,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 18.607,
+        "usage": {
+          "completion_tokens": 836,
+          "prompt_tokens": 1731,
+          "total_tokens": 2567,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "傍晚时分的仿古商业街，街道两侧悬挂着中式幡旗与成串的橙黄色灯笼，不少游客在街道上行走、停留，整体氛围热闹，充满国风市井感。",
+          "visible_elements": [
+            "橙黄色串状灯笼",
+            "写有“杭州宋城”的竖版幡旗",
+            "写有“千古情”的竖版幡旗",
+            "仿古木质商铺摊位",
+            "行走、停留的游客人群",
+            "砖石铺装的步行街道路",
+            "两侧的树木绿植",
+            "远处的仿古建筑结构",
+            "右侧的监控设备",
+            "右侧的小型树木盆栽"
+          ],
+          "spatial_layout": [
+            "步行街道路从画面近景向远处延伸，贯穿画面中部",
+            "幡旗、灯笼悬挂在道路上方及两侧上空",
+            "商铺摊位分布在道路左侧",
+            "游客分布在道路中部及近景区域，朝向道路深处或两侧",
+            "树木绿植分布在道路两侧的上方及边缘位置"
+          ],
+          "architecture_and_materials": [
+            "幡旗为竖版长条形，米白色底配红色文字与深色边框，底部为尖角造型，带有传统纹样装饰",
+            "灯笼为橙黄色纸质/布艺材质，呈长椭圆形，成串横向悬挂，内部发光",
+            "左侧商铺为木质结构，深棕色外观，带有坡屋顶，是仿古中式样式",
+            "道路为平整的砖石铺装，呈暖黄色调",
+            "远处建筑带有飞檐类中式屋顶结构，色彩包含红、绿等传统配色"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "道路向画面深处延伸，视线沿街道纵深方向向前",
+              "天空在画面上方远处，呈现傍晚的暗蓝色"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "傍晚（黄昏刚入夜时段）",
+            "weather": "晴朗（无明显雨雪云雾迹象）",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [
+            "街道两侧的仿古幡旗与成串发光灯笼的布局",
+            "“杭州宋城”“千古情”的幡旗文字标识",
+            "步行街的纵深走向与砖石路面",
+            "两侧仿古木质商铺的建筑形态",
+            "两侧的绿植树木分布"
+          ],
+          "allowed_changes": [
+            "游客的数量、穿着、行走姿态与位置",
+            "灯笼的光影明暗细微变化",
+            "天空的色彩深浅过渡",
+            "商铺摊位的具体陈设细节"
+          ],
+          "suitable_shots": [
+            "沿街道向前推进的跟拍镜头",
+            "平视角度的街道全景扫拍",
+            "聚焦幡旗、灯笼的缓慢上摇镜头",
+            "以游客为前景的街道氛围跟拍镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "街道两侧建筑内部的视角镜头",
+            "高空俯视整条街区的全景镜头",
+            "街道尽头深处的细节特写镜头",
+            "建筑背面或地下区域的相关镜头"
+          ],
+          "visible_text": [
+            "杭州宋城",
+            "千古情"
+          ],
+          "uncertain": [
+            "远处模糊幡旗的具体文字内容",
+            "街区的具体规模与完整布局",
+            "左侧商铺的具体经营内容",
+            "建筑的具体建造年代"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_92352d720630fe90",
+      "candidate_id": "ref_39f9d49a528a8be1",
+      "place_id": "place_5bd941b763cbf631",
+      "place_name": "宋城",
+      "city": "杭州",
+      "original_url": "http://b0.bdstatic.com/ugc/inRtRYE2s7CSveAMv_zsZA68937be65b7c9eee1589a46ce2848b57.jpg",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4983211264692280253",
+      "title": "杭州宋城青石板上踏过千年,宋城将临安旧梦折叠成实景",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260924_115620_cd0103/ref_92352d720630fe90.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260924_115620_cd0103\\ref_92352d720630fe90.jpg",
+      "sha256": "92352d720630fe90243433f7ddf970821007754f9cd2c88c511a33e8a52e2240",
+      "width": 2000,
+      "height": 2667,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 28.88,
+        "usage": {
+          "completion_tokens": 784,
+          "prompt_tokens": 1712,
+          "total_tokens": 2496,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面以仰视角度呈现中式仿古廊檐建筑，廊下悬挂多盏印有“宋城”字样的红色灯笼，周边有绿植环绕，背景是明亮的天空。",
+          "visible_elements": [
+            "中式仿古廊檐建筑",
+            "印有“宋城”字样的红色灯笼",
+            "绿色及红紫色叶片的绿植",
+            "木质廊柱",
+            "镂空木格栅装饰",
+            "青灰色翘角屋顶",
+            "木质栏杆步道",
+            "远处的茂密树林",
+            "浅淡明亮的天空"
+          ],
+          "spatial_layout": [
+            "中式廊檐建筑沿画面右上向左下延伸排布",
+            "红色灯笼悬挂在廊檐下方，沿廊的走向依次排列",
+            "绿植位于画面左侧及前景位置，在廊建筑的前方",
+            "廊柱支撑在廊檐下方，沿廊的走向分布",
+            "远处的树林在廊建筑的后方及下方区域",
+            "天空占据画面左上及上方区域"
+          ],
+          "architecture_and_materials": [
+            "建筑为中式仿古风格，屋顶是青灰色翘角飞檐样式，铺设瓦件",
+            "廊檐、廊柱为木质结构，呈深棕色调，表面有风化质感",
+            "廊身带有中式回纹样式的镂空木格栅装饰",
+            "灯笼为红色六面柱形，黑色边框，上下有黑色装饰边，表面印有黑色“宋城”字样及花卉、人物等彩绘图案"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "仰视",
+            "shot_size": "中景",
+            "orientation_clues": [
+              "廊檐从画面右上方向左下方延伸，翘角朝向画面左上方",
+              "左侧有前景绿植遮挡，拍摄者位于廊建筑的侧下方位置"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足，无法判断具体时段",
+            "weather": "晴天，天空明亮有淡云",
+            "season": "植被生长茂盛，无法判断具体季节"
+          },
+          "must_keep_candidates": [
+            "中式翘角飞檐的廊檐建筑结构",
+            "印有“宋城”字样的红色仿古灯笼",
+            "木质廊柱与镂空木格栅装饰",
+            "廊檐沿走向排布的整体结构"
+          ],
+          "allowed_changes": [
+            "灯笼的轻微晃动动态",
+            "植被的随风摆动",
+            "光线的明暗柔和变化",
+            "天空云量的少量变化"
+          ],
+          "suitable_shots": [
+            "沿廊檐走向平移的跟拍镜头",
+            "从下往上缓慢抬升的仰视推镜",
+            "聚焦灯笼细节的近景镜头",
+            "以左侧绿植为前景的廊景横移镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "建筑内部空间的拍摄",
+            "廊建筑背面视角的镜头",
+            "俯瞰整个区域的高空远景镜头",
+            "快速环绕建筑的运动镜头"
+          ],
+          "visible_text": [
+            "宋城"
+          ],
+          "uncertain": [
+            "具体所在城市及精确位置",
+            "建筑的建造年代",
+            "廊步道通向的具体区域"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_3c7ed6466dad5134",
+      "candidate_id": "ref_2539bd490ee5e2d8",
+      "place_id": "place_5bd941b763cbf631",
+      "place_name": "宋城",
+      "city": "杭州",
+      "original_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275a6L5Z%2BO5LiA5pel5ri45pyA5L2z6Lev57q/5Zu%2BXzE3MzM0MzI2NzkuMDA4Mjg3Mg%3D%3D%27/0.png",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4722800504080191133",
+      "title": "杭州宋城一日游全攻略:必看亮点与游玩建议",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260924_115620_cd0103/ref_3c7ed6466dad5134.png",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260924_115620_cd0103\\ref_3c7ed6466dad5134.png",
+      "sha256": "3c7ed6466dad51340a594b02f9c89ed5f7591ce6f952cf0bbc4762ecbfb1ec77",
+      "width": 1193,
+      "height": 1425,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 18.784,
+        "usage": {
+          "completion_tokens": 776,
+          "prompt_tokens": 1728,
+          "total_tokens": 2504,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面主体是一座架在河道上的中式廊桥，桥身有红色文字，河道水面有雾气，停靠有游船，岸边有中式建筑与茂密绿植，天空阴沉。",
+          "visible_elements": [
+            "中式廊桥",
+            "河道水面",
+            "水面雾气",
+            "带红色顶棚的游船",
+            "岸边中式建筑",
+            "茂密绿植（含垂柳）",
+            "红色灯笼",
+            "红色立体文字“宋城”",
+            "英文文字“SONG CHENG”",
+            "阴沉的天空"
+          ],
+          "spatial_layout": [
+            "中式廊桥横跨在河道上方，位于画面前中上部",
+            "河道水面在画面下半部分，水面上有雾气",
+            "游船停靠在画面右下方的河道岸边",
+            "岸边中式建筑在画面右下方，廊桥右下方",
+            "茂密绿植分布在河道左侧及远处",
+            "红色灯笼悬挂在廊桥的屋檐下"
+          ],
+          "architecture_and_materials": [
+            "廊桥为多层中式传统建筑样式，有飞檐翘角的黑色瓦片屋顶",
+            "廊桥主体为深棕色木质结构，带有中式花格木窗、木栏杆",
+            "桥拱部分为红棕色材质，带有金属铆钉装饰，桥拱下方有黄绿色支撑结构",
+            "岸边建筑为黑瓦木构的中式建筑，挂有红色灯笼",
+            "游船为深色船体，带有红色顶棚"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "廊桥正面朝向镜头，桥身文字正对观看者"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断",
+            "weather": "阴天",
+            "season": "春夏季（植被茂密翠绿）"
+          },
+          "must_keep_candidates": [
+            "廊桥的多层飞檐中式建筑形态",
+            "桥身的“宋城”红色文字与“SONG CHENG”英文标识",
+            "廊桥悬挂的红色灯笼",
+            "横跨河道的拱桥结构",
+            "河道及水面雾气的景观",
+            "岸边中式黑瓦建筑"
+          ],
+          "allowed_changes": [
+            "水面雾气的浓淡变化",
+            "游船的位置、数量变化",
+            "水面波纹的动态变化",
+            "天空云层的形态变化"
+          ],
+          "suitable_shots": [
+            "正面平视推进镜头，逐步靠近廊桥",
+            "固定机位展示廊桥与河道雾气的静态景观",
+            "从河道水面向上仰拍廊桥的镜头",
+            "沿河道横向平移展示廊桥全貌的镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "廊桥内部空间的穿梭镜头",
+            "廊桥背面视角的镜头",
+            "高空俯视整个区域的全景镜头",
+            "河道远端深处的景观镜头"
+          ],
+          "visible_text": [
+            "宋城",
+            "SONG CHENG"
+          ],
+          "uncertain": [
+            "具体城市位置",
+            "建筑的建造年代",
+            "河道的具体名称与长度"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_1261e86950af081c",
+      "candidate_id": "ref_da6a45873d29596a",
+      "place_id": "place_5bd941b763cbf631",
+      "place_name": "宋城",
+      "city": "杭州",
+      "original_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275p2t5bee5a6L5Z%2BO5peF5ri45pS755WlXzE3Mjk5NTkyNDEuNzY0ODE5OQ%3D%3D%27/0.png",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5930578868691671064",
+      "title": "杭州宋城夜游攻略:穿越诡秘世界",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260924_115620_cd0103/ref_1261e86950af081c.png",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260924_115620_cd0103\\ref_1261e86950af081c.png",
+      "sha256": "1261e86950af081cd39bd559d4175557acbd9ec3f5406be689cf1f9a243fcb12",
+      "width": 1080,
+      "height": 1410,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 17.348,
+        "usage": {
+          "completion_tokens": 636,
+          "prompt_tokens": 1712,
+          "total_tokens": 2348,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "夜晚场景下，前景是带蓝色灯光的喊泉喷泉，后方是中式古建筑，建筑上有多处发光标识，画面左上角有红色顶棚结构，整体是文旅景区的夜间景观。",
+          "visible_elements": [
+            "蓝色灯光喷泉（喊泉）",
+            "中式多层古建筑",
+            "红色灯笼",
+            "发光文字标识",
+            "红色顶棚及立柱",
+            "木质围栏",
+            "地面铺装",
+            "喊泉说明立牌",
+            "少量人物"
+          ],
+          "spatial_layout": [
+            "喷泉位于画面前景中部，被木质围栏围合",
+            "中式古建筑在喷泉后方，处于画面中后区域",
+            "红色顶棚结构在画面左上角，处于前景上方",
+            "喊泉说明立牌在喷泉右侧的围栏旁",
+            "红色立柱在画面最左侧，支撑顶部顶棚"
+          ],
+          "architecture_and_materials": [
+            "古建筑为多层中式楼阁样式，飞檐翘角，屋檐有黄色灯带装饰",
+            "古建筑主体呈深木色，带有中式镂空木格栅装饰",
+            "顶部顶棚为红色，搭配红色金属立柱",
+            "喷泉围栏为深色木质竖条结构",
+            "地面为光滑的深色铺装，可反射灯光"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "画面正对后方的古建筑与喷泉，建筑正面朝向镜头"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "夜晚",
+            "weather": "无法判断",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [
+            "中式古建筑的飞檐造型与整体轮廓",
+            "建筑上的“宋城”发光字与“SONG CHENG”标识",
+            "蓝色灯光的喊泉喷泉形态",
+            "左侧“ANCESHOW”竖排发光字",
+            "右侧喊泉说明立牌的样式与位置",
+            "红色顶棚与立柱的前景结构"
+          ],
+          "allowed_changes": [
+            "喷泉的水柱高度与形态变化",
+            "现场的行人数量与位置",
+            "灯光的明暗动态效果"
+          ],
+          "suitable_shots": [
+            "固定机位全景展示喷泉与古建筑的夜景",
+            "从当前位置向前推进的推镜头，聚焦喷泉或建筑",
+            "横向平移的摇镜头展示景区入口全景",
+            "慢镜头展示喷泉水柱动态"
+          ],
+          "unsupported_or_risky_shots": [
+            "建筑内部视角的镜头",
+            "高空俯视整个景区的航拍镜头",
+            "建筑背面视角的镜头",
+            "环绕古建筑360度的运动镜头"
+          ],
+          "visible_text": [
+            "ANCESHOW",
+            "SONG CHENG",
+            "宋城",
+            "宋城喊泉",
+            "喊出心中烦恼",
+            "喊出心中的爱",
+            "喊出人生新高度"
+          ],
+          "uncertain": [
+            "无法确认该地点的具体城市与精确地理位置",
+            "无法确认古建筑的建造年代与历史背景"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_84bf8349ad82ebb9",
+      "candidate_id": "ref_840a0b3a39055b48",
+      "place_id": "place_5bd941b763cbf631",
+      "place_name": "宋城",
+      "city": "杭州",
+      "original_url": "http://pica.zhimg.com/100/v2-0cde0896e0986c5185934123eb026d82_r.jpg",
+      "source_page_url": "http://www.zhihu.com/pin/1840112966965530624",
+      "title": "杭州宋城图片风景图片大全高清杭州宋城景区图片杭州宋城景区宋城景区",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260924_115620_cd0103/ref_84bf8349ad82ebb9.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260924_115620_cd0103\\ref_84bf8349ad82ebb9.jpg",
+      "sha256": "84bf8349ad82ebb949798374916f09bae1be9374615c3f3d5cd4fc07468952e2",
+      "width": 3072,
+      "height": 4096,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 23.878,
+        "usage": {
+          "completion_tokens": 733,
+          "prompt_tokens": 1712,
+          "total_tokens": 2445,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面从石阶底部向上拍摄，一条宽阔的石质阶梯向上延伸，阶梯两侧立有黄底红边写有“宋城”的旗帜，阶梯顶端是中式古建筑，上方有枝叶繁茂的大树，顶部露出红色檐角，天空晴朗。",
+          "visible_elements": [
+            "石质阶梯",
+            "石质护栏",
+            "黄底红边“宋城”旗帜",
+            "中式古建筑",
+            "大树（带黄绿叶片）",
+            "红色檐角（画面顶部）",
+            "晴朗蓝天",
+            "土坡岩壁（右侧）",
+            "站在建筑门口的人",
+            "左侧提示标识牌"
+          ],
+          "spatial_layout": [
+            "石阶梯位于画面中央，从下方向上延伸至顶端建筑",
+            "阶梯两侧对称设置石护栏",
+            "“宋城”旗帜沿阶梯两侧护栏外竖立排列",
+            "中式古建筑位于阶梯顶端尽头",
+            "大树枝叶从画面上方垂落，覆盖部分建筑顶部和天空",
+            "画面最顶部露出红色的檐状结构",
+            "右侧阶梯旁是带植被的土坡岩壁",
+            "左侧阶梯旁有带顶棚的结构和提示牌"
+          ],
+          "architecture_and_materials": [
+            "阶梯为深灰色石材，表面有使用痕迹，散落少量落叶",
+            "护栏为灰色石材，带有回纹等中式雕刻纹样，望柱有造型装饰",
+            "顶端建筑为中式传统木结构风格，红棕色木构，红瓦屋顶，有斗拱、红灯笼装饰，门楣处有黄底红字牌匾",
+            "旗帜为黄底红边，边缘有红色齿状装饰，上书黑色“宋城”大字",
+            "顶部檐角为红色，表面有暗纹"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "仰视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "阶梯向上延伸指向顶端建筑，拍摄者位于阶梯底部朝向上方建筑"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线充足，应为晴朗的上午或下午",
+            "weather": "晴天，天空湛蓝无云",
+            "season": "无法判断，树叶有绿有黄，无法确定季节"
+          },
+          "must_keep_candidates": [
+            "向上延伸的石阶梯及两侧石护栏的结构",
+            "阶梯两侧排列的“宋城”黄底红边旗帜",
+            "顶端的中式红棕色古建筑及门楣牌匾",
+            "上方大树枝叶的覆盖效果",
+            "整体仰视的空间纵深感"
+          ],
+          "allowed_changes": [
+            "阶梯上落叶的数量和位置",
+            "建筑门口的人物",
+            "树叶的轻微晃动",
+            "光影的随时间变化"
+          ],
+          "suitable_shots": [
+            "沿阶梯向上推进的移动镜头",
+            "固定机位仰视阶梯与建筑的全景镜头",
+            "从下往上的慢升镜头",
+            "聚焦两侧旗帜的平移镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "建筑内部的镜头",
+            "阶梯下方区域的镜头",
+            "建筑背面或侧面的环绕镜头",
+            "高空俯视整个场地的镜头"
+          ],
+          "visible_text": [
+            "宋城",
+            "宋皇宫",
+            "小心地滑（阶梯上的提示文字）",
+            "禁止吸烟（左侧提示牌文字）"
+          ],
+          "uncertain": [
+            "具体地点是否为杭州宋城",
+            "建筑的具体年代",
+            "大树的具体树种"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_4afaa92a9465ff06",
+      "candidate_id": "ref_12dcb7f060b3b91c",
+      "place_id": "place_5bd941b763cbf631",
+      "place_name": "宋城",
+      "city": "杭州",
+      "original_url": "http://q9.itc.cn/images01/20241106/08840c4ac16c4bd4bf21823168c095eb.jpeg",
+      "source_page_url": "http://www.sohu.com/a/824153460_120360066",
+      "title": "杭州宋城:穿越千年的历史画卷",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260924_115620_cd0103/ref_4afaa92a9465ff06.webp",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260924_115620_cd0103\\ref_4afaa92a9465ff06.webp",
+      "sha256": "4afaa92a9465ff060e8dbc6a59a3e51654be11873ff38f4b56897fa433c5bdb8",
+      "width": 2996,
+      "height": 2000,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 19.45,
+        "usage": {
+          "completion_tokens": 746,
+          "prompt_tokens": 1717,
+          "total_tokens": 2463,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面展现了临水而建的中式传统建筑群，水面平静清晰倒映出建筑与周边景物，远处有现代风格建筑与山石，整体氛围朦胧静谧。",
+          "visible_elements": [
+            "中式传统临水建筑",
+            "平静的河道水面",
+            "红色串状灯笼",
+            "中式廊桥",
+            "垂柳类绿植",
+            "岸边枯枝干植物",
+            "远处现代风格建筑",
+            "远处山石状建筑结构",
+            "建筑木质栏杆",
+            "建筑立柱式基座"
+          ],
+          "spatial_layout": [
+            "中式传统建筑群沿河道右侧依次排布，底部以立柱架于水面之上",
+            "河道占据画面下半部分，水面完整倒映出岸边建筑与景物",
+            "廊桥位于画面左侧，横跨河道",
+            "现代风格建筑与山石结构处于画面远景，在传统建筑的后方",
+            "绿植分布在建筑旁与岸边区域"
+          ],
+          "architecture_and_materials": [
+            "传统建筑为黑灰色坡屋顶，带有中式翘角屋檐",
+            "建筑主体为深棕色木质结构，搭配木质雕花栏杆",
+            "建筑底层由浅灰色混凝土立柱支撑，架空于水面",
+            "建筑墙面有浅灰色石材部分，悬挂有竖版绿色底带文字的招牌",
+            "红色灯笼为串式悬挂，灯笼底部带有黄色装饰"
+          ],
+          "viewpoint": {
+            "camera_position": "地面",
+            "angle": "平视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "建筑沿河道横向延伸，拍摄方向正对河道与沿岸建筑",
+              "水面倒影与实景上下对称，可辅助判断拍摄高度与水面齐平相近"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断",
+            "weather": "阴天或有雾，能见度较低，远景朦胧",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [
+            "临水架空的中式传统建筑形态",
+            "成串悬挂的红色灯笼布局",
+            "水面清晰的建筑倒影效果",
+            "黑灰坡屋顶的中式建筑特征",
+            "沿岸建筑的整体排布结构"
+          ],
+          "allowed_changes": [
+            "灯笼的晃动状态",
+            "水面的轻微波纹变化",
+            "绿植的轻微动态",
+            "天空的光影明暗变化"
+          ],
+          "suitable_shots": [
+            "沿河道横向平移的全景镜头",
+            "固定机位的静帧镜头展现倒影",
+            "从水面缓缓抬升的平视推进镜头",
+            "聚焦建筑细节的中景平移镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "建筑内部空间的镜头",
+            "环绕建筑背面的运动镜头",
+            "高空俯视的大航拍镜头",
+            "远处现代建筑内部的镜头"
+          ],
+          "visible_text": [
+            "晶茶"
+          ],
+          "uncertain": [
+            "具体地点名称",
+            "建筑的建造年代",
+            "远处山石状结构的实际属性",
+            "建筑的具体功能属性"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_5bd941b763cbf631",
+    "place_name": "宋城",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_170c8e199bf237b4",
+      "ref_92352d720630fe90",
+      "ref_3c7ed6466dad5134",
+      "ref_1261e86950af081c",
+      "ref_84bf8349ad82ebb9",
+      "ref_4afaa92a9465ff06"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "橙黄色串状灯笼",
+      "写有“杭州宋城”的竖版幡旗",
+      "写有“千古情”的竖版幡旗",
+      "仿古木质商铺摊位",
+      "行走、停留的游客人群",
+      "砖石铺装的步行街道路",
+      "两侧的树木绿植",
+      "远处的仿古建筑结构",
+      "右侧的监控设备",
+      "右侧的小型树木盆栽",
+      "中式仿古廊檐建筑",
+      "印有“宋城”字样的红色灯笼",
+      "绿色及红紫色叶片的绿植",
+      "木质廊柱",
+      "镂空木格栅装饰",
+      "青灰色翘角屋顶",
+      "木质栏杆步道",
+      "远处的茂密树林",
+      "浅淡明亮的天空",
+      "中式廊桥",
+      "河道水面",
+      "水面雾气",
+      "带红色顶棚的游船",
+      "岸边中式建筑",
+      "茂密绿植（含垂柳）",
+      "红色灯笼",
+      "红色立体文字“宋城”",
+      "英文文字“SONG CHENG”",
+      "阴沉的天空",
+      "蓝色灯光喷泉（喊泉）"
+    ],
+    "stable_features": [
+      {
+        "text": "街道两侧的仿古幡旗与成串发光灯笼的布局",
+        "evidence_asset_ids": [
+          "ref_170c8e199bf237b4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "“杭州宋城”“千古情”的幡旗文字标识",
+        "evidence_asset_ids": [
+          "ref_170c8e199bf237b4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "步行街的纵深走向与砖石路面",
+        "evidence_asset_ids": [
+          "ref_170c8e199bf237b4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "两侧仿古木质商铺的建筑形态",
+        "evidence_asset_ids": [
+          "ref_170c8e199bf237b4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "两侧的绿植树木分布",
+        "evidence_asset_ids": [
+          "ref_170c8e199bf237b4"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "中式翘角飞檐的廊檐建筑结构",
+        "evidence_asset_ids": [
+          "ref_92352d720630fe90"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "印有“宋城”字样的红色仿古灯笼",
+        "evidence_asset_ids": [
+          "ref_92352d720630fe90"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "木质廊柱与镂空木格栅装饰",
+        "evidence_asset_ids": [
+          "ref_92352d720630fe90"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "廊檐沿走向排布的整体结构",
+        "evidence_asset_ids": [
+          "ref_92352d720630fe90"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "廊桥的多层飞檐中式建筑形态",
+        "evidence_asset_ids": [
+          "ref_3c7ed6466dad5134"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "桥身的“宋城”红色文字与“SONG CHENG”英文标识",
+        "evidence_asset_ids": [
+          "ref_3c7ed6466dad5134"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "廊桥悬挂的红色灯笼",
+        "evidence_asset_ids": [
+          "ref_3c7ed6466dad5134"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "横跨河道的拱桥结构",
+        "evidence_asset_ids": [
+          "ref_3c7ed6466dad5134"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "河道及水面雾气的景观",
+        "evidence_asset_ids": [
+          "ref_3c7ed6466dad5134"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "岸边中式黑瓦建筑",
+        "evidence_asset_ids": [
+          "ref_3c7ed6466dad5134"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "中式古建筑的飞檐造型与整体轮廓",
+        "evidence_asset_ids": [
+          "ref_1261e86950af081c"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "建筑上的“宋城”发光字与“SONG CHENG”标识",
+        "evidence_asset_ids": [
+          "ref_1261e86950af081c"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "蓝色灯光的喊泉喷泉形态",
+        "evidence_asset_ids": [
+          "ref_1261e86950af081c"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "左侧“ANCESHOW”竖排发光字",
+        "evidence_asset_ids": [
+          "ref_1261e86950af081c"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "右侧喊泉说明立牌的样式与位置",
+        "evidence_asset_ids": [
+          "ref_1261e86950af081c"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "红色顶棚与立柱的前景结构",
+        "evidence_asset_ids": [
+          "ref_1261e86950af081c"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "向上延伸的石阶梯及两侧石护栏的结构",
+        "evidence_asset_ids": [
+          "ref_84bf8349ad82ebb9"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "阶梯两侧排列的“宋城”黄底红边旗帜",
+        "evidence_asset_ids": [
+          "ref_84bf8349ad82ebb9"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "顶端的中式红棕色古建筑及门楣牌匾",
+        "evidence_asset_ids": [
+          "ref_84bf8349ad82ebb9"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "上方大树枝叶的覆盖效果",
+        "evidence_asset_ids": [
+          "ref_84bf8349ad82ebb9"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "整体仰视的空间纵深感",
+        "evidence_asset_ids": [
+          "ref_84bf8349ad82ebb9"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "临水架空的中式传统建筑形态",
+        "evidence_asset_ids": [
+          "ref_4afaa92a9465ff06"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "成串悬挂的红色灯笼布局",
+        "evidence_asset_ids": [
+          "ref_4afaa92a9465ff06"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "水面清晰的建筑倒影效果",
+        "evidence_asset_ids": [
+          "ref_4afaa92a9465ff06"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "黑灰坡屋顶的中式建筑特征",
+        "evidence_asset_ids": [
+          "ref_4afaa92a9465ff06"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "街道两侧的仿古幡旗与成串发光灯笼的布局",
+      "“杭州宋城”“千古情”的幡旗文字标识",
+      "步行街的纵深走向与砖石路面",
+      "两侧仿古木质商铺的建筑形态",
+      "两侧的绿植树木分布",
+      "中式翘角飞檐的廊檐建筑结构",
+      "印有“宋城”字样的红色仿古灯笼",
+      "木质廊柱与镂空木格栅装饰",
+      "廊檐沿走向排布的整体结构",
+      "廊桥的多层飞檐中式建筑形态",
+      "桥身的“宋城”红色文字与“SONG CHENG”英文标识",
+      "廊桥悬挂的红色灯笼",
+      "横跨河道的拱桥结构",
+      "河道及水面雾气的景观",
+      "岸边中式黑瓦建筑",
+      "中式古建筑的飞檐造型与整体轮廓",
+      "建筑上的“宋城”发光字与“SONG CHENG”标识",
+      "蓝色灯光的喊泉喷泉形态",
+      "左侧“ANCESHOW”竖排发光字",
+      "右侧喊泉说明立牌的样式与位置"
+    ],
+    "allowed_changes": [
+      "游客的数量、穿着、行走姿态与位置",
+      "灯笼的光影明暗细微变化",
+      "天空的色彩深浅过渡",
+      "商铺摊位的具体陈设细节",
+      "灯笼的轻微晃动动态",
+      "植被的随风摆动",
+      "光线的明暗柔和变化",
+      "天空云量的少量变化",
+      "水面雾气的浓淡变化",
+      "游船的位置、数量变化",
+      "水面波纹的动态变化",
+      "天空云层的形态变化",
+      "喷泉的水柱高度与形态变化",
+      "现场的行人数量与位置",
+      "灯光的明暗动态效果"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "远处模糊幡旗的具体文字内容",
+      "街区的具体规模与完整布局",
+      "左侧商铺的具体经营内容",
+      "建筑的具体建造年代",
+      "具体所在城市及精确位置",
+      "建筑的建造年代",
+      "廊步道通向的具体区域",
+      "具体城市位置",
+      "河道的具体名称与长度",
+      "无法确认该地点的具体城市与精确地理位置",
+      "无法确认古建筑的建造年代与历史背景",
+      "具体地点是否为杭州宋城",
+      "建筑的具体年代",
+      "大树的具体树种",
+      "具体地点名称"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_170c8e199bf237b4",
+        "summary": "傍晚时分的仿古商业街，街道两侧悬挂着中式幡旗与成串的橙黄色灯笼，不少游客在街道上行走、停留，整体氛围热闹，充满国风市井感。",
+        "visible_elements": [
+          "橙黄色串状灯笼",
+          "写有“杭州宋城”的竖版幡旗",
+          "写有“千古情”的竖版幡旗",
+          "仿古木质商铺摊位",
+          "行走、停留的游客人群",
+          "砖石铺装的步行街道路",
+          "两侧的树木绿植",
+          "远处的仿古建筑结构",
+          "右侧的监控设备",
+          "右侧的小型树木盆栽"
+        ],
+        "spatial_layout": [
+          "步行街道路从画面近景向远处延伸，贯穿画面中部",
+          "幡旗、灯笼悬挂在道路上方及两侧上空",
+          "商铺摊位分布在道路左侧",
+          "游客分布在道路中部及近景区域，朝向道路深处或两侧",
+          "树木绿植分布在道路两侧的上方及边缘位置"
+        ],
+        "architecture_and_materials": [
+          "幡旗为竖版长条形，米白色底配红色文字与深色边框，底部为尖角造型，带有传统纹样装饰",
+          "灯笼为橙黄色纸质/布艺材质，呈长椭圆形，成串横向悬挂，内部发光",
+          "左侧商铺为木质结构，深棕色外观，带有坡屋顶，是仿古中式样式",
+          "道路为平整的砖石铺装，呈暖黄色调",
+          "远处建筑带有飞檐类中式屋顶结构，色彩包含红、绿等传统配色"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "道路向画面深处延伸，视线沿街道纵深方向向前",
+            "天空在画面上方远处，呈现傍晚的暗蓝色"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "傍晚（黄昏刚入夜时段）",
+          "weather": "晴朗（无明显雨雪云雾迹象）",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [
+          "街道两侧的仿古幡旗与成串发光灯笼的布局",
+          "“杭州宋城”“千古情”的幡旗文字标识",
+          "步行街的纵深走向与砖石路面",
+          "两侧仿古木质商铺的建筑形态",
+          "两侧的绿植树木分布"
+        ],
+        "allowed_changes": [
+          "游客的数量、穿着、行走姿态与位置",
+          "灯笼的光影明暗细微变化",
+          "天空的色彩深浅过渡",
+          "商铺摊位的具体陈设细节"
+        ],
+        "suitable_shots": [
+          "沿街道向前推进的跟拍镜头",
+          "平视角度的街道全景扫拍",
+          "聚焦幡旗、灯笼的缓慢上摇镜头",
+          "以游客为前景的街道氛围跟拍镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "街道两侧建筑内部的视角镜头",
+          "高空俯视整条街区的全景镜头",
+          "街道尽头深处的细节特写镜头",
+          "建筑背面或地下区域的相关镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_92352d720630fe90",
+        "summary": "画面以仰视角度呈现中式仿古廊檐建筑，廊下悬挂多盏印有“宋城”字样的红色灯笼，周边有绿植环绕，背景是明亮的天空。",
+        "visible_elements": [
+          "中式仿古廊檐建筑",
+          "印有“宋城”字样的红色灯笼",
+          "绿色及红紫色叶片的绿植",
+          "木质廊柱",
+          "镂空木格栅装饰",
+          "青灰色翘角屋顶",
+          "木质栏杆步道",
+          "远处的茂密树林",
+          "浅淡明亮的天空"
+        ],
+        "spatial_layout": [
+          "中式廊檐建筑沿画面右上向左下延伸排布",
+          "红色灯笼悬挂在廊檐下方，沿廊的走向依次排列",
+          "绿植位于画面左侧及前景位置，在廊建筑的前方",
+          "廊柱支撑在廊檐下方，沿廊的走向分布",
+          "远处的树林在廊建筑的后方及下方区域",
+          "天空占据画面左上及上方区域"
+        ],
+        "architecture_and_materials": [
+          "建筑为中式仿古风格，屋顶是青灰色翘角飞檐样式，铺设瓦件",
+          "廊檐、廊柱为木质结构，呈深棕色调，表面有风化质感",
+          "廊身带有中式回纹样式的镂空木格栅装饰",
+          "灯笼为红色六面柱形，黑色边框，上下有黑色装饰边，表面印有黑色“宋城”字样及花卉、人物等彩绘图案"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "仰视",
+          "shot_size": "中景",
+          "orientation_clues": [
+            "廊檐从画面右上方向左下方延伸，翘角朝向画面左上方",
+            "左侧有前景绿植遮挡，拍摄者位于廊建筑的侧下方位置"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足，无法判断具体时段",
+          "weather": "晴天，天空明亮有淡云",
+          "season": "植被生长茂盛，无法判断具体季节"
+        },
+        "must_keep_candidates": [
+          "中式翘角飞檐的廊檐建筑结构",
+          "印有“宋城”字样的红色仿古灯笼",
+          "木质廊柱与镂空木格栅装饰",
+          "廊檐沿走向排布的整体结构"
+        ],
+        "allowed_changes": [
+          "灯笼的轻微晃动动态",
+          "植被的随风摆动",
+          "光线的明暗柔和变化",
+          "天空云量的少量变化"
+        ],
+        "suitable_shots": [
+          "沿廊檐走向平移的跟拍镜头",
+          "从下往上缓慢抬升的仰视推镜",
+          "聚焦灯笼细节的近景镜头",
+          "以左侧绿植为前景的廊景横移镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "建筑内部空间的拍摄",
+          "廊建筑背面视角的镜头",
+          "俯瞰整个区域的高空远景镜头",
+          "快速环绕建筑的运动镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_3c7ed6466dad5134",
+        "summary": "画面主体是一座架在河道上的中式廊桥，桥身有红色文字，河道水面有雾气，停靠有游船，岸边有中式建筑与茂密绿植，天空阴沉。",
+        "visible_elements": [
+          "中式廊桥",
+          "河道水面",
+          "水面雾气",
+          "带红色顶棚的游船",
+          "岸边中式建筑",
+          "茂密绿植（含垂柳）",
+          "红色灯笼",
+          "红色立体文字“宋城”",
+          "英文文字“SONG CHENG”",
+          "阴沉的天空"
+        ],
+        "spatial_layout": [
+          "中式廊桥横跨在河道上方，位于画面前中上部",
+          "河道水面在画面下半部分，水面上有雾气",
+          "游船停靠在画面右下方的河道岸边",
+          "岸边中式建筑在画面右下方，廊桥右下方",
+          "茂密绿植分布在河道左侧及远处",
+          "红色灯笼悬挂在廊桥的屋檐下"
+        ],
+        "architecture_and_materials": [
+          "廊桥为多层中式传统建筑样式，有飞檐翘角的黑色瓦片屋顶",
+          "廊桥主体为深棕色木质结构，带有中式花格木窗、木栏杆",
+          "桥拱部分为红棕色材质，带有金属铆钉装饰，桥拱下方有黄绿色支撑结构",
+          "岸边建筑为黑瓦木构的中式建筑，挂有红色灯笼",
+          "游船为深色船体，带有红色顶棚"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "廊桥正面朝向镜头，桥身文字正对观看者"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断",
+          "weather": "阴天",
+          "season": "春夏季（植被茂密翠绿）"
+        },
+        "must_keep_candidates": [
+          "廊桥的多层飞檐中式建筑形态",
+          "桥身的“宋城”红色文字与“SONG CHENG”英文标识",
+          "廊桥悬挂的红色灯笼",
+          "横跨河道的拱桥结构",
+          "河道及水面雾气的景观",
+          "岸边中式黑瓦建筑"
+        ],
+        "allowed_changes": [
+          "水面雾气的浓淡变化",
+          "游船的位置、数量变化",
+          "水面波纹的动态变化",
+          "天空云层的形态变化"
+        ],
+        "suitable_shots": [
+          "正面平视推进镜头，逐步靠近廊桥",
+          "固定机位展示廊桥与河道雾气的静态景观",
+          "从河道水面向上仰拍廊桥的镜头",
+          "沿河道横向平移展示廊桥全貌的镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "廊桥内部空间的穿梭镜头",
+          "廊桥背面视角的镜头",
+          "高空俯视整个区域的全景镜头",
+          "河道远端深处的景观镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_1261e86950af081c",
+        "summary": "夜晚场景下，前景是带蓝色灯光的喊泉喷泉，后方是中式古建筑，建筑上有多处发光标识，画面左上角有红色顶棚结构，整体是文旅景区的夜间景观。",
+        "visible_elements": [
+          "蓝色灯光喷泉（喊泉）",
+          "中式多层古建筑",
+          "红色灯笼",
+          "发光文字标识",
+          "红色顶棚及立柱",
+          "木质围栏",
+          "地面铺装",
+          "喊泉说明立牌",
+          "少量人物"
+        ],
+        "spatial_layout": [
+          "喷泉位于画面前景中部，被木质围栏围合",
+          "中式古建筑在喷泉后方，处于画面中后区域",
+          "红色顶棚结构在画面左上角，处于前景上方",
+          "喊泉说明立牌在喷泉右侧的围栏旁",
+          "红色立柱在画面最左侧，支撑顶部顶棚"
+        ],
+        "architecture_and_materials": [
+          "古建筑为多层中式楼阁样式，飞檐翘角，屋檐有黄色灯带装饰",
+          "古建筑主体呈深木色，带有中式镂空木格栅装饰",
+          "顶部顶棚为红色，搭配红色金属立柱",
+          "喷泉围栏为深色木质竖条结构",
+          "地面为光滑的深色铺装，可反射灯光"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "画面正对后方的古建筑与喷泉，建筑正面朝向镜头"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "夜晚",
+          "weather": "无法判断",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [
+          "中式古建筑的飞檐造型与整体轮廓",
+          "建筑上的“宋城”发光字与“SONG CHENG”标识",
+          "蓝色灯光的喊泉喷泉形态",
+          "左侧“ANCESHOW”竖排发光字",
+          "右侧喊泉说明立牌的样式与位置",
+          "红色顶棚与立柱的前景结构"
+        ],
+        "allowed_changes": [
+          "喷泉的水柱高度与形态变化",
+          "现场的行人数量与位置",
+          "灯光的明暗动态效果"
+        ],
+        "suitable_shots": [
+          "固定机位全景展示喷泉与古建筑的夜景",
+          "从当前位置向前推进的推镜头，聚焦喷泉或建筑",
+          "横向平移的摇镜头展示景区入口全景",
+          "慢镜头展示喷泉水柱动态"
+        ],
+        "unsupported_or_risky_shots": [
+          "建筑内部视角的镜头",
+          "高空俯视整个景区的航拍镜头",
+          "建筑背面视角的镜头",
+          "环绕古建筑360度的运动镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_84bf8349ad82ebb9",
+        "summary": "画面从石阶底部向上拍摄，一条宽阔的石质阶梯向上延伸，阶梯两侧立有黄底红边写有“宋城”的旗帜，阶梯顶端是中式古建筑，上方有枝叶繁茂的大树，顶部露出红色檐角，天空晴朗。",
+        "visible_elements": [
+          "石质阶梯",
+          "石质护栏",
+          "黄底红边“宋城”旗帜",
+          "中式古建筑",
+          "大树（带黄绿叶片）",
+          "红色檐角（画面顶部）",
+          "晴朗蓝天",
+          "土坡岩壁（右侧）",
+          "站在建筑门口的人",
+          "左侧提示标识牌"
+        ],
+        "spatial_layout": [
+          "石阶梯位于画面中央，从下方向上延伸至顶端建筑",
+          "阶梯两侧对称设置石护栏",
+          "“宋城”旗帜沿阶梯两侧护栏外竖立排列",
+          "中式古建筑位于阶梯顶端尽头",
+          "大树枝叶从画面上方垂落，覆盖部分建筑顶部和天空",
+          "画面最顶部露出红色的檐状结构",
+          "右侧阶梯旁是带植被的土坡岩壁",
+          "左侧阶梯旁有带顶棚的结构和提示牌"
+        ],
+        "architecture_and_materials": [
+          "阶梯为深灰色石材，表面有使用痕迹，散落少量落叶",
+          "护栏为灰色石材，带有回纹等中式雕刻纹样，望柱有造型装饰",
+          "顶端建筑为中式传统木结构风格，红棕色木构，红瓦屋顶，有斗拱、红灯笼装饰，门楣处有黄底红字牌匾",
+          "旗帜为黄底红边，边缘有红色齿状装饰，上书黑色“宋城”大字",
+          "顶部檐角为红色，表面有暗纹"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "仰视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "阶梯向上延伸指向顶端建筑，拍摄者位于阶梯底部朝向上方建筑"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线充足，应为晴朗的上午或下午",
+          "weather": "晴天，天空湛蓝无云",
+          "season": "无法判断，树叶有绿有黄，无法确定季节"
+        },
+        "must_keep_candidates": [
+          "向上延伸的石阶梯及两侧石护栏的结构",
+          "阶梯两侧排列的“宋城”黄底红边旗帜",
+          "顶端的中式红棕色古建筑及门楣牌匾",
+          "上方大树枝叶的覆盖效果",
+          "整体仰视的空间纵深感"
+        ],
+        "allowed_changes": [
+          "阶梯上落叶的数量和位置",
+          "建筑门口的人物",
+          "树叶的轻微晃动",
+          "光影的随时间变化"
+        ],
+        "suitable_shots": [
+          "沿阶梯向上推进的移动镜头",
+          "固定机位仰视阶梯与建筑的全景镜头",
+          "从下往上的慢升镜头",
+          "聚焦两侧旗帜的平移镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "建筑内部的镜头",
+          "阶梯下方区域的镜头",
+          "建筑背面或侧面的环绕镜头",
+          "高空俯视整个场地的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_4afaa92a9465ff06",
+        "summary": "画面展现了临水而建的中式传统建筑群，水面平静清晰倒映出建筑与周边景物，远处有现代风格建筑与山石，整体氛围朦胧静谧。",
+        "visible_elements": [
+          "中式传统临水建筑",
+          "平静的河道水面",
+          "红色串状灯笼",
+          "中式廊桥",
+          "垂柳类绿植",
+          "岸边枯枝干植物",
+          "远处现代风格建筑",
+          "远处山石状建筑结构",
+          "建筑木质栏杆",
+          "建筑立柱式基座"
+        ],
+        "spatial_layout": [
+          "中式传统建筑群沿河道右侧依次排布，底部以立柱架于水面之上",
+          "河道占据画面下半部分，水面完整倒映出岸边建筑与景物",
+          "廊桥位于画面左侧，横跨河道",
+          "现代风格建筑与山石结构处于画面远景，在传统建筑的后方",
+          "绿植分布在建筑旁与岸边区域"
+        ],
+        "architecture_and_materials": [
+          "传统建筑为黑灰色坡屋顶，带有中式翘角屋檐",
+          "建筑主体为深棕色木质结构，搭配木质雕花栏杆",
+          "建筑底层由浅灰色混凝土立柱支撑，架空于水面",
+          "建筑墙面有浅灰色石材部分，悬挂有竖版绿色底带文字的招牌",
+          "红色灯笼为串式悬挂，灯笼底部带有黄色装饰"
+        ],
+        "viewpoint": {
+          "camera_position": "地面",
+          "angle": "平视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "建筑沿河道横向延伸，拍摄方向正对河道与沿岸建筑",
+            "水面倒影与实景上下对称，可辅助判断拍摄高度与水面齐平相近"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断",
+          "weather": "阴天或有雾，能见度较低，远景朦胧",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [
+          "临水架空的中式传统建筑形态",
+          "成串悬挂的红色灯笼布局",
+          "水面清晰的建筑倒影效果",
+          "黑灰坡屋顶的中式建筑特征",
+          "沿岸建筑的整体排布结构"
+        ],
+        "allowed_changes": [
+          "灯笼的晃动状态",
+          "水面的轻微波纹变化",
+          "绿植的轻微动态",
+          "天空的光影明暗变化"
+        ],
+        "suitable_shots": [
+          "沿河道横向平移的全景镜头",
+          "固定机位的静帧镜头展现倒影",
+          "从水面缓缓抬升的平视推进镜头",
+          "聚焦建筑细节的中景平移镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "建筑内部空间的镜头",
+          "环绕建筑背面的运动镜头",
+          "高空俯视的大航拍镜头",
+          "远处现代建筑内部的镜头"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_1.jpg",
+        "url": "https://unsplash.com/photos/a-building-with-a-tree-in-front-of-it-pmjfybO3ikA",
+        "license": "Unsplash License",
+        "alt": "a building with a tree in front of it"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_2.jpg",
+        "url": "https://unsplash.com/photos/a-pagoda-in-the-middle-of-a-park-surrounded-by-trees-tfumKEOidUQ",
+        "license": "Unsplash License",
+        "alt": "a pagoda in the middle of a park surrounded by trees"
+      },
+      {
+        "name": "灵隐寺",
+        "path": "images/hz-lingyinsi_3.jpg",
+        "url": "https://unsplash.com/photos/brown-and-red-temple-kp3A2jurfP0",
+        "license": "Unsplash License",
+        "alt": "brown and red temple"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_170c8e199bf237b4",
+        "name": "宋城",
+        "url": "/assets/references/p_20260924_115620_cd0103/ref_170c8e199bf237b4.webp",
+        "source_page_url": "http://travel.sohu.com/a/952044210_100142210",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_92352d720630fe90",
+        "name": "宋城",
+        "url": "/assets/references/p_20260924_115620_cd0103/ref_92352d720630fe90.jpg",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4983211264692280253",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_3c7ed6466dad5134",
+        "name": "宋城",
+        "url": "/assets/references/p_20260924_115620_cd0103/ref_3c7ed6466dad5134.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4722800504080191133",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_1261e86950af081c",
+        "name": "宋城",
+        "url": "/assets/references/p_20260924_115620_cd0103/ref_1261e86950af081c.png",
+        "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5930578868691671064",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_84bf8349ad82ebb9",
+        "name": "宋城",
+        "url": "/assets/references/p_20260924_115620_cd0103/ref_84bf8349ad82ebb9.jpg",
+        "source_page_url": "http://www.zhihu.com/pin/1840112966965530624",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_4afaa92a9465ff06",
+        "name": "宋城",
+        "url": "/assets/references/p_20260924_115620_cd0103/ref_4afaa92a9465ff06.webp",
+        "source_page_url": "http://www.sohu.com/a/824153460_120360066",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "selected",
+    "version": 1,
+    "source": "preset",
+    "voice_id": "voice_05_male_documentary",
+    "name": "沉稳纪录男声",
+    "description": "低沉厚重男声、略带粗粝颗粒",
+    "reference_path": "D:\\AI_tourist_video\\assets\\media\\voices\\05_沉稳纪录_男声.wav",
+    "preview_url": "/assets/media/voices/05_沉稳纪录_男声.wav?v=b53235711c9c",
+    "reference_sha256": "b53235711c9c5d8c65c7b81760846e92d03d8d467c524b0a82808af70855fb87"
+  },
+  "music": {
+    "status": "selected",
+    "version": 1,
+    "recommendation_status": "ready",
+    "recommendation": {
+      "style": "新中式国风 / 国潮古韵融合（民族器乐为主 + 现代电子氛围铺底 + 节庆锣鼓点缀）；非戏曲唱腔、非纯古琴独奏，偏『宋韵市井 + 春节庆典』的影视感配乐；必须是无人声演唱/无念白的纯伴奏（或仅枕头音式气声衬词，可单独降轨）；同时可备一条更『打击乐庆典版』和一条更『空灵夜景版』作为不同段落的剪辑素材",
+      "tempo": "整体 76–108 BPM，4/4 拍，按 60 秒结构分段变速：0–12s 引入约 76–84 BPM（舒缓、留白、长音铺底）；12–27s 展开约 88–92 BPM（加入古筝/琵琶点状律动，中低频不挤）；27–47s 高潮约 100–108 BPM（中国大鼓+堂鼓进入，双拍推进，鼓点密而不满，每小节留半拍空隙给人声）；47–60s 收尾回落至 84–88 BPM 并渐弱收束。要求有清晰的『起—承—转—合』能量曲线，高潮点可对齐 27s 与 40s 两个画面切换点，结尾留 1.5–2s 干净尾巴（或可直接裁切的悬停延音）",
+      "instruments": "主奏：古筝（分解与刮奏作转场）、琵琶（点状颗粒感，用于 12–27s 廊下平移镜头）、竹笛/箫（长线条旋律，只在无人声的段落前 2–3 秒出现）、二胡或中胡（情绪铺陈，收尾用）。节奏：中国大鼓、堂鼓、小锣/镲（轻量点缀，仅用于 27s 后喊泉与登阶的推进，避免持续连打）、编钟或磬、铃铛/风铃（灯笼、水面雾气氛围）。现代层：弦乐群或合成弦乐 Pad 作底噪、低频 Sub Bass（20–30s 处给力量感，控制在不与人声 200–400Hz 冲突）、轻电子鼓或手鼓 Shaker。空间：适度混响的长尾（临水、雾气画面），但旁白段落整体混响尾巴收短。整体中频（1–4kHz）留空，人声频段不做持续独奏旋律叠加",
+      "mood": "静谧期待（暮色、灯次第亮起）→ 温润年味、亲切怀旧（廊檐红灯笼、倒影）→ 热闹欢腾、仪式感与惊叹（廊桥、喊泉蓝光水柱冲起）→ 明亮温暖、余韵定格（登阶、灯笼幡旗交织）。全程不悲情、不诡异、不厚重史诗压迫感，要保持『年轻游客可打卡、可分享』的轻盈喜庆底色",
+      "reason": "方案为 60 秒四段式（引入 12s / 展开 15s / 高潮 20s / 收尾 13s），旁白几乎全程覆盖且密度不均——引入段 4 个短句、高潮段单句较长，因此音乐不能靠连续主旋律叙事，而要靠分层留白与节奏点来托旁白：0–12s 画面是纵深前推的市井街景，音乐宜用稀疏古筝+Pad 长音营造『灯次第亮起』的渐亮感，把叙事位置让给旁白『今夜，入画』；12–27s 镜头沿廊檐平移、转临水倒影，需要稳定的中速点状律动来配合横向运镜的『流淌感』，琵琶颗粒与铃铛正对应灯笼轻晃与水面波纹；27–47s 是信息与情绪最高点（廊桥、雾气、红顶游船、喊泉蓝光水柱），鼓组与低频进入制造『水冲上天』的爆发，但旁白在这里承载核心 slogan『把新春过成一场千古情』，所以鼓点须留半拍空隙、旋律层不可堆满；47–60s 阶梯仰拍上升运镜需要音乐的『上行感』，用逐渐升高的弦乐/笛声线条配合镜头上升，最后在字幕字幕落点处收干净，避免盖住收尾语气。风格上『国风古韵 + 春节』要求民族器乐主导，而目标人群 18–35 岁要求它不能是传统民乐原声带，所以搜索时应锁定『新中式/国潮融合/影视感』而非纯民乐或纯古风歌曲；同时必须强调无人声、可做旁白垫底（underscore）的伴奏版本，否则会与全程旁白抢频段",
+      "search_keywords": [
+        "国风 春节 节庆 纯音乐",
+        "新中式 国潮 融合 器乐",
+        "宋韵 古风 市井 氛围",
+        "古筝 琵琶 竹笛 大鼓 合奏",
+        "中国大鼓 堂鼓 庆典 推进 无人声"
+      ],
+      "example_tracks": []
+    },
+    "warning": null,
+    "selected": {
+      "bgm_id": "bgm_08",
+      "scene": "节庆活动推广",
+      "scene_type": "节庆活动推广",
+      "title": "Feel Alive",
+      "artist": "Michael Ramir C.",
+      "duration": "01:46",
+      "description": "热情、有趣、铜管感；适合开幕、互动、群众笑脸和快切",
+      "preview_url": "/assets/media/bgm/03_festival_promotion/02_Feel_Alive__Michael_Ramir_C.mp3",
+      "local_path": "D:\\AI_tourist_video\\assets\\media\\bgm\\03_festival_promotion\\02_Feel_Alive__Michael_Ramir_C.mp3",
+      "source_page": "https://mixkit.co/free-stock-music/tag/travel/",
+      "license": "Mixkit Stock Music Free License"
+    }
+  },
+  "voice_tasks": [
+    "voice_20260924_121558_b9fd0e"
+  ],
+  "segment_tasks": [
+    "st_20260924_120138_2bcc84"
+  ],
+  "render_tasks": [
+    "rt_20260924_121045_1a35b4"
+  ],
+  "render": {
+    "status": "completed",
+    "version": 1,
+    "task_id": "rt_20260924_121045_1a35b4"
+  },
+  "final_video": {
+    "status": "completed",
+    "url": "/assets/renders/p_20260924_115620_cd0103/v1/with_bgm.mp4",
+    "preview_url": "/assets/renders/p_20260924_115620_cd0103/v1/with_bgm.mp4",
+    "default_variant": "with_bgm",
+    "clean": {
+      "url": "/assets/renders/p_20260924_115620_cd0103/v1/clean.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260924_115620_cd0103\\v1\\clean.mp4"
+    },
+    "with_bgm": {
+      "url": "/assets/renders/p_20260924_115620_cd0103/v1/with_bgm.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260924_115620_cd0103\\v1\\with_bgm.mp4"
+    },
+    "bgm_bed": {
+      "url": "/assets/renders/p_20260924_115620_cd0103/v1/bgm_bed.m4a",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260924_115620_cd0103\\v1\\bgm_bed.m4a"
+    },
+    "bgm_mix": {
+      "bgm_id": "bgm_08",
+      "title": "Feel Alive",
+      "target_lufs": -23.0,
+      "video_gain_db": 0,
+      "bgm_gain_db": 0,
+      "gain_db": 0,
+      "strategy": "loudness_normalized_mix"
+    },
+    "duration_s": 60.05,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16",
+    "version": 1,
+    "voice_version": 1,
+    "music_version": 1
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-24T03:56:20.882553+00:00",
+  "updated_at": "2026-09-24T04:15:58.142369+00:00",
+  "copywriting_text": "【0-12s】暮色一落，灯就亮了。幡旗招展，写上杭州宋城。橙黄串串，沿街铺开——今夜，入画。\n【12-27s】抬头，是翘角飞檐。红灯笼上写着宋城，在木格栅间轻轻摇晃。转个身，临水一排红灯，倒影落进水里，年味就有了形状。\n【27-47s】往前，是横跨河道的廊桥。多层飞檐，红灯笼垂着，水面雾气浮动，红顶游船靠岸。夜里，喊泉亮起蓝光——喊一声，水就冲上天。来宋城，把新春过成一场千古情。\n【47-60s】拾级而上，黄底红边的宋城旗帜一路相随。灯笼与幡旗交织，年味就在抬头之间。杭州宋城春节，等你入画。",
+  "segment_results": {
+    "seg_01": {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260924_115620_cd0103/seg_01/st_20260924_120138_2bcc84_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179022250350600000000000000000000ffffac14ddd0961ab2.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260924%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260924T040607Z&X-Tos-Expires=86400&X-Tos-Signature=198b8f0477a17ece25792843600d2fb8254eb77161174c9ab6aae282cedd9f07&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_01\\st_20260924_120138_2bcc84_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_01\\st_20260924_120138_2bcc84_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_01\\st_20260924_120138_2bcc84_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 12.064,
+        "expected_duration_seconds": 12.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.864,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -12.25,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "b53235711c9c5d8c65c7b81760846e92d03d8d467c524b0a82808af70855fb87",
+      "voice_version": 1,
+      "narration_hash": "198f55f91705a31d11c46c36e5cc2bdbe9f3f795e7c5428a5a0a0197e9770bb6",
+      "prompt_hash": "d8eb1675051783b10419d8b87e2d19d15f351178452e6c7cfec950840d922214",
+      "reference_asset_ids": [
+        "ref_170c8e199bf237b4"
+      ],
+      "task_id": "st_20260924_120138_2bcc84"
+    },
+    "seg_02": {
+      "segment_id": "seg_02",
+      "shot_ids": [
+        2
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260924_115620_cd0103/seg_02/st_20260924_120138_2bcc84_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179022251773700000000000000000000ffffac14ddd0975af2.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260924%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260924T040450Z&X-Tos-Expires=86400&X-Tos-Signature=d0f35f1f1b68bbeffababeac7d197c156ed5a613e4807e436711d49c9f8d5d96&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_02\\st_20260924_120138_2bcc84_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_02\\st_20260924_120138_2bcc84_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_02\\st_20260924_120138_2bcc84_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 7.072,
+        "expected_duration_seconds": 7.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.092,
+        "tail_activity_warning": true,
+        "speech_level_p90_dbfs": -15.37,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "b53235711c9c5d8c65c7b81760846e92d03d8d467c524b0a82808af70855fb87",
+      "voice_version": 1,
+      "narration_hash": "8cda40db93e1c9d4c9355efd0b8d11c512854da1d6585db14ab58ad72b6d2463",
+      "prompt_hash": "4efd9323823d14525d31170d9347f171e36d96f7ac9ba16c9314dab4fc2a2585",
+      "reference_asset_ids": [
+        "ref_92352d720630fe90"
+      ],
+      "task_id": "st_20260924_120138_2bcc84"
+    },
+    "seg_03": {
+      "segment_id": "seg_03",
+      "shot_ids": [
+        3
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260924_115620_cd0103/seg_03/st_20260924_120138_2bcc84_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179022252239600000000000000000000ffffac1446bbe0fe93.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260924%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260924T040631Z&X-Tos-Expires=86400&X-Tos-Signature=e6be38600841dc9b8e3a90ebaa5b380f9771cdc2af3b0b176f82c0a0e2b0a5b5&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_03\\st_20260924_120138_2bcc84_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_03\\st_20260924_120138_2bcc84_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_03\\st_20260924_120138_2bcc84_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 8.064,
+        "expected_duration_seconds": 8.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.324,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -12.39,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "b53235711c9c5d8c65c7b81760846e92d03d8d467c524b0a82808af70855fb87",
+      "voice_version": 1,
+      "narration_hash": "8b776c8204bcbe5dd146be8f68e85b3980c0fae43393ee4c88ea1df5feaf3267",
+      "prompt_hash": "dd3352759f9482a3425df765ed8b62fde16579bf38ddbd625ff4fbb7de8bb38c",
+      "reference_asset_ids": [
+        "ref_4afaa92a9465ff06"
+      ],
+      "task_id": "st_20260924_120138_2bcc84"
+    },
+    "seg_04": {
+      "segment_id": "seg_04",
+      "shot_ids": [
+        4
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260924_115620_cd0103/seg_04/st_20260924_120138_2bcc84_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179022252911900000000000000000000ffffac15a45e312412.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260924%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260924T040831Z&X-Tos-Expires=86400&X-Tos-Signature=7a7fd6a45ac94be6251d27677d8fb7554e1079b85f87b6e8a6ecd88f0d5bb688&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_04\\st_20260924_120138_2bcc84_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_04\\st_20260924_120138_2bcc84_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_04\\st_20260924_120138_2bcc84_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 10.08,
+        "expected_duration_seconds": 10.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.14,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -14.97,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "b53235711c9c5d8c65c7b81760846e92d03d8d467c524b0a82808af70855fb87",
+      "voice_version": 1,
+      "narration_hash": "db434cb62636ab8c71826b5735c9f8b23c10d6e7fdc08f896e0b58c7a1e0e67b",
+      "prompt_hash": "a10060bb7eb599ba88e1d176b85f475be32c1c22a22339ad4c9c26ffb482871e",
+      "reference_asset_ids": [
+        "ref_3c7ed6466dad5134"
+      ],
+      "task_id": "st_20260924_120138_2bcc84"
+    },
+    "seg_05": {
+      "segment_id": "seg_05",
+      "shot_ids": [
+        5
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260924_115620_cd0103/seg_05/st_20260924_120138_2bcc84_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179022283234000000000000000000000ffffac1525a3af115a.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260924%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260924T040928Z&X-Tos-Expires=86400&X-Tos-Signature=76c5be80b96fc8f5188e514d19fd8d8f13f5a726f08797540c01ea02f2c4f1e8&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_05\\st_20260924_120138_2bcc84_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_05\\st_20260924_120138_2bcc84_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_05\\st_20260924_120138_2bcc84_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 10.08,
+        "expected_duration_seconds": 10.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.34,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -13.31,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "b53235711c9c5d8c65c7b81760846e92d03d8d467c524b0a82808af70855fb87",
+      "voice_version": 1,
+      "narration_hash": "e1c9451401faccd40c3310359fa356a517f13b8db50a934275bedf3c6a79fc91",
+      "prompt_hash": "0aa5fe15b9dfe85acca67dbdda66b4b2a489ea4f282131a230384b0bd740a14c",
+      "reference_asset_ids": [
+        "ref_1261e86950af081c"
+      ],
+      "task_id": "st_20260924_120138_2bcc84"
+    },
+    "seg_06": {
+      "segment_id": "seg_06",
+      "shot_ids": [
+        6
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260924_115620_cd0103/seg_06/st_20260924_120138_2bcc84_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179022254600200000000000000000000ffffac1446b2ec4f5b.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260924%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260924T040650Z&X-Tos-Expires=86400&X-Tos-Signature=4d767cb16b64f0f5aba4d622c8c4a132f31cedca5fa1cc487b8ed8ad40bc649f&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_06\\st_20260924_120138_2bcc84_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_06\\st_20260924_120138_2bcc84_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260924_115620_cd0103\\seg_06\\st_20260924_120138_2bcc84_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 13.056,
+        "expected_duration_seconds": 13.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.396,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -13.86,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "b53235711c9c5d8c65c7b81760846e92d03d8d467c524b0a82808af70855fb87",
+      "voice_version": 1,
+      "narration_hash": "6476160d25022258941a4f84d72b7af258f1ad4374390bd6b89e37e142e10d8c",
+      "prompt_hash": "7d840d9eec108df99e066e45e41ab441dd06fe9a23d71e3423062613578cadfe",
+      "reference_asset_ids": [
+        "ref_84bf8349ad82ebb9"
+      ],
+      "task_id": "st_20260924_120138_2bcc84"
+    }
+  },
+  "active_segment_ids": []
+}

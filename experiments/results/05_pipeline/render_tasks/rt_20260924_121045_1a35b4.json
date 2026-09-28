@@ -1,0 +1,57 @@
+{
+  "task_id": "rt_20260924_121045_1a35b4",
+  "project_id": "p_20260924_115620_cd0103",
+  "kind": "render",
+  "status": "completed",
+  "progress": 100,
+  "message": "最终视频已生成",
+  "request": {
+    "segment_ids": [
+      "seg_01",
+      "seg_02",
+      "seg_03",
+      "seg_04",
+      "seg_05",
+      "seg_06"
+    ],
+    "voice_version": 1,
+    "voice_reference_sha256": "b53235711c9c5d8c65c7b81760846e92d03d8d467c524b0a82808af70855fb87",
+    "music_version": 1
+  },
+  "result": {
+    "status": "completed",
+    "url": "/assets/renders/p_20260924_115620_cd0103/v1/with_bgm.mp4",
+    "preview_url": "/assets/renders/p_20260924_115620_cd0103/v1/with_bgm.mp4",
+    "default_variant": "with_bgm",
+    "clean": {
+      "url": "/assets/renders/p_20260924_115620_cd0103/v1/clean.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260924_115620_cd0103\\v1\\clean.mp4"
+    },
+    "with_bgm": {
+      "url": "/assets/renders/p_20260924_115620_cd0103/v1/with_bgm.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260924_115620_cd0103\\v1\\with_bgm.mp4"
+    },
+    "bgm_bed": {
+      "url": "/assets/renders/p_20260924_115620_cd0103/v1/bgm_bed.m4a",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260924_115620_cd0103\\v1\\bgm_bed.m4a"
+    },
+    "bgm_mix": {
+      "bgm_id": "bgm_08",
+      "title": "Feel Alive",
+      "target_lufs": -23.0,
+      "video_gain_db": 0,
+      "bgm_gain_db": 0,
+      "gain_db": 0,
+      "strategy": "loudness_normalized_mix"
+    },
+    "duration_s": 60.05,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16",
+    "version": 1,
+    "voice_version": 1,
+    "music_version": 1
+  },
+  "error": null,
+  "created_at": "2026-09-24T04:10:45.748210+00:00",
+  "updated_at": "2026-09-24T04:11:21.197729+00:00"
+}

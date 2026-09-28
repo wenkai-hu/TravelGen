@@ -1,0 +1,429 @@
+{
+  "task_id": "t_20260815_093339_1eac21",
+  "status": "done",
+  "progress": 100,
+  "message": "管线完成，等待 B 侧合成成片",
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "一湖千年",
+        "content": "以水墨质感航拍开场，晨雾氤氲中镜头缓缓推开水面，西湖全景如画卷舒展。字幕淡入'一湖载古今，十景各成诗'，在光影流动中点题西湖十景，奠定大气唯美基调。",
+        "duration_s": 12
+      },
+      {
+        "section": "展开",
+        "title": "移步成画",
+        "content": "快节奏蒙太奇串联经典景致：苏堤春晓的桃红柳绿、曲院风荷的夏日听雨、平湖秋月的月色如洗、断桥残雪的诗意留白。通过四季光影流转，展现十景在不同时节的绝美瞬间，强化视觉记忆点。",
+        "duration_s": 16
+      },
+      {
+        "section": "高潮",
+        "title": "此身入景",
+        "content": "从'观景'转向'入景'，以18-35岁年轻人视角展开沉浸式体验：手摇橹船穿行三潭印月，骑行苏堤穿越斑驳林荫，宝石山巅静待雷峰夕照。景与人交融，传递'你亦是西湖一景'的年轻化情感共鸣。",
+        "duration_s": 20
+      },
+      {
+        "section": "收尾",
+        "title": "待你落款",
+        "content": "蓝调时刻的湖面倒映远山灯火，画面由动转静。开放式文案'西湖十景，哪一景是你的心动？'引发互动，最终落版'杭州西湖，等你入画'，以留白意境邀请年轻游客前来书写自己的西湖记忆。",
+        "duration_s": 12
+      }
+    ],
+    "plan_summary": "西湖十景"
+  },
+  "copywriting": {
+    "titles": [
+      "西湖无墙，风月同天",
+      "这大概是中国最“贵”的免费景区"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "你见过不要门票的世界遗产吗？6.38平方千米的西湖，自2002年起免费开放，是中国首批零门槛的5A盛景。2011年，它被世界记住；而千年前，苏轼早已用一条苏堤，把这里裁成了诗。",
+        "duration_s": 15
+      },
+      {
+        "idx": 2,
+        "text": "春晓苏堤，桃红柳绿；断桥残雪，湖山浪漫。泛舟至三潭印月——北宋元祐四年，苏轼立塔为标，三座青石葫芦相距六十米，中空五孔待月来。那印在一元纸币背后的，是中国人最原乡的江南。",
+        "duration_s": 15
+      },
+      {
+        "idx": 3,
+        "text": "待雷峰塔浸染夕照，九百七十七年的光阴里，白娘子的传说从未老去。塔内供奉着佛螺髻发舍利，也安放着一个民族最温柔的爱情想象。灵隐寺一千七百年的钟声里，飞来峰照见古今，而西湖的水，永远年轻。",
+        "duration_s": 15
+      },
+      {
+        "idx": 4,
+        "text": "六平方公里的世界遗产，两千年风月，零元门票。西湖把最慷慨的温柔给了世界——“这一湖千年，免费，且无价。”",
+        "duration_s": 15
+      }
+    ],
+    "hashtags": [
+      "#西湖十景",
+      "#0元打卡世界遗产",
+      "#西湖无墙风月同天"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "你见过不要门票的世界遗产吗？6.38平方千米的西湖，自2002年起免费开放，是中国首批零门槛的5A盛景。2011年，它被世界记住；而千年前，苏轼早已用一条苏堤，把这里裁成了诗。",
+        "start_s": 0,
+        "end_s": 15
+      },
+      {
+        "line_id": 2,
+        "text": "春晓苏堤，桃红柳绿；断桥残雪，湖山浪漫。泛舟至三潭印月——北宋元祐四年，苏轼立塔为标，三座青石葫芦相距六十米，中空五孔待月来。那印在一元纸币背后的，是中国人最原乡的江南。",
+        "start_s": 15,
+        "end_s": 30
+      },
+      {
+        "line_id": 3,
+        "text": "待雷峰塔浸染夕照，九百七十七年的光阴里，白娘子的传说从未老去。塔内供奉着佛螺髻发舍利，也安放着一个民族最温柔的爱情想象。灵隐寺一千七百年的钟声里，飞来峰照见古今，而西湖的水，永远年轻。",
+        "start_s": 30,
+        "end_s": 45
+      },
+      {
+        "line_id": 4,
+        "text": "六平方公里的世界遗产，两千年风月，零元门票。西湖把最慷慨的温柔给了世界——“这一湖千年，免费，且无价。”",
+        "start_s": 45,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "这一湖千年：免费且无价的西湖",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "西湖湖面",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 8,
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "西湖全景与苏堤",
+            "background": "朝霞晨雾",
+            "prompt": "电影级航拍大远景，清晨西湖全景与苏堤横卧湖面，晨雾缭绕中朝霞染红天际，水面倒映天光，湖色幽蓝静谧，写实质感，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 2,
+        "location": "苏堤",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 2,
+            "duration_s": 7,
+            "camera": {
+              "type": "地面机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "苏堤春晓桃红柳绿",
+            "background": "西湖湖面",
+            "prompt": "电影级地面机位全景平移，上午苏堤春晓，桃花嫣红柳枝翠绿，游人漫步堤上，一侧湖面波光粼粼，自然光柔和，写实质感，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 3,
+        "location": "三潭印月",
+        "time": "午后",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 8,
+            "camera": {
+              "type": "无人机",
+              "movement": "环绕",
+              "angle": "俯拍"
+            },
+            "shot_size": "全景",
+            "subject": "三座青石葫芦塔",
+            "background": "西湖水面",
+            "prompt": "电影级无人机航拍全景，午后三潭印月，三座青石葫芦塔相距矗立于碧绿湖面，塔身中空五孔细节清晰，阳光照射塔身与波光，8k写实质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 4,
+        "location": "三潭印月游船",
+        "time": "午后",
+        "shot_list": [
+          {
+            "shot_id": 4,
+            "duration_s": 6,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "特写",
+            "subject": "一元纸币与三潭印月实景",
+            "background": "湖面",
+            "prompt": "电影级固定机位特写，午后手持一元纸币，背景虚化的三潭印月实景与纸币图案交叠呼应，湖面柔光，暖色调写实质感，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 5,
+        "location": "雷峰塔",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 5,
+            "duration_s": 8,
+            "camera": {
+              "type": "地面机位",
+              "movement": "推",
+              "angle": "仰拍"
+            },
+            "shot_size": "全景",
+            "subject": "雷峰塔塔身",
+            "background": "夕阳天空",
+            "prompt": "电影级地面机位全景，黄昏雷峰塔沐浴金色夕照，塔身铜顶熠熠生辉，仰拍视角塔尖指向橙红天空，光影庄严神圣，8k写实质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 6,
+        "location": "灵隐寺飞来峰",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 6,
+            "duration_s": 7,
+            "camera": {
+              "type": "地面机位",
+              "movement": "摇",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "飞来峰石刻佛像与灵隐寺建筑",
+            "background": "山林古树",
+            "prompt": "电影级地面机位中景，入夜灵隐寺飞来峰，石刻佛像群在暖黄灯光下庄严肃穆，古刹屋檐与千年银杏隐约可见，静谧悠远氛围，8k写实质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 7,
+        "location": "西湖湖面",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 7,
+            "duration_s": 8,
+            "camera": {
+              "type": "航拍",
+              "movement": "拉",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "西湖全景",
+            "background": "城市灯火与雷峰塔灯光",
+            "prompt": "电影级航拍大远景，入夜西湖全景俯瞰，湖面倒映城市灯火与远处雷峰塔暖光，苏堤白堤如发光丝带蜿蜒于深蓝湖面，静谧辽阔，8k写实质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 8,
+        "location": "西湖湖面",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 8,
+            "duration_s": 8,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "近景",
+            "subject": "湖水涟漪与灯光倒影",
+            "background": "岸边灯火",
+            "prompt": "电影级固定机位近景，入夜西湖水面细波涟漪，倒映岸边灯笼暖光与塔影，水色幽蓝深邃，温柔静谧的写实质感，8k分辨率"
+          }
+        ]
+      }
+    ]
+  },
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "enabled": false,
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_clips": [
+    {
+      "shot_id": 1,
+      "task_id": "cgt-20260815093831-9f566",
+      "status": "succeeded",
+      "prompt": "电影级航拍大远景，清晨西湖全景与苏堤横卧湖面，晨雾缭绕中朝霞染红天际，水面倒映天光，湖色幽蓝静谧，写实质感，8k分辨率",
+      "duration_s": 5,
+      "cost_yuan": 1.0,
+      "video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02178675791180900000000000000000000ffffac140a38284658.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260815%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260815T014152Z&X-Tos-Expires=86400&X-Tos-Signature=27cb4a5150e0129589907dd873db069e6df0f7dad53ec83f0d436dde52ab87f7&X-Tos-SignedHeaders=host",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\t_20260815_093339_1eac21_1.mp4"
+    },
+    {
+      "shot_id": 2,
+      "task_id": "cgt-20260815093831-zwfsv",
+      "status": "succeeded",
+      "prompt": "电影级地面机位全景平移，上午苏堤春晓，桃花嫣红柳枝翠绿，游人漫步堤上，一侧湖面波光粼粼，自然光柔和，写实质感，8k分辨率",
+      "duration_s": 5,
+      "cost_yuan": 1.0,
+      "video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02178675791214500000000000000000000ffffac192388e0b78a.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260815%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260815T014243Z&X-Tos-Expires=86400&X-Tos-Signature=b6e8a10c5057f2fbd112966ca1faca0b27cd3eefb8e59f3c79bf9d77d082af75&X-Tos-SignedHeaders=host",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\t_20260815_093339_1eac21_2.mp4"
+    },
+    {
+      "shot_id": 3,
+      "task_id": "cgt-20260815093832-dn5mj",
+      "status": "succeeded",
+      "prompt": "电影级无人机航拍全景，午后三潭印月，三座青石葫芦塔相距矗立于碧绿湖面，塔身中空五孔细节清晰，阳光照射塔身与波光，8k写实质感",
+      "duration_s": 5,
+      "cost_yuan": 1.0,
+      "video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02178675791246200000000000000000000ffffac14571ef12e33.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260815%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260815T014302Z&X-Tos-Expires=86400&X-Tos-Signature=e76b4295dceff89e268388ca610c209b3cb9e1d456bafa29eb2a6aa9f6b7edba&X-Tos-SignedHeaders=host",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\t_20260815_093339_1eac21_3.mp4"
+    },
+    {
+      "shot_id": 4,
+      "task_id": "cgt-20260815093832-bjsm9",
+      "status": "succeeded",
+      "prompt": "电影级固定机位特写，午后手持一元纸币，背景虚化的三潭印月实景与纸币图案交叠呼应，湖面柔光，暖色调写实质感，8k分辨率",
+      "duration_s": 5,
+      "cost_yuan": 1.0,
+      "video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02178675791300600000000000000000000ffffac14abd2e7fcdb.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260815%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260815T014101Z&X-Tos-Expires=86400&X-Tos-Signature=6dd88d703ae17dda5ada22c7f91ebad3d46c790e68a39f6712dfedf600617334&X-Tos-SignedHeaders=host",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\t_20260815_093339_1eac21_4.mp4"
+    },
+    {
+      "shot_id": 5,
+      "task_id": "cgt-20260815093833-khdr8",
+      "status": "succeeded",
+      "prompt": "电影级地面机位全景，黄昏雷峰塔沐浴金色夕照，塔身铜顶熠熠生辉，仰拍视角塔尖指向橙红天空，光影庄严神圣，8k写实质感",
+      "duration_s": 5,
+      "cost_yuan": 1.0,
+      "video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02178675791355200000000000000000000ffffac15a688d12667.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260815%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260815T014106Z&X-Tos-Expires=86400&X-Tos-Signature=dc053dd0be77e561995b62b99fffb1ed6d078803fcb563b9445c2f578d6148b8&X-Tos-SignedHeaders=host",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\t_20260815_093339_1eac21_5.mp4"
+    },
+    {
+      "shot_id": 6,
+      "task_id": "cgt-20260815093833-c2qql",
+      "status": "succeeded",
+      "prompt": "电影级地面机位中景，入夜灵隐寺飞来峰，石刻佛像群在暖黄灯光下庄严肃穆，古刹屋檐与千年银杏隐约可见，静谧悠远氛围，8k写实质感",
+      "duration_s": 5,
+      "cost_yuan": 1.0,
+      "video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02178675791392700000000000000000000ffffac1778af4b0e76.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260815%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260815T014208Z&X-Tos-Expires=86400&X-Tos-Signature=899121e7c82c0710a8733f3d22c30954f0c1ebb421ac5db7367f4df452d3f697&X-Tos-SignedHeaders=host",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\t_20260815_093339_1eac21_6.mp4"
+    },
+    {
+      "shot_id": 7,
+      "task_id": "cgt-20260815093834-xff67",
+      "status": "succeeded",
+      "prompt": "电影级航拍大远景，入夜西湖全景俯瞰，湖面倒映城市灯火与远处雷峰塔暖光，苏堤白堤如发光丝带蜿蜒于深蓝湖面，静谧辽阔，8k写实质感",
+      "duration_s": 5,
+      "cost_yuan": 1.0,
+      "video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02178675791417000000000000000000000ffffac158e4be91028.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260815%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260815T014237Z&X-Tos-Expires=86400&X-Tos-Signature=c84e7f6cdc6c9db8ca3a5e6176ade28110daffbf9cae54357eabc03ceeb09c73&X-Tos-SignedHeaders=host",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\t_20260815_093339_1eac21_7.mp4"
+    },
+    {
+      "shot_id": 8,
+      "task_id": "cgt-20260815093834-dkf59",
+      "status": "succeeded",
+      "prompt": "电影级固定机位近景，入夜西湖水面细波涟漪，倒映岸边灯笼暖光与塔影，水色幽蓝深邃，温柔静谧的写实质感，8k分辨率",
+      "duration_s": 5,
+      "cost_yuan": 1.0,
+      "video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02178675791457600000000000000000000ffffac1801db52c1c6.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260815%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260815T014113Z&X-Tos-Expires=86400&X-Tos-Signature=95c7ea804331c2cb25237abf3f9fd99988e8b34e598e67a75c872bd461e9d934&X-Tos-SignedHeaders=host",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\t_20260815_093339_1eac21_8.mp4"
+    }
+  ],
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "created_at": "2026-08-15T01:33:39.806456+00:00",
+  "updated_at": "2026-08-15T01:43:16.328368+00:00"
+}

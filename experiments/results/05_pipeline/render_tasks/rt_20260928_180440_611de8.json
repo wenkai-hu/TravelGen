@@ -1,0 +1,55 @@
+{
+  "task_id": "rt_20260928_180440_611de8",
+  "project_id": "p_20260928_174225_e4e9b8",
+  "kind": "render",
+  "status": "completed",
+  "progress": 100,
+  "message": "最终视频已生成",
+  "request": {
+    "segment_ids": [
+      "seg_01",
+      "seg_02",
+      "seg_03",
+      "seg_04"
+    ],
+    "voice_version": 1,
+    "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+    "music_version": 1
+  },
+  "result": {
+    "status": "completed",
+    "url": "/assets/renders/p_20260928_174225_e4e9b8/v1/with_bgm.mp4",
+    "preview_url": "/assets/renders/p_20260928_174225_e4e9b8/v1/with_bgm.mp4",
+    "default_variant": "with_bgm",
+    "clean": {
+      "url": "/assets/renders/p_20260928_174225_e4e9b8/v1/clean.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260928_174225_e4e9b8\\v1\\clean.mp4"
+    },
+    "with_bgm": {
+      "url": "/assets/renders/p_20260928_174225_e4e9b8/v1/with_bgm.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260928_174225_e4e9b8\\v1\\with_bgm.mp4"
+    },
+    "bgm_bed": {
+      "url": "/assets/renders/p_20260928_174225_e4e9b8/v1/bgm_bed.m4a",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260928_174225_e4e9b8\\v1\\bgm_bed.m4a"
+    },
+    "bgm_mix": {
+      "bgm_id": "bgm_11",
+      "title": "Romantic 03",
+      "target_lufs": -23.0,
+      "video_gain_db": 0,
+      "bgm_gain_db": 0,
+      "gain_db": 0,
+      "strategy": "loudness_normalized_mix"
+    },
+    "duration_s": 60.07,
+    "resolution": "1080p",
+    "aspect_ratio": "16:9",
+    "version": 1,
+    "voice_version": 1,
+    "music_version": 1
+  },
+  "error": null,
+  "created_at": "2026-09-28T10:04:40.530607+00:00",
+  "updated_at": "2026-09-28T10:04:57.374809+00:00"
+}

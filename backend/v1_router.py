@@ -5,10 +5,10 @@
 - 分阶段：创建项目 → 搜图 → 方案确认 → 一图一镜分镜 → 音色/BGM → Shot → 双版本成片
 - 内部 Segment 记录保留给渲染和旧项目；新项目按 Shot 发起生成请求
 """
-import asyncio, copy, uuid
+import asyncio, copy, os, uuid
 from datetime import datetime
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 
 from pipeline import (ark_client, composer, kb, media_catalog, model_client, reference_search,
                       segment_planner, visual_rag, vlm_client, voice_sample_pipeline)
@@ -20,7 +20,8 @@ from schemas import (ConfirmPlanRequest, ConfirmReferencesRequest,
                      RegenerateShotRequest, RenderRequest, SegmentPatch, ShotPatch, StoryboardRequest,
                      VoiceCandidateRequest, VoiceSelectionRequest, MusicSelectionRequest,
                      RenderMixRequest)
-from constants import SCENE_TYPE_ALIASES, SCENE_TYPES, ASPECT_RATIOS, RESOLUTIONS, VIDEO_MODELS
+from constants import (SCENE_TYPE_ALIASES, SCENE_TYPES, ASPECT_RATIOS, RESOLUTIONS, VIDEO_MODELS,
+                       MAX_SELECTED_REFERENCES)
 from db.auth import get_current_user
 import projects as P
 
@@ -130,7 +131,7 @@ async def _run_voice_task(project: P.Project, task: P.VoiceTask):
         else:
             prompt = voice_sample_pipeline.build_prompt(description)
             seedance_id, error = await asyncio.to_thread(
-                ark_client.submit, runner.seedance, prompt, 5, "480p", "9:16",
+                ark_client.submit_safe, runner.seedance, prompt, 5, "480p", "9:16",
                 images=None, audio=None, generate_audio=True,
             )
             if not seedance_id:
@@ -141,7 +142,7 @@ async def _run_voice_task(project: P.Project, task: P.VoiceTask):
             video_url = None
             for _ in range(240):
                 status, url, poll_error = await asyncio.to_thread(
-                    ark_client.get_task, runner.seedance, seedance_id)
+                    ark_client.get_task_safe, runner.seedance, seedance_id)
                 if status == "succeeded":
                     video_url = url
                     break
@@ -298,6 +299,30 @@ async def _run_mix_task(project: P.Project, task: P.RenderTask):
         task.dump(), project.dump()
 
 
+def _register_user_candidates(project: P.Project) -> None:
+    """把 project.request['assets'] 里的用户图登记成候选，并整体排在搜到的图前面。
+
+    用户自己的照片最该被先看到；而且一图一镜、排在前面的默认更容易进选。顺序按上传先后。
+    每次从 request['assets'] 整个重建，所以幂等 —— 搜图任务要跑好几秒，用户可能正好在
+    这期间上传，两条路径都收敛到这里，上传端点只负责往 request['assets'] 里追加。
+    函数内无 await，读改写是原子的。
+    """
+    city, location = project.request.get("city", ""), project.request.get("location", "")
+    mine, seen = [], set()
+    for asset in project.request.get("assets", []):
+        url = str(asset.get("url", "")).strip()
+        if not url or url in seen:
+            continue
+        seen.add(url)
+        mine.append(visual_rag.candidate_from_user_asset(asset, city, location))
+    # 搜到的候选接在后面；与用户图 URL 撞车的（理论上不该有）让给用户那一份
+    project.reference_candidates = mine + [
+        candidate for candidate in project.reference_candidates
+        if candidate.get("provider") != "user"
+        and candidate.get("image_url") not in seen
+    ]
+
+
 async def _run_reference_search(project: P.Project):
     """创建项目后的第一阶段：联网搜图，等待用户确认，不提前生成 Plan。"""
     try:
@@ -312,22 +337,19 @@ async def _run_reference_search(project: P.Project):
                 project.request.get("city", ""),
                 project.request.get("location", ""),
             )
-        # 保留创建请求中用户主动附带的图片；同 URL 去重。
-        candidates += [
-            visual_rag.candidate_from_user_asset(
-                asset, project.request.get("city", ""), project.request.get("location", ""))
-            for asset in project.request.get("assets", []) if asset.get("url")
-        ]
         unique, seen = [], set()
         for candidate in candidates:
-            if candidate.get("image_url") and candidate["image_url"] not in seen:
-                seen.add(candidate["image_url"])
+            url = candidate.get("image_url")
+            if url and url not in seen:
+                seen.add(url)
                 unique.append(candidate)
-        if not unique:
-            raise RuntimeError("没有搜索到图片候选，请检查百度千帆配置或换一个更具体的景点名称")
+        # 先落搜索结果，再补用户图（含搜图期间刚上传的）
         project.reference_candidates = unique
+        _register_user_candidates(project)
+        if not project.reference_candidates:
+            raise RuntimeError("没有搜索到图片候选，请检查百度千帆配置或换一个更具体的景点名称")
         project.status, project.progress = "waiting_reference_confirm", 5
-        project.message = f"找到 {len(unique)} 张候选图片，请确认真实景点图片"
+        project.message = f"找到 {len(project.reference_candidates)} 张候选图片，请确认真实景点图片"
     except Exception as e:
         project.status = "failed"
         project.message = f"搜索景点图片失败｜{type(e).__name__}: {e}"
@@ -438,6 +460,71 @@ async def get_references(pid: str, user: str = Depends(get_current_user)):
         "selected_assets": project.reference_assets,
         "visual_profile": project.visual_profile,
         "reference_version": project.reference_version,
+        # 参考图额度：前端据此提示"还能选几张"，公式只在 validate.py 一处，别在前端复制
+        "max_selected": MAX_SELECTED_REFERENCES,
+        "duration_cap": v.max_useful_references(project.request.get("duration_s") or 60),
+        # 「顺序谁定」跟着项目走，前端据此把开关摆回去。注意它只在确认那一刻落库：
+        # 排序页上还没点确认就刷新的话，这里读到的仍是默认的 False（跟 chosen 的图一起丢，
+        # 都是本地态），前端会把开关摆回「我自己排」。
+        "auto_order": bool(project.request.get("auto_order")),
+    }
+
+
+@router.post("/projects/{pid}/reference-uploads")
+async def add_reference_source(pid: str,
+                               file: UploadFile | None = File(None),
+                               url: str | None = Form(None),
+                               user: str = Depends(get_current_user)):
+    """加一张用户自己的参考图：上传文件，或粘贴远端链接。两者都自动入选、占额度。
+
+    文件在这一步就落盘；链接留到确认时才下载（与搜到的候选走同一套流程）。
+    搜图还在跑时也能加：只往 request['assets'] 追加，合并统一走
+    _register_user_candidates，不会被搜图任务完成时的整体赋值覆盖。
+    搜图失败的项目也允许加 —— 用户自带照片是那种情况下的唯一出路，
+    加成功后把项目从 failed 拉回待确认。
+    """
+    project = _owned_project(pid, user)
+    _state_guard(project, {"searching_references", "waiting_reference_confirm", "failed"},
+                 "添加参考图")
+    assets = project.request.setdefault("assets", [])
+    if len(assets) >= MAX_SELECTED_REFERENCES:
+        _err(400, "quota_exceeded",
+             f"最多 {MAX_SELECTED_REFERENCES} 张参考图，请先移除已添加的")
+
+    link = str(url or "").strip()
+    if file is not None and file.filename:
+        data = await file.read(visual_rag.MAX_IMAGE_BYTES + 1)
+        try:
+            asset = await asyncio.to_thread(
+                visual_rag.store_upload, pid, data,
+                project.request.get("city", ""), project.request.get("location", ""),
+                os.path.basename(file.filename))
+        except Exception as exc:
+            _err(400, "invalid_image", f"{type(exc).__name__}: {exc}")
+        image_url = asset["cached_url"]
+    elif link.startswith(("http://", "https://")):
+        image_url = link
+    elif link:
+        _err(400, "invalid_param", "图片链接需以 http:// 或 https:// 开头")
+    else:
+        _err(400, "invalid_param", "请提供要上传的图片文件，或一个图片链接")
+
+    # 到这里之后不再 await：候选池的读改写必须原子
+    assets.append({"type": "image", "url": image_url})
+    _register_user_candidates(project)
+    if project.status == "failed":
+        project.status, project.progress = "waiting_reference_confirm", 5
+        project.message = f"已用你提供的 {len(assets)} 张参考图继续，请确认"
+    project.dump()
+    candidate = next(
+        (c for c in project.reference_candidates if c.get("image_url") == image_url), None)
+    return {
+        "project_id": pid,
+        "status": project.status,
+        "url": image_url,
+        "candidate": candidate,
+        "provided_count": len(assets),
+        "max_selected": MAX_SELECTED_REFERENCES,
     }
 
 
@@ -452,6 +539,8 @@ async def confirm_references(pid: str, req: ConfirmReferencesRequest,
     if unknown:
         _err(400, "invalid_param", f"参考图不存在: {unknown}")
     selected = [by_id[reference_id] for reference_id in ids]
+    # 记在 request 上，分镜阶段（pipeline._storyboard）读它决定用哪一套绑定口径
+    project.request["auto_order"] = bool(req.auto_order)
     project.status, project.progress, project.message = "analyzing_references", 7, "正在理解实景参考图"
     project.dump()
     asyncio.create_task(_run_reference_analysis(project, selected))
@@ -460,6 +549,7 @@ async def confirm_references(pid: str, req: ConfirmReferencesRequest,
         "status": "analyzing_references",
         "progress": 7,
         "selected_reference_ids": ids,
+        "auto_order": bool(req.auto_order),
     }
 
 

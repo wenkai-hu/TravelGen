@@ -1,0 +1,1955 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260928_174225_e4e9b8",
+  "username": "Ryan",
+  "status": "completed",
+  "progress": 100,
+  "message": "最终视频已生成",
+  "request": {
+    "city": "杭州",
+    "location": "苏堤",
+    "scene_type": "景区推荐",
+    "theme": "苏堤故事",
+    "audience": "学生党",
+    "style": "水墨诗意",
+    "duration_s": 60,
+    "aspect_ratio": "16:9",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": [],
+    "auto_order": true
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "视觉吸引",
+        "title": "水墨开卷·长堤入画",
+        "content": "开篇用高空俯瞰大远景缓慢推进：大型开阔湖泊铺展，长条形被茂密绿植覆盖的湖堤从画面右下方延伸向远方，湖心圆形绿植小岛静卧水面，远处连绵山林在薄雾中若隐若现。旁白如水墨题字：一堤烟柳，半湖云水，杭州的慢，从苏堤开始。字幕：苏堤·水墨长卷。",
+        "duration_s": 10,
+        "place_id": "place_6e5dd1ce16634217",
+        "visual_targets": [
+          "大型开阔湖泊",
+          "长条形被茂密绿植覆盖的湖堤",
+          "湖心圆形绿植小岛",
+          "远处连绵的山林丘陵"
+        ],
+        "evidence_asset_ids": [
+          "ref_6f0648dcae3cc7bf"
+        ]
+      },
+      {
+        "section": "核心景观",
+        "title": "双湖分隔·桥影入镜",
+        "content": "沿长堤走向平移航拍，展现纵向延伸的绿植长堤结构，长堤将宽阔水域分隔成两片，堤岸两侧柳树与红花树相映，石拱桥横跨水面，步道上的行人点缀其间。旁白：一条堤，把湖光分成两卷；一座桥，把脚步写进春天。运镜穿插聚焦堤岸植被与行人的中景，保持水墨留白感。",
+        "duration_s": 14,
+        "place_id": "place_6e5dd1ce16634217",
+        "visual_targets": [
+          "纵向延伸的绿植长堤结构",
+          "被长堤分隔的两片宽阔水域形态",
+          "石拱桥的拱形结构与石砌质感",
+          "堤岸两侧柳树与红花树搭配的植被特征",
+          "步道上的行人"
+        ],
+        "evidence_asset_ids": [
+          "ref_f0f876be6febe754",
+          "ref_f5c0c9bbbadd9ea7"
+        ]
+      },
+      {
+        "section": "特色体验",
+        "title": "学生党轻行·湖风作伴",
+        "content": "从水面仰拍长堤与拱桥，再从前景林木向远处水域与山峦拉远：开阔水域与长堤的空间格局展开，水面上的小型船只缓缓移动，水生植物浮片区点缀湖面，前景茂密的林木与掩映的小型建筑构成画框。旁白：不用赶路，带一瓶水，沿堤慢慢走；累了就看船、看云、看桥影落在水面。适合学生党轻装慢行、边走边拍。",
+        "duration_s": 12,
+        "place_id": "place_6e5dd1ce16634217",
+        "visual_targets": [
+          "开阔水域与长堤的空间格局",
+          "水面上的小型船只",
+          "水面上的水生植物浮片区",
+          "前景茂密的林木与掩映的小型建筑",
+          "步道上的行人"
+        ],
+        "evidence_asset_ids": [
+          "ref_f5c0c9bbbadd9ea7",
+          "ref_0a0bc512f1821ad2",
+          "ref_f0f876be6febe754"
+        ]
+      },
+      {
+        "section": "文化特色",
+        "title": "堤上故事·诗意留白",
+        "content": "用从湖面抬升至远眺山林城市的升降镜头，接环绕长堤局部高空环绕：长堤的整体走向与形态清晰可见，远处覆满林木的山峦轮廓、山峦后方的城市建筑轮廓、左侧中式桥亭的结构特征与水中小岛共同入画。旁白：堤是线，湖是卷，山与城是落款；苏堤故事，不只在书里，也在你一步步走过的波光里。",
+        "duration_s": 12,
+        "place_id": "place_6e5dd1ce16634217",
+        "visual_targets": [
+          "长堤的整体走向与形态",
+          "远处覆满林木的山峦轮廓",
+          "山峦后方的城市建筑轮廓",
+          "左侧中式桥亭的结构特征",
+          "水域中零散的小岛"
+        ],
+        "evidence_asset_ids": [
+          "ref_0a0bc512f1821ad2",
+          "ref_6f0648dcae3cc7bf"
+        ]
+      },
+      {
+        "section": "收尾行动召唤",
+        "title": "来走一趟·把苏堤收进相册",
+        "content": "回到高空俯瞰长堤全景推进，沿湖堤方向航拍平移：长堤整体走向舒展，堤岸柳树与红花树搭配成春日光影，湖心圆形绿植小岛、远处连绵山林与左侧中式桥亭定格成水墨长卷。旁白：挑个晴日或薄雾天，来苏堤走一趟。学生党记得轻装、慢行、多抬头。字幕：苏堤，等你入画。行动召唤：收藏这条苏堤漫步线，下个周末出发。",
+        "duration_s": 12,
+        "place_id": "place_6e5dd1ce16634217",
+        "visual_targets": [
+          "长堤的整体走向与形态",
+          "堤岸两侧柳树与红花树搭配的植被特征",
+          "湖心圆形绿植小岛的位置与形态",
+          "远处连绵山林的轮廓",
+          "左侧中式桥亭的结构特征"
+        ],
+        "evidence_asset_ids": [
+          "ref_f5c0c9bbbadd9ea7",
+          "ref_6f0648dcae3cc7bf"
+        ]
+      }
+    ],
+    "plan_summary": "苏堤故事"
+  },
+  "copywriting": {
+    "titles": [
+      "一堤烟柳，半湖云水",
+      "苏堤，等你入画"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "一堤烟柳，半湖云水。杭州的慢，从苏堤开始。西湖十景之首，苏堤春晓。",
+        "duration_s": 10
+      },
+      {
+        "idx": 2,
+        "text": "一条堤，把湖光分成两卷；一座桥，把脚步写进春天。南起南屏山麓，北到栖霞岭下，六桥起伏，桃柳夹堤。",
+        "duration_s": 14
+      },
+      {
+        "idx": 3,
+        "text": "不用赶路，带一瓶水，沿堤慢慢走。累了，看船、看云、看桥影落在水面。学生党轻装慢行，边走边拍。",
+        "duration_s": 12
+      },
+      {
+        "idx": 4,
+        "text": "堤是线，湖是卷，山与城是落款。苏公葑泥筑堤，后人唤作苏堤；故事，在波光里。",
+        "duration_s": 12
+      },
+      {
+        "idx": 5,
+        "text": "挑个晴日，或薄雾天，来苏堤走一趟。轻装、慢行、多抬头。苏堤，等你入画。收藏这条线，下个周末见。",
+        "duration_s": 12
+      }
+    ],
+    "hashtags": [
+      "#苏堤春晓",
+      "#西湖十景",
+      "#学生党杭州慢行"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "一堤烟柳，半湖云水。杭州的慢，从苏堤开始。西湖十景之首，苏堤春晓。",
+        "start_s": 0,
+        "end_s": 10
+      },
+      {
+        "line_id": 2,
+        "text": "一条堤，把湖光分成两卷；一座桥，把脚步写进春天。南起南屏山麓，北到栖霞岭下，六桥起伏，桃柳夹堤。",
+        "start_s": 10,
+        "end_s": 24
+      },
+      {
+        "line_id": 3,
+        "text": "不用赶路，带一瓶水，沿堤慢慢走。累了，看船、看云、看桥影落在水面。学生党轻装慢行，边走边拍。",
+        "start_s": 24,
+        "end_s": 36
+      },
+      {
+        "line_id": 4,
+        "text": "堤是线，湖是卷，山与城是落款。苏公葑泥筑堤，后人唤作苏堤；故事，在波光里。",
+        "start_s": 36,
+        "end_s": 48
+      },
+      {
+        "line_id": 5,
+        "text": "挑个晴日，或薄雾天，来苏堤走一趟。轻装、慢行、多抬头。苏堤，等你入画。收藏这条线，下个周末见。",
+        "start_s": 48,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "苏堤故事·杭州慢行水墨长卷",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "杭州苏堤",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 15,
+            "narration": "一堤烟柳，半湖云水。杭州的慢，从苏堤开始。西湖十景之首，苏堤春晓。",
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "大型开阔湖泊、长条形被茂密绿植完全覆盖的湖堤、湖心圆形绿植小岛",
+            "background": "远处连绵山林丘陵、山林间零散建筑、远方朦胧城市高楼群、长堤左端的中式桥亭",
+            "place_id": "place_6e5dd1ce16634217",
+            "reference_asset_ids": [
+              "ref_6f0648dcae3cc7bf"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "长条形被绿植完全覆盖的湖堤形态",
+              "开阔的大面积湖泊水面",
+              "湖心圆形绿植小岛的位置与形态",
+              "远景连绵山林的轮廓",
+              "左侧中式桥亭的结构特征"
+            ],
+            "allowed_changes": [
+              "湖面船只的数量、位置与行驶状态",
+              "天空的云层形态与光影效果",
+              "植被的光影明暗变化",
+              "远景城市建筑的清晰程度（可随雾气浓度调整）"
+            ],
+            "prompt": "写实航拍大远景俯拍，清晨薄雾，柔和均匀自然光，大型开阔湖泊水面平铺，一条被茂密绿植完全覆盖的长条形湖堤从画面右下方斜向延伸至远方纵贯湖面，湖心圆形绿植小岛静卧水面，远景连绵山林丘陵轮廓若隐若现，山后朦胧城市高楼群被薄雾笼罩，长堤左端中式桥亭深色坡屋顶静立，绿植浓密成片，画面留白克制、水墨长卷质感，镜头缓慢向前推进",
+            "reference_roles": [
+              {
+                "asset_id": "ref_6f0648dcae3cc7bf",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "长堤下方的水下视角镜头",
+              "城市建筑内部的特写镜头",
+              "山林背面的景观镜头",
+              "桥亭内部的细节特写镜头"
+            ],
+            "timeline_start_ms": 0,
+            "timeline_end_ms": 15000,
+            "segment_ids": [
+              "seg_01"
+            ],
+            "segment_id": "seg_01",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 15000
+          },
+          {
+            "shot_id": 2,
+            "duration_s": 15,
+            "narration": "一条堤，把湖光分成两卷；一座桥，把脚步写进春天。南起南屏山麓，北到栖霞岭下，六桥起伏，桃柳夹堤。",
+            "camera": {
+              "type": "航拍",
+              "movement": "移",
+              "angle": "俯拍"
+            },
+            "shot_size": "全景",
+            "subject": "纵向延伸的长堤步道、长堤中段的石拱桥、步道上的行人",
+            "background": "被长堤分隔的两片宽阔平静水域、堤岸两侧嫩绿柳树与红色花树、水面小型游船、堤岸石砌驳岸与路灯",
+            "place_id": "place_6e5dd1ce16634217",
+            "reference_asset_ids": [
+              "ref_f5c0c9bbbadd9ea7"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "长堤的整体走向与形态",
+              "石拱桥的拱形结构与石砌质感",
+              "堤岸两侧柳树与红花树搭配的植被特征",
+              "开阔水域与长堤的空间格局"
+            ],
+            "allowed_changes": [
+              "行人的数量、行走位置与衣着",
+              "水面游船的位置与数量",
+              "水面波纹的形态",
+              "植被的细微疏密变化"
+            ],
+            "prompt": "写实航拍全景俯拍，春日晴朗柔光，宽阔平静水域中一条平整深灰色长堤步道自画面左下向右上延伸，中段青灰色石块砌筑的石拱桥横跨水面、拱形桥洞与石砌质感清晰，堤岸两侧嫩绿柳树与盛放红花树相间排列，春日光影斑驳，步道上有零星行人缓步，水面一艘小型游船与浮标线，镜头沿长堤走向缓慢平移航拍，画面通透明净",
+            "reference_roles": [
+              {
+                "asset_id": "ref_f5c0c9bbbadd9ea7",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "长堤尽头远端的特写镜头",
+              "桥洞内部的穿行镜头",
+              "堤岸背面区域的镜头",
+              "夜间场景的镜头"
+            ],
+            "timeline_start_ms": 15000,
+            "timeline_end_ms": 30000,
+            "segment_ids": [
+              "seg_02"
+            ],
+            "segment_id": "seg_02",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 15000
+          },
+          {
+            "shot_id": 3,
+            "duration_s": 15,
+            "narration": "不用赶路，带一瓶水，沿堤慢慢走。累了，看船、看云、看桥影落在水面。学生党轻装慢行，边走边拍。",
+            "camera": {
+              "type": "航拍",
+              "movement": "拉",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "前景茂密林木与掩映其间的小型坡屋顶建筑、中景开阔水域与纵贯水面的绿植长堤、水面上缓缓移动的小型船只",
+            "background": "水域中零散小岛、远处覆满林木的山峦、山峦后方朦胧的城市建筑轮廓、水生植物浮片区",
+            "place_id": "place_6e5dd1ce16634217",
+            "reference_asset_ids": [
+              "ref_0a0bc512f1821ad2"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "纵贯水域的绿植长堤结构",
+              "开阔的水域形态",
+              "水域中零散的小岛",
+              "远处覆满林木的山峦轮廓",
+              "前景茂密的林木与掩映的小型建筑"
+            ],
+            "allowed_changes": [
+              "水面船只的数量、位置和移动状态",
+              "天空的云层细节",
+              "植被的细微光影变化",
+              "远处城市建筑的朦胧程度"
+            ],
+            "prompt": "写实航拍大远景俯拍，薄雾朦胧的柔和天光，画面前景为茂密林木与掩映其中的白墙深色坡屋顶小型建筑构成自然画框，中景开阔水域上一条被绿植完全覆盖的长堤纵贯延伸，水面漂浮水生植物浮片区，几艘小型船只缓缓移动留下细微波纹，水域中零散小岛点缀，远处覆满林木的山峦轮廓层叠，山后城市建筑轮廓朦胧淡出，镜头由前景林木向远处水域与山峦缓慢拉远，水墨留白感强",
+            "reference_roles": [
+              {
+                "asset_id": "ref_0a0bc512f1821ad2",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "长堤上的行人、建筑细节特写镜头",
+              "水下景观镜头",
+              "山峦背面的视角镜头",
+              "城市建筑内部的镜头"
+            ],
+            "timeline_start_ms": 30000,
+            "timeline_end_ms": 45000,
+            "segment_ids": [
+              "seg_03"
+            ],
+            "segment_id": "seg_03",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 15000
+          },
+          {
+            "shot_id": 4,
+            "duration_s": 15,
+            "narration": "堤是线，湖是卷，山与城是落款。苏公葑泥筑堤，后人唤作苏堤；故事，在波光里。挑个晴日，或薄雾天，来苏堤走一趟。轻装、慢行、多抬头。苏堤，等你入画。收藏这条线，下个周末见。",
+            "camera": {
+              "type": "航拍",
+              "movement": "环绕",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "纵向延伸并将水域分隔为两片的长堤、堤岸成片浓密林木、水面小型船只与水生植物浮片区",
+            "background": "远处连绵山峦轮廓、岸边成片林木与零星低矮建筑、浅灰白色薄雾天空",
+            "place_id": "place_6e5dd1ce16634217",
+            "reference_asset_ids": [
+              "ref_f0f876be6febe754"
+            ],
+            "grounding_strength": "strong",
+            "must_keep": [
+              "纵向延伸的绿植长堤结构",
+              "被长堤分隔的两片宽阔水域形态",
+              "远处连绵山峦的轮廓",
+              "沿岸成片的林木景观"
+            ],
+            "allowed_changes": [
+              "水面上船只的数量、位置与行驶状态",
+              "水面水生植物的分布范围",
+              "天空的云层形态与光影效果",
+              "沿岸林木的细节疏密"
+            ],
+            "prompt": "写实航拍大远景俯拍，薄雾天浅灰白色柔光，一条被茂密绿植覆盖的长堤纵向延伸贯穿画面，将宽阔水域分隔为左右两片，堤岸两侧成片浓密林木铺展，水面上多艘小型船只零散分布、缓缓移动，堤侧水域边缘漂浮水生植物浮片区，远景连绵山峦轮廓横亘天际，岸边零星低矮建筑被林木半掩，镜头环绕长堤局部缓慢飞行，整体开阔清幽、水墨长卷质感",
+            "reference_roles": [
+              {
+                "asset_id": "ref_f0f876be6febe754",
+                "role": "identity_and_composition"
+              }
+            ],
+            "unsupported_or_risky_shots": [
+              "长堤上的行人、建筑细节特写镜头",
+              "水面下的景观镜头",
+              "山峦背面的景观镜头",
+              "岸边建筑内部的镜头"
+            ],
+            "timeline_start_ms": 45000,
+            "timeline_end_ms": 60000,
+            "segment_ids": [
+              "seg_04"
+            ],
+            "segment_id": "seg_04",
+            "segment_local_start_ms": 0,
+            "segment_local_end_ms": 15000
+          }
+        ],
+        "place_id": "place_6e5dd1ce16634217"
+      }
+    ],
+    "storyboard_version": 4,
+    "duration_ms": 60000,
+    "segments": [
+      {
+        "segment_id": "seg_01",
+        "timeline_start_ms": 0,
+        "timeline_end_ms": 15000,
+        "duration_ms": 15000,
+        "shot_ids": [
+          1
+        ],
+        "narration_text": "一堤烟柳，半湖云水。杭州的慢，从苏堤开始。西湖十景之首，苏堤春晓。",
+        "reference_asset_ids": [
+          "ref_6f0648dcae3cc7bf"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_02",
+        "timeline_start_ms": 15000,
+        "timeline_end_ms": 30000,
+        "duration_ms": 15000,
+        "shot_ids": [
+          2
+        ],
+        "narration_text": "一条堤，把湖光分成两卷；一座桥，把脚步写进春天。南起南屏山麓，北到栖霞岭下，六桥起伏，桃柳夹堤。",
+        "reference_asset_ids": [
+          "ref_f5c0c9bbbadd9ea7"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_03",
+        "timeline_start_ms": 30000,
+        "timeline_end_ms": 45000,
+        "duration_ms": 15000,
+        "shot_ids": [
+          3
+        ],
+        "narration_text": "不用赶路，带一瓶水，沿堤慢慢走。累了，看船、看云、看桥影落在水面。学生党轻装慢行，边走边拍。",
+        "reference_asset_ids": [
+          "ref_0a0bc512f1821ad2"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      },
+      {
+        "segment_id": "seg_04",
+        "timeline_start_ms": 45000,
+        "timeline_end_ms": 60000,
+        "duration_ms": 15000,
+        "shot_ids": [
+          4
+        ],
+        "narration_text": "堤是线，湖是卷，山与城是落款。苏公葑泥筑堤，后人唤作苏堤；故事，在波光里。挑个晴日，或薄雾天，来苏堤走一趟。轻装、慢行、多抬头。苏堤，等你入画。收藏这条线，下个周末见。",
+        "reference_asset_ids": [
+          "ref_f0f876be6febe754"
+        ],
+        "continuation_index": 1,
+        "continuation_total": 1,
+        "previous_segment_id": null,
+        "status": "ready"
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260928_174225_e4e9b8_v1",
+  "plan_version": 1,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_0b22c9224f60ad32",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/b3cKncqntBVldPVEpZm8Rw577b83068a142465da6fca2bcfe8bad9.jpg",
+      "title": "碧波荡漾映晴天, 苏堤春晓柳如烟. 断桥残雪情未了, 白塔如云立湖边",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4478799086717900315",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_20516d1c309d83e7",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/619782a72c9420686c5eae2f3d5685c4.jpg@h_1280",
+      "title": "首先推荐西湖边的苏堤,这里的红叶如火,仿佛置身画中;其次是杭州的",
+      "source_page_url": "https://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5652160572846789789",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_250221cd72bf6aba",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://se-feed-bucket.bj.bcebos.com/produce-record73183021_0/first_1758385336",
+      "title": "藏着杭州最温柔的春天～",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5524772422770643311",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_f7d0b9d5e8cdd7b9",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/14c990a5ec0bd7d216137bcc8015daca.jpg",
+      "title": "暮春 望望碧湖处处愁, 欲携美酒登高楼",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5207019016888119579",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5dc1ddafa9112ae1",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://q9.itc.cn/q_70/images01/20240605/f12fbc17ca2b48d9b7d05e03b10d899c.jpeg",
+      "title": "西湖苏堤 杨柳满长堤 花明路不迷",
+      "source_page_url": "http://www.sohu.com/a/775888824_121247239",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1db1b169861c7b03",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://n.sinaimg.cn/default/1_img/upload/df9b9e61/383/w2048h1535/20250328/b354-96706256ae8a3bb240dd2d5a7a0ecd46.jpg",
+      "title": "成人影院午夜无码",
+      "source_page_url": "http://www.blog.efkmr.cn/Article/details/5436182.sHtML",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b23fe85eb7485d02",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=2190204032,700252480&fm=3074&app=3074&f=JPEG",
+      "title": "杭州苏堤漫步攻略:绿树成荫的悠闲时光",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4595872860393928751",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_74e201720737d369",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pics3.baidu.com/feed/94cad1c8a786c917171700bb9189e4c23ac75759.jpeg@f_auto?token=21c1bdd6a82e33667a22b9461ea68978",
+      "title": "杭州西湖:穿越千年诗画,探寻江南水乡的灵动之美",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1791292531076153364&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0a8e4236aede1a50",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://ss-mpvolc.meipian.me/users/8018363/44d4d3f1590440679a3aacf5e1c1b408soi__jpeg.heic~tplv-s1ctq42ewb-wm-s2-cC-q:watermark/1/image/dG9zLWNuLWktczFjdHE0MmV3Yi9hcnRpY2xlL2NvbnRlbnRfaW1nX2xvZ28ucG5n/dissolve/80/gravity/SouthEast/dx/16/dy/120/ws/0.09/wst/2%7Cwatermark/2/text/QOWwj-efsw/dissolve/80/gravity/SouthEast/dx/16/dy/64/font/UWluaXUgRm9udA/fontsize/640/fill/I2ZmZmZmZg%7Cwatermark/2/text/576O56-H5Y-3OjgwMTgzNjM/dissolve/80/gravity/SouthEast/dx/16/dy/16/font/UWluaXUgRm9udA/fontsize/640/fill/I2ZmZmZmZg:750:0:0:0:q80.webp",
+      "title": "苏堤. 初冬",
+      "source_page_url": "http://www.meipian.cn/59jhw7fw",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b08c21b829c21c87",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3fa195024a84/250416/b2487cbb10a38b99f09b82e43eb783e0.png?for=bg",
+      "title": "苏堤位于杭州市西湖景区",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=4535047911186679663",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_48f7be856dca2ce6",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=1824708386,1827492408&fm=3074&app=3074&f=JPEG?w=800&h=1486&type=normal&func=",
+      "title": "杭州花港观鱼枫叶盛宴,周末必打卡!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5647088109187691936",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_856689f674efc7e8",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=3485445425,235426175&fm=3074&app=3074&f=JPEG",
+      "title": "🌉 杭州苏堤:三公里的风景长廊",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4344843639399112061",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3bfcffd01e375ae0",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pics1.baidu.com/feed/aa18972bd40735faf216346d86d368bc0d240894.jpeg@f_auto?token=1fc583341b212a0f61d27a430ab17baa",
+      "title": "西湖美景探秘:苏堤春晓的多样风情与丰富文化",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1824140920796914634&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6a7570f185874867",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3f19a277b7a/250414/0b4bb3ae7527b499dc4e83744bda3743.jpeg",
+      "title": "西湖游记:漫步苏堤,探寻古典美与现代韵的交融",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4677249377931091432",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_40cfa52e14762b97",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/034de78643333d000275e34ade9d1e19.jpg",
+      "title": "都说\"苏堤春晓\"是西湖十景之首,我心想能有多好看?",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3889855377161558468",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_05ef995184b78af7",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3fa195024a84/250415/d465cd87cdc22591eb75161e0bba3869.png?for=bg",
+      "title": "冬日的苏堤依然美丽动人",
+      "source_page_url": "https://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=4001816966806302770",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_455b69d2b9796d00",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://cdnfile.op110.com.cn/files/1716/image/20181023/����_1540299081325.jpg",
+      "title": "2,西湖风景区大巴车禁止进入,客人需要换乘景区公交车,单趟5元/人",
+      "source_page_url": "http://www.cctxj.cn/v/line-detail/1109340",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_dd692ffe3fefb911",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/3f1c37dffb/251219/cebf4cac2f1f91edf1cfe2f3fe938b31.jpeg",
+      "title": "这里的跨年活动充 苏堤图片杭州西湖断桥照片夜景夜晚波光粼粼的",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5174749712062069530",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e2c1a7b2e2d7b295",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://q8.itc.cn/q_70/images01/20240605/eefeb205a98945c5baf8b5e66bf93997.jpeg",
+      "title": "西湖苏堤 杨柳满长堤 花明路不迷",
+      "source_page_url": "http://www.sohu.com/a/775888824_121247239",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9daac4ecd390fc1b",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2MjEyODY1LjQxMDg2NjM%3D%27/0.png",
+      "title": "4公里的堤道,串联起了曲院风荷,金沙港,杭州花圃,茅家埠,乌龟潭,浴鹄",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4285853058230326167",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3a88596468e3fa8e",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://i1.hdslb.com/bfs/archive/8a89c3334c6596d2fd89ec385f9f9d03c2676e7e.jpg",
+      "title": "走马观花游西湖苏堤",
+      "source_page_url": "http://www.bilibili.com/video/BV12ghwzGErE",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6fb0d40c90604932",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/a05ac8f434ecb5ba40029d42ad850912.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "沿途经过的女孩,仿佛正要坐在画中的长椅上……这就是杭州名胜【苏堤",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4811918704777860839",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_4b8b885154a41930",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://b0.bdstatic.com/ugc/personal_page_ai/VItc_yQ8UZgL4foNW1IRDQ586ac3e83f08bec4234ae51544f1d5e8.jpg",
+      "title": "苏堤,是苏公堤的简称,全长2797米的苏堤是一条贯穿西湖南北风景区的",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5459838482861247491",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_43f902a439ed200d",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/b21c8701a18b87d6745d27e50e0828381f30fd29",
+      "title": "杭州苏堤春晓",
+      "source_page_url": "http://baike.baidu.com/item/%E6%9D%AD%E5%B7%9E%E8%8B%8F%E5%A0%A4%E6%98%A5%E6%99%93/10997741",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e596abcc3fc8abad",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://ss2.meipian.me/users/21187331/originfc8f88452eb38281e9d657b78f39a8dcmpand.jpg?meipian-watermark/bucket/ivwen/key/dXNlcnMvMjExODczMzEvb3JpZ2luZmM4Zjg4NDUyZWIzODI4MWU5ZDY1N2I3OGYzOWE4ZGNtcGFuZC5qcGc=/nickname/5byg6bmP5rSy/userid/MjExODczMzE=/sign/2b31b435079c5cfb079d8fdb2eb6d53a%7cimageView2/2/w/750/interlace/0/q/80",
+      "title": "苏堤春晓",
+      "source_page_url": "http://www.meipian.cn/57gjdtkt",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_dc71699696cd202d",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/ec1b8514d27538c390ba2f130c17aa83.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "西湖的苏堤如一条翡翠丝带,悠然横亘于碧波荡漾之间,它不仅承载着杭州",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1789259322485203486&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_bba5750e84619e9e",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=2488801793,3859191425&fm=3074&app=3074&f=JPEG?w=2416&h=1050&type=normal&func=",
+      "title": "苏堤春晓:西湖美景的灵魂",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4248159205651231009",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c7fafa497d89da16",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://q2.itc.cn/q_70/images03/20250927/74b85b11ac2245d1b81e3b14b9fc4ab8.jpeg",
+      "title": "杭州苏堤和白堤有什么区别呢?它们的历史背景不同吧!",
+      "source_page_url": "http://news.sohu.com/a/939191556_121677947",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_810095da6727e321",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/240807/dump/c65485567dc60181a62d35045146c4d2.jpeg",
+      "title": "出游随拍,西湖泛舟从湖心看苏堤的美景",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1806701054586299288&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_64e2a817fdabe1bf",
+      "query": "杭州 苏堤 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/cms/250629/3be0d07cbf2b9a1d01c60328713fba14_1751209556.3713_478.jpeg",
+      "title": "杭州:苏堤赏湖美景",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1836276364888156419&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_6f0648dcae3cc7bf",
+      "candidate_id": "ref_20516d1c309d83e7",
+      "place_id": "place_6e5dd1ce16634217",
+      "place_name": "苏堤",
+      "city": "杭州",
+      "original_url": "http://copyright.bdstatic.com/vcg/creative/619782a72c9420686c5eae2f3d5685c4.jpg@h_1280",
+      "source_page_url": "https://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5652160572846789789",
+      "title": "首先推荐西湖边的苏堤,这里的红叶如火,仿佛置身画中;其次是杭州的",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260928_174225_e4e9b8/ref_6f0648dcae3cc7bf.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260928_174225_e4e9b8\\ref_6f0648dcae3cc7bf.jpg",
+      "sha256": "6f0648dcae3cc7bf5e0c53b163a28d00165dcc31c9bc4a4e00aab90e0371e1c3",
+      "width": 1708,
+      "height": 1280,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 19.232,
+        "usage": {
+          "completion_tokens": 780,
+          "prompt_tokens": 1712,
+          "total_tokens": 2492,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "高空俯瞰下的大型湖泊景观，湖中有长条形植被覆盖的堤岸延伸向远方，湖心有小岛，远处是连绵的山林与朦胧的城市建筑群，整体氛围开阔静谧。",
+          "visible_elements": [
+            "大型开阔湖泊",
+            "长条形被茂密绿植覆盖的湖堤",
+            "湖心圆形绿植小岛",
+            "远处连绵的山林丘陵",
+            "山林间的零散建筑",
+            "远方朦胧的城市高楼群",
+            "湖面上的小型船只",
+            "堤岸尽头的中式桥亭建筑",
+            "茂密的乔木植被"
+          ],
+          "spatial_layout": [
+            "长堤从画面右下角向画面中左侧延伸，纵贯湖面",
+            "湖心小岛位于画面右侧湖面",
+            "连绵山林位于画面远景，横亘在湖泊与城市之间",
+            "城市建筑群位于画面最远端的左右两侧，被雾气笼罩",
+            "桥亭建筑位于长堤左端，连接左侧湖岸"
+          ],
+          "architecture_and_materials": [
+            "长堤上无明显大型建筑，被浓密绿色乔木完全覆盖",
+            "远景山林间有低矮的白墙、灰顶建筑，形态小巧",
+            "左侧桥亭为中式传统样式，深色坡屋顶，带桥身结构",
+            "远方城市建筑为现代高层楼宇，外观呈浅灰色调，因雾气细节模糊"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "长堤沿画面左下至右上方向延展",
+              "远山与城市位于画面远端地平线处"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断，整体光线柔和均匀，无强烈明暗阴影",
+            "weather": "阴天或有薄雾，天空呈浅灰白色，远景能见度较低",
+            "season": "植被全部为浓密绿叶，推测为春夏季"
+          },
+          "must_keep_candidates": [
+            "长条形被绿植完全覆盖的湖堤形态",
+            "开阔的大面积湖泊水面",
+            "湖心圆形绿植小岛的位置与形态",
+            "远景连绵山林的轮廓",
+            "左侧中式桥亭的结构特征"
+          ],
+          "allowed_changes": [
+            "湖面船只的数量、位置与行驶状态",
+            "天空的云层形态与光影效果",
+            "植被的光影明暗变化",
+            "远景城市建筑的清晰程度（可随雾气浓度调整）"
+          ],
+          "suitable_shots": [
+            "高空俯瞰长堤延伸的大远景推进镜头",
+            "沿湖堤方向飞行的航拍平移镜头",
+            "从湖面抬升至远眺山林城市的升降镜头",
+            "环绕湖心小岛的航拍环绕镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "长堤下方的水下视角镜头",
+            "城市建筑内部的特写镜头",
+            "山林背面的景观镜头",
+            "桥亭内部的细节特写镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体湖泊名称与所在城市",
+            "山林间建筑的具体功能与名称",
+            "长堤的具体名称与建造年代",
+            "远方城市的具体地标建筑"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_f0f876be6febe754",
+      "candidate_id": "ref_5dc1ddafa9112ae1",
+      "place_id": "place_6e5dd1ce16634217",
+      "place_name": "苏堤",
+      "city": "杭州",
+      "original_url": "http://q9.itc.cn/q_70/images01/20240605/f12fbc17ca2b48d9b7d05e03b10d899c.jpeg",
+      "source_page_url": "http://www.sohu.com/a/775888824_121247239",
+      "title": "西湖苏堤 杨柳满长堤 花明路不迷",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260928_174225_e4e9b8/ref_f0f876be6febe754.webp",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260928_174225_e4e9b8\\ref_f0f876be6febe754.webp",
+      "sha256": "f0f876be6febe7549cfefce08bafc9c3d3b36573941d4d3f5ffa27d8550b814e",
+      "width": 1000,
+      "height": 666,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 14.052,
+        "usage": {
+          "completion_tokens": 602,
+          "prompt_tokens": 1717,
+          "total_tokens": 2319,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "高空俯瞰视角下的宽阔水域景观，一条被茂密绿植覆盖的长堤纵向延伸将水域分隔为两部分，远处有连绵山峦与成片林木，水面上分布着若干船只，整体开阔清幽。",
+          "visible_elements": [
+            "宽阔水域",
+            "被绿植覆盖的长堤",
+            "远处连绵山峦",
+            "岸边成片林木与植被",
+            "水面上的多艘船只",
+            "岸边零星建筑",
+            "水面上的水生植物浮片区"
+          ],
+          "spatial_layout": [
+            "长堤呈纵向延伸状态，位于画面中部，将宽阔水域分隔为左右两部分",
+            "远处山峦位于画面最上方的背景区域",
+            "成片林木与零星建筑分布在左侧水域的对岸区域",
+            "多艘船只零散分布在左右两侧的水域中",
+            "水生植物浮片区位于长堤左侧的水域边缘"
+          ],
+          "architecture_and_materials": [
+            "岸边可见零星低矮建筑，被林木遮挡，形态细节不清晰",
+            "水面上有一艘带黄色顶篷的游船，船体为深色，顶篷为暖黄色"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "长堤从画面近景向远景纵向延伸，远处山峦位于画面上方，可据此判断画面上下对应远近距离"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，具体时段无法判断",
+            "weather": "天空呈浅灰白色，能见度较好，无明显降雨，具体天气无法判断",
+            "season": "植被整体呈浓密绿色，无法判断具体季节"
+          },
+          "must_keep_candidates": [
+            "纵向延伸的绿植长堤结构",
+            "被长堤分隔的两片宽阔水域形态",
+            "远处连绵山峦的轮廓",
+            "沿岸成片的林木景观"
+          ],
+          "allowed_changes": [
+            "水面上船只的数量、位置与行驶状态",
+            "水面水生植物的分布范围",
+            "天空的云层形态与光影效果",
+            "沿岸林木的细节疏密"
+          ],
+          "suitable_shots": [
+            "高空俯瞰长堤与水域的全景镜头",
+            "沿长堤方向向前推进的航拍镜头",
+            "从高空缓慢下降展示水域与长堤的镜头",
+            "横向扫过整片水域与山峦的远景镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "长堤上的行人、建筑细节特写镜头",
+            "水面下的景观镜头",
+            "山峦背面的景观镜头",
+            "岸边建筑内部的镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体水域与长堤的名称",
+            "岸边建筑的具体功能与年代",
+            "船只的具体类型与归属",
+            "远处山峦的具体名称"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_0a0bc512f1821ad2",
+      "candidate_id": "ref_3bfcffd01e375ae0",
+      "place_id": "place_6e5dd1ce16634217",
+      "place_name": "苏堤",
+      "city": "杭州",
+      "original_url": "http://pics1.baidu.com/feed/aa18972bd40735faf216346d86d368bc0d240894.jpeg@f_auto?token=1fc583341b212a0f61d27a430ab17baa",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1824140920796914634&wfr=spider&for=pc",
+      "title": "西湖美景探秘:苏堤春晓的多样风情与丰富文化",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260928_174225_e4e9b8/ref_0a0bc512f1821ad2.webp",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260928_174225_e4e9b8\\ref_0a0bc512f1821ad2.webp",
+      "sha256": "0a0bc512f1821ad20673a634e914cb9b2852632a01c26e727cbe40bbfa2bfdaa",
+      "width": 1080,
+      "height": 689,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 17.147,
+        "usage": {
+          "completion_tokens": 633,
+          "prompt_tokens": 1746,
+          "total_tokens": 2379,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面呈现一处开阔的水域景观，一条被茂密绿植覆盖的长堤从近景延伸至远方，将水域分隔，水域中分布着小岛与船只，远处是覆满林木的山峦，山峦后方可见朦胧的城市建筑轮廓，整体视野开阔。",
+          "visible_elements": [
+            "开阔水域",
+            "被茂密绿植覆盖的长堤",
+            "水域中的小岛",
+            "水面上的船只",
+            "前景的茂密林木",
+            "前景林木间的小型建筑",
+            "远处覆满林木的山峦",
+            "山峦后方的城市建筑轮廓"
+          ],
+          "spatial_layout": [
+            "长堤从画面近景向远景斜向延伸，纵贯水域",
+            "前景为茂密的林木与小型建筑，位于长堤靠近观看者的一端",
+            "水域分布在长堤的两侧",
+            "小岛零散分布在长堤右侧的水域中",
+            "远处的林木山峦位于水域的远端",
+            "城市建筑轮廓在山峦的后方"
+          ],
+          "architecture_and_materials": [
+            "前景小型建筑多为坡屋顶，墙体有白色、深色，掩映在林木中",
+            "远处山峦间的建筑多为浅色墙体，形态低矮，被林木环绕",
+            "长堤被绿植完全覆盖，无明显硬质堤岸外露"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "远景",
+            "orientation_clues": [
+              "长堤从画面近下方延伸至远上方，水域向远方铺展，远处山峦与城市建筑在画面最远端"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断",
+            "weather": "阴天或有雾，整体画面朦胧",
+            "season": "植被繁茂呈鲜绿色，为温暖季节"
+          },
+          "must_keep_candidates": [
+            "纵贯水域的绿植长堤结构",
+            "开阔的水域形态",
+            "水域中零散的小岛",
+            "远处覆满林木的山峦轮廓",
+            "前景茂密的林木与掩映的小型建筑"
+          ],
+          "allowed_changes": [
+            "水面船只的数量、位置和移动状态",
+            "天空的云层细节",
+            "植被的细微光影变化",
+            "远处城市建筑的朦胧程度"
+          ],
+          "suitable_shots": [
+            "高空俯瞰长堤与水域的全景镜头",
+            "沿长堤方向向前推进的远景镜头",
+            "从前景林木向远处水域与山峦拉远的镜头",
+            "环绕长堤局部的高空环绕镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "长堤上的行人、建筑细节特写镜头",
+            "水下景观镜头",
+            "山峦背面的视角镜头",
+            "城市建筑内部的镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体地点名称",
+            "长堤的准确长度与宽度",
+            "远处城市建筑的具体名称与功能",
+            "水域的准确面积",
+            "建筑的具体建造年代"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_f5c0c9bbbadd9ea7",
+      "candidate_id": "ref_1db1b169861c7b03",
+      "place_id": "place_6e5dd1ce16634217",
+      "place_name": "苏堤",
+      "city": "杭州",
+      "original_url": "http://n.sinaimg.cn/default/1_img/upload/df9b9e61/383/w2048h1535/20250328/b354-96706256ae8a3bb240dd2d5a7a0ecd46.jpg",
+      "source_page_url": "http://www.blog.efkmr.cn/Article/details/5436182.sHtML",
+      "title": "成人影院午夜无码",
+      "provider": "qianfan_image_search",
+      "cached_url": "/assets/references/p_20260928_174225_e4e9b8/ref_f5c0c9bbbadd9ea7.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260928_174225_e4e9b8\\ref_f5c0c9bbbadd9ea7.jpg",
+      "sha256": "f5c0c9bbbadd9ea727425e5df1cdd7fce11e5d94b21b7317e5c67ad093235ccc",
+      "width": 950,
+      "height": 712,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 15.812,
+        "usage": {
+          "completion_tokens": 606,
+          "prompt_tokens": 1712,
+          "total_tokens": 2318,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "高空俯瞰视角下，宽阔的水域中延伸着一条长堤，长堤上有石拱桥，堤岸两侧分布着绿植与行人，水面上有一艘小船，整体是春日湖滨游览的景观。",
+          "visible_elements": [
+            "宽阔平静的水域",
+            "跨水的长堤步道",
+            "石拱桥",
+            "步道上的行人",
+            "堤岸旁的绿色柳树",
+            "堤岸旁的红色花树",
+            "水面上的小型游船",
+            "步道旁的路灯",
+            "堤岸的草坪",
+            "水面的浮标线"
+          ],
+          "spatial_layout": [
+            "长堤从画面左下方向右上方延伸，贯穿水域",
+            "石拱桥位于长堤中段偏下的位置，横跨水面连通两侧堤道",
+            "左下角堤岸分布着柳树和红花植被，右上角堤岸同样有柳树与红花植被",
+            "小型游船位于长堤右上方的开阔水面上",
+            "浮标线分布在长堤两侧的水面中"
+          ],
+          "architecture_and_materials": [
+            "长堤步道为平整的深灰色路面",
+            "石拱桥由青灰色石块砌筑，带有拱形桥洞",
+            "路灯为深色灯杆，顶部有灯具",
+            "堤岸边缘为石砌驳岸"
+          ],
+          "viewpoint": {
+            "camera_position": "高位",
+            "angle": "俯视",
+            "shot_size": "全景",
+            "orientation_clues": [
+              "长堤沿左下至右上方向延伸，无明确方位标识"
+            ]
+          },
+          "lighting_weather_season": {
+            "time_of_day": "白天，光线柔和，无法判断具体时段",
+            "weather": "晴朗，水面平静无雨雾",
+            "season": "春季，柳树发嫩绿新叶，花树盛开红花"
+          },
+          "must_keep_candidates": [
+            "长堤的整体走向与形态",
+            "石拱桥的拱形结构与石砌质感",
+            "堤岸两侧柳树与红花树搭配的植被特征",
+            "开阔水域与长堤的空间格局"
+          ],
+          "allowed_changes": [
+            "行人的数量、行走位置与衣着",
+            "水面游船的位置与数量",
+            "水面波纹的形态",
+            "植被的细微疏密变化"
+          ],
+          "suitable_shots": [
+            "高空俯瞰长堤全景的推进镜头",
+            "沿长堤走向的平移航拍镜头",
+            "从水面仰拍长堤与拱桥的镜头",
+            "聚焦堤岸植被与行人的中景镜头"
+          ],
+          "unsupported_or_risky_shots": [
+            "长堤尽头远端的特写镜头",
+            "桥洞内部的穿行镜头",
+            "堤岸背面区域的镜头",
+            "夜间场景的镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "具体地点名称",
+            "长堤与桥梁的建造年代",
+            "水域的具体面积与深度"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_6e5dd1ce16634217",
+    "place_name": "苏堤",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_6f0648dcae3cc7bf",
+      "ref_f0f876be6febe754",
+      "ref_0a0bc512f1821ad2",
+      "ref_f5c0c9bbbadd9ea7"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [
+      "大型开阔湖泊",
+      "长条形被茂密绿植覆盖的湖堤",
+      "湖心圆形绿植小岛",
+      "远处连绵的山林丘陵",
+      "山林间的零散建筑",
+      "远方朦胧的城市高楼群",
+      "湖面上的小型船只",
+      "堤岸尽头的中式桥亭建筑",
+      "茂密的乔木植被",
+      "宽阔水域",
+      "被绿植覆盖的长堤",
+      "远处连绵山峦",
+      "岸边成片林木与植被",
+      "水面上的多艘船只",
+      "岸边零星建筑",
+      "水面上的水生植物浮片区",
+      "开阔水域",
+      "被茂密绿植覆盖的长堤",
+      "水域中的小岛",
+      "水面上的船只",
+      "前景的茂密林木",
+      "前景林木间的小型建筑",
+      "远处覆满林木的山峦",
+      "山峦后方的城市建筑轮廓",
+      "宽阔平静的水域",
+      "跨水的长堤步道",
+      "石拱桥",
+      "步道上的行人",
+      "堤岸旁的绿色柳树",
+      "堤岸旁的红色花树"
+    ],
+    "stable_features": [
+      {
+        "text": "长条形被绿植完全覆盖的湖堤形态",
+        "evidence_asset_ids": [
+          "ref_6f0648dcae3cc7bf"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "开阔的大面积湖泊水面",
+        "evidence_asset_ids": [
+          "ref_6f0648dcae3cc7bf"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "湖心圆形绿植小岛的位置与形态",
+        "evidence_asset_ids": [
+          "ref_6f0648dcae3cc7bf"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "远景连绵山林的轮廓",
+        "evidence_asset_ids": [
+          "ref_6f0648dcae3cc7bf"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "左侧中式桥亭的结构特征",
+        "evidence_asset_ids": [
+          "ref_6f0648dcae3cc7bf"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "纵向延伸的绿植长堤结构",
+        "evidence_asset_ids": [
+          "ref_f0f876be6febe754"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "被长堤分隔的两片宽阔水域形态",
+        "evidence_asset_ids": [
+          "ref_f0f876be6febe754"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "远处连绵山峦的轮廓",
+        "evidence_asset_ids": [
+          "ref_f0f876be6febe754"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "沿岸成片的林木景观",
+        "evidence_asset_ids": [
+          "ref_f0f876be6febe754"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "纵贯水域的绿植长堤结构",
+        "evidence_asset_ids": [
+          "ref_0a0bc512f1821ad2"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "开阔的水域形态",
+        "evidence_asset_ids": [
+          "ref_0a0bc512f1821ad2"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "水域中零散的小岛",
+        "evidence_asset_ids": [
+          "ref_0a0bc512f1821ad2"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "远处覆满林木的山峦轮廓",
+        "evidence_asset_ids": [
+          "ref_0a0bc512f1821ad2"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "前景茂密的林木与掩映的小型建筑",
+        "evidence_asset_ids": [
+          "ref_0a0bc512f1821ad2"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "长堤的整体走向与形态",
+        "evidence_asset_ids": [
+          "ref_f5c0c9bbbadd9ea7"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "石拱桥的拱形结构与石砌质感",
+        "evidence_asset_ids": [
+          "ref_f5c0c9bbbadd9ea7"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "堤岸两侧柳树与红花树搭配的植被特征",
+        "evidence_asset_ids": [
+          "ref_f5c0c9bbbadd9ea7"
+        ],
+        "strength": "image_observed"
+      },
+      {
+        "text": "开阔水域与长堤的空间格局",
+        "evidence_asset_ids": [
+          "ref_f5c0c9bbbadd9ea7"
+        ],
+        "strength": "image_observed"
+      }
+    ],
+    "must_keep": [
+      "长条形被绿植完全覆盖的湖堤形态",
+      "开阔的大面积湖泊水面",
+      "湖心圆形绿植小岛的位置与形态",
+      "远景连绵山林的轮廓",
+      "左侧中式桥亭的结构特征",
+      "纵向延伸的绿植长堤结构",
+      "被长堤分隔的两片宽阔水域形态",
+      "远处连绵山峦的轮廓",
+      "沿岸成片的林木景观",
+      "纵贯水域的绿植长堤结构",
+      "开阔的水域形态",
+      "水域中零散的小岛",
+      "远处覆满林木的山峦轮廓",
+      "前景茂密的林木与掩映的小型建筑",
+      "长堤的整体走向与形态",
+      "石拱桥的拱形结构与石砌质感",
+      "堤岸两侧柳树与红花树搭配的植被特征",
+      "开阔水域与长堤的空间格局"
+    ],
+    "allowed_changes": [
+      "湖面船只的数量、位置与行驶状态",
+      "天空的云层形态与光影效果",
+      "植被的光影明暗变化",
+      "远景城市建筑的清晰程度（可随雾气浓度调整）",
+      "水面上船只的数量、位置与行驶状态",
+      "水面水生植物的分布范围",
+      "沿岸林木的细节疏密",
+      "水面船只的数量、位置和移动状态",
+      "天空的云层细节",
+      "植被的细微光影变化",
+      "远处城市建筑的朦胧程度",
+      "行人的数量、行走位置与衣着",
+      "水面游船的位置与数量",
+      "水面波纹的形态",
+      "植被的细微疏密变化"
+    ],
+    "unsupported_shots": [],
+    "uncertain": [
+      "具体湖泊名称与所在城市",
+      "山林间建筑的具体功能与名称",
+      "长堤的具体名称与建造年代",
+      "远方城市的具体地标建筑",
+      "具体水域与长堤的名称",
+      "岸边建筑的具体功能与年代",
+      "船只的具体类型与归属",
+      "远处山峦的具体名称",
+      "具体地点名称",
+      "长堤的准确长度与宽度",
+      "远处城市建筑的具体名称与功能",
+      "水域的准确面积",
+      "建筑的具体建造年代",
+      "长堤与桥梁的建造年代",
+      "水域的具体面积与深度"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_6f0648dcae3cc7bf",
+        "summary": "高空俯瞰下的大型湖泊景观，湖中有长条形植被覆盖的堤岸延伸向远方，湖心有小岛，远处是连绵的山林与朦胧的城市建筑群，整体氛围开阔静谧。",
+        "visible_elements": [
+          "大型开阔湖泊",
+          "长条形被茂密绿植覆盖的湖堤",
+          "湖心圆形绿植小岛",
+          "远处连绵的山林丘陵",
+          "山林间的零散建筑",
+          "远方朦胧的城市高楼群",
+          "湖面上的小型船只",
+          "堤岸尽头的中式桥亭建筑",
+          "茂密的乔木植被"
+        ],
+        "spatial_layout": [
+          "长堤从画面右下角向画面中左侧延伸，纵贯湖面",
+          "湖心小岛位于画面右侧湖面",
+          "连绵山林位于画面远景，横亘在湖泊与城市之间",
+          "城市建筑群位于画面最远端的左右两侧，被雾气笼罩",
+          "桥亭建筑位于长堤左端，连接左侧湖岸"
+        ],
+        "architecture_and_materials": [
+          "长堤上无明显大型建筑，被浓密绿色乔木完全覆盖",
+          "远景山林间有低矮的白墙、灰顶建筑，形态小巧",
+          "左侧桥亭为中式传统样式，深色坡屋顶，带桥身结构",
+          "远方城市建筑为现代高层楼宇，外观呈浅灰色调，因雾气细节模糊"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "长堤沿画面左下至右上方向延展",
+            "远山与城市位于画面远端地平线处"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断，整体光线柔和均匀，无强烈明暗阴影",
+          "weather": "阴天或有薄雾，天空呈浅灰白色，远景能见度较低",
+          "season": "植被全部为浓密绿叶，推测为春夏季"
+        },
+        "must_keep_candidates": [
+          "长条形被绿植完全覆盖的湖堤形态",
+          "开阔的大面积湖泊水面",
+          "湖心圆形绿植小岛的位置与形态",
+          "远景连绵山林的轮廓",
+          "左侧中式桥亭的结构特征"
+        ],
+        "allowed_changes": [
+          "湖面船只的数量、位置与行驶状态",
+          "天空的云层形态与光影效果",
+          "植被的光影明暗变化",
+          "远景城市建筑的清晰程度（可随雾气浓度调整）"
+        ],
+        "suitable_shots": [
+          "高空俯瞰长堤延伸的大远景推进镜头",
+          "沿湖堤方向飞行的航拍平移镜头",
+          "从湖面抬升至远眺山林城市的升降镜头",
+          "环绕湖心小岛的航拍环绕镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "长堤下方的水下视角镜头",
+          "城市建筑内部的特写镜头",
+          "山林背面的景观镜头",
+          "桥亭内部的细节特写镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_f0f876be6febe754",
+        "summary": "高空俯瞰视角下的宽阔水域景观，一条被茂密绿植覆盖的长堤纵向延伸将水域分隔为两部分，远处有连绵山峦与成片林木，水面上分布着若干船只，整体开阔清幽。",
+        "visible_elements": [
+          "宽阔水域",
+          "被绿植覆盖的长堤",
+          "远处连绵山峦",
+          "岸边成片林木与植被",
+          "水面上的多艘船只",
+          "岸边零星建筑",
+          "水面上的水生植物浮片区"
+        ],
+        "spatial_layout": [
+          "长堤呈纵向延伸状态，位于画面中部，将宽阔水域分隔为左右两部分",
+          "远处山峦位于画面最上方的背景区域",
+          "成片林木与零星建筑分布在左侧水域的对岸区域",
+          "多艘船只零散分布在左右两侧的水域中",
+          "水生植物浮片区位于长堤左侧的水域边缘"
+        ],
+        "architecture_and_materials": [
+          "岸边可见零星低矮建筑，被林木遮挡，形态细节不清晰",
+          "水面上有一艘带黄色顶篷的游船，船体为深色，顶篷为暖黄色"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "长堤从画面近景向远景纵向延伸，远处山峦位于画面上方，可据此判断画面上下对应远近距离"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，具体时段无法判断",
+          "weather": "天空呈浅灰白色，能见度较好，无明显降雨，具体天气无法判断",
+          "season": "植被整体呈浓密绿色，无法判断具体季节"
+        },
+        "must_keep_candidates": [
+          "纵向延伸的绿植长堤结构",
+          "被长堤分隔的两片宽阔水域形态",
+          "远处连绵山峦的轮廓",
+          "沿岸成片的林木景观"
+        ],
+        "allowed_changes": [
+          "水面上船只的数量、位置与行驶状态",
+          "水面水生植物的分布范围",
+          "天空的云层形态与光影效果",
+          "沿岸林木的细节疏密"
+        ],
+        "suitable_shots": [
+          "高空俯瞰长堤与水域的全景镜头",
+          "沿长堤方向向前推进的航拍镜头",
+          "从高空缓慢下降展示水域与长堤的镜头",
+          "横向扫过整片水域与山峦的远景镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "长堤上的行人、建筑细节特写镜头",
+          "水面下的景观镜头",
+          "山峦背面的景观镜头",
+          "岸边建筑内部的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_0a0bc512f1821ad2",
+        "summary": "画面呈现一处开阔的水域景观，一条被茂密绿植覆盖的长堤从近景延伸至远方，将水域分隔，水域中分布着小岛与船只，远处是覆满林木的山峦，山峦后方可见朦胧的城市建筑轮廓，整体视野开阔。",
+        "visible_elements": [
+          "开阔水域",
+          "被茂密绿植覆盖的长堤",
+          "水域中的小岛",
+          "水面上的船只",
+          "前景的茂密林木",
+          "前景林木间的小型建筑",
+          "远处覆满林木的山峦",
+          "山峦后方的城市建筑轮廓"
+        ],
+        "spatial_layout": [
+          "长堤从画面近景向远景斜向延伸，纵贯水域",
+          "前景为茂密的林木与小型建筑，位于长堤靠近观看者的一端",
+          "水域分布在长堤的两侧",
+          "小岛零散分布在长堤右侧的水域中",
+          "远处的林木山峦位于水域的远端",
+          "城市建筑轮廓在山峦的后方"
+        ],
+        "architecture_and_materials": [
+          "前景小型建筑多为坡屋顶，墙体有白色、深色，掩映在林木中",
+          "远处山峦间的建筑多为浅色墙体，形态低矮，被林木环绕",
+          "长堤被绿植完全覆盖，无明显硬质堤岸外露"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "远景",
+          "orientation_clues": [
+            "长堤从画面近下方延伸至远上方，水域向远方铺展，远处山峦与城市建筑在画面最远端"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断",
+          "weather": "阴天或有雾，整体画面朦胧",
+          "season": "植被繁茂呈鲜绿色，为温暖季节"
+        },
+        "must_keep_candidates": [
+          "纵贯水域的绿植长堤结构",
+          "开阔的水域形态",
+          "水域中零散的小岛",
+          "远处覆满林木的山峦轮廓",
+          "前景茂密的林木与掩映的小型建筑"
+        ],
+        "allowed_changes": [
+          "水面船只的数量、位置和移动状态",
+          "天空的云层细节",
+          "植被的细微光影变化",
+          "远处城市建筑的朦胧程度"
+        ],
+        "suitable_shots": [
+          "高空俯瞰长堤与水域的全景镜头",
+          "沿长堤方向向前推进的远景镜头",
+          "从前景林木向远处水域与山峦拉远的镜头",
+          "环绕长堤局部的高空环绕镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "长堤上的行人、建筑细节特写镜头",
+          "水下景观镜头",
+          "山峦背面的视角镜头",
+          "城市建筑内部的镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_f5c0c9bbbadd9ea7",
+        "summary": "高空俯瞰视角下，宽阔的水域中延伸着一条长堤，长堤上有石拱桥，堤岸两侧分布着绿植与行人，水面上有一艘小船，整体是春日湖滨游览的景观。",
+        "visible_elements": [
+          "宽阔平静的水域",
+          "跨水的长堤步道",
+          "石拱桥",
+          "步道上的行人",
+          "堤岸旁的绿色柳树",
+          "堤岸旁的红色花树",
+          "水面上的小型游船",
+          "步道旁的路灯",
+          "堤岸的草坪",
+          "水面的浮标线"
+        ],
+        "spatial_layout": [
+          "长堤从画面左下方向右上方延伸，贯穿水域",
+          "石拱桥位于长堤中段偏下的位置，横跨水面连通两侧堤道",
+          "左下角堤岸分布着柳树和红花植被，右上角堤岸同样有柳树与红花植被",
+          "小型游船位于长堤右上方的开阔水面上",
+          "浮标线分布在长堤两侧的水面中"
+        ],
+        "architecture_and_materials": [
+          "长堤步道为平整的深灰色路面",
+          "石拱桥由青灰色石块砌筑，带有拱形桥洞",
+          "路灯为深色灯杆，顶部有灯具",
+          "堤岸边缘为石砌驳岸"
+        ],
+        "viewpoint": {
+          "camera_position": "高位",
+          "angle": "俯视",
+          "shot_size": "全景",
+          "orientation_clues": [
+            "长堤沿左下至右上方向延伸，无明确方位标识"
+          ]
+        },
+        "lighting_weather_season": {
+          "time_of_day": "白天，光线柔和，无法判断具体时段",
+          "weather": "晴朗，水面平静无雨雾",
+          "season": "春季，柳树发嫩绿新叶，花树盛开红花"
+        },
+        "must_keep_candidates": [
+          "长堤的整体走向与形态",
+          "石拱桥的拱形结构与石砌质感",
+          "堤岸两侧柳树与红花树搭配的植被特征",
+          "开阔水域与长堤的空间格局"
+        ],
+        "allowed_changes": [
+          "行人的数量、行走位置与衣着",
+          "水面游船的位置与数量",
+          "水面波纹的形态",
+          "植被的细微疏密变化"
+        ],
+        "suitable_shots": [
+          "高空俯瞰长堤全景的推进镜头",
+          "沿长堤走向的平移航拍镜头",
+          "从水面仰拍长堤与拱桥的镜头",
+          "聚焦堤岸植被与行人的中景镜头"
+        ],
+        "unsupported_or_risky_shots": [
+          "长堤尽头远端的特写镜头",
+          "桥洞内部的穿行镜头",
+          "堤岸背面区域的镜头",
+          "夜间场景的镜头"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "苏堤春晓",
+        "path": "images/hz-sudichunxiao_1.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-with-trees-in-it-tc5xookVPiU",
+        "license": "Unsplash License",
+        "alt": "a large body of water with trees in it"
+      },
+      {
+        "name": "苏堤春晓",
+        "path": "images/hz-sudichunxiao_2.jpg",
+        "url": "https://unsplash.com/photos/white-concrete-building-near-body-of-water-under-blue-sky-during-daytime-8llljOUfO4Q",
+        "license": "Unsplash License",
+        "alt": "white concrete building near body of water under blue sky during daytime"
+      },
+      {
+        "name": "苏堤春晓",
+        "path": "images/hz-sudichunxiao_3.jpg",
+        "url": "https://unsplash.com/photos/a-lake-with-a-purple-sky-and-trees-in-the-background-wg0q5RpZli0",
+        "license": "Unsplash License",
+        "alt": "a lake with a purple sky and trees in the background"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_6f0648dcae3cc7bf",
+        "name": "苏堤",
+        "url": "/assets/references/p_20260928_174225_e4e9b8/ref_6f0648dcae3cc7bf.jpg",
+        "source_page_url": "https://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5652160572846789789",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_f0f876be6febe754",
+        "name": "苏堤",
+        "url": "/assets/references/p_20260928_174225_e4e9b8/ref_f0f876be6febe754.webp",
+        "source_page_url": "http://www.sohu.com/a/775888824_121247239",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_0a0bc512f1821ad2",
+        "name": "苏堤",
+        "url": "/assets/references/p_20260928_174225_e4e9b8/ref_0a0bc512f1821ad2.webp",
+        "source_page_url": "http://baijiahao.baidu.com/s?id=1824140920796914634&wfr=spider&for=pc",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_f5c0c9bbbadd9ea7",
+        "name": "苏堤",
+        "url": "/assets/references/p_20260928_174225_e4e9b8/ref_f5c0c9bbbadd9ea7.jpg",
+        "source_page_url": "http://www.blog.efkmr.cn/Article/details/5436182.sHtML",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "selected",
+    "version": 1,
+    "source": "preset",
+    "voice_id": "voice_06_male_warm",
+    "name": "温暖故事男声",
+    "description": "温暖柔和男中音、亲切细腻",
+    "reference_path": "D:\\AI_tourist_video\\assets\\media\\voices\\06_温暖故事_男声.wav",
+    "preview_url": "/assets/media/voices/06_温暖故事_男声.wav?v=42bccb3b555b",
+    "reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b"
+  },
+  "music": {
+    "status": "selected",
+    "version": 1,
+    "recommendation_status": "none",
+    "recommendation": null,
+    "warning": null,
+    "selected": {
+      "bgm_id": "bgm_11",
+      "scene": "非遗文化传播",
+      "scene_type": "非遗文化传播",
+      "title": "Romantic 03",
+      "artist": "Lily J",
+      "duration": "01:42",
+      "description": "世界音乐、木质与原声感；适合手作流程、匠人和器物细节",
+      "preview_url": "/assets/media/bgm/04_intangible_heritage/02_Romantic_03__Lily_J.mp3",
+      "local_path": "D:\\AI_tourist_video\\assets\\media\\bgm\\04_intangible_heritage\\02_Romantic_03__Lily_J.mp3",
+      "source_page": "https://mixkit.co/free-stock-music/traditional/",
+      "license": "Mixkit Stock Music Free License"
+    }
+  },
+  "voice_tasks": [],
+  "segment_tasks": [
+    "st_20260928_174606_7062f2",
+    "st_20260928_175210_a1f13b"
+  ],
+  "render_tasks": [
+    "rt_20260928_180440_611de8"
+  ],
+  "render": {
+    "status": "completed",
+    "version": 1,
+    "task_id": "rt_20260928_180440_611de8"
+  },
+  "final_video": {
+    "status": "completed",
+    "url": "/assets/renders/p_20260928_174225_e4e9b8/v1/with_bgm.mp4",
+    "preview_url": "/assets/renders/p_20260928_174225_e4e9b8/v1/with_bgm.mp4",
+    "default_variant": "with_bgm",
+    "clean": {
+      "url": "/assets/renders/p_20260928_174225_e4e9b8/v1/clean.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260928_174225_e4e9b8\\v1\\clean.mp4"
+    },
+    "with_bgm": {
+      "url": "/assets/renders/p_20260928_174225_e4e9b8/v1/with_bgm.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260928_174225_e4e9b8\\v1\\with_bgm.mp4"
+    },
+    "bgm_bed": {
+      "url": "/assets/renders/p_20260928_174225_e4e9b8/v1/bgm_bed.m4a",
+      "local_path": "D:\\AI_tourist_video\\assets\\renders\\p_20260928_174225_e4e9b8\\v1\\bgm_bed.m4a"
+    },
+    "bgm_mix": {
+      "bgm_id": "bgm_11",
+      "title": "Romantic 03",
+      "target_lufs": -23.0,
+      "video_gain_db": 0,
+      "bgm_gain_db": 0,
+      "gain_db": 0,
+      "strategy": "loudness_normalized_mix"
+    },
+    "duration_s": 60.07,
+    "resolution": "1080p",
+    "aspect_ratio": "16:9",
+    "version": 1,
+    "voice_version": 1,
+    "music_version": 1
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-28T09:42:25.013318+00:00",
+  "updated_at": "2026-09-28T10:04:57.376264+00:00",
+  "copywriting_text": "【0-10s】一堤烟柳，半湖云水。杭州的慢，从苏堤开始。西湖十景之首，苏堤春晓。\n【10-24s】一条堤，把湖光分成两卷；一座桥，把脚步写进春天。南起南屏山麓，北到栖霞岭下，六桥起伏，桃柳夹堤。\n【24-36s】不用赶路，带一瓶水，沿堤慢慢走。累了，看船、看云、看桥影落在水面。学生党轻装慢行，边走边拍。\n【36-48s】堤是线，湖是卷，山与城是落款。苏公葑泥筑堤，后人唤作苏堤；故事，在波光里。\n【48-60s】挑个晴日，或薄雾天，来苏堤走一趟。轻装、慢行、多抬头。苏堤，等你入画。收藏这条线，下个周末见。",
+  "segment_results": {
+    "seg_01": {
+      "segment_id": "seg_01",
+      "shot_ids": [
+        1
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260928_174225_e4e9b8/seg_01/st_20260928_174606_7062f2_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179058877415200000000000000000000ffffac1802a3795a9c.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260928%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260928T095210Z&X-Tos-Expires=86400&X-Tos-Signature=fd8a7ca08f04c7948ae8b1af9340fad3ecc91d07ca1f1ac819ab3f6fea091c77&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_01\\st_20260928_174606_7062f2_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_01\\st_20260928_174606_7062f2_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_01\\st_20260928_174606_7062f2_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 15.0698,
+        "expected_duration_seconds": 15.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 1.29,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -16.36,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "4388702b7914f1d1adeab63dea66bc0b15989deb38326a47e98cc422baa80501",
+      "prompt_hash": "bee11b135cc04a5abc8876a7ac22ed47aa31ee39b77af7dcf9c7faf314601576",
+      "reference_asset_ids": [
+        "ref_6f0648dcae3cc7bf"
+      ],
+      "task_id": "st_20260928_174606_7062f2"
+    },
+    "seg_02": {
+      "segment_id": "seg_02",
+      "shot_ids": [
+        2
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260928_174225_e4e9b8/seg_02/st_20260928_174606_7062f2_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179058877803900000000000000000000ffffac18056a996e2d.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260928%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260928T100309Z&X-Tos-Expires=86400&X-Tos-Signature=74937e5adae3e45c97f79bf8aa22fdcba54a69c547eb46bbaa169322253d888f&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_02\\st_20260928_174606_7062f2_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_02\\st_20260928_174606_7062f2_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_02\\st_20260928_174606_7062f2_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 15.0698,
+        "expected_duration_seconds": 15.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.71,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -12.19,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "207e5f2b92e5bb5db135c8628b9c005b40d2182bf427f12270b8dc703cbc9bb5",
+      "prompt_hash": "27c703eacad5cf61b8e6e91823ac74ce4e14c50810807276a9dc90665f1da991",
+      "reference_asset_ids": [
+        "ref_f5c0c9bbbadd9ea7"
+      ],
+      "task_id": "st_20260928_174606_7062f2"
+    },
+    "seg_03": {
+      "segment_id": "seg_03",
+      "shot_ids": [
+        3
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260928_174225_e4e9b8/seg_03/st_20260928_175210_a1f13b_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179058913709400000000000000000000ffffac191d2e252c83.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260928%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260928T095535Z&X-Tos-Expires=86400&X-Tos-Signature=a0c93875018befde8a1fef061f1e403553a6aeef84d0b41da57bc90196415d6c&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_03\\st_20260928_175210_a1f13b_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_03\\st_20260928_175210_a1f13b_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_03\\st_20260928_175210_a1f13b_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 15.072,
+        "expected_duration_seconds": 15.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.432,
+        "tail_activity_warning": false,
+        "speech_level_p90_dbfs": -14.77,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "6cd32b2650e5d420ef8ea98ae358eb9dbc5ce5aef61edb08d83229fdd0630ee6",
+      "prompt_hash": "0356bdb6f4e4b300bb888d614ff83f859cd0b38560e3a348d19dca0ccabc6c01",
+      "reference_asset_ids": [
+        "ref_0a0bc512f1821ad2"
+      ],
+      "task_id": "st_20260928_175210_a1f13b"
+    },
+    "seg_04": {
+      "segment_id": "seg_04",
+      "shot_ids": [
+        4
+      ],
+      "status": "completed",
+      "video_url": "/assets/videos/p_20260928_174225_e4e9b8/seg_04/st_20260928_174606_7062f2_normalized_av.mp4",
+      "source_video_url": "https://ark-acg-cn-beijing.tos-cn-beijing.volces.com/doubao-seedance-2-0/02179058878539900000000000000000000ffffac193b2b8df9e3.mp4?X-Tos-Algorithm=TOS4-HMAC-SHA256&X-Tos-Credential=AKLTYWJkZTExNjA1ZDUyNDc3YzhjNTM5OGIyNjBhNDcyOTQ%2F20260928%2Fcn-beijing%2Ftos%2Frequest&X-Tos-Date=20260928T095023Z&X-Tos-Expires=86400&X-Tos-Signature=aff7e53bb2d16eea6f8f54ccbe8e701f719e81753522d44dc7546897aa698442&X-Tos-SignedHeaders=host",
+      "raw_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_04\\st_20260928_174606_7062f2_raw.mp4",
+      "normalized_av_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_04\\st_20260928_174606_7062f2_normalized_av.mp4",
+      "native_audio_path": "D:\\AI_tourist_video\\assets\\videos\\p_20260928_174225_e4e9b8\\seg_04\\st_20260928_174606_7062f2_native_audio.wav",
+      "audio_qa": {
+        "status": "passed",
+        "has_audio": true,
+        "duration_seconds": 15.072,
+        "expected_duration_seconds": 15.0,
+        "duration_ok": true,
+        "tail_silence_seconds": 0.032,
+        "tail_activity_warning": true,
+        "speech_level_p90_dbfs": -14.28,
+        "music_detection": "not_available",
+        "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+      },
+      "error": null,
+      "voice_reference_sha256": "42bccb3b555b116451d28930f4d4fc1c24d5a8128d1d78beb6031abfa5ef546b",
+      "voice_version": 1,
+      "narration_hash": "3f5e74aef798bbfe0643320bca9039f2d0700eb17f5b0ff38b96ac7fa69b83e2",
+      "prompt_hash": "4db1693bad2e68abfbfa56054c939e7a0c7b7a3a1779df4b6aa5d9ad93832139",
+      "reference_asset_ids": [
+        "ref_f0f876be6febe754"
+      ],
+      "task_id": "st_20260928_174606_7062f2"
+    }
+  },
+  "active_segment_ids": []
+}

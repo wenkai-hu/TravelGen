@@ -1,0 +1,346 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260926_002109_907316",
+  "username": "e2e_4af74657",
+  "status": "waiting_reference_confirm",
+  "progress": 5,
+  "message": "找到 33 张候选图片，请确认真实景点图片",
+  "request": {
+    "city": "绍兴",
+    "location": "兰亭",
+    "scene_type": "非遗文化传播",
+    "theme": "宋韵绍兴",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 15,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": [
+      {
+        "type": "image",
+        "url": "https://example.com/not-a-real-image.jpg"
+      },
+      {
+        "type": "image",
+        "url": "/assets/references/p_20260926_002109_907316/ref_8a437dad986fb503.png"
+      },
+      {
+        "type": "image",
+        "url": "/assets/references/p_20260926_002109_907316/ref_19f96b2292843a8f.png"
+      },
+      {
+        "type": "image",
+        "url": "/assets/references/p_20260926_002109_907316/ref_aaec7c33cdb99ad9.png"
+      }
+    ]
+  },
+  "planning": {},
+  "copywriting": {},
+  "script": {},
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_6341d00048a886e3",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=2213067057,4129297080&fm=3074&app=3074&f=JPEG",
+      "title": "绍兴兰亭:人少景美,书法爱好者的天堂",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3703054931324037820",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3b4d0df02e47ebe3",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=1169875737,2087109345&fm=3074&app=3074&f=JPEG",
+      "title": "绍兴兰亭:王羲之笔下的书法圣地",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4327410818243399858",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_125c08b24a94f7ff",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=1213317148,3709327676&fm=3074&app=3074&f=JPEG",
+      "title": "浙江绍兴兰亭:王羲之的书法圣地",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5096633426643841150",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_15bfaf52b5a20e5f",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2Mzc3OTU0LjA4Nzg5MDQ%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2025-01-08T23%3A12%3A35Z%2F-1%2F%2Fc44411d30179b289bb35d25560427a298d274795d7ef6d750642811bebcf33d2",
+      "title": "绍兴兰亭景区:一场穿越时空的世外桃源之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4156811753839728151",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9b5fd1a15de16fda",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://gips1.baidu.com/it/u=271497304,4000508663&fm=3074&app=3074&f=JPEG?w=1920&h=2530&type=normal&func=",
+      "title": "绍兴兰亭:曲水流觞与上巳节的浪漫传说",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5104937969378735352",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_93710826136fa89d",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://gips3.baidu.com/it/u=2320585742,4087209051&fm=3074&app=3074&f=JPEG",
+      "title": "绍兴兰亭景区游玩全攻略",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4104836619259911594",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_00ed272a67265bdd",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%2757uN5YW05YWw5Lqt5pmv5Yy65LuL57uNXzE3Mjk2MTkxNzkuNjI0NzQxMw%3D%3D%27/0.png",
+      "title": "绍兴兰亭景区:王羲之笔下的书法圣地",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4899267073663219968",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3da3b44aa4f4c466",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275YWw5Lqt5Zyo5ZOq6YeMXzE3MjMyMTI3MzMuMzQyMTM2NA%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKbRIJlaytWmofxMNJRsDLO%2F2024-08-09T14%3A12%3A13Z%2F-1%2F%2Ff6c451ee5ad360577bf782d8aabd931c89ecb805e07ec60328cdbe8879be5dc5&for=bg",
+      "title": "探访绍兴兰亭书法圣地与历史的交融",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3884945641041433618",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7095eacca65a7d6c",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://n.sinaimg.cn/spider20251106/214/w2048h1366/20251106/5022-5412270bc6daf55d093cb93700f2110a.jpg",
+      "title": "摄于今绍兴兰亭景区",
+      "source_page_url": "http://finance.sina.com.cn/roll/2025-11-06/doc-infwmkvf5872605.shtml",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_8311f972999df921",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275YWw5Lqt5Zu%2B54mHXzE3Mjk4OTIwMjkuMzQwMTQwMw%3D%3D%27/0.png",
+      "title": "🌿绍兴兰亭:烟雨中的书法圣地🌿",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5182429345555515936",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7f9a7865d1ee13f6",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275Zu95bqG57uN5YW05peF5ri45pS755WlXzE3Mjc3MzA4NTMuOTc3NjA5NA%3D%3D%27/0.png",
+      "title": "🎉国庆绍兴兰亭游玩全攻略🎉",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4944770658798830994",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_288da936e9d2c132",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=2930760644,1911315961&fm=3074&app=3074&f=JPEG?w=1545&h=2009&type=normal&func=T",
+      "title": "绍兴兰亭:兰亭序的实景地与文化体验",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4656309689974464150",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_41d0e90eab9b7d59",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/240711/efd265699de8817cfe8aec271fb7cd901406.jpeg",
+      "title": "绍兴精华兰亭风景区",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1804290427222422031&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3c03c8768b5666e0",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275YWw5Lqt5pmv5Yy6XzE3MzIwNjUzNDAuMjMyMDU0NQ%3D%3D%27/0.png",
+      "title": "兰亭景区:雨中的中式浪漫之旅 到达绍兴时,天空微微飘着细雨",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_3046922621559451781",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_06c4d7b1d6f3cd32",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%2757uN5YW05YWw5Lqt5pmv5Yy66Zeo56Wo5aSa5bCR6ZKx5LiA5bygXzE3MzAwMDgxNTQuNzUzMTQ%3D%27/0.png",
+      "title": "绍兴兰亭:一场穿越千年的文化之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5015451535307541459",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_062f09b9459d2b93",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyNTI5MDY0LjY1MzQ0Mjk%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2024-11-25T10%3A04%3A25Z%2F-1%2F%2F1e476357469a5a3958776f2d3ffb57b420620f6d5194fcd0eda51169f5a3fa87",
+      "title": "地址:浙江省绍兴市柯桥区兰亭镇308省道兰亭风景",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4520548217784239440",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0ff6925080177664",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275YWw5Lqt5pmv5Yy6XzE3MzIwNjUzNDQuNzA4NDU2Mw%3D%3D%27/0.png",
+      "title": "绍兴兰亭:一场穿越时空的美学之旅",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5035861533543012189",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_77fcb6204cb930b4",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/caef76094b36acaf71caaaf772d98d1001e99c96",
+      "title": "绍兴兰亭",
+      "source_page_url": "http://baike.baidu.com/item/%E7%BB%8D%E5%85%B4%E5%85%B0%E4%BA%AD/10881512",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_721bffd879f79641",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://q8.itc.cn/q_70/images03/20250709/350e53a7ba664e6c9b388a770acfbdd5.jpeg",
+      "title": "绍兴·兰亭半日:在诗酒流觞间,遇见书圣的千年风雅",
+      "source_page_url": "http://www.sohu.com/a/912290409_121124716",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_69d5041a30d6a48d",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%2757uN5YW05YWw5LqtXzE3MjkzNjM5NDQuMTEyMzY4Mw%3D%3D%27/0.png",
+      "title": "绍兴兰亭",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4296142382536536139",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_03721302588acbcd",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/f49ce6be9a76550f37d385d675dfd62f.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "兰亭景区 坐落于绍兴市西南郊的兰渚山麓,宛如一幅徐徐展开的江南水墨",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5145575270481155890",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3e835f7390c2bc36",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275Y2X5LqtXzE3Mjk5NzgwOTQuMTAyMDU2NV8xNzI5OTc4MDk1LjA1OTE2MzM%3D%27/1.png",
+      "title": "绍兴兰亭一日游攻略,必打卡景点推荐!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4803876382668260298",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a25bab4cc62bd499",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/79f0f736afc37931e873ba22e5c4b74543a911a5",
+      "title": "绍兴兰亭",
+      "source_page_url": "http://baike.baidu.com/item/%E7%BB%8D%E5%85%B4%E5%85%B0%E4%BA%AD/10881512",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_56180ad22094f5bf",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMzNjMxMzQ1LjIxMjY3MzQ%3D%27/0.png",
+      "title": "绍兴一日游:兰亭与东湖的完美结合",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5296982548715445112",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_13ba6a5733eb2c89",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjh/240715/b120976f48ebcb3be10f494de77bdbd28888.jpeg",
+      "title": "兰亭位于绍兴市区西南十三公里的兰渚山麓,因春秋末期越王勾践种兰",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4716098688500598203",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_abafa8eb76313846",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/72f082025aafa40f91ecf2d6a564034f78f01996",
+      "title": "绍兴兰亭",
+      "source_page_url": "http://baike.baidu.com/item/%E7%BB%8D%E5%85%B4%E5%85%B0%E4%BA%AD/10881512",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_c5dd0d29528ee761",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://upload-images.jianshu.io/upload_images/10666569-a9ea2094930c7043.jpg",
+      "title": "绍兴兰亭景区",
+      "source_page_url": "http://www.jianshu.com/p/13cb51e21079",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_617e27bf55e814ca",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/738b4710b912c8fc71d9cac6f2039245d6882196",
+      "title": "绍兴兰亭",
+      "source_page_url": "http://baike.baidu.com/item/%E7%BB%8D%E5%85%B4%E5%85%B0%E4%BA%AD/10881512",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_acaa436ba9540552",
+      "query": "绍兴 兰亭 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275YWw5Lqt5Zyo5ZOq6YeMXzE3MzI4MTc0ODYuMDYzNDkyMw%3D%3D%27/0.png",
+      "title": "绍兴兰亭旅游攻略及摄影小技巧",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4750153445895320127",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_13c74893dd068378",
+      "query": "绍兴 兰亭",
+      "image_url": "https://example.com/not-a-real-image.jpg",
+      "title": "用户提供的参考图",
+      "source_page_url": "",
+      "provider": "user"
+    },
+    {
+      "candidate_id": "ref_5a44976a56b0343d",
+      "query": "绍兴 兰亭",
+      "image_url": "/assets/references/p_20260926_002109_907316/ref_8a437dad986fb503.png",
+      "title": "用户提供的参考图",
+      "source_page_url": "",
+      "provider": "user"
+    },
+    {
+      "candidate_id": "ref_51b6709f7c9c47fc",
+      "query": "绍兴 兰亭",
+      "image_url": "/assets/references/p_20260926_002109_907316/ref_19f96b2292843a8f.png",
+      "title": "用户提供的参考图",
+      "source_page_url": "",
+      "provider": "user"
+    },
+    {
+      "candidate_id": "ref_ccbfb95b967e5c35",
+      "query": "绍兴 兰亭",
+      "image_url": "/assets/references/p_20260926_002109_907316/ref_aaec7c33cdb99ad9.png",
+      "title": "用户提供的参考图",
+      "source_page_url": "",
+      "provider": "user"
+    }
+  ],
+  "reference_assets": [],
+  "visual_profile": {},
+  "reference_version": 0,
+  "visual_assets": {},
+  "voice": {
+    "status": "none",
+    "version": 0
+  },
+  "music": {
+    "status": "none",
+    "version": 0,
+    "recommendation_status": "none",
+    "recommendation": null
+  },
+  "voice_tasks": [],
+  "segment_tasks": [],
+  "render_tasks": [],
+  "render": {
+    "status": "none",
+    "version": 0
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {},
+  "created_at": "2026-09-25T16:21:09.588802+00:00",
+  "updated_at": "2026-09-25T16:21:10.466863+00:00",
+  "copywriting_text": "",
+  "segment_results": {},
+  "active_segment_ids": []
+}

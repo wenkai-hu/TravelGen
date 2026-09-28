@@ -2,9 +2,26 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { NButton, NInput, useMessage } from "naive-ui";
+import {
+  PhArrowLeft,
+  PhCheck,
+  PhConfetti,
+  PhFilmStrip,
+  PhLightbulb,
+  PhMapPin,
+  PhNotePencil,
+  PhPalette,
+  PhSparkle,
+  PhTag,
+  PhTimer,
+  PhUsersThree,
+  PhWarning,
+  PhWrench,
+} from "@phosphor-icons/vue";
+import ThemeToggle from "../components/ThemeToggle.vue";
 import logoUrl from "../images/logo.png";
 import { getProject, confirmPlan } from "../api";
-import { isLoggedIn } from "../auth";
+import { isLoggedIn, logout as clearSession } from "../auth";
 
 const message = useMessage();
 const route = useRoute();
@@ -83,6 +100,15 @@ async function tick() {
       router.replace("/");
       return;
     }
+    if (e.status === 401) {
+      // 登录态失效（token 过期 / 后端重启后内存会话丢失）。这不是「网络抖动」，
+      // 重试一万次也还是 401 —— 必须离开轮询去重新登录，否则页面就吊死在这儿
+      stopPolling();
+      clearSession();
+      message.error("登录已失效（后端重启会清空登录态），请重新登录");
+      router.replace("/login");
+      return;
+    }
     // 瞬时网络错误/5xx：保留轮询让下个 tick 自愈；只提示一次，不刷屏
     if (!firstFailNotified) {
       firstFailNotified = true;
@@ -157,6 +183,7 @@ function fmtDur(s) {
         <nav class="nav-links">
           <a href="#" @click.prevent="router.push('/')">工作台</a>
           <router-link v-if="isLoggedIn()" to="/history">我的创作</router-link>
+          <ThemeToggle />
         </nav>
       </div>
     </header>
@@ -170,9 +197,14 @@ function fmtDur(s) {
 
       <!-- ① 生成创作方案中 -->
       <div v-else-if="stage === 'generating'" class="card gen">
-        <div class="gen-badge">✦ AI 生成创作方案中</div>
+        <div class="gen-badge">
+          <PhSparkle :size="12" weight="fill" class="ico-inline" />
+          AI 生成创作方案中
+        </div>
         <h2 class="gen-title">{{ req.theme }}</h2>
-        <p class="gen-sub">📍 {{ req.city }} · {{ req.location }}</p>
+        <p class="gen-sub">
+          <PhMapPin class="ico-inline" /> {{ req.city }} · {{ req.location }}
+        </p>
         <div class="bar-track">
           <div class="bar-fill"></div>
         </div>
@@ -189,20 +221,23 @@ function fmtDur(s) {
             <span class="s-tag">{{ req.scene_type }}</span>
           </div>
           <div class="summary-meta">
-            <span>📍 {{ req.city }} · {{ req.location }}</span>
-            <span>🎨 {{ req.style }}</span>
-            <span>👥 {{ req.audience }}</span>
             <span
-              >⏱ {{ req.duration_s }}s｜{{ req.aspect_ratio }}｜{{
-                req.resolution
-              }}</span
+              ><PhMapPin class="ico-inline" /> {{ req.city }} ·
+              {{ req.location }}</span
+            >
+            <span><PhPalette class="ico-inline" /> {{ req.style }}</span>
+            <span><PhUsersThree class="ico-inline" /> {{ req.audience }}</span>
+            <span
+              ><PhTimer class="ico-inline" /> {{ req.duration_s }}s｜{{
+                req.aspect_ratio
+              }}｜{{ req.resolution }}</span
             >
           </div>
         </section>
 
         <!-- 使用引导：首次用户三步骤 -->
         <div class="guide fade-up-1">
-          <span class="guide-icon">💡</span>
+          <span class="guide-icon"><PhLightbulb /></span>
           <div class="guide-body">
             <b>创作方案确认</b>
             <p>
@@ -216,7 +251,9 @@ function fmtDur(s) {
         <div class="cols">
           <!-- 左：创作方案（拍摄大纲） -->
           <section class="card outline fade-up-1">
-            <h3 class="block-title">🎞 创作方案</h3>
+            <h3 class="block-title">
+              <PhFilmStrip class="ico-inline" /> 创作方案
+            </h3>
             <p class="card-sub">
               AI 生成的内容大纲（3-5 段），预览视频的叙事结构与节奏
             </p>
@@ -243,7 +280,9 @@ function fmtDur(s) {
             >
               <div class="reference-head">
                 <div>
-                  <h3 class="block-title">📍 已采用的实景参考</h3>
+                  <h3 class="block-title">
+                    <PhMapPin class="ico-inline" /> 已采用的实景参考
+                  </h3>
                   <p class="card-sub">
                     下列图片已完成视觉理解，将继续约束分镜和视频生成
                   </p>
@@ -260,14 +299,16 @@ function fmtDur(s) {
                   :title="`${reference.name || '实景参考'} · 查看来源`"
                 >
                   <img :src="reference.url" :alt="reference.name || '实景参考'" />
-                  <i>✓</i>
+                  <i><PhCheck :size="11" weight="bold" /></i>
                 </a>
               </div>
               <p class="rights-tip">图片用于视觉校准；正式发布前仍需复核来源授权。</p>
             </section>
 
             <section class="card cw fade-up-2">
-              <h3 class="block-title">📝 旁白文案（可编辑）</h3>
+              <h3 class="block-title">
+                <PhNotePencil class="ico-inline" /> 旁白文案（可编辑）
+              </h3>
               <p class="card-sub">
                 视频的配音脚本，可直接改写措辞，确认后按此拆分镜
               </p>
@@ -283,7 +324,9 @@ function fmtDur(s) {
               v-if="titles.length || hashtags.length"
               class="card tags fade-up-2"
             >
-              <h3 class="block-title">🏷 标题候选 · 话题标签</h3>
+              <h3 class="block-title">
+                <PhTag class="ico-inline" /> 标题候选 · 话题标签
+              </h3>
               <p class="card-sub">
                 成片发布时可挑选的封面标题与传播话题（可复制到抖音/视频号）
               </p>
@@ -305,7 +348,9 @@ function fmtDur(s) {
 
         <!-- 确认操作条 -->
         <div class="op-bar">
-          <NButton size="large" @click="router.push('/')">← 返回修改</NButton>
+          <NButton size="large" @click="router.push('/')">
+            <PhArrowLeft :size="15" class="btn-ico" /> 返回修改
+          </NButton>
           <NButton
             class="confirm-btn"
             size="large"
@@ -313,14 +358,14 @@ function fmtDur(s) {
             :loading="confirming"
             @click="onConfirm"
           >
-            ✓ 确认方案
+            <PhCheck :size="15" weight="bold" class="btn-ico" /> 确认方案
           </NButton>
         </div>
       </div>
 
       <!-- ③ 已确认 -->
       <div v-else-if="stage === 'confirmed'" class="card done">
-        <div class="done-icon">🎉</div>
+        <div class="done-icon"><PhConfetti /></div>
         <h2 class="done-title">方案已确认</h2>
         <p class="done-line" v-if="planId">计划 ID：{{ planId }}</p>
         <p class="done-line">进度 {{ progress }}% — {{ msg }}</p>
@@ -337,7 +382,7 @@ function fmtDur(s) {
 
       <!-- ④ 其他阶段（正常不会停留本页） -->
       <div v-else-if="stage === 'other'" class="card done">
-        <div class="done-icon">🛠</div>
+        <div class="done-icon"><PhWrench /></div>
         <h2 class="done-title">项目已进入下一阶段</h2>
         <p class="done-line">状态：{{ project?.status }}（{{ progress }}%）</p>
         <NButton size="large" @click="router.push('/')">回到工作台</NButton>
@@ -345,7 +390,7 @@ function fmtDur(s) {
 
       <!-- ⑤ 失败 -->
       <div v-else class="card err">
-        <div class="err-icon">⚠️</div>
+        <div class="err-icon"><PhWarning /></div>
         <h2 class="err-title">方案生成失败</h2>
         <p class="err-msg">{{ project?.message || "未知错误" }}</p>
         <p class="err-tip">
@@ -379,9 +424,9 @@ function fmtDur(s) {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: #fcf8f1;
+  background: var(--surface-nav);
   border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 2px 12px rgba(31, 41, 55, 0.05);
+  box-shadow: var(--shadow-soft);
 }
 .nav-inner {
   max-width: 1200px;
@@ -403,6 +448,7 @@ function fmtDur(s) {
   border-radius: 12px;
   object-fit: cover;
   display: block;
+  box-shadow: 0 0 0 1px var(--logo-ring);
 }
 .logo-text {
   font-family: var(--font-serif);
@@ -545,7 +591,7 @@ function fmtDur(s) {
   width: 45%;
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, #0f766e, #17a398);
+  background: var(--gradient-bar);
   animation: indeterminate 1.4s ease-in-out infinite; /* 不确定进度：来回扫描，表达"生成中"而非卡在 5% */
 }
 @keyframes indeterminate {
@@ -626,7 +672,7 @@ function fmtDur(s) {
   height: 24px;
   border-radius: 6px;
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   font-size: 12px;
   font-weight: 700;
   display: flex;
@@ -645,7 +691,7 @@ function fmtDur(s) {
 }
 .tl-dur {
   font-size: 11px;
-  color: var(--color-gold);
+  color: var(--color-gold-text);
   font-weight: 600;
 }
 .tl-content {
@@ -705,7 +751,7 @@ function fmtDur(s) {
   bottom: 5px;
   display: grid;
   place-items: center;
-  color: white;
+  color: var(--color-on-primary);
   border-radius: 50%;
   background: var(--color-primary);
   font-size: 10px;
@@ -757,7 +803,7 @@ function fmtDur(s) {
   margin-top: 18px;
 }
 .confirm-btn {
-  background: linear-gradient(120deg, #0f766e, #115e59) !important;
+  background: var(--gradient-btn) !important;
 }
 
 /* ---------- ③ 已确认 / 其他 ---------- */
@@ -781,7 +827,7 @@ function fmtDur(s) {
 }
 .done-tip {
   font-size: 12.5px;
-  color: var(--color-gold);
+  color: var(--color-gold-text);
   margin: 10px 0 20px;
 }
 .done .confirm-btn {

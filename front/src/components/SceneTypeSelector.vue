@@ -1,4 +1,5 @@
 <script setup>
+import { PhCheck } from '@phosphor-icons/vue'
 import { SCENE_TYPES } from '../constants'
 
 defineProps({ modelValue: String })
@@ -15,10 +16,12 @@ defineEmits(['update:modelValue'])
       :class="{ active: modelValue === s.value }"
       @click="$emit('update:modelValue', s.value)"
     >
-      <span class="emoji">{{ s.emoji }}</span>
+      <span class="scene-icon"><component :is="s.icon" /></span>
       <span class="label">{{ s.value }}</span>
       <span class="desc">{{ s.desc }}</span>
-      <span v-if="modelValue === s.value" class="check">✓</span>
+      <span v-if="modelValue === s.value" class="check">
+        <PhCheck :size="11" weight="bold" />
+      </span>
     </button>
   </div>
 </template>
@@ -55,10 +58,10 @@ defineEmits(['update:modelValue'])
 .scene-card.active {
   border-color: var(--color-primary);
   background: var(--color-primary-fade);
-  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.12);
+  box-shadow: 0 4px 14px var(--shadow-primary);
 }
 
-.emoji { font-size: 20px; line-height: 1.2; }
+.scene-icon { font-size: 20px; line-height: 1.2; color: var(--color-primary); }
 .label { font-size: 14px; font-weight: 600; color: var(--color-ink); }
 .desc  { font-size: 11px; color: var(--color-ink-sub); }
 
@@ -70,7 +73,7 @@ defineEmits(['update:modelValue'])
   height: 18px;
   border-radius: 50%;
   background: var(--color-gold);
-  color: #fff;
+  color: var(--color-on-gold);
   font-size: 11px;
   display: flex;
   align-items: center;

@@ -9,7 +9,27 @@ import {
   NSlider,
   useMessage,
 } from "naive-ui";
+import {
+  PhBuildings,
+  PhCaretRight,
+  PhCircleDashed,
+  PhFilmSlate,
+  PhGear,
+  PhHammer,
+  PhImage,
+  PhLightbulb,
+  PhMapPin,
+  PhNotePencil,
+  PhPalette,
+  PhPuzzlePiece,
+  PhSparkle,
+  PhTelevision,
+  PhTimer,
+  PhUsersThree,
+  PhUser,
+} from "@phosphor-icons/vue";
 import CraftSlot from "../components/CraftSlot.vue";
+import ThemeToggle from "../components/ThemeToggle.vue";
 import logoUrl from "../images/logo.png";
 import { createProject } from "../api";
 import { getUsername, isLoggedIn, logout as clearSession } from "../auth";
@@ -49,7 +69,6 @@ const form = reactive({
   resolution: "1080p",
   video_model: "seedance-2.0-pro",
   description: "",
-  assets: [],
 });
 
 // 人群 / 风格：预设块 + 可自定义
@@ -170,18 +189,16 @@ function onGridKey(e) {
   }
 }
 
-// ── 补充选项：补充说明 / 模型选择 / 参考图片 循环切换（点右侧箭头） ──
+// ── 补充选项：补充说明 / 模型选择 循环切换（点右侧箭头）。
+// 参考图已移到「开始锻造」之后的选图页 —— 在那里上传才能和搜到的图一起排序。 ──
 const EXTRA_PANES = [
-  { key: "description", label: "补充说明（可选）", icon: "📝" },
-  { key: "video_model", label: "模型选择", icon: "⚙️" },
-  { key: "assets", label: "参考图片", icon: "🖼️" },
+  { key: "description", label: "补充说明（可选）", icon: PhNotePencil },
+  { key: "video_model", label: "模型选择", icon: PhGear },
 ];
 const extraIndex = ref(0);
 const extra = computed(() => EXTRA_PANES[extraIndex.value]);
 const extraFilled = computed(() => {
   if (extra.value.key === "video_model") return true; // 有默认值，恒为已填
-  if (extra.value.key === "assets")
-    return form.assets.some((a) => a.url.trim());
   return !!form.description.trim();
 });
 
@@ -189,9 +206,8 @@ const submitting = ref(false);
 const created = ref(null);
 const submitError = ref("");
 
-// ── 配方完成度：分母动态 = 9 宫格必选 + 模型默认选上（恒 10），填了补充说明/参考图各 +1 ──
+// ── 配方完成度：分母动态 = 9 宫格必选 + 模型默认选上（恒 10），填了补充说明再 +1 ──
 const descFilled = computed(() => !!form.description.trim());
-const assetsFilled = computed(() => form.assets.some((a) => a.url.trim()));
 const slotsFilled = computed(() => {
   let n = 0;
   if (form.city.trim()) n++;
@@ -202,12 +218,9 @@ const slotsFilled = computed(() => {
   if (form.style.trim()) n++;
   n += 4; // 时长/画幅/分辨率 + 模型选择（默认值恒为已填）
   if (descFilled.value) n++;
-  if (assetsFilled.value) n++;
   return n;
 });
-const totalSlots = computed(
-  () => 10 + (descFilled.value ? 1 : 0) + (assetsFilled.value ? 1 : 0),
-);
+const totalSlots = computed(() => 10 + (descFilled.value ? 1 : 0));
 const completion = computed(() =>
   Math.round((slotsFilled.value / totalSlots.value) * 100),
 );
@@ -255,9 +268,7 @@ async function onSubmit() {
       resolution: form.resolution,
       description: form.description.trim(),
       video_model: form.video_model,
-      assets: form.assets
-        .filter((a) => a.url.trim())
-        .map((a) => ({ type: "image", url: a.url.trim() })),
+      // 参考图不在这里传：改到创建之后的选图页上传，好和搜到的图一起排序
     };
     const data = await createProject(payload);
     created.value = data;
@@ -265,6 +276,15 @@ async function onSubmit() {
     message.success("项目已创建，正在搜索景点实景图片…");
     router.push(`/project/${data.project_id}/references`);
   } catch (e) {
+    // 401 是登录态失效（token 过期 / 后端重启后内存会话丢失），不是后端没开 ——
+    // 别把它套进「后端未连接」里，那会让人去查一个根本没坏的东西。
+    if (e.status === 401) {
+      clearSession();
+      submitError.value = "登录已失效（后端重启会清空登录态），请重新登录后再试";
+      message.error(submitError.value);
+      router.push("/login");
+      return;
+    }
     submitError.value =
       e.code === "invalid_param"
         ? e.message
@@ -289,12 +309,15 @@ async function onSubmit() {
           <a href="#compliance">版权合规</a>
           <template v-if="loggedIn">
             <router-link to="/history">我的创作</router-link>
-            <span class="nav-user" title="已登录">👤 {{ username }}</span>
+            <span class="nav-user" title="已登录"
+              ><PhUser :size="14" />{{ username }}</span
+            >
             <a href="#" class="nav-auth" @click.prevent="onLogout">退出</a>
           </template>
           <router-link v-else to="/login" class="nav-auth"
             >登录 / 注册</router-link
           >
+          <ThemeToggle />
         </nav>
       </div>
     </header>
@@ -337,7 +360,7 @@ async function onSubmit() {
               <div class="row-tag">① 配方原料</div>
               <CraftSlot
                 label="城市"
-                icon="🏙️"
+                :icon="PhBuildings"
                 :filled="!!form.city.trim()"
                 required
               >
@@ -345,7 +368,7 @@ async function onSubmit() {
               </CraftSlot>
               <CraftSlot
                 label="景点地点"
-                icon="📍"
+                :icon="PhMapPin"
                 :filled="!!form.location.trim()"
                 required
               >
@@ -353,7 +376,7 @@ async function onSubmit() {
               </CraftSlot>
               <CraftSlot
                 label="传播主题"
-                icon="💡"
+                :icon="PhLightbulb"
                 :filled="!!form.theme.trim()"
                 required
               >
@@ -369,7 +392,7 @@ async function onSubmit() {
               <div class="row-tag">② 定制偏好</div>
               <CraftSlot
                 label="场景类型"
-                icon="🧩"
+                :icon="PhPuzzlePiece"
                 :filled="!!form.scene_type"
                 required
               >
@@ -386,9 +409,10 @@ async function onSubmit() {
                       class="pick-box"
                       :class="{ empty: !form.scene_type }"
                     >
-                      <template v-if="sceneLabel"
-                        >{{ sceneLabel.emoji }} {{ sceneLabel.value }}</template
-                      >
+                      <template v-if="sceneLabel">
+                        <component :is="sceneLabel.icon" class="ico-inline" />
+                        {{ sceneLabel.value }}
+                      </template>
                       <template v-else>点击放入「场景块」</template>
                     </button>
                   </template>
@@ -403,7 +427,7 @@ async function onSubmit() {
                         scenePop = false;
                       "
                     >
-                      <span class="opt-emoji">{{ s.emoji }}</span>
+                      <span class="opt-icon"><component :is="s.icon" /></span>
                       <span class="opt-text"
                         ><b>{{ s.value }}</b
                         ><i>{{ s.desc }}</i></span
@@ -415,7 +439,7 @@ async function onSubmit() {
 
               <CraftSlot
                 label="目标人群"
-                icon="👥"
+                :icon="PhUsersThree"
                 :filled="!!form.audience.trim()"
               >
                 <NPopover
@@ -461,7 +485,7 @@ async function onSubmit() {
 
               <CraftSlot
                 label="视频风格"
-                icon="🎨"
+                :icon="PhPalette"
                 :filled="!!form.style.trim()"
               >
                 <NPopover
@@ -509,7 +533,7 @@ async function onSubmit() {
             <!-- ③ 输出规格 -->
             <div class="craft-row">
               <div class="row-tag">③ 输出规格</div>
-              <CraftSlot label="视频时长" icon="⏱️" :filled="true">
+              <CraftSlot label="视频时长" :icon="PhTimer" :filled="true">
                 <NSlider
                   v-model:value="form.duration_s"
                   :min="DURATION_RANGE.min"
@@ -518,7 +542,7 @@ async function onSubmit() {
                 />
                 <div class="slot-note">{{ form.duration_s }} 秒</div>
               </CraftSlot>
-              <CraftSlot label="画幅" icon="🖼️" :filled="true">
+              <CraftSlot label="画幅" :icon="PhImage" :filled="true">
                 <div class="mini-seg">
                   <button
                     v-for="r in ASPECT_RATIOS"
@@ -531,7 +555,7 @@ async function onSubmit() {
                   </button>
                 </div>
               </CraftSlot>
-              <CraftSlot label="分辨率" icon="📺" :filled="true">
+              <CraftSlot label="分辨率" :icon="PhTelevision" :filled="true">
                 <div class="mini-seg">
                   <button
                     v-for="r in RESOLUTIONS"
@@ -557,23 +581,29 @@ async function onSubmit() {
         <!-- 成品槽 -->
         <aside class="result-slot" :class="{ ready: requiredOk }">
           <div class="result-head">
-            <span class="result-icon">🎬</span> 成品
+            <span class="result-icon"><PhFilmSlate /></span> 成品
           </div>
           <div class="result-preview" :class="{ waiting: !requiredOk }">
             <template v-if="requiredOk">
               <p class="r-title">{{ form.theme }}</p>
-              <p class="r-line">📍 {{ form.city }} · {{ form.location }}</p>
-              <p class="r-line">🧩 {{ form.scene_type }}</p>
-              <p class="r-line">🎨 {{ form.style }}｜{{ form.audience }}</p>
               <p class="r-line">
-                ⏱ {{ form.duration_s }}s｜{{ form.aspect_ratio }}｜{{
-                  form.resolution
-                }}
+                <PhMapPin class="r-ico" /> {{ form.city }} · {{ form.location }}
+              </p>
+              <p class="r-line">
+                <PhPuzzlePiece class="r-ico" /> {{ form.scene_type }}
+              </p>
+              <p class="r-line">
+                <PhPalette class="r-ico" /> {{ form.style }}｜{{ form.audience }}
+              </p>
+              <p class="r-line">
+                <PhTimer class="r-ico" /> {{ form.duration_s }}s｜{{
+                  form.aspect_ratio
+                }}｜{{ form.resolution }}
               </p>
             </template>
             <template v-else>
               <div class="waiting-hint">
-                <span class="waiting-icon">🕳️</span>
+                <span class="waiting-icon"><PhCircleDashed /></span>
                 <p>还缺材料…<br />放入 城市 / 地点 / 主题 / 场景类型</p>
               </div>
             </template>
@@ -586,7 +616,10 @@ async function onSubmit() {
             :disabled="!requiredOk"
             @click="onSubmit"
           >
-            {{ submitting ? "锻造中…" : "⚒ 开始锻造" }}
+            <template v-if="submitting">锻造中…</template>
+            <template v-else>
+              <PhHammer :size="16" class="btn-ico" /> 开始锻造
+            </template>
           </NButton>
           <NAlert
             v-if="created"
@@ -635,37 +668,6 @@ async function onSubmit() {
               </div>
               <div class="slot-note">Pro 版画质更高、生成更慢</div>
             </template>
-            <div v-else class="assets-box">
-              <div v-for="(a, i) in form.assets" :key="i" class="asset-row">
-                <img
-                  v-if="a.url.trim()"
-                  :src="a.url"
-                  class="asset-thumb"
-                  alt="参考图预览"
-                />
-                <NInput
-                  v-model:value="a.url"
-                  size="small"
-                  placeholder="https:// 图片地址（供 AI 参考）"
-                />
-                <button
-                  type="button"
-                  class="asset-del"
-                  title="移除"
-                  @click="form.assets.splice(i, 1)"
-                >
-                  ✕
-                </button>
-              </div>
-              <NButton
-                size="small"
-                quaternary
-                type="primary"
-                @click="form.assets.push({ type: 'image', url: '' })"
-              >
-                + 添加参考图
-              </NButton>
-            </div>
           </CraftSlot>
           <div class="extra-side">
             <button
@@ -674,7 +676,7 @@ async function onSubmit() {
               title="切换补充选项"
               @click="extraIndex = (extraIndex + 1) % EXTRA_PANES.length"
             >
-              ❯
+              <PhCaretRight :size="14" />
             </button>
             <div class="extra-dots">
               <span
@@ -693,7 +695,9 @@ async function onSubmit() {
             <div class="bar-fill" :style="{ width: completion + '%' }"></div>
           </div>
           <span class="recipe-count">{{ slotsFilled }}/{{ totalSlots }}</span>
-          <span v-if="requiredOk" class="recipe-ready">✦ 配方就绪</span>
+          <span v-if="requiredOk" class="recipe-ready">
+            <PhSparkle :size="12" weight="fill" /> 配方就绪
+          </span>
         </div>
       </div>
     </main>
@@ -718,9 +722,9 @@ async function onSubmit() {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: #fcf8f1; /* 与 logo 图底色一致，消除色差 */
+  background: var(--surface-nav); /* 与 logo 图底色一致，消除色差 */
   border-bottom: 1px solid var(--color-border);
-  box-shadow: 0 2px 12px rgba(31, 41, 55, 0.05);
+  box-shadow: var(--shadow-soft);
 }
 .nav-inner {
   max-width: 1200px;
@@ -742,6 +746,7 @@ async function onSubmit() {
   object-fit: cover;
   display: block;
   flex-shrink: 0;
+  box-shadow: 0 0 0 1px var(--logo-ring);
 }
 .logo-text {
   font-family: var(--font-serif);
@@ -764,6 +769,9 @@ async function onSubmit() {
   color: var(--color-primary);
 }
 .nav-user {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 14px;
   color: var(--color-primary);
   white-space: nowrap;
@@ -779,7 +787,7 @@ async function onSubmit() {
 }
 .nav-auth:hover {
   background: var(--color-primary);
-  color: #fff !important;
+  color: var(--color-on-primary) !important;
 }
 
 /* ---------- 主区 ---------- */
@@ -797,14 +805,14 @@ async function onSubmit() {
 .glow-1 {
   width: 420px;
   height: 420px;
-  background: #17a398;
+  background: var(--glow-primary);
   top: -60px;
   right: -60px;
 }
 .glow-2 {
   width: 320px;
   height: 320px;
-  background: #c9a227;
+  background: var(--glow-gold);
   bottom: 80px;
   left: -100px;
   opacity: 0.18;
@@ -883,14 +891,14 @@ async function onSubmit() {
     var(--color-card);
   box-shadow:
     var(--shadow-card),
-    inset 0 0 0 5px #fbfaf6;
+    inset 0 0 0 5px var(--panel-inset);
   transition: box-shadow 0.3s;
 }
 .craft-panel.ready {
   box-shadow:
-    0 0 26px 2px rgba(201, 162, 39, 0.28),
+    0 0 26px 2px var(--glow-gold-soft),
     var(--shadow-card),
-    inset 0 0 0 5px #fbfaf6;
+    inset 0 0 0 5px var(--panel-inset);
 }
 
 .craft-row {
@@ -902,7 +910,7 @@ async function onSubmit() {
 .craft-row + .craft-row {
   margin-top: 14px;
   padding-top: 14px;
-  border-top: 1px dashed rgba(17, 94, 89, 0.18);
+  border-top: 1px dashed var(--divider-primary);
 }
 
 .row-tag {
@@ -929,7 +937,7 @@ async function onSubmit() {
   font-family: var(--font-sans);
   text-align: left;
   color: var(--color-ink);
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--input-bg);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -948,8 +956,7 @@ async function onSubmit() {
 .chip:focus-visible,
 .scene-opt:focus-visible,
 .mini-seg button:focus-visible,
-.extra-arrow:focus-visible,
-.asset-del:focus-visible {
+.extra-arrow:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
@@ -985,8 +992,9 @@ async function onSubmit() {
   background: var(--color-primary-fade);
   transform: translateY(-1px);
 }
-.opt-emoji {
+.opt-icon {
   font-size: 20px;
+  color: var(--color-primary);
 }
 .opt-text {
   display: flex;
@@ -1025,7 +1033,7 @@ async function onSubmit() {
 .chip.on {
   border-color: var(--color-primary);
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   font-weight: 600;
 }
 .custom-row {
@@ -1055,7 +1063,7 @@ async function onSubmit() {
 .mini-seg button.on {
   border-color: var(--color-primary);
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   font-weight: 600;
 }
 
@@ -1112,38 +1120,6 @@ async function onSubmit() {
   background: var(--color-primary);
 }
 
-/* 参考图 */
-.assets-box {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.asset-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.asset-thumb {
-  width: 28px;
-  height: 28px;
-  border-radius: 4px;
-  object-fit: cover;
-  border: 1px solid var(--color-border);
-  flex-shrink: 0;
-}
-.asset-del {
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: var(--color-ink-sub);
-  font-size: 12px;
-  padding: 4px;
-  flex-shrink: 0;
-}
-.asset-del:hover {
-  color: var(--color-error);
-}
-
 /* 配方完成度 */
 .recipe-bar {
   grid-row: 3;
@@ -1169,7 +1145,7 @@ async function onSubmit() {
 .bar-fill {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, #0f766e, #17a398);
+  background: var(--gradient-bar);
   transition: width 0.3s ease;
 }
 .recipe-count {
@@ -1179,7 +1155,7 @@ async function onSubmit() {
 }
 .recipe-ready {
   font-size: 12px;
-  color: var(--color-gold);
+  color: var(--color-gold-text);
   font-weight: 600;
 }
 
@@ -1274,16 +1250,16 @@ async function onSubmit() {
 .craft-btn {
   font-size: 16px;
   letter-spacing: 3px;
-  background: #fff !important;
+  background: var(--color-card) !important;
   color: var(--color-primary) !important;
   border: 1px solid var(--color-gold) !important;
   transition: all 0.25s ease;
 }
 .craft-btn:hover {
   background: var(--color-gold) !important;
-  color: #fff !important;
+  color: var(--color-on-gold) !important;
   border-color: var(--color-gold) !important;
-  box-shadow: 0 6px 18px rgba(201, 162, 39, 0.35); /* 金辉，呼应卡片 ready 金边 */
+  box-shadow: var(--shadow-gold); /* 金辉，呼应卡片 ready 金边 */
 }
 
 .result-alert {

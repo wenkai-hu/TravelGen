@@ -1,0 +1,430 @@
+{
+  "project_id": "p_20260815_113342_18623a",
+  "status": "completed",
+  "progress": 90,
+  "message": "视频生成中 8/8 完成",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "西湖十景",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "引入",
+        "title": "一眼入江南",
+        "content": "以水墨晕染转场衔接航拍晨雾西湖开篇，用年轻化语言点题：杭州最浪漫的情书，写在西湖十景里。快速建立大气唯美的视觉基调，激发Z世代对江南美学的向往。",
+        "duration_s": 10
+      },
+      {
+        "section": "展开",
+        "title": "十景绘长卷",
+        "content": "通过四季流转的快切蒙太奇，精选呈现断桥残雪、雷峰夕照、三潭印月、曲院风荷、苏堤春晓等十景高光画面。配合光影变化与节奏剪辑，展现春晓夏荷秋月冬雪的时空折叠感。",
+        "duration_s": 25
+      },
+      {
+        "section": "高潮",
+        "title": "泛舟入画中",
+        "content": "从看景到入景：第一人称视角体验手摇橹船、湖畔品茶、静待南屏晚钟。融入年轻游客打卡视角（汉服、胶片摄影、落日剪影），传递从观光到沉浸的情感升级。",
+        "duration_s": 15
+      },
+      {
+        "section": "收尾",
+        "title": "心动即出发",
+        "content": "以雷峰夕照或平湖秋月的大场景收束，文案升华一眼千年的浪漫。配合西湖等你入画的行动号召，引导年轻群体收藏打卡，完成从心动到出行的转化。",
+        "duration_s": 10
+      }
+    ],
+    "plan_summary": "西湖十景"
+  },
+  "copywriting": {
+    "titles": [
+      "无标题"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "你听过一千次西湖，却从未见过这样的杭州。6.38平方千米的湖光山色，自2002年起向世人免费开放——这是中国首批免费开放的5A景区，也是杭州写给年轻人的一封情书。",
+        "duration_s": 15
+      },
+      {
+        "idx": 2,
+        "text": "漫步苏堤春晓，看桃红柳绿染透千年长堤；驻足断桥残雪，等一场关于白首的浪漫传说。北宋元祐四年，苏轼在这里立下三塔，石塔中空外有五孔，每塔相距六十米，明月印水渊，一十八月圆——这画面，印在第五套人民币背面，更印在江南的骨髓里。",
+        "duration_s": 15
+      },
+      {
+        "idx": 3,
+        "text": "待夕阳为雷峰塔镀金，九百七十七年的梵音穿越吴越风云，雷峰夕照里，白蛇传的爱情故事从未老去。而灵隐寺一千七百年的钟声，在飞来峰下为你洗净喧嚣。若嫌西子太热闹，西溪的冷、野、淡、雅，正适合你与时光私会。",
+        "duration_s": 15
+      },
+      {
+        "idx": 4,
+        "text": "西湖十景，是古人框住的风月；而你眼里的湖光，才是活着的江南。2011年，西湖成为世界遗产；此刻，该轮到你来，把风景变成记忆。",
+        "duration_s": 15
+      }
+    ],
+    "hashtags": []
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "你听过一千次西湖，却从未见过这样的杭州。6.38平方千米的湖光山色，自2002年起向世人免费开放——这是中国首批免费开放的5A景区，也是杭州写给年轻人的一封情书。",
+        "start_s": 0,
+        "end_s": 15
+      },
+      {
+        "line_id": 2,
+        "text": "漫步苏堤春晓，看桃红柳绿染透千年长堤；驻足断桥残雪，等一场关于白首的浪漫传说。北宋元祐四年，苏轼在这里立下三塔，石塔中空外有五孔，每塔相距六十米，明月印水渊，一十八月圆——这画面，印在第五套人民币背面，更印在江南的骨髓里。",
+        "start_s": 15,
+        "end_s": 30
+      },
+      {
+        "line_id": 3,
+        "text": "待夕阳为雷峰塔镀金，九百七十七年的梵音穿越吴越风云，雷峰夕照里，白蛇传的爱情故事从未老去。而灵隐寺一千七百年的钟声，在飞来峰下为你洗净喧嚣。若嫌西子太热闹，西溪的冷、野、淡、雅，正适合你与时光私会。",
+        "start_s": 30,
+        "end_s": 45
+      },
+      {
+        "line_id": 4,
+        "text": "西湖十景，是古人框住的风月；而你眼里的湖光，才是活着的江南。2011年，西湖成为世界遗产；此刻，该轮到你来，把风景变成记忆。",
+        "start_s": 45,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "西湖：写给年轻人的情书",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "西湖上空",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 8,
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "西湖全景与苏堤",
+            "background": "朝霞晨雾",
+            "prompt": "电影级航拍大远景，清晨西湖全景，苏堤如黛色丝带横卧湖面，晨雾缭绕中朝霞将天际与湖水染成粉金色，远处山峦层叠若隐若现，写实质感，8k分辨率，加一分金色晨光"
+          }
+        ]
+      },
+      {
+        "scene_id": 2,
+        "location": "苏堤",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 2,
+            "duration_s": 7,
+            "camera": {
+              "type": "地面机位",
+              "movement": "跟",
+              "angle": "平拍"
+            },
+            "shot_size": "中景",
+            "subject": "苏堤春晓桃红柳绿",
+            "background": "千年长堤与游人",
+            "prompt": "电影级地面机位中景，上午柔和日光下苏堤春晓，两侧桃红柳绿倒映湖面，游人漫步古道，粉白桃花与嫩绿柳枝在微风里摇曳，自然光，胶片色调，细腻质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 3,
+        "location": "断桥",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 6,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "断桥桥身与湖面",
+            "background": "远山如黛",
+            "prompt": "电影级固定机位全景，上午日光里的断桥，石桥拱洞与湖水中的倒影，远山如黛，湖面泛着碎银般波光，白首浪漫传说氛围，清新明亮，写实电影质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 4,
+        "location": "三潭印月",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 4,
+            "duration_s": 9,
+            "camera": {
+              "type": "航拍",
+              "movement": "环绕",
+              "angle": "俯拍"
+            },
+            "shot_size": "全景",
+            "subject": "三潭石塔与明月倒影",
+            "background": "静谧湖面",
+            "prompt": "电影级航拍全景俯拍环绕，入夜三潭印月，三座石塔中空外五孔矗立湖中，明月高悬，塔孔投影水面如多轮月影，湖水幽蓝深邃，银蓝光雾，静谧诗意，8k分辨率"
+          }
+        ]
+      },
+      {
+        "scene_id": 5,
+        "location": "雷峰塔",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 5,
+            "duration_s": 8,
+            "camera": {
+              "type": "地面机位",
+              "movement": "固定",
+              "angle": "仰拍"
+            },
+            "shot_size": "全景",
+            "subject": "雷峰塔塔身",
+            "background": "漫天晚霞",
+            "prompt": "电影级地面机位全景仰拍，黄昏时分夕阳为九百七十七年雷峰塔镀上金边，古塔轮廓分明，塔身细节在逆光中呈现暖金色泽，漫天晚霞如锦，吴越风云史诗感，厚重电影质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 6,
+        "location": "灵隐寺",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 6,
+            "duration_s": 7,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "近景",
+            "subject": "灵隐寺飞来峰石刻",
+            "background": "古寺屋檐与树影",
+            "prompt": "电影级固定机位近景，上午灵隐寺飞来峰下，千年摩崖石刻佛像布满青苔，斑驳树影在佛面上缓慢移动，远处古寺飞檐与参天古木，清幽晨光，禅意空灵感，写实电影质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 7,
+        "location": "西溪湿地",
+        "time": "午后",
+        "shot_list": [
+          {
+            "shot_id": 7,
+            "duration_s": 7,
+            "camera": {
+              "type": "移动机位",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "西溪湿地水道芦苇",
+            "background": "冷野淡雅的自然生态",
+            "prompt": "电影级移动机位全景平拍移镜，午后西溪湿地蜿蜒水道，两岸芦苇丛生，水面浮着野趣绿萍，冷色调自然光斜照，淡雅静谧，时光慢流的私语氛围，写实纪录片质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 8,
+        "location": "西湖湖畔",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 8,
+            "duration_s": 8,
+            "camera": {
+              "type": "航拍",
+              "movement": "拉",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "西湖湖面与年轻游客",
+            "background": "湖光山色与落日",
+            "prompt": "电影级航拍大远景拉镜俯拍，黄昏西湖湖面金光粼粼，年轻人在湖畔眺望，湖光山色如古人画框中的风月又似流动的现实，温暖柔光将人影与湖水融合，记忆感胶片质感，活着的江南"
+          }
+        ]
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260815_113342_18623a_v1",
+  "plan_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [
+    "vt_20260815_113943_c7148d"
+  ],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-15T03:33:42.951429+00:00",
+  "updated_at": "2026-08-15T03:43:15.233314+00:00",
+  "copywriting_text": "【0-15s】你听过一千次西湖，却从未见过这样的杭州。6.38平方千米的湖光山色，自2002年起向世人免费开放——这是中国首批免费开放的5A景区，也是杭州写给年轻人的一封情书。\n【15-30s】漫步苏堤春晓，看桃红柳绿染透千年长堤；驻足断桥残雪，等一场关于白首的浪漫传说。北宋元祐四年，苏轼在这里立下三塔，石塔中空外有五孔，每塔相距六十米，明月印水渊，一十八月圆——这画面，印在第五套人民币背面，更印在江南的骨髓里。\n【30-45s】待夕阳为雷峰塔镀金，九百七十七年的梵音穿越吴越风云，雷峰夕照里，白蛇传的爱情故事从未老去。而灵隐寺一千七百年的钟声，在飞来峰下为你洗净喧嚣。若嫌西子太热闹，西溪的冷、野、淡、雅，正适合你与时光私会。\n【45-60s】西湖十景，是古人框住的风月；而你眼里的湖光，才是活着的江南。2011年，西湖成为世界遗产；此刻，该轮到你来，把风景变成记忆。",
+  "video_clips": {
+    "1": {
+      "shot_id": 1,
+      "task_id": "vt_20260815_113943_c7148d",
+      "status": "completed",
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_1.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_1.mp4",
+      "error": null
+    },
+    "2": {
+      "shot_id": 2,
+      "task_id": "vt_20260815_113943_c7148d",
+      "status": "completed",
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_2.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_2.mp4",
+      "error": null
+    },
+    "3": {
+      "shot_id": 3,
+      "task_id": "vt_20260815_113943_c7148d",
+      "status": "completed",
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_3.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_3.mp4",
+      "error": null
+    },
+    "4": {
+      "shot_id": 4,
+      "task_id": "vt_20260815_113943_c7148d",
+      "status": "completed",
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_4.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_4.mp4",
+      "error": null
+    },
+    "5": {
+      "shot_id": 5,
+      "task_id": "vt_20260815_113943_c7148d",
+      "status": "completed",
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_5.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_5.mp4",
+      "error": null
+    },
+    "6": {
+      "shot_id": 6,
+      "task_id": "vt_20260815_113943_c7148d",
+      "status": "completed",
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_6.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_6.mp4",
+      "error": null
+    },
+    "7": {
+      "shot_id": 7,
+      "task_id": "vt_20260815_113943_c7148d",
+      "status": "completed",
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_7.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_7.mp4",
+      "error": null
+    },
+    "8": {
+      "shot_id": 8,
+      "task_id": "vt_20260815_113943_c7148d",
+      "status": "completed",
+      "video_url": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_8.mp4",
+      "local_path": "D:\\AI_tourist_video\\assets\\videos\\vt_20260815_113943_c7148d_8.mp4",
+      "error": null
+    }
+  }
+}

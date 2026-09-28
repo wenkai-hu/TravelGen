@@ -1,0 +1,37 @@
+{
+  "task_id": "voice_20260924_121558_b9fd0e",
+  "project_id": "p_20260924_115620_cd0103",
+  "kind": "voice_candidate",
+  "status": "completed",
+  "progress": 100,
+  "message": "自定义音色候选已生成，请试听确认",
+  "request": {
+    "description": "温暖、自然、像真实旅行讲述者，普通话清晰但不过度播音"
+  },
+  "result": {
+    "status": "candidate_ready",
+    "voice_id": "custom_voice_20260924_121558_b9fd0e",
+    "name": "自定义音色",
+    "description": "由用户描述生成，确认后作为所有 Segment 的统一声音身份参考",
+    "source": "custom",
+    "reference_path": "D:\\AI_tourist_video\\assets\\media\\voices\\custom\\p_20260924_115620_cd0103\\voice_20260924_121558_b9fd0e\\reference_voice.wav",
+    "preview_url": "/assets/media/voices/custom/p_20260924_115620_cd0103/voice_20260924_121558_b9fd0e/reference_voice.wav",
+    "reference_sha256": "5825375b35e86956883f086c79105e9855377cbcaf68db771cfe681fb8bd7ade",
+    "raw_video_path": "D:\\AI_tourist_video\\assets\\media\\voices\\custom\\p_20260924_115620_cd0103\\voice_20260924_121558_b9fd0e\\seedance_raw.mp4",
+    "analysis": {
+      "status": "passed",
+      "has_audio": true,
+      "duration_seconds": 5.088,
+      "expected_duration_seconds": 5,
+      "duration_ok": true,
+      "tail_silence_seconds": 0.008,
+      "tail_activity_warning": true,
+      "speech_level_p90_dbfs": -14.33,
+      "music_detection": "not_available",
+      "bgm_policy": "forbidden_by_prompt_manual_review_supported"
+    }
+  },
+  "error": null,
+  "created_at": "2026-09-24T04:15:58.138024+00:00",
+  "updated_at": "2026-09-24T04:17:54.258125+00:00"
+}

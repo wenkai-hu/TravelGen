@@ -1,0 +1,750 @@
+{
+  "schema_version": 3,
+  "project_id": "p_20260926_002107_5a8950",
+  "username": "e2e_4af74657",
+  "status": "waiting_confirm",
+  "progress": 10,
+  "message": "方案待确认",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "宋韵杭州",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 30,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": [
+      {
+        "type": "image",
+        "url": "/assets/references/p_20260926_002107_5a8950/ref_6a072105dec62b4a.jpg"
+      },
+      {
+        "type": "image",
+        "url": "/assets/references/p_20260926_002107_5a8950/ref_d694e9f1e0c5a830.png"
+      }
+    ]
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "视觉吸引",
+        "title": "纯色起势，宋韵点题",
+        "content": "0-6秒。画面仅使用视觉档案支持的纯蓝色填充，不出现西湖实景、建筑、人物或自然景观镜头；以低频水声与古琴音色起势，叠加字幕与旁白“一湖宋韵，半城风华”。place_id仅沿用需求字段，不由视觉档案确认为实景地点。用声音与文字建立大气唯美基调，面向18-35岁年轻游客制造悬念。",
+        "duration_s": 6,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "纯蓝色填充画面"
+        ],
+        "evidence_asset_ids": [
+          "ref_d694e9f1e0c5a830"
+        ]
+      },
+      {
+        "section": "核心景观",
+        "title": "西湖入题，不指认实景",
+        "content": "6-12秒。画面仍为纯红色填充，音乐加入弦乐与轻鼓点，字幕点题“西湖·宋韵杭州”；不将纯色画面指认为西湖实景，也不展示任何未支持的实景地标。以旁白讲“一湖藏宋韵”的核心概念，把西湖作为文案主题而非视觉事实，保持大气唯美与年轻化表达。",
+        "duration_s": 6,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "纯红色填充画面"
+        ],
+        "evidence_asset_ids": [
+          "ref_6a072105dec62b4a"
+        ]
+      },
+      {
+        "section": "特色体验",
+        "title": "宋韵生活方式关键词",
+        "content": "12-18秒。纯蓝色填充与纯红色填充交替出现，节奏加快；字幕与旁白用年轻化语言列出点茶、宋服、雅集、夜游等宋韵体验关键词，但明确不出现对应实景镜头，只作为线下游玩建议。强调可参与、可分享、可社交，贴合18-35岁游客偏好。",
+        "duration_s": 6,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "纯蓝色填充画面",
+          "纯红色填充画面"
+        ],
+        "evidence_asset_ids": [
+          "ref_d694e9f1e0c5a830",
+          "ref_6a072105dec62b4a"
+        ]
+      },
+      {
+        "section": "文化特色",
+        "title": "宋韵是当代浪漫",
+        "content": "18-24秒。纯蓝与纯红填充形成双色节奏，音乐推向高潮；字幕“宋韵，不是复古，是杭州的当代浪漫”。不规划任何实景空间、建筑或自然景观镜头，仅以文字与声音传递文化气质，突出杭州西湖的宋韵主题联想，同时避免把无实景档案支持的画面当作事实。",
+        "duration_s": 6,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "纯蓝色填充画面",
+          "纯红色填充画面"
+        ],
+        "evidence_asset_ids": [
+          "ref_d694e9f1e0c5a830",
+          "ref_6a072105dec62b4a"
+        ]
+      },
+      {
+        "section": "行动召唤",
+        "title": "赴一场宋韵之约",
+        "content": "24-30秒。纯红色填充收束，音乐留白后落版；字幕“来杭州，赴一场宋韵之约｜搜索‘宋韵杭州’”，引导年轻游客收藏、出发、打卡。因实景视觉档案不支持，本段不展示任何西湖实景镜头，只以纯色填充、字幕与声音完成号召，确保所有画面目标均有档案证据支持。",
+        "duration_s": 6,
+        "place_id": "place_317fc6749411d659",
+        "visual_targets": [
+          "纯红色填充画面"
+        ],
+        "evidence_asset_ids": [
+          "ref_6a072105dec62b4a"
+        ]
+      }
+    ],
+    "plan_summary": "宋韵杭州"
+  },
+  "copywriting": {
+    "titles": [
+      "一湖宋韵，半城风华",
+      "来杭州，赴一场宋韵之约"
+    ],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "一湖宋韵，半城风华。听，杭州在唤你。",
+        "duration_s": 6
+      },
+      {
+        "idx": 2,
+        "text": "西湖，是世界遗产，也是宋韵的封面。",
+        "duration_s": 6
+      },
+      {
+        "idx": 3,
+        "text": "点茶、宋服、雅集、夜游，年轻人的宋韵玩法。",
+        "duration_s": 6
+      },
+      {
+        "idx": 4,
+        "text": "宋韵，不是复古，是杭州的当代浪漫。",
+        "duration_s": 6
+      },
+      {
+        "idx": 5,
+        "text": "来杭州，赴一场宋韵之约。搜索“宋韵杭州”。",
+        "duration_s": 6
+      }
+    ],
+    "hashtags": [
+      "#宋韵杭州",
+      "#西湖",
+      "#杭州旅游"
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "一湖宋韵，半城风华。听，杭州在唤你。",
+        "start_s": 0,
+        "end_s": 6
+      },
+      {
+        "line_id": 2,
+        "text": "西湖，是世界遗产，也是宋韵的封面。",
+        "start_s": 6,
+        "end_s": 12
+      },
+      {
+        "line_id": 3,
+        "text": "点茶、宋服、雅集、夜游，年轻人的宋韵玩法。",
+        "start_s": 12,
+        "end_s": 18
+      },
+      {
+        "line_id": 4,
+        "text": "宋韵，不是复古，是杭州的当代浪漫。",
+        "start_s": 18,
+        "end_s": 24
+      },
+      {
+        "line_id": 5,
+        "text": "来杭州，赴一场宋韵之约。搜索“宋韵杭州”。",
+        "start_s": 24,
+        "end_s": 30
+      }
+    ]
+  },
+  "storyboard": {},
+  "plan_id": null,
+  "plan_version": 0,
+  "reference_candidates": [
+    {
+      "candidate_id": "ref_eb7beb5aa87905ed",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://aigc-image.bj.bcebos.com/miaobi/5mao/b%275p2t5bee6KW/5rmW6aOO5pmvXzE3MjQzNDg2MDguNDc2MDIzNA%3D%3D%27/0.png",
+      "title": "🚣探索杭州西湖的绝美风光🌄",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4446043819304317679",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_0fb9aca18eb3675f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM1NjAwODMwLjg2MDcwOTQ%3D%27/0.png",
+      "title": "杭州西湖全攻略:美景美食交通指南",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4416224780862387825",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_aac74507af89d5b2",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://gips2.baidu.com/it/u=2017135480,3935072200&fm=3074&app=3074&f=JPEG",
+      "title": "杭州西湖:江南明珠的四季风情",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5147528140700808667",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_670bd6bbe859ad90",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM2NzMzMTE0LjE1ODIyODQ%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2025-01-13T01%3A51%3A55Z%2F-1%2F%2Fe5f70b24839d22fd05e340ef78a7bdaf08d9b530d825327b4071514119f8c699",
+      "title": "杭州夏日西湖美景:避暑胜地与摄影天堂",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5048729040778321549",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_2d8945bdfe39ef00",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276KW/5rmW5pmv5Yy6XzE3MzAwNDY1MzMuNjE2MTQ2Mw%3D%3D%27/0.png",
+      "title": "春季打卡点:苏堤春晓 苏堤是苏东坡在杭州劝职",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4608205291833183408",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1fdcb05d62b9c659",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%276aOO5pmv5aaC55S755qE6buE5bGxLCDmuZbmsLTnoqfnu7/nmoTml6XmnIjmva3kvaDnmoQg5a625Lmh5piv5ZOq6YeMXzE3MzUyODU0MDIuMDE0NTMwNA%3D%3D%27/0.png",
+      "title": "🌊🌳 西湖,杭州的璀璨明珠,以其碧绿的湖水和如画的风景吸引着无",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5749590892465509419",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6201471ff5fd2288",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMxNzM3NzExLjI2ODIyNjk%3D%27/0.png",
+      "title": "杭州西湖必打卡景点攻略,美景尽收眼底!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4210813545669650152",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_b3581fc5e876d79a",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://q9.itc.cn/images01/20250218/ad29a044687f44c9a470ef5785d741b8.jpeg",
+      "title": "西湖:穿越千年的水墨画卷",
+      "source_page_url": "http://mt.sohu.com/a/860537814_122245578",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_bb87098e336bd637",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pic.rmb.bdstatic.com/bjhai/fa7b04fc8f6aae4b668d6a1f1c0518f1.jpg",
+      "title": "夏日来我的家乡玩一圈,杭州免费十大景区推荐 杭州,这座古典与现代",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4259693885865428473",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_12f89fe7da54f163",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pics0.baidu.com/feed/faf2b2119313b07e7e643adeb8980e3395dd8cef.jpeg@f_auto?token=c03ace22447253b7a0bab6df1d811293",
+      "title": "杭州西湖四大魅力:自然,文化,景观与世界遗产",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1846082116245340881&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_40a74c3cecd13b99",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%276KW/5rmW6aOO5YWJ56eA5Li9LOWPr%2Becn%2BaYr%2BacieWxseeahuWbvueUu18xNzM1Mjc5Mzk0LjUzMDUxNw%3D%3D%27/0.png",
+      "title": "杭州西湖风景描述",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5655113367153562946",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_435a158a08304060",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://q7.itc.cn/q_70/images03/20250518/5998af620991432399cca11d02a77414.jpeg",
+      "title": "杭州西湖美景",
+      "source_page_url": "http://travel.sohu.com/a/896378349_121124733",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_90e5397cfa5e4a6c",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://am.zdmimg.com/202504/17/6800d933035fa7229.jpg_e1080.jpg",
+      "title": "杭州西湖人间天堂的璀璨明珠",
+      "source_page_url": "http://post.m.smzdm.com/p/a44pwqxl/",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_5275f822aefa3ff9",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.cdn.bcebos.com/miaobi/5mao/b%27LV8xNzM2NDYyMzA5LjQxNTQ0OTE%3D%27/0.png",
+      "title": "西湖:杭州的璀璨明珠与美食指南",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_5115134492215924125",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3f5414f8c2c2bbca",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://dimg04.c-ctrip.com/images/1me1k12000pv3hmnzD163_R_640_10000_Q90.jpg?proc=source/tripcommunity",
+      "title": "超强攻略_玩转杭州西湖风景名胜区之行",
+      "source_page_url": "http://m.ctrip.com/webapp/you/tripshoot/paipai/detail/detail?articleId=229489128&isHideNavBar=YES&seo=0&twojumpwakeup=0&allianceId=1049189&sid=19855591",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e3d084761b9a0c4f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM1ODYwOTk4LjYxMjQxNjU%3D%27/0.png",
+      "title": "西湖美景:湖光山色与清新的风 在杭州市区的核心地带,有一个被誉为\"",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4503021791805443085",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_663c7a3fb75063d1",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pic3.zhimg.com/100/v2-3fa16a354b2522a2804f9090f55dd870_r.jpg",
+      "title": "夕阳斜照 的想法: 西湖四季不同的美",
+      "source_page_url": "http://www.zhihu.com/pin/1771100992551178240",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_70ad89087db9d34f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://picx.zhimg.com/100/v2-325aabdb200e455cb5ae915e4f720f8d_r.jpg",
+      "title": "知乎用户1av1wl 的想法: 西湖的日落,是杭州最浪漫的风景.",
+      "source_page_url": "http://www.zhihu.com/pin/1877352578842497025",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_ace6fe07f2e85f52",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://vd3.bdstatic.com/mda-setigu6biw2zh67r/1779973400/mda-setigu6biw2zh67r.jpg?for=bg",
+      "title": "杭州市西湖区的雷峰塔景区,游山玩水看西湖好风景",
+      "source_page_url": "http://quanmin.baidu.com/sv?source=share-h5&pd=qm_share_search&vid=8909898572175240297",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_7a39eace951cf4d5",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzM2MDM3NjE3LjkxNzE5MQ%3D%3D%27/0.png?authorization=bce-auth-v1%2FALTAKmda7zOvhZVbRzBLewvCMU%2F2025-01-05T00%3A40%3A19Z%2F-1%2F%2F070ebbbb3e7eacea4ffc89a014e8fd9a695751c76646f84b0dc0a34de69cc208",
+      "title": "西湖美景,不可错过的杭州之旅!",
+      "source_page_url": "http://mbd.baidu.com/newspage/data/dtlandingsuper?nid=dt_4789227018158700675",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_a6dcd0ddd4e4b0aa",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://copyright.bdstatic.com/vcg/creative/25a604ce4d89d7366818ef1565b4f287.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw==",
+      "title": "杭州西湖,人间天堂湖山相融十景流转四季如画",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1867753383410673254&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_cea9459b4a3e6fd6",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://p4.itc.cn/images01/20230228/90caa137bc5e4157aa3c1ddeff8c0d4b.jpeg",
+      "title": "春日旅行图鉴丨杭州",
+      "source_page_url": "http://mt.sohu.com/a/647599178_121016965",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_11d5a96e74428c5f",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://ss2.meipian.me/users/9831115/9f2c1457b4c94e31a28e8e127408f866.jpg?meipian-raw/bucket/ivwen/key/dXNlcnMvOTgzMTExNS85ZjJjMTQ1N2I0Yzk0ZTMxYTI4ZThlMTI3NDA4Zjg2Ni5qcGc=/sign/6cdb9c19c36d14569c9522bc3e178172.jpg",
+      "title": "欲把西湖比西子,淡妆浓抹总相宜",
+      "source_page_url": "http://www.meipian.cn/1ifvb6cy",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_8c3c740364082283",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://bkimg.cdn.bcebos.com/pic/d50735fae6cd7b899e51099fca6f55a7d933c895a0de",
+      "title": "杭州市杭州西湖风景区",
+      "source_page_url": "http://baike.baidu.com/item/%E6%9D%AD%E5%B7%9E%E5%B8%82%E6%9D%AD%E5%B7%9E%E8%A5%BF%E6%B9%96%E9%A3%8E%E6%99%AF%E5%8C%BA/65000333",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_6e0e8b5a2ac5d0e3",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://n.sinaimg.cn/spider20260504/192/w1024h768/20260504/5320-00252438659ed232599320cfe54eb536.jpg",
+      "title": "2026年5月1日,浙江杭州西湖风景区游客络绎不绝.周方玲摄",
+      "source_page_url": "http://finance.sina.com.cn/wm/2026-05-04/doc-inhwsuhm3981221.shtml",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_829d72d3d580bd39",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://p3-sign.toutiaoimg.com/tos-cn-i-ezhpy3drpa/7b73d2e502f34a25bcfca12b8f80f904~tplv-obj:800:1358.image?_iz=97245&bid=15&from=post&gid=1827277082301760&lk3s=06827d14&x-expires=1769644800&x-signature=9Ce9OQWbgean%2BjbOS5PN%2FCGRLOU%3D",
+      "title": "\"杭州西湖之美,美在湖光山色,美在人文底蕴,它",
+      "source_page_url": "http://web.toutiao.com/w/1827277082301760/",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_9a8258b668536bdf",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pics6.baidu.com/feed/562c11dfa9ec8a1388aece9cc620f39fa1ecc0ce.jpeg@f_auto?token=6869eeb7430d2e3b41c36c49906b37f4",
+      "title": "2011年6月24日,\"杭州西湖文化景观\"成功列入世界遗产名录,成为世界",
+      "source_page_url": "http://baijiahao.baidu.com/s?id=1841777389909823105&wfr=spider&for=pc",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_e702363142c23fa9",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://k.sinaimg.cn/n/sinakd20260321s/498/w1242h1656/20260321/3ac8-02ed5dc02d74ddd3462bd5ad8c063a08.jpg/w700d1q75cms.jpg?by=cms_fixed_width",
+      "title": "收好这份杭州西湖游玩攻略,遇见诗画江南!",
+      "source_page_url": "http://k.sina.com.cn/article_7879922979_1d5ae152301901pq0q.html",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_3fbd087f7a2e162c",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://pic.app.hualongxiang.com/forum/20241107160111front2_0_3375278_nm8aG39aMc83YCqHyfV86MkllRWe.jpg?watermark/3/text/QOWQiemqjzBnMg==/fontsize/400/dissolve/100/gravity/SouthEast/fill/I2YzZjNmYQ==/font/5b6u6L2v6ZuF6buR/dx/10/dy/28/image/aHR0cHM6Ly9waWMuYXBwLmh1YWxvbmd4aWFuZy5jb20vd2F0ZXJfaW1nXzIwMjEwMzE2XzU1My5qcGc=/dissolve/100/gravity/SouthEast/dx/118/dy/10",
+      "title": "杭州西湖美景",
+      "source_page_url": "http://www.hualongxiang.com/read.php?tid=16326726",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_41d70abb9312412b",
+      "query": "杭州 西湖 实景 风景",
+      "image_url": "http://gossv-vcg.cfp.cn/videos/snapshot/VCG2237795355_00001.jpg",
+      "title": "杭州西湖南山路秋天风景",
+      "source_page_url": "http://www.vcg.com/creative-video/38063908",
+      "provider": "qianfan_image_search"
+    },
+    {
+      "candidate_id": "ref_1dd0b508b95eef06",
+      "query": "杭州 西湖",
+      "image_url": "/assets/references/p_20260926_002107_5a8950/ref_6a072105dec62b4a.jpg",
+      "title": "用户提供的参考图",
+      "source_page_url": "",
+      "provider": "user"
+    },
+    {
+      "candidate_id": "ref_b40558f88d3e9673",
+      "query": "杭州 西湖",
+      "image_url": "/assets/references/p_20260926_002107_5a8950/ref_d694e9f1e0c5a830.png",
+      "title": "用户提供的参考图",
+      "source_page_url": "",
+      "provider": "user"
+    }
+  ],
+  "reference_assets": [
+    {
+      "asset_id": "ref_d694e9f1e0c5a830",
+      "candidate_id": "ref_b40558f88d3e9673",
+      "place_id": "place_317fc6749411d659",
+      "place_name": "西湖",
+      "city": "杭州",
+      "original_url": "/assets/references/p_20260926_002107_5a8950/ref_d694e9f1e0c5a830.png",
+      "source_page_url": "",
+      "title": "用户提供的参考图",
+      "provider": "user",
+      "cached_url": "/assets/references/p_20260926_002107_5a8950/ref_d694e9f1e0c5a830.png",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260926_002107_5a8950\\ref_d694e9f1e0c5a830.png",
+      "sha256": "d694e9f1e0c5a8308f3cc8af0639286beb75b4f0744586011dc90f7aad05c9cb",
+      "width": 1000,
+      "height": 1000,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 6.411,
+        "usage": {
+          "completion_tokens": 247,
+          "prompt_tokens": 1737,
+          "total_tokens": 1984,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面为均匀的纯蓝色填充，无任何可见的实景物体、场景元素或细节内容",
+          "visible_elements": [],
+          "spatial_layout": [],
+          "architecture_and_materials": [],
+          "viewpoint": {
+            "camera_position": "无法判断",
+            "angle": "无法判断",
+            "shot_size": "无法判断",
+            "orientation_clues": []
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断",
+            "weather": "无法判断",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [],
+          "allowed_changes": [],
+          "suitable_shots": [],
+          "unsupported_or_risky_shots": [
+            "所有实景相关的镜头设计均无法支持，包括但不限于实景推进、场景环绕、建筑特写、山水远景等各类实景镜头"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "画面无任何实景特征，无法判断对应的地点、场景类型、所有实景相关属性均无法确认"
+          ]
+        }
+      }
+    },
+    {
+      "asset_id": "ref_6a072105dec62b4a",
+      "candidate_id": "ref_1dd0b508b95eef06",
+      "place_id": "place_317fc6749411d659",
+      "place_name": "西湖",
+      "city": "杭州",
+      "original_url": "/assets/references/p_20260926_002107_5a8950/ref_6a072105dec62b4a.jpg",
+      "source_page_url": "",
+      "title": "用户提供的参考图",
+      "provider": "user",
+      "cached_url": "/assets/references/p_20260926_002107_5a8950/ref_6a072105dec62b4a.jpg",
+      "local_path": "D:\\AI_tourist_video\\assets\\references\\p_20260926_002107_5a8950\\ref_6a072105dec62b4a.jpg",
+      "sha256": "6a072105dec62b4a1882f0ebf52eb011aa27c07d8c7220e81d199ea38dc904c9",
+      "width": 1200,
+      "height": 900,
+      "user_verified": true,
+      "rights_status": "unknown",
+      "analysis_status": "completed",
+      "observation": {
+        "model": "doubao-seed-2-1-turbo-260628",
+        "prompt_version": "visual_observation_v1",
+        "elapsed_s": 5.894,
+        "usage": {
+          "completion_tokens": 227,
+          "prompt_tokens": 1712,
+          "total_tokens": 1939,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "analysis": {
+          "summary": "画面为均匀的纯红色填充，无任何可辨识的实体景物、纹理或形态元素",
+          "visible_elements": [],
+          "spatial_layout": [],
+          "architecture_and_materials": [],
+          "viewpoint": {
+            "camera_position": "无法判断",
+            "angle": "无法判断",
+            "shot_size": "无法判断",
+            "orientation_clues": []
+          },
+          "lighting_weather_season": {
+            "time_of_day": "无法判断",
+            "weather": "无法判断",
+            "season": "无法判断"
+          },
+          "must_keep_candidates": [],
+          "allowed_changes": [],
+          "suitable_shots": [],
+          "unsupported_or_risky_shots": [
+            "所有涉及实景空间、建筑、自然景观的视角与运动镜头均无法支持"
+          ],
+          "visible_text": [],
+          "uncertain": [
+            "红色区域的属性、来源、对应场景均无法确认"
+          ]
+        }
+      }
+    }
+  ],
+  "visual_profile": {
+    "profile_version": "place_visual_profile_v1",
+    "place_id": "place_317fc6749411d659",
+    "place_name": "西湖",
+    "city": "杭州",
+    "reference_asset_ids": [
+      "ref_d694e9f1e0c5a830",
+      "ref_6a072105dec62b4a"
+    ],
+    "user_verified_place_identity": true,
+    "visible_elements": [],
+    "stable_features": [],
+    "must_keep": [],
+    "allowed_changes": [],
+    "unsupported_shots": [],
+    "uncertain": [
+      "画面无任何实景特征，无法判断对应的地点、场景类型、所有实景相关属性均无法确认",
+      "红色区域的属性、来源、对应场景均无法确认"
+    ],
+    "view_catalog": [
+      {
+        "asset_id": "ref_d694e9f1e0c5a830",
+        "summary": "画面为均匀的纯蓝色填充，无任何可见的实景物体、场景元素或细节内容",
+        "visible_elements": [],
+        "spatial_layout": [],
+        "architecture_and_materials": [],
+        "viewpoint": {
+          "camera_position": "无法判断",
+          "angle": "无法判断",
+          "shot_size": "无法判断",
+          "orientation_clues": []
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断",
+          "weather": "无法判断",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [],
+        "allowed_changes": [],
+        "suitable_shots": [],
+        "unsupported_or_risky_shots": [
+          "所有实景相关的镜头设计均无法支持，包括但不限于实景推进、场景环绕、建筑特写、山水远景等各类实景镜头"
+        ]
+      },
+      {
+        "asset_id": "ref_6a072105dec62b4a",
+        "summary": "画面为均匀的纯红色填充，无任何可辨识的实体景物、纹理或形态元素",
+        "visible_elements": [],
+        "spatial_layout": [],
+        "architecture_and_materials": [],
+        "viewpoint": {
+          "camera_position": "无法判断",
+          "angle": "无法判断",
+          "shot_size": "无法判断",
+          "orientation_clues": []
+        },
+        "lighting_weather_season": {
+          "time_of_day": "无法判断",
+          "weather": "无法判断",
+          "season": "无法判断"
+        },
+        "must_keep_candidates": [],
+        "allowed_changes": [],
+        "suitable_shots": [],
+        "unsupported_or_risky_shots": [
+          "所有涉及实景空间、建筑、自然景观的视角与运动镜头均无法支持"
+        ]
+      }
+    ],
+    "analysis_failures": []
+  },
+  "reference_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": [
+      {
+        "asset_id": "ref_d694e9f1e0c5a830",
+        "name": "西湖",
+        "url": "/assets/references/p_20260926_002107_5a8950/ref_d694e9f1e0c5a830.png",
+        "source_page_url": "",
+        "user_verified": true,
+        "rights_status": "unknown"
+      },
+      {
+        "asset_id": "ref_6a072105dec62b4a",
+        "name": "西湖",
+        "url": "/assets/references/p_20260926_002107_5a8950/ref_6a072105dec62b4a.jpg",
+        "source_page_url": "",
+        "user_verified": true,
+        "rights_status": "unknown"
+      }
+    ]
+  },
+  "voice": {
+    "status": "none",
+    "version": 0
+  },
+  "music": {
+    "status": "none",
+    "version": 0,
+    "recommendation_status": "none",
+    "recommendation": null
+  },
+  "voice_tasks": [],
+  "segment_tasks": [],
+  "render_tasks": [],
+  "render": {
+    "status": "none",
+    "version": 0
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": false,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "review",
+        "note": "已保留搜索来源页，发布前需人工复核"
+      },
+      {
+        "type": "license",
+        "result": "unknown",
+        "note": "搜索结果不自动授予商用许可"
+      }
+    ]
+  },
+  "created_at": "2026-09-25T16:21:07.289420+00:00",
+  "updated_at": "2026-09-25T16:22:11.364748+00:00",
+  "copywriting_text": "【0-6s】一湖宋韵，半城风华。听，杭州在唤你。\n【6-12s】西湖，是世界遗产，也是宋韵的封面。\n【12-18s】点茶、宋服、雅集、夜游，年轻人的宋韵玩法。\n【18-24s】宋韵，不是复古，是杭州的当代浪漫。\n【24-30s】来杭州，赴一场宋韵之约。搜索“宋韵杭州”。",
+  "segment_results": {},
+  "active_segment_ids": []
+}

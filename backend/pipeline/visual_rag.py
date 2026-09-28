@@ -41,7 +41,7 @@ def candidate_from_user_asset(asset: dict, city: str, location: str) -> dict:
 
 def _validated_image(data: bytes) -> tuple[str, int, int]:
     if not data:
-        raise RuntimeError("下载到的图片为空")
+        raise RuntimeError("图片内容为空")
     if len(data) > MAX_IMAGE_BYTES:
         raise RuntimeError(f"图片超过 {MAX_IMAGE_BYTES // 1024 // 1024}MB 限制")
     try:
@@ -51,16 +51,12 @@ def _validated_image(data: bytes) -> tuple[str, int, int]:
             fmt = (image.format or "JPEG").upper()
             width, height = image.size
     except Exception as exc:
-        raise RuntimeError("下载内容不是可解析图片") from exc
+        raise RuntimeError("不是可解析的图片格式（支持 JPG / PNG / WEBP）") from exc
     extension = {"JPEG": ".jpg", "PNG": ".png", "WEBP": ".webp"}.get(fmt, ".jpg")
     return extension, width, height
 
 
-def cache_candidate(project_id: str, candidate: dict, city: str, location: str) -> dict:
-    """下载用户确认的候选图，校验后保存为不可变 ReferenceAsset。"""
-    url = str(candidate.get("image_url", ""))
-    if not url.startswith(("http://", "https://")):
-        raise RuntimeError("参考图只支持 http/https URL")
+def _download_image(url: str) -> bytes:
     request = urllib.request.Request(url, headers={
         "User-Agent": "Mozilla/5.0 TravelGen/1.0",
         "Accept": "image/avif,image/webp,image/png,image/jpeg,image/*",
@@ -70,9 +66,13 @@ def cache_candidate(project_id: str, candidate: dict, city: str, location: str) 
             length = response.headers.get("Content-Length")
             if length and int(length) > MAX_IMAGE_BYTES:
                 raise RuntimeError(f"图片超过 {MAX_IMAGE_BYTES // 1024 // 1024}MB 限制")
-            data = response.read(MAX_IMAGE_BYTES + 1)
+            return response.read(MAX_IMAGE_BYTES + 1)
     except urllib.error.URLError as exc:
         raise RuntimeError(f"参考图下载失败: {exc.reason}") from exc
+
+
+def _stored_image(project_id: str, data: bytes, candidate: dict, city: str, location: str) -> dict:
+    """校验并落盘为不可变 ReferenceAsset。内容寻址，同一张图重复落盘是幂等的。"""
     extension, width, height = _validated_image(data)
     content_hash = hashlib.sha256(data).hexdigest()
     asset_id = f"ref_{content_hash[:16]}"
@@ -87,11 +87,11 @@ def cache_candidate(project_id: str, candidate: dict, city: str, location: str) 
         "place_id": place_id(city, location),
         "place_name": location,
         "city": city,
-        "original_url": url,
+        "original_url": candidate.get("image_url", ""),
         "source_page_url": candidate.get("source_page_url", ""),
         "title": candidate.get("title", ""),
         "provider": candidate.get("provider", ""),
-        "cached_url": f"/assets/references/{project_id}/{asset_id}{extension}",
+        "cached_url": uploaded_url(project_id, asset_id, extension),
         "local_path": local_path,
         "sha256": content_hash,
         "width": width,
@@ -100,6 +100,51 @@ def cache_candidate(project_id: str, candidate: dict, city: str, location: str) 
         "rights_status": "unknown",
         "analysis_status": "pending",
     }
+
+
+UPLOAD_URL_PREFIX = "/assets/references/"
+
+
+def uploaded_url(project_id: str, asset_id: str, extension: str) -> str:
+    """上传图落盘后对外暴露的 URL。app.py 把 /assets 静态挂到仓库 assets/ 目录，直接可访问。"""
+    return f"{UPLOAD_URL_PREFIX}{project_id}/{asset_id}{extension}"
+
+
+def store_upload(project_id: str, data: bytes, city: str, location: str,
+                 filename: str = "") -> dict:
+    """把用户上传的字节存成不可变 ReferenceAsset（校验与落盘复用下载那条路径）。"""
+    candidate = {"image_url": "", "candidate_id": None, "title": filename or "用户上传的参考图",
+                 "provider": "user", "source_page_url": ""}
+    return _stored_image(project_id, data, candidate, city, location)
+
+
+def _local_upload_path(project_id: str, url: str) -> str | None:
+    """上传的图在收件那一步就已落盘，image_url 形如 /assets/references/{pid}/ref_xxx.ext。
+    文件名就是内容哈希，所以能从 URL 直接反推本地文件，确认阶段不必再下一遍。"""
+    prefix = f"{UPLOAD_URL_PREFIX}{project_id}/"
+    if not url.startswith(prefix):
+        return None
+    name = os.path.basename(url)
+    if not name.startswith("ref_"):
+        return None
+    path = os.path.join(REFERENCE_ROOT, project_id, name)
+    return path if os.path.isfile(path) else None
+
+
+def cache_candidate(project_id: str, candidate: dict, city: str, location: str) -> dict:
+    """把用户确认的候选图变成不可变 ReferenceAsset：本地已上传的读盘，远端 URL 的下载。"""
+    url = str(candidate.get("image_url", ""))
+    local = _local_upload_path(project_id, url)
+    if local:
+        with open(local, "rb") as f:
+            data = f.read(MAX_IMAGE_BYTES + 1)
+    elif url.startswith(("http://", "https://")):
+        data = _download_image(url)
+    elif url.startswith("/"):
+        raise RuntimeError(f"上传的参考图已丢失或被清理，请重新上传: {url}")
+    else:
+        raise RuntimeError("参考图只支持 http/https URL 或本地上传")
+    return _stored_image(project_id, data, candidate, city, location)
 
 
 def _strings(value) -> list[str]:
@@ -208,10 +253,34 @@ def _catalog_score(shot: dict, entry: dict) -> int:
     return score
 
 
-def bind_storyboard_references(storyboard: dict, profile: dict) -> dict:
-    """为每个 Shot 绑定唯一实景图；参考图全片只使用一次。"""
+def _best_unused(shot: dict, profile: dict, catalog: list[dict], used_ids: set) -> str | None:
+    """按内容相关性挑一张还没用过的图（auto_order 模式的兜底）。
+
+    同分时按目录里的先后取 —— 结果可复现，同样的输入不会每次跑出不同的绑定。
+    """
+    ranked = {entry.get("asset_id"): i
+              for i, entry in enumerate(profile.get("view_catalog", []))}
+    best_id, best_key = None, None
+    for entry in catalog:
+        asset_id = entry.get("asset_id")
+        if not asset_id or asset_id in used_ids:
+            continue
+        key = (_catalog_score(shot, entry), -ranked.get(asset_id, 0))
+        if best_key is None or key > best_key:
+            best_id, best_key = asset_id, key
+    return best_id
+
+
+def bind_storyboard_references(storyboard: dict, profile: dict,
+                               auto_order: bool = False) -> dict:
+    """为每个 Shot 绑定唯一实景图；参考图全片只使用一次。
+
+    auto_order=True 表示用户没排顺序、交给模型自己配：模型在分镜里挑好的照单全收，
+    它漏掉的按内容相关性补，而不是按位置顺序补。
+    """
     valid_ids = set(profile.get("reference_asset_ids", []))
     catalog = [entry for entry in profile.get("view_catalog", []) if entry.get("asset_id") in valid_ids]
+    catalog_ids = {entry["asset_id"] for entry in catalog}  # VLM 分析失败的图不在目录里
     used_ids = set()
     for scene in storyboard.get("scenes", []):
         scene.setdefault("place_id", profile.get("place_id"))
@@ -222,10 +291,15 @@ def bind_storyboard_references(storyboard: dict, profile: dict) -> dict:
             selected = requested[0] if isinstance(requested, list) and requested and requested[0] in valid_ids else None
             if selected in used_ids:
                 raise ValueError(f"参考图 {selected} 被多个 Shot 重复使用")
+            if selected is None and auto_order:
+                selected = _best_unused(shot, profile, catalog, used_ids)
             if selected is None:
-                ranked = sorted((entry for entry in catalog if entry["asset_id"] not in used_ids),
-                                key=lambda entry: _catalog_score(shot, entry), reverse=True)
-                selected = ranked[0]["asset_id"] if ranked and _catalog_score(shot, ranked[0]) > 0 else None
+                # 按用户排定的顺序取目录里第一张还没被用掉的图。这里不打分：
+                # 一旦按语义相关性挑，用户排好的第 N 张就会跑到别的镜头去，排序就白排了。
+                # （原来还要求分数 > 0，分数不达标就报"参考图不足"，是个假失败。）
+                selected = next(
+                    (aid for aid in profile.get("reference_asset_ids", [])
+                     if aid not in used_ids and aid in catalog_ids), None)
             if selected is None:
                 raise ValueError("可用参考图不足：每个 Shot 必须独占一张图，请减少 Shot 数量")
             used_ids.add(selected)
@@ -260,12 +334,40 @@ def _local_data_uri(path: str) -> str:
     return f"data:{mime};base64,{encoded}"
 
 
+def _assets_by_id(project) -> dict:
+    return {asset.get("asset_id"): asset for asset in getattr(project, "reference_assets", [])}
+
+
+def segment_shots(project, segment: dict) -> list[dict]:
+    """Segment 的 Shot 列表（按 shot_ids 顺序，找不到的跳过）。"""
+    shots_by_id = {
+        shot.get("shot_id"): shot
+        for scene in getattr(project, "storyboard", {}).get("scenes", [])
+        for shot in scene.get("shot_list", [])
+    }
+    return [shots_by_id[shot_id] for shot_id in segment.get("shot_ids", []) if shot_id in shots_by_id]
+
+
+def ordered_asset_ids(project, shots: list[dict]) -> list[str]:
+    """Shot 列表 → 有本地文件、去重、顺序稳定的参考图 asset_id。
+
+    compile_*_input 的图片顺序就是这里的顺序（提示词里的"图片1/图片2"= 下标 +1），
+    所以平台只回 content[k] 的审核类报错可以靠它反查是哪张图。
+    """
+    assets = _assets_by_id(project)
+    ordered: list[str] = []
+    for shot in shots:
+        for asset_id in shot.get("reference_asset_ids", []):
+            if asset_id in assets and assets[asset_id].get("local_path") and asset_id not in ordered:
+                ordered.append(asset_id)
+    return ordered
+
+
 def compile_shot_input(project, shot: dict) -> tuple[str, list[str]]:
     """Shot 的引用 ID → 顺序稳定的原始图片附件与显式约束 Prompt。"""
-    assets = {asset.get("asset_id"): asset for asset in getattr(project, "reference_assets", [])}
-    selected = [assets[aid] for aid in shot.get("reference_asset_ids", [])
-                if aid in assets and assets[aid].get("local_path")]
-    images = [_local_data_uri(asset["local_path"]) for asset in selected[:MAX_REFERENCES_PER_SHOT]]
+    assets = _assets_by_id(project)
+    selected = [assets[aid] for aid in ordered_asset_ids(project, [shot])[:MAX_REFERENCES_PER_SHOT]]
+    images = [_local_data_uri(asset["local_path"]) for asset in selected]
     if not images:
         return shot["prompt"], []
 
@@ -285,23 +387,13 @@ def compile_shot_input(project, shot: dict) -> tuple[str, list[str]]:
 
 def compile_segment_input(project, segment: dict) -> tuple[str, list[str]]:
     """把统一音色参考、段内新旁白、多 Shot 与图片绑定编译为一次 Seedance 输入。"""
-    shots_by_id = {
-        shot.get("shot_id"): shot
-        for scene in getattr(project, "storyboard", {}).get("scenes", [])
-        for shot in scene.get("shot_list", [])
-    }
-    shots = [shots_by_id[shot_id] for shot_id in segment.get("shot_ids", [])
-             if shot_id in shots_by_id]
+    shots = segment_shots(project, segment)
     if not shots:
         raise ValueError(f"{segment.get('segment_id')} 没有可编译的 Shot")
     if getattr(project, "storyboard", {}).get("storyboard_version", 0) >= 4 and len(shots) != 1:
         raise ValueError("新分镜的一次生成请求只能包含一个 Shot")
-    assets = {asset.get("asset_id"): asset for asset in getattr(project, "reference_assets", [])}
-    ordered_ids = []
-    for shot in shots:
-        for asset_id in shot.get("reference_asset_ids", []):
-            if asset_id in assets and assets[asset_id].get("local_path") and asset_id not in ordered_ids:
-                ordered_ids.append(asset_id)
+    assets = _assets_by_id(project)
+    ordered_ids = ordered_asset_ids(project, shots)
     if len(ordered_ids) > MAX_REFERENCES_PER_SEGMENT:
         raise ValueError(
             f"{segment.get('segment_id')} 去重后有 {len(ordered_ids)} 张参考图，超过 {MAX_REFERENCES_PER_SEGMENT} 张"

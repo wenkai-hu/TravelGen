@@ -1,0 +1,375 @@
+{
+  "project_id": "p_20260815_112131_be46c9",
+  "status": "completed",
+  "progress": 90,
+  "message": "视频生成中 1/1 完成",
+  "request": {
+    "city": "杭州",
+    "location": "西湖",
+    "scene_type": "景区推荐",
+    "theme": "西湖十景",
+    "audience": "18-35岁年轻游客",
+    "style": "大气唯美",
+    "duration_s": 60,
+    "aspect_ratio": "9:16",
+    "resolution": "1080p",
+    "video_model": "seedance-2.0-pro",
+    "description": "",
+    "assets": []
+  },
+  "planning": {
+    "outline": [
+      {
+        "section": "西湖湖面",
+        "title": "西湖与苏堤全貌",
+        "content": "电影级航拍大远景，清晨西湖全景与苏堤横贯湖面，轻薄晨雾中朝霞将天际与水面染成淡金…",
+        "duration_s": 16
+      },
+      {
+        "section": "湖心区域",
+        "title": "三潭印月石塔",
+        "content": "电影级固定中景，三潭印月三座石塔静静伫立碧绿湖水之中，上午天光云影徘徊于无风水面…",
+        "duration_s": 8
+      },
+      {
+        "section": "西湖南岸",
+        "title": "雷峰塔",
+        "content": "电影级固定仰拍全景，午后雷峰塔巍然矗立于夕照山，阳光照亮金色塔身与深色飞檐，铜铃…",
+        "duration_s": 8
+      },
+      {
+        "section": "断桥白堤",
+        "title": "断桥与白堤游人",
+        "content": "电影级摇镜头全景，午后从断桥桥头缓缓摇向白堤，游人漫步于湖光山色间，湖面泛着幽蓝…",
+        "duration_s": 7
+      },
+      {
+        "section": "曲院风荷",
+        "title": "荷花与雷峰塔",
+        "content": "电影级固定近景，黄昏前荷花娇艳欲滴，粉嫩花瓣与翠绿荷叶占据前景，浅景深中雷峰塔虚…",
+        "duration_s": 8
+      },
+      {
+        "section": "西湖上空",
+        "title": "雷峰夕照与西湖全景",
+        "content": "电影级航拍拉远大远景，雷峰夕照，夕阳将雷峰塔与整片西湖染成绚烂金红色，远山层叠湖…",
+        "duration_s": 7
+      },
+      {
+        "section": "西湖湖畔",
+        "title": "西湖夜景与灯火",
+        "content": "电影级环绕全景，夜幕初降的西湖，沿岸灯火与远处雷峰塔轮廓灯倒映于深蓝湖面，水天一…",
+        "duration_s": 6
+      }
+    ],
+    "plan_summary": "西湖十景"
+  },
+  "copywriting": {
+    "titles": [
+      "无标题"
+    ],
+    "hashtags": [],
+    "paragraphs": [
+      {
+        "idx": 1,
+        "text": "春天的杭州，第一站一定是西湖。\n湖水与远山相拥，苏堤白堤如画。",
+        "duration_s": 60
+      }
+    ]
+  },
+  "script": {
+    "lines": [
+      {
+        "line_id": 1,
+        "text": "春天的杭州，第一站一定是西湖。\n湖水与远山相拥，苏堤白堤如画。",
+        "start_s": 0,
+        "end_s": 60
+      }
+    ]
+  },
+  "storyboard": {
+    "theme": "杭州西湖宣传片",
+    "scenes": [
+      {
+        "scene_id": 1,
+        "location": "西湖湖面",
+        "time": "清晨",
+        "shot_list": [
+          {
+            "shot_id": 1,
+            "duration_s": 8,
+            "camera": {
+              "type": "航拍",
+              "movement": "推",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "西湖与苏堤全貌",
+            "background": "朝霞晨雾",
+            "prompt": "电影级航拍大远景，清晨西湖全景与苏堤横贯湖面，轻薄晨雾中朝霞将天际与水面染成淡金色，水面倒影清晰如镜，写实质感，8k分辨率"
+          },
+          {
+            "shot_id": 2,
+            "duration_s": 8,
+            "camera": {
+              "type": "无人机",
+              "movement": "移",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "苏堤春晓",
+            "background": "晨雾桃柳",
+            "prompt": "电影级无人机平移全景，晨光中苏堤春晓，垂柳轻拂水面桃红点缀，跑者剪影与远处湖心亭，薄雾氤氲于湖面，清新自然光"
+          }
+        ]
+      },
+      {
+        "scene_id": 2,
+        "location": "湖心区域",
+        "time": "上午",
+        "shot_list": [
+          {
+            "shot_id": 3,
+            "duration_s": 8,
+            "camera": {
+              "angle": "俯拍"
+            },
+            "shot_size": "中景",
+            "subject": "三潭印月石塔",
+            "background": "天光云影",
+            "prompt": "重生成版本prompt"
+          }
+        ]
+      },
+      {
+        "scene_id": 3,
+        "location": "西湖南岸",
+        "time": "午后",
+        "shot_list": [
+          {
+            "shot_id": 4,
+            "duration_s": 8,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "仰拍"
+            },
+            "shot_size": "全景",
+            "subject": "雷峰塔",
+            "background": "烈日蓝天",
+            "prompt": "电影级固定仰拍全景，午后雷峰塔巍然矗立于夕照山，阳光照亮金色塔身与深色飞檐，铜铃与斗拱细节清晰可见，蓝天少云背景，纪录片质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 4,
+        "location": "断桥白堤",
+        "time": "午后",
+        "shot_list": [
+          {
+            "shot_id": 5,
+            "duration_s": 7,
+            "camera": {
+              "type": "地面机位",
+              "movement": "摇",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "断桥与白堤游人",
+            "background": "湖光山色",
+            "prompt": "电影级摇镜头全景，午后从断桥桥头缓缓摇向白堤，游人漫步于湖光山色间，湖面泛着幽蓝光泽，远山如黛，明亮日光电影色调"
+          }
+        ]
+      },
+      {
+        "scene_id": 5,
+        "location": "曲院风荷",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 6,
+            "duration_s": 8,
+            "camera": {
+              "type": "固定机位",
+              "movement": "固定",
+              "angle": "平拍"
+            },
+            "shot_size": "近景",
+            "subject": "荷花与雷峰塔",
+            "background": "黄昏暖光",
+            "prompt": "电影级固定近景，黄昏前荷花娇艳欲滴，粉嫩花瓣与翠绿荷叶占据前景，浅景深中雷峰塔虚化成暖色背景，侧逆光洒落，诗意画面质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 6,
+        "location": "西湖上空",
+        "time": "黄昏",
+        "shot_list": [
+          {
+            "shot_id": 7,
+            "duration_s": 7,
+            "camera": {
+              "type": "航拍",
+              "movement": "拉",
+              "angle": "俯拍"
+            },
+            "shot_size": "大远景",
+            "subject": "雷峰夕照与西湖全景",
+            "background": "金红晚霞",
+            "prompt": "电影级航拍拉远大远景，雷峰夕照，夕阳将雷峰塔与整片西湖染成绚烂金红色，远山层叠湖面如镜，大气磅礴的电影史诗质感"
+          }
+        ]
+      },
+      {
+        "scene_id": 7,
+        "location": "西湖湖畔",
+        "time": "入夜",
+        "shot_list": [
+          {
+            "shot_id": 8,
+            "duration_s": 6,
+            "camera": {
+              "type": "无人机",
+              "movement": "环绕",
+              "angle": "平拍"
+            },
+            "shot_size": "全景",
+            "subject": "西湖夜景与灯火",
+            "background": "深蓝夜幕",
+            "prompt": "电影级环绕全景，夜幕初降的西湖，沿岸灯火与远处雷峰塔轮廓灯倒映于深蓝湖面，水天一色，灯光摇曳，宁静而梦幻的电影氛围"
+          }
+        ]
+      }
+    ]
+  },
+  "plan_id": "plan_p_20260815_112131_be46c9_v1",
+  "plan_version": 1,
+  "visual_assets": {
+    "kb_images": [
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_1.jpg",
+        "url": "https://unsplash.com/photos/brown-wooden-gazebo-near-body-of-water-during-night-time-n4018exJ9kw",
+        "license": "Unsplash License",
+        "alt": "brown wooden gazebo near body of water during night time"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_2.jpg",
+        "url": "https://unsplash.com/photos/a-boat-floating-on-top-of-a-lake-next-to-a-tall-building-udBx7xseX2g",
+        "license": "Unsplash License",
+        "alt": "A boat floating on top of a lake next to a tall building"
+      },
+      {
+        "name": "西湖",
+        "path": "images/hz-xihu_3.jpg",
+        "url": "https://unsplash.com/photos/gray-pergula-between-green-grass-GEjGkc7Tb7Y",
+        "license": "Unsplash License",
+        "alt": "gray pergula between green grass"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_1.jpg",
+        "url": "https://unsplash.com/photos/brown-and-green-temple-surrounded-by-green-trees-under-blue-sky-during-daytime-EuXRRkIu31s",
+        "license": "Unsplash License",
+        "alt": "brown and green temple surrounded by green trees under blue sky during daytime"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_2.jpg",
+        "url": "https://unsplash.com/photos/a-large-body-of-water-surrounded-by-mountains-MsyIOw1Pb8E",
+        "license": "Unsplash License",
+        "alt": "A large body of water surrounded by mountains"
+      },
+      {
+        "name": "雷峰塔",
+        "path": "images/hz-leifengta_3.jpg",
+        "url": "https://unsplash.com/photos/a-tall-tower-sitting-on-top-of-a-lush-green-hillside-8zPdaDzRHcY",
+        "license": "Unsplash License",
+        "alt": "a tall tower sitting on top of a lush green hillside"
+      }
+    ],
+    "ref_images": []
+  },
+  "voice": {
+    "status": "reserved",
+    "engine": null
+  },
+  "music": {
+    "suggestions": [],
+    "status": "reserved"
+  },
+  "video_tasks": [
+    "vt_20260815_112143_920570",
+    "vt_20260815_112145_cbb684"
+  ],
+  "render": {
+    "status": "reserved"
+  },
+  "final_video": {
+    "status": "none",
+    "url": "",
+    "preview_url": "",
+    "duration_s": 0,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16"
+  },
+  "safety": {
+    "passed": true,
+    "checks": [
+      {
+        "type": "content",
+        "result": "pass",
+        "note": "知识库事实来源"
+      },
+      {
+        "type": "copyright",
+        "result": "pass",
+        "note": "素材来源可追溯"
+      },
+      {
+        "type": "license",
+        "result": "pass",
+        "note": "Unsplash License 免费商用"
+      }
+    ]
+  },
+  "created_at": "2026-08-15T03:21:31.158481+00:00",
+  "updated_at": "2026-08-15T03:21:45.630242+00:00",
+  "copywriting_text": "【0-60s】春天的杭州，第一站一定是西湖。\n湖水与远山相拥，苏堤白堤如画。",
+  "video_clips": {
+    "1": {
+      "shot_id": 1,
+      "task_id": "vt_20260815_112143_920570",
+      "status": "completed",
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    },
+    "2": {
+      "shot_id": 2,
+      "task_id": "vt_20260815_112143_920570",
+      "status": "completed",
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    },
+    "3": {
+      "shot_id": 3,
+      "task_id": "vt_20260815_112145_cbb684",
+      "status": "completed",
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    },
+    "4": {
+      "shot_id": 4,
+      "task_id": "vt_20260815_112143_920570",
+      "status": "completed",
+      "video_url": null,
+      "local_path": null,
+      "error": null
+    }
+  }
+}
