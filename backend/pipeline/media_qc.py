@@ -56,6 +56,7 @@ def inspect_wav(path: str | Path, expected_duration_s: float | None = None) -> d
     active = ([index for index, level in enumerate(levels) if level >= gate]
               if signal_present else [])
     duration = frames / rate
+    head_silence = min(duration, active[0] * WINDOW_MS / 1000) if active else 0.0
     offset = min(duration, (active[-1] + 1) * WINDOW_MS / 1000) if active else 0
     tail_silence = max(0.0, duration - offset)
     duration_ok = expected_duration_s is None or abs(duration - expected_duration_s) <= 0.2
@@ -65,6 +66,8 @@ def inspect_wav(path: str | Path, expected_duration_s: float | None = None) -> d
         "duration_seconds": round(duration, 4),
         "expected_duration_seconds": expected_duration_s,
         "duration_ok": duration_ok,
+        "head_silence_seconds": round(head_silence, 3),
+        "head_activity_warning": bool(active and head_silence < 0.15),
         "tail_silence_seconds": round(tail_silence, 3),
         "tail_activity_warning": bool(active and tail_silence < 0.12),
         "speech_level_p90_dbfs": round(speech_level, 2),

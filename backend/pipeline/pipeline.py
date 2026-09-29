@@ -810,7 +810,7 @@ def _extract_titles(text):
     return items
 
 
-NARRATION_CHARS_PER_SEC = 4  # 中文口播含标点的自然语速；实测 7 字/秒听感就是赶稿
+NARRATION_CHARS_PER_SEC = 3.5  # 自然语速约 3.2–4.2 字/秒；留出每段约 0.6s 首尾静默余量
 
 
 def narration_budget(duration_s) -> int:
