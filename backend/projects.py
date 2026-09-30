@@ -2,7 +2,7 @@
 """Project 流程的模型与追加式任务存储。
 
 - Project：一次创作任务的主实体（方案 → 分镜 → 音色/BGM选择 → Segment → 双版本成片），
-  落盘 experiments/results/05_pipeline/projects/{project_id}.json
+  应用启动后写入 MySQL；独立管线测试保留 JSON 文件存储。
 - VoiceTask/SegmentTask/RenderTask：新管线的三个可轮询任务。
 - Project 与各类任务 GET 时从对应目录懒加载；聚合结果不单独落盘，始终由追加式任务重算，最新任务胜出。
 """
@@ -20,6 +20,14 @@ PROJECTS: dict[str, "Project"] = {}
 VOICE_TASKS: dict[str, "VoiceTask"] = {}
 SEGMENT_TASKS: dict[str, "SegmentTask"] = {}
 RENDER_TASKS: dict[str, "RenderTask"] = {}
+STORAGE = None  # Set at app startup; standalone pipeline tests retain file storage.
+
+
+def configure_storage(storage):
+    global STORAGE
+    STORAGE = storage
+    for cache in (PROJECTS, VOICE_TASKS, SEGMENT_TASKS, RENDER_TASKS):
+        cache.clear()
 
 
 def _now():
@@ -62,6 +70,10 @@ class Project:
         self.safety = {}
         self.created_at = _now()
         self.updated_at = self.created_at
+        self.name = request.get("theme") or "未命名项目"
+        self.draft = {}
+        self.deleted_at = None
+        self.interrupted_stage = None
 
     @property
     def copywriting_text(self) -> str:
@@ -77,14 +89,14 @@ class Project:
         self.updated_at = _now()
 
     def to_dict(self, include_private: bool = False) -> dict:
-        self.touch()
         d = {k: getattr(self, k) for k in (
             "schema_version", "project_id", "username", "status", "progress", "message", "request", "planning",
             "copywriting", "script", "storyboard", "plan_id", "plan_version",
             "reference_candidates", "reference_assets", "visual_profile", "reference_version",
             "visual_assets", "voice", "music", "voice_tasks", "segment_tasks",
             "render_tasks", "render",
-            "final_video", "safety", "created_at", "updated_at")}
+            "final_video", "safety", "created_at", "updated_at", "name", "draft",
+            "deleted_at", "interrupted_stage")}
         d["copywriting_text"] = self.copywriting_text
         if not include_private:
             # 任务和媒体文件的本机绝对路径只供后端处理；浏览器只拿静态预览 URL。
@@ -125,6 +137,10 @@ class Project:
         return d
 
     def dump(self):
+        self.touch()
+        if STORAGE is not None:
+            STORAGE.save_project(self.to_dict(include_private=True))
+            return
         os.makedirs(PROJECTS_DIR, exist_ok=True)
         with open(os.path.join(PROJECTS_DIR, f"{self.project_id}.json"), "w", encoding="utf-8") as f:
             json.dump(self.to_dict(include_private=True), f, ensure_ascii=False, indent=2)
@@ -137,7 +153,7 @@ class Project:
                   "reference_assets", "visual_profile", "reference_version", "visual_assets", "voice",
                   "music", "voice_tasks", "segment_tasks", "render_tasks",
                   "render", "final_video", "safety",
-                  "created_at", "updated_at"):
+                  "created_at", "updated_at", "name", "draft", "deleted_at", "interrupted_stage"):
             if k in d:
                 setattr(p, k, d[k])
         return p
@@ -173,12 +189,15 @@ class VoiceTask:
         self.updated_at = self.created_at
 
     def to_dict(self):
-        self.updated_at = _now()
         return {k: getattr(self, k) for k in (
             "task_id", "project_id", "kind", "status", "progress", "message",
             "request", "result", "error", "created_at", "updated_at")}
 
     def dump(self):
+        self.updated_at = _now()
+        if STORAGE is not None:
+            STORAGE.save_task(self.to_dict(), "voice")
+            return
         os.makedirs(VOICE_TASKS_DIR, exist_ok=True)
         with open(os.path.join(VOICE_TASKS_DIR, f"{self.task_id}.json"), "w", encoding="utf-8") as f:
             json.dump(self.to_dict(), f, ensure_ascii=False, indent=2)
@@ -233,6 +252,7 @@ class SegmentTask:
             if row is None:
                 continue
             row["shot_ids"] = list(clip.get("shot_ids", row.get("shot_ids", [])))
+            row["external_task_id"] = clip.get("task_id")
             row["reference_asset_ids"] = list(clip.get("reference_asset_ids", []))
             for key in ("voice_reference_sha256", "voice_version", "narration_hash", "prompt_hash"):
                 if key in clip:
@@ -256,12 +276,15 @@ class SegmentTask:
         self.message = f"Segment 生成中 {ok}/{len(self.segments)} 完成"
 
     def to_dict(self):
-        self.updated_at = _now()
         return {k: getattr(self, k) for k in (
             "task_id", "project_id", "kind", "status", "progress", "message",
             "request", "segments", "error", "created_at", "updated_at")}
 
     def dump(self):
+        self.updated_at = _now()
+        if STORAGE is not None:
+            STORAGE.save_task(self.to_dict(), "segment")
+            return
         os.makedirs(SEGMENT_TASKS_DIR, exist_ok=True)
         with open(os.path.join(SEGMENT_TASKS_DIR, f"{self.task_id}.json"), "w", encoding="utf-8") as f:
             json.dump(self.to_dict(), f, ensure_ascii=False, indent=2)
@@ -290,12 +313,15 @@ class RenderTask:
         self.updated_at = self.created_at
 
     def to_dict(self):
-        self.updated_at = _now()
         return {k: getattr(self, k) for k in (
             "task_id", "project_id", "kind", "status", "progress", "message",
             "request", "result", "error", "created_at", "updated_at")}
 
     def dump(self):
+        self.updated_at = _now()
+        if STORAGE is not None:
+            STORAGE.save_task(self.to_dict(), "render")
+            return
         os.makedirs(RENDER_TASKS_DIR, exist_ok=True)
         with open(os.path.join(RENDER_TASKS_DIR, f"{self.task_id}.json"), "w", encoding="utf-8") as f:
             json.dump(self.to_dict(), f, ensure_ascii=False, indent=2)
@@ -310,9 +336,16 @@ class RenderTask:
 
 
 def load_project(project_id: str) -> Project | None:
-    """内存 → 磁盘懒加载（重启恢复）。"""
+    """内存 → 数据库存档懒加载；独立测试使用文件存档。"""
     p = PROJECTS.get(project_id)
     if p is not None:
+        return None if p.deleted_at else p
+    if STORAGE is not None:
+        data = STORAGE.get_project(project_id)
+        if data is None:
+            return None
+        p = Project.from_dict(data)
+        PROJECTS[project_id] = p
         return p
     path = os.path.join(PROJECTS_DIR, f"{project_id}.json")
     if not os.path.exists(path):
@@ -326,6 +359,14 @@ def load_project(project_id: str) -> Project | None:
 def _load_task(cache, folder, task_id, cls):
     task = cache.get(task_id)
     if task is not None:
+        return task
+    if STORAGE is not None:
+        kind = {VoiceTask: "voice", SegmentTask: "segment", RenderTask: "render"}[cls]
+        data = STORAGE.get_task(task_id, kind)
+        if data is None:
+            return None
+        task = cls.from_dict(data)
+        cache[task_id] = task
         return task
     path = os.path.join(folder, f"{task_id}.json")
     if not os.path.exists(path):
@@ -370,9 +411,12 @@ def active_segment_ids(project: Project) -> set[str]:
     return active
 
 
-def list_projects() -> list[Project]:
+def list_projects(username=None) -> list[Project]:
     """磁盘扫描全部项目（懒加载），按文件名倒序（p_时间戳_hex，天然时间倒序）。
     跳过非 p_ 前缀 / 损坏的 json：一个坏文件不应拖垮整个列表接口。"""
+    if STORAGE is not None:
+        return [project for data in STORAGE.projects(username)
+                if (project := load_project(data["project_id"])) is not None]
     if not os.path.isdir(PROJECTS_DIR):
         return []
     names = sorted((f[:-5] for f in os.listdir(PROJECTS_DIR)

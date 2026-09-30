@@ -57,11 +57,13 @@ python app.py
 | Shot | Seedance：一张实景图 + 一条连续镜头 + 原生音轨；超长镜头依次续写 | 生成带静音音轨的可合成占位视频 |
 | 合成 | FFmpeg 原生音视频拼接与可选 BGM 混音 | 相同 |
 
-- 项目和任务：`experiments/results/05_pipeline/{projects,voice_tasks,segment_tasks,render_tasks}/`
+- 项目和任务：MySQL 的 `projects`、`tasks`；生成素材和用户音色：`assets`、`voices`。启动时自动导入 `experiments/results/05_pipeline/` 中归属明确的旧 JSON 记录。
 - 预设音色：`assets/media/voices/`
 - BGM：`assets/media/bgm/`
 - Seedance Segment：`assets/videos/{project_id}/{segment_id}/`
 - 最终成片：`assets/renders/{project_id}/v{version}/`
+
+项目/素材页面、字段说明和自动保存规则见 [项目与素材模块](../docs/Project_Library_MVP.md)。
 
 模型 Key 配置：
 

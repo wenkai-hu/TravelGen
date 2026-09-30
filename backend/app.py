@@ -28,18 +28,29 @@ from pipeline.pipeline import PipelineRunner
 from v1_router import router as v1_router
 from db.auth import router as auth_router
 from db.database import init_db
+from library_router import router as library_router
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await init_db()   # 启动建表（users 等），表已存在则跳过
+    from pathlib import Path
+    import projects
+    from db.library import Library
+    storage = Library()
+    counts = await asyncio.to_thread(storage.import_legacy, Path(projects.RESULTS_DIR))
+    await asyncio.to_thread(storage.interrupt_unfinished)
+    projects.configure_storage(storage)
+    print(f"项目数据库已就绪；导入 {counts['projects']} 个项目、{counts['tasks']} 个任务，跳过 {counts['skipped']} 个无效文件")
     yield
+    storage.engine.dispose()
 
 
 app = FastAPI(title="TravelGen 生成管线 API", version="0.2.0", lifespan=lifespan)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 app.include_router(v1_router)
 app.include_router(auth_router)
+app.include_router(library_router)
 
 
 class Task:

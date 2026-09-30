@@ -18,10 +18,10 @@ import {
   PhWarning,
   PhWrench,
 } from "@phosphor-icons/vue";
-import ThemeToggle from "../components/ThemeToggle.vue";
-import logoUrl from "../images/logo.png";
-import { getProject, confirmPlan } from "../api";
-import { isLoggedIn, logout as clearSession } from "../auth";
+import { getProject, confirmPlan, retryProject } from "../api";
+import { useProjectDraft } from "../composables/useProjectDraft";
+import DraftStatus from "../components/DraftStatus.vue";
+import { logout as clearSession } from "../auth";
 
 const message = useMessage();
 const route = useRoute();
@@ -33,6 +33,9 @@ const pid = computed(() => route.params.pid);
 // ── 项目数据（轮询刷新） ──
 const project = ref(null);
 const copywritingText = ref(""); // 旁白文案（可编辑，确认时原样 PUT 回去，后端重新解析）
+const planDraft = useProjectDraft(pid, 'plan');
+let draftRestored = false;
+watch(copywritingText, text => { if(draftRestored) planDraft.queue({text}); });
 const confirming = ref(false);
 let timer = null;
 
@@ -74,8 +77,9 @@ async function tick() {
       router.replace(`/project/${pid.value}/references`);
       return;
     }
-    if (!copywritingText.value && p.copywriting_text) {
-      copywritingText.value = p.copywriting_text;
+    if (!draftRestored && (p.copywriting_text || p.draft?.plan)) {
+      copywritingText.value = planDraft.restore(p.draft?.plan)?.text ?? p.copywriting_text ?? '';
+      draftRestored = true;
     }
     if (p.status !== "planning") stopPolling();
     if (
@@ -122,6 +126,7 @@ async function tick() {
 function startPolling() {
   stopPolling();
   project.value = null;
+  draftRestored = false;
   copywritingText.value = "";
   tick();
   timer = setInterval(tick, POLL_MS);
@@ -144,6 +149,7 @@ watch(pid, (np, op) => {
 async function onConfirm() {
   confirming.value = true;
   try {
+    await planDraft.flush();
     await confirmPlan(pid.value, copywritingText.value);
     message.success("方案已确认，下一步生成分镜并选择参考音色");
     await tick(); // 拉取确认后的状态（plan_confirmed）
@@ -173,20 +179,9 @@ function fmtDur(s) {
 
 <template>
   <div class="page">
-    <!-- 顶部导航 -->
-    <header class="nav fade-up">
-      <div class="nav-inner">
-        <div class="logo" @click="router.push('/')">
-          <img :src="logoUrl" class="logo-mark" alt="TravelGen" />
-          <span class="logo-text gradient-text">TravelGen</span>
-        </div>
-        <nav class="nav-links">
-          <a href="#" @click.prevent="router.push('/')">工作台</a>
-          <router-link v-if="isLoggedIn()" to="/history">我的创作</router-link>
-          <ThemeToggle />
-        </nav>
-      </div>
-    </header>
+    <div class="page-status">
+      <DraftStatus v-if="draftRestored" :state="planDraft.state.value" @retry="planDraft.flush().catch(e => message.error(e.message))" />
+    </div>
 
     <main class="stage">
       <!-- 首查加载中 -->
@@ -394,12 +389,12 @@ function fmtDur(s) {
         <h2 class="err-title">方案生成失败</h2>
         <p class="err-msg">{{ project?.message || "未知错误" }}</p>
         <p class="err-tip">
-          可检查后端日志（kimi key 是否正确），或回到工作台重新创建项目
+          已保存当前进度，可以重试这一步，或稍后从项目页继续。
         </p>
         <div class="op-bar">
           <NButton size="large" @click="router.push('/')">返回修改</NButton>
-          <NButton size="large" type="primary" @click="startPolling"
-            >刷新状态</NButton
+          <NButton size="large" type="primary" @click="retryProject(pid).then(startPolling).catch(e => message.error(e.message))"
+            >重试当前步骤</NButton
           >
         </div>
       </div>
@@ -419,54 +414,6 @@ function fmtDur(s) {
   color: var(--color-ink);
 }
 
-/* ---------- 导航（与工作台一致） ---------- */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--surface-nav);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-soft);
-}
-.nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  cursor: pointer;
-}
-.logo-mark {
-  width: 76px;
-  height: 76px;
-  border-radius: 12px;
-  object-fit: cover;
-  display: block;
-  box-shadow: 0 0 0 1px var(--logo-ring);
-}
-.logo-text {
-  font-family: var(--font-serif);
-  font-size: 25px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-.nav-links a {
-  color: var(--color-ink-sub);
-  text-decoration: none;
-  font-size: 16px;
-  transition: color 0.15s;
-}
-.nav-links a:hover {
-  color: var(--color-primary);
-}
-
-/* ---------- 主区 ---------- */
 .stage {
   max-width: 1200px;
   margin: 0 auto;

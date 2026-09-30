@@ -104,7 +104,7 @@ def remix_render(final_video: dict, video_gain_db: float, bgm_gain_db: float,
     return result
 
 
-def compose_project(project, segment_results: dict[str, dict], version: int) -> dict:
+def compose_project(project, segment_results: dict[str, dict], version: int, output_id: str | None = None) -> dict:
     segments = list(project.storyboard.get("segments", []))
     if not segments:
         raise ValueError("Storyboard 没有 Segment")
@@ -113,6 +113,8 @@ def compose_project(project, segment_results: dict[str, dict], version: int) -> 
         project.request.get("aspect_ratio", "9:16"),
     )
     folder = RENDER_ROOT / project.project_id / f"v{version}"
+    if output_id:
+        folder = folder / output_id
     folder.mkdir(parents=True, exist_ok=True)
     normalized = []
     voice = project.voice or {}

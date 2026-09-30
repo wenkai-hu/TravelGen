@@ -215,3 +215,24 @@ export function login(payload) {
 export function listProjects() {
   return request('/api/projects')
 }
+
+export const createProjectDraft = (payload) => request('/api/project-drafts', { method: 'POST', body: JSON.stringify({ request: payload }) })
+export const saveProjectDraft = (pid, section, data, options = {}) => request(`/api/projects/${pid}/draft`, { method: 'PATCH', body: JSON.stringify({ section, data }), ...options })
+export const startProjectDraft = (pid, payload) => request(`/api/projects/${pid}/start`, { method: 'POST', body: JSON.stringify(payload) })
+export const renameProject = (pid, name) => request(`/api/projects/${pid}`, { method: 'PATCH', body: JSON.stringify({ name }) })
+export const deleteProject = (pid) => request(`/api/projects/${pid}`, { method: 'DELETE' })
+export const retryProject = (pid) => request(`/api/projects/${pid}/retry`, { method: 'POST' })
+export const getLibraryVideos = () => request('/api/library/videos')
+export const getLibraryVoices = () => request('/api/library/voices')
+export const renameLibraryVoice = (vid, name) => request(`/api/library/voices/${vid}`, { method: 'PATCH', body: JSON.stringify({ name }) })
+export const deleteLibraryVoice = (vid) => request(`/api/library/voices/${vid}`, { method: 'DELETE' })
+export async function downloadLibraryAsset(assetId, name) {
+  const res = await fetch(`${API_BASE}/api/library/assets/${assetId}/download`, { headers: { Authorization: `Bearer ${getToken()}` } })
+  if (!res.ok) throw new Error(res.status === 401 ? '登录已失效，请重新登录' : '下载失败，文件可能已不存在')
+  const url = URL.createObjectURL(await res.blob())
+  const link = document.createElement('a')
+  link.href = url
+  link.download = name
+  link.click()
+  setTimeout(() => URL.revokeObjectURL(url), 60000)
+}

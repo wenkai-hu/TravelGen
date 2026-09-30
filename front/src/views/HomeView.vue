@@ -26,13 +26,12 @@ import {
   PhTelevision,
   PhTimer,
   PhUsersThree,
-  PhUser,
 } from "@phosphor-icons/vue";
 import CraftSlot from "../components/CraftSlot.vue";
-import ThemeToggle from "../components/ThemeToggle.vue";
-import logoUrl from "../images/logo.png";
-import { createProject } from "../api";
-import { getUsername, isLoggedIn, logout as clearSession } from "../auth";
+import { startProjectDraft } from "../api";
+import { useInputDraft } from "../composables/useInputDraft";
+import DraftStatus from "../components/DraftStatus.vue";
+import { isLoggedIn, logout as clearSession } from "../auth";
 import {
   ASPECT_RATIOS,
   DEFAULT_AUDIENCE,
@@ -45,16 +44,6 @@ import {
 
 const message = useMessage();
 const router = useRouter();
-
-// ── 登录态（localStorage；退出仅清前端会话） ──
-const loggedIn = ref(isLoggedIn());
-const username = ref(getUsername() || "");
-function onLogout() {
-  clearSession();
-  loggedIn.value = false;
-  username.value = "";
-  message.success("已退出登录");
-}
 
 // ── 配方（表单）—— 与后端 schemas.py GenerateRequest 一一对应 ──
 const form = reactive({
@@ -70,6 +59,7 @@ const form = reactive({
   video_model: "seedance-2.0-pro",
   description: "",
 });
+const inputDraft = useInputDraft(form, message);
 
 // 人群 / 风格：预设块 + 可自定义
 const AUDIENCE_PRESETS = [
@@ -270,7 +260,10 @@ async function onSubmit() {
       video_model: form.video_model,
       // 参考图不在这里传：改到创建之后的选图页上传，好和搜到的图一起排序
     };
-    const data = await createProject(payload);
+    await inputDraft.flush();
+    const draftId = await inputDraft.ensure();
+    const data = await startProjectDraft(draftId, payload);
+    inputDraft.finish();
     created.value = data;
     sessionStorage.setItem("travelgen_project_id", data.project_id);
     message.success("项目已创建，正在搜索景点实景图片…");
@@ -297,30 +290,9 @@ async function onSubmit() {
 
 <template>
   <div class="page">
-    <!-- 顶部导航 -->
-    <header class="nav fade-up">
-      <div class="nav-inner">
-        <div class="logo">
-          <img :src="logoUrl" class="logo-mark" alt="TravelGen" />
-          <span class="logo-text gradient-text">TravelGen</span>
-        </div>
-        <nav class="nav-links">
-          <a href="#bench">工作台</a>
-          <a href="#compliance">版权合规</a>
-          <template v-if="loggedIn">
-            <router-link to="/history">我的创作</router-link>
-            <span class="nav-user" title="已登录"
-              ><PhUser :size="14" />{{ username }}</span
-            >
-            <a href="#" class="nav-auth" @click.prevent="onLogout">退出</a>
-          </template>
-          <router-link v-else to="/login" class="nav-auth"
-            >登录 / 注册</router-link
-          >
-          <ThemeToggle />
-        </nav>
-      </div>
-    </header>
+    <div class="page-status">
+      <DraftStatus v-if="isLoggedIn()" :state="inputDraft.state.value" @retry="inputDraft.flush().catch(e => message.error(e.message))" />
+    </div>
 
     <!-- 主区 -->
     <main class="workshop">
@@ -702,8 +674,6 @@ async function onSubmit() {
       </div>
     </main>
 
-    <!-- 页脚 -->
-    <footer id="compliance" class="footer"></footer>
   </div>
 </template>
 
@@ -717,83 +687,10 @@ async function onSubmit() {
   overflow-x: hidden;
 }
 
-/* ---------- 导航 ---------- */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--surface-nav); /* 与 logo 图底色一致，消除色差 */
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-soft);
-}
-.nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.logo-mark {
-  width: 76px;
-  height: 76px;
-  border-radius: 12px;
-  object-fit: cover;
-  display: block;
-  flex-shrink: 0;
-  box-shadow: 0 0 0 1px var(--logo-ring);
-}
-.logo-text {
-  font-family: var(--font-serif);
-  font-size: 25px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-.nav-links a {
-  color: var(--color-ink-sub);
-  text-decoration: none;
-  font-size: 16px;
-  transition: color 0.15s;
-}
-.nav-links a:hover {
-  color: var(--color-primary);
-}
-.nav-user {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 14px;
-  color: var(--color-primary);
-  white-space: nowrap;
-}
-.nav-auth {
-  padding: 5px 16px;
-  border-radius: 999px;
-  border: 1.5px solid var(--color-primary);
-  font-size: 13.5px;
-  color: var(--color-primary) !important;
-  white-space: nowrap;
-  transition: all 0.15s;
-}
-.nav-auth:hover {
-  background: var(--color-primary);
-  color: var(--color-on-primary) !important;
-}
-
 /* ---------- 主区 ---------- */
 .workshop {
   position: relative;
-  padding: 48px 24px 40px;
+  padding: 20px 40px 40px;
 }
 .glow {
   position: absolute;
@@ -866,7 +763,7 @@ async function onSubmit() {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 72px 290px;
+  grid-template-columns: minmax(0, 1fr) 56px 270px;
   gap: 20px;
   align-items: start;
 }
@@ -1180,7 +1077,7 @@ async function onSubmit() {
 /* ---------- 成品槽 ---------- */
 .result-slot {
   position: sticky;
-  top: 112px; /* 与导航高度（~108px）对齐，滚动时不被盖住 */
+  top: 24px;
   align-self: center;
   background: var(--color-card);
   border: 2px dashed var(--color-border);
@@ -1266,20 +1163,8 @@ async function onSubmit() {
   margin-top: 12px;
 }
 
-/* ---------- 页脚 ---------- */
-.footer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 22px 24px 30px;
-  border-top: 1px solid var(--color-border);
-  font-size: 12.5px;
-  color: var(--color-ink-sub);
-  line-height: 1.8;
-  text-align: center;
-}
-
 /* ---------- 响应式 ---------- */
-@media (max-width: 980px) {
+@media (max-width: 1200px) {
   .bench-area {
     grid-template-columns: 1fr;
   }
@@ -1296,7 +1181,9 @@ async function onSubmit() {
     font-size: 32px;
   }
 }
-@media (max-width: 720px) {
+@media (max-width: 800px) {
+  .workshop { padding: 16px 18px 32px; }
+  .title { font-size: 28px; }
   .craft-row {
     grid-template-columns: 1fr;
   }

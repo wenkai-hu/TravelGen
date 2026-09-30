@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { NConfigProvider, NMessageProvider, NDialogProvider, darkTheme, zhCN, dateZhCN } from 'naive-ui'
 import { theme } from './theme'
+import AppShell from './components/AppShell.vue'
 
 // Naive UI 主题定制：把组件库配色对齐设计 token（浅：宋韵青绿 / 深：墨韵暖调）。
 // 浅色只补状态色——原先没设，NAlert type="info" 会漏出 naive 默认蓝 #2080f0、
@@ -73,7 +74,7 @@ const themeOverrides = computed(() => (isDark.value ? darkOverrides : lightOverr
   >
     <NMessageProvider>
       <NDialogProvider>
-        <router-view />
+        <AppShell><router-view /></AppShell>
       </NDialogProvider>
     </NMessageProvider>
   </NConfigProvider>

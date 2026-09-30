@@ -224,7 +224,6 @@ onMounted(() => {
   object-fit: cover;
   display: block;
   flex-shrink: 0;
-  box-shadow: 0 0 0 1px var(--logo-ring);
 }
 .logo-text {
   font-family: var(--font-serif);

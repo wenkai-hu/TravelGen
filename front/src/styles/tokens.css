@@ -34,7 +34,7 @@
   --color-bg: #f7f5f0;      /* 宣纸米白 */
   --color-card: #ffffff;
   --color-border: #e3ded3;
-  --surface-nav: #fcf8f1;     /* 导航底（与 logo 图底色同色，消除色差） */
+  --surface-nav: #fcf8f1;
   --surface-sunken: #f8f4ee;  /* 次级下沉表面（引用块、旁白、候选卡） */
   --surface-elevated: #fffdfa;
   --border-dashed: #ddd6c8;
@@ -97,11 +97,6 @@
   --media-placeholder: #e8edea;                   /* 图片未加载时的占位底 */
   --checker-a: #f4f3ef;                           /* 棋盘格（透明底提示） */
   --checker-b: #eceae4;
-
-  /* logo.png 底板 #fcf8f1 是烤死在图里的（图片不透明，透明托底无效）。
-     浅色下它和导航底同色，不需要描边；深色下补一道暖色描边，
-     让那块亮色读起来是「有意放的卡纸」而不是漏白。 */
-  --logo-ring: transparent;
 
   /* —— 渐变（整体作为 token，视图里不拼色标） —— */
   --gradient-title: linear-gradient(120deg, #0f766e 10%, #17a398 55%, #c9a227 120%);
@@ -217,7 +212,6 @@
   --panel-inset: #262218;
   --divider-primary: rgba(94, 202, 184, 0.22);
   --input-bg: rgba(255, 255, 255, 0.05);
-  --logo-ring: rgba(234, 229, 218, 0.16);
   --surface-nav-glass: rgba(27, 25, 19, 0.94);
   --card-glass: rgba(33, 30, 23, 0.9);
   --glow-primary-soft: rgba(94, 202, 184, 0.07);
@@ -246,6 +240,21 @@ body {
   margin: 0;
   background: var(--color-bg);
   color: var(--color-ink);
+}
+
+/* 创作流程的草稿状态独立于主导航，随页面内容显示。 */
+.page-status {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 44px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 40px 0;
+  box-sizing: border-box;
+}
+@media (max-width: 800px) {
+  .page-status { padding-inline: 18px; }
 }
 
 /* 图标：Phosphor 的 svg 默认 inline，靠 vertical-align 与旁边文字对齐。

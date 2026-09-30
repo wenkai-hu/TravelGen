@@ -22,7 +22,7 @@ def _db_url() -> str:
     return url
 
 #创建数据库引擎
-engine = create_async_engine(_db_url(),echo=True)
+engine = create_async_engine(_db_url(), echo=False, pool_pre_ping=True)
 #创建实例session对象 后续依赖注入接口 让接口能够真正操作数据库
 SessionLocal = async_sessionmaker(engine, expire_on_commit=False)
 

@@ -258,7 +258,7 @@ async def _run_render_task(project: P.Project, task: P.RenderTask):
             raise RuntimeError("合成所用的音色或 BGM 已变化，本次任务已失效")
         version = int((project.render or {}).get("version", 0)) + 1
         result = await asyncio.to_thread(
-            composer.compose_project, project, P.merge_segment_results(project), version)
+            composer.compose_project, project, P.merge_segment_results(project), version, task.task_id)
         if (task.request.get("voice_version") != project.voice.get("version")
                 or task.request.get("voice_reference_sha256") != project.voice.get("reference_sha256")
                 or task.request.get("music_version") != project.music.get("version")):
@@ -421,6 +421,10 @@ async def _run_reference_analysis(project: P.Project, selected: list[dict]):
 
 @router.post("/projects", status_code=202)
 async def create_project(req: GenerateRequest, user: str = Depends(get_current_user)):
+    return await _start_project(req, user)
+
+
+async def _start_project(req: GenerateRequest, user: str, project=None):
     errs = []
     if req.scene_type not in SCENE_TYPES and req.scene_type not in SCENE_TYPE_ALIASES:
         errs.append(f"scene_type 需为 {SCENE_TYPES} 或英文别名 {list(SCENE_TYPE_ALIASES)}")
@@ -435,8 +439,10 @@ async def create_project(req: GenerateRequest, user: str = Depends(get_current_u
 
     request = req.model_dump()
     request["scene_type"] = SCENE_TYPE_ALIASES.get(req.scene_type, req.scene_type)  # 落库中文枚举
-    pid = _new_id("p")
-    project = P.Project(pid, request, username=user)
+    pid = project.project_id if project else _new_id("p")
+    project = project or P.Project(pid, request, username=user)
+    project.request = request
+    project.draft.pop("input", None)
     P.PROJECTS[pid] = project
     project.status, project.progress, project.message = "searching_references", 2, "正在搜索景点实景图片"
     project.dump()
@@ -460,6 +466,7 @@ async def get_references(pid: str, user: str = Depends(get_current_user)):
         "selected_assets": project.reference_assets,
         "visual_profile": project.visual_profile,
         "reference_version": project.reference_version,
+        "draft": project.draft.get("references"),
         # 参考图额度：前端据此提示"还能选几张"，公式只在 validate.py 一处，别在前端复制
         "max_selected": MAX_SELECTED_REFERENCES,
         "duration_cap": v.max_useful_references(project.request.get("duration_s") or 60),
@@ -572,6 +579,7 @@ async def confirm_plan(pid: str, req: ConfirmPlanRequest, user: str = Depends(ge
     if not cw["hashtags"] and project.copywriting.get("hashtags"):
         cw["hashtags"] = project.copywriting["hashtags"]
     project.copywriting = cw
+    project.draft.pop("plan", None)
     project.script = parse_script(cw)
     project.plan_version += 1
     project.plan_id = f"plan_{project.project_id}_v{project.plan_version}"
@@ -938,17 +946,25 @@ async def create_voice_candidate(pid: str, req: VoiceCandidateRequest,
 async def select_voice(pid: str, req: VoiceSelectionRequest,
                        user: str = Depends(get_current_user)):
     project = _owned_project(pid, user)
+    if P.active_segment_ids(project) or project.render.get("status") == "rendering":
+        _err(409, "project_busy", "视频正在生成或合成，请完成后再更换音色")
     if bool(req.voice_id) == bool(req.candidate_task_id):
         _err(400, "invalid_param", "voice_id 与 candidate_task_id 必须且只能提供一个")
     if req.voice_id:
         selected = media_catalog.find_voice(req.voice_id)
-        if not selected:
-            _err(404, "voice_not_found", f"预设音色 {req.voice_id} 不存在")
-        voice = {
-            "source": "preset", "voice_id": selected["voice_id"], "name": selected["name"],
-            "description": selected["description"], "reference_path": selected["local_path"],
-            "preview_url": selected["preview_url"], "reference_sha256": selected["sha256"],
-        }
+        if selected:
+            voice = {
+                "source": "preset", "voice_id": selected["voice_id"], "name": selected["name"],
+                "description": selected["description"], "reference_path": selected["local_path"],
+                "preview_url": selected["preview_url"], "reference_sha256": selected["sha256"],
+            }
+        else:
+            try:
+                voice = P.STORAGE.voice_for_selection(user, req.voice_id) if P.STORAGE else None
+            except FileNotFoundError as exc:
+                _err(409, "voice_file_missing", str(exc))
+            if not voice:
+                _err(404, "voice_not_found", "音色不存在")
     else:
         task = P.load_voice_task(req.candidate_task_id)
         if task is None or task.project_id != pid:
@@ -1130,31 +1146,48 @@ async def render_status(pid: str, user: str = Depends(get_current_user)):
 @router.get("/projects")
 async def list_projects(user: str = Depends(get_current_user)):
     items = []
-    for p in P.list_projects():
+    for p in P.list_projects(user):
         if p.username != user:
             continue
         segment_clips = P.merge_segment_results(p)
-        cover = next((c["video_url"] for c in segment_clips.values()
-                      if c.get("status") == "completed" and c.get("video_url")), None)
+        cover = next((asset.get("image_url") or asset.get("url") for asset in p.reference_assets
+                      if asset.get("image_url") or asset.get("url")), None)
         if not cover:
             assets = ((p.visual_assets or {}).get("ref_images") or
                       (p.visual_assets or {}).get("kb_images") or [])
             cover = assets[0].get("url") if assets else None
         items.append({
             "project_id": p.project_id,
+            "name": p.name,
+            "resume_url": project_resume_url(p),
+            "message": p.message,
+            "completed_shots": sum(
+                1 for scene in p.storyboard.get("scenes", []) for shot in scene.get("shot_list", [])
+                if (ids := shot.get("segment_ids") or [s["segment_id"] for s in p.storyboard.get("segments", [])
+                                                       if shot["shot_id"] in s.get("shot_ids", [])])
+                and all(segment_clips.get(sid, {}).get("status") == "completed" for sid in ids)),
             "theme": p.request.get("theme", ""),
             "scene_type": p.request.get("scene_type", ""),
             "status": p.status,
             "progress": p.progress,
             "duration_s": p.request.get("duration_s", 0),
-            "shot_count": sum(len(segment.get("shot_ids", []))
-                              for segment in p.storyboard.get("segments", [])),
+            "shot_count": sum(len(scene.get("shot_list", [])) for scene in p.storyboard.get("scenes", [])),
             "segment_count": len(p.storyboard.get("segments", [])),
             "cover_url": cover,
             "created_at": p.created_at,
             "updated_at": p.updated_at,
         })
     return {"projects": items}
+
+
+def project_resume_url(project):
+    if project.status == "draft":
+        return f"/?draft={project.project_id}"
+    if project.storyboard.get("scenes") or project.status in ("plan_confirmed", "storyboarding"):
+        return f"/plan/{project.project_id}/storyboard"
+    if project.copywriting or project.status in ("planning", "waiting_confirm") or project.interrupted_stage == "planning":
+        return f"/plan/{project.project_id}"
+    return f"/project/{project.project_id}/references"
 
 
 # ---- 补充端点：查询项目全量（分阶段轮询入口，V1 文档未列但流程必需） ----

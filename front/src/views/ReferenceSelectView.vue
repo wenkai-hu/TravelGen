@@ -1,5 +1,12 @@
 <script setup>
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import {
+  computed,
+  nextTick,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  watch,
+} from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { NAlert, NButton, NInput, NModal, useMessage } from "naive-ui";
 import {
@@ -13,10 +20,15 @@ import {
   PhUploadSimple,
   PhX,
 } from "@phosphor-icons/vue";
-import ThemeToggle from "../components/ThemeToggle.vue";
-import logoUrl from "../images/logo.png";
-import { addReferenceSource, confirmProjectReferences, getProjectReferences } from "../api";
-import { isLoggedIn, logout as clearSession } from "../auth";
+import {
+  addReferenceSource,
+  confirmProjectReferences,
+  getProjectReferences,
+  retryProject,
+} from "../api";
+import { useProjectDraft } from "../composables/useProjectDraft";
+import DraftStatus from "../components/DraftStatus.vue";
+import { logout as clearSession } from "../auth";
 
 const POLL_MS = 1800;
 // 兜底值：真正的额度用后端返回的 max_selected / duration_cap，别在这里复制公式
@@ -73,12 +85,18 @@ const orderedItems = computed(() =>
 );
 
 // 额度：最多 8 张，且不超过时长能消化的张数（一图一镜，超出的图生成时会被丢掉）
-const maxSelected = computed(() => snapshot.value?.max_selected ?? MAX_SELECTED);
-const durationCap = computed(() => snapshot.value?.duration_cap ?? maxSelected.value);
+const maxSelected = computed(
+  () => snapshot.value?.max_selected ?? MAX_SELECTED,
+);
+const durationCap = computed(
+  () => snapshot.value?.duration_cap ?? maxSelected.value,
+);
 const budgetLimit = computed(() =>
   Math.max(1, Math.min(maxSelected.value, durationCap.value)),
 );
-const remaining = computed(() => Math.max(0, budgetLimit.value - selectedCount.value));
+const remaining = computed(() =>
+  Math.max(0, budgetLimit.value - selectedCount.value),
+);
 const canAddMore = computed(() => remaining.value > 0);
 const budgetReason = computed(() =>
   durationCap.value < maxSelected.value
@@ -166,6 +184,17 @@ async function tick(options = {}) {
   try {
     const data = await getProjectReferences(pid.value);
     snapshot.value = data;
+    if (!draftRestored) {
+      const saved = referenceDraft.restore(data.draft);
+      if (saved) {
+        selectedIds.value = saved.selectedIds || [];
+        autoOrder.value = !!saved.autoOrder;
+        reviewing.value = !!saved.reviewing;
+        seeded.value = true;
+        orderModeSeeded.value = true;
+      }
+      draftRestored = true;
+    }
     seedSelfProvided(data);
     seedOrderMode(data);
     syncSelection();
@@ -361,13 +390,18 @@ let holdTimer = null;
 let settleTimer = null;
 
 function cardNodes() {
-  return stripEl.value ? Array.from(stripEl.value.querySelectorAll(".order-card")) : [];
+  return stripEl.value
+    ? Array.from(stripEl.value.querySelectorAll(".order-card"))
+    : [];
 }
 
 function measurePitch() {
   const cards = cardNodes();
   if (cards.length >= 2) {
-    return cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left;
+    return (
+      cards[1].getBoundingClientRect().left -
+      cards[0].getBoundingClientRect().left
+    );
   }
   return cards.length ? cards[0].getBoundingClientRect().width + 12 : 160;
 }
@@ -384,7 +418,9 @@ function shiftFor(index) {
 
 function cardStyle(index, id) {
   if (id === dragId.value || id === settleId.value) {
-    return { transform: `translate3d(${dragDx.value}px, ${dragDy.value}px, 0)` };
+    return {
+      transform: `translate3d(${dragDx.value}px, ${dragDy.value}px, 0)`,
+    };
   }
   const shift = shiftFor(index);
   return shift ? { transform: `translate3d(${shift}px, 0, 0)` } : null;
@@ -458,7 +494,10 @@ function onPointerMove(event) {
   lastY = event.clientY;
   if (dragId.value === null) {
     if (!armed) return;
-    if (Math.hypot(event.clientX - startX, event.clientY - startY) < DRAG_THRESHOLD) {
+    if (
+      Math.hypot(event.clientX - startX, event.clientY - startY) <
+      DRAG_THRESHOLD
+    ) {
       return;
     }
     // 触屏没按住就滑 = 用户想滚动这一排，别抢
@@ -592,6 +631,7 @@ async function confirmSelection() {
   }
   confirming.value = true;
   try {
+    await referenceDraft.flush();
     // autoOrder 时提交的只是「用这几张」，先后由模型在分镜阶段自己配
     const result = await confirmProjectReferences(
       pid.value,
@@ -616,6 +656,21 @@ async function confirmSelection() {
 function restartFromWorkbench() {
   router.push("/");
 }
+
+const referenceDraft = useProjectDraft(pid, "references");
+let draftRestored = false;
+watch(
+  [selectedIds, autoOrder, reviewing],
+  () => {
+    if (draftRestored)
+      referenceDraft.queue({
+        selectedIds: selectedIds.value,
+        autoOrder: autoOrder.value,
+        reviewing: reviewing.value,
+      });
+  },
+  { deep: true },
+);
 
 onMounted(() => {
   if (!pid.value) {
@@ -647,19 +702,12 @@ watch(pid, (nextPid, oldPid) => {
 
 <template>
   <div class="page">
-    <header class="nav fade-up">
-      <div class="nav-inner">
-        <div class="logo" @click="router.push('/')">
-          <img :src="logoUrl" class="logo-mark" alt="TravelGen" />
-          <span class="logo-text gradient-text">TravelGen</span>
-        </div>
-        <nav class="nav-links">
-          <a href="#" @click.prevent="router.push('/')">工作台</a>
-          <router-link v-if="isLoggedIn()" to="/history">我的创作</router-link>
-          <ThemeToggle />
-        </nav>
-      </div>
-    </header>
+    <div class="page-status">
+      <DraftStatus
+        :state="referenceDraft.state.value"
+        @retry="referenceDraft.flush().catch((e) => message.error(e.message))"
+      />
+    </div>
 
     <main class="stage">
       <!-- 常驻的隐藏 file input：上传区在 ordering 阶段不渲染，但「再传一张」还要用它 -->
@@ -683,11 +731,7 @@ watch(pid, (nextPid, oldPid) => {
           }"
         >
           <span class="step-dot">
-            <PhCheck
-              v-if="activeStep > index + 1"
-              :size="14"
-              weight="bold"
-            />
+            <PhCheck v-if="activeStep > index + 1" :size="14" weight="bold" />
             <template v-else>{{ index + 1 }}</template>
           </span>
           <span>{{ label }}</span>
@@ -702,10 +746,7 @@ watch(pid, (nextPid, oldPid) => {
         <div class="uploader-head">
           <div>
             <h2>有自己拍的实景图？</h2>
-            <p>
-              加上去的图会直接进入下一步的清单，一图一镜，顺序到那一步再定（也可以交给
-              AI 排）。只用搜到的图也可以。
-            </p>
+            <p>上传的图会一起算入下方的可选清单。</p>
           </div>
           <span class="quota" :class="{ full: remaining <= 0 }">
             还能选 {{ remaining }} 张
@@ -725,12 +766,18 @@ watch(pid, (nextPid, oldPid) => {
           @drop.prevent="onDrop"
         >
           <PhUploadSimple :size="22" />
-          <b>{{ uploading ? "正在添加…" : "点击选择图片，或把文件拖到这里" }}</b>
+          <b>{{
+            uploading ? "正在添加…" : "点击选择图片，或把文件拖到这里"
+          }}</b>
           <small>支持 JPG / PNG / WEBP，单张不超过 12MB</small>
         </div>
 
         <div class="link-entry">
-          <button type="button" class="link-toggle" @click="showLink = !showLink">
+          <button
+            type="button"
+            class="link-toggle"
+            @click="showLink = !showLink"
+          >
             <PhLink :size="13" class="ico-inline" />
             {{ showLink ? "收起链接入口" : "或粘贴一个图片链接" }}
           </button>
@@ -784,10 +831,7 @@ watch(pid, (nextPid, oldPid) => {
               }}</span
               >？
             </h1>
-            <p>
-              请只勾选地点真实、角度有代表性的图片。后续 AI
-              会从中提取地标、建筑、环境与色彩特征，约束方案和每个镜头。
-            </p>
+            <p>选取的图片会用来约束镜头生成</p>
           </div>
           <div class="place-card">
             <span>本次创作</span>
@@ -808,7 +852,7 @@ watch(pid, (nextPid, oldPid) => {
           {{ snapshot.message }}。请更换图片后再次提交。
         </NAlert>
         <NAlert type="info" :bordered="false" class="notice">
-          一图一镜：这里的顺序就是镜头顺序，下一步可以调整。搜索图片仅用于视觉参考
+          一图一镜：这里的顺序就是镜头顺序，在后续步骤也可以调整
         </NAlert>
 
         <div class="gallery-head">
@@ -915,7 +959,9 @@ watch(pid, (nextPid, oldPid) => {
           <div>
             <span class="eyebrow">确认清单</span>
             <h1 v-if="autoOrder">
-              这几张图，<br /><span class="gradient-text">交给 AI 自己配镜头</span>
+              这几张图，<br /><span class="gradient-text"
+                >交给 AI 自己配镜头</span
+              >
             </h1>
             <h1 v-else>
               排好顺序，<br /><span class="gradient-text"
@@ -945,7 +991,11 @@ watch(pid, (nextPid, oldPid) => {
         <section class="strip-wrap">
           <!-- 顺序谁定：默认用户自己排；切到 AI 后这一排只读（还能删、还能加） -->
           <div class="order-mode" :class="{ auto: autoOrder }">
-            <div class="mode-switch" role="radiogroup" aria-label="镜头顺序由谁决定">
+            <div
+              class="mode-switch"
+              role="radiogroup"
+              aria-label="镜头顺序由谁决定"
+            >
               <button
                 type="button"
                 class="mode-opt"
@@ -1004,7 +1054,9 @@ watch(pid, (nextPid, oldPid) => {
                     ? `参考图，${item.provider === 'user' ? '我上传的' : '搜索勾选'}，顺序由 AI 决定`
                     : `第 ${index + 1} 张，${item.provider === 'user' ? '我上传的' : '搜索勾选'}，左右方向键调整位置`
                 "
-                @pointerdown="onCardPointerDown($event, index, item.candidate_id)"
+                @pointerdown="
+                  onCardPointerDown($event, index, item.candidate_id)
+                "
                 @keydown.left.prevent="moveItem(index, -1)"
                 @keydown.right.prevent="moveItem(index, 1)"
               >
@@ -1024,7 +1076,10 @@ watch(pid, (nextPid, oldPid) => {
                 >
                   <PhX :size="11" weight="bold" />
                 </button>
-                <span class="order-src" :class="{ mine: item.provider === 'user' }">
+                <span
+                  class="order-src"
+                  :class="{ mine: item.provider === 'user' }"
+                >
                   {{ item.provider === "user" ? "我上传的" : "搜索勾选" }}
                 </span>
               </article>
@@ -1046,7 +1101,9 @@ watch(pid, (nextPid, oldPid) => {
             <template v-if="autoOrder"
               >顺序已交给 AI · 这一排暂不可拖动，仍可删除或添加</template
             >
-            <template v-else>按住缩略图拖动换顺序 · 第 N 张配第 N 个镜头</template>
+            <template v-else
+              >按住缩略图拖动换顺序 · 第 N 张配第 N 个镜头</template
+            >
             <template v-if="!canAddMore"> · {{ budgetReason }}</template>
           </p>
         </section>
@@ -1082,7 +1139,10 @@ watch(pid, (nextPid, oldPid) => {
               "
               @click="addFromPool(candidate.candidate_id)"
             >
-              <img :src="candidate.image_url" :alt="candidate.title || '候选图'" />
+              <img
+                :src="candidate.image_url"
+                :alt="candidate.title || '候选图'"
+              />
               <span
                 v-if="selectedIds.includes(candidate.candidate_id)"
                 class="pool-check"
@@ -1147,7 +1207,7 @@ watch(pid, (nextPid, oldPid) => {
         <div class="bar-track">
           <span class="bar-fill analyzing-bar"></span>
         </div>
-        <small>完成后将自动进入创作方案确认页，请勿关闭。</small>
+        <small>完成后将自动进入创作方案确认页，也可以稍后从项目页继续。</small>
       </section>
 
       <section
@@ -1159,8 +1219,14 @@ watch(pid, (nextPid, oldPid) => {
         <h2>没有拿到可用的实景图片</h2>
         <p>{{ snapshot.message }}</p>
         <div class="state-actions">
-          <NButton :loading="refreshing" @click="tick({ manual: true })"
-            >重新检查</NButton
+          <NButton
+            :loading="refreshing"
+            @click="
+              retryProject(pid)
+                .then(() => tick({ manual: true }))
+                .catch((e) => message.error(e.message))
+            "
+            >重试当前步骤</NButton
           >
           <NButton type="primary" @click="restartFromWorkbench"
             >返回修改景点</NButton
@@ -1201,12 +1267,15 @@ watch(pid, (nextPid, oldPid) => {
         </div>
         <footer class="preview-footer">
           <NButton
-            :type="isSelected(previewCandidate.candidate_id) ? 'default' : 'primary'"
+            :type="
+              isSelected(previewCandidate.candidate_id) ? 'default' : 'primary'
+            "
             size="large"
             @click="toggleCandidate(previewCandidate)"
           >
             <template v-if="isSelected(previewCandidate.candidate_id)">
-              <PhCheck :size="15" weight="bold" class="btn-ico" /> 已选中，点击取消
+              <PhCheck :size="15" weight="bold" class="btn-ico" />
+              已选中，点击取消
             </template>
             <template v-else>选择图片</template>
           </NButton>
@@ -1229,61 +1298,10 @@ watch(pid, (nextPid, oldPid) => {
       var(--glow-primary-soft),
       transparent 26%
     ),
-    radial-gradient(
-      circle at 92% 8%,
-      var(--glow-gold-faint),
-      transparent 24%
-    ),
+    radial-gradient(circle at 92% 8%, var(--glow-gold-faint), transparent 24%),
     var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans);
-}
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  background: var(--surface-nav-glass);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(12px);
-}
-.nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 12px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-}
-.logo-mark {
-  width: 58px;
-  height: 58px;
-  border-radius: 11px;
-  object-fit: cover;
-  box-shadow: 0 0 0 1px var(--logo-ring);
-}
-.logo-text {
-  font-family: var(--font-serif);
-  font-size: 24px;
-  font-weight: 700;
-}
-.nav-links {
-  display: flex;
-  gap: 22px;
-}
-.nav-links a {
-  color: var(--color-ink-sub);
-  font-size: 15px;
-  text-decoration: none;
-}
-.nav-links a:hover {
-  color: var(--color-primary);
 }
 .stage {
   max-width: 1200px;
@@ -1994,7 +2012,9 @@ watch(pid, (nextPid, oldPid) => {
   background: var(--scrim);
   cursor: zoom-in;
   backdrop-filter: blur(6px);
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
 }
 .zoom-button:hover {
   background: var(--color-primary);
@@ -2070,7 +2090,9 @@ watch(pid, (nextPid, oldPid) => {
   line-height: 1;
   backdrop-filter: blur(6px);
 }
-.preview-close:hover { background: var(--scrim-hover); }
+.preview-close:hover {
+  background: var(--scrim-hover);
+}
 .preview-image-wrap {
   min-width: 0;
   min-height: 0;
@@ -2102,9 +2124,10 @@ watch(pid, (nextPid, oldPid) => {
 .action-dock {
   position: fixed;
   z-index: 20;
-  left: 50%;
+  left: calc(50% + var(--sidebar-width, 0px) / 2);
   bottom: 22px;
-  width: min(1080px, calc(100% - 48px));
+  width: min(1080px, calc(100% - var(--sidebar-width, 0px) - 48px));
+  box-sizing: border-box;
   padding: 14px 17px 14px 20px;
   display: flex;
   align-items: center;
@@ -2243,16 +2266,6 @@ watch(pid, (nextPid, oldPid) => {
   }
 }
 @media (max-width: 620px) {
-  .nav-inner {
-    padding: 10px 15px;
-  }
-  .logo-mark {
-    width: 45px;
-    height: 45px;
-  }
-  .logo-text {
-    font-size: 20px;
-  }
   .stage {
     padding: 24px 14px 50px;
   }
@@ -2285,7 +2298,7 @@ watch(pid, (nextPid, oldPid) => {
   }
   .action-dock {
     bottom: 10px;
-    width: calc(100% - 20px);
+    width: calc(100% - var(--sidebar-width, 0px) - 20px);
     align-items: stretch;
     flex-direction: column;
   }
@@ -2303,7 +2316,11 @@ watch(pid, (nextPid, oldPid) => {
     height: calc(100vh - 20px);
     height: calc(100dvh - 20px);
   }
-  .preview-footer { justify-content: stretch; }
-  .preview-footer .n-button { width: 100%; }
+  .preview-footer {
+    justify-content: stretch;
+  }
+  .preview-footer .n-button {
+    width: 100%;
+  }
 }
 </style>

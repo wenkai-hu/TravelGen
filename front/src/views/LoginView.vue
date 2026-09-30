@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { NAlert, NButton, NInput, useMessage } from "naive-ui";
 import { PhArrowLeft } from "@phosphor-icons/vue";
 import ThemeToggle from "../components/ThemeToggle.vue";
@@ -9,6 +9,7 @@ import { setSession } from "../auth";
 import logoUrl from "../images/logo.png";
 
 const router = useRouter();
+const route = useRoute();
 const message = useMessage();
 
 const mode = ref("login"); // login | register
@@ -36,7 +37,8 @@ async function onSubmit() {
       const data = await login({ username: name, password: password.value });
       setSession(data.token, data.username);
       message.success(`欢迎回来，${data.username}！`);
-      router.push("/");
+      const target = route.query.redirect;
+      router.push(typeof target === 'string' && target.startsWith('/') && !target.startsWith('//') ? target : '/');
     }
   } catch (e) {
     error.value = e.message;
@@ -189,7 +191,6 @@ async function onSubmit() {
   object-fit: cover;
   display: block;
   flex-shrink: 0;
-  box-shadow: 0 0 0 1px var(--logo-ring);
 }
 .logo-text {
   font-family: var(--font-serif);
@@ -271,7 +272,6 @@ async function onSubmit() {
   height: 64px;
   border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 6px 16px var(--shadow-primary);
 }
 .card-logo .logo-text {
   font-family: var(--font-serif);

@@ -16,8 +16,8 @@ import {
   PhMapPin,
   PhWarning,
 } from "@phosphor-icons/vue";
-import ThemeToggle from "../components/ThemeToggle.vue";
-import logoUrl from "../images/logo.png";
+import { useProjectDraft } from "../composables/useProjectDraft";
+import DraftStatus from "../components/DraftStatus.vue";
 import {
   createRender,
   createStoryboard,
@@ -28,6 +28,7 @@ import {
   getProject,
   getRenderStatus,
   getVoicePresets,
+  getLibraryVoices,
   mixRender,
   regenerateSegment,
   regenerateShot,
@@ -37,7 +38,7 @@ import {
   updateSegment,
   updateShot,
 } from "../api";
-import { isLoggedIn, logout as clearSession } from "../auth";
+import { logout as clearSession } from "../auth";
 
 const POLL_MS = 2000;
 const message = useMessage();
@@ -48,6 +49,9 @@ const pid = computed(() => route.params.pid);
 const project = ref(null);
 const loading = ref(true);
 const voicePresets = ref([]);
+const myVoices = ref([]);
+const voiceTab = ref('preset');
+const shownVoices = computed(() => voiceTab.value === 'mine' ? myVoices.value : voicePresets.value);
 const bgmTracks = ref([]);
 const customVoiceDescription = ref(
   "温暖、自然、像真实旅行讲述者，普通话清晰但不过度播音",
@@ -72,11 +76,18 @@ let storyboardTriggered = false;
 let seenFinalVersion = null;
 let seenMixVersion = null;
 let previewAudioStarting = false;
+const storyboardDraft = useProjectDraft(pid, 'storyboard');
+let draftRestored = false;
+watch([editingShotId, editPrompt, editNarration, editDuration, customVoiceDescription, voiceTab], () => {
+  if(draftRestored) storyboardDraft.queue({editingShotId:editingShotId.value,prompt:editPrompt.value,narration:editNarration.value,duration:editDuration.value,voiceDescription:customVoiceDescription.value,voiceTab:voiceTab.value});
+});
 
 const req = computed(() => project.value?.request || {});
 const scenes = computed(() => project.value?.storyboard?.scenes || []);
 const segments = computed(() => project.value?.storyboard?.segments || []);
-const shotPlan = computed(() => (project.value?.storyboard?.storyboard_version || 0) >= 4);
+const shotPlan = computed(
+  () => (project.value?.storyboard?.storyboard_version || 0) >= 4,
+);
 const voice = computed(() => project.value?.voice || {});
 const music = computed(() => project.value?.music || {});
 const voiceCandidates = computed(() => project.value?.voice_candidates || []);
@@ -87,13 +98,20 @@ const musicReady = computed(() =>
   ["selected", "explicit_none"].includes(music.value.status),
 );
 const soundReady = computed(() => voiceReady.value && musicReady.value);
-const mixChanged = computed(() =>
-  Number(videoGainDb.value) !== Number(finalVideo.value.bgm_mix?.video_gain_db ?? 0) ||
-  Number(bgmGainDb.value) !== Number(finalVideo.value.bgm_mix?.bgm_gain_db ?? 0),
+const mixChanged = computed(
+  () =>
+    Number(videoGainDb.value) !==
+      Number(finalVideo.value.bgm_mix?.video_gain_db ?? 0) ||
+    Number(bgmGainDb.value) !==
+      Number(finalVideo.value.bgm_mix?.bgm_gain_db ?? 0),
 );
-const sortedBgmTracks = computed(() => [...bgmTracks.value].sort((a, b) =>
-  Number(b.scene_type === req.value.scene_type) - Number(a.scene_type === req.value.scene_type),
-));
+const sortedBgmTracks = computed(() =>
+  [...bgmTracks.value].sort(
+    (a, b) =>
+      Number(b.scene_type === req.value.scene_type) -
+      Number(a.scene_type === req.value.scene_type),
+  ),
+);
 const recommendation = computed(() => music.value.recommendation || null);
 const finalSource = computed(() => {
   if (selectedVariant.value === "mix_preview" && finalVideo.value.bgm_bed?.url)
@@ -190,10 +208,18 @@ function syncPreviewAudio() {
   if (video.paused || video.ended) audio.pause();
   else if (audio.paused && !previewAudioStarting) {
     previewAudioStarting = true;
-    audio.play().catch((error) => {
-      if (selectedVariant.value === "mix_preview" && error.name !== "AbortError")
-        message.warning("BGM 试听播放失败，请重试播放");
-    }).finally(() => { previewAudioStarting = false; });
+    audio
+      .play()
+      .catch((error) => {
+        if (
+          selectedVariant.value === "mix_preview" &&
+          error.name !== "AbortError"
+        )
+          message.warning("BGM 试听播放失败，请重试播放");
+      })
+      .finally(() => {
+        previewAudioStarting = false;
+      });
   }
 }
 
@@ -205,8 +231,10 @@ function stopPreviewAudio() {
 function applyPreviewVolumes() {
   if (previewVideo.value) {
     previewVideo.value.muted = false;
-    previewVideo.value.volume = selectedVariant.value === "mix_preview"
-      ? gainToVolume(videoGainDb.value) : 1;
+    previewVideo.value.volume =
+      selectedVariant.value === "mix_preview"
+        ? gainToVolume(videoGainDb.value)
+        : 1;
   }
   if (previewBgm.value) previewBgm.value.volume = gainToVolume(bgmGainDb.value);
 }
@@ -222,23 +250,42 @@ function gainLabel(db) {
 function onVideoVolumeChange() {
   const video = previewVideo.value;
   if (!video || selectedVariant.value !== "mix_preview") return;
-  const next = video.muted || !video.volume ? -60 :
-    Math.max(-60, Math.round(20 * Math.log10(video.volume)));
+  const next =
+    video.muted || !video.volume
+      ? -60
+      : Math.max(-60, Math.round(20 * Math.log10(video.volume)));
   if (next !== videoGainDb.value) videoGainDb.value = next;
 }
 
 watch([videoGainDb, bgmGainDb], applyPreviewVolumes);
-watch(selectedVariant, () => { stopPreviewAudio(); applyPreviewVolumes(); });
+watch(selectedVariant, () => {
+  stopPreviewAudio();
+  applyPreviewVolumes();
+});
 
 function syncProject(next) {
   project.value = next;
+  if(!draftRestored) {
+    const saved=storyboardDraft.restore(next.draft?.storyboard);
+    if(saved) {
+      const exists=(next.storyboard?.scenes || []).some(scene => scene.shot_list?.some(s => s.shot_id === saved.editingShotId));
+      editingShotId.value=exists ? saved.editingShotId : null;
+      editPrompt.value=saved.prompt || ''; editNarration.value=saved.narration || ''; editDuration.value=saved.duration || 4;
+      customVoiceDescription.value=saved.voiceDescription ?? customVoiceDescription.value;
+      voiceTab.value=saved.voiceTab || 'preset';
+    }
+    draftRestored=true;
+  }
   if (
     finalVideo.value.version &&
     finalVideo.value.version !== seenFinalVersion
   ) {
     seenFinalVersion = finalVideo.value.version;
-    selectedVariant.value = finalVideo.value.bgm_bed ? "mix_preview" :
-      finalVideo.value.with_bgm ? "with_bgm" : "clean";
+    selectedVariant.value = finalVideo.value.bgm_bed
+      ? "mix_preview"
+      : finalVideo.value.with_bgm
+        ? "with_bgm"
+        : "clean";
   }
   const mixVersion = `${finalVideo.value.version || 0}:${finalVideo.value.mix_version || 0}`;
   if (mixVersion !== seenMixVersion) {
@@ -309,12 +356,14 @@ async function refresh() {
 }
 async function loadCatalogs() {
   try {
-    const [voices, bgm] = await Promise.all([
+    const [voices, bgm, mine] = await Promise.all([
       getVoicePresets(),
       getBgmCatalog(),
+      getLibraryVoices(),
     ]);
     voicePresets.value = voices.voices || [];
     bgmTracks.value = bgm.tracks || [];
+    myVoices.value = mine.voices || [];
   } catch (error) {
     message.error(error.message || "音色或 BGM 素材加载失败");
   }
@@ -334,7 +383,10 @@ onMounted(() => {
   loadCatalogs();
   startPolling();
 });
-onBeforeUnmount(() => { stopPolling(); stopPreviewAudio(); });
+onBeforeUnmount(() => {
+  stopPolling();
+  stopPreviewAudio();
+});
 watch(pid, (next, previous) => {
   if (next && next !== previous) {
     stopPreviewAudio();
@@ -376,9 +428,7 @@ async function chooseBgm(bgmId = null) {
   try {
     await selectBgm(
       pid.value,
-      bgmId
-        ? { bgm_id: bgmId }
-        : { explicit_none: true },
+      bgmId ? { bgm_id: bgmId } : { explicit_none: true },
     );
     message.success(
       bgmId ? "BGM 已确认，仅在最终合成时加入" : "已确认导出时不添加 BGM",
@@ -391,7 +441,8 @@ async function chooseBgm(bgmId = null) {
   }
 }
 async function applyMix() {
-  if (!finalVideo.value.bgm_bed) return message.warning("请先合成带 BGM 的视频");
+  if (!finalVideo.value.bgm_bed)
+    return message.warning("请先合成带 BGM 的视频");
   actionBusy.value = true;
   try {
     await mixRender(pid.value, {
@@ -436,6 +487,7 @@ async function saveShot(shot) {
   if (!prompt) return message.warning("Prompt 不能为空");
   savingShot.value = true;
   try {
+    await storyboardDraft.flush();
     const patch = { prompt, narration: editNarration.value.trim() };
     if (Number(editDuration.value) !== Number(shot.duration_s))
       patch.duration_s = editDuration.value;
@@ -476,11 +528,22 @@ async function startSegments(ids, regenerate = false) {
   });
   try {
     if (shotPlan.value) {
-      const shotIds = [...new Set(ids.map((id) => segments.value.find((segment) => segment.segment_id === id)?.shot_ids?.[0]).filter(Boolean))];
+      const shotIds = [
+        ...new Set(
+          ids
+            .map(
+              (id) =>
+                segments.value.find((segment) => segment.segment_id === id)
+                  ?.shot_ids?.[0],
+            )
+            .filter(Boolean),
+        ),
+      ];
       if (regenerate && shotIds.length === 1)
-        await regenerateShot(pid.value, shotIds[0], { reason: "用户从镜头卡片重新生成" });
-      else
-        await generateShots(pid.value, shotIds);
+        await regenerateShot(pid.value, shotIds[0], {
+          reason: "用户从镜头卡片重新生成",
+        });
+      else await generateShots(pid.value, shotIds);
     } else if (regenerate && ids.length === 1) {
       await regenerateSegment(pid.value, ids[0], {
         reason: "用户从镜头卡片重新生成",
@@ -552,21 +615,9 @@ async function replanShots() {
 
 <template>
   <div class="page">
-    <header class="nav">
-      <div class="nav-inner">
-        <div class="logo" @click="router.push('/')">
-          <img :src="logoUrl" class="logo-mark" alt="TravelGen" /><span
-            class="logo-text gradient-text"
-            >TravelGen</span
-          >
-        </div>
-        <nav class="nav-links">
-          <a href="#" @click.prevent="router.push('/')">工作台</a
-          ><router-link v-if="isLoggedIn()" to="/history">我的创作</router-link
-          ><ThemeToggle />
-        </nav>
-      </div>
-    </header>
+    <div class="page-status">
+      <DraftStatus :state="storyboardDraft.state.value" @retry="storyboardDraft.flush().catch(e => message.error(e.message))" />
+    </div>
     <main class="stage">
       <section v-if="phase === 'loading'" class="card center">
         <div class="spin-ring"></div>
@@ -585,19 +636,17 @@ async function replanShots() {
         <div class="bar-track" aria-hidden="true">
           <span class="bar-fill"></span>
         </div>
-        <small>准备完成后将自动进入镜头方案页面，请勿关闭。</small>
+        <small>准备完成后将自动进入镜头方案页面，也可以稍后从项目页继续。</small>
       </section>
 
       <template v-else-if="segments.length">
         <section class="card summary">
           <div>
-            <span class="eyebrow">Seedance Native Audio Pipeline</span>
             <h1>{{ req.theme }}</h1>
             <p>
-              <PhMapPin class="ico-inline" /> {{ req.city }} · {{ req.location
-              }}　<PhClock class="ico-inline" /> {{ req.duration_s }}s　{{
-                req.aspect_ratio
-              }}
+              <PhMapPin class="ico-inline" /> {{ req.city }} ·
+              {{ req.location }}　<PhClock class="ico-inline" />
+              {{ req.duration_s }}s　{{ req.aspect_ratio }}
             </p>
           </div>
           <div class="summary-status">
@@ -619,9 +668,15 @@ async function replanShots() {
               voiceReady ? `已选：${voice.name}` : "尚未选择"
             }}</span>
           </div>
+          <div class="voice-library-tabs">
+            <NButton :type="voiceTab==='preset' ? 'primary' : 'default'" size="small" @click="voiceTab='preset'">预设音色</NButton>
+            <NButton :type="voiceTab==='mine' ? 'primary' : 'default'" size="small" @click="voiceTab='mine'; loadCatalogs()">我的音色 · {{ myVoices.length }}</NButton>
+            <router-link to="/library?tab=voices">管理音色库 →</router-link>
+          </div>
+          <p v-if="voiceTab==='mine' && !myVoices.length" class="voice-library-empty">还没有收藏的声音。在下方生成自定义音色后，会自动保存到音色库。</p>
           <div class="media-grid voices">
             <article
-              v-for="item in voicePresets"
+              v-for="item in shownVoices"
               :key="item.voice_id"
               class="media-option"
               :class="{ selected: voice.voice_id === item.voice_id }"
@@ -631,11 +686,16 @@ async function replanShots() {
                 <p>{{ item.description }}</p>
                 <small>{{ (item.recommended_scenes || []).join(" · ") }}</small>
               </div>
-              <audio :src="item.preview_url" controls preload="none" @play="playAudioPreview"></audio
+              <audio
+                :src="item.preview_url"
+                controls
+                preload="none"
+                @play="playAudioPreview"
+              ></audio
               ><NButton
                 size="small"
                 :type="voice.voice_id === item.voice_id ? 'primary' : 'default'"
-                :disabled="actionBusy"
+                :disabled="actionBusy || item.available === false || activeIds.size > 0"
                 @click="chooseVoice({ voice_id: item.voice_id })"
                 >{{
                   voice.voice_id === item.voice_id ? "已选择" : "使用此音色"
@@ -711,7 +771,8 @@ async function replanShots() {
             <div>
               <h2>2. 选择后期 BGM</h2>
               <p>
-                同场景类型的曲目已用绿色标出。BGM 会在视频拼接后加入，音量可在成片页试听调整。
+                同场景类型的曲目已用绿色标出。BGM
+                会在视频拼接后加入，音量可在成片页试听调整。
               </p>
             </div>
             <div class="head-actions">
@@ -733,13 +794,25 @@ async function replanShots() {
           </div>
           <div v-if="recommendation" class="recommendations">
             <b>KIMI 给出的独立选曲方向</b>
-            <p><strong>类型：</strong>{{ recommendation.style }} · <strong>节奏：</strong>{{ recommendation.tempo }}</p>
-            <p><strong>乐器/音色：</strong>{{ recommendation.instruments }} · <strong>情绪：</strong>{{ recommendation.mood }}</p>
+            <p>
+              <strong>类型：</strong>{{ recommendation.style }} ·
+              <strong>节奏：</strong>{{ recommendation.tempo }}
+            </p>
+            <p>
+              <strong>乐器/音色：</strong>{{ recommendation.instruments }} ·
+              <strong>情绪：</strong>{{ recommendation.mood }}
+            </p>
             <p>{{ recommendation.reason }}</p>
-            <p v-if="recommendation.search_keywords?.length">检索词：{{ recommendation.search_keywords.join('、') }}</p>
-            <p v-if="recommendation.example_tracks?.length">参考曲目：{{ recommendation.example_tracks.join('、') }}</p>
+            <p v-if="recommendation.search_keywords?.length">
+              检索词：{{ recommendation.search_keywords.join("、") }}
+            </p>
+            <p v-if="recommendation.example_tracks?.length">
+              参考曲目：{{ recommendation.example_tracks.join("、") }}
+            </p>
           </div>
-          <p v-if="music.recommendation_status === 'failed'" class="error-text">{{ music.warning }}</p>
+          <p v-if="music.recommendation_status === 'failed'" class="error-text">
+            {{ music.warning }}
+          </p>
           <div class="media-grid bgms">
             <article
               v-for="track in sortedBgmTracks"
@@ -761,7 +834,12 @@ async function replanShots() {
                   {{ track.duration }}</small
                 >
               </div>
-              <audio :src="track.preview_url" controls preload="none" @play="playAudioPreview"></audio>
+              <audio
+                :src="track.preview_url"
+                controls
+                preload="none"
+                @play="playAudioPreview"
+              ></audio>
               <NButton
                 size="small"
                 :type="
@@ -804,11 +882,11 @@ async function replanShots() {
               ? "声音设置已确认，可以生成镜头"
               : "生成前还需要确认声音设置"
           }}</b
-          ><span
-            >{{ shotPlan
+          ><span>{{
+            shotPlan
               ? "每个镜头只用一张实景图，单独生成。镜头超过 15 秒时会依据前一段视频续写。Seedance 被强约束为不生成任何 BGM。"
-              : "当前项目仍使用旧的多镜头 Segment 分镜；可点击“按一图一镜重新规划”切换。" }}</span
-          >
+              : "当前项目仍使用旧的多镜头 Segment 分镜；可点击“按一图一镜重新规划”切换。"
+          }}</span>
         </div>
 
         <section
@@ -819,7 +897,17 @@ async function replanShots() {
           <header class="segment-head">
             <div>
               <div class="segment-title">
-                <h2>{{ shotPlan ? `Shot ${segment.shot_ids?.[0]}` : segment.segment_id }}<template v-if="shotPlan && segment.continuation_total > 1"> · 续写片段 {{ segment.continuation_index }}/{{ segment.continuation_total }}</template></h2>
+                <h2>
+                  {{
+                    shotPlan
+                      ? `Shot ${segment.shot_ids?.[0]}`
+                      : segment.segment_id
+                  }}<template v-if="shotPlan && segment.continuation_total > 1">
+                    · 续写片段 {{ segment.continuation_index }}/{{
+                      segment.continuation_total
+                    }}</template
+                  >
+                </h2>
                 <span class="status" :class="stateFor(segment).status">{{
                   statusLabel(stateFor(segment).status)
                 }}</span
@@ -828,7 +916,10 @@ async function replanShots() {
               <p>
                 {{ fmtMs(segment.timeline_start_ms) }} –
                 {{ fmtMs(segment.timeline_end_ms) }} · 实际
-                {{ fmtMs(segment.duration_ms) }}<template v-if="!shotPlan"> · {{ shotsFor(segment).length }} 个完整 Shot</template>
+                {{ fmtMs(segment.duration_ms)
+                }}<template v-if="!shotPlan">
+                  · {{ shotsFor(segment).length }} 个完整 Shot</template
+                >
               </p>
             </div>
             <NButton
@@ -847,8 +938,12 @@ async function replanShots() {
               "
               >{{
                 stateFor(segment).status === "completed"
-                  ? (shotPlan ? "重新生成此镜头" : "重新生成此段")
-                  : (shotPlan ? "生成此镜头" : "生成此段")
+                  ? shotPlan
+                    ? "重新生成此镜头"
+                    : "重新生成此段"
+                  : shotPlan
+                    ? "生成此镜头"
+                    : "生成此段"
               }}</NButton
             >
           </header>
@@ -866,7 +961,10 @@ async function replanShots() {
               >保存转场要求</NButton
             >
           </div>
-          <div v-if="!shotPlan || segment.continuation_index === 1" class="shot-list">
+          <div
+            v-if="!shotPlan || segment.continuation_index === 1"
+            class="shot-list"
+          >
             <article
               v-for="shot in shotsFor(segment)"
               :key="shot.shot_id"
@@ -989,17 +1087,19 @@ async function replanShots() {
         <section class="card final-actions">
           <div>
             <h2>
-              {{
-                phase === "completed" ? "成片已完成" : "完成所有镜头后合成"
-              }}
+              {{ phase === "completed" ? "成片已完成" : "完成所有镜头后合成" }}
             </h2>
             <p>
-              拼接完成后可在下方同时调节视频原声（旁白和环境声）与 BGM，试听后导出新的混音版。
+              拼接完成后可在下方同时调节视频原声（旁白和环境声）与
+              BGM，试听后导出新的混音版。
             </p>
           </div>
           <div class="button-row">
             <NButton
-              v-if="!shotPlan && ['editing', 'video_ready', 'completed'].includes(phase)"
+              v-if="
+                !shotPlan &&
+                ['editing', 'video_ready', 'completed'].includes(phase)
+              "
               :disabled="actionBusy"
               @click="replanShots"
               >按一图一镜重新规划</NButton
@@ -1017,7 +1117,11 @@ async function replanShots() {
               @click="renderFinal"
               >合成最终视频</NButton
             ><NButton
-              v-if="phase === 'completed' && music.status === 'selected' && !finalVideo.bgm_bed?.url"
+              v-if="
+                phase === 'completed' &&
+                music.status === 'selected' &&
+                !finalVideo.bgm_bed?.url
+              "
               :loading="actionBusy"
               @click="renderFinal"
               >重新合成声轨</NButton
@@ -1073,26 +1177,52 @@ async function replanShots() {
             <div class="bgm-gain-head">
               <div>
                 <b>双轨音量</b>
-                <p>切到“双轨调音试听”后播放视频，边听边调整旁白与配乐的比例。0 dB 为原始音量。</p>
+                <p>
+                  切到“双轨调音试听”后播放视频，边听边调整旁白与配乐的比例。0 dB
+                  为原始音量。
+                </p>
               </div>
             </div>
             <div class="mix-track">
               <label>视频原声 <small>旁白 + 环境声</small></label>
-              <NSlider v-model:value="videoGainDb" :min="-60" :max="0" :step="1" :tooltip="true"
-                :disabled="mixPending" @update:value="selectedVariant = 'mix_preview'" />
+              <NSlider
+                v-model:value="videoGainDb"
+                :min="-60"
+                :max="0"
+                :step="1"
+                :tooltip="true"
+                :disabled="mixPending"
+                @update:value="selectedVariant = 'mix_preview'"
+              />
               <strong>{{ gainLabel(videoGainDb) }}</strong>
             </div>
             <div class="mix-track">
-              <label>BGM <small>{{ music.selected?.title }}</small></label>
-              <NSlider v-model:value="bgmGainDb" :min="-60" :max="0" :step="1" :tooltip="true"
-                :disabled="mixPending" @update:value="selectedVariant = 'mix_preview'" />
+              <label
+                >BGM <small>{{ music.selected?.title }}</small></label
+              >
+              <NSlider
+                v-model:value="bgmGainDb"
+                :min="-60"
+                :max="0"
+                :step="1"
+                :tooltip="true"
+                :disabled="mixPending"
+                @update:value="selectedVariant = 'mix_preview'"
+              />
               <strong>{{ gainLabel(bgmGainDb) }}</strong>
             </div>
-            <NButton type="primary" :loading="actionBusy || mixPending" :disabled="actionBusy || mixPending || !mixChanged"
-              @click="applyMix">按当前音量导出混音版</NButton>
+            <NButton
+              type="primary"
+              :loading="actionBusy || mixPending"
+              :disabled="actionBusy || mixPending || !mixChanged"
+              @click="applyMix"
+              >按当前音量导出混音版</NButton
+            >
             <p class="mix-note">下载“带 BGM 版”可获取最近一次导出的音量。</p>
           </div>
-          <p v-else-if="finalVideo.with_bgm" class="mix-note">此成片尚无独立 BGM 声轨，请点“重新合成声轨”后调音。</p>
+          <p v-else-if="finalVideo.with_bgm" class="mix-note">
+            此成片尚无独立 BGM 声轨，请点“重新合成声轨”后调音。
+          </p>
           <div class="download-row">
             <a
               v-if="finalVideo.clean?.url"
@@ -1135,53 +1265,14 @@ async function replanShots() {
 </template>
 
 <style scoped>
+.voice-library-tabs { display:flex; gap:10px; align-items:center; margin:18px 0; flex-wrap:wrap; }
+.voice-library-tabs a { margin-left:auto; color:var(--color-primary); font-size:12px; text-decoration:none; }
+.voice-library-empty { color:var(--color-ink-muted); padding:12px 0; font-size:13px; }
 .page {
   min-height: 100vh;
   background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans);
-}
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--surface-nav);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-soft);
-}
-.nav-inner {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 14px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  cursor: pointer;
-}
-.logo-mark {
-  width: 68px;
-  height: 68px;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 0 0 1px var(--logo-ring);
-}
-.logo-text {
-  font-family: var(--font-serif);
-  font-size: 24px;
-  font-weight: 700;
-}
-.nav-links {
-  display: flex;
-  gap: 20px;
-}
-.nav-links a {
-  color: var(--color-ink-sub);
-  text-decoration: none;
 }
 .stage {
   max-width: 1180px;
