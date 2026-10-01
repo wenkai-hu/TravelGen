@@ -14,6 +14,8 @@ import {
   PhArrowRight,
   PhCheck,
   PhGear,
+  PhDotsSix,
+  PhSparkle,
   PhLink,
   PhMapPin,
   PhPlus,
@@ -709,7 +711,7 @@ watch(pid, (nextPid, oldPid) => {
       />
     </div>
 
-    <main class="stage">
+    <main class="stage" :class="{ 'ordering-stage': phase === 'ordering' }">
       <!-- 常驻的隐藏 file input：上传区在 ordering 阶段不渲染，但「再传一张」还要用它 -->
       <input
         ref="fileInput"
@@ -720,7 +722,7 @@ watch(pid, (nextPid, oldPid) => {
         @change="onFilesPicked"
       />
 
-      <section class="workflow fade-up">
+      <section v-if="phase !== 'ordering'" class="workflow fade-up">
         <div
           v-for="(label, index) in ['选择实景', 'AI 理解', '创作方案']"
           :key="label"
@@ -953,230 +955,95 @@ watch(pid, (nextPid, oldPid) => {
         </div>
       </template>
 
-      <!-- 确认清单：一份有序列表，第 N 张配第 N 个镜头（Q7：本地切 phase，不发请求） -->
       <template v-else-if="phase === 'ordering'">
-        <section class="hero fade-up">
-          <div>
-            <span class="eyebrow">确认清单</span>
-            <h1 v-if="autoOrder">
-              这几张图，<br /><span class="gradient-text"
-                >交给 AI 自己配镜头</span
-              >
-            </h1>
-            <h1 v-else>
-              排好顺序，<br /><span class="gradient-text"
-                >第 N 张配第 N 个镜头</span
-              >
-            </h1>
-            <p v-if="autoOrder">
-              一图一镜。你不用管先后 —— 生成分镜时 AI
-              已经知道每个镜头要拍什么，会按内容把最合适的那张配给它，每张图仍然只用一次。
-              也可以删掉或再加。
-            </p>
-            <p v-else>
-              一图一镜，这里的顺序就是镜头顺序。按住缩略图拖动就能换位置，也可以删掉或再加
-              —— 确认后 AI 会按这个顺序逐个镜头生成。
-            </p>
+        <header class="ordering-heading fade-up">
+          <div class="ordering-location">
+            <PhMapPin :size="15" />
+            <span>{{ [requestData.city, requestData.location].filter(Boolean).join(' · ') }}</span>
           </div>
-          <div class="place-card">
-            <span>本次创作</span>
-            <b
-              ><PhMapPin class="ico-inline" /> {{ requestData.city }} ·
-              {{ requestData.location }}</b
-            >
-            <small>{{ requestData.theme }} · {{ requestData.style }}</small>
-          </div>
-        </section>
+          <h1>安排图片顺序</h1>
+          <p class="ordering-hint">图片顺序将决定镜头画面的顺序</p>
+        </header>
 
-        <section class="strip-wrap">
-          <!-- 顺序谁定：默认用户自己排；切到 AI 后这一排只读（还能删、还能加） -->
-          <div class="order-mode" :class="{ auto: autoOrder }">
-            <div
-              class="mode-switch"
-              role="radiogroup"
-              aria-label="镜头顺序由谁决定"
-            >
-              <button
-                type="button"
-                class="mode-opt"
-                :class="{ on: !autoOrder }"
-                role="radio"
-                :aria-checked="!autoOrder"
-                @click="autoOrder = false"
-              >
-                我自己排
+        <section class="strip-wrap fade-up-1" aria-label="图片排序">
+          <div class="order-mode">
+            <div class="order-count">
+              <h2>已选图片</h2>
+              <span :title="'最多可选 ' + budgetLimit + ' 张'">{{ selectedCount }} / {{ budgetLimit }}</span>
+            </div>
+            <div class="mode-switch" role="group" aria-label="排序方式">
+              <button type="button" class="mode-opt" :class="{ on: !autoOrder }"
+                :aria-pressed="!autoOrder" @click="autoOrder = false">
+                <PhDotsSix :size="17" />手动排序
               </button>
-              <button
-                type="button"
-                class="mode-opt"
-                :class="{ on: autoOrder }"
-                role="radio"
-                :aria-checked="autoOrder"
-                @click="autoOrder = true"
-              >
-                让 AI 排
+              <button type="button" class="mode-opt" :class="{ on: autoOrder }"
+                :aria-pressed="autoOrder" @click="autoOrder = true">
+                <PhSparkle :size="17" />AI 排序
               </button>
             </div>
-            <p class="mode-hint">
-              {{
-                autoOrder
-                  ? "生成分镜时按每个镜头的内容逐张挑，每张图仍只用一次"
-                  : "按住缩略图拖动换顺序，第 N 张配第 N 个镜头"
-              }}
-            </p>
           </div>
+          <p class="mode-hint" role="status">
+            {{ autoOrder ? 'AI 将在生成时安排图片顺序，你可以继续增删图片。' : '拖动图片调整顺序，也可以添加图片或交给 AI 排序。' }}
+          </p>
 
           <div class="strip-row">
-            <div
-              ref="stripEl"
-              class="strip"
+            <div v-if="!selectedCount" class="order-empty">添加图片，开始安排你的画面。</div>
+            <div ref="stripEl" class="strip"
               :class="{ dragging: dragId !== null, readonly: autoOrder }"
-              role="list"
-              :aria-label="
-                autoOrder
-                  ? '参考图清单：顺序由 AI 决定，不可拖动。'
-                  : '参考图顺序：第 N 张配第 N 个镜头。拖动可换位，键盘用户按左右方向键。'
-              "
-            >
-              <article
-                v-for="(item, index) in orderedItems"
-                :key="item.candidate_id"
+              role="list" :aria-label="autoOrder ? '已选图片，顺序由 AI 安排' : '拖动图片排序，也可使用左右方向键'">
+              <article v-for="(item, index) in orderedItems" :key="item.candidate_id"
                 class="order-card"
-                :class="{
-                  lifted: dragId === item.candidate_id,
-                  settling: settleId === item.candidate_id,
-                }"
-                :style="cardStyle(index, item.candidate_id)"
-                role="listitem"
-                :tabindex="autoOrder ? -1 : 0"
-                :aria-label="
-                  autoOrder
-                    ? `参考图，${item.provider === 'user' ? '我上传的' : '搜索勾选'}，顺序由 AI 决定`
-                    : `第 ${index + 1} 张，${item.provider === 'user' ? '我上传的' : '搜索勾选'}，左右方向键调整位置`
-                "
-                @pointerdown="
-                  onCardPointerDown($event, index, item.candidate_id)
-                "
-                @keydown.left.prevent="moveItem(index, -1)"
-                @keydown.right.prevent="moveItem(index, 1)"
-              >
-                <img
-                  class="order-thumb"
-                  :src="item.image_url"
-                  :alt="`第 ${index + 1} 张参考图`"
-                  draggable="false"
-                />
-                <!-- 序号只在用户自己排的时候有意义，AI 排序时隐掉 -->
-                <span v-if="!autoOrder" class="order-seq">{{ index + 1 }}</span>
-                <button
-                  type="button"
-                  class="order-del"
-                  title="移除这张"
-                  @click.stop="removeItem(item.candidate_id)"
-                >
-                  <PhX :size="11" weight="bold" />
+                :class="{ lifted: dragId === item.candidate_id, settling: settleId === item.candidate_id }"
+                :style="cardStyle(index, item.candidate_id)" role="listitem" :tabindex="autoOrder ? -1 : 0"
+                :aria-label="autoOrder ? '参考图，顺序由 AI 安排' : '第 ' + (index + 1) + ' 张图片，左右方向键调整位置'"
+                @pointerdown="onCardPointerDown($event, index, item.candidate_id)"
+                @keydown.left.prevent="moveItem(index, -1)" @keydown.right.prevent="moveItem(index, 1)">
+                <img class="order-thumb" :src="item.image_url" :alt="'参考图 ' + (index + 1)" draggable="false" referrerpolicy="no-referrer" />
+                <span v-if="!autoOrder" class="order-seq">{{ String(index + 1).padStart(2, '0') }}</span>
+                <span v-if="!autoOrder" class="order-grip" aria-hidden="true"><PhDotsSix :size="20" /></span>
+                <button type="button" class="order-del" title="移除图片" :aria-label="'移除第 ' + (index + 1) + ' 张图片'"
+                  @click.stop="removeItem(item.candidate_id)" @keydown.left.stop @keydown.right.stop>
+                  <PhX :size="15" weight="bold" />
                 </button>
-                <span
-                  class="order-src"
-                  :class="{ mine: item.provider === 'user' }"
-                >
-                  {{ item.provider === "user" ? "我上传的" : "搜索勾选" }}
-                </span>
               </article>
             </div>
-
-            <!-- 钉在滚动区外面：一排图多到要横向滚时，「再加」也始终够得着 -->
-            <button
-              type="button"
-              class="add-tile"
-              :disabled="!canAddMore"
-              :title="canAddMore ? '再挑几张' : budgetReason"
-              @click="togglePicker"
-            >
-              <PhPlus :size="18" />
-              <span>再加</span>
+            <button type="button" class="add-tile" :disabled="!canAddMore || uploading"
+              :title="canAddMore ? '添加图片' : '已达到 ' + budgetLimit + ' 张上限'"
+              :aria-expanded="showPicker" aria-controls="reference-picker" @click="togglePicker">
+              <PhPlus :size="26" /><span>{{ uploading ? '正在添加…' : '添加图片' }}</span>
             </button>
           </div>
-          <p class="strip-hint">
-            <template v-if="autoOrder"
-              >顺序已交给 AI · 这一排暂不可拖动，仍可删除或添加</template
-            >
-            <template v-else
-              >按住缩略图拖动换顺序 · 第 N 张配第 N 个镜头</template
-            >
-            <template v-if="!canAddMore"> · {{ budgetReason }}</template>
-          </p>
         </section>
 
-        <section v-if="showPicker" class="add-panel">
+        <section v-if="showPicker" id="reference-picker" class="add-panel" aria-label="添加图片">
           <div class="add-actions">
-            <NButton
-              size="small"
-              quaternary
-              type="primary"
-              :disabled="uploading"
-              @click="pickFiles"
-            >
-              <PhUploadSimple :size="14" class="btn-ico" />再传一张
+            <h2>添加图片</h2>
+            <NButton size="small" :disabled="uploading || !canAddMore" :loading="uploading" @click="pickFiles">
+              <template #icon><PhUploadSimple :size="16" /></template>上传图片
             </NButton>
-            <NButton size="small" quaternary @click="showPicker = false">
-              <PhX :size="14" class="btn-ico" />收起
+            <NButton size="small" quaternary aria-label="收起图片选择" @click="showPicker = false">
+              <PhX :size="18" />
             </NButton>
           </div>
-
           <div class="pool">
-            <button
-              v-for="candidate in candidates"
-              :key="candidate.candidate_id"
-              type="button"
-              class="pool-item"
+            <button v-for="candidate in candidates" :key="candidate.candidate_id" type="button" class="pool-item"
               :class="{ on: selectedIds.includes(candidate.candidate_id) }"
-              :disabled="selectedIds.includes(candidate.candidate_id)"
-              :title="
-                selectedIds.includes(candidate.candidate_id)
-                  ? '已在清单里'
-                  : '加到最后一位'
-              "
-              @click="addFromPool(candidate.candidate_id)"
-            >
-              <img
-                :src="candidate.image_url"
-                :alt="candidate.title || '候选图'"
-              />
-              <span
-                v-if="selectedIds.includes(candidate.candidate_id)"
-                class="pool-check"
-              >
-                <PhCheck :size="12" weight="bold" />
-              </span>
+              :disabled="selectedIds.includes(candidate.candidate_id) || !canAddMore || brokenIds.includes(candidate.candidate_id)"
+              :title="selectedIds.includes(candidate.candidate_id) ? '已添加' : !canAddMore ? '已达到图片上限' : '添加图片'"
+              @click="addFromPool(candidate.candidate_id)">
+              <img :src="candidate.image_url" :alt="candidate.title || '候选图片'" referrerpolicy="no-referrer" />
+              <span v-if="selectedIds.includes(candidate.candidate_id)" class="pool-check"><PhCheck :size="12" weight="bold" /></span>
             </button>
           </div>
         </section>
 
-        <div class="action-dock">
-          <div class="action-copy">
-            <b>{{
-              !selectedCount
-                ? "至少要留一张参考图"
-                : autoOrder
-                  ? `${selectedCount} 张，顺序交给 AI 配`
-                  : `${selectedCount} 张，按上面的顺序生成`
-            }}</b>
-            <span>{{ budgetReason }}</span>
-          </div>
-          <div class="action-buttons">
-            <NButton size="large" @click="reviewing = false">
-              <PhArrowLeft :size="15" class="btn-ico" />返回挑选
-            </NButton>
-            <NButton
-              type="primary"
-              size="large"
-              :loading="confirming"
-              :disabled="!selectedCount"
-              @click="confirmSelection"
-              >确认，开始生成</NButton
-            >
-          </div>
+        <div class="ordering-actions">
+          <NButton size="large" quaternary :disabled="confirming" @click="reviewing = false">
+            <template #icon><PhArrowLeft :size="16" /></template>返回选图
+          </NButton>
+          <NButton type="primary" size="large" :loading="confirming" :disabled="!selectedCount || uploading" @click="confirmSelection">
+            确认并继续<PhArrowRight :size="16" class="btn-ico" />
+          </NButton>
         </div>
       </template>
 
@@ -1283,7 +1150,7 @@ watch(pid, (nextPid, oldPid) => {
       </section>
     </NModal>
 
-    <footer class="footer">
+    <footer v-if="phase !== 'ordering'" class="footer">
       TravelGen · 真实视觉参考将贯穿方案、分镜与视频生成
     </footer>
   </div>
@@ -1636,35 +1503,56 @@ watch(pid, (nextPid, oldPid) => {
 
 /* ── 确认清单：一排缩略图，直接拖着换顺序 ── */
 .strip-wrap {
-  padding: 15px 17px 13px;
-  margin-bottom: 14px;
+  padding: 26px;
+  margin-bottom: 18px;
   border: 1px solid var(--color-border);
-  border-radius: 13px;
-  background: var(--surface-sunken);
+  border-radius: 18px;
+  background: var(--color-card);
+  box-shadow: var(--shadow-soft);
 }
-/* 候选池收起时它就是最后一个 section，得自己给吸底操作条让位 */
-.strip-wrap:last-of-type {
-  margin-bottom: 118px;
+.ordering-stage {
+  box-sizing: border-box;
+  max-width: 1160px;
+  padding-top: 42px;
+}
+.ordering-heading { margin-bottom: 32px; }
+.ordering-location { display: flex; align-items: center; gap: 7px; color: var(--color-ink-muted); font-size: 13px; }
+.ordering-heading h1 { margin: 12px 0 0; font-size: 32px; font-weight: 650; letter-spacing: -1px; }
+.ordering-hint { margin: 6px 0 0; color: var(--color-ink-muted); font-size: 13px; }
+.order-count { display: flex; align-items: center; gap: 12px; }
+.order-count h2, .add-actions h2 { margin: 0; font-size: 16px; font-weight: 600; }
+.order-count > span { color: var(--color-ink-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.order-empty { display: grid; place-items: center; flex: 1; min-height: 160px; color: var(--color-ink-muted); font-size: 13px; text-align: center; }
+.ordering-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 26px; }
+.ordering-actions .btn-ico { margin-left: 12px; }
+.order-grip {
+  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+  display: grid; place-items: center; width: 32px; height: 24px;
+  border-radius: 6px; background: var(--scrim); color: var(--on-photo); pointer-events: none;
 }
 /* ── 顺序谁定：一排图上方的两态开关 ── */
 .order-mode {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 11px;
+  margin-bottom: 14px;
 }
 .mode-switch {
   display: inline-flex;
-  padding: 2px;
+  padding: 4px;
   border: 1px solid var(--color-border);
-  border-radius: 999px;
-  background: var(--color-card);
+  border-radius: 10px;
+  background: var(--surface-sunken);
 }
 .mode-opt {
-  padding: 4px 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
   border: 0;
-  border-radius: 999px;
+  border-radius: 7px;
   background: transparent;
   color: var(--color-ink-muted);
   font-size: 12px;
@@ -1679,19 +1567,16 @@ watch(pid, (nextPid, oldPid) => {
 }
 .mode-opt.on {
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
 }
 .mode-opt:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 1px;
 }
 .mode-hint {
-  margin: 0;
+  margin: 0 0 22px;
   color: var(--color-ink-muted);
   font-size: 12px;
-}
-.order-mode.auto .mode-hint {
-  color: var(--color-primary);
 }
 .strip-row {
   display: flex;
@@ -1711,16 +1596,15 @@ watch(pid, (nextPid, oldPid) => {
 }
 .order-card {
   position: relative;
-  flex: 0 0 148px;
-  width: 148px;
-  padding: 0 0 6px;
+  flex: 0 0 220px;
+  width: 220px;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
   border: 2px solid transparent;
   border-radius: 12px;
   background: var(--color-card);
-  box-shadow: 0 3px 12px var(--shadow-soft);
+  box-shadow: var(--shadow-soft);
   cursor: grab;
   /* 触屏：横滑先当滚动。按住不动才会被脚本接管成拖拽 */
   touch-action: pan-x;
@@ -1738,15 +1622,9 @@ watch(pid, (nextPid, oldPid) => {
   outline: none;
   border-color: var(--color-primary);
 }
-/* 交给 AI 排时不装成可拖的样子：降一点视觉权重、指针也改成普通箭头，
-   但还是看得见、点得着（删除按钮要照常能用） */
+/* AI 模式仍可增删图片，只关闭手动排序。 */
 .strip.readonly .order-card {
   cursor: default;
-  opacity: 0.72;
-  box-shadow: none;
-}
-.strip.readonly .order-card:hover {
-  opacity: 0.88;
 }
 /* 抓起来那张：跟手 + 放大浮起 */
 .order-card.lifted {
@@ -1778,17 +1656,17 @@ watch(pid, (nextPid, oldPid) => {
   aspect-ratio: 4 / 3;
   display: block;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
   background: var(--media-placeholder);
   /* 让 pointerdown 稳稳落在卡片上，图片自身的原生拖拽也不来插一脚 */
   pointer-events: none;
 }
 .order-seq {
   position: absolute;
-  top: 6px;
-  left: 6px;
-  width: 23px;
-  height: 23px;
+  top: 10px;
+  left: 10px;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
   color: var(--color-on-primary);
@@ -1800,17 +1678,17 @@ watch(pid, (nextPid, oldPid) => {
 }
 .order-del {
   position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 21px;
-  height: 21px;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
   padding: 0;
   color: var(--on-photo);
   border: 0;
   border-radius: 50%;
-  background: var(--badge-bad-bg);
+  background: var(--scrim);
   cursor: pointer;
   opacity: 0; /* 平时不挡图，指到或聚焦才浮出来 */
   transition: opacity 0.15s ease;
@@ -1826,23 +1704,11 @@ watch(pid, (nextPid, oldPid) => {
     opacity: 1;
   }
 }
-.order-src {
-  padding: 0 8px;
-  color: var(--color-ink-muted);
-  font-size: 11px;
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.order-src.mine {
-  color: var(--color-gold-ink);
-}
 .add-tile {
-  flex: 0 0 96px;
-  min-height: 116px;
+  flex: 0 0 128px;
+  min-height: 160px;
   /* 跟卡片对齐：抵消 .strip 给滚动条留的那 10px */
-  margin-bottom: 10px;
+  margin: 4px 0 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1869,26 +1735,22 @@ watch(pid, (nextPid, oldPid) => {
   cursor: default;
   opacity: 0.5;
 }
-.strip-hint {
-  margin: 2px 0 0;
-  color: var(--color-ink-muted);
-  font-size: 12px;
-}
 
 /* ── 清单下方的「再加」 ── */
 .add-panel {
-  /* 吸底操作条是 fixed，给它让出让位空间 */
-  margin-bottom: 118px;
-  padding: 15px 17px;
+  margin-bottom: 18px;
+  padding: 24px 26px;
   border: 1px solid var(--color-border);
   border-radius: 13px;
   background: var(--surface-sunken);
 }
 .add-actions {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 14px;
 }
+.add-actions h2 { margin-right: auto; }
 .pool {
   margin-top: 13px;
   display: grid;
@@ -2284,18 +2146,20 @@ watch(pid, (nextPid, oldPid) => {
   }
   /* 窄屏卡片收窄，一屏能多露几张（横向滚动照旧） */
   .order-card {
-    flex-basis: 112px;
-    width: 112px;
+    flex-basis: 156px;
+    width: 156px;
   }
   .add-tile {
-    flex-basis: 78px;
+    flex-basis: 80px;
+    min-height: 117px;
   }
-  .add-panel {
-    margin-bottom: 196px;
-  }
-  .strip-wrap:last-of-type {
-    margin-bottom: 196px;
-  }
+  .strip-wrap, .add-panel { padding: 18px 14px; }
+  .ordering-heading h1 { font-size: 28px; }
+  .order-mode { gap: 16px; }
+  .mode-switch { width: 100%; }
+  .mode-opt { flex: 1; justify-content: center; padding-inline: 8px; }
+  .ordering-actions { flex-direction: column-reverse; }
+  .order-empty { min-height: 117px; }
   .action-dock {
     bottom: 10px;
     width: calc(100% - var(--sidebar-width, 0px) - 20px);

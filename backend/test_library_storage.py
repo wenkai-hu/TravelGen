@@ -203,6 +203,38 @@ class LibraryTests(unittest.TestCase):
         self.assertEqual(self.storage.get_project("p_test")["status"], "completed")
         self.assertEqual(len(self.storage.videos("alice")[0]["assets"]), 3)
 
+    def test_failed_voice_download_resumes_existing_seedance_task(self):
+        voice = P.VoiceTask("voice_resume", "p_test", {"description": "活力小男孩"})
+        voice.status = "failed"
+        voice.result = {"seedance_task_id": "cpt-existing"}
+        voice.error = "URLError: SSL EOF"
+        voice.dump()
+        self.project.voice_tasks.append(voice.task_id)
+        self.project.dump()
+
+        with patch.object(workflow, "_run_voice_task", new_callable=AsyncMock) as run:
+            result = asyncio.run(workflow.create_voice_candidate(
+                "p_test", workflow.VoiceCandidateRequest(description="活力小男孩"), "alice"))
+        self.assertTrue(result["resumed"])
+        self.assertEqual(result["task_id"], voice.task_id)
+        self.assertEqual(self.project.voice_tasks, [voice.task_id])
+        self.assertEqual(run.await_count, 1)
+
+        wav = self.root / "resumed.wav"
+        wav.write_bytes(b"audio")
+        with patch.object(workflow.runner, "seedance", {"model": "test"}), \
+                patch.object(workflow.ark_client, "submit_safe") as submit, \
+                patch.object(workflow.ark_client, "get_task_safe",
+                             return_value=("succeeded", "https://video.example.com/file.mp4", None)) as poll, \
+                patch.object(workflow.ark_client, "download", return_value=5), \
+                patch.object(workflow.voice_sample_pipeline, "finalize", return_value={
+                    "status": "candidate_ready", "voice_id": "custom_resume",
+                    "reference_path": str(wav), "reference_sha256": "voice-hash"}):
+            asyncio.run(workflow._run_voice_task(self.project, voice))
+        submit.assert_not_called()
+        self.assertEqual(poll.call_args.args[1], "cpt-existing")
+        self.assertEqual(voice.status, "completed")
+
 
 if __name__ == "__main__":
     unittest.main()

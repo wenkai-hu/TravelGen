@@ -1,0 +1,122 @@
+{
+  "note": "Pitch estimates are screening aids, not proof of perceptual speaker difference. Background-noise checks are heuristic.",
+  "voices": [
+    {
+      "index": 2,
+      "name": "醇厚磁性女声",
+      "file": "02_醇厚磁性_女声.wav",
+      "model": "doubao-seedance-2-0-260128",
+      "task_id": "cgt-20261001110636-lbprv",
+      "prompt": "生成一条用于测试中文解说音色的短视频，重点是清晰、自然的旁白声音。\n旁白音色：醇厚磁性女声：一位四十五至五十岁的成熟女性，明确的低音女声、低女中音，日常说话主要在150至180赫兹附近。声音宽厚、暗暖、低频共鸣饱满，带很轻的沙质颗粒，收尾低落，音高起伏小。自然的成熟女人声音，不压嗓、不变成男人。像阅历丰富的旅行作者从容讲故事，中慢语速，每个词有分量。不要年轻女高音、尖亮声、甜嗓、轻飘气声或广告播音腔。情绪温暖但克制。\n只由一名说话者用普通话自然朗读；保持同一个说话人，不唱歌，不添加其他对白。\n必须准确完整地朗读下面这句话，不增字、不删字、不换词：\n“西湖的清晨，风把柳枝吹成了一句诗。沿着湖岸，慢慢走。”\n只生成旁白人声，近距离、干净；句首句尾留出安静，不要任何背景音乐、环境声或音效。\n画面只显示中性纯色背景和简单原创几何图形，固定静帧；旁白为画外音，不出现人物、具体景点、作品素材、转场、字幕、文字、标志或水印。声音年龄与旁白音色描述一致。",
+      "narration": "西湖的清晨，风把柳枝吹成了一句诗。沿着湖岸，慢慢走。",
+      "source_duration_seconds": 10.08,
+      "duration_seconds": 7.43,
+      "estimated_median_f0_hz": 153.8,
+      "sha256": "b61617f310ab830bf4d26bda15ac8462914b4ef78a7b07be615c2d1d3e30c689",
+      "processing": {
+        "trim_start": 1.4100000000000001,
+        "trim_end": 8.84,
+        "gain_db": -2.8,
+        "pitch_shift": false
+      },
+      "qa": {
+        "duration_seconds": 7.43,
+        "sample_rate": 32000,
+        "channels": 2,
+        "bit_depth": 16,
+        "window_ms": 20,
+        "speech_level_p90_dbfs": -19.41,
+        "pause_level_p05_dbfs": -94.43,
+        "speech_pause_separation_db": 75.02,
+        "adaptive_gate_dbfs": -44.41,
+        "inner_silence_ratio": 0.2515,
+        "fixed_silence_ratio_below_minus_45_db": 0.3235,
+        "longest_inner_pause_ms": 500,
+        "speech_onset_seconds": 0.34,
+        "speech_offset_seconds": 7.02,
+        "tail_silence_seconds": 0.41,
+        "floor_dbfs": -97.32,
+        "verdict": "likely_clean",
+        "verdict_label": "倾向纯人声"
+      }
+    },
+    {
+      "index": 3,
+      "name": "轻声絮语女声",
+      "file": "03_轻声絮语_女声.wav",
+      "model": "doubao-seedance-2-0-260128",
+      "task_id": "cgt-20261001111143-2cmsp",
+      "prompt": "生成一条用于测试中文解说音色的短视频，重点是清晰、自然的旁白声音。\n旁白音色：轻声絮语女声：一位二十五岁左右的成年女性，柔软的中高女声，轻巧的头腔共鸣，音高始终保持在约225至250赫兹的女中高音区，句尾也不压低嗓音。气声质感明显但仍是有声说话：轻而细、柔雾般、带可听见的柔和呼气。想象她贴近录音麦克风，微笑着轻轻讲述，不用胸腔、不用低频、不用沙哑声。轻声不等于低音，必须用女性自然中高音轻声交谈。中慢语速，连贯舒展，吐字完整清楚。不要成熟女低音、厚重共鸣、磁性低嗓、强投射导游声，也不是幼童或卡通夹子音。\n只由一名说话者用普通话自然朗读；保持同一个说话人，不唱歌，不添加其他对白。\n必须准确完整地朗读下面这句话，不增字、不删字、不换词：\n“西湖的清晨，风把柳枝吹成了一句诗。沿着湖岸，慢慢走。”\n只生成旁白人声，近距离、干净；句首句尾留出安静，不要任何背景音乐、环境声或音效。\n画面只显示中性纯色背景和简单原创几何图形，固定静帧；旁白为画外音，不出现人物、具体景点、作品素材、转场、字幕、文字、标志或水印。声音年龄与旁白音色描述一致。",
+      "narration": "西湖的清晨，风把柳枝吹成了一句诗。沿着湖岸，慢慢走。",
+      "source_duration_seconds": 10.0542,
+      "duration_seconds": 8.47,
+      "estimated_median_f0_hz": 186.0,
+      "sha256": "bbf51b552b477aac096b76cdd283e0f3be012966d65eded822038f6da0f30d10",
+      "processing": {
+        "trim_start": 0.85,
+        "trim_end": 9.32,
+        "gain_db": -2.72,
+        "pitch_shift": false
+      },
+      "qa": {
+        "duration_seconds": 8.47,
+        "sample_rate": 32000,
+        "channels": 2,
+        "bit_depth": 16,
+        "window_ms": 20,
+        "speech_level_p90_dbfs": -19.75,
+        "pause_level_p05_dbfs": -79.09,
+        "speech_pause_separation_db": 59.34,
+        "adaptive_gate_dbfs": -44.75,
+        "inner_silence_ratio": 0.3714,
+        "fixed_silence_ratio_below_minus_45_db": 0.4255,
+        "longest_inner_pause_ms": 1620,
+        "speech_onset_seconds": 0.36,
+        "speech_offset_seconds": 8.06,
+        "tail_silence_seconds": 0.41,
+        "floor_dbfs": -87.65,
+        "verdict": "likely_clean",
+        "verdict_label": "倾向纯人声"
+      }
+    },
+    {
+      "index": 4,
+      "name": "爽朗活力女声",
+      "file": "04_爽朗活力_女声.wav",
+      "model": "doubao-seedance-2-0-260128",
+      "task_id": "cgt-20261001110636-lbqck",
+      "prompt": "生成一条用于测试中文解说音色的短视频，重点是清晰、自然的旁白声音。\n旁白音色：爽朗活力女声：一位二十八至三十五岁的成年女性户外领队，明亮的中高女声，主要在290至330赫兹附近。音质厚亮、结实、集中、有清楚的前向共鸣，声音开阔爽朗，有真实成年女性的力量感，不是纤细少女音。声带闭合扎实，干净少气声，辅音清脆，短句轻快、节奏有弹性，音高起伏明显，像热情带朋友去旅行。语速中快但不吞字，不喊叫，不卖萌，不用低沉气声或温柔慢读。\n只由一名说话者用普通话自然朗读；保持同一个说话人，不唱歌，不添加其他对白。\n必须准确完整地朗读下面这句话，不增字、不删字、不换词：\n“西湖的清晨，风把柳枝吹成了一句诗。沿着湖岸，慢慢走。”\n只生成旁白人声，近距离、干净；句首句尾留出安静，不要任何背景音乐、环境声或音效。\n画面只显示中性纯色背景和简单原创几何图形，固定静帧；旁白为画外音，不出现人物、具体景点、作品素材、转场、字幕、文字、标志或水印。声音年龄与旁白音色描述一致。",
+      "narration": "西湖的清晨，风把柳枝吹成了一句诗。沿着湖岸，慢慢走。",
+      "source_duration_seconds": 10.0542,
+      "duration_seconds": 7.71,
+      "estimated_median_f0_hz": 275.9,
+      "sha256": "0505850a3b252140bb3d3a859441ea7b9fdb1bea8a85125c9e9eb73f8bc2c41c",
+      "processing": {
+        "trim_start": 2.23,
+        "trim_end": 9.94,
+        "gain_db": -6.5,
+        "pitch_shift": false
+      },
+      "qa": {
+        "duration_seconds": 7.71,
+        "sample_rate": 32000,
+        "channels": 2,
+        "bit_depth": 16,
+        "window_ms": 20,
+        "speech_level_p90_dbfs": -19.46,
+        "pause_level_p05_dbfs": -88.97,
+        "speech_pause_separation_db": 69.51,
+        "adaptive_gate_dbfs": -44.46,
+        "inner_silence_ratio": 0.2795,
+        "fixed_silence_ratio_below_minus_45_db": 0.3455,
+        "longest_inner_pause_ms": 920,
+        "speech_onset_seconds": 0.36,
+        "speech_offset_seconds": 7.3,
+        "tail_silence_seconds": 0.41,
+        "floor_dbfs": -93.75,
+        "verdict": "likely_clean",
+        "verdict_label": "倾向纯人声"
+      }
+    }
+  ]
+}

@@ -6,6 +6,8 @@
 """
 import json, os, time, urllib.request, urllib.error
 
+from . import http_transport
+
 REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 CONFIG_PATH = os.path.join(REPO, "experiments", "config.json")
 
@@ -84,8 +86,12 @@ def load_image_search_config():
     return load_provider("qianfan_image_search")
 
 
-def call_model(provider, messages, temperature=None):
-    """统一 OpenAI 兼容端点调用，返回回复文本；429/网络错误重试 4 次，最终失败返回 None。"""
+class ModelCallError(RuntimeError):
+    """可安全展示的模型调用错误，不包含密钥或原始请求/响应。"""
+
+
+def call_model(provider, messages, temperature=None, *, raise_on_error=False):
+    """返回回复文本；最多尝试 4 次。默认失败返回 None，可显式要求抛出安全错误。"""
     temp = temperature if temperature is not None else float(provider.get("temperature", 0.7))
     url = provider["base_url"].rstrip("/") + "/chat/completions"
     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {provider['api_key']}"}
@@ -94,16 +100,26 @@ def call_model(provider, messages, temperature=None):
     req = urllib.request.Request(url, data=body, headers=headers)
     for attempt in range(4):
         try:
-            with urllib.request.urlopen(req, timeout=300) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-            return data["choices"][0]["message"]["content"].strip()
+            data = http_transport.request_json(req, timeout=300)
+            content = data["choices"][0]["message"]["content"]
+            if not isinstance(content, str) or not content.strip():
+                raise ValueError("empty model content")
+            return content.strip()
         except urllib.error.HTTPError as e:
             if e.code == 429 and attempt < 3:
                 time.sleep(20 * (attempt + 1))
                 continue
+            if raise_on_error:
+                raise ModelCallError(f"模型接口调用失败（HTTP {e.code}）") from None
             return None
-        except Exception:
+        except Exception as exc:
             if attempt < 3:
                 time.sleep(10)
                 continue
+            if raise_on_error:
+                if isinstance(exc, (ValueError, KeyError, IndexError, TypeError)):
+                    message = "模型接口未返回有效回复内容"
+                else:
+                    message = "模型接口连接失败或超时，请检查网络与服务状态"
+                raise ModelCallError(message) from None
             return None

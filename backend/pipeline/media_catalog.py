@@ -18,12 +18,12 @@ BGM_ROOT = REPO / "assets" / "media" / "bgm"
 VOICE_PRESETS = [
     ("voice_01_female_fresh", "清新探索女声", "01_清新探索_女声.wav",
      "年轻清亮女高音、音质纤细通透", ["城市漫游", "小众景点", "轻旅行"]),
-    ("voice_02_female_healing", "温柔治愈女声", "02_温柔治愈_女声.wav",
-     "成熟温暖女中低音、圆润厚实", ["山水慢游", "疗愈风景", "民宿"]),
-    ("voice_03_female_intellectual", "知性人文女声", "03_知性人文_女声.wav",
-     "沉静女中低音、略带细微沙感", ["古镇", "博物馆", "非遗故事"]),
-    ("voice_04_female_guide", "热情向导女声", "04_热情向导_女声.wav",
-     "爽朗厚亮女声、声音有穿透力", ["景区介绍", "路线推荐", "地方体验"]),
+    ("voice_02_female_healing", "醇厚磁性女声", "02_醇厚磁性_女声.wav",
+     "成熟女低音、醇厚微沙，从容慢叙", ["山水纪录", "人文故事", "慢旅行"]),
+    ("voice_03_female_intellectual", "轻声絮语女声", "03_轻声絮语_女声.wav",
+     "轻柔女中音、柔软气息，近距离交谈感", ["民宿疗愈", "夜景漫步", "私享旅行"]),
+    ("voice_04_female_guide", "爽朗活力女声", "04_爽朗活力_女声.wav",
+     "明亮有力女声、咬字利落，节奏轻快", ["路线攻略", "户外探索", "地方体验"]),
     ("voice_05_male_documentary", "沉稳纪录男声", "05_沉稳纪录_男声.wav",
      "低沉厚重男声、略带粗粝颗粒", ["山河大片", "城市历史", "纪录短片"]),
     ("voice_06_male_warm", "温暖故事男声", "06_温暖故事_男声.wav",
@@ -144,7 +144,9 @@ def recommend_bgm(project, provider=None) -> dict:
     text = model_client.call_model(provider, [
         {"role": "system", "content": "你是专业的文旅短视频音乐编辑。"},
         {"role": "user", "content": prompt},
-    ], temperature=0.3)
+    ], raise_on_error=True)
+    if not text or not text.strip():
+        raise RuntimeError("模型接口未返回有效回复内容")
     try:
         match = re.search(r"\{.*\}", text or "", re.S)
         data = json.loads(match.group(0)) if match else {}

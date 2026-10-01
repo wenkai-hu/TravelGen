@@ -8,6 +8,8 @@
 """
 import json, os, subprocess, urllib.request, urllib.error
 
+from . import http_transport
+
 CONTENT_TYPES = {"video_url": "succeeded", "url": "succeeded"}
 
 
@@ -19,8 +21,7 @@ def _request(req, timeout=60):
     """统一发请求：HTTP 错误转 error dict（业务失败），网络层异常抛 NetworkError（可重试）。
     ⚠️ HTTPError 是 URLError 的子类，必须先 catch。"""
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            return json.loads(resp.read().decode("utf-8"))
+        return http_transport.request_json(req, timeout=timeout)
     except urllib.error.HTTPError as e:
         return {"error": {"code": e.code, "message": e.read().decode("utf-8", "ignore")[:300]}}
     except (urllib.error.URLError, OSError, ValueError) as exc:
@@ -107,11 +108,7 @@ def get_task_safe(provider, task_id):
 
 def download(url, dest_path):
     """下载视频到本地；返回文件字节数。"""
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=120) as resp:
-        with open(dest_path, "wb") as f:
-            f.write(resp.read())
-    return os.path.getsize(dest_path)
+    return http_transport.download_file(url, dest_path, timeout=120)
 
 
 def transcode_web(src, dest):

@@ -3,6 +3,7 @@
 
 import hashlib
 import json
+import time
 import urllib.error
 import urllib.request
 from typing import Any
@@ -76,14 +77,20 @@ def search_images(provider: dict, city: str, location: str, top_k: int | None = 
         },
         method="POST",
     )
-    try:
-        with urllib.request.urlopen(request, timeout=40) as response:
-            payload = json.loads(response.read().decode("utf-8"))
-    except urllib.error.HTTPError as exc:
-        detail = exc.read().decode("utf-8", "replace")[:500]
-        raise RuntimeError(f"百度千帆图片搜索失败 HTTP {exc.code}: {detail}") from exc
-    except urllib.error.URLError as exc:
-        raise RuntimeError(f"连接百度千帆图片搜索失败: {exc.reason}") from exc
+    # 千帆边缘偶发 TLS 被重置（UNEXPECTED_EOF_WHILE_READING），单次失败不代表 Key 失效，重试即可。
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(request, timeout=40) as response:
+                payload = json.loads(response.read().decode("utf-8"))
+            break
+        except urllib.error.HTTPError as exc:
+            detail = exc.read().decode("utf-8", "replace")[:500]
+            raise RuntimeError(f"百度千帆图片搜索失败 HTTP {exc.code}: {detail}") from exc
+        except OSError as exc:  # URLError / SSLError / ConnectionResetError 都属于这一类瞬时故障
+            if attempt < 2:
+                time.sleep(1.5 * (attempt + 1))
+                continue
+            raise RuntimeError(f"连接百度千帆图片搜索失败: {getattr(exc, 'reason', exc)}") from exc
 
     if not isinstance(payload, dict):
         raise RuntimeError("百度千帆图片搜索返回格式异常")

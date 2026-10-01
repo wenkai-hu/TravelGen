@@ -50,8 +50,10 @@ const project = ref(null);
 const loading = ref(true);
 const voicePresets = ref([]);
 const myVoices = ref([]);
-const voiceTab = ref('preset');
-const shownVoices = computed(() => voiceTab.value === 'mine' ? myVoices.value : voicePresets.value);
+const voiceTab = ref("preset");
+const shownVoices = computed(() =>
+  voiceTab.value === "mine" ? myVoices.value : voicePresets.value,
+);
 const bgmTracks = ref([]);
 const customVoiceDescription = ref(
   "温暖、自然、像真实旅行讲述者，普通话清晰但不过度播音",
@@ -76,11 +78,29 @@ let storyboardTriggered = false;
 let seenFinalVersion = null;
 let seenMixVersion = null;
 let previewAudioStarting = false;
-const storyboardDraft = useProjectDraft(pid, 'storyboard');
+const storyboardDraft = useProjectDraft(pid, "storyboard");
 let draftRestored = false;
-watch([editingShotId, editPrompt, editNarration, editDuration, customVoiceDescription, voiceTab], () => {
-  if(draftRestored) storyboardDraft.queue({editingShotId:editingShotId.value,prompt:editPrompt.value,narration:editNarration.value,duration:editDuration.value,voiceDescription:customVoiceDescription.value,voiceTab:voiceTab.value});
-});
+watch(
+  [
+    editingShotId,
+    editPrompt,
+    editNarration,
+    editDuration,
+    customVoiceDescription,
+    voiceTab,
+  ],
+  () => {
+    if (draftRestored)
+      storyboardDraft.queue({
+        editingShotId: editingShotId.value,
+        prompt: editPrompt.value,
+        narration: editNarration.value,
+        duration: editDuration.value,
+        voiceDescription: customVoiceDescription.value,
+        voiceTab: voiceTab.value,
+      });
+  },
+);
 
 const req = computed(() => project.value?.request || {});
 const scenes = computed(() => project.value?.storyboard?.scenes || []);
@@ -122,10 +142,8 @@ const finalSource = computed(() => {
 });
 const shotById = computed(() => {
   const rows = {};
-  for (const scene of scenes.value) {
-    for (const shot of scene.shot_list || [])
-      rows[shot.shot_id] = { ...shot, scene_title: scene.title };
-  }
+  for (const scene of scenes.value)
+    for (const shot of scene.shot_list || []) rows[shot.shot_id] = shot;
   return rows;
 });
 const referenceById = computed(() =>
@@ -265,16 +283,21 @@ watch(selectedVariant, () => {
 
 function syncProject(next) {
   project.value = next;
-  if(!draftRestored) {
-    const saved=storyboardDraft.restore(next.draft?.storyboard);
-    if(saved) {
-      const exists=(next.storyboard?.scenes || []).some(scene => scene.shot_list?.some(s => s.shot_id === saved.editingShotId));
-      editingShotId.value=exists ? saved.editingShotId : null;
-      editPrompt.value=saved.prompt || ''; editNarration.value=saved.narration || ''; editDuration.value=saved.duration || 4;
-      customVoiceDescription.value=saved.voiceDescription ?? customVoiceDescription.value;
-      voiceTab.value=saved.voiceTab || 'preset';
+  if (!draftRestored) {
+    const saved = storyboardDraft.restore(next.draft?.storyboard);
+    if (saved) {
+      const exists = (next.storyboard?.scenes || []).some((scene) =>
+        scene.shot_list?.some((s) => s.shot_id === saved.editingShotId),
+      );
+      editingShotId.value = exists ? saved.editingShotId : null;
+      editPrompt.value = saved.prompt || "";
+      editNarration.value = saved.narration || "";
+      editDuration.value = saved.duration || 4;
+      customVoiceDescription.value =
+        saved.voiceDescription ?? customVoiceDescription.value;
+      voiceTab.value = saved.voiceTab || "preset";
     }
-    draftRestored=true;
+    draftRestored = true;
   }
   if (
     finalVideo.value.version &&
@@ -616,7 +639,10 @@ async function replanShots() {
 <template>
   <div class="page">
     <div class="page-status">
-      <DraftStatus :state="storyboardDraft.state.value" @retry="storyboardDraft.flush().catch(e => message.error(e.message))" />
+      <DraftStatus
+        :state="storyboardDraft.state.value"
+        @retry="storyboardDraft.flush().catch((e) => message.error(e.message))"
+      />
     </div>
     <main class="stage">
       <section v-if="phase === 'loading'" class="card center">
@@ -636,7 +662,9 @@ async function replanShots() {
         <div class="bar-track" aria-hidden="true">
           <span class="bar-fill"></span>
         </div>
-        <small>准备完成后将自动进入镜头方案页面，也可以稍后从项目页继续。</small>
+        <small
+          >准备完成后将自动进入镜头方案页面，也可以稍后从项目页继续。</small
+        >
       </section>
 
       <template v-else-if="segments.length">
@@ -659,21 +687,36 @@ async function replanShots() {
           <div class="section-head">
             <div>
               <h2>1. 选择统一参考音色</h2>
-              <p>
-                同一个参考音频会注入每个镜头。Seedance
-                只参考说话人身份，并自行生成本段旁白与环境声。
-              </p>
+              <p>所选的参考音频会注入每个镜头 生成该音色的视频配音</p>
             </div>
             <span class="selection-state" :class="{ ready: voiceReady }">{{
               voiceReady ? `已选：${voice.name}` : "尚未选择"
             }}</span>
           </div>
           <div class="voice-library-tabs">
-            <NButton :type="voiceTab==='preset' ? 'primary' : 'default'" size="small" @click="voiceTab='preset'">预设音色</NButton>
-            <NButton :type="voiceTab==='mine' ? 'primary' : 'default'" size="small" @click="voiceTab='mine'; loadCatalogs()">我的音色 · {{ myVoices.length }}</NButton>
+            <NButton
+              :type="voiceTab === 'preset' ? 'primary' : 'default'"
+              size="small"
+              @click="voiceTab = 'preset'"
+              >预设音色</NButton
+            >
+            <NButton
+              :type="voiceTab === 'mine' ? 'primary' : 'default'"
+              size="small"
+              @click="
+                voiceTab = 'mine';
+                loadCatalogs();
+              "
+              >我的音色 · {{ myVoices.length }}</NButton
+            >
             <router-link to="/library?tab=voices">管理音色库 →</router-link>
           </div>
-          <p v-if="voiceTab==='mine' && !myVoices.length" class="voice-library-empty">还没有收藏的声音。在下方生成自定义音色后，会自动保存到音色库。</p>
+          <p
+            v-if="voiceTab === 'mine' && !myVoices.length"
+            class="voice-library-empty"
+          >
+            还没有收藏的声音。在下方生成自定义音色后，会自动保存到音色库。
+          </p>
           <div class="media-grid voices">
             <article
               v-for="item in shownVoices"
@@ -695,7 +738,9 @@ async function replanShots() {
               ><NButton
                 size="small"
                 :type="voice.voice_id === item.voice_id ? 'primary' : 'default'"
-                :disabled="actionBusy || item.available === false || activeIds.size > 0"
+                :disabled="
+                  actionBusy || item.available === false || activeIds.size > 0
+                "
                 @click="chooseVoice({ voice_id: item.voice_id })"
                 >{{
                   voice.voice_id === item.voice_id ? "已选择" : "使用此音色"
@@ -706,9 +751,7 @@ async function replanShots() {
           <div class="custom-voice">
             <div>
               <b>预设都不合适？让 Seedance 生成试听音色</b>
-              <p>
-                描述年龄感、音高、气质、语速和口音；系统会抽取生成视频中的音轨作为候选参考。
-              </p>
+              <p>描述年龄感、音高、气质、语速和口音</p>
             </div>
             <NInput
               v-model:value="customVoiceDescription"
@@ -771,7 +814,7 @@ async function replanShots() {
             <div>
               <h2>2. 选择后期 BGM</h2>
               <p>
-                同场景类型的曲目已用绿色标出。BGM
+                根据您的场景类型的推荐曲目已用绿色标出。BGM
                 会在视频拼接后加入，音量可在成片页试听调整。
               </p>
             </div>
@@ -829,10 +872,7 @@ async function replanShots() {
                   <i v-if="isRecommended(track)">匹配类型</i></b
                 >
                 <p>{{ track.description }}</p>
-                <small
-                  >{{ track.scene }} · {{ track.artist }} ·
-                  {{ track.duration }}</small
-                >
+                <small>{{ track.scene }} · {{ track.duration }}</small>
               </div>
               <audio
                 :src="track.preview_url"
@@ -884,8 +924,8 @@ async function replanShots() {
           }}</b
           ><span>{{
             shotPlan
-              ? "每个镜头只用一张实景图，单独生成。镜头超过 15 秒时会依据前一段视频续写。Seedance 被强约束为不生成任何 BGM。"
-              : "当前项目仍使用旧的多镜头 Segment 分镜；可点击“按一图一镜重新规划”切换。"
+              ? "每个镜头只用一张实景图，单独生成。"
+              : "当前项目仍使用旧版多镜头分镜；可点击“按一图一镜重新规划”切换。"
           }}</span>
         </div>
 
@@ -910,8 +950,7 @@ async function replanShots() {
                 </h2>
                 <span class="status" :class="stateFor(segment).status">{{
                   statusLabel(stateFor(segment).status)
-                }}</span
-                ><span class="no-music-badge">禁止 Seedance BGM</span>
+                }}</span>
               </div>
               <p>
                 {{ fmtMs(segment.timeline_start_ms) }} –
@@ -970,13 +1009,6 @@ async function replanShots() {
               :key="shot.shot_id"
               class="shot-card"
             >
-              <div class="shot-meta">
-                <b>Shot {{ shot.shot_id }}</b
-                ><span
-                  >{{ fmtMs(shot.segment_local_start_ms) }} –
-                  {{ fmtMs(shot.segment_local_end_ms) }}</span
-                ><span>{{ shot.scene_title }}</span>
-              </div>
               <div class="shot-body">
                 <template v-if="editingShotId === shot.shot_id"
                   ><label>画面 Prompt</label
@@ -1011,10 +1043,7 @@ async function replanShots() {
                     旁白：{{ shot.narration || "无" }}
                   </p>
                   <div class="inline-actions">
-                    <span
-                      >{{ shot.duration_s }}s · {{ shot.shot_size }} ·
-                      {{ shot.subject }}</span
-                    ><NButton
+                    <NButton
                       size="small"
                       quaternary
                       :disabled="stateFor(segment).status === 'generating'"
@@ -1087,7 +1116,11 @@ async function replanShots() {
         <section class="card final-actions">
           <div>
             <h2>
-              {{ phase === "completed" ? "成片已完成" : "完成所有镜头后合成" }}
+              {{
+                phase === "completed"
+                  ? "成片已完成"
+                  : "拼接所有镜头 得到完整成片"
+              }}
             </h2>
             <p>
               拼接完成后可在下方同时调节视频原声（旁白和环境声）与
@@ -1265,9 +1298,24 @@ async function replanShots() {
 </template>
 
 <style scoped>
-.voice-library-tabs { display:flex; gap:10px; align-items:center; margin:18px 0; flex-wrap:wrap; }
-.voice-library-tabs a { margin-left:auto; color:var(--color-primary); font-size:12px; text-decoration:none; }
-.voice-library-empty { color:var(--color-ink-muted); padding:12px 0; font-size:13px; }
+.voice-library-tabs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
+.voice-library-tabs a {
+  margin-left: auto;
+  color: var(--color-primary);
+  font-size: 12px;
+  text-decoration: none;
+}
+.voice-library-empty {
+  color: var(--color-ink-muted);
+  padding: 12px 0;
+  font-size: 13px;
+}
 .page {
   min-height: 100vh;
   background: var(--color-bg);
@@ -1696,11 +1744,6 @@ h1 {
   font-size: 12px;
 }
 .status,
-.no-music-badge {
-  padding: 3px 8px;
-  border-radius: 99px;
-  font-size: 11px;
-}
 .status.pending {
   background: var(--status-idle-bg);
 }
@@ -1717,10 +1760,6 @@ h1 {
 .status.stale {
   color: var(--status-bad-fg);
   background: var(--status-bad-bg);
-}
-.no-music-badge {
-  color: var(--status-note-fg);
-  background: var(--status-note-bg);
 }
 .narration {
   margin-top: 14px;
@@ -1747,21 +1786,10 @@ h1 {
 .shot-card {
   padding: 12px;
   display: grid;
-  grid-template-columns: 150px 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: 14px;
   border: 1px solid var(--color-border);
   border-radius: 9px;
-}
-.shot-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  color: var(--color-ink-sub);
-  font-size: 12px;
-}
-.shot-meta b {
-  color: var(--color-primary-deep);
-  font-size: 14px;
 }
 .shot-body {
   min-width: 0;
@@ -1789,9 +1817,6 @@ h1 {
   gap: 8px;
   color: var(--color-ink-sub);
   font-size: 11px;
-}
-.inline-actions span {
-  margin-right: auto;
 }
 .edit-actions {
   margin-top: 9px;

@@ -273,7 +273,7 @@ class SegmentTask:
         done = sum(1 for item in self.segments if item["status"] in ("completed", "failed"))
         ok = sum(1 for item in self.segments if item["status"] == "completed")
         self.progress = int(done / len(self.segments) * 100) if self.segments else 0
-        self.message = f"Segment 生成中 {ok}/{len(self.segments)} 完成"
+        self.message = f"镜头生成中 {ok}/{len(self.segments)} 完成"
 
     def to_dict(self):
         return {k: getattr(self, k) for k in (
@@ -479,10 +479,10 @@ def recompute_project_status(project: Project):
         completed = sum(1 for result in results.values() if result.get("status") == "completed")
         failed = any(result.get("status") == "failed" for result in results.values())
         if total and completed == total:
-            project.status, project.progress, project.message = "video_ready", 85, "全部 Segment 已生成，可合成成片"
+            project.status, project.progress, project.message = "video_ready", 85, "全部镜头已生成，可合成成片"
         elif results:
             project.status = "waiting_storyboard_confirm"
             project.progress = 45
-            project.message = ("存在生成失败的 Segment，可重新生成" if failed
-                               else "部分 Segment 已生成，可继续生成或修改")
+            project.message = ("存在生成失败的镜头，可重新生成" if failed
+                               else "部分镜头已生成，可继续生成或修改")
         return

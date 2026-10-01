@@ -6,7 +6,7 @@
 - 内部 Segment 记录保留给渲染和旧项目；新项目按 Shot 发起生成请求
 """
 import asyncio, copy, os, uuid
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 
@@ -129,14 +129,16 @@ async def _run_voice_task(project: P.Project, task: P.VoiceTask):
             result = await asyncio.to_thread(
                 voice_sample_pipeline.mock_candidate, project.project_id, task.task_id, description)
         else:
-            prompt = voice_sample_pipeline.build_prompt(description)
-            seedance_id, error = await asyncio.to_thread(
-                ark_client.submit_safe, runner.seedance, prompt, 5, "480p", "9:16",
-                images=None, audio=None, generate_audio=True,
-            )
+            seedance_id = (task.result or {}).get("seedance_task_id")
             if not seedance_id:
-                raise RuntimeError(error or "Seedance 自定义音色提交失败")
-            task.result = {"seedance_task_id": seedance_id}
+                prompt = voice_sample_pipeline.build_prompt(description)
+                seedance_id, error = await asyncio.to_thread(
+                    ark_client.submit_safe, runner.seedance, prompt, 5, "480p", "9:16",
+                    images=None, audio=None, generate_audio=True,
+                )
+                if not seedance_id:
+                    raise RuntimeError(error or "Seedance 自定义音色提交失败")
+                task.result = {"seedance_task_id": seedance_id}
             task.progress, task.message = 15, "Seedance 正在生成音色样本"
             task.dump()
             video_url = None
@@ -211,14 +213,13 @@ async def _run_segment_task(project: P.Project, task: P.SegmentTask, segment_ids
     try:
         segments = [_find_segment(project, segment_id) for segment_id in segment_ids]
         task.init_segments(segments)
-        unit = "Shot" if project.storyboard.get("storyboard_version", 0) >= 4 else "Segment"
-        project.status, project.progress, project.message = "generating", 45, f"{unit} 视频生成中"
+        project.status, project.progress, project.message = "generating", 45, "镜头视频生成中"
         task.dump(), project.dump()
 
         def sync(clips, done, total):
             task.sync_from_clips(clips)
             project.progress = 45 + int(done / total * 35)
-            project.message = f"{unit} 视频生成中 {done}/{total} 个生成片段完成"
+            project.message = f"镜头视频生成中 {done}/{total} 个生成片段完成"
             task.dump(), project.dump()
 
         clips = await runner.generate_segments(project, segment_ids, task=task, on_progress=sync)
@@ -250,7 +251,7 @@ async def _run_segment_task(project: P.Project, task: P.SegmentTask, segment_ids
 async def _run_render_task(project: P.Project, task: P.RenderTask):
     try:
         project.status, project.progress, project.message = "composing", 90, "正在拼接原生音视频并生成双版本成片"
-        task.progress, task.message = 15, "校验 Segment 与音色版本"
+        task.progress, task.message = 15, "校验镜头与音色版本"
         task.dump(), project.dump()
         if (task.request.get("voice_version") != project.voice.get("version")
                 or task.request.get("voice_reference_sha256") != project.voice.get("reference_sha256")
@@ -694,7 +695,7 @@ async def update_shot(pid: str, shot_id: int, patch: ShotPatch, user: str = Depe
             invalidated_ids.append(item["segment_id"])
         _invalidate_render(project)
         project.status, project.progress = "waiting_storyboard_confirm", 40
-        project.message = "Shot 时长已修改，全部 Segment 已重新动态分组"
+        project.message = "Shot 时长已修改，全部镜头已重新动态分组"
         segment = segment_planner.segment_for_shot(project.storyboard, shot_id)
     else:
         shot.update(norm)
@@ -933,6 +934,28 @@ async def create_voice_candidate(pid: str, req: VoiceCandidateRequest,
     if any((task := P.load_voice_task(task_id)) is not None and task.status == "generating"
            for task_id in project.voice_tasks):
         _err(409, "voice_generating", "已有自定义音色正在生成，请先等待完成")
+    # A failed download may already have a paid Seedance result. Resume its
+    # task once while the provider video URL is still likely to be valid.
+    for task_id in reversed(project.voice_tasks):
+        previous = P.load_voice_task(task_id)
+        if previous is None or previous.request.get("description") != req.description:
+            continue
+        if (previous.status == "failed"
+                and (previous.result or {}).get("seedance_task_id")
+                and not previous.result.get("resume_attempted")):
+            try:
+                fresh = datetime.now(timezone.utc) - datetime.fromisoformat(previous.created_at) < timedelta(hours=23)
+            except (ValueError, TypeError):
+                fresh = False
+            if fresh:
+                previous.result["resume_attempted"] = True
+                previous.status, previous.progress = "generating", 15
+                previous.message, previous.error = "正在恢复已生成的音色样本", None
+                previous.dump()
+                asyncio.create_task(_run_voice_task(project, previous))
+                return {"task_id": task_id, "project_id": pid,
+                        "status": "generating", "progress": 15, "resumed": True}
+        break
     tid = _new_id("voice")
     task = P.VoiceTask(tid, pid, req.model_dump())
     P.VOICE_TASKS[tid] = task
@@ -981,7 +1004,7 @@ async def select_voice(pid: str, req: VoiceSelectionRequest,
     _invalidate_render(project)
     if project.storyboard.get("segments"):
         project.status, project.progress, project.message = (
-            "waiting_storyboard_confirm", 40, "参考音色已确认，可生成或重新生成 Segment")
+            "waiting_storyboard_confirm", 40, "参考音色已确认，可生成或重新生成镜头")
     project.dump()
     return {"project_id": pid, "voice": {
         key: value for key, value in project.voice.items()
